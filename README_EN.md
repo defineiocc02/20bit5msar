@@ -14,6 +14,7 @@
 [![中文](https://img.shields.io/badge/docs-中文-lightgrey)](README.md)
 [![Plan](https://img.shields.io/badge/plan-PROJECT_PLAN-important)](docs/PROJECT_PLAN.md)
 [![Design](https://img.shields.io/badge/design-Error%20Budget-critical)](design/budget/ERROR_BUDGET_REV03.md)
+[![Model Map](https://img.shields.io/badge/model%20unclear-Interactive%20Map-blueviolet)](analysis/model_map/sar20_model_map.html)
 
 </div>
 
@@ -56,6 +57,7 @@
 
 | I want to… | Go to |
 |---|---|
+| **🔍 I opened Simulink and cannot follow the model (start here)** | [🗺️ Interactive model map](analysis/model_map/sar20_model_map.html) (single offline HTML: drill into subsystems, click a block to see its Chinese annotation and bound `.m`) · [how to read it](analysis/model_map/README.md) · [machine-readable structure](analysis/model_map/model_map.json) |
 | **Guide a circuit design: numeric limits per block** | [🎯 Rev0.3 design constraint chain](design/budget/ERROR_BUDGET_REV03.md) · [budget JSON](design/budget/error_budget_rev03.json) · [binding CSV](design/budget/parameter_binding.csv) · [verifier](design/budget/verify_budget.py) |
 | **Judge the state of this project** | [§0 verdict](#0-the-30-second-verdict) · [Full engineering analysis](docs/ENGINEERING_ANALYSIS.md) |
 | **Know what comes next and in what order** | [📋 PROJECT_PLAN.md](docs/PROJECT_PLAN.md) (M0–M4 gates, commands, rollback) |
@@ -186,6 +188,8 @@ The sections above describe *what the project is*. If the goal is to *design sil
 
 ## 4. Architecture and how it works
 
+> 🗺️ **If prose is not landing, open the [interactive model map](analysis/model_map/sar20_model_map.html)**. It parses the current production SLX (`91973cf7…`) XML directly into 14 subsystems, 290 blocks, 203 signal lines and 16 distinct S-Function entry points. Drill down by double-click, pan/zoom, click a block for its annotation and bound `current/src/**/*.m`. No MATLAB, no model load, no simulation. Four tabs: block diagram / source map / event timeline / how to read this project. Build method and evidence limits: [analysis/model_map/README.md](analysis/model_map/README.md).
+
 ### 4.1 Signal chain
 
 ```
@@ -202,7 +206,7 @@ Stimulus/Driver → Sample/CDAC1 (18 slices × 38 columns) → SAR1 (6b coarse a
 
 ### 4.2 State owners and the 200 ns event calendar
 
-Only **three standard UnitDelay state owners**, no second charge memory (`READ_GRAPH.md:44`):
+Inside the ADC there are only **three state owners**, no second charge memory (`READ_GRAPH.md:44`). The full SLX actually contains **6 UnitDelay blocks**: the other three (`BankOwnerState`, `TxRxState`, `ReferenceHistory`) are digital/instrument memory for Bank / Transport / RefQueue and do not add ADC analog state. `[353]/[48]/[51]` and the aliases `FE353/RA48/SAR51` denote **state-vector widths (number of doubles)**, not Simulink Block SIDs (in the current SLX these are 148/149/150 — see the [model map](analysis/model_map/sar20_model_map.html)):
 
 | Owner | Width | Content | Source |
 |---|---|---|---|
@@ -525,6 +529,7 @@ The complete executable plan is **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**
 | [`design/`](design/) | 2026-10-26 acceptance / engineering / frontend / scheduling drafts | 📜 Unimplemented ideas |
 | [`analysis/behavior/`](analysis/behavior/) | 52 experiment directories of real as-run evidence | 📜 Archive |
 | [`analysis/local_debug/`](analysis/local_debug/) | Zero-MATLAB probe and offline panel | 🆕 |
+| [`analysis/model_map/`](analysis/model_map/) | Offline interactive map of the real SLX, generator, structure JSON | 🆕 read-only derived |
 | [`analysis/debug_ui_20261105/`](analysis/debug_ui_20261105/) | Paused candidates and recovery index | ⏸️ |
 | [`_preserved/`](_preserved/) | Pre-change backups | 📜 |
 | [`dependencies/toolkit/`](dependencies/toolkit/) | MathWorks SATK 2026.10.b (third party) | Runtime dependency |
@@ -537,6 +542,7 @@ The complete executable plan is **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**
 
 | Document | Purpose |
 |---|---|
+| [**Interactive model map sar20_model_map.html**](analysis/model_map/sar20_model_map.html) · [notes](analysis/model_map/README.md) | **Understand the Simulink project**: real SLX hierarchy / blocks / lines / S-Function bindings + source map + event timeline + reading guide; single offline file |
 | [**ERROR_BUDGET_REV03.md**](design/budget/ERROR_BUDGET_REV03.md) | **Guide a circuit design**: Rev0.3 targets → input-referred error budget → block specs → device parameters → gates; with JSON, binding CSV and verifier |
 | [**PROJECT_PLAN.md**](docs/PROJECT_PLAN.md) | **Only active roadmap**: M0–M4 gates, commands, rollback, evidence levels |
 | [ENGINEERING_ANALYSIS.md](docs/ENGINEERING_ANALYSIS.md) | Systematic diagnosis: objectives / timeline / architecture / evidence ledger / governance / risk tiers |

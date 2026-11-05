@@ -1,5 +1,9 @@
 # 按一个sample读主图
 
+> 🗺️ **本篇是密集文字说明；若想先看清结构，打开 [交互模型结构图](../analysis/model_map/sar20_model_map.html)**（从当前生产 SLX `91973cf7…` 的 XML 解析：14 个子系统 / 290 块 / 203 连线 / 33 个 S-Function 块对应 16 个入口，可逐层双击、点块看中文注释与绑定源码，另有源码地图与事件时间轴）。生成方式与证据边界见 [model_map/README.md](../analysis/model_map/README.md)。本文仍是「六阶段执行顺序、三个模拟状态 owner、两条时间线」的**文字权威口径**，结构图引用本篇。
+
+> ⚠️ 本篇有 15 处 `../runs/…` 历史链接指向本地一次性 run 目录；`runs/` 在 `.gitignore` 第 2 行被排除，未随仓库归档，因此这些链接在克隆后不可达。这是本文原有状态（非本次可视化引入），其中的数值结论以链接文字所标注的原始回执为准，未随本图改写或升级证据等级。
+
 同一主SLX已接入LVDS与有限DAC→RA耦合；默认N8、transport off、DAC τ=0。[Windows ADC分层图](../analysis/behavior/current_diagrams_20261104/figures/Adc.png)与[metadata](../analysis/behavior/current_diagrams_20261104/metadata.json)对应 `d4e7fc99…` 私有副本，并非Mac本地 `f358f226…` 的模型截图；当前运行状态见[检查点](../CHECKPOINT.md)。
 
 ## 当前有限DAC主图的ID5：同一模拟记忆如何传播

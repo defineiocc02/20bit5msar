@@ -1,0 +1,9381 @@
+{
+ "meta": {
+  "slx": "current/models/SarAdc.slx",
+  "slx_sha256": "91973cf76507d37acc12515b55ebfe731ad197fe8ca1ecc9014fa07cbd35c27e",
+  "slx_bytes": 492760,
+  "systems": 14,
+  "blocks": 290,
+  "lines": 203,
+  "sfunctions": 16,
+  "source_files": 108,
+  "source_lines": 10372,
+  "events": 73,
+  "event_source": "current/src/control/behavior_calendar.m",
+  "method": "SLX read as ZIP/XML; calendar expanded by parsing the .m source; no MATLAB, no model load, no simulation",
+  "derived": {
+   "unique_event_times": 48,
+   "unit_delay_total": 6,
+   "unit_delay_adc": 3,
+   "unit_delay_analog": [
+    {
+     "sid": "149",
+     "name": "RaCtState"
+    },
+    {
+     "sid": "148",
+     "name": "SampleCharge"
+    },
+    {
+     "sid": "150",
+     "name": "SarState"
+    }
+   ],
+   "unit_delay_other": [
+    {
+     "sid": "454",
+     "name": "BankOwnerState",
+     "path": "SarAdc / EventStep"
+    },
+    {
+     "sid": "415",
+     "name": "TxRxState",
+     "path": "SarAdc / EventStep / Transport"
+    },
+    {
+     "sid": "418",
+     "name": "ReferenceHistory",
+     "path": "SarAdc / EventStep / RefQueue"
+    }
+   ],
+   "sfun_blocks": 33,
+   "sfun_distinct": 16,
+   "adc_children": 7,
+   "adc_child_names": [
+    "ChargeReturnRaReset",
+    "DacCtFeedback",
+    "Diagnostics",
+    "ResidueCtCompare",
+    "SampleRaAdvance",
+    "Sar1TrialRaCt",
+    "SarDecisionTracking"
+   ],
+   "adc_tree_is_alphabetical": true,
+   "root_blocks": 7,
+   "ta_compares": 8,
+   "ta_feedbacks": 7,
+   "d2_steps": 12
+  },
+  "compute_stages": [
+   {
+    "name": "SampleRaAdvance",
+    "desc": "采样 + 旧 RA/AZ 推进（旧命令先于本次事件）"
+   },
+   {
+    "name": "DacCtFeedback",
+    "desc": "到期反馈提交 → DAC1 实际残差 → CT 开关"
+   },
+   {
+    "name": "Sar1TrialRaCt",
+    "desc": "六位预转换 / SAR1 trial → RA + AZ"
+   },
+   {
+    "name": "ResidueCtCompare",
+    "desc": "Compare1 看 DAC1 残差、Compare2 看 CT 实际 VY"
+   },
+   {
+    "name": "SarDecisionTracking",
+    "desc": "12 次 D2 / 8 次 TA 比较 / 7 次物理反馈"
+   },
+   {
+    "name": "ChargeReturnRaReset",
+    "desc": "按实际 Vtop 返还电荷 + 信号 reset"
+   }
+  ],
+  "compute_stages_source": "docs/READ_GRAPH.md lines 32-39 (依赖顺序与路径); Adc 第 7 个子 Diagnostics 仅观察",
+  "transport_note_source": "docs/READ_GRAPH.md line 54 (138 ns / 538 ns 为文档记载，不在 0-90 ns 日历事件中)"
+ },
+ "systems": {
+  "system_105": {
+   "file": "system_105",
+   "name": "EventStep",
+   "path": "SarAdc / EventStep",
+   "blocks": [
+    {
+     "sid": "108",
+     "name": "SineCfg",
+     "type": "Inport",
+     "pos": [
+      420.0,
+      1203.0,
+      450.0,
+      1217.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "109",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      40.0,
+      1008.0,
+      70.0,
+      1022.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "423",
+     "name": "ActualTime",
+     "type": "Inport",
+     "pos": [
+      440.0,
+      898.0,
+      470.0,
+      912.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "Actual engine time [s] from root SystemTime",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "110",
+     "name": "Trigger",
+     "type": "TriggerPort",
+     "pos": [
+      45.0,
+      1075.0,
+      65.0,
+      1095.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "112",
+     "name": "Adc",
+     "type": "SubSystem",
+     "pos": [
+      530.0,
+      1187.0,
+      580.0,
+      1263.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "片内 ADC：Sample / DAC / RA-AZ / CT / SAR-Tracking",
+     "sub": "system_112",
+     "nin": 2,
+     "nout": 6
+    },
+    {
+     "sid": "429",
+     "name": "AdcExecute",
+     "type": "RelationalOperator",
+     "pos": [
+      380.0,
+      1077.0,
+      410.0,
+      1108.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "449",
+     "name": "AdcExecutedLog",
+     "type": "ToWorkspace",
+     "pos": [
+      510.0,
+      1080.0,
+      600.0,
+      1110.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "428",
+     "name": "AdcGroupCount",
+     "type": "Constant",
+     "pos": [
+      170.0,
+      1085.0,
+      320.0,
+      1115.0
+     ],
+     "func": "",
+     "value": "P.transport.adc_group_count",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "134",
+     "name": "BackLog",
+     "type": "ToWorkspace",
+     "pos": [
+      760.0,
+      1420.0,
+      850.0,
+      1450.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "461",
+     "name": "BankCodeValidLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1640.0,
+      1175.0,
+      1730.0,
+      1205.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "456",
+     "name": "BankCommand",
+     "type": "M-S-Function",
+     "pos": [
+      1270.0,
+      1074.0,
+      1380.0,
+      1106.0
+     ],
+     "func": "sar20_pp_command_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "462",
+     "name": "BankMetaLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1640.0,
+      1245.0,
+      1730.0,
+      1275.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "455",
+     "name": "BankOwner",
+     "type": "M-S-Function",
+     "pos": [
+      1490.0,
+      965.0,
+      1580.0,
+      1165.0
+     ],
+     "func": "sar20_pp_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 10,
+     "nout": 4
+    },
+    {
+     "sid": "454",
+     "name": "BankOwnerState",
+     "type": "UnitDelay",
+     "pos": [
+      1380.0,
+      968.0,
+      1415.0,
+      1002.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "137",
+     "name": "CodeLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1595.0,
+      610.0,
+      1685.0,
+      640.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "135",
+     "name": "ControlLog",
+     "type": "ToWorkspace",
+     "pos": [
+      760.0,
+      1505.0,
+      850.0,
+      1535.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "138",
+     "name": "D1Log",
+     "type": "ToWorkspace",
+     "pos": [
+      1595.0,
+      695.0,
+      1685.0,
+      725.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "139",
+     "name": "D2Log",
+     "type": "ToWorkspace",
+     "pos": [
+      1595.0,
+      775.0,
+      1685.0,
+      805.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "140",
+     "name": "DTLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1595.0,
+      860.0,
+      1685.0,
+      890.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "426",
+     "name": "EventKind",
+     "type": "Selector",
+     "pos": [
+      375.0,
+      916.0,
+      415.0,
+      954.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "136",
+     "name": "EventLog",
+     "type": "ToWorkspace",
+     "pos": [
+      200.0,
+      1285.0,
+      290.0,
+      1315.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "123",
+     "name": "Fpga",
+     "type": "SubSystem",
+     "pos": [
+      1460.0,
+      690.0,
+      1510.0,
+      740.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "片外 FPGA：公开Raw重构 | off ADC RawReady；开关显示不代表扫描覆盖",
+     "sub": "system_123",
+     "nin": 3,
+     "nout": 4
+    },
+    {
+     "sid": "439",
+     "name": "FpgaExecute",
+     "type": "Logic",
+     "pos": [
+      1350.0,
+      618.0,
+      1380.0,
+      652.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "445",
+     "name": "FrameLog",
+     "type": "ToWorkspace",
+     "pos": [
+      915.0,
+      975.0,
+      1005.0,
+      1005.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "430",
+     "name": "FrameReady",
+     "type": "Selector",
+     "pos": [
+      940.0,
+      796.0,
+      980.0,
+      834.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "帧接收完成\n含startup/test",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "443",
+     "name": "FrameReadyLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1055.0,
+      830.0,
+      1145.0,
+      860.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "133",
+     "name": "FrontLog",
+     "type": "ToWorkspace",
+     "pos": [
+      760.0,
+      1340.0,
+      850.0,
+      1370.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "425",
+     "name": "GroupIndex",
+     "type": "Selector",
+     "pos": [
+      225.0,
+      996.0,
+      265.0,
+      1034.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "451",
+     "name": "HeldAdcEventUnused",
+     "type": "Terminator",
+     "pos": [
+      660.0,
+      1240.0,
+      680.0,
+      1260.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "424",
+     "name": "KindByGroup",
+     "type": "Constant",
+     "pos": [
+      175.0,
+      910.0,
+      315.0,
+      940.0
+     ],
+     "func": "",
+     "value": "P.transport.kind_by_group",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "457",
+     "name": "NoDrainAck",
+     "type": "Constant",
+     "pos": [
+      1270.0,
+      1130.0,
+      1380.0,
+      1160.0
+     ],
+     "func": "",
+     "value": "zeros(7,1)",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "438",
+     "name": "NonnegativeRecord",
+     "type": "RelationalOperator",
+     "pos": [
+      1215.0,
+      622.0,
+      1245.0,
+      653.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "442",
+     "name": "PairedRefLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1320.0,
+      330.0,
+      1410.0,
+      360.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "435",
+     "name": "PairedReference",
+     "type": "Switch",
+     "pos": [
+      1205.0,
+      275.0,
+      1255.0,
+      315.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "446",
+     "name": "PinTraceLog",
+     "type": "ToWorkspace",
+     "pos": [
+      915.0,
+      1060.0,
+      1005.0,
+      1090.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "422",
+     "name": "PublicEn",
+     "type": "Constant",
+     "pos": [
+      495.0,
+      1000.0,
+      610.0,
+      1030.0
+     ],
+     "func": "",
+     "value": "P.transport.public_en",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "131",
+     "name": "RawLog",
+     "type": "ToWorkspace",
+     "pos": [
+      760.0,
+      1135.0,
+      850.0,
+      1165.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "132",
+     "name": "ReadyLog",
+     "type": "ToWorkspace",
+     "pos": [
+      760.0,
+      1255.0,
+      850.0,
+      1285.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "433",
+     "name": "Record",
+     "type": "Switch",
+     "pos": [
+      935.0,
+      540.0,
+      985.0,
+      580.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "FPGA实际Raw6\nOFF ADC / ON RX",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "436",
+     "name": "RecordId",
+     "type": "Selector",
+     "pos": [
+      1080.0,
+      456.0,
+      1120.0,
+      494.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "440",
+     "name": "RecordLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1055.0,
+      545.0,
+      1145.0,
+      575.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "434",
+     "name": "RecordReady",
+     "type": "Switch",
+     "pos": [
+      1075.0,
+      735.0,
+      1125.0,
+      775.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "FPGA记录就绪\nOFF ADC / ON raw_ready",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "441",
+     "name": "RecordReadyLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1185.0,
+      750.0,
+      1275.0,
+      780.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "405",
+     "name": "RefQueue",
+     "type": "SubSystem",
+     "pos": [
+      1075.0,
+      350.0,
+      1125.0,
+      400.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "片外参考历史对齐\n按RX ID/epoch查询",
+     "sub": "system_405",
+     "nin": 4,
+     "nout": 2
+    },
+    {
+     "sid": "448",
+     "name": "ReferenceQueueLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1185.0,
+      375.0,
+      1275.0,
+      405.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "431",
+     "name": "RxRawReady",
+     "type": "Selector",
+     "pos": [
+      940.0,
+      676.0,
+      980.0,
+      714.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "正常RAW接收\n仍可能VALID0",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "432",
+     "name": "SampleReady",
+     "type": "Selector",
+     "pos": [
+      940.0,
+      886.0,
+      980.0,
+      924.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "RAW且VALID\n有效样本诊断",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "444",
+     "name": "SampleReadyLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1055.0,
+      910.0,
+      1145.0,
+      940.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "447",
+     "name": "TraceRowsLog",
+     "type": "ToWorkspace",
+     "pos": [
+      915.0,
+      1140.0,
+      1005.0,
+      1170.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "371",
+     "name": "TrainRef",
+     "type": "M-S-Function",
+     "pos": [
+      930.0,
+      219.0,
+      985.0,
+      251.0
+     ],
+     "func": "behavior_train_reference_sfun",
+     "value": "",
+     "attrs": "片外校准源参考 | V, ID, epoch, valid\\nCNV锁存；理想参考假设；不读ADC节点",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "372",
+     "name": "TrainRefLog",
+     "type": "ToWorkspace",
+     "pos": [
+      1055.0,
+      225.0,
+      1145.0,
+      255.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "393",
+     "name": "Transport",
+     "type": "SubSystem",
+     "pos": [
+      780.0,
+      960.0,
+      830.0,
+      1020.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "片内TX / 片外RX（统一协议行为）\n32 bit | N−2 | sample→RX 538 ns",
+     "sub": "system_393",
+     "nin": 4,
+     "nout": 6
+    },
+    {
+     "sid": "427",
+     "name": "TransportContext",
+     "type": "Mux",
+     "pos": [
+      550.0,
+      892.0,
+      555.0,
+      943.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "421",
+     "name": "TransportOff",
+     "type": "Constant",
+     "pos": [
+      1175.0,
+      535.0,
+      1290.0,
+      565.0
+     ],
+     "func": "",
+     "value": "~P.transport.enabled",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "420",
+     "name": "TransportOn",
+     "type": "Constant",
+     "pos": [
+      500.0,
+      540.0,
+      610.0,
+      570.0
+     ],
+     "func": "",
+     "value": "P.transport.enabled",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "437",
+     "name": "ZeroId",
+     "type": "Constant",
+     "pos": [
+      1085.0,
+      630.0,
+      1115.0,
+      660.0
+     ],
+     "func": "",
+     "value": "0",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "458",
+     "name": "PublicCode",
+     "type": "Outport",
+     "pos": [
+      1770.0,
+      1038.0,
+      1800.0,
+      1052.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "459",
+     "name": "PublicValid",
+     "type": "Outport",
+     "pos": [
+      1770.0,
+      1078.0,
+      1800.0,
+      1092.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "460",
+     "name": "PublicMeta",
+     "type": "Outport",
+     "pos": [
+      1770.0,
+      1118.0,
+      1800.0,
+      1132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "112",
+     "src_port": 6,
+     "dst": "451",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "112",
+     "src_port": 5,
+     "dst": "135",
+     "dst_port": 1,
+     "points": "[8, 0; 0, 280]"
+    },
+    {
+     "src": "112",
+     "src_port": 4,
+     "dst": "134",
+     "dst_port": 1,
+     "points": "[17, 0; 0, 205]"
+    },
+    {
+     "src": "112",
+     "src_port": 3,
+     "dst": "133",
+     "dst_port": 1,
+     "points": "[25, 0; 0, 135]"
+    },
+    {
+     "src": "108",
+     "src_port": 1,
+     "dst": "112",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "123",
+     "src_port": 2,
+     "dst": "138",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "123",
+     "src_port": 3,
+     "dst": "139",
+     "dst_port": 1,
+     "points": "[46, 0; 0, 70]"
+    },
+    {
+     "src": "123",
+     "src_port": 4,
+     "dst": "140",
+     "dst_port": 1,
+     "points": "[30, 0; 0, 145]"
+    },
+    {
+     "src": "428",
+     "src_port": 1,
+     "dst": "429",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "424",
+     "src_port": 1,
+     "dst": "426",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "426",
+     "src_port": 1,
+     "dst": "427",
+     "dst_port": 2,
+     "points": "[97, 0; 0, -5]"
+    },
+    {
+     "src": "427",
+     "src_port": 1,
+     "dst": "393",
+     "dst_port": 1,
+     "points": "[155, 0; 0, 50]"
+    },
+    {
+     "src": "436",
+     "src_port": 1,
+     "dst": "438",
+     "dst_port": 1,
+     "points": "[39, 0; 0, 155]"
+    },
+    {
+     "src": "437",
+     "src_port": 1,
+     "dst": "438",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "421",
+     "src_port": 1,
+     "dst": "439",
+     "dst_port": 1,
+     "points": "[29, 0; 0, 80]"
+    },
+    {
+     "src": "438",
+     "src_port": 1,
+     "dst": "439",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "430",
+     "src_port": 1,
+     "dst": "443",
+     "dst_port": 1,
+     "points": "[36, 0; 0, 30]"
+    },
+    {
+     "src": "432",
+     "src_port": 1,
+     "dst": "444",
+     "dst_port": 1,
+     "points": "[37, 0; 0, 20]"
+    },
+    {
+     "src": "393",
+     "src_port": 3,
+     "dst": "445",
+     "dst_port": 1,
+     "points": "[0, 5]"
+    },
+    {
+     "src": "393",
+     "src_port": 4,
+     "dst": "446",
+     "dst_port": 1,
+     "points": "[48, 0; 0, 80]"
+    },
+    {
+     "src": "393",
+     "src_port": 5,
+     "dst": "447",
+     "dst_port": 1,
+     "points": "[33, 0; 0, 150]"
+    },
+    {
+     "src": "405",
+     "src_port": 2,
+     "dst": "448",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "457",
+     "src_port": 1,
+     "dst": "455",
+     "dst_port": 10,
+     "points": "[-590, 0; 0, 10]"
+    },
+    {
+     "src": "456",
+     "src_port": 1,
+     "dst": "455",
+     "dst_port": 9,
+     "points": "[-725, 0; 0, -691; 125, 0; 0, 736]"
+    },
+    {
+     "src": "393",
+     "src_port": 6,
+     "dst": "455",
+     "dst_port": 7,
+     "points": "[9, 0; 0, -504; -39, 0; 0, 584]"
+    },
+    {
+     "src": "455",
+     "src_port": 1,
+     "dst": "454",
+     "dst_port": 1,
+     "points": "[-679, 0; 0, -672; -224, 0; 0, 667]"
+    },
+    {
+     "src": "454",
+     "src_port": 1,
+     "dst": "455",
+     "dst_port": 1,
+     "points": "[-624, 0; 0, -684; -6, 0; 0, 674]"
+    },
+    {
+     "src": "405",
+     "src_port": 1,
+     "dst": "435",
+     "dst_port": 1,
+     "points": "[83, 0; 0, -85]"
+    },
+    {
+     "src": "123",
+     "src_port": 1,
+     "dst": "455",
+     "dst_port": 6,
+     "points": "[19, 0; 0, -98; -767, 0; 0, 473]"
+    }
+   ],
+   "parent": "system_root",
+   "children": [
+    "system_112",
+    "system_123",
+    "system_405",
+    "system_393"
+   ]
+  },
+  "system_112": {
+   "file": "system_112",
+   "name": "Adc",
+   "path": "SarAdc / EventStep / Adc",
+   "blocks": [
+    {
+     "sid": "115",
+     "name": "SineCfg",
+     "type": "Inport",
+     "pos": [
+      20.0,
+      703.0,
+      50.0,
+      717.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "116",
+     "name": "Calendar",
+     "type": "Inport",
+     "pos": [
+      20.0,
+      848.0,
+      50.0,
+      862.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "391",
+     "name": "AdcRun",
+     "type": "EnablePort",
+     "pos": [
+      25.0,
+      915.0,
+      45.0,
+      935.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "297",
+     "name": "ChargeReturnRaReset",
+     "type": "SubSystem",
+     "pos": [
+      285.0,
+      1293.0,
+      565.0,
+      1582.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_297",
+     "nin": 8,
+     "nout": 4
+    },
+    {
+     "sid": "244",
+     "name": "DacCtFeedback",
+     "type": "SubSystem",
+     "pos": [
+      1235.0,
+      807.0,
+      1515.0,
+      1123.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_244",
+     "nin": 9,
+     "nout": 5
+    },
+    {
+     "sid": "312",
+     "name": "Diagnostics",
+     "type": "SubSystem",
+     "pos": [
+      2685.0,
+      1320.0,
+      2735.0,
+      1425.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_312",
+     "nin": 8,
+     "nout": 0
+    },
+    {
+     "sid": "149",
+     "name": "RaCtState",
+     "type": "UnitDelay",
+     "pos": [
+      635.0,
+      948.0,
+      670.0,
+      982.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "279",
+     "name": "ResidueCtCompare",
+     "type": "SubSystem",
+     "pos": [
+      1970.0,
+      795.0,
+      2250.0,
+      975.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_279",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "148",
+     "name": "SampleCharge",
+     "type": "UnitDelay",
+     "pos": [
+      635.0,
+      1033.0,
+      670.0,
+      1067.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "232",
+     "name": "SampleRaAdvance",
+     "type": "SubSystem",
+     "pos": [
+      805.0,
+      908.0,
+      1085.0,
+      1112.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_232",
+     "nin": 4,
+     "nout": 5
+    },
+    {
+     "sid": "261",
+     "name": "Sar1TrialRaCt",
+     "type": "SubSystem",
+     "pos": [
+      1595.0,
+      807.0,
+      1875.0,
+      1123.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_261",
+     "nin": 9,
+     "nout": 6
+    },
+    {
+     "sid": "285",
+     "name": "SarDecisionTracking",
+     "type": "SubSystem",
+     "pos": [
+      2325.0,
+      708.0,
+      2605.0,
+      912.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_285",
+     "nin": 4,
+     "nout": 5
+    },
+    {
+     "sid": "150",
+     "name": "SarState",
+     "type": "UnitDelay",
+     "pos": [
+      2695.0,
+      748.0,
+      2730.0,
+      782.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "145",
+     "name": "Zero3",
+     "type": "Constant",
+     "pos": [
+      915.0,
+      1165.0,
+      980.0,
+      1195.0
+     ],
+     "func": "",
+     "value": "zeros(3,1)",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "117",
+     "name": "Raw",
+     "type": "Outport",
+     "pos": [
+      2695.0,
+      843.0,
+      2725.0,
+      857.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "118",
+     "name": "Ready",
+     "type": "Outport",
+     "pos": [
+      2695.0,
+      913.0,
+      2725.0,
+      927.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "119",
+     "name": "Frontend",
+     "type": "Outport",
+     "pos": [
+      640.0,
+      1538.0,
+      670.0,
+      1552.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "120",
+     "name": "Backend",
+     "type": "Outport",
+     "pos": [
+      2095.0,
+      1073.0,
+      2125.0,
+      1087.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "121",
+     "name": "Control",
+     "type": "Outport",
+     "pos": [
+      2695.0,
+      683.0,
+      2725.0,
+      697.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "122",
+     "name": "Event",
+     "type": "Outport",
+     "pos": [
+      410.0,
+      783.0,
+      440.0,
+      797.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "232",
+     "src_port": 1,
+     "dst": "244",
+     "dst_port": 1,
+     "points": "[33, 0; 0, -105]"
+    },
+    {
+     "src": "244",
+     "src_port": 1,
+     "dst": "261",
+     "dst_port": 1,
+     "points": "[25, 0; 0, -10]"
+    },
+    {
+     "src": "232",
+     "src_port": 4,
+     "dst": "244",
+     "dst_port": 6,
+     "points": "[81, 0; 0, -50]"
+    },
+    {
+     "src": "150",
+     "src_port": 1,
+     "dst": "244",
+     "dst_port": 7,
+     "points": "[19, 0; 0, -106; -1542, 0; 0, 376]"
+    },
+    {
+     "src": "232",
+     "src_port": 5,
+     "dst": "244",
+     "dst_port": 8,
+     "points": "[98, 0; 0, -20]"
+    },
+    {
+     "src": "244",
+     "src_port": 2,
+     "dst": "261",
+     "dst_port": 3,
+     "points": "[35, 0; 0, -5]"
+    },
+    {
+     "src": "244",
+     "src_port": 3,
+     "dst": "261",
+     "dst_port": 5,
+     "points": ""
+    },
+    {
+     "src": "149",
+     "src_port": 1,
+     "dst": "232",
+     "dst_port": 2,
+     "points": "[65, 0; 0, 20]"
+    },
+    {
+     "src": "244",
+     "src_port": 4,
+     "dst": "261",
+     "dst_port": 7,
+     "points": "[35, 0; 0, 5]"
+    },
+    {
+     "src": "261",
+     "src_port": 4,
+     "dst": "297",
+     "dst_port": 3,
+     "points": "[22, 0; 0, 279; -1648, 0; 0, 116]"
+    },
+    {
+     "src": "285",
+     "src_port": 2,
+     "dst": "297",
+     "dst_port": 6,
+     "points": "[3, 0; 0, 511; -2399, 0; 0, 209]"
+    },
+    {
+     "src": "148",
+     "src_port": 1,
+     "dst": "232",
+     "dst_port": 3,
+     "points": "[63, 0; 0, -15]"
+    },
+    {
+     "src": "297",
+     "src_port": 3,
+     "dst": "148",
+     "dst_port": 1,
+     "points": "[17, 0; 0, -425]"
+    },
+    {
+     "src": "261",
+     "src_port": 6,
+     "dst": "285",
+     "dst_port": 1,
+     "points": "[57, 0; 0, 33; 345, 0; 0, -388]"
+    },
+    {
+     "src": "279",
+     "src_port": 1,
+     "dst": "285",
+     "dst_port": 4,
+     "points": ""
+    },
+    {
+     "src": "244",
+     "src_port": 5,
+     "dst": "261",
+     "dst_port": 9,
+     "points": "[25, 0; 0, 10]"
+    },
+    {
+     "src": "285",
+     "src_port": 4,
+     "dst": "117",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "285",
+     "src_port": 5,
+     "dst": "118",
+     "dst_port": 1,
+     "points": "[24, 0; 0, 30]"
+    },
+    {
+     "src": "297",
+     "src_port": 4,
+     "dst": "119",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "261",
+     "src_port": 2,
+     "dst": "312",
+     "dst_port": 5,
+     "points": "[28, 0; 0, 253; 374, 0; 0, 237]"
+    },
+    {
+     "src": "297",
+     "src_port": 2,
+     "dst": "312",
+     "dst_port": 4,
+     "points": "[281, 0; 0, -40]"
+    }
+   ],
+   "parent": "system_105",
+   "children": [
+    "system_297",
+    "system_244",
+    "system_312",
+    "system_279",
+    "system_232",
+    "system_261",
+    "system_285"
+   ]
+  },
+  "system_123": {
+   "file": "system_123",
+   "name": "Fpga",
+   "path": "SarAdc / EventStep / Fpga",
+   "blocks": [
+    {
+     "sid": "126",
+     "name": "Raw",
+     "type": "Inport",
+     "pos": [
+      25.0,
+      218.0,
+      55.0,
+      232.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "373",
+     "name": "RawReady",
+     "type": "Inport",
+     "pos": [
+      125.0,
+      73.0,
+      155.0,
+      87.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "374",
+     "name": "TrainRef",
+     "type": "Inport",
+     "pos": [
+      225.0,
+      218.0,
+      255.0,
+      232.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "392",
+     "name": "FpgaRun",
+     "type": "EnablePort",
+     "pos": [
+      640.0,
+      45.0,
+      660.0,
+      65.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "375",
+     "name": "Calibration",
+     "type": "SubSystem",
+     "pos": [
+      425.0,
+      60.0,
+      475.0,
+      110.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "system_375",
+     "nin": 4,
+     "nout": 1
+    },
+    {
+     "sid": "197",
+     "name": "Counts",
+     "type": "Gain",
+     "pos": [
+      1955.0,
+      535.0,
+      1985.0,
+      565.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "185",
+     "name": "D1CaptureBias",
+     "type": "Bias",
+     "pos": [
+      1295.0,
+      120.0,
+      1335.0,
+      150.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "178",
+     "name": "D1CoarseDivide",
+     "type": "Gain",
+     "pos": [
+      310.0,
+      125.0,
+      340.0,
+      155.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "179",
+     "name": "D1CoarseFloor",
+     "type": "Rounding",
+     "pos": [
+      530.0,
+      125.0,
+      560.0,
+      155.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "180",
+     "name": "D1CoarseSubtract",
+     "type": "Gain",
+     "pos": [
+      695.0,
+      125.0,
+      725.0,
+      155.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "183",
+     "name": "D1DacOffset",
+     "type": "Bias",
+     "pos": [
+      985.0,
+      120.0,
+      1025.0,
+      150.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "184",
+     "name": "D1DacVoltage",
+     "type": "Gain",
+     "pos": [
+      1135.0,
+      120.0,
+      1165.0,
+      150.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "194",
+     "name": "D1PlusD2",
+     "type": "Sum",
+     "pos": [
+      1790.0,
+      242.0,
+      1820.0,
+      273.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "181",
+     "name": "D1TwiceRaw",
+     "type": "Gain",
+     "pos": [
+      310.0,
+      45.0,
+      340.0,
+      75.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "182",
+     "name": "D1Units",
+     "type": "Sum",
+     "pos": [
+      875.0,
+      117.0,
+      905.0,
+      148.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "208",
+     "name": "D2Bits",
+     "type": "Sum",
+     "pos": [
+      820.0,
+      217.0,
+      850.0,
+      248.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "216",
+     "name": "D2Demod",
+     "type": "Product",
+     "pos": [
+      1655.0,
+      297.0,
+      1685.0,
+      328.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "203",
+     "name": "D2Divide",
+     "type": "Gain",
+     "pos": [
+      310.0,
+      350.0,
+      340.0,
+      380.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "204",
+     "name": "D2Floor",
+     "type": "Rounding",
+     "pos": [
+      475.0,
+      210.0,
+      505.0,
+      240.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "188",
+     "name": "D2InputReference",
+     "type": "Gain",
+     "pos": [
+      1450.0,
+      290.0,
+      1480.0,
+      320.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "187",
+     "name": "D2Offset",
+     "type": "Bias",
+     "pos": [
+      1075.0,
+      220.0,
+      1115.0,
+      250.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "205",
+     "name": "D2UpperDivide",
+     "type": "Gain",
+     "pos": [
+      310.0,
+      290.0,
+      340.0,
+      320.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "206",
+     "name": "D2UpperFloor",
+     "type": "Rounding",
+     "pos": [
+      475.0,
+      290.0,
+      505.0,
+      320.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "207",
+     "name": "D2UpperTwice",
+     "type": "Gain",
+     "pos": [
+      640.0,
+      290.0,
+      670.0,
+      320.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "186",
+     "name": "D2Weighted",
+     "type": "Gain",
+     "pos": [
+      935.0,
+      220.0,
+      965.0,
+      250.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "191",
+     "name": "DTBipolarOffset",
+     "type": "Bias",
+     "pos": [
+      1240.0,
+      385.0,
+      1280.0,
+      415.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "190",
+     "name": "DTBipolarTwice",
+     "type": "Gain",
+     "pos": [
+      1080.0,
+      385.0,
+      1110.0,
+      415.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "214",
+     "name": "DTBits",
+     "type": "Sum",
+     "pos": [
+      820.0,
+      382.0,
+      850.0,
+      413.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "217",
+     "name": "DTDemod",
+     "type": "Product",
+     "pos": [
+      1980.0,
+      297.0,
+      2010.0,
+      328.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "209",
+     "name": "DTDivide",
+     "type": "Gain",
+     "pos": [
+      310.0,
+      375.0,
+      340.0,
+      405.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "210",
+     "name": "DTFloor",
+     "type": "Rounding",
+     "pos": [
+      475.0,
+      375.0,
+      505.0,
+      405.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "192",
+     "name": "DTInputReference",
+     "type": "Gain",
+     "pos": [
+      1880.0,
+      445.0,
+      1910.0,
+      475.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "211",
+     "name": "DTUpperDivide",
+     "type": "Gain",
+     "pos": [
+      310.0,
+      460.0,
+      340.0,
+      490.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "212",
+     "name": "DTUpperFloor",
+     "type": "Rounding",
+     "pos": [
+      475.0,
+      460.0,
+      505.0,
+      490.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "213",
+     "name": "DTUpperTwice",
+     "type": "Gain",
+     "pos": [
+      640.0,
+      460.0,
+      670.0,
+      490.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "189",
+     "name": "DTWeighted",
+     "type": "Gain",
+     "pos": [
+      935.0,
+      385.0,
+      965.0,
+      415.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "201",
+     "name": "EpochRetainedByParent",
+     "type": "Terminator",
+     "pos": [
+      210.0,
+      430.0,
+      230.0,
+      450.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "196",
+     "name": "PlusDither",
+     "type": "Sum",
+     "pos": [
+      1835.0,
+      532.0,
+      1865.0,
+      563.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "195",
+     "name": "PlusTracking",
+     "type": "Sum",
+     "pos": [
+      2215.0,
+      147.0,
+      2245.0,
+      178.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "193",
+     "name": "PublicDither",
+     "type": "M-S-Function",
+     "pos": [
+      295.0,
+      539.0,
+      350.0,
+      571.0
+     ],
+     "func": "behavior_dither_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "215",
+     "name": "PublicPol",
+     "type": "M-S-Function",
+     "pos": [
+      1550.0,
+      441.0,
+      1605.0,
+      474.0
+     ],
+     "func": "behavior_pol_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "177",
+     "name": "RawFields",
+     "type": "Demux",
+     "pos": [
+      125.0,
+      327.0,
+      130.0,
+      478.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 6
+    },
+    {
+     "sid": "199",
+     "name": "RoundCode",
+     "type": "Rounding",
+     "pos": [
+      2245.0,
+      535.0,
+      2275.0,
+      565.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "200",
+     "name": "SaturateCode",
+     "type": "Saturate",
+     "pos": [
+      325.0,
+      210.0,
+      355.0,
+      240.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "198",
+     "name": "UnsignedMidpoint",
+     "type": "Bias",
+     "pos": [
+      2075.0,
+      535.0,
+      2115.0,
+      565.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "202",
+     "name": "ValidityRetainedByParent",
+     "type": "Terminator",
+     "pos": [
+      315.0,
+      700.0,
+      335.0,
+      720.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "127",
+     "name": "code20",
+     "type": "Outport",
+     "pos": [
+      550.0,
+      43.0,
+      580.0,
+      57.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "128",
+     "name": "d1_v",
+     "type": "Outport",
+     "pos": [
+      1490.0,
+      128.0,
+      1520.0,
+      142.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "129",
+     "name": "d2_v",
+     "type": "Outport",
+     "pos": [
+      1860.0,
+      308.0,
+      1890.0,
+      322.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "130",
+     "name": "dt_v",
+     "type": "Outport",
+     "pos": [
+      2060.0,
+      308.0,
+      2090.0,
+      322.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "213",
+     "src_port": 1,
+     "dst": "214",
+     "dst_port": 2,
+     "points": "[87, 0; 0, -70]"
+    },
+    {
+     "src": "210",
+     "src_port": 1,
+     "dst": "214",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "212",
+     "src_port": 1,
+     "dst": "213",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "211",
+     "src_port": 1,
+     "dst": "212",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "209",
+     "src_port": 1,
+     "dst": "210",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "207",
+     "src_port": 1,
+     "dst": "208",
+     "dst_port": 2,
+     "points": "[87, 0; 0, -65]"
+    },
+    {
+     "src": "204",
+     "src_port": 1,
+     "dst": "208",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "206",
+     "src_port": 1,
+     "dst": "207",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "205",
+     "src_port": 1,
+     "dst": "206",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "177",
+     "src_port": 6,
+     "dst": "202",
+     "dst_port": 1,
+     "points": "[5, 0; 0, 5; 76, 0; 0, 240]"
+    },
+    {
+     "src": "190",
+     "src_port": 1,
+     "dst": "191",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "189",
+     "src_port": 1,
+     "dst": "190",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "214",
+     "src_port": 1,
+     "dst": "189",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "186",
+     "src_port": 1,
+     "dst": "187",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "208",
+     "src_port": 1,
+     "dst": "186",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "192",
+     "src_port": 1,
+     "dst": "217",
+     "dst_port": 1,
+     "points": "[28, 0; 0, -155]"
+    },
+    {
+     "src": "188",
+     "src_port": 1,
+     "dst": "216",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "187",
+     "src_port": 1,
+     "dst": "188",
+     "dst_port": 1,
+     "points": "[163, 0; 0, 70]"
+    },
+    {
+     "src": "191",
+     "src_port": 1,
+     "dst": "192",
+     "dst_port": 1,
+     "points": "[527, 0; 0, 60]"
+    },
+    {
+     "src": "375",
+     "src_port": 1,
+     "dst": "127",
+     "dst_port": 1,
+     "points": "[33, 0; 0, -35]"
+    },
+    {
+     "src": "200",
+     "src_port": 1,
+     "dst": "375",
+     "dst_port": 4,
+     "points": "[32, 0; 0, -125]"
+    },
+    {
+     "src": "374",
+     "src_port": 1,
+     "dst": "375",
+     "dst_port": 3,
+     "points": "[30, 0; 0, -36; 111, 0; 0, -99]"
+    },
+    {
+     "src": "373",
+     "src_port": 1,
+     "dst": "375",
+     "dst_port": 2,
+     "points": "[75, 0; 0, 14; 174, 0; 0, -14]"
+    },
+    {
+     "src": "195",
+     "src_port": 1,
+     "dst": "196",
+     "dst_port": 1,
+     "points": "[31, 0; 0, 345; -470, 0; 0, 30]"
+    },
+    {
+     "src": "194",
+     "src_port": 1,
+     "dst": "195",
+     "dst_port": 1,
+     "points": "[103, 0; 0, -105]"
+    },
+    {
+     "src": "178",
+     "src_port": 1,
+     "dst": "179",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "179",
+     "src_port": 1,
+     "dst": "180",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "181",
+     "src_port": 1,
+     "dst": "182",
+     "dst_port": 1,
+     "points": "[38, 0; 0, -41; 434, 0; 0, 106]"
+    },
+    {
+     "src": "180",
+     "src_port": 1,
+     "dst": "182",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "182",
+     "src_port": 1,
+     "dst": "183",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "183",
+     "src_port": 1,
+     "dst": "184",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "184",
+     "src_port": 1,
+     "dst": "185",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "193",
+     "src_port": 1,
+     "dst": "196",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "196",
+     "src_port": 1,
+     "dst": "197",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "197",
+     "src_port": 1,
+     "dst": "198",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "198",
+     "src_port": 1,
+     "dst": "199",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "199",
+     "src_port": 1,
+     "dst": "200",
+     "dst_port": 1,
+     "points": "[25, 0; 0, -350; -1997, 0; 0, 25]"
+    },
+    {
+     "src": "203",
+     "src_port": 1,
+     "dst": "204",
+     "dst_port": 1,
+     "points": "[81, 0; 0, -140]"
+    }
+   ],
+   "parent": "system_105",
+   "children": [
+    "system_375"
+   ]
+  },
+  "system_232": {
+   "file": "system_232",
+   "name": "SampleRaAdvance",
+   "path": "SarAdc / EventStep / Adc / SampleRaAdvance",
+   "blocks": [
+    {
+     "sid": "235",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      60.0,
+      58.0,
+      90.0,
+      72.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "236",
+     "name": "RA_old",
+     "type": "Inport",
+     "pos": [
+      95.0,
+      138.0,
+      125.0,
+      152.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "237",
+     "name": "FE_old",
+     "type": "Inport",
+     "pos": [
+      200.0,
+      263.0,
+      230.0,
+      277.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "238",
+     "name": "Source",
+     "type": "Inport",
+     "pos": [
+      170.0,
+      448.0,
+      200.0,
+      462.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "320",
+     "name": "CaptureContext",
+     "type": "M-S-Function",
+     "pos": [
+      155.0,
+      359.0,
+      210.0,
+      391.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 1
+    },
+    {
+     "sid": "321",
+     "name": "RaAdvance",
+     "type": "M-S-Function",
+     "pos": [
+      175.0,
+      144.0,
+      230.0,
+      176.0
+     ],
+     "func": "behavior_backend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 2
+    },
+    {
+     "sid": "452",
+     "name": "RaPreLog",
+     "type": "ToWorkspace",
+     "pos": [
+      320.0,
+      155.0,
+      410.0,
+      185.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "322",
+     "name": "Sample",
+     "type": "M-S-Function",
+     "pos": [
+      270.0,
+      359.0,
+      325.0,
+      391.0
+     ],
+     "func": "behavior_frontend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "323",
+     "name": "Time",
+     "type": "M-S-Function",
+     "pos": [
+      155.0,
+      49.0,
+      210.0,
+      81.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "324",
+     "name": "Zero13",
+     "type": "Constant",
+     "pos": [
+      35.0,
+      360.0,
+      110.0,
+      390.0
+     ],
+     "func": "",
+     "value": "zeros(13,1)",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "325",
+     "name": "Zero8",
+     "type": "Constant",
+     "pos": [
+      40.0,
+      440.0,
+      105.0,
+      470.0
+     ],
+     "func": "",
+     "value": "zeros(8,1)",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "326",
+     "name": "ZeroCommand",
+     "type": "Constant",
+     "pos": [
+      145.0,
+      205.0,
+      220.0,
+      235.0
+     ],
+     "func": "",
+     "value": "zeros(26,1)",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "239",
+     "name": "RA_adv",
+     "type": "Outport",
+     "pos": [
+      285.0,
+      148.0,
+      315.0,
+      162.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "240",
+     "name": "Time_s",
+     "type": "Outport",
+     "pos": [
+      285.0,
+      58.0,
+      315.0,
+      72.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "241",
+     "name": "FE_adv",
+     "type": "Outport",
+     "pos": [
+      380.0,
+      363.0,
+      410.0,
+      377.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "242",
+     "name": "RA_obs",
+     "type": "Outport",
+     "pos": [
+      380.0,
+      213.0,
+      410.0,
+      227.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "243",
+     "name": "FE_obs",
+     "type": "Outport",
+     "pos": [
+      380.0,
+      433.0,
+      410.0,
+      447.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "322",
+     "src_port": 2,
+     "dst": "243",
+     "dst_port": 1,
+     "points": "[15, 0; 0, 55]"
+    },
+    {
+     "src": "322",
+     "src_port": 1,
+     "dst": "241",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "238",
+     "src_port": 1,
+     "dst": "322",
+     "dst_port": 3,
+     "points": "[37, 0; 0, -70]"
+    },
+    {
+     "src": "320",
+     "src_port": 1,
+     "dst": "322",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "325",
+     "src_port": 1,
+     "dst": "320",
+     "dst_port": 3,
+     "points": "[22, 0; 0, -70]"
+    },
+    {
+     "src": "324",
+     "src_port": 1,
+     "dst": "320",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "236",
+     "src_port": 1,
+     "dst": "321",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "326",
+     "src_port": 1,
+     "dst": "321",
+     "dst_port": 3,
+     "points": "[19, 0; 0, -23; -92, 0; 0, -32]"
+    },
+    {
+     "src": "321",
+     "src_port": 1,
+     "dst": "239",
+     "dst_port": 1,
+     "points": ""
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_244": {
+   "file": "system_244",
+   "name": "DacCtFeedback",
+   "path": "SarAdc / EventStep / Adc / DacCtFeedback",
+   "blocks": [
+    {
+     "sid": "247",
+     "name": "RA_adv",
+     "type": "Inport",
+     "pos": [
+      500.0,
+      188.0,
+      530.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "248",
+     "name": "Time_s",
+     "type": "Inport",
+     "pos": [
+      500.0,
+      263.0,
+      530.0,
+      277.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "249",
+     "name": "FE_adv",
+     "type": "Inport",
+     "pos": [
+      275.0,
+      58.0,
+      305.0,
+      72.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "250",
+     "name": "Source",
+     "type": "Inport",
+     "pos": [
+      275.0,
+      213.0,
+      305.0,
+      227.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "251",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      293.0,
+      65.0,
+      307.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "252",
+     "name": "RA_obs",
+     "type": "Inport",
+     "pos": [
+      155.0,
+      143.0,
+      185.0,
+      157.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "253",
+     "name": "SAR_old",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      218.0,
+      65.0,
+      232.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "254",
+     "name": "FE_obs",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      363.0,
+      65.0,
+      377.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "255",
+     "name": "Cmp_idle",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      433.0,
+      65.0,
+      447.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "327",
+     "name": "CtFeedback",
+     "type": "M-S-Function",
+     "pos": [
+      595.0,
+      254.0,
+      650.0,
+      286.0
+     ],
+     "func": "behavior_backend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "328",
+     "name": "DacFeedback",
+     "type": "M-S-Function",
+     "pos": [
+      380.0,
+      99.0,
+      435.0,
+      131.0
+     ],
+     "func": "behavior_frontend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "329",
+     "name": "DueCharge",
+     "type": "M-S-Function",
+     "pos": [
+      490.0,
+      329.0,
+      545.0,
+      361.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 1
+    },
+    {
+     "sid": "330",
+     "name": "DueContext",
+     "type": "M-S-Function",
+     "pos": [
+      265.0,
+      124.0,
+      320.0,
+      156.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 1
+    },
+    {
+     "sid": "331",
+     "name": "DueFeedback",
+     "type": "M-S-Function",
+     "pos": [
+      150.0,
+      289.0,
+      205.0,
+      321.0
+     ],
+     "func": "behavior_control_stage_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 3
+    },
+    {
+     "sid": "256",
+     "name": "FE_due",
+     "type": "Outport",
+     "pos": [
+      500.0,
+      48.0,
+      530.0,
+      62.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "257",
+     "name": "SAR_due",
+     "type": "Outport",
+     "pos": [
+      275.0,
+      283.0,
+      305.0,
+      297.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "258",
+     "name": "DAC_due",
+     "type": "Outport",
+     "pos": [
+      500.0,
+      118.0,
+      530.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "259",
+     "name": "CT_due",
+     "type": "Outport",
+     "pos": [
+      700.0,
+      258.0,
+      730.0,
+      272.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "260",
+     "name": "CT_obs",
+     "type": "Outport",
+     "pos": [
+      700.0,
+      328.0,
+      730.0,
+      342.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "327",
+     "src_port": 2,
+     "dst": "260",
+     "dst_port": 1,
+     "points": "[14, 0; 0, 55]"
+    },
+    {
+     "src": "327",
+     "src_port": 1,
+     "dst": "259",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "331",
+     "src_port": 1,
+     "dst": "257",
+     "dst_port": 1,
+     "points": "[25, 0; 0, -5]"
+    },
+    {
+     "src": "328",
+     "src_port": 1,
+     "dst": "256",
+     "dst_port": 1,
+     "points": "[28, 0; 0, -55]"
+    },
+    {
+     "src": "255",
+     "src_port": 1,
+     "dst": "331",
+     "dst_port": 4,
+     "points": "[40, 0; 0, -120]"
+    },
+    {
+     "src": "254",
+     "src_port": 1,
+     "dst": "331",
+     "dst_port": 3,
+     "points": "[25, 0; 0, -60]"
+    },
+    {
+     "src": "253",
+     "src_port": 1,
+     "dst": "331",
+     "dst_port": 1,
+     "points": "[33, 0; 0, 65]"
+    },
+    {
+     "src": "252",
+     "src_port": 1,
+     "dst": "330",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "331",
+     "src_port": 3,
+     "dst": "329",
+     "dst_port": 3,
+     "points": "[25, 0; 0, 35]"
+    },
+    {
+     "src": "250",
+     "src_port": 1,
+     "dst": "328",
+     "dst_port": 3,
+     "points": "[40, 0; 0, -95]"
+    },
+    {
+     "src": "330",
+     "src_port": 1,
+     "dst": "328",
+     "dst_port": 2,
+     "points": "[15, 0; 0, -25]"
+    },
+    {
+     "src": "249",
+     "src_port": 1,
+     "dst": "328",
+     "dst_port": 1,
+     "points": "[35, 0; 0, 40]"
+    },
+    {
+     "src": "329",
+     "src_port": 1,
+     "dst": "327",
+     "dst_port": 3,
+     "points": "[15, 0; 0, -65]"
+    },
+    {
+     "src": "248",
+     "src_port": 1,
+     "dst": "327",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "247",
+     "src_port": 1,
+     "dst": "327",
+     "dst_port": 1,
+     "points": "[30, 0; 0, 65]"
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_261": {
+   "file": "system_261",
+   "name": "Sar1TrialRaCt",
+   "path": "SarAdc / EventStep / Adc / Sar1TrialRaCt",
+   "blocks": [
+    {
+     "sid": "264",
+     "name": "FE_due",
+     "type": "Inport",
+     "pos": [
+      280.0,
+      58.0,
+      310.0,
+      72.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "265",
+     "name": "Source",
+     "type": "Inport",
+     "pos": [
+      280.0,
+      213.0,
+      310.0,
+      227.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "266",
+     "name": "SAR_due",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      218.0,
+      65.0,
+      232.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "267",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      293.0,
+      65.0,
+      307.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "268",
+     "name": "DAC_due",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      363.0,
+      65.0,
+      377.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "269",
+     "name": "Cmp_idle",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      433.0,
+      65.0,
+      447.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "270",
+     "name": "CT_due",
+     "type": "Inport",
+     "pos": [
+      500.0,
+      188.0,
+      530.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "271",
+     "name": "Time_s",
+     "type": "Inport",
+     "pos": [
+      485.0,
+      258.0,
+      515.0,
+      272.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "272",
+     "name": "CT_obs",
+     "type": "Inport",
+     "pos": [
+      155.0,
+      143.0,
+      185.0,
+      157.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "332",
+     "name": "DacTrial",
+     "type": "M-S-Function",
+     "pos": [
+      380.0,
+      99.0,
+      435.0,
+      131.0
+     ],
+     "func": "behavior_frontend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "333",
+     "name": "PreconvertSar1",
+     "type": "M-S-Function",
+     "pos": [
+      150.0,
+      289.0,
+      205.0,
+      321.0
+     ],
+     "func": "behavior_control_stage_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 3
+    },
+    {
+     "sid": "334",
+     "name": "RaAzCt",
+     "type": "M-S-Function",
+     "pos": [
+      595.0,
+      249.0,
+      650.0,
+      281.0
+     ],
+     "func": "behavior_backend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "335",
+     "name": "RaCommand",
+     "type": "M-S-Function",
+     "pos": [
+      490.0,
+      329.0,
+      545.0,
+      361.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 1
+    },
+    {
+     "sid": "336",
+     "name": "TrialContext",
+     "type": "M-S-Function",
+     "pos": [
+      265.0,
+      124.0,
+      320.0,
+      156.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 1
+    },
+    {
+     "sid": "273",
+     "name": "DAC_obs",
+     "type": "Outport",
+     "pos": [
+      500.0,
+      118.0,
+      530.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "274",
+     "name": "RA_cmd",
+     "type": "Outport",
+     "pos": [
+      605.0,
+      338.0,
+      635.0,
+      352.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "275",
+     "name": "FE_trial",
+     "type": "Outport",
+     "pos": [
+      500.0,
+      48.0,
+      530.0,
+      62.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "276",
+     "name": "RA_trial",
+     "type": "Outport",
+     "pos": [
+      700.0,
+      253.0,
+      730.0,
+      267.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "277",
+     "name": "RA_cmp",
+     "type": "Outport",
+     "pos": [
+      700.0,
+      323.0,
+      730.0,
+      337.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "278",
+     "name": "SAR_trial",
+     "type": "Outport",
+     "pos": [
+      280.0,
+      283.0,
+      310.0,
+      297.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "333",
+     "src_port": 1,
+     "dst": "278",
+     "dst_port": 1,
+     "points": "[29, 0; 0, -5]"
+    },
+    {
+     "src": "334",
+     "src_port": 2,
+     "dst": "277",
+     "dst_port": 1,
+     "points": "[13, 0; 0, 55]"
+    },
+    {
+     "src": "334",
+     "src_port": 1,
+     "dst": "276",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "332",
+     "src_port": 1,
+     "dst": "275",
+     "dst_port": 1,
+     "points": "[28, 0; 0, -55]"
+    },
+    {
+     "src": "272",
+     "src_port": 1,
+     "dst": "336",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "333",
+     "src_port": 3,
+     "dst": "335",
+     "dst_port": 3,
+     "points": "[29, 0; 0, 35]"
+    },
+    {
+     "src": "271",
+     "src_port": 1,
+     "dst": "334",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "270",
+     "src_port": 1,
+     "dst": "334",
+     "dst_port": 1,
+     "points": "[30, 0; 0, 60]"
+    },
+    {
+     "src": "269",
+     "src_port": 1,
+     "dst": "333",
+     "dst_port": 4,
+     "points": "[18, 0; 0, -120]"
+    },
+    {
+     "src": "268",
+     "src_port": 1,
+     "dst": "333",
+     "dst_port": 3,
+     "points": "[36, 0; 0, -60]"
+    },
+    {
+     "src": "266",
+     "src_port": 1,
+     "dst": "333",
+     "dst_port": 1,
+     "points": "[40, 0; 0, 65]"
+    },
+    {
+     "src": "265",
+     "src_port": 1,
+     "dst": "332",
+     "dst_port": 3,
+     "points": "[35, 0; 0, -95]"
+    },
+    {
+     "src": "336",
+     "src_port": 1,
+     "dst": "332",
+     "dst_port": 2,
+     "points": "[15, 0; 0, -25]"
+    },
+    {
+     "src": "264",
+     "src_port": 1,
+     "dst": "332",
+     "dst_port": 1,
+     "points": "[30, 0; 0, 40]"
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_279": {
+   "file": "system_279",
+   "name": "ResidueCtCompare",
+   "path": "SarAdc / EventStep / Adc / ResidueCtCompare",
+   "blocks": [
+    {
+     "sid": "282",
+     "name": "DAC_obs",
+     "type": "Inport",
+     "pos": [
+      20.0,
+      58.0,
+      50.0,
+      72.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "283",
+     "name": "RA_cmp",
+     "type": "Inport",
+     "pos": [
+      20.0,
+      233.0,
+      50.0,
+      247.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "337",
+     "name": "Compare1",
+     "type": "RelationalOperator",
+     "pos": [
+      190.0,
+      77.0,
+      220.0,
+      108.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "338",
+     "name": "Compare2",
+     "type": "RelationalOperator",
+     "pos": [
+      190.0,
+      162.0,
+      220.0,
+      193.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "339",
+     "name": "Comparisons",
+     "type": "Mux",
+     "pos": [
+      395.0,
+      142.0,
+      400.0,
+      218.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 1
+    },
+    {
+     "sid": "340",
+     "name": "Decision1",
+     "type": "DataTypeConversion",
+     "pos": [
+      260.0,
+      78.0,
+      335.0,
+      112.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "341",
+     "name": "Decision2",
+     "type": "DataTypeConversion",
+     "pos": [
+      260.0,
+      163.0,
+      335.0,
+      197.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "342",
+     "name": "Residue",
+     "type": "Selector",
+     "pos": [
+      95.0,
+      46.0,
+      135.0,
+      84.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "343",
+     "name": "Vy",
+     "type": "Selector",
+     "pos": [
+      95.0,
+      221.0,
+      135.0,
+      259.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "344",
+     "name": "Zero",
+     "type": "Constant",
+     "pos": [
+      100.0,
+      140.0,
+      130.0,
+      170.0
+     ],
+     "func": "",
+     "value": "0",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "284",
+     "name": "Cmp",
+     "type": "Outport",
+     "pos": [
+      445.0,
+      173.0,
+      475.0,
+      187.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "339",
+     "src_port": 1,
+     "dst": "284",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "283",
+     "src_port": 1,
+     "dst": "343",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "282",
+     "src_port": 1,
+     "dst": "342",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "338",
+     "src_port": 1,
+     "dst": "341",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "337",
+     "src_port": 1,
+     "dst": "340",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "341",
+     "src_port": 1,
+     "dst": "339",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "340",
+     "src_port": 1,
+     "dst": "339",
+     "dst_port": 1,
+     "points": "[26, 0; 0, 60]"
+    },
+    {
+     "src": "342",
+     "src_port": 1,
+     "dst": "337",
+     "dst_port": 1,
+     "points": "[23, 0; 0, 20]"
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_285": {
+   "file": "system_285",
+   "name": "SarDecisionTracking",
+   "path": "SarAdc / EventStep / Adc / SarDecisionTracking",
+   "blocks": [
+    {
+     "sid": "288",
+     "name": "SAR_trial",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      63.0,
+      65.0,
+      77.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "289",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      133.0,
+      65.0,
+      147.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "290",
+     "name": "DAC_obs",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      203.0,
+      65.0,
+      217.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "291",
+     "name": "Cmp",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      278.0,
+      65.0,
+      292.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "345",
+     "name": "RawWords",
+     "type": "M-S-Function",
+     "pos": [
+      245.0,
+      116.0,
+      300.0,
+      149.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 2
+    },
+    {
+     "sid": "346",
+     "name": "Sar2Tracking",
+     "type": "M-S-Function",
+     "pos": [
+      130.0,
+      189.0,
+      185.0,
+      221.0
+     ],
+     "func": "behavior_control_stage_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 3
+    },
+    {
+     "sid": "292",
+     "name": "Ctrl",
+     "type": "Outport",
+     "pos": [
+      260.0,
+      203.0,
+      290.0,
+      217.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "293",
+     "name": "DAC_signs",
+     "type": "Outport",
+     "pos": [
+      260.0,
+      278.0,
+      290.0,
+      292.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "294",
+     "name": "SAR_next",
+     "type": "Outport",
+     "pos": [
+      260.0,
+      48.0,
+      290.0,
+      62.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "295",
+     "name": "RAW",
+     "type": "Outport",
+     "pos": [
+      350.0,
+      118.0,
+      380.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "296",
+     "name": "RAW_ready",
+     "type": "Outport",
+     "pos": [
+      350.0,
+      188.0,
+      380.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "345",
+     "src_port": 2,
+     "dst": "296",
+     "dst_port": 1,
+     "points": "[10, 0; 0, 55]"
+    },
+    {
+     "src": "345",
+     "src_port": 1,
+     "dst": "295",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "346",
+     "src_port": 1,
+     "dst": "294",
+     "dst_port": 1,
+     "points": "[28, 0; 0, -140]"
+    },
+    {
+     "src": "346",
+     "src_port": 3,
+     "dst": "293",
+     "dst_port": 1,
+     "points": "[28, 0; 0, 70]"
+    },
+    {
+     "src": "291",
+     "src_port": 1,
+     "dst": "346",
+     "dst_port": 4,
+     "points": "[30, 0; 0, -65]"
+    },
+    {
+     "src": "290",
+     "src_port": 1,
+     "dst": "346",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "289",
+     "src_port": 1,
+     "dst": "346",
+     "dst_port": 2,
+     "points": "[28, 0; 0, 60]"
+    },
+    {
+     "src": "288",
+     "src_port": 1,
+     "dst": "346",
+     "dst_port": 1,
+     "points": "[14, 0; 0, 120]"
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_297": {
+   "file": "system_297",
+   "name": "ChargeReturnRaReset",
+   "path": "SarAdc / EventStep / Adc / ChargeReturnRaReset",
+   "blocks": [
+    {
+     "sid": "300",
+     "name": "FE_trial",
+     "type": "Inport",
+     "pos": [
+      150.0,
+      48.0,
+      180.0,
+      62.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "301",
+     "name": "Source",
+     "type": "Inport",
+     "pos": [
+      150.0,
+      118.0,
+      180.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "302",
+     "name": "RA_trial",
+     "type": "Inport",
+     "pos": [
+      370.0,
+      188.0,
+      400.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "303",
+     "name": "Time_s",
+     "type": "Inport",
+     "pos": [
+      370.0,
+      263.0,
+      400.0,
+      277.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "304",
+     "name": "Ctrl",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      223.0,
+      65.0,
+      237.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "305",
+     "name": "DAC_signs",
+     "type": "Inport",
+     "pos": [
+      260.0,
+      343.0,
+      290.0,
+      357.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "306",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      293.0,
+      65.0,
+      307.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "307",
+     "name": "RA_cmp",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      363.0,
+      65.0,
+      377.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "347",
+     "name": "ChargeReturn",
+     "type": "M-S-Function",
+     "pos": [
+      245.0,
+      99.0,
+      300.0,
+      131.0
+     ],
+     "func": "behavior_frontend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "348",
+     "name": "RaReset",
+     "type": "M-S-Function",
+     "pos": [
+      470.0,
+      254.0,
+      525.0,
+      286.0
+     ],
+     "func": "behavior_backend_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "349",
+     "name": "ResetCommand",
+     "type": "M-S-Function",
+     "pos": [
+      360.0,
+      329.0,
+      415.0,
+      361.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 1
+    },
+    {
+     "sid": "350",
+     "name": "ResetObservation",
+     "type": "Terminator",
+     "pos": [
+      590.0,
+      325.0,
+      610.0,
+      345.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "351",
+     "name": "ReturnContext",
+     "type": "M-S-Function",
+     "pos": [
+      140.0,
+      269.0,
+      195.0,
+      301.0
+     ],
+     "func": "behavior_wiring_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 3,
+     "nout": 1
+    },
+    {
+     "sid": "308",
+     "name": "RA_next",
+     "type": "Outport",
+     "pos": [
+      585.0,
+      258.0,
+      615.0,
+      272.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "309",
+     "name": "FE_return",
+     "type": "Outport",
+     "pos": [
+      260.0,
+      273.0,
+      290.0,
+      287.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "310",
+     "name": "FE_next",
+     "type": "Outport",
+     "pos": [
+      370.0,
+      48.0,
+      400.0,
+      62.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "311",
+     "name": "FE_retobs",
+     "type": "Outport",
+     "pos": [
+      370.0,
+      118.0,
+      400.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "347",
+     "src_port": 1,
+     "dst": "310",
+     "dst_port": 1,
+     "points": "[29, 0; 0, -55]"
+    },
+    {
+     "src": "348",
+     "src_port": 1,
+     "dst": "308",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "307",
+     "src_port": 1,
+     "dst": "351",
+     "dst_port": 3,
+     "points": "[14, 0; 0, -75]"
+    },
+    {
+     "src": "348",
+     "src_port": 2,
+     "dst": "350",
+     "dst_port": 1,
+     "points": "[13, 0; 0, 55]"
+    },
+    {
+     "src": "305",
+     "src_port": 1,
+     "dst": "349",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "349",
+     "src_port": 1,
+     "dst": "348",
+     "dst_port": 3,
+     "points": "[18, 0; 0, -65]"
+    },
+    {
+     "src": "303",
+     "src_port": 1,
+     "dst": "348",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "302",
+     "src_port": 1,
+     "dst": "348",
+     "dst_port": 1,
+     "points": "[33, 0; 0, 65]"
+    },
+    {
+     "src": "301",
+     "src_port": 1,
+     "dst": "347",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "300",
+     "src_port": 1,
+     "dst": "347",
+     "dst_port": 1,
+     "points": "[30, 0; 0, 50]"
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_312": {
+   "file": "system_312",
+   "name": "Diagnostics",
+   "path": "SarAdc / EventStep / Adc / Diagnostics",
+   "blocks": [
+    {
+     "sid": "315",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      45.0,
+      413.0,
+      75.0,
+      427.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "316",
+     "name": "RA_next",
+     "type": "Inport",
+     "pos": [
+      65.0,
+      153.0,
+      95.0,
+      167.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "317",
+     "name": "DAC_obs",
+     "type": "Inport",
+     "pos": [
+      155.0,
+      408.0,
+      185.0,
+      422.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "318",
+     "name": "FE_return",
+     "type": "Inport",
+     "pos": [
+      155.0,
+      593.0,
+      185.0,
+      607.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "319",
+     "name": "RA_cmd",
+     "type": "Inport",
+     "pos": [
+      25.0,
+      448.0,
+      55.0,
+      462.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "366",
+     "name": "ADI_capture",
+     "type": "Inport",
+     "pos": [
+      45.0,
+      13.0,
+      75.0,
+      27.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "367",
+     "name": "ADI_dac",
+     "type": "Inport",
+     "pos": [
+      25.0,
+      188.0,
+      55.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "368",
+     "name": "ADI_control",
+     "type": "Inport",
+     "pos": [
+      25.0,
+      243.0,
+      55.0,
+      257.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "370",
+     "name": "AdiWireLog",
+     "type": "ToWorkspace",
+     "pos": [
+      215.0,
+      235.0,
+      305.0,
+      265.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "369",
+     "name": "AdiWireTap",
+     "type": "M-S-Function",
+     "pos": [
+      105.0,
+      234.0,
+      160.0,
+      266.0
+     ],
+     "func": "behavior_adi_tap_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 5,
+     "nout": 1
+    },
+    {
+     "sid": "390",
+     "name": "ApertureLog",
+     "type": "ToWorkspace",
+     "pos": [
+      240.0,
+      15.0,
+      330.0,
+      45.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "389",
+     "name": "ApertureTap",
+     "type": "M-S-Function",
+     "pos": [
+      135.0,
+      -4.0,
+      190.0,
+      29.0
+     ],
+     "func": "behavior_aperture_tap_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "352",
+     "name": "AzEventId",
+     "type": "Selector",
+     "pos": [
+      105.0,
+      476.0,
+      145.0,
+      514.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "353",
+     "name": "AzFinalNextDiff",
+     "type": "Sum",
+     "pos": [
+      370.0,
+      57.0,
+      400.0,
+      88.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "354",
+     "name": "AzFinalNextLog",
+     "type": "ToWorkspace",
+     "pos": [
+      535.0,
+      135.0,
+      625.0,
+      165.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "355",
+     "name": "AzFinalNextMux",
+     "type": "Mux",
+     "pos": [
+      475.0,
+      122.0,
+      480.0,
+      173.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "356",
+     "name": "AzHalfSelect",
+     "type": "Selector",
+     "pos": [
+      150.0,
+      51.0,
+      190.0,
+      89.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "357",
+     "name": "AzHalfSplit",
+     "type": "Demux",
+     "pos": [
+      300.0,
+      507.0,
+      305.0,
+      558.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 2
+    },
+    {
+     "sid": "358",
+     "name": "AzPublicEpoch",
+     "type": "Constant",
+     "pos": [
+      115.0,
+      320.0,
+      175.0,
+      350.0
+     ],
+     "func": "",
+     "value": "P.epoch",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "359",
+     "name": "AzPublicPol",
+     "type": "M-S-Function",
+     "pos": [
+      255.0,
+      311.0,
+      310.0,
+      344.0
+     ],
+     "func": "behavior_pol_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 2,
+     "nout": 1
+    },
+    {
+     "sid": "360",
+     "name": "AzRawCharge",
+     "type": "Selector",
+     "pos": [
+      260.0,
+      396.0,
+      300.0,
+      434.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "361",
+     "name": "AzReturnVoltage",
+     "type": "Selector",
+     "pos": [
+      260.0,
+      581.0,
+      300.0,
+      619.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "362",
+     "name": "AzRouteLog",
+     "type": "ToWorkspace",
+     "pos": [
+      435.0,
+      415.0,
+      525.0,
+      445.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "363",
+     "name": "AzRouteMux",
+     "type": "Mux",
+     "pos": [
+      385.0,
+      377.0,
+      390.0,
+      478.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 4,
+     "nout": 1
+    },
+    {
+     "sid": "364",
+     "name": "AzRoutedCommand",
+     "type": "Selector",
+     "pos": [
+      135.0,
+      636.0,
+      175.0,
+      674.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    },
+    {
+     "sid": "365",
+     "name": "AzServiceSelect",
+     "type": "Selector",
+     "pos": [
+      150.0,
+      141.0,
+      190.0,
+      179.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 1
+    }
+   ],
+   "lines": [
+    {
+     "src": "361",
+     "src_port": 1,
+     "dst": "363",
+     "dst_port": 4,
+     "points": "[43, 0; 0, -135]"
+    },
+    {
+     "src": "360",
+     "src_port": 1,
+     "dst": "363",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "359",
+     "src_port": 1,
+     "dst": "363",
+     "dst_port": 1,
+     "points": "[33, 0; 0, 60]"
+    },
+    {
+     "src": "363",
+     "src_port": 1,
+     "dst": "362",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "318",
+     "src_port": 1,
+     "dst": "361",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "317",
+     "src_port": 1,
+     "dst": "360",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "358",
+     "src_port": 1,
+     "dst": "359",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "365",
+     "src_port": 1,
+     "dst": "355",
+     "dst_port": 2,
+     "points": ""
+    },
+    {
+     "src": "353",
+     "src_port": 1,
+     "dst": "355",
+     "dst_port": 1,
+     "points": "[41, 0; 0, 60]"
+    },
+    {
+     "src": "355",
+     "src_port": 1,
+     "dst": "354",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "369",
+     "src_port": 1,
+     "dst": "370",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "368",
+     "src_port": 1,
+     "dst": "369",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "367",
+     "src_port": 1,
+     "dst": "369",
+     "dst_port": 2,
+     "points": "[21, 0; 0, 50]"
+    },
+    {
+     "src": "352",
+     "src_port": 1,
+     "dst": "359",
+     "dst_port": 1,
+     "points": "[46, 0; 0, -175]"
+    },
+    {
+     "src": "389",
+     "src_port": 1,
+     "dst": "390",
+     "dst_port": 1,
+     "points": "[20, 0; 0, 15]"
+    },
+    {
+     "src": "357",
+     "src_port": 1,
+     "dst": "353",
+     "dst_port": 1,
+     "points": "[14, 0; 0, -455]"
+    },
+    {
+     "src": "357",
+     "src_port": 2,
+     "dst": "353",
+     "dst_port": 2,
+     "points": "[24, 0; 0, -465]"
+    },
+    {
+     "src": "356",
+     "src_port": 1,
+     "dst": "357",
+     "dst_port": 1,
+     "points": "[33, 0; 0, 143; -22, 0; 0, 322]"
+    },
+    {
+     "src": "364",
+     "src_port": 1,
+     "dst": "363",
+     "dst_port": 3,
+     "points": "[175, 0; 0, -215]"
+    }
+   ],
+   "parent": "system_112",
+   "children": []
+  },
+  "system_375": {
+   "file": "system_375",
+   "name": "Calibration",
+   "path": "SarAdc / EventStep / Fpga / Calibration",
+   "blocks": [
+    {
+     "sid": "378",
+     "name": "Raw",
+     "type": "Inport",
+     "pos": [
+      20.0,
+      143.0,
+      50.0,
+      157.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "379",
+     "name": "Ready",
+     "type": "Inport",
+     "pos": [
+      90.0,
+      213.0,
+      120.0,
+      227.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "380",
+     "name": "Ref",
+     "type": "Inport",
+     "pos": [
+      -45.0,
+      173.0,
+      -15.0,
+      187.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "381",
+     "name": "NominalCode",
+     "type": "Inport",
+     "pos": [
+      -30.0,
+      263.0,
+      0.0,
+      277.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "384",
+     "name": "CalStatus",
+     "type": "ToWorkspace",
+     "pos": [
+      235.0,
+      160.0,
+      325.0,
+      190.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "385",
+     "name": "FitSnapshot",
+     "type": "ToWorkspace",
+     "pos": [
+      235.0,
+      245.0,
+      325.0,
+      275.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "386",
+     "name": "FrozenDecode",
+     "type": "M-S-Function",
+     "pos": [
+      160.0,
+      144.0,
+      215.0,
+      176.0
+     ],
+     "func": "behavior_frozen_sfun",
+     "value": "",
+     "attrs": "FPGA固定系数重构 | RAW/Ready\n不接Ref，不训练；冻结候选用于独立holdout",
+     "sub": "",
+     "nin": 3,
+     "nout": 2
+    },
+    {
+     "sid": "387",
+     "name": "FrozenLog",
+     "type": "ToWorkspace",
+     "pos": [
+      325.0,
+      95.0,
+      415.0,
+      125.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "388",
+     "name": "NominalLog",
+     "type": "ToWorkspace",
+     "pos": [
+      175.0,
+      310.0,
+      265.0,
+      340.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 1,
+     "nout": 0
+    },
+    {
+     "sid": "383",
+     "name": "Train",
+     "type": "M-S-Function",
+     "pos": [
+      65.0,
+      159.0,
+      120.0,
+      191.0
+     ],
+     "func": "behavior_cal_train_sfun",
+     "value": "",
+     "attrs": "FPGA/PC训练收集 | 公开RAW + 外部Ref\\nUpdate收帧/拟合；Code保持名义输出；不自动冻结",
+     "sub": "",
+     "nin": 4,
+     "nout": 3
+    },
+    {
+     "sid": "382",
+     "name": "Code",
+     "type": "Outport",
+     "pos": [
+      255.0,
+      103.0,
+      285.0,
+      117.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "386",
+     "src_port": 2,
+     "dst": "387",
+     "dst_port": 1,
+     "points": "[8, 0; 0, -27; 77, 0; 0, -33]"
+    },
+    {
+     "src": "386",
+     "src_port": 1,
+     "dst": "382",
+     "dst_port": 1,
+     "points": "[18, 0; 0, -45]"
+    },
+    {
+     "src": "380",
+     "src_port": 1,
+     "dst": "383",
+     "dst_port": 3,
+     "points": ""
+    },
+    {
+     "src": "381",
+     "src_port": 1,
+     "dst": "383",
+     "dst_port": 4,
+     "points": "[30, 0; 0, -80]"
+    },
+    {
+     "src": "383",
+     "src_port": 2,
+     "dst": "384",
+     "dst_port": 1,
+     "points": "[13, 0; 0, -39; 82, 0]"
+    },
+    {
+     "src": "383",
+     "src_port": 3,
+     "dst": "385",
+     "dst_port": 1,
+     "points": "[8, 0; 0, 75]"
+    }
+   ],
+   "parent": "system_123",
+   "children": []
+  },
+  "system_393": {
+   "file": "system_393",
+   "name": "Transport",
+   "path": "SarAdc / EventStep / Transport",
+   "blocks": [
+    {
+     "sid": "396",
+     "name": "Context",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      118.0,
+      65.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "397",
+     "name": "Raw",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      188.0,
+      65.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "398",
+     "name": "RawReady",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      258.0,
+      65.0,
+      272.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "399",
+     "name": "PublicEn",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      328.0,
+      65.0,
+      342.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "414",
+     "name": "TransportRun",
+     "type": "EnablePort",
+     "pos": [
+      40.0,
+      395.0,
+      60.0,
+      415.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "416",
+     "name": "PinTransport",
+     "type": "M-S-Function",
+     "pos": [
+      145.0,
+      243.0,
+      200.0,
+      277.0
+     ],
+     "func": "behavior_transport_pp_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 5,
+     "nout": 7
+    },
+    {
+     "sid": "415",
+     "name": "TxRxState",
+     "type": "UnitDelay",
+     "pos": [
+      265.0,
+      88.0,
+      300.0,
+      122.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "400",
+     "name": "RxRaw",
+     "type": "Outport",
+     "pos": [
+      270.0,
+      178.0,
+      300.0,
+      192.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "401",
+     "name": "Ready3",
+     "type": "Outport",
+     "pos": [
+      270.0,
+      248.0,
+      300.0,
+      262.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "402",
+     "name": "Frame",
+     "type": "Outport",
+     "pos": [
+      270.0,
+      318.0,
+      300.0,
+      332.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "403",
+     "name": "PinTrace",
+     "type": "Outport",
+     "pos": [
+      270.0,
+      388.0,
+      300.0,
+      402.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "404",
+     "name": "TraceRows",
+     "type": "Outport",
+     "pos": [
+      270.0,
+      463.0,
+      300.0,
+      477.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "453",
+     "name": "RxFault",
+     "type": "Outport",
+     "pos": [
+      255.0,
+      283.0,
+      285.0,
+      297.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "416",
+     "src_port": 6,
+     "dst": "404",
+     "dst_port": 1,
+     "points": "[16, 0; 0, 200]"
+    },
+    {
+     "src": "416",
+     "src_port": 5,
+     "dst": "403",
+     "dst_port": 1,
+     "points": "[23, 0; 0, 130]"
+    },
+    {
+     "src": "416",
+     "src_port": 4,
+     "dst": "402",
+     "dst_port": 1,
+     "points": "[29, 0; 0, 65]"
+    },
+    {
+     "src": "416",
+     "src_port": 3,
+     "dst": "401",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "416",
+     "src_port": 2,
+     "dst": "400",
+     "dst_port": 1,
+     "points": "[26, 0; 0, -65]"
+    },
+    {
+     "src": "399",
+     "src_port": 1,
+     "dst": "416",
+     "dst_port": 5,
+     "points": "[39, 0; 0, -65]"
+    },
+    {
+     "src": "398",
+     "src_port": 1,
+     "dst": "416",
+     "dst_port": 4,
+     "points": ""
+    },
+    {
+     "src": "397",
+     "src_port": 1,
+     "dst": "416",
+     "dst_port": 3,
+     "points": "[35, 0; 0, 65]"
+    },
+    {
+     "src": "396",
+     "src_port": 1,
+     "dst": "416",
+     "dst_port": 2,
+     "points": "[15, 0; 0, 130]"
+    },
+    {
+     "src": "416",
+     "src_port": 1,
+     "dst": "415",
+     "dst_port": 1,
+     "points": "[20, 0; 0, -140]"
+    },
+    {
+     "src": "415",
+     "src_port": 1,
+     "dst": "416",
+     "dst_port": 1,
+     "points": "[22, 0; 0, 118; -200, 0; 0, 27]"
+    },
+    {
+     "src": "416",
+     "src_port": 7,
+     "dst": "453",
+     "dst_port": 1,
+     "points": "[6, 0; 0, 15]"
+    }
+   ],
+   "parent": "system_105",
+   "children": []
+  },
+  "system_405": {
+   "file": "system_405",
+   "name": "RefQueue",
+   "path": "SarAdc / EventStep / RefQueue",
+   "blocks": [
+    {
+     "sid": "408",
+     "name": "Reference",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      48.0,
+      65.0,
+      62.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "409",
+     "name": "Event",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      118.0,
+      65.0,
+      132.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "410",
+     "name": "RxRaw",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      188.0,
+      65.0,
+      202.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "411",
+     "name": "RxReady",
+     "type": "Inport",
+     "pos": [
+      35.0,
+      263.0,
+      65.0,
+      277.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "417",
+     "name": "QueueRun",
+     "type": "EnablePort",
+     "pos": [
+      40.0,
+      330.0,
+      60.0,
+      350.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "418",
+     "name": "ReferenceHistory",
+     "type": "UnitDelay",
+     "pos": [
+      250.0,
+      93.0,
+      285.0,
+      127.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "419",
+     "name": "ReferencePair",
+     "type": "M-S-Function",
+     "pos": [
+      135.0,
+      174.0,
+      190.0,
+      206.0
+     ],
+     "func": "behavior_reference_queue_sfun",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 5,
+     "nout": 3
+    },
+    {
+     "sid": "412",
+     "name": "PairedRef",
+     "type": "Outport",
+     "pos": [
+      250.0,
+      183.0,
+      280.0,
+      197.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "413",
+     "name": "QueueDiagnostic",
+     "type": "Outport",
+     "pos": [
+      250.0,
+      258.0,
+      280.0,
+      272.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "419",
+     "src_port": 3,
+     "dst": "413",
+     "dst_port": 1,
+     "points": "[23, 0; 0, 65]"
+    },
+    {
+     "src": "419",
+     "src_port": 2,
+     "dst": "412",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "411",
+     "src_port": 1,
+     "dst": "419",
+     "dst_port": 5,
+     "points": "[30, 0; 0, -70]"
+    },
+    {
+     "src": "410",
+     "src_port": 1,
+     "dst": "419",
+     "dst_port": 4,
+     "points": ""
+    },
+    {
+     "src": "409",
+     "src_port": 1,
+     "dst": "419",
+     "dst_port": 3,
+     "points": "[30, 0; 0, 65]"
+    },
+    {
+     "src": "408",
+     "src_port": 1,
+     "dst": "419",
+     "dst_port": 2,
+     "points": "[48, 0; 0, 130]"
+    },
+    {
+     "src": "419",
+     "src_port": 1,
+     "dst": "418",
+     "dst_port": 1,
+     "points": "[23, 0; 0, -70]"
+    },
+    {
+     "src": "418",
+     "src_port": 1,
+     "dst": "419",
+     "dst_port": 1,
+     "points": "[38, 0; 0, 47; -219, 0; 0, 23]"
+    }
+   ],
+   "parent": "system_105",
+   "children": []
+  },
+  "system_root": {
+   "file": "system_root",
+   "name": "SarAdc（顶层）",
+   "path": "SarAdc",
+   "blocks": [
+    {
+     "sid": "111",
+     "name": "Calendar",
+     "type": "M-S-Function",
+     "pos": [
+      160.0,
+      182.0,
+      260.0,
+      233.0
+     ],
+     "func": "behavior_event_source",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 2
+    },
+    {
+     "sid": "1",
+     "name": "Driver",
+     "type": "Constant",
+     "pos": [
+      40.0,
+      50.0,
+      330.0,
+      90.0
+     ],
+     "func": "",
+     "value": "[P.input.offset_v;P.input.amplitude_v;P.input.frequency_hz;P.input.phase_rad]",
+     "attrs": "片外 Driver：输入源配置 [V,Hz,rad]",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "105",
+     "name": "EventStep",
+     "type": "SubSystem",
+     "pos": [
+      460.0,
+      80.0,
+      1360.0,
+      300.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "已应用 P | N=256 | Fs=5 MS/s\nAZ=ordinary | kTC=ON, T=298.15 K, seed=20261027\nDEM=OFF | dither=OFF | RA A0=10000(有限), UGB=1.2e+09 Hz(有限)\nDAC建立耦合=ON | 正有限tau=0.5..0.5 ns (18/18), Inf保持=0\nTrain=OFF | Frozen=OFF | Ref=片外仪器(OFF) | 数字系数Bank=OFF\nsignal aperture=OFF (非全时钟抖动)\ntransport=false | off ADC RawReady\n内部:片内 ADC → 片外 FPGA / Raw接口；Run用保存P，改参数先apply\n前端: 单bank(8数值分段) | guard=2 ns | C阵列=28.0521 pF/半(口径假设)\nRA OU=ON | sigmaVX(差分VX固定极点稳态RMS)=0.00051278538952139417 V rms | seed=0x00000000013528F0 | 已启用（行为假设）\nCMP=ON | SAR1 fine offset=0 V, sigma=0 V rms\nSAR2/TA offset=0 V, sigma=0.00028692873657059866 V rms\nFlash comparator noise not modeled | seed=0x00000000013528F1 | tie=1",
+     "sub": "system_105",
+     "nin": 3,
+     "nout": 3
+    },
+    {
+     "sid": "450",
+     "name": "SystemTime",
+     "type": "Clock",
+     "pos": [
+      160.0,
+      310.0,
+      260.0,
+      360.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "Actual simulation time [s]",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "463",
+     "name": "Code20",
+     "type": "Outport",
+     "pos": [
+      1450.0,
+      128.0,
+      1480.0,
+      142.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "464",
+     "name": "CodeValid",
+     "type": "Outport",
+     "pos": [
+      1450.0,
+      183.0,
+      1480.0,
+      197.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    },
+    {
+     "sid": "465",
+     "name": "CodeMeta",
+     "type": "Outport",
+     "pos": [
+      1450.0,
+      238.0,
+      1480.0,
+      252.0
+     ],
+     "func": "",
+     "value": "",
+     "attrs": "",
+     "sub": "",
+     "nin": 0,
+     "nout": 0
+    }
+   ],
+   "lines": [
+    {
+     "src": "105",
+     "src_port": 3,
+     "dst": "465",
+     "dst_port": 1,
+     "points": "[70, 0]"
+    },
+    {
+     "src": "105",
+     "src_port": 2,
+     "dst": "464",
+     "dst_port": 1,
+     "points": ""
+    },
+    {
+     "src": "105",
+     "src_port": 1,
+     "dst": "463",
+     "dst_port": 1,
+     "points": "[70, 0]"
+    },
+    {
+     "src": "450",
+     "src_port": 1,
+     "dst": "105",
+     "dst_port": 3,
+     "points": "[95, 0; 0, -70]"
+    },
+    {
+     "src": "1",
+     "src_port": 1,
+     "dst": "105",
+     "dst_port": 1,
+     "points": "[25, 0; 0, 45]"
+    },
+    {
+     "src": "111",
+     "src_port": 1,
+     "dst": "105",
+     "dst_port": 2,
+     "points": "[180, 0]"
+    }
+   ],
+   "parent": "",
+   "children": [
+    "system_105"
+   ]
+  }
+ },
+ "sources": {
+  "files": [
+   {
+    "path": "analysis/behavior_adi_tap_sfun.m",
+    "dir": "analysis",
+    "name": "behavior_adi_tap_sfun.m",
+    "lines": 41,
+    "defs": [
+     "behavior_adi_tap_sfun"
+    ],
+    "calls": [
+     "command"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_312",
+      "path": "SarAdc / EventStep / Adc / Diagnostics",
+      "block": "AdiWireTap",
+      "function": "behavior_adi_tap_sfun"
+     }
+    ]
+   },
+   {
+    "path": "analysis/behavior_aperture_tap_sfun.m",
+    "dir": "analysis",
+    "name": "behavior_aperture_tap_sfun.m",
+    "lines": 50,
+    "defs": [
+     "behavior_aperture_tap_sfun"
+    ],
+    "calls": [
+     "behavior_aperture_diagnostic",
+     "behavior_frontend_unpack"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_312",
+      "path": "SarAdc / EventStep / Adc / Diagnostics",
+      "block": "ApertureTap",
+      "function": "behavior_aperture_tap_sfun"
+     }
+    ]
+   },
+   {
+    "path": "analysis/behavior_bank_record_gate.m",
+    "dir": "analysis",
+    "name": "behavior_bank_record_gate.m",
+    "lines": 40,
+    "defs": [
+     "behavior_bank_record_gate",
+     "series",
+     "at"
+    ],
+    "calls": [
+     "behavior_bank_validate_rows"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_bank_validate_rows.m",
+    "dir": "analysis",
+    "name": "behavior_bank_validate_rows.m",
+    "lines": 28,
+    "defs": [
+     "behavior_bank_validate_rows"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/behavior_bank_record_gate.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_holdout_result.m",
+    "dir": "analysis",
+    "name": "behavior_holdout_result.m",
+    "lines": 115,
+    "defs": [
+     "behavior_holdout_result",
+     "series",
+     "words",
+     "at_times",
+     "check_adc_reference"
+    ],
+    "calls": [
+     "behavior_record_view",
+     "event"
+    ],
+    "called_by": [
+     "calibration/behavior_calibration_workflow.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_record_ready_summary.m",
+    "dir": "analysis",
+    "name": "behavior_record_ready_summary.m",
+    "lines": 25,
+    "defs": [
+     "behavior_record_ready_summary"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_record_view.m",
+    "dir": "analysis",
+    "name": "behavior_record_view.m",
+    "lines": 130,
+    "defs": [
+     "behavior_record_view",
+     "read_log",
+     "at_times"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/behavior_holdout_result.m",
+     "analysis/behavior_sample_debug.m",
+     "analysis/behavior_training_result.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_sample_debug.m",
+    "dir": "analysis",
+    "name": "behavior_sample_debug.m",
+    "lines": 316,
+    "defs": [
+     "behavior_sample_debug",
+     "read_log",
+     "at_times",
+     "optional_scalar",
+     "words"
+    ],
+    "calls": [
+     "behavior_record_view",
+     "event"
+    ],
+    "called_by": [
+     "analysis/behavior_sample_explain.m",
+     "analysis/behavior_sample_plot.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_sample_destination.m",
+    "dir": "analysis",
+    "name": "behavior_sample_destination.m",
+    "lines": 12,
+    "defs": [
+     "behavior_sample_destination"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/behavior_sample_explain.m",
+     "analysis/behavior_sample_plot.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_sample_explain.m",
+    "dir": "analysis",
+    "name": "behavior_sample_explain.m",
+    "lines": 542,
+    "defs": [
+     "behavior_sample_explain",
+     "series",
+     "phase_rows",
+     "public_dither",
+     "yesno",
+     "num",
+     "event_rows",
+     "decision_trace",
+     "read_adi_map",
+     "aperture_view"
+    ],
+    "calls": [
+     "behavior_sample_debug",
+     "behavior_sample_destination",
+     "event",
+     "finite",
+     "word"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_sample_plot.m",
+    "dir": "analysis",
+    "name": "behavior_sample_plot.m",
+    "lines": 521,
+    "defs": [
+     "behavior_sample_plot",
+     "read_series",
+     "public_dither",
+     "padded_limits",
+     "aperture_view"
+    ],
+    "calls": [
+     "behavior_sample_debug",
+     "behavior_sample_destination",
+     "event"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_spectrum.m",
+    "dir": "analysis",
+    "name": "behavior_spectrum.m",
+    "lines": 110,
+    "defs": [
+     "behavior_spectrum"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_spectrum_eligibility.m",
+    "dir": "analysis",
+    "name": "behavior_spectrum_eligibility.m",
+    "lines": 21,
+    "defs": [
+     "behavior_spectrum_eligibility"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/behavior_training_result.m",
+    "dir": "analysis",
+    "name": "behavior_training_result.m",
+    "lines": 160,
+    "defs": [
+     "behavior_training_result",
+     "series",
+     "words",
+     "at_times",
+     "check_adc_reference"
+    ],
+    "calls": [
+     "behavior_record_view",
+     "event"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/summarize_adi_cases.m",
+    "dir": "analysis",
+    "name": "summarize_adi_cases.m",
+    "lines": 122,
+    "defs": [
+     "summarize_adi_cases",
+     "p2p",
+     "series"
+    ],
+    "calls": [
+     "event"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "analysis/validate_behavior_adi_case.m",
+    "dir": "analysis",
+    "name": "validate_behavior_adi_case.m",
+    "lines": 197,
+    "defs": [
+     "validate_behavior_adi_case",
+     "validate_tap",
+     "word_events",
+     "series",
+     "series_time",
+     "bits"
+    ],
+    "calls": [
+     "behavior_decode",
+     "behavior_public_dither",
+     "behavior_public_pol",
+     "command",
+     "physical",
+     "word"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_cal_collector_snapshot.m",
+    "dir": "calibration",
+    "name": "behavior_cal_collector_snapshot.m",
+    "lines": 41,
+    "defs": [
+     "behavior_cal_collector_snapshot"
+    ],
+    "calls": [],
+    "called_by": [
+     "calibration/behavior_cal_train_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_cal_collector_step.m",
+    "dir": "calibration",
+    "name": "behavior_cal_collector_step.m",
+    "lines": 141,
+    "defs": [
+     "behavior_cal_collector_step",
+     "observe",
+     "words_equal",
+     "status_code"
+    ],
+    "calls": [
+     "behavior_public_cal_fit"
+    ],
+    "called_by": [
+     "calibration/behavior_cal_train_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_cal_train_sfun.m",
+    "dir": "calibration",
+    "name": "behavior_cal_train_sfun.m",
+    "lines": 106,
+    "defs": [
+     "behavior_cal_train_sfun"
+    ],
+    "calls": [
+     "behavior_cal_collector_snapshot",
+     "behavior_cal_collector_step"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_375",
+      "path": "SarAdc / EventStep / Fpga / Calibration",
+      "block": "Train",
+      "function": "behavior_cal_train_sfun"
+     }
+    ]
+   },
+   {
+    "path": "calibration/behavior_calibration_workflow.m",
+    "dir": "calibration",
+    "name": "behavior_calibration_workflow.m",
+    "lines": 255,
+    "defs": [
+     "behavior_calibration_workflow",
+     "starting_configuration",
+     "resolve_relative",
+     "canonical",
+     "relative",
+     "run_names",
+     "read_json",
+     "sha",
+     "is_workflow"
+    ],
+    "calls": [
+     "behavior_applied_note",
+     "behavior_frozen_setup",
+     "behavior_holdout_result",
+     "behavior_prepare_configuration"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_frozen_setup.m",
+    "dir": "calibration",
+    "name": "behavior_frozen_setup.m",
+    "lines": 32,
+    "defs": [
+     "behavior_frozen_setup",
+     "sha256"
+    ],
+    "calls": [
+     "behavior_public_cal_features"
+    ],
+    "called_by": [
+     "calibration/behavior_calibration_workflow.m",
+     "calibration/sar20_bank_owner_init.m",
+     "calibration/sar20_bank_owner_step.m",
+     "calibration/sar20_pp_parameters.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_frozen_sfun.m",
+    "dir": "calibration",
+    "name": "behavior_frozen_sfun.m",
+    "lines": 27,
+    "defs": [
+     "behavior_frozen_sfun"
+    ],
+    "calls": [
+     "behavior_frozen_step"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_375",
+      "path": "SarAdc / EventStep / Fpga / Calibration",
+      "block": "FrozenDecode",
+      "function": "behavior_frozen_sfun"
+     }
+    ]
+   },
+   {
+    "path": "calibration/behavior_frozen_step.m",
+    "dir": "calibration",
+    "name": "behavior_frozen_step.m",
+    "lines": 64,
+    "defs": [
+     "behavior_frozen_step"
+    ],
+    "calls": [
+     "physical"
+    ],
+    "called_by": [
+     "calibration/behavior_frozen_sfun.m",
+     "calibration/sar20_bank_owner_step.m",
+     "calibration/sar20_pp_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_public_cal_features.m",
+    "dir": "calibration",
+    "name": "behavior_public_cal_features.m",
+    "lines": 116,
+    "defs": [
+     "behavior_public_cal_features",
+     "public_plan",
+     "public_dither"
+    ],
+    "calls": [
+     "physical"
+    ],
+    "called_by": [
+     "calibration/behavior_frozen_setup.m",
+     "calibration/behavior_public_cal_fit.m",
+     "physics/behavior_backend_step.m",
+     "physics/behavior_dac_forcing_from_frontend.m",
+     "physics/behavior_ra_noise_validate_backend.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_public_cal_fit.m",
+    "dir": "calibration",
+    "name": "behavior_public_cal_fit.m",
+    "lines": 117,
+    "defs": [
+     "behavior_public_cal_fit"
+    ],
+    "calls": [
+     "behavior_public_cal_features"
+    ],
+    "called_by": [
+     "calibration/behavior_cal_collector_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/behavior_train_reference_sfun.m",
+    "dir": "calibration",
+    "name": "behavior_train_reference_sfun.m",
+    "lines": 50,
+    "defs": [
+     "capture"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_105",
+      "path": "SarAdc / EventStep",
+      "block": "TrainRef",
+      "function": "behavior_train_reference_sfun"
+     }
+    ]
+   },
+   {
+    "path": "calibration/public_calibration_config.m",
+    "dir": "calibration",
+    "name": "public_calibration_config.m",
+    "lines": 88,
+    "defs": [
+     "public_calibration_config"
+    ],
+    "calls": [
+     "exact"
+    ],
+    "called_by": [
+     "model/behavior_training_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_bank_certificate_sha256.m",
+    "dir": "calibration",
+    "name": "sar20_bank_certificate_sha256.m",
+    "lines": 10,
+    "defs": [
+     "sar20_bank_certificate_sha256"
+    ],
+    "calls": [
+     "sar20_bank_sha256"
+    ],
+    "called_by": [
+     "calibration/sar20_bank_owner_step.m",
+     "calibration/sar20_pp_verify_v3_qualification.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_bank_owner_init.m",
+    "dir": "calibration",
+    "name": "sar20_bank_owner_init.m",
+    "lines": 66,
+    "defs": [
+     "sar20_bank_owner_init",
+     "text_scalar",
+     "hex64"
+    ],
+    "calls": [
+     "behavior_frozen_setup",
+     "sar20_bank_sha256"
+    ],
+    "called_by": [
+     "calibration/sar20_pp_verify_v3_qualification.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_bank_owner_step.m",
+    "dir": "calibration",
+    "name": "sar20_bank_owner_step.m",
+    "lines": 422,
+    "defs": [
+     "sar20_bank_owner_step",
+     "process_raw",
+     "process_command",
+     "check_cache",
+     "check_certificate",
+     "check_drain_certificate",
+     "command_shape",
+     "latch_fault",
+     "empty_transition",
+     "blank_output",
+     "remember",
+     "data_signature",
+     "ready_signature",
+     "command_signature",
+     "command_hash",
+     "command_bytes",
+     "pack_length",
+     "is_none",
+     "domain_status",
+     "slot_in_transition",
+     "binary",
+     "valid_slot",
+     "valid_version",
+     "integer_range",
+     "exact",
+     "command_safe",
+     "text_scalar",
+     "hex64"
+    ],
+    "calls": [
+     "behavior_frozen_setup",
+     "behavior_frozen_step",
+     "sar20_bank_certificate_sha256",
+     "sar20_bank_sha256"
+    ],
+    "called_by": [
+     "calibration/public_calibration_config.m",
+     "calibration/sar20_pp_verify_v3_qualification.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_bank_require_actual_binding.m",
+    "dir": "calibration",
+    "name": "sar20_bank_require_actual_binding.m",
+    "lines": 30,
+    "defs": [
+     "sar20_bank_require_actual_binding",
+     "binary"
+    ],
+    "calls": [],
+    "called_by": [
+     "calibration/sar20_pp_parameters.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_bank_sha256.m",
+    "dir": "calibration",
+    "name": "sar20_bank_sha256.m",
+    "lines": 9,
+    "defs": [
+     "sar20_bank_sha256"
+    ],
+    "calls": [],
+    "called_by": [
+     "calibration/sar20_bank_certificate_sha256.m",
+     "calibration/sar20_bank_owner_init.m",
+     "calibration/sar20_bank_owner_step.m",
+     "calibration/sar20_pp_parameters.m",
+     "calibration/sar20_pp_qualification_from_bytes.m",
+     "calibration/sar20_pp_verify_v3_qualification.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_pp_command_sfun.m",
+    "dir": "calibration",
+    "name": "sar20_pp_command_sfun.m",
+    "lines": 21,
+    "defs": [
+     "sar20_pp_command_sfun"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_105",
+      "path": "SarAdc / EventStep",
+      "block": "BankCommand",
+      "function": "sar20_pp_command_sfun"
+     }
+    ]
+   },
+   {
+    "path": "calibration/sar20_pp_initial_state.m",
+    "dir": "calibration",
+    "name": "sar20_pp_initial_state.m",
+    "lines": 8,
+    "defs": [
+     "sar20_pp_initial_state"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_pp_parameters.m",
+    "dir": "calibration",
+    "name": "sar20_pp_parameters.m",
+    "lines": 130,
+    "defs": [
+     "sar20_pp_parameters",
+     "number",
+     "file_sha",
+     "binary",
+     "integer"
+    ],
+    "calls": [
+     "behavior_frozen_setup",
+     "sar20_bank_require_actual_binding",
+     "sar20_bank_sha256",
+     "sar20_pp_qualification_from_bytes"
+    ],
+    "called_by": [
+     "calibration/sar20_pp_verified_parameters.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_pp_qualification_from_bytes.m",
+    "dir": "calibration",
+    "name": "sar20_pp_qualification_from_bytes.m",
+    "lines": 11,
+    "defs": [
+     "sar20_pp_qualification_from_bytes"
+    ],
+    "calls": [
+     "sar20_bank_sha256"
+    ],
+    "called_by": [
+     "calibration/sar20_pp_parameters.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_pp_sfun.m",
+    "dir": "calibration",
+    "name": "sar20_pp_sfun.m",
+    "lines": 33,
+    "defs": [
+     "sar20_pp_sfun"
+    ],
+    "calls": [
+     "sar20_pp_step"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_105",
+      "path": "SarAdc / EventStep",
+      "block": "BankOwner",
+      "function": "sar20_pp_sfun"
+     }
+    ]
+   },
+   {
+    "path": "calibration/sar20_pp_step.m",
+    "dir": "calibration",
+    "name": "sar20_pp_step.m",
+    "lines": 140,
+    "defs": [
+     "sar20_pp_step",
+     "command",
+     "signature",
+     "fault",
+     "remember",
+     "unpack_cached"
+    ],
+    "calls": [
+     "behavior_frozen_step"
+    ],
+    "called_by": [
+     "analysis/behavior_adi_tap_sfun.m",
+     "analysis/validate_behavior_adi_case.m",
+     "calibration/sar20_pp_sfun.m",
+     "model/behavior_wiring_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_pp_verified_parameters.m",
+    "dir": "calibration",
+    "name": "sar20_pp_verified_parameters.m",
+    "lines": 11,
+    "defs": [
+     "sar20_pp_verified_parameters"
+    ],
+    "calls": [
+     "sar20_pp_parameters"
+    ],
+    "called_by": [
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "calibration/sar20_pp_verify_v3_qualification.m",
+    "dir": "calibration",
+    "name": "sar20_pp_verify_v3_qualification.m",
+    "lines": 60,
+    "defs": [
+     "event",
+     "file_sha"
+    ],
+    "calls": [
+     "sar20_bank_certificate_sha256",
+     "sar20_bank_owner_init",
+     "sar20_bank_owner_step",
+     "sar20_bank_sha256"
+    ],
+    "called_by": [
+     "analysis/behavior_holdout_result.m",
+     "analysis/behavior_sample_debug.m",
+     "analysis/behavior_sample_explain.m",
+     "analysis/behavior_sample_plot.m",
+     "analysis/behavior_training_result.m",
+     "analysis/summarize_adi_cases.m",
+     "reference/behavior_reference_queue_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_az_schedule.m",
+    "dir": "control",
+    "name": "behavior_az_schedule.m",
+    "lines": 99,
+    "defs": [
+     "behavior_az_schedule",
+     "flag"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_prepare_configuration.m",
+     "model/behavior_wiring_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_calendar.m",
+    "dir": "control",
+    "name": "behavior_calendar.m",
+    "lines": 45,
+    "defs": [
+     "behavior_calendar"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_comparator_configuration.m",
+     "model/behavior_prepare_configuration.m",
+     "model/behavior_ra_noise_guard.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_comparator_keyed_normal.m",
+    "dir": "control",
+    "name": "behavior_comparator_keyed_normal.m",
+    "lines": 39,
+    "defs": [
+     "behavior_comparator_keyed_normal",
+     "word",
+     "readword"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/behavior_sample_explain.m",
+     "analysis/validate_behavior_adi_case.m",
+     "control/behavior_comparator_sample.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_comparator_sample.m",
+    "dir": "control",
+    "name": "behavior_comparator_sample.m",
+    "lines": 56,
+    "defs": [
+     "behavior_comparator_sample"
+    ],
+    "calls": [
+     "behavior_comparator_keyed_normal"
+    ],
+    "called_by": [
+     "control/behavior_control_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_control_parameters.m",
+    "dir": "control",
+    "name": "behavior_control_parameters.m",
+    "lines": 20,
+    "defs": [
+     "behavior_control_parameters"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_control_stage.m",
+    "dir": "control",
+    "name": "behavior_control_stage.m",
+    "lines": 80,
+    "defs": [
+     "behavior_control_stage",
+     "emit"
+    ],
+    "calls": [
+     "behavior_comparator_sample",
+     "behavior_sar_pack",
+     "behavior_sar_step",
+     "behavior_sar_unpack"
+    ],
+    "called_by": [
+     "control/behavior_control_stage_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_control_stage_sfun.m",
+    "dir": "control",
+    "name": "behavior_control_stage_sfun.m",
+    "lines": 35,
+    "defs": [
+     "behavior_control_stage_sfun"
+    ],
+    "calls": [
+     "behavior_comparator_configuration",
+     "behavior_control_stage"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_244",
+      "path": "SarAdc / EventStep / Adc / DacCtFeedback",
+      "block": "DueFeedback",
+      "function": "behavior_control_stage_sfun"
+     },
+     {
+      "system": "system_261",
+      "path": "SarAdc / EventStep / Adc / Sar1TrialRaCt",
+      "block": "PreconvertSar1",
+      "function": "behavior_control_stage_sfun"
+     },
+     {
+      "system": "system_285",
+      "path": "SarAdc / EventStep / Adc / SarDecisionTracking",
+      "block": "Sar2Tracking",
+      "function": "behavior_control_stage_sfun"
+     }
+    ]
+   },
+   {
+    "path": "control/behavior_event_groups.m",
+    "dir": "control",
+    "name": "behavior_event_groups.m",
+    "lines": 56,
+    "defs": [
+     "behavior_event_groups"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_comparator_configuration.m",
+     "model/behavior_prepare_configuration.m",
+     "model/behavior_ra_noise_guard.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_event_source.m",
+    "dir": "control",
+    "name": "behavior_event_source.m",
+    "lines": 77,
+    "defs": [
+     "behavior_event_source"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_root",
+      "path": "SarAdc",
+      "block": "Calendar",
+      "function": "behavior_event_source"
+     }
+    ]
+   },
+   {
+    "path": "control/behavior_sar_pack.m",
+    "dir": "control",
+    "name": "behavior_sar_pack.m",
+    "lines": 28,
+    "defs": [
+     "behavior_sar_pack"
+    ],
+    "calls": [],
+    "called_by": [
+     "control/behavior_control_stage.m",
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_sar_step.m",
+    "dir": "control",
+    "name": "behavior_sar_step.m",
+    "lines": 182,
+    "defs": [
+     "behavior_sar_step",
+     "initial_state",
+     "empty_pending",
+     "make_pending",
+     "commit_feedback",
+     "physical",
+     "compare_physical",
+     "binary_flag",
+     "setword",
+     "event_time"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/validate_behavior_adi_case.m",
+     "calibration/behavior_frozen_step.m",
+     "calibration/behavior_public_cal_features.m",
+     "control/behavior_control_stage.m",
+     "frontend/behavior_frontend_step.m",
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "control/behavior_sar_unpack.m",
+    "dir": "control",
+    "name": "behavior_sar_unpack.m",
+    "lines": 32,
+    "defs": [
+     "behavior_sar_unpack"
+    ],
+    "calls": [],
+    "called_by": [
+     "control/behavior_control_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "digital/behavior_decode.m",
+    "dir": "digital",
+    "name": "behavior_decode.m",
+    "lines": 115,
+    "defs": [
+     "behavior_decode"
+    ],
+    "calls": [
+     "behavior_public_dither",
+     "behavior_public_pol"
+    ],
+    "called_by": [
+     "analysis/validate_behavior_adi_case.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "digital/behavior_decode_parameters.m",
+    "dir": "digital",
+    "name": "behavior_decode_parameters.m",
+    "lines": 35,
+    "defs": [
+     "behavior_decode_parameters"
+    ],
+    "calls": [
+     "behavior_public_pol"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "digital/behavior_dither_sfun.m",
+    "dir": "digital",
+    "name": "behavior_dither_sfun.m",
+    "lines": 19,
+    "defs": [
+     "behavior_dither_sfun"
+    ],
+    "calls": [
+     "behavior_public_dither"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_123",
+      "path": "SarAdc / EventStep / Fpga",
+      "block": "PublicDither",
+      "function": "behavior_dither_sfun"
+     }
+    ]
+   },
+   {
+    "path": "digital/behavior_pol_sfun.m",
+    "dir": "digital",
+    "name": "behavior_pol_sfun.m",
+    "lines": 20,
+    "defs": [
+     "behavior_pol_sfun"
+    ],
+    "calls": [
+     "behavior_public_pol"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_123",
+      "path": "SarAdc / EventStep / Fpga",
+      "block": "PublicPol",
+      "function": "behavior_pol_sfun"
+     },
+     {
+      "system": "system_312",
+      "path": "SarAdc / EventStep / Adc / Diagnostics",
+      "block": "AzPublicPol",
+      "function": "behavior_pol_sfun"
+     }
+    ]
+   },
+   {
+    "path": "digital/behavior_public_dither.m",
+    "dir": "digital",
+    "name": "behavior_public_dither.m",
+    "lines": 38,
+    "defs": [
+     "behavior_public_dither"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/validate_behavior_adi_case.m",
+     "digital/behavior_decode.m",
+     "digital/behavior_dither_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "digital/behavior_public_pol.m",
+    "dir": "digital",
+    "name": "behavior_public_pol.m",
+    "lines": 26,
+    "defs": [
+     "behavior_public_pol"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/validate_behavior_adi_case.m",
+     "digital/behavior_decode.m",
+     "digital/behavior_decode_parameters.m",
+     "digital/behavior_pol_sfun.m",
+     "physics/behavior_dac_forcing_from_frontend.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_aperture_diagnostic.m",
+    "dir": "frontend",
+    "name": "behavior_aperture_diagnostic.m",
+    "lines": 17,
+    "defs": [
+     "behavior_aperture_diagnostic"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/behavior_aperture_tap_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_aperture_times.m",
+    "dir": "frontend",
+    "name": "behavior_aperture_times.m",
+    "lines": 74,
+    "defs": [
+     "behavior_aperture_times",
+     "normal_key",
+     "mix32"
+    ],
+    "calls": [],
+    "called_by": [
+     "frontend/behavior_frontend_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_frontend_init.m",
+    "dir": "frontend",
+    "name": "behavior_frontend_init.m",
+    "lines": 153,
+    "defs": [
+     "behavior_frontend_init",
+     "check_input",
+     "make_plan"
+    ],
+    "calls": [
+     "behavior_jitter_parameters"
+    ],
+    "called_by": [
+     "frontend/behavior_frontend_step.m",
+     "model/behavior_prepare_configuration.m",
+     "transport/sar20_lvds_rx_step.m",
+     "transport/sar20_lvds_tx_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_frontend_pack.m",
+    "dir": "frontend",
+    "name": "behavior_frontend_pack.m",
+    "lines": 25,
+    "defs": [
+     "behavior_frontend_pack"
+    ],
+    "calls": [],
+    "called_by": [
+     "frontend/behavior_frontend_stage.m",
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_frontend_sfun.m",
+    "dir": "frontend",
+    "name": "behavior_frontend_sfun.m",
+    "lines": 48,
+    "defs": [
+     "behavior_frontend_sfun"
+    ],
+    "calls": [
+     "behavior_frontend_stage"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_232",
+      "path": "SarAdc / EventStep / Adc / SampleRaAdvance",
+      "block": "Sample",
+      "function": "behavior_frontend_sfun"
+     },
+     {
+      "system": "system_244",
+      "path": "SarAdc / EventStep / Adc / DacCtFeedback",
+      "block": "DacFeedback",
+      "function": "behavior_frontend_sfun"
+     },
+     {
+      "system": "system_261",
+      "path": "SarAdc / EventStep / Adc / Sar1TrialRaCt",
+      "block": "DacTrial",
+      "function": "behavior_frontend_sfun"
+     },
+     {
+      "system": "system_297",
+      "path": "SarAdc / EventStep / Adc / ChargeReturnRaReset",
+      "block": "ChargeReturn",
+      "function": "behavior_frontend_sfun"
+     }
+    ]
+   },
+   {
+    "path": "frontend/behavior_frontend_stage.m",
+    "dir": "frontend",
+    "name": "behavior_frontend_stage.m",
+    "lines": 71,
+    "defs": [
+     "behavior_frontend_stage"
+    ],
+    "calls": [
+     "behavior_frontend_pack",
+     "behavior_frontend_step",
+     "behavior_frontend_unpack"
+    ],
+    "called_by": [
+     "frontend/behavior_frontend_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_frontend_step.m",
+    "dir": "frontend",
+    "name": "behavior_frontend_step.m",
+    "lines": 351,
+    "defs": [
+     "behavior_frontend_step",
+     "advance",
+     "apply_ideal_acquire",
+     "rc_sine",
+     "is_single",
+     "relax",
+     "input_value",
+     "readout",
+     "dither_value",
+     "sample_ktc_diff",
+     "mix32"
+    ],
+    "calls": [
+     "behavior_aperture_times",
+     "check_input",
+     "physical"
+    ],
+    "called_by": [
+     "frontend/behavior_frontend_stage.m",
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_frontend_unpack.m",
+    "dir": "frontend",
+    "name": "behavior_frontend_unpack.m",
+    "lines": 26,
+    "defs": [
+     "behavior_frontend_unpack"
+    ],
+    "calls": [],
+    "called_by": [
+     "analysis/behavior_aperture_tap_sfun.m",
+     "frontend/behavior_frontend_stage.m",
+     "model/behavior_single_guard.m",
+     "physics/behavior_dac_forcing_from_frontend.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_jitter_parameters.m",
+    "dir": "frontend",
+    "name": "behavior_jitter_parameters.m",
+    "lines": 38,
+    "defs": [
+     "behavior_jitter_parameters"
+    ],
+    "calls": [],
+    "called_by": [
+     "frontend/behavior_frontend_init.m",
+     "frontend/behavior_jitter_prepare_front.m",
+     "model/behavior_ra_noise_guard.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "frontend/behavior_jitter_prepare_front.m",
+    "dir": "frontend",
+    "name": "behavior_jitter_prepare_front.m",
+    "lines": 24,
+    "defs": [
+     "behavior_jitter_prepare_front"
+    ],
+    "calls": [
+     "behavior_jitter_parameters"
+    ],
+    "called_by": [
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_aperture_debug_configuration.m",
+    "dir": "model",
+    "name": "behavior_aperture_debug_configuration.m",
+    "lines": 17,
+    "defs": [
+     "behavior_aperture_debug_configuration"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_applied_note.m",
+    "dir": "model",
+    "name": "behavior_applied_note.m",
+    "lines": 308,
+    "defs": [
+     "behavior_applied_note",
+     "view_id",
+     "ktc_text",
+     "ra_noise_suffix",
+     "flagtext",
+     "dem_text",
+     "dither_text",
+     "finite_text",
+     "project_root",
+     "diagnose",
+     "cal_text",
+     "aperture_text",
+     "transport_text",
+     "fpga_text",
+     "dac_text"
+    ],
+    "calls": [
+     "behavior_comparator_configuration",
+     "behavior_ra_noise_guard"
+    ],
+    "called_by": [
+     "calibration/behavior_calibration_workflow.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_comparator_configuration.m",
+    "dir": "model",
+    "name": "behavior_comparator_configuration.m",
+    "lines": 167,
+    "defs": [
+     "behavior_comparator_configuration",
+     "binary"
+    ],
+    "calls": [
+     "behavior_calendar",
+     "behavior_event_groups",
+     "behavior_single_guard"
+    ],
+    "called_by": [
+     "control/behavior_control_stage_sfun.m",
+     "model/behavior_applied_note.m",
+     "model/behavior_ra_noise_guard.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_dac_backend_parameters.m",
+    "dir": "model",
+    "name": "behavior_dac_backend_parameters.m",
+    "lines": 63,
+    "defs": [
+     "behavior_dac_backend_parameters"
+    ],
+    "calls": [
+     "behavior_ra_noise_guard",
+     "behavior_single_guard"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_dac_coupling_configuration.m",
+    "dir": "model",
+    "name": "behavior_dac_coupling_configuration.m",
+    "lines": 37,
+    "defs": [
+     "behavior_dac_coupling_configuration"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_prepare_configuration.m",
+    "dir": "model",
+    "name": "behavior_prepare_configuration.m",
+    "lines": 131,
+    "defs": [
+     "behavior_prepare_configuration"
+    ],
+    "calls": [
+     "behavior_aperture_debug_configuration",
+     "behavior_az_schedule",
+     "behavior_backend_pack",
+     "behavior_backend_step",
+     "behavior_calendar",
+     "behavior_dac_coupling_configuration",
+     "behavior_event_groups",
+     "behavior_frontend_init",
+     "behavior_frontend_pack",
+     "behavior_frontend_step",
+     "behavior_jitter_prepare_front",
+     "behavior_ra_noise_guard",
+     "behavior_reference_configuration",
+     "behavior_sar_pack",
+     "behavior_sar_step",
+     "behavior_single_guard",
+     "behavior_training_configuration",
+     "behavior_transport_configuration",
+     "sar20_pp_verified_parameters"
+    ],
+    "called_by": [
+     "calibration/behavior_calibration_workflow.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_ra_noise_guard.m",
+    "dir": "model",
+    "name": "behavior_ra_noise_guard.m",
+    "lines": 365,
+    "defs": [
+     "behavior_ra_noise_guard",
+     "validate_coverage",
+     "coverage_flag",
+     "network_diff",
+     "replica_load",
+     "binary"
+    ],
+    "calls": [
+     "behavior_calendar",
+     "behavior_comparator_configuration",
+     "behavior_event_groups",
+     "behavior_jitter_parameters",
+     "behavior_transport_configuration"
+    ],
+    "called_by": [
+     "model/behavior_applied_note.m",
+     "model/behavior_dac_backend_parameters.m",
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_reference_configuration.m",
+    "dir": "model",
+    "name": "behavior_reference_configuration.m",
+    "lines": 40,
+    "defs": [
+     "behavior_reference_configuration"
+    ],
+    "calls": [
+     "behavior_reference_queue_init",
+     "behavior_reference_queue_pack",
+     "behavior_reference_queue_parameters"
+    ],
+    "called_by": [
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_single_guard.m",
+    "dir": "model",
+    "name": "behavior_single_guard.m",
+    "lines": 109,
+    "defs": [
+     "behavior_single_guard"
+    ],
+    "calls": [
+     "behavior_backend_unpack",
+     "behavior_frontend_unpack"
+    ],
+    "called_by": [
+     "model/behavior_comparator_configuration.m",
+     "model/behavior_dac_backend_parameters.m",
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_training_configuration.m",
+    "dir": "model",
+    "name": "behavior_training_configuration.m",
+    "lines": 87,
+    "defs": [
+     "behavior_training_configuration",
+     "pick"
+    ],
+    "calls": [
+     "public_calibration_config"
+    ],
+    "called_by": [
+     "model/behavior_prepare_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_transport_configuration.m",
+    "dir": "model",
+    "name": "behavior_transport_configuration.m",
+    "lines": 126,
+    "defs": [
+     "behavior_transport_configuration"
+    ],
+    "calls": [
+     "behavior_transport_config",
+     "behavior_transport_init"
+    ],
+    "called_by": [
+     "model/behavior_prepare_configuration.m",
+     "model/behavior_ra_noise_guard.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "model/behavior_wiring_sfun.m",
+    "dir": "model",
+    "name": "behavior_wiring_sfun.m",
+    "lines": 65,
+    "defs": [
+     "behavior_wiring_sfun"
+    ],
+    "calls": [
+     "behavior_az_schedule",
+     "command"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_232",
+      "path": "SarAdc / EventStep / Adc / SampleRaAdvance",
+      "block": "CaptureContext",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_232",
+      "path": "SarAdc / EventStep / Adc / SampleRaAdvance",
+      "block": "Time",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_244",
+      "path": "SarAdc / EventStep / Adc / DacCtFeedback",
+      "block": "DueCharge",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_244",
+      "path": "SarAdc / EventStep / Adc / DacCtFeedback",
+      "block": "DueContext",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_261",
+      "path": "SarAdc / EventStep / Adc / Sar1TrialRaCt",
+      "block": "RaCommand",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_261",
+      "path": "SarAdc / EventStep / Adc / Sar1TrialRaCt",
+      "block": "TrialContext",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_285",
+      "path": "SarAdc / EventStep / Adc / SarDecisionTracking",
+      "block": "RawWords",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_297",
+      "path": "SarAdc / EventStep / Adc / ChargeReturnRaReset",
+      "block": "ResetCommand",
+      "function": "behavior_wiring_sfun"
+     },
+     {
+      "system": "system_297",
+      "path": "SarAdc / EventStep / Adc / ChargeReturnRaReset",
+      "block": "ReturnContext",
+      "function": "behavior_wiring_sfun"
+     }
+    ]
+   },
+   {
+    "path": "physics/behavior_backend_pack.m",
+    "dir": "physics",
+    "name": "behavior_backend_pack.m",
+    "lines": 23,
+    "defs": [
+     "behavior_backend_pack"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_prepare_configuration.m",
+     "physics/behavior_backend_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/behavior_backend_parameters.m",
+    "dir": "physics",
+    "name": "behavior_backend_parameters.m",
+    "lines": 42,
+    "defs": [
+     "behavior_backend_parameters"
+    ],
+    "calls": [],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/behavior_backend_sfun.m",
+    "dir": "physics",
+    "name": "behavior_backend_sfun.m",
+    "lines": 65,
+    "defs": [
+     "behavior_backend_sfun"
+    ],
+    "calls": [
+     "behavior_backend_stage"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_232",
+      "path": "SarAdc / EventStep / Adc / SampleRaAdvance",
+      "block": "RaAdvance",
+      "function": "behavior_backend_sfun"
+     },
+     {
+      "system": "system_244",
+      "path": "SarAdc / EventStep / Adc / DacCtFeedback",
+      "block": "CtFeedback",
+      "function": "behavior_backend_sfun"
+     },
+     {
+      "system": "system_261",
+      "path": "SarAdc / EventStep / Adc / Sar1TrialRaCt",
+      "block": "RaAzCt",
+      "function": "behavior_backend_sfun"
+     },
+     {
+      "system": "system_297",
+      "path": "SarAdc / EventStep / Adc / ChargeReturnRaReset",
+      "block": "RaReset",
+      "function": "behavior_backend_sfun"
+     }
+    ]
+   },
+   {
+    "path": "physics/behavior_backend_stage.m",
+    "dir": "physics",
+    "name": "behavior_backend_stage.m",
+    "lines": 79,
+    "defs": [
+     "behavior_backend_stage",
+     "unpack_command"
+    ],
+    "calls": [
+     "behavior_backend_pack",
+     "behavior_backend_step",
+     "behavior_backend_unpack",
+     "behavior_dac_forcing_from_frontend"
+    ],
+    "called_by": [
+     "physics/behavior_backend_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/behavior_backend_step.m",
+    "dir": "physics",
+    "name": "behavior_backend_step.m",
+    "lines": 476,
+    "defs": [
+     "behavior_backend_step",
+     "advance_az",
+     "az_latch",
+     "target_parameters",
+     "observe",
+     "switch_networks",
+     "select_main",
+     "output_load",
+     "diff_pair",
+     "decay",
+     "exponential_response",
+     "az_near_pole",
+     "az_near_response",
+     "dac_ramp_response",
+     "normalize_command"
+    ],
+    "calls": [
+     "public_plan",
+     "sar20_cdac2_network",
+     "sar20_ra_ou_increment"
+    ],
+    "called_by": [
+     "model/behavior_prepare_configuration.m",
+     "physics/behavior_backend_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/behavior_backend_unpack.m",
+    "dir": "physics",
+    "name": "behavior_backend_unpack.m",
+    "lines": 32,
+    "defs": [
+     "behavior_backend_unpack"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_single_guard.m",
+     "physics/behavior_backend_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/behavior_dac_forcing_from_frontend.m",
+    "dir": "physics",
+    "name": "behavior_dac_forcing_from_frontend.m",
+    "lines": 44,
+    "defs": [
+     "behavior_dac_forcing_from_frontend"
+    ],
+    "calls": [
+     "behavior_frontend_unpack",
+     "behavior_public_pol",
+     "public_plan"
+    ],
+    "called_by": [
+     "physics/behavior_backend_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/behavior_ra_noise_validate_backend.m",
+    "dir": "physics",
+    "name": "behavior_ra_noise_validate_backend.m",
+    "lines": 135,
+    "defs": [
+     "binary"
+    ],
+    "calls": [
+     "public_plan"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/sar20_cdac2_network.m",
+    "dir": "physics",
+    "name": "sar20_cdac2_network.m",
+    "lines": 88,
+    "defs": [
+     "sar20_cdac2_network"
+    ],
+    "calls": [],
+    "called_by": [
+     "physics/behavior_backend_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/sar20_ra_keyed_normal.m",
+    "dir": "physics",
+    "name": "sar20_ra_keyed_normal.m",
+    "lines": 72,
+    "defs": [
+     "sar20_ra_keyed_normal",
+     "exact_nonnegative_double",
+     "big_endian_u64",
+     "read_big_endian_u64"
+    ],
+    "calls": [],
+    "called_by": [
+     "physics/sar20_ra_ou_increment.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "physics/sar20_ra_ou_increment.m",
+    "dir": "physics",
+    "name": "sar20_ra_ou_increment.m",
+    "lines": 64,
+    "defs": [
+     "sar20_ra_ou_increment",
+     "is_boolean"
+    ],
+    "calls": [
+     "sar20_ra_keyed_normal"
+    ],
+    "called_by": [
+     "physics/behavior_backend_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "reference/behavior_reference_queue_init.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_init.m",
+    "lines": 7,
+    "defs": [
+     "behavior_reference_queue_init"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_reference_configuration.m",
+     "reference/behavior_reference_queue_step.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "reference/behavior_reference_queue_pack.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_pack.m",
+    "lines": 8,
+    "defs": [
+     "behavior_reference_queue_pack"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_reference_configuration.m",
+     "reference/behavior_reference_queue_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "reference/behavior_reference_queue_parameters.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_parameters.m",
+    "lines": 22,
+    "defs": [
+     "behavior_reference_queue_parameters"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_reference_configuration.m",
+     "reference/behavior_reference_queue_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "reference/behavior_reference_queue_sfun.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_sfun.m",
+    "lines": 27,
+    "defs": [
+     "behavior_reference_queue_sfun"
+    ],
+    "calls": [
+     "behavior_reference_queue_parameters",
+     "behavior_reference_queue_stage"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_405",
+      "path": "SarAdc / EventStep / RefQueue",
+      "block": "ReferencePair",
+      "function": "behavior_reference_queue_sfun"
+     }
+    ]
+   },
+   {
+    "path": "reference/behavior_reference_queue_stage.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_stage.m",
+    "lines": 8,
+    "defs": [
+     "behavior_reference_queue_stage"
+    ],
+    "calls": [
+     "behavior_reference_queue_pack",
+     "behavior_reference_queue_step",
+     "behavior_reference_queue_unpack"
+    ],
+    "called_by": [
+     "reference/behavior_reference_queue_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "reference/behavior_reference_queue_step.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_step.m",
+    "lines": 89,
+    "defs": [
+     "behavior_reference_queue_step",
+     "bits"
+    ],
+    "calls": [
+     "behavior_reference_queue_init",
+     "event"
+    ],
+    "called_by": [
+     "reference/behavior_reference_queue_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "reference/behavior_reference_queue_unpack.m",
+    "dir": "reference",
+    "name": "behavior_reference_queue_unpack.m",
+    "lines": 10,
+    "defs": [
+     "behavior_reference_queue_unpack"
+    ],
+    "calls": [],
+    "called_by": [
+     "reference/behavior_reference_queue_stage.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_config.m",
+    "dir": "transport",
+    "name": "behavior_transport_config.m",
+    "lines": 17,
+    "defs": [
+     "behavior_transport_config"
+    ],
+    "calls": [],
+    "called_by": [
+     "model/behavior_transport_configuration.m",
+     "transport/behavior_transport_init.m",
+     "transport/behavior_transport_pack.m",
+     "transport/behavior_transport_pp_sfun.m",
+     "transport/behavior_transport_sfun.m",
+     "transport/behavior_transport_unpack.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_init.m",
+    "dir": "transport",
+    "name": "behavior_transport_init.m",
+    "lines": 30,
+    "defs": [
+     "behavior_transport_init"
+    ],
+    "calls": [
+     "behavior_transport_config",
+     "behavior_transport_pack",
+     "sar20_lvds_rx_step",
+     "sar20_lvds_tx_step"
+    ],
+    "called_by": [
+     "model/behavior_transport_configuration.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_pack.m",
+    "dir": "transport",
+    "name": "behavior_transport_pack.m",
+    "lines": 33,
+    "defs": [
+     "behavior_transport_pack",
+     "finite"
+    ],
+    "calls": [
+     "behavior_transport_config"
+    ],
+    "called_by": [
+     "analysis/behavior_sample_explain.m",
+     "transport/behavior_transport_init.m",
+     "transport/behavior_transport_step.m",
+     "transport/behavior_transport_step_pp.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_pp_sfun.m",
+    "dir": "transport",
+    "name": "behavior_transport_pp_sfun.m",
+    "lines": 32,
+    "defs": [
+     "behavior_transport_pp_sfun"
+    ],
+    "calls": [
+     "behavior_transport_config",
+     "behavior_transport_step_pp"
+    ],
+    "called_by": [],
+    "sfun_blocks": [
+     {
+      "system": "system_393",
+      "path": "SarAdc / EventStep / Transport",
+      "block": "PinTransport",
+      "function": "behavior_transport_pp_sfun"
+     }
+    ]
+   },
+   {
+    "path": "transport/behavior_transport_sfun.m",
+    "dir": "transport",
+    "name": "behavior_transport_sfun.m",
+    "lines": 31,
+    "defs": [
+     "behavior_transport_sfun"
+    ],
+    "calls": [
+     "behavior_transport_config",
+     "behavior_transport_step"
+    ],
+    "called_by": [],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_step.m",
+    "dir": "transport",
+    "name": "behavior_transport_step.m",
+    "lines": 95,
+    "defs": [
+     "behavior_transport_step",
+     "receive_row"
+    ],
+    "calls": [
+     "behavior_transport_pack",
+     "behavior_transport_unpack",
+     "sar20_lvds_rx_step",
+     "sar20_lvds_tx_step"
+    ],
+    "called_by": [
+     "transport/behavior_transport_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_step_pp.m",
+    "dir": "transport",
+    "name": "behavior_transport_step_pp.m",
+    "lines": 97,
+    "defs": [
+     "behavior_transport_step_pp",
+     "receive_row"
+    ],
+    "calls": [
+     "behavior_transport_pack",
+     "behavior_transport_unpack",
+     "sar20_lvds_rx_step",
+     "sar20_lvds_tx_step"
+    ],
+    "called_by": [
+     "transport/behavior_transport_pp_sfun.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/behavior_transport_unpack.m",
+    "dir": "transport",
+    "name": "behavior_transport_unpack.m",
+    "lines": 40,
+    "defs": [
+     "behavior_transport_unpack"
+    ],
+    "calls": [
+     "behavior_transport_config"
+    ],
+    "called_by": [
+     "transport/behavior_transport_step.m",
+     "transport/behavior_transport_step_pp.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/sar20_lvds_rx_step.m",
+    "dir": "transport",
+    "name": "sar20_lvds_rx_step.m",
+    "lines": 395,
+    "defs": [
+     "sar20_lvds_rx_step",
+     "decode_word",
+     "emit_invalid",
+     "slot_target",
+     "en_mode",
+     "initial_state",
+     "output_template",
+     "rx_defaults"
+    ],
+    "calls": [
+     "check_input"
+    ],
+    "called_by": [
+     "transport/behavior_transport_init.m",
+     "transport/behavior_transport_step.m",
+     "transport/behavior_transport_step_pp.m"
+    ],
+    "sfun_blocks": []
+   },
+   {
+    "path": "transport/sar20_lvds_tx_step.m",
+    "dir": "transport",
+    "name": "sar20_lvds_tx_step.m",
+    "lines": 549,
+    "defs": [
+     "sar20_lvds_tx_step",
+     "ingest_record",
+     "snapshot_record",
+     "push_sample_time",
+     "latest_sample_time",
+     "empty_cache_entry",
+     "pack_word",
+     "bounded_integer",
+     "bit_at",
+     "en_mode",
+     "initial_state",
+     "empty_cache",
+     "output_template",
+     "tx_defaults"
+    ],
+    "calls": [
+     "check_input"
+    ],
+    "called_by": [
+     "transport/behavior_transport_init.m",
+     "transport/behavior_transport_step.m",
+     "transport/behavior_transport_step_pp.m"
+    ],
+    "sfun_blocks": []
+   }
+  ],
+  "sfun_to_file": {
+   "sar20_pp_command_sfun": "calibration/sar20_pp_command_sfun.m",
+   "sar20_pp_sfun": "calibration/sar20_pp_sfun.m",
+   "behavior_train_reference_sfun": "calibration/behavior_train_reference_sfun.m",
+   "behavior_dither_sfun": "digital/behavior_dither_sfun.m",
+   "behavior_pol_sfun": "digital/behavior_pol_sfun.m",
+   "behavior_wiring_sfun": "model/behavior_wiring_sfun.m",
+   "behavior_backend_sfun": "physics/behavior_backend_sfun.m",
+   "behavior_frontend_sfun": "frontend/behavior_frontend_sfun.m",
+   "behavior_control_stage_sfun": "control/behavior_control_stage_sfun.m",
+   "behavior_adi_tap_sfun": "analysis/behavior_adi_tap_sfun.m",
+   "behavior_aperture_tap_sfun": "analysis/behavior_aperture_tap_sfun.m",
+   "behavior_frozen_sfun": "calibration/behavior_frozen_sfun.m",
+   "behavior_cal_train_sfun": "calibration/behavior_cal_train_sfun.m",
+   "behavior_transport_pp_sfun": "transport/behavior_transport_pp_sfun.m",
+   "behavior_reference_queue_sfun": "reference/behavior_reference_queue_sfun.m",
+   "behavior_event_source": "control/behavior_event_source.m"
+  }
+ },
+ "events": [
+  {
+   "ns": 0.0,
+   "type": "cnv",
+   "index": -1,
+   "bit": -1,
+   "priority": 0,
+   "tick": 0
+  },
+  {
+   "ns": 12.5,
+   "type": "coarse_latch",
+   "index": -1,
+   "bit": -1,
+   "priority": 20,
+   "tick": 50
+  },
+  {
+   "ns": 12.5,
+   "type": "fine_prepare",
+   "index": 0,
+   "bit": 4,
+   "priority": 30,
+   "tick": 50
+  },
+  {
+   "ns": 15.0,
+   "type": "fine_decide",
+   "index": 0,
+   "bit": 4,
+   "priority": 40,
+   "tick": 60
+  },
+  {
+   "ns": 16.25,
+   "type": "fine_feedback",
+   "index": 0,
+   "bit": 4,
+   "priority": 10,
+   "tick": 65
+  },
+  {
+   "ns": 16.25,
+   "type": "fine_prepare",
+   "index": 1,
+   "bit": 3,
+   "priority": 30,
+   "tick": 65
+  },
+  {
+   "ns": 18.75,
+   "type": "fine_decide",
+   "index": 1,
+   "bit": 3,
+   "priority": 40,
+   "tick": 75
+  },
+  {
+   "ns": 20.0,
+   "type": "fine_feedback",
+   "index": 1,
+   "bit": 3,
+   "priority": 10,
+   "tick": 80
+  },
+  {
+   "ns": 20.0,
+   "type": "fine_prepare",
+   "index": 2,
+   "bit": 2,
+   "priority": 30,
+   "tick": 80
+  },
+  {
+   "ns": 22.5,
+   "type": "fine_decide",
+   "index": 2,
+   "bit": 2,
+   "priority": 40,
+   "tick": 90
+  },
+  {
+   "ns": 23.75,
+   "type": "fine_feedback",
+   "index": 2,
+   "bit": 2,
+   "priority": 10,
+   "tick": 95
+  },
+  {
+   "ns": 23.75,
+   "type": "fine_prepare",
+   "index": 3,
+   "bit": 1,
+   "priority": 30,
+   "tick": 95
+  },
+  {
+   "ns": 26.25,
+   "type": "fine_decide",
+   "index": 3,
+   "bit": 1,
+   "priority": 40,
+   "tick": 105
+  },
+  {
+   "ns": 27.5,
+   "type": "fine_feedback",
+   "index": 3,
+   "bit": 1,
+   "priority": 10,
+   "tick": 110
+  },
+  {
+   "ns": 27.5,
+   "type": "fine_prepare",
+   "index": 4,
+   "bit": 0,
+   "priority": 30,
+   "tick": 110
+  },
+  {
+   "ns": 30.0,
+   "type": "fine_decide",
+   "index": 4,
+   "bit": 0,
+   "priority": 40,
+   "tick": 120
+  },
+  {
+   "ns": 31.25,
+   "type": "fine_feedback",
+   "index": 4,
+   "bit": 0,
+   "priority": 10,
+   "tick": 125
+  },
+  {
+   "ns": 31.25,
+   "type": "ra_start",
+   "index": -1,
+   "bit": -1,
+   "priority": 60,
+   "tick": 125
+  },
+  {
+   "ns": 43.75,
+   "type": "d2_prepare",
+   "index": 0,
+   "bit": 11,
+   "priority": 30,
+   "tick": 175
+  },
+  {
+   "ns": 45.0,
+   "type": "d2_decide",
+   "index": 0,
+   "bit": 11,
+   "priority": 40,
+   "tick": 180
+  },
+  {
+   "ns": 46.25,
+   "type": "d2_feedback",
+   "index": 0,
+   "bit": 11,
+   "priority": 10,
+   "tick": 185
+  },
+  {
+   "ns": 46.25,
+   "type": "d2_prepare",
+   "index": 1,
+   "bit": 10,
+   "priority": 30,
+   "tick": 185
+  },
+  {
+   "ns": 47.5,
+   "type": "d2_decide",
+   "index": 1,
+   "bit": 10,
+   "priority": 40,
+   "tick": 190
+  },
+  {
+   "ns": 48.75,
+   "type": "d2_feedback",
+   "index": 1,
+   "bit": 10,
+   "priority": 10,
+   "tick": 195
+  },
+  {
+   "ns": 48.75,
+   "type": "d2_prepare",
+   "index": 2,
+   "bit": 9,
+   "priority": 30,
+   "tick": 195
+  },
+  {
+   "ns": 50.0,
+   "type": "d2_decide",
+   "index": 2,
+   "bit": 9,
+   "priority": 40,
+   "tick": 200
+  },
+  {
+   "ns": 51.25,
+   "type": "d2_feedback",
+   "index": 2,
+   "bit": 9,
+   "priority": 10,
+   "tick": 205
+  },
+  {
+   "ns": 51.25,
+   "type": "d2_prepare",
+   "index": 3,
+   "bit": 8,
+   "priority": 30,
+   "tick": 205
+  },
+  {
+   "ns": 52.5,
+   "type": "d2_decide",
+   "index": 3,
+   "bit": 8,
+   "priority": 40,
+   "tick": 210
+  },
+  {
+   "ns": 53.75,
+   "type": "d2_feedback",
+   "index": 3,
+   "bit": 8,
+   "priority": 10,
+   "tick": 215
+  },
+  {
+   "ns": 53.75,
+   "type": "d2_prepare",
+   "index": 4,
+   "bit": 7,
+   "priority": 30,
+   "tick": 215
+  },
+  {
+   "ns": 55.0,
+   "type": "d2_decide",
+   "index": 4,
+   "bit": 7,
+   "priority": 40,
+   "tick": 220
+  },
+  {
+   "ns": 56.25,
+   "type": "d2_feedback",
+   "index": 4,
+   "bit": 7,
+   "priority": 10,
+   "tick": 225
+  },
+  {
+   "ns": 56.25,
+   "type": "d2_prepare",
+   "index": 5,
+   "bit": 6,
+   "priority": 30,
+   "tick": 225
+  },
+  {
+   "ns": 57.5,
+   "type": "d2_decide",
+   "index": 5,
+   "bit": 6,
+   "priority": 40,
+   "tick": 230
+  },
+  {
+   "ns": 58.75,
+   "type": "d2_feedback",
+   "index": 5,
+   "bit": 6,
+   "priority": 10,
+   "tick": 235
+  },
+  {
+   "ns": 58.75,
+   "type": "d2_prepare",
+   "index": 6,
+   "bit": 5,
+   "priority": 30,
+   "tick": 235
+  },
+  {
+   "ns": 60.0,
+   "type": "d2_decide",
+   "index": 6,
+   "bit": 5,
+   "priority": 40,
+   "tick": 240
+  },
+  {
+   "ns": 61.25,
+   "type": "d2_feedback",
+   "index": 6,
+   "bit": 5,
+   "priority": 10,
+   "tick": 245
+  },
+  {
+   "ns": 61.25,
+   "type": "d2_prepare",
+   "index": 7,
+   "bit": 4,
+   "priority": 30,
+   "tick": 245
+  },
+  {
+   "ns": 62.5,
+   "type": "d2_decide",
+   "index": 7,
+   "bit": 4,
+   "priority": 40,
+   "tick": 250
+  },
+  {
+   "ns": 63.75,
+   "type": "d2_feedback",
+   "index": 7,
+   "bit": 4,
+   "priority": 10,
+   "tick": 255
+  },
+  {
+   "ns": 63.75,
+   "type": "d2_prepare",
+   "index": 8,
+   "bit": 3,
+   "priority": 30,
+   "tick": 255
+  },
+  {
+   "ns": 65.0,
+   "type": "d2_decide",
+   "index": 8,
+   "bit": 3,
+   "priority": 40,
+   "tick": 260
+  },
+  {
+   "ns": 66.25,
+   "type": "d2_feedback",
+   "index": 8,
+   "bit": 3,
+   "priority": 10,
+   "tick": 265
+  },
+  {
+   "ns": 66.25,
+   "type": "d2_prepare",
+   "index": 9,
+   "bit": 2,
+   "priority": 30,
+   "tick": 265
+  },
+  {
+   "ns": 67.5,
+   "type": "d2_decide",
+   "index": 9,
+   "bit": 2,
+   "priority": 40,
+   "tick": 270
+  },
+  {
+   "ns": 68.75,
+   "type": "d2_feedback",
+   "index": 9,
+   "bit": 2,
+   "priority": 10,
+   "tick": 275
+  },
+  {
+   "ns": 68.75,
+   "type": "d2_prepare",
+   "index": 10,
+   "bit": 1,
+   "priority": 30,
+   "tick": 275
+  },
+  {
+   "ns": 70.0,
+   "type": "d2_decide",
+   "index": 10,
+   "bit": 1,
+   "priority": 40,
+   "tick": 280
+  },
+  {
+   "ns": 71.25,
+   "type": "d2_feedback",
+   "index": 10,
+   "bit": 1,
+   "priority": 10,
+   "tick": 285
+  },
+  {
+   "ns": 71.25,
+   "type": "d2_prepare",
+   "index": 11,
+   "bit": 0,
+   "priority": 30,
+   "tick": 285
+  },
+  {
+   "ns": 72.5,
+   "type": "d2_decide",
+   "index": 11,
+   "bit": 0,
+   "priority": 40,
+   "tick": 290
+  },
+  {
+   "ns": 73.75,
+   "type": "d2_feedback",
+   "index": 11,
+   "bit": 0,
+   "priority": 10,
+   "tick": 295
+  },
+  {
+   "ns": 73.75,
+   "type": "d2_end",
+   "index": -1,
+   "bit": -1,
+   "priority": 60,
+   "tick": 295
+  },
+  {
+   "ns": 75.0,
+   "type": "ta_compare",
+   "index": 0,
+   "bit": 7,
+   "priority": 40,
+   "tick": 300
+  },
+  {
+   "ns": 76.25,
+   "type": "ta_feedback",
+   "index": 0,
+   "bit": 7,
+   "priority": 10,
+   "tick": 305
+  },
+  {
+   "ns": 76.25,
+   "type": "ta_compare",
+   "index": 1,
+   "bit": 6,
+   "priority": 40,
+   "tick": 305
+  },
+  {
+   "ns": 77.5,
+   "type": "ta_feedback",
+   "index": 1,
+   "bit": 6,
+   "priority": 10,
+   "tick": 310
+  },
+  {
+   "ns": 77.5,
+   "type": "ta_compare",
+   "index": 2,
+   "bit": 5,
+   "priority": 40,
+   "tick": 310
+  },
+  {
+   "ns": 78.75,
+   "type": "ta_feedback",
+   "index": 2,
+   "bit": 5,
+   "priority": 10,
+   "tick": 315
+  },
+  {
+   "ns": 78.75,
+   "type": "ta_compare",
+   "index": 3,
+   "bit": 4,
+   "priority": 40,
+   "tick": 315
+  },
+  {
+   "ns": 80.0,
+   "type": "ta_feedback",
+   "index": 3,
+   "bit": 4,
+   "priority": 10,
+   "tick": 320
+  },
+  {
+   "ns": 80.0,
+   "type": "ta_compare",
+   "index": 4,
+   "bit": 3,
+   "priority": 40,
+   "tick": 320
+  },
+  {
+   "ns": 81.25,
+   "type": "ta_feedback",
+   "index": 4,
+   "bit": 3,
+   "priority": 10,
+   "tick": 325
+  },
+  {
+   "ns": 81.25,
+   "type": "ta_compare",
+   "index": 5,
+   "bit": 2,
+   "priority": 40,
+   "tick": 325
+  },
+  {
+   "ns": 82.5,
+   "type": "ta_feedback",
+   "index": 5,
+   "bit": 2,
+   "priority": 10,
+   "tick": 330
+  },
+  {
+   "ns": 82.5,
+   "type": "ta_compare",
+   "index": 6,
+   "bit": 1,
+   "priority": 40,
+   "tick": 330
+  },
+  {
+   "ns": 83.75,
+   "type": "ta_feedback",
+   "index": 6,
+   "bit": 1,
+   "priority": 10,
+   "tick": 335
+  },
+  {
+   "ns": 83.75,
+   "type": "ta_compare",
+   "index": 7,
+   "bit": 0,
+   "priority": 40,
+   "tick": 335
+  },
+  {
+   "ns": 85.0,
+   "type": "tracking_end",
+   "index": -1,
+   "bit": -1,
+   "priority": 60,
+   "tick": 340
+  },
+  {
+   "ns": 86.25,
+   "type": "raw_latch",
+   "index": -1,
+   "bit": -1,
+   "priority": 80,
+   "tick": 345
+  },
+  {
+   "ns": 90.0,
+   "type": "release",
+   "index": -1,
+   "bit": -1,
+   "priority": 90,
+   "tick": 360
+  }
+ ]
+}

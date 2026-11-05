@@ -14,6 +14,7 @@
 [![English](https://img.shields.io/badge/docs-English-lightgrey)](README_EN.md)
 [![Plan](https://img.shields.io/badge/计划-PROJECT_PLAN-important)](docs/PROJECT_PLAN.md)
 [![Design](https://img.shields.io/badge/设计约束-Error%20Budget-critical)](design/budget/ERROR_BUDGET_REV03.md)
+[![Model Map](https://img.shields.io/badge/看不懂模型-交互结构图-blueviolet)](analysis/model_map/sar20_model_map.html)
 
 </div>
 
@@ -55,6 +56,7 @@
 
 | 我想…… | 去哪里 |
 |---|---|
+| **🔍 打开 Simulink 看不懂模型结构（先看这个）** | [🗺️ 交互模型结构图](analysis/model_map/sar20_model_map.html)（单文件离线、双击子系统进入、点块看绑定源码）· [怎么读这张图](analysis/model_map/README.md) · [机器可读结构](analysis/model_map/model_map.json) |
 | **拿它指导电路设计：每个模块该做到多少噪声/电容/带宽** | [🎯 设计约束闭环（Rev0.3 误差预算）](design/budget/ERROR_BUDGET_REV03.md) · [预算 JSON](design/budget/error_budget_rev03.json) · [参数绑定表](design/budget/parameter_binding.csv) · [校验脚本](design/budget/verify_budget.py) |
 | **判断这个工程到底怎么样了** | [§0 30 秒判断](#0-30-秒判断) · [全面分析报告](docs/ENGINEERING_ANALYSIS.md) |
 | **知道接下来该做什么、按什么顺序** | [📋 项目计划 PROJECT_PLAN.md](docs/PROJECT_PLAN.md)（M0–M4 的验收门、命令、回滚） |
@@ -188,6 +190,8 @@ M0 计划用机器可读的 `CURRENT.json` 收敛这一局面，并把上述旧�
 
 ## 4. 架构与工作原理
 
+> 🗺️ **文字读不进去就直接打开 [交互模型结构图](analysis/model_map/sar20_model_map.html)**：它从当前生产 SLX（`91973cf7…`）的 XML 直接解析出 14 个子系统、290 个块、203 条连线和 16 个 S-Function 入口，可逐层双击、拖动缩放、点块查看中文注释与绑定的 `current/src/**/*.m`。零 MATLAB、不加载模型、不仿真；含「源码地图 / 事件时间轴 / 怎么读这个工程」四页。生成与证据边界见 [analysis/model_map/README.md](analysis/model_map/README.md)。
+
 ### 4.1 信号链
 
 ```
@@ -204,7 +208,7 @@ Stimulus/Driver → Sample/CDAC1(18 片×38 列) → SAR1(6b coarse 辅助 + 10b
 
 ### 4.2 状态 owner 与 200 ns 事件日历
 
-**只有三个标准 UnitDelay 状态 owner**，没有第二套电荷记忆（`READ_GRAPH.md:44`）：
+**ADC 内只有三个状态 owner**，没有第二套电荷记忆（`READ_GRAPH.md:44`）。注意整张 SLX 共 **6 个 UnitDelay**：另 3 个是 `BankOwnerState`、`TxRxState`、`ReferenceHistory`，属 Bank／Transport／RefQueue 的数字或仪器记忆，不增加 ADC 模拟状态。下表 `[353]/[48]/[51]` 与别名 `FE353/RA48/SAR51` 指的是**状态向量宽度（double 个数）**，不是 Simulink Block SID（当前 SLX 中三者 SID 为 148/149/150，见[模型结构图](analysis/model_map/sar20_model_map.html)）：
 
 | Owner | 宽度 | 内容 | 源码 |
 |---|---|---|---|
@@ -530,6 +534,7 @@ $PY sar20_probe.py html                 # 重新生成离线调试面板
 | [`design/`](design/) | 2026-10-26 验收/工程/前端/调度草案 | 📜 含未实施设想 |
 | [`analysis/behavior/`](analysis/behavior/) | 52 个实验目录的真实 as-run 证据 | 📜 归档 |
 | [`analysis/local_debug/`](analysis/local_debug/) | 零 MATLAB 只读探针与离线面板 | 🆕 |
+| [`analysis/model_map/`](analysis/model_map/) | 真实 SLX 离线交互结构图、生成器与结构 JSON | 🆕 只读派生 |
 | [`analysis/debug_ui_20261105/`](analysis/debug_ui_20261105/) | 暂停的候选与恢复索引 | ⏸️ 未晋升 |
 | [`_preserved/`](_preserved/) | 改动前备份 | 📜 可回滚 |
 | [`dependencies/toolkit/`](dependencies/toolkit/) | MathWorks SATK 2026.10.b（第三方） | 运行依赖 |
@@ -542,6 +547,7 @@ $PY sar20_probe.py html                 # 重新生成离线调试面板
 
 | 文档 | 用途 |
 |---|---|
+| [**交互模型结构图 sar20_model_map.html**](analysis/model_map/sar20_model_map.html) · [说明](analysis/model_map/README.md) | **看懂 Simulink 工程**：真实 SLX 的层次/块/连线/S-Function 绑定 + 源码地图 + 事件时间轴 + 导读；单文件离线打开 |
 | [**设计约束闭环 ERROR_BUDGET_REV03.md**](design/budget/ERROR_BUDGET_REV03.md) | **指导电路设计**：Rev0.3 指标 → 输入参考误差预算 → 模块规格 → 器件参数 → 验证门；含机器可读 JSON、参数绑定 CSV 与校验脚本 |
 | [**项目计划 PROJECT_PLAN.md**](docs/PROJECT_PLAN.md) | **当前唯一路线**：M0–M4 的验收门、命令、回滚、证据层级 |
 | [全面分析 ENGINEERING_ANALYSIS.md](docs/ENGINEERING_ANALYSIS.md) | 系统诊断：目标/时间线/架构/证据总账/治理/风险分级 |

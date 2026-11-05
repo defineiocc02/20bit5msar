@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAR20-5 模型结构图 · 从真实 SLX 解析</title>
+<style>
+:root{
+  --bg:#f6f8fc; --panel:#fff; --ink:#1f2937; --muted:#64748b; --line:#e2e8f0;
+  --accent:#2563eb; --accent-soft:#eff6ff; --warn:#b45309; --warn-soft:#fffbeb;
+  --ok:#15803d; --shadow:0 1px 3px rgba(15,23,42,.07),0 8px 24px rgba(15,23,42,.04);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif}
+header{background:var(--panel);border-bottom:1px solid var(--line);padding:14px 22px 0}
+h1{font-size:19px;margin:0 0 4px;letter-spacing:.2px}
+.sub{color:var(--muted);font-size:12.5px;margin-bottom:10px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.badge{background:var(--accent-soft);color:#1d4ed8;border:1px solid #dbeafe;
+  border-radius:999px;padding:2px 10px;font-size:11.5px;font-weight:600}
+.badge.gray{background:#f1f5f9;color:#475569;border-color:#e2e8f0}
+.badge.warn{background:var(--warn-soft);color:var(--warn);border-color:#fde68a}
+.tabs{display:flex;gap:2px}
+.tab{border:1px solid transparent;border-bottom:none;border-radius:8px 8px 0 0;
+  padding:8px 16px;cursor:pointer;color:var(--muted);font-weight:600;font-size:13px;background:transparent}
+.tab:hover{color:var(--accent);background:#f8fafc}
+.tab.on{background:var(--bg);border-color:var(--line);color:var(--accent);
+  box-shadow:0 -2px 0 var(--accent) inset}
+.wrap{padding:14px 18px 22px}
+.view{display:none}.view.on{display:block}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:232px minmax(0,1fr) 320px;gap:12px;align-items:start}
+.col{overflow:hidden}
+.col h3{margin:0;padding:10px 12px;font-size:12.5px;color:var(--muted);
+  border-bottom:1px solid var(--line);background:#fafbfe;font-weight:700;letter-spacing:.4px}
+.pad{padding:10px 12px}
+input[type=search],input[type=text]{width:100%;padding:7px 9px;border:1px solid var(--line);
+  border-radius:7px;font:inherit;font-size:12.5px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid #bfdbfe;border-color:#93c5fd}
+.tree{max-height:560px;overflow:auto;padding:6px 0}
+.tree-item{padding:5px 10px;cursor:pointer;font-size:12.5px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;border-left:3px solid transparent}
+.tree-item:hover{background:#f1f5f9}
+.tree-item.active{background:var(--accent-soft);border-left-color:var(--accent);color:#1d4ed8;font-weight:600}
+.cnt{color:#94a3b8;font-size:11px;margin-left:4px}
+.results{max-height:210px;overflow:auto;margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}
+.res-item{padding:4px 6px;font-size:12px;cursor:pointer;border-radius:5px}
+.res-item:hover{background:var(--accent-soft);color:#1d4ed8}
+.res-item small{color:#94a3b8;display:block;font-size:10.5px;line-height:1.3}
+.toolbar{display:flex;gap:6px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 10px;
+  cursor:pointer;font-size:12px;color:var(--ink)}
+.btn:hover{background:var(--accent-soft);border-color:#bfdbfe;color:#1d4ed8}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.crumb{font-size:12px;color:var(--muted);margin-left:auto}
+#canvas-wrap{position:relative;background:
+  linear-gradient(#eef2f8 1px,transparent 1px) 0 0/22px 22px,
+  linear-gradient(90deg,#eef2f8 1px,transparent 1px) 0 0/22px 22px,#fcfdff;
+  height:620px;overflow:hidden}
+#svg{width:100%;height:100%;display:block;cursor:grab}
+#svg.drag{cursor:grabbing}
+.blk{cursor:pointer}
+.blk rect{stroke-width:1.6;rx:5}
+.blk:hover rect{stroke-width:2.6;filter:brightness(.96)}
+.blk.sel rect{stroke:#0f172a;stroke-width:3}
+.blk text{font:10.5px -apple-system,"PingFang SC",sans-serif;fill:#0f172a;
+  text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.blk .t2{font-size:9px;fill:#64748b}
+.wire{fill:none;stroke:#94a3b8;stroke-width:1.3;opacity:.75}
+.wire.hi{stroke:var(--accent);stroke-width:2.4;opacity:1}
+.legend{display:flex;gap:12px;flex-wrap:wrap;padding:8px 12px;border-top:1px solid var(--line);
+  font-size:11.5px;color:var(--muted)}
+.lg{display:inline-flex;align-items:center;gap:5px}
+.sw{width:12px;height:12px;border-radius:3px;border:1.5px solid;display:inline-block}
+#detail{max-height:620px;overflow:auto;padding:12px}
+.kv{margin-bottom:10px}
+.kv b{display:block;font-size:11px;color:var(--muted);letter-spacing:.4px;margin-bottom:3px}
+.kv .v{font-size:13px;word-break:break-word}
+.code{font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f8fafc;
+  border:1px solid var(--line);border-radius:6px;padding:6px 8px;word-break:break-all}
+.attrs{white-space:pre-wrap;font-size:11.5px;line-height:1.5;background:#f8fafc;
+  border:1px solid var(--line);border-radius:6px;padding:8px;max-height:210px;overflow:auto}
+.chip{display:inline-block;background:#f1f5f9;border:1px solid var(--line);border-radius:5px;
+  padding:1px 7px;margin:2px 3px 2px 0;font-size:11.5px;cursor:pointer}
+.chip:hover{background:var(--accent-soft);border-color:#bfdbfe;color:#1d4ed8}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#fafbfe;color:var(--muted);font-size:11.5px;position:sticky;top:0;z-index:1}
+tr.row{cursor:pointer}tr.row:hover{background:#f8fafc}
+.note{background:var(--warn-soft);border:1px solid #fde68a;color:#78350f;
+  border-radius:8px;padding:9px 12px;font-size:12.5px;margin-bottom:12px}
+.note.info{background:var(--accent-soft);border-color:#bfdbfe;color:#1e40af}
+.ok{color:var(--ok);font-weight:600}
+.small{font-size:11.5px;color:var(--muted)}
+.srcgrid{display:grid;grid-template-columns:190px minmax(0,1fr);gap:12px}
+.dirlist{max-height:640px;overflow:auto}
+.dir-item{padding:7px 10px;cursor:pointer;border-radius:6px;font-size:12.5px;display:flex;
+  justify-content:space-between}
+.dir-item:hover,.dir-item.on{background:var(--accent-soft);color:#1d4ed8}
+.srctable{max-height:640px;overflow:auto}
+.expanded{background:#f8fafc}
+.expanded td{padding:10px 14px}
+.tl-wrap{overflow-x:auto}
+.tl-svg{width:100%;min-width:1100px;height:260px;display:block}
+.ev{cursor:pointer}
+.ev:hover circle{r:6;stroke:#0f172a;stroke-width:2}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px}
+.card{padding:12px 14px}
+.card h4{margin:0 0 7px;font-size:13.5px}
+.card p,.card li{font-size:12.5px;color:#475569;margin:4px 0}
+.card ul{padding-left:18px;margin:6px 0}
+.flow{width:100%;height:230px;display:block}
+footer{padding:14px 22px 26px;color:var(--muted);font-size:11.5px}
+@media(max-width:1150px){.grid{grid-template-columns:200px minmax(0,1fr)}.col.detail{grid-column:1/-1}
+  #detail{max-height:none}.srcgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SAR20-5 模型结构图 <span class="small">· 从真实 SLX XML 解析</span></h1>
+  <div class="sub">零 MATLAB、不加载模型、不仿真。块位置、连线、中文注释与 S-Function 绑定均来自 <code>current/models/SarAdc.slx</code> 本身。</div>
+  <div class="badges" id="badges"></div>
+  <div class="tabs">
+    <div class="tab on" data-view="graph">🗺️ 模型框图</div>
+    <div class="tab" data-view="source">📄 源码地图</div>
+    <div class="tab" data-view="timeline">⏱️ 事件时间轴</div>
+    <div class="tab" data-view="guide">🧭 怎么读这个工程</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- ============ GRAPH ============ -->
+  <section class="view on" id="view-graph">
+    <div class="grid">
+      <div class="panel col">
+        <h3>层次结构（点子系统进入）</h3>
+        <div class="pad"><input type="search" id="search" placeholder="搜块名 / S-Function / 注释 / 源码…"></div>
+        <div class="tree" id="tree"></div>
+        <div class="results" id="results" style="padding:0 10px"></div>
+      </div>
+
+      <div class="panel col">
+        <div class="toolbar">
+          <button class="btn" id="zoom-in">＋</button>
+          <button class="btn" id="zoom-out">－</button>
+          <button class="btn" id="zoom-fit">适应</button>
+          <button class="btn" id="up">↑ 上一层</button>
+          <span class="crumb" id="crumb"></span>
+        </div>
+        <div id="canvas-wrap"><svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+        <div class="legend">
+          <span class="lg"><i class="sw" style="background:#dbeafe;border-color:#2563eb"></i>子系统</span>
+          <span class="lg"><i class="sw" style="background:#ffedd5;border-color:#ea580c"></i>S-Function（对应 .m）</span>
+          <span class="lg"><i class="sw" style="background:#fee2e2;border-color:#dc2626"></i>UnitDelay 状态</span>
+          <span class="lg"><i class="sw" style="background:#dcfce7;border-color:#16a34a"></i>输入/输出口</span>
+          <span class="lg"><i class="sw" style="background:#f1f5f9;border-color:#64748b"></i>常数/时钟</span>
+          <span class="lg"><i class="sw" style="background:#f0f9ff;border-color:#0891b2"></i>其他运算块</span>
+          <span class="lg">双击子系统进入 · 拖动平移 · 滚轮缩放</span>
+        </div>
+      </div>
+
+      <div class="panel col detail">
+        <h3>块详情</h3>
+        <div id="detail"><p class="small">点左图任意块查看：类型、中文注释、绑定的源码、上下游连线。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCE ============ -->
+  <section class="view" id="view-source">
+    <div class="note info" id="src-note"></div>
+    <div class="srcgrid">
+      <div class="panel col">
+        <h3>源码目录</h3>
+        <div class="pad"><input type="text" id="src-search" placeholder="搜文件名 / 函数名…"></div>
+        <div class="dirlist" id="dirlist"></div>
+      </div>
+      <div class="panel col">
+        <h3 id="src-title">全部源文件</h3>
+        <div class="srctable"><table><thead><tr><th>文件</th><th>行</th><th>定义函数</th><th>绑定 S-Function</th><th>调用/被调用</th></tr></thead><tbody id="srctbody"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE ============ -->
+  <section class="view" id="view-timeline">
+    <div class="note" id="tl-note"></div>
+    <div class="panel"><div class="toolbar"><b style="font-size:13px">一个 CNV 周期内发生了什么</b><span class="crumb">点事件看详情</span></div>
+      <div class="tl-wrap"><svg class="tl-svg" id="tl" xmlns="http://www.w3.org/2000/svg"></svg></div>
+      <div class="pad" id="ev-detail"></div>
+    </div>
+    <div class="cardgrid" id="tl-cards"></div>
+  </section>
+
+  <!-- ============ GUIDE ============ -->
+  <section class="view" id="view-guide">
+    <div class="note info" id="guide-note"></div>
+    <div class="panel"><div class="toolbar"><b style="font-size:13px">一次转换的数据流</b></div><svg class="flow" id="flow" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div class="cardgrid" id="guide-cards"></div>
+  </section>
+</div>
+
+<footer id="footer"></footer>
+
+<script id="model-data" type="application/json">/*__MODEL_DATA__*/</script>
+<script>
+"use strict";
+const D = JSON.parse(document.getElementById('model-data').textContent);
+const S=D.systems, F=D.sources.files, SF=D.sources.sfun_to_file, E=D.events, M=D.meta;
+const V=M.derived, CS=M.compute_stages;
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = id => document.getElementById(id);
+
+/* ---------- header ---------- */
+$('badges').innerHTML = [
+  `<span class="badge">${M.systems} 个子系统</span>`,
+  `<span class="badge">${M.blocks} 个块</span>`,
+  `<span class="badge">${M.lines} 条连线</span>`,
+  `<span class="badge">${V.sfun_blocks} 个 S-Function 块 / ${V.sfun_distinct} 个入口</span>`,
+  `<span class="badge">${M.source_files} 个 .m / ${M.source_lines} 行</span>`,
+  `<span class="badge">${M.events} 个事件 / ${V.unique_event_times} 组时刻</span>`,
+  `<span class="badge">${V.unit_delay_total} 个 UnitDelay</span>`,
+  `<span class="badge gray">SHA ${esc(M.slx_sha256.slice(0,12))}…</span>`,
+  `<span class="badge warn">静态解析 · 非仿真</span>`
+].join('');
+$('footer').innerHTML = `来源：${esc(M.slx)}（${M.slx_bytes.toLocaleString()} B，SHA256 ${esc(M.slx_sha256)}）· `
+  + `${esc(M.method)} · 事件依据 ${esc(M.event_source)} · 由 <code>analysis/model_map/build_model_map.py</code> 生成，可离线打开。`;
+
+/* ---------- evidence-backed notes (all numbers derived from parsed SLX) ---------- */
+$('src-note').innerHTML = `SLX 里共 <b>${V.sfun_blocks} 个 M-S-Function 块</b>，指向 <b>${V.sfun_distinct} 个不同 <code>FunctionName</code> 入口</b>`
+  + `（同一个入口常被复用，例如 <code>behavior_wiring_sfun</code> 出现 9 次）。这 ${V.sfun_distinct} 个入口与`
+  + ` <code>current/src/</code> 下的 <code>.m</code> 文件名逐一对应，全部已解析。下表把 ${M.source_files} 个源文件按职责分组，`
+  + `并给出静态词法近似的调用关系（可能有注释噪声，仅作导航）。`;
+
+$('tl-note').innerHTML = `事件来自 <code>${esc(M.event_source)}</code> 的 <code>add()</code> 规则——`
+  + `由构建脚本<b>解析该 .m 源码并展开循环</b>（固定 200 ns 周期、250 ps tick），不是仿真波形，也不是手工抄录的时刻表。`
+  + `共 <b>${E.length} 个事件、${V.unique_event_times} 组唯一时刻</b>，按 <code>[tick, priority]</code> 排序；`
+  + `图中只画 0–90 ns 的 ADC 日历。<span class="small">92 ns guard、138 ns 传输收槽、transport ON 约 538 ns 属 `
+  + `<code>docs/READ_GRAPH.md</code> 记载的调度/解释页时间线，不是本日历事件，故未画入。</span>`;
+
+$('guide-note').innerHTML = `<b>先读这一句</b>：这不是六套电路，而是<b>同一组状态在一个事件内的 6 个计算阶段</b>；`
+  + ` Adc 共 ${V.adc_children} 个子系统，第 7 个 <code>Diagnostics</code> 只读观察、不参与物理计算。`
+  + ` 整张图共 <b>${V.unit_delay_total} 个标准 UnitDelay</b>，其中 <b>Adc 内 ${V.unit_delay_adc} 个才是模拟状态 owner</b>`
+  + `（方括号为 SLX Block SID：${V.unit_delay_analog.map(x=>'<code>'+esc(x.name)+'['+esc(x.sid)+']</code>').join('、')}），`
+  + ` 另外 ${V.unit_delay_total-V.unit_delay_adc} 个是 `
+  + ` ${V.unit_delay_other.map(x=>'<code>'+esc(x.name)+'</code>（'+esc(x.path.split(' / ').pop())+'）').join('、')} 的数字/仪器记忆，不增加 ADC 模拟状态。`
+  + `<br><b>注意</b>：左侧层次树是 SLX 的<b>字母存储顺序</b>${V.adc_tree_is_alphabetical?'（已核实确为字母序）':''}，`
+  + `<b>不是执行顺序</b>；6 个阶段的真实先后见下方卡片，依据 <code>docs/READ_GRAPH.md</code> 的依赖顺序表。`
+  + `<span class="small">（下图为导读示意，不是 SLX 原始布局；原始布局见「模型框图」。）</span>`;
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on'); $('view-'+t.dataset.view).classList.add('on');
+  if(t.dataset.view==='timeline') drawTimeline();
+  if(t.dataset.view==='guide') drawFlow();
+});
+
+/* ---------- graph ---------- */
+let cur='system_root', sel=null, scale=1, panX=0, panY=0, LAY=null;
+const W=1500,H=950,PAD=60;
+const COLORS={
+  SubSystem:['#dbeafe','#2563eb'], 'M-S-Function':['#ffedd5','#ea580c'],
+  UnitDelay:['#fee2e2','#dc2626'], Inport:['#dcfce7','#16a34a'],
+  Outport:['#dcfce7','#16a34a'], TriggerPort:['#dcfce7','#16a34a'],
+  Constant:['#f1f5f9','#64748b'], Clock:['#f1f5f9','#64748b']
+};
+function color(t){return COLORS[t]||['#f0f9ff','#0891b2']}
+function fit(){scale=1;panX=0;panY=0;applyView()}
+function applyView(){
+  const svg=$('svg');
+  svg.setAttribute('viewBox',`${panX} ${panY} ${W/scale} ${H/scale}`);
+}
+function layout(key){
+  const s=S[key], bs=s.blocks.filter(b=>b.pos);
+  if(!bs.length) return {boxes:{},W,H};
+  const minX=Math.min(...bs.map(b=>b.pos[0])), maxX=Math.max(...bs.map(b=>b.pos[2]));
+  const minY=Math.min(...bs.map(b=>b.pos[1])), maxY=Math.max(...bs.map(b=>b.pos[3]));
+  const sc=Math.min((W-2*PAD)/Math.max(1,maxX-minX),(H-2*PAD)/Math.max(1,maxY-minY));
+  const boxes={};
+  for(const b of bs){
+    const x=PAD+(b.pos[0]-minX)*sc, y=PAD+(b.pos[1]-minY)*sc;
+    boxes[b.sid]={x,y,w:Math.max(30,(b.pos[2]-b.pos[0])*sc),h:Math.max(20,(b.pos[3]-b.pos[1])*sc)};
+  }
+  return {boxes};
+}
+function drawGraph(){
+  const s=S[cur]; LAY=layout(cur);
+  const bySid={}; s.blocks.forEach(b=>bySid[b.sid]=b);
+  let out=`<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#94a3b8"/></marker>`
+    +`<marker id="arrowhi" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#2563eb"/></marker></defs>`;
+  for(const L of s.lines){
+    const a=LAY.boxes[L.src], b=LAY.boxes[L.dst];
+    if(!a||!b) continue;
+    const x1=a.x+a.w, y1=a.y+a.h/2, x2=b.x, y2=b.y+b.h/2, mx=(x1+x2)/2;
+    const hi=sel&&(L.src===sel||L.dst===sel);
+    out+=`<polyline class="wire${hi?' hi':''}" points="${x1},${y1} ${mx},${y1} ${mx},${y2} ${x2},${y2}" marker-end="url(#${hi?'arrowhi':'arrow'})"/>`;
+  }
+  for(const b of s.blocks){
+    const r=LAY.boxes[b.sid]; if(!r) continue;
+    const [fill,stroke]=color(b.type);
+    const label=b.name.length>18?b.name.slice(0,17)+'…':b.name;
+    const sub=b.func?'S-Fun':(b.type==='SubSystem'?'子系统':b.type);
+    out+=`<g class="blk${sel===b.sid?' sel':''}" data-sid="${esc(b.sid)}"><rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" fill="${fill}" stroke="${stroke}"/>`
+      +`<text x="${r.x+r.w/2}" y="${r.y+r.h/2-5}">${esc(label)}</text>`
+      +`<text class="t2" x="${r.x+r.w/2}" y="${r.y+r.h/2+8}">${esc(sub)}</text>`
+      +`<title>${esc(b.name)} · ${esc(b.type)}${b.func?' · '+esc(b.func):''}</title></g>`;
+  }
+  $('svg').innerHTML=out; applyView();
+  $('crumb').textContent=s.path+`  ·  ${s.blocks.length} 块 / ${s.lines.length} 连线`;
+}
+function drawTree(){
+  function rec(k,d){
+    const s=S[k];
+    let h=`<div class="tree-item${k===cur?' active':''}" data-key="${esc(k)}" style="padding-left:${8+d*14}px">`
+      +`<span style="color:#94a3b8">${s.children.length?'▾':'·'}</span> ${esc(s.name)} <span class="cnt">${s.blocks.length}</span></div>`;
+    s.children.forEach(c=>h+=rec(c,d+1)); return h;
+  }
+  $('tree').innerHTML=rec('system_root',0);
+  document.querySelectorAll('.tree-item').forEach(x=>x.onclick=()=>{cur=x.dataset.key;sel=null;fit();drawTree();drawGraph();showDetail(null)});
+}
+function showDetail(sid){
+  const s=S[cur], bySid={}; s.blocks.forEach(b=>bySid[b.sid]=b);
+  const box=$('detail');
+  if(!sid){box.innerHTML='<p class="small">点左图任意块查看：类型、中文注释、绑定的源码、上下游连线。</p>';return}
+  const b=bySid[sid]; if(!b)return;
+  const srcPath=SF[b.func]||'';
+  const up=s.lines.filter(L=>L.dst===sid).map(L=>(bySid[L.src]?bySid[L.src].name:'#'+L.src)+' :'+L.src_port);
+  const dn=s.lines.filter(L=>L.src===sid).map(L=>(bySid[L.dst]?bySid[L.dst].name:'#'+L.dst)+' :'+L.dst_port);
+  let h=`<div class="kv"><b>块名</b><div class="v"><strong>${esc(b.name)}</strong></div></div>`
+   +`<div class="kv"><b>类型 / SID</b><div class="v">${esc(b.type)} · ${esc(b.sid)}</div></div>`
+   +`<div class="kv"><b>所在层次</b><div class="v code">${esc(s.path)}</div></div>`
+   +`<div class="kv"><b>端口</b><div class="v">输入 ${b.nin} · 输出 ${b.nout}</div></div>`;
+  if(b.sub) h+=`<div class="kv"><b>子系统</b><div class="v"><button class="btn primary" id="enter">进入 ${esc(S[b.sub]?S[b.sub].name:b.sub)} →</button> <span class="small">${S[b.sub]?S[b.sub].blocks.length:0} 块</span></div></div>`;
+  if(b.func) h+=`<div class="kv"><b>S-Function 入口</b><div class="v code">${esc(b.func)}</div></div>`
+    +`<div class="kv"><b>绑定源码</b><div class="v">${srcPath?`<span class="chip" id="gosrc">current/src/${esc(srcPath)}</span>`:'<span class="small">未找到同名 .m（待确认）</span>'}</div></div>`;
+  if(b.value) h+=`<div class="kv"><b>参数值</b><div class="v code">${esc(b.value.slice(0,400))}</div></div>`;
+  if(b.attrs) h+=`<div class="kv"><b>SLX 内中文注释</b><div class="attrs">${esc(b.attrs)}</div></div>`;
+  h+=`<div class="kv"><b>上游（${up.length}）</b><div class="v">${up.length?up.map(x=>'<span class="chip">'+esc(x)+'</span>').join(''):'<span class="small">无</span>'}</div></div>`
+    +`<div class="kv"><b>下游（${dn.length}）</b><div class="v">${dn.length?dn.map(x=>'<span class="chip">'+esc(x)+'</span>').join(''):'<span class="small">无</span>'}</div></div>`;
+  box.innerHTML=h;
+  const en=$('enter'); if(en) en.onclick=()=>{cur=b.sub;sel=null;fit();drawTree();drawGraph();showDetail(null)};
+  const gs=$('gosrc'); if(gs) gs.onclick=()=>{
+    document.querySelector('.tab[data-view="source"]').click();
+    $('src-search').value=srcPath; renderSource();
+  };
+}
+$('svg').addEventListener('click',e=>{
+  const g=e.target.closest('.blk'); if(!g)return;
+  sel=g.dataset.sid; drawGraph(); showDetail(sel);
+});
+$('svg').addEventListener('dblclick',e=>{
+  const g=e.target.closest('.blk'); if(!g)return;
+  const b=S[cur].blocks.find(x=>x.sid===g.dataset.sid);
+  if(b&&b.sub){cur=b.sub;sel=null;fit();drawTree();drawGraph();showDetail(null)}
+});
+$('up').onclick=()=>{const p=S[cur].parent;if(p){cur=p;sel=null;fit();drawTree();drawGraph();showDetail(null)}};
+$('zoom-in').onclick=()=>{scale=Math.min(6,scale*1.3);applyView()};
+$('zoom-out').onclick=()=>{scale=Math.max(.4,scale/1.3);applyView()};
+$('zoom-fit').onclick=fit;
+$('svg').addEventListener('wheel',e=>{
+  e.preventDefault(); const old=scale; scale=Math.max(.4,Math.min(6,scale*(e.deltaY<0?1.12:1/1.12)));
+  const r=$('svg').getBoundingClientRect();
+  const cx=(e.clientX-r.left)/r.width*(W/old)+panX, cy=(e.clientY-r.top)/r.height*(H/old)+panY;
+  panX=cx-(e.clientX-r.left)/r.width*(W/scale);
+  panY=cy-(e.clientY-r.top)/r.height*(H/scale);
+  applyView();
+},{passive:false});
+let dragging=false,dx=0,dy=0;
+$('svg').addEventListener('mousedown',e=>{dragging=true;dx=e.clientX;dy=e.clientY;$('svg').classList.add('drag')});
+window.addEventListener('mouseup',()=>{dragging=false;$('svg').classList.remove('drag')});
+$('svg').addEventListener('mousemove',e=>{
+  if(!dragging)return; const r=$('svg').getBoundingClientRect();
+  panX-=(e.clientX-dx)/r.width*(W/scale); panY-=(e.clientY-dy)/r.height*(H/scale);
+  dx=e.clientX;dy=e.clientY;applyView();
+});
+$('search').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase(), res=$('results');
+  if(!q){res.innerHTML='';return}
+  const hits=[];
+  for(const k in S) for(const b of S[k].blocks){
+    const hay=(b.name+' '+b.type+' '+b.func+' '+b.attrs+' '+(SF[b.func]||'')).toLowerCase();
+    if(hay.includes(q)) hits.push({k,b});
+    if(hits.length>=60)break;
+  }
+  res.innerHTML=hits.length?`<div class="small" style="margin-bottom:4px">${hits.length} 个匹配（点结果跳转）</div>`+hits.map(({k,b})=>
+    `<div class="res-item" data-k="${esc(k)}" data-sid="${esc(b.sid)}">${esc(b.name)} <small>${esc(S[k].path)} · ${esc(b.type)}</small></div>`).join('')
+    :'<div class="small">无匹配</div>';
+  res.querySelectorAll('.res-item').forEach(x=>x.onclick=()=>{
+    cur=x.dataset.k;sel=x.dataset.sid;fit();drawTree();drawGraph();showDetail(sel);
+  });
+});
+
+/* ---------- source map ---------- */
+let dirFilter='';
+function renderDirs(){
+  const groups={}; F.forEach(f=>groups[f.dir]=(groups[f.dir]||0)+1);
+  $('dirlist').innerHTML=`<div class="dir-item${dirFilter===''?' on':''}" data-d=""><span>全部</span><b>${F.length}</b></div>`+
+    Object.keys(groups).sort().map(d=>`<div class="dir-item${dirFilter===d?' on':''}" data-d="${esc(d)}"><span>${esc(d)}</span><b>${groups[d]}</b></div>`).join('');
+  $('dirlist').querySelectorAll('.dir-item').forEach(x=>x.onclick=()=>{dirFilter=x.dataset.d;renderDirs();renderSource()});
+}
+function renderSource(){
+  const q=$('src-search').value.trim().toLowerCase();
+  const list=F.filter(f=>(!dirFilter||f.dir===dirFilter)&&(!q||(f.path+' '+f.defs.join(' ')+' '+f.sfun_blocks.map(s=>s.function).join(' ')).toLowerCase().includes(q)));
+  $('src-title').textContent=(dirFilter||'全部源文件')+` · ${list.length} 个文件`;
+  $('srctbody').innerHTML=list.map((f,i)=>{
+    const sf=f.sfun_blocks.map(s=>s.function);
+    return `<tr class="row" data-i="${F.indexOf(f)}"><td><code>${esc(f.path)}</code></td><td>${f.lines}</td>`
+      +`<td class="small">${esc(f.defs.slice(0,2).join(', '))||'—'}</td>`
+      +`<td>${sf.length?'<span class="chip">'+esc(sf[0])+'</span>':'<span class="small">—</span>'}</td>`
+      +`<td class="small">${f.calls.length} / ${f.called_by.length}</td></tr>`
+      +`<tr class="expanded" id="exp-${F.indexOf(f)}" style="display:none"><td colspan="5">`
+      +`<div class="kv"><b>被调用（${f.called_by.length} 个文件调用它）</b><div class="v">${f.called_by.length?f.called_by.slice(0,20).map(x=>'<span class="chip">'+esc(x)+'</span>').join(''):'<span class="small">无</span>'}</div></div>`
+      +`<div class="kv"><b>它调用（${f.calls.length} 个函数，静态词法近似）</b><div class="v">${f.calls.length?f.calls.slice(0,24).map(x=>'<span class="chip">'+esc(x)+'</span>').join(''):'<span class="small">无</span>'}</div></div>`
+      +(sf.length?`<div class="kv"><b>SLX 中的块</b><div class="v">${f.sfun_blocks.map(s=>'<span class="chip">'+esc(s.path+' / '+s.block)+'</span>').join('')}</div></div>`:'')
+      +`</td></tr>`;
+  }).join('');
+  $('srctbody').querySelectorAll('tr.row').forEach(tr=>tr.onclick=()=>{
+    const e=$('exp-'+tr.dataset.i); e.style.display=e.style.display==='none'?'':'none';
+  });
+}
+$('src-search').addEventListener('input',renderSource);
+renderDirs(); renderSource();
+
+/* ---------- timeline ---------- */
+const EVCOLORS={cnv:'#dc2626',coarse_latch:'#7c3aed',fine_prepare:'#0891b2',fine_decide:'#2563eb',
+ fine_feedback:'#94a3b8',ra_start:'#ea580c',d2_prepare:'#0891b2',d2_decide:'#2563eb',
+ d2_feedback:'#94a3b8',d2_end:'#7c3aed',ta_compare:'#16a34a',ta_feedback:'#a3a3a3',
+ tracking_end:'#7c3aed',raw_latch:'#dc2626',release:'#b45309'};
+const KEYEV={cnv:'CNV 0 ns',coarse_latch:'粗码锁存 12.5',ra_start:'RA 启动 31.25',
+ d2_end:'D2 结束 73.75',tracking_end:'TA 结束 85',raw_latch:'RawReady 86.25',release:'返还 90'};
+let tlDone=false;
+function drawTimeline(){
+  if(tlDone)return; tlDone=true;
+  const w=1500,left=70,right=60,h=250,base=170, span=w-left-right;
+  const X=ns=>left+ns/200*span;
+  let out=`<line x1="${left}" y1="${base}" x2="${w-right}" y2="${base}" stroke="#94a3b8" stroke-width="2"/>`;
+  for(let t=0;t<=200;t+=25){
+    const x=X(t); out+=`<line x1="${x}" y1="${base-6}" x2="${x}" y2="${base+6}" stroke="#94a3b8"/>`
+      +`<text x="${x}" y="${base+22}" font-size="11" fill="#64748b" text-anchor="middle">${t}</text>`;
+  }
+  out+=`<text x="${left}" y="${base+42}" font-size="11" fill="#94a3b8">时间 / ns（相对 CNV）</text>`;
+  const groups={};
+  E.forEach((e,i)=>{(groups[e.type]=groups[e.type]||[]).push({e,i})});
+  let row=0;
+  Object.keys(EVCOLORS).forEach(t=>{
+    if(!groups[t])return;
+    row++; const y=base-18-row*15;
+    groups[t].forEach(({e,i})=>{
+      const x=X(e.ns);
+      out+=`<line x1="${x}" y1="${base}" x2="${x}" y2="${y}" stroke="${EVCOLORS[t]}" stroke-width="1" opacity=".35"/>`;
+      out+=`<g class="ev" data-i="${i}"><circle cx="${x}" cy="${y}" r="3.4" fill="${EVCOLORS[t]}"><title>${esc(e.type)} @ ${e.ns} ns</title></circle>`
+        +`<circle cx="${x}" cy="${y}" r="9" fill="transparent"/></g>`;
+    });
+    out+=`<text x="${left-8}" y="${y+3}" font-size="10" fill="#64748b" text-anchor="end">${esc(t)}</text>`;
+  });
+  Object.keys(KEYEV).forEach(t=>{
+    const e=E.find(x=>x.type===t); if(!e)return;
+    const x=X(e.ns);
+    out+=`<line x1="${x}" y1="18" x2="${x}" y2="${base}" stroke="#cbd5e1" stroke-dasharray="3 3"/>`
+      +`<text x="${x}" y="14" font-size="10.5" fill="#334155" text-anchor="middle">${esc(KEYEV[t])}</text>`;
+  });
+  $('tl').setAttribute('viewBox',`0 0 ${w} ${h}`);
+  $('tl').innerHTML=out;
+  $('tl').querySelectorAll('.ev').forEach(g=>g.onclick=()=>{
+    const e=E[+g.dataset.i];
+    $('ev-detail').innerHTML=`<div class="kv"><b>${esc(e.type)} @ ${e.ns} ns</b><div class="v">`
+      +`tick ${e.tick} · priority ${e.priority} · index ${e.index} · bit ${e.bit}`
+      +`</div></div><div class="small">同沿优先级由 [tick, priority] 排序决定；同一时刻可以有多类事件，不能只按 time 去重。</div>`;
+  });
+  const OWNER_DESC={
+    SampleCharge:'18 片分组电荷 / 实际孔径 / 开采时刻（唯一前端记忆）',
+    RaCtState:'唯一 RA 输出 + AZ + CT 电荷 + 区间命令',
+    SarState:'trial / 判决 / pending 反馈'
+  };
+  const ownerItems=V.unit_delay_analog.map(x=>
+    `<li><code>${esc(x.name)}[${esc(x.sid)}]</code>：${esc(OWNER_DESC[x.name]||'模拟状态')}</li>`).join('');
+  const otherItems=V.unit_delay_other.map(x=>
+    `<li><code>${esc(x.name)}[${esc(x.sid)}]</code> @ ${esc(x.path)}</li>`).join('');
+  const stageItems=CS.map((s,i)=>
+    `<li>${i+1} <code>${esc(s.name)}</code>：${esc(s.desc)}</li>`).join('');
+  $('tl-cards').innerHTML=[
+    [`ADC 内 ${V.unit_delay_adc} 个模拟状态 owner（整图共 ${V.unit_delay_total} 个 UnitDelay）`,
+      `<ul>${ownerItems}</ul>`
+      +`<p>各 stage 输出只是下一状态候选，经这 ${V.unit_delay_adc} 个 UnitDelay 才供下一事件使用。</p>`
+      +`<p class="small">其余 ${V.unit_delay_total-V.unit_delay_adc} 个是数字/仪器记忆，不增加 ADC 模拟状态：</p><ul>${otherItems}</ul>`
+      +`<p class="small"><b>编号别混淆</b>：<code>docs/READ_GRAPH.md §44</code> 的 <code>[353]/[48]/[51]</code> 是三个状态向量的`
+      +`<b>宽度（double 个数）</b>，别名 FE353 / RA48 / SAR51 也来自宽度，不是 SID；`
+      +`本图方括号内才是<b>当前 SLX 解析出的真实 Block SID</b>（148 / 149 / 150）。两者含义不同，勿混用。</p>`],
+    [`${CS.length} 个计算阶段（同一事件内，不是六套电路）`,
+      `<ul>${stageItems}</ul>`
+      +`<p>第 7 个子系统 <code>Diagnostics</code> 是只读探针（AZ final-next / route），不得回接物理或控制路径。</p>`
+      +`<p class="small">顺序依据：<code>docs/READ_GRAPH.md</code> 依赖顺序表；<b>不是</b>左侧层次树的字母顺序。</p>`],
+    ['最容易读错的三件事',
+      `<ul><li><b>${V.ta_compares} 次 TA 比较只有 ${V.ta_feedbacks} 次物理反馈</b>：第 ${V.ta_compares} 次只有数字 LSB，`
+      +`所以 SINC² 除以 8 而非 36，不是归一化 bug（数据核对：ta_compare=${V.ta_compares} / ta_feedback=${V.ta_feedbacks}）。</li>`
+      +'<li><b>RA 后没有新增 S/H</b>：二级是连续时间积分。</li>'
+      +'<li><b>CodeValid 不是采样有效性</b>：它是旧 Bank 资格输出，Bank OFF 时恒 false。</li></ul>'],
+    ['时刻边界（区分两条时间线）',
+      '<ul><li>86.25 ns RawReady 是 ADC 早就绪，不等于 FPGA 收到帧。</li>'
+      +'<li>90 ns release 才真正返还电荷；这是本日历最后一个事件。</li>'
+      +'<li><b>以下不在上图 0–90 ns 日历内</b>，来自 <code>docs/READ_GRAPH.md §54</code>：92 ns guard 后下一采集；'
+      +'parent 第 49 组 +138 ns 只做传输收槽（Adc held 不推进）；transport ON 时解释页 record 通常 +538 ns。</li></ul>'
+      +'<p class="small">不要把 RX 时刻当成新的模拟端点，也不要把两条时间线合并。</p>']
+  ].map(([t,b])=>`<div class="panel card"><h4>${t}</h4>${b}</div>`).join('');
+}
+
+/* ---------- guide ---------- */
+let flowDone=false;
+function drawFlow(){
+  if(flowDone)return; flowDone=true;
+  const nodes=[
+    ['Driver\n正弦配置',40],['Calendar\n事件源',190],['EventStep\nTriggered',340],
+    ['Adc\n片内模拟',510],['Fpga\n片外数字',700],['Code20',890]
+  ];
+  let out=`<defs><marker id="fa" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2563eb"/></marker></defs>`;
+  nodes.forEach(([t,x],i)=>{
+    const w=125,h=54,y=70;
+    out+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" fill="${i===3?'#ffedd5':'#dbeafe'}" stroke="${i===3?'#ea580c':'#2563eb'}" stroke-width="1.6"/>`;
+    t.split('\n').forEach((ln,j)=>out+=`<text x="${x+w/2}" y="${y+22+j*17}" font-size="12" text-anchor="middle" fill="#0f172a">${esc(ln)}</text>`);
+    if(i<nodes.length-1) out+=`<line x1="${x+w}" y1="${y+h/2}" x2="${nodes[i+1][1]-8}" y2="${y+h/2}" stroke="#2563eb" stroke-width="1.8" marker-end="url(#fa)"/>`;
+  });
+  out+=`<text x="40" y="170" font-size="12" fill="#64748b">片内 Adc 内部按事件顺序走 6 个计算阶段；Fpga 只消费公开 RAW，不读内部电容/残差。</text>`;
+  out+=`<text x="40" y="192" font-size="12" fill="#b45309">改参数后必须 SAR20('apply')；GUI 直接 Run 不读工厂文件，也不建立公开归档。</text>`;
+  $('flow').setAttribute('viewBox','0 0 1050 220'); $('flow').innerHTML=out;
+  const gStages=CS.map((s,i)=>`${i+1} <code>${esc(s.name)}</code>`).join(' → ');
+  $('guide-cards').innerHTML=[
+    ['建议的阅读顺序',
+      `<ol><li>先在「模型框图」顶层看全部 ${V.root_blocks} 个块：<b>Driver / Calendar / SystemTime</b> → <b>EventStep</b> → <b>Code20 / CodeValid / CodeMeta</b>。</li>`
+      +'<li>双击 <b>EventStep</b>，看 Triggered 容器里 <b>Adc</b> 与 <b>Fpga</b> 的分界（还有 Transport / RefQueue）。</li>'
+      +`<li>进入 <b>Adc</b>：<b>不要按左侧树的字母顺序读</b>，按下面卡片的 6 阶段执行顺序读。</li>`
+      +'<li>点任意橙色 <b>S-Function</b>，右侧会显示它对应的 <code>current/src/…m</code>，再切「源码地图」看它调用谁。</li>'
+      +`<li>最后看「事件时间轴」，把一个 sample 的 ${V.unique_event_times} 组时刻与 6 个阶段对上。</li></ol>`],
+    [`Adc 里 6 个阶段的真实执行顺序（不是树顺序）`,
+      `<p>${gStages}</p>`
+      +'<p class="small">依据 <code>docs/READ_GRAPH.md</code> 依赖顺序表。SLX 里 Adc 的子系统按<b>字母序</b>存储，'
+      +`本图已核实该树顺序确为字母序；第 7 个 <code>Diagnostics</code> 只读观察，不参与物理计算。</p>`
+      +'<p>每一级只问三件事：<b>收到什么、如何改变信号、保留什么记忆</b>。只有 '
+      +`${V.unit_delay_analog.map(x=>'<code>'+esc(x.name)+'</code>').join(' / ')} 保留模拟记忆。</p>`],
+    ['调试时的实际入口',
+      '<ul><li><code>SAR20(\'open\' / \'apply\' / \'check\' / \'run\')</code> 是唯一公开入口。</li>'
+      +'<li><code>SAR20(\'sample\', id, runPath)</code> 出单样本事件链，且在加载模型之前 return，不打开 SLX。</li>'
+      +'<li>Mac 侧零 MATLAB 工具：<code>analysis/local_debug/sar20_probe.py</code>。</li>'
+      +'<li><b>别用</b> <code>analysis/mat_reader.py::read_logger_plan</code> 解析当前 32-logger 的 simout.mat，它已失效。</li></ul>'],
+    ['证据边界（很重要）',
+      '<ul><li>本图是 <b>SLX XML 静态解析</b>：能证明结构与连线，不能证明编译、仿真、时序或视觉验收。</li>'
+      +'<li>工程里的 <code>current_diagrams/*.png</code> 来自 2026-11-04 的私有副本 <code>d4e7fc99…</code>，与当前生产模型 <code>91973cf7…</code> 不是同一个哈希，本图<b>不引用</b>它们。</li>'
+      +'<li>块内中文注释是 SLX 保存时写入的说明，随 <code>apply</code> 更新；以 ModelWorkspace 里已应用的 P 为准。</li>'
+      +'<li>调用关系是静态词法近似，可能含注释噪声，只用于导航。</li></ul>'],
+    ['一句话抓住全图',
+      '<p><b>Driver 给正弦、Calendar 给事件、EventStep 按事件推进一次转换；Adc 用三个 UnitDelay 保存全部模拟记忆并产生 RAW，Fpga 用名义权重把 RAW 重构成 20-bit 码。</b></p>'
+      +'<p>看不懂时先问三件事：这个块<b>收到什么、如何改变信号、保留什么记忆</b>。</p>']
+  ].map(([t,b])=>`<div class="panel card"><h4>${t}</h4>${b}</div>`).join('');
+}
+
+/* ---------- init ---------- */
+drawTree(); drawGraph();
+</script>
+</body>
+</html>
