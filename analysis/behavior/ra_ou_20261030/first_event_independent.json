@@ -1,0 +1,39 @@
+{
+  "status": "actual_first_ou_event_independently_checked",
+  "files": {
+    "zero_P": "946844dbbc86842846a7d7fbb5e6700e7c28b565c82f6c651caac4d842a4eeb5",
+    "on_P": "d7e9a3757ae30330e7f09039747614145fb0701449695566629aca221bca1894",
+    "zero_simout": "ac749ba196e7ecefec28cb3126c4ee75af1983297298da3f070e0ae70c197b49",
+    "on_simout": "cd8b3faf295e508bb19d1d18f900a61fa0a7d7ce981f74a47b317629310d2a00",
+    "project_reader": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+  },
+  "scope": "Only first ID0 interval; key from actual event timestamps plus static stage semantics, not an instrumented key pin.",
+  "time_s": [
+    3.1250000000000005e-08,
+    4.3750000000000005e-08
+  ],
+  "time_bits_hex": [
+    "3e60c6f7a0b5ed8e",
+    "3e677cf447651960"
+  ],
+  "epoch": 1,
+  "id": 0,
+  "seed_u64": 20261030,
+  "sigma_vx_rms": 0.001,
+  "tau_s": 4.509390054270369e-09,
+  "key_sha256": "c80bd46cb31a6f693b96fee51fe6ecabf87c5976cdf2e17bd7f69d2f404dcb3d",
+  "z": 0.07587247825844239,
+  "expected_dx_v": 7.572396796992698e-05,
+  "actual_dx_v": 7.57239679699262e-05,
+  "dx_residual_v": -7.860465750519907e-19,
+  "dx_tolerance_v": 3.553581040538489e-15,
+  "alpha_per_half": [
+    0.7787151200519143,
+    0.7787151200519143
+  ],
+  "expected_dy_from_actual_dx_v": 5.896739880850839e-05,
+  "actual_dy_v": 5.89673988085071e-05,
+  "dy_residual_v": -1.294266343404571e-18,
+  "dy_tolerance_v": 1.7767905202692447e-15,
+  "limits": "No noise PSD, distribution, model promotion, PDK or silicon claim."
+}

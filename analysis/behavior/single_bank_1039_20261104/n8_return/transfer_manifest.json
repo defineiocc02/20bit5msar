@@ -1,0 +1,52 @@
+[
+    {
+        "path":  "n8_run/complete.json",
+        "sha256":  "19635ca1630c6ffd06bd24b152ab569d73a18adbfa40b0a155c148e959968288",
+        "bytes":  969
+    },
+    {
+        "path":  "n8_run/P_used.mat",
+        "sha256":  "7eda5f4827116e7a8a2347a24ebb013eb788719ee796f4632b8a14da46f40a5f",
+        "bytes":  1474016
+    },
+    {
+        "path":  "n8_run/simout.mat",
+        "sha256":  "aed4d7a2fb229d8a6fe84ba23ce971930bc24b7e9ae0debe965f273087f79602",
+        "bytes":  993510
+    },
+    {
+        "path":  "n8_run/validation.json",
+        "sha256":  "84e83f91812f0f52b56caa679427df911aa9f288878b603c493cdaa34cc6ad9b",
+        "bytes":  563
+    },
+    {
+        "path":  "n8_run/validation.mat",
+        "sha256":  "0465cf0e2aa21bf40b55c5359d72d03cce0ceb66cbb5367bf250cdfcdd41c636",
+        "bytes":  12760
+    },
+    {
+        "path":  "run_controller_status.json",
+        "sha256":  "40891242f2c03bee3b2ddbc0fcdd3f7d33c792c4e180442a356a492e6310296d",
+        "bytes":  146
+    },
+    {
+        "path":  "run_stdout.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "run_stderr.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "run_task_before.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    },
+    {
+        "path":  "run_task_after.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    }
+]

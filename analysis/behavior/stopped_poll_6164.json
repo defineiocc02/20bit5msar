@@ -1,0 +1,10 @@
+﻿{
+    "pid":  6164,
+    "utc":  "2026-10-26T16:21:53.2561022Z",
+    "working_set_bytes":  11947827200,
+    "private_bytes":  91239067648,
+    "command":  "$ErrorActionPreference=\u0027Stop\u0027;$ProgressPreference=\u0027SilentlyContinue\u0027;[Console]::OutputEncoding=[Text.UTF8Encoding]::new($false)\n$j=\u0027D:/Academic/Projects/sar20m1/SAR20/runs/control\u0027\n$r=@{task=[string](Get-ScheduledTask -TaskName SAR20_MatlabControl).State;utc=(Get-Date).ToUniversalTime().ToString(\u0027o\u0027)}\nforeach($n in @(\u0027status.json\u0027,\u0027physics_result.json\u0027)){$f=Join-Path $j $n;if(Test-Path -LiteralPath $f){$r[$n]=Get-Content -Raw -Encoding UTF8 $f|ConvertFrom-Json}}\n$r[\u0027matlab\u0027]=@(Get-Process MATLAB -ErrorAction SilentlyContinue|Select-Object Id,CPU,WorkingSet64,MainWindowTitle)\n$r[\u0027log_tail\u0027]=Get-Content -Tail 8 -Encoding UTF8 (Join-Path $j \u0027controller.log\u0027)\n$r|ConvertTo-Json -Depth 12 -Compress\n",
+    "scope":  "Stop only abandoned SAR20 read-only JSON polling process; MATLAB untouched",
+    "cpu_s":  10873.671875,
+    "creation":  "\/Date(1793018353034)\/"
+}

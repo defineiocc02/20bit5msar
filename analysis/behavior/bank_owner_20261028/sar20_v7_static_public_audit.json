@@ -1,0 +1,34 @@
+{
+  "Q_sha256": "74f76d2491a25fcd22264d2af33c8fb421e1412b8885428b040b5c6765c0f0c6",
+  "Q_summary_sha256": "c6ee0458d61fc8357e39e82eeaab3250871c4c9370cd48455772d5139ddb5c77",
+  "source_hashes": {
+    "src/sar20_pp_parameters.m": "eef0b8b876c0ff124295074fc95a4f3236d2986c9b3c5b6f3dc90a3a24753278",
+    "src/sar20_pp_verified_parameters.m": "69edc7908383e71428e164bd083a4cf1433c16705abe39d408cbe5a633fa4ef7",
+    "src/sar20_pp_qualification_from_bytes.m": "17eecb918d84fe11d1456d83af6a2a8de834bfd9905749393d381913b49c02e0",
+    "src/sar20_pp_verify_v3_qualification.m": "0b60694a0beb3759d78c3d6ece6d1fc0c0230451a8e9a405b934264591be64b9",
+    "src/sar20_pp_step.m": "3d3d881fa8a00d7cb39301446f19a2537baf2e4d5ecf3fb145a9351faf031f15",
+    "src/sar20_pp_sfun.m": "96ef6cc0bce62e28b88eb21723886da8740c0f7462721a480c3b5ae0467f3eea",
+    "sar20_pp_preflight.m": "d25184a58a1c5552f8e69d03409cf883ffbf73f5ceac85852625aaf73bba28a7",
+    "sar20_pp_case.m": "2737b06d4eb61d3dd5f911f87ee2f228710f7af82d3a38b25b9b277c1611fd2a",
+    "sar20_pp_verify_source_files.m": "8de4d9433ec8788e9948095276e3427bb2252550d206e60a5d545277becfda10",
+    "sar20_pp_compare_n8.m": "1fa53f907e3d7ddea1e1fd97c2142426e422bdc382ad78f6df31ae98ed3d9019",
+    "run_pp_native_n8.m": "12a17721c44cb073229634e17540db97500ad9811006403af491d60519de2022",
+    "qualification_rx1024_v7.json": "74f76d2491a25fcd22264d2af33c8fb421e1412b8885428b040b5c6765c0f0c6",
+    "holdout_audit_summary_only.json": "c6ee0458d61fc8357e39e82eeaab3250871c4c9370cd48455772d5139ddb5c77"
+  },
+  "public_profile_fields": 42,
+  "public_train_and_holdout_profile_same": true,
+  "cfg_plan_h_bound": true,
+  "saved_train_calendar_budget": {
+    "d2_decide": 12,
+    "ta_compare": 8,
+    "ta_feedback": 7
+  },
+  "qualification_historical_metrics_linked": true,
+  "source_scope": "Static only; no MATLAB execution, no actual C/held, no old holdout RAW/Ref/answer file opened.",
+  "limits": [
+    "controlled builder now pins private scratch copies of original TRAIN/freeze MAT before and after load; actual native tamper tests have not been observed and later workspace replacement remains outside public Bank guard",
+    "native source path/cache bindings and per-case P/SLX retention need a controller gate",
+    "this does not demonstrate signed authority, actual chip anti-replacement, true draining or B background training"
+  ]
+}

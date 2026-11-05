@@ -1,0 +1,22 @@
+{
+  "status": "current_model_and_parameters_synced_from_actual_windows_run",
+  "utc": "2026-10-26T10:33:16.419978+00:00",
+  "model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+  "prior_mac_model_sha256": "8f12e65a7d6b850fe5ad64a76393df77b850bfcb069c5c2c72109a7f38733679",
+  "prior_mac_model_preserved_in": "evidence/relocation_source_snapshot.zip",
+  "windows_run_root": "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\run_tp394bdae9_7cbe_4949_9cd7_da5d4830e619",
+  "workspace_snapshot_sha256": "4dda089870dc5c126311ef4a37374f617ccf9157dd6bbfc5e686d1daf6065674",
+  "same_bytes_as_windows": true,
+  "mac_native_matlab_compile_or_run": false,
+  "parameters": {
+    "record_length": 8,
+    "tracking_count": 8,
+    "AChanges": {
+      "UGB_hz": 1200000000.0,
+      "max_step_s": 6.25e-11
+    },
+    "source_override": [],
+    "capture_mode": "compact",
+    "debug_sample_ids": []
+  }
+}

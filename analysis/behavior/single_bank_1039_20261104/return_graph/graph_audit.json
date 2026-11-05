@@ -1,0 +1,126 @@
+{
+  "status": "actual_saved_graph_static_diff_passed",
+  "baseline_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "instrumented_sha256": "d84e8c4d0069776a31f0a291815a78293904b6948622c7a7368706cfb706b135",
+  "comparison": "all archive members checked; old signal edge multiplicity and all pre-existing block properties preserved except specified wrapper, output port counts and graphical positions",
+  "changed_archive_members": [
+    "metadata/coreProperties.xml",
+    "simulink/blockdiagram.xml",
+    "simulink/modelDictionary.xml",
+    "simulink/systems/system_112.xml",
+    "simulink/systems/system_297.xml",
+    "simulink/systems/system_root.xml"
+  ],
+  "systems": {
+    "112": {
+      "original_blocks": 20,
+      "original_signal_edges": 53,
+      "new_signal_edges": 9,
+      "removed_signal_edges": 0
+    },
+    "297": {
+      "original_blocks": 17,
+      "original_signal_edges": 18,
+      "new_signal_edges": 1,
+      "removed_signal_edges": 0
+    }
+  },
+  "new_blocks": {
+    "112": {
+      "467": [
+        "ReturnAuditMux",
+        "Mux"
+      ],
+      "468": [
+        "ReturnAuditLog",
+        "ToWorkspace"
+      ]
+    },
+    "297": {
+      "466": [
+        "ReturnChargeProbe",
+        "Outport"
+      ]
+    }
+  },
+  "observed_properties": {
+    "467": {
+      "Position": "[570, 612, 575, 813]",
+      "ZOrder": "67",
+      "BackgroundColor": "black",
+      "Inputs": "8",
+      "DisplayOption": "bar"
+    },
+    "468": {
+      "Position": "[625, 700, 715, 730]",
+      "ZOrder": "68",
+      "VariableName": "single_return_probe_log",
+      "MaxDataPoints": "inf",
+      "SaveFormat": "Timeseries",
+      "FixptAsFi": "on",
+      "SampleTime": "-1"
+    },
+    "466": {
+      "Position": "[355, 118, 385, 132]",
+      "ZOrder": "18",
+      "Port": "5"
+    }
+  },
+  "new_edges": {
+    "112": [
+      [
+        "115#out:1",
+        "467#in:8"
+      ],
+      [
+        "116#out:1",
+        "467#in:7"
+      ],
+      [
+        "148#out:1",
+        "467#in:4"
+      ],
+      [
+        "232#out:3",
+        "467#in:5"
+      ],
+      [
+        "261#out:3",
+        "467#in:1"
+      ],
+      [
+        "297#out:2",
+        "467#in:3"
+      ],
+      [
+        "297#out:3",
+        "467#in:2"
+      ],
+      [
+        "297#out:5",
+        "467#in:6"
+      ],
+      [
+        "467#out:1",
+        "468#in:1"
+      ]
+    ],
+    "297": [
+      [
+        "347#out:3",
+        "466#in:1"
+      ]
+    ]
+  },
+  "charge_return_function": {
+    "Position": "[245, 99, 300, 131]",
+    "ZOrder": "13",
+    "FunctionName": "behavior_frontend_return_probe_sfun",
+    "Parameters": "'commit',P.front"
+  },
+  "limitations": [
+    "No MATLAB compilation or simulation by this static audit.",
+    "Decimation is omitted from the serialized ToWorkspace block parameters; actual inherited/default behavior is not independently established by XML.",
+    "Runtime must bind the verified wrapper and source versions; this SLX references the wrapper by name."
+  ]
+}

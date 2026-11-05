@@ -1,0 +1,1 @@
+v1 guard representation check incomplete; v2 initial source join incomplete. Use v3. Older packages retained as evidence.

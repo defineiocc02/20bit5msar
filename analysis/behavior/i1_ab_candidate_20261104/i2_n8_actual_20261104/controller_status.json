@@ -1,0 +1,15 @@
+{
+    "exit_code":  0,
+    "zip_sha256":  "4cf3f7527c18f35372168074c64a3d32839f1fa79f7f939cd528dd9ff2ed0fd7",
+    "original_task_unchanged":  true,
+    "gui_pid":  27628,
+    "error":  "",
+    "completed":  [
+                      "baseline_i2",
+                      "candidate_i2"
+                  ],
+    "manifest_sha256":  "3220d24c60ded74755f53699e6fcf4913de6d634c1f492037815a21e4e132618",
+    "status":  "passed",
+    "stage":  "complete",
+    "gui_preserved":  true
+}

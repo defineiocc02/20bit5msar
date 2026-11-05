@@ -1,0 +1,216 @@
+{
+  "schema": "independent-event-lookup-121500-review/v1",
+  "status": "independent_saved_A_B_readback_pass",
+  "validation_dir": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/az_probe_20261028T121500Z/validation",
+  "native_receipt_sha256": "71b979ecfcb6024aa37d2b5b6848c1b21b1dc3387739322343ae72937b50cd26",
+  "external_pins_sha256": "5d87bfd61335dc4db5f7adfb640f54e13a873cafa98471ee3ccea92829204183",
+  "source_sha256": {
+    "old": "59e1c180ec3f1d71633717640ec445604405f71f8f69b49f679219d31b93629f",
+    "new": "59be23a252bb60f5a4b6e4612a28d0211c721a437edae66b73b64e6a3aecb018"
+  },
+  "case_results": [
+    {
+      "case": "n8",
+      "record_count": 8,
+      "hashes_as_reported_and_independently_read": {
+        "parameters_mat": "4ef39e1ee171306f00ac763ac763c8a577c499872ea8ee589c2964ccd20d85a7",
+        "scratch_slx": "3a26114ba8f0f593137071a58c4ffe6b311a19de2ec2932fd2365ff47e7d8850",
+        "old_simout": "d38c2625052cac1da471effe7740f8581bce5aa8482a4426e0704ef6aec15ff8",
+        "new_simout": "a15d2f304ce366c936ebfdd79b6b23b861938ea557e290d3f76c01a8904234b8"
+      },
+      "old_new_log_count": 30,
+      "old_new_all_30_bit_equal": true,
+      "reference_log_count": 29,
+      "reference_all_bit_equal": true,
+      "actual_RX_ready_count": 12,
+      "actual_ADC_ready_count": 14,
+      "valid_zero_count": 0,
+      "valid_unknown_count": 0,
+      "selected_ID_first": 4,
+      "selected_ID_last": 11,
+      "selected_epoch": 1,
+      "RX_ADC_raw_equal_for_all_ready": true,
+      "saved_records_match_actual_log": true,
+      "events": {
+        "actual_parent_hits": 686,
+        "cycles": 14,
+        "groups_per_cycle": 49,
+        "expected_ADC_groups_per_cycle": 48,
+        "exact_saved_group_time_and_tags": true,
+        "declared_calendar_counts": {
+          "D2_decide": 12,
+          "TA_compare": 8,
+          "TA_feedback": 7
+        },
+        "scope": "Event log proves actual hit times/tags; calendar token counts alone are not observed physical feedback."
+      },
+      "actual_N8_adi_counters": {
+        "4": [
+          12,
+          8,
+          7
+        ],
+        "5": [
+          12,
+          8,
+          7
+        ],
+        "6": [
+          12,
+          8,
+          7
+        ],
+        "7": [
+          12,
+          8,
+          7
+        ],
+        "8": [
+          12,
+          8,
+          7
+        ],
+        "9": [
+          12,
+          8,
+          7
+        ],
+        "10": [
+          12,
+          8,
+          7
+        ],
+        "11": [
+          12,
+          8,
+          7
+        ]
+      },
+      "timing": {
+        "old_update_s": 0.7805053,
+        "new_update_s": 0.2679231,
+        "old_sim_s": 9.3603685,
+        "new_sim_s": 8.1709607,
+        "old_sim_per_selected_sample_s": 1.1700460625,
+        "new_sim_per_selected_sample_s": 1.0213700875,
+        "old_sim_per_parent_hit_s": 0.013644852040816327,
+        "new_sim_per_parent_hit_s": 0.01191102142857143,
+        "single_ordered_sim_difference_s": -1.1894077999999997,
+        "single_ordered_old_over_new": 1.1455652332289397,
+        "scope": "One unprofiled old-then-new pair; full sim wall includes model startup and logging. Per-sample/hit values are arithmetic averages, not event CPU measurements; no stable speed claim."
+      },
+      "complexity": {
+        "H_actual_parent_hits": 686,
+        "old_vector_boolean_elements_if_one_outputs_per_hit": 941192,
+        "candidate_binary_upper_comparison_bound_if_one_outputs_per_hit": 6860,
+        "binary_steps_per_call_bound": 10,
+        "scope": "Analytical count under one Outputs call per observed hit; actual callback count, CPU and acceleration are unmeasured."
+      },
+      "input": {
+        "offset_v": 0.0,
+        "amplitude_v": 3.650563842595822,
+        "frequency_hz": 97656.25,
+        "phase_rad": 0.731
+      },
+      "plan_shape_hdf5": [
+        8,
+        32
+      ],
+      "plan_sha256_raw": "f38e63267c1dba54274c65f41c6598be779c819d1d12368ae62fe06efb7c136b",
+      "source_sha256": {
+        "old": "59e1c180ec3f1d71633717640ec445604405f71f8f69b49f679219d31b93629f",
+        "new": "59be23a252bb60f5a4b6e4612a28d0211c721a437edae66b73b64e6a3aecb018"
+      }
+    },
+    {
+      "case": "n256",
+      "record_count": 256,
+      "hashes_as_reported_and_independently_read": {
+        "parameters_mat": "844365f7cb953682dc35385068bd21a153c7bbd7e8f2f21459fe1b7454c957a2",
+        "scratch_slx": "1c903ad632930cf169726fbca1e4231bd3444ce78588da22c1323129ac5bed79",
+        "old_simout": "3bb0d0c44c9859f58ff1cbced2badc7adfe0fba932b9b21bda5e092364931a91",
+        "new_simout": "0a052ef3d4a668f55c98f6efb50d83476f5921814ca755fc0c97dfd621355779"
+      },
+      "old_new_log_count": 30,
+      "old_new_all_30_bit_equal": true,
+      "reference_log_count": 30,
+      "reference_all_bit_equal": true,
+      "actual_RX_ready_count": 260,
+      "actual_ADC_ready_count": 262,
+      "valid_zero_count": 0,
+      "valid_unknown_count": 0,
+      "selected_ID_first": 4,
+      "selected_ID_last": 259,
+      "selected_epoch": 1,
+      "RX_ADC_raw_equal_for_all_ready": true,
+      "saved_records_match_actual_log": true,
+      "events": {
+        "actual_parent_hits": 12838,
+        "cycles": 262,
+        "groups_per_cycle": 49,
+        "expected_ADC_groups_per_cycle": 48,
+        "exact_saved_group_time_and_tags": true,
+        "declared_calendar_counts": {
+          "D2_decide": 12,
+          "TA_compare": 8,
+          "TA_feedback": 7
+        },
+        "scope": "Event log proves actual hit times/tags; calendar token counts alone are not observed physical feedback."
+      },
+      "actual_N8_adi_counters": null,
+      "timing": {
+        "old_update_s": 0.2488647,
+        "new_update_s": 0.4933228,
+        "old_sim_s": 136.1479,
+        "new_sim_s": 136.9086034,
+        "old_sim_per_selected_sample_s": 0.531827734375,
+        "new_sim_per_selected_sample_s": 0.53479923203125,
+        "old_sim_per_parent_hit_s": 0.010605070883315158,
+        "new_sim_per_parent_hit_s": 0.010664324926000935,
+        "single_ordered_sim_difference_s": 0.7607034000000112,
+        "single_ordered_old_over_new": 0.9944437136811812,
+        "scope": "One unprofiled old-then-new pair; full sim wall includes model startup and logging. Per-sample/hit values are arithmetic averages, not event CPU measurements; no stable speed claim."
+      },
+      "complexity": {
+        "H_actual_parent_hits": 12838,
+        "old_vector_boolean_elements_if_one_outputs_per_hit": 329628488,
+        "candidate_binary_upper_comparison_bound_if_one_outputs_per_hit": 179732,
+        "binary_steps_per_call_bound": 14,
+        "scope": "Analytical count under one Outputs call per observed hit; actual callback count, CPU and acceleration are unmeasured."
+      },
+      "input": {
+        "offset_v": 0.0,
+        "amplitude_v": 3.650563842595822,
+        "frequency_hz": 97656.25,
+        "phase_rad": 0.731
+      },
+      "plan_shape_hdf5": [
+        8,
+        264
+      ],
+      "plan_sha256_raw": "31bf0f2c9cb3b2c6ff878bbe5bc60921cb90faab814f755ad2b1edbd25e5c5ce",
+      "source_sha256": {
+        "old": "59e1c180ec3f1d71633717640ec445604405f71f8f69b49f679219d31b93629f",
+        "new": "59be23a252bb60f5a4b6e4612a28d0211c721a437edae66b73b64e6a3aecb018"
+      }
+    }
+  ],
+  "N8_comparison_source": "new scratch N8 A/B",
+  "N8_N256_plan_C_seed_input_and_first_8_equal": true,
+  "native_abnormal_index_gate": {
+    "before_start_matching": 3,
+    "strict_future_matching": 2,
+    "duplicate_and_reverse_precondition_rejected": true,
+    "duplicate_and_reverse_offset_rejected": true,
+    "same_time_repetitions": 12881,
+    "scope": "Pure rule/identifier comparison; invalid-Simulink-model compile not run."
+  },
+  "review_script_sha256": "0dbd5e342196d32000a94e68d6ebcb2baa124a77ea749cffde7a4c1e1176055f",
+  "limits": [
+    "Independent readback of these actual saved files; same-path compiled-source provenance is from native binding receipt.",
+    "Only one ordered old-then-new pair each; timing ratio is descriptive, not stable acceleration.",
+    "All visible log equality does not prove unobserved full analog state or every possible input.",
+    "Pure event rule error gate is not a separate Simulink malformed-schedule compile test.",
+    "No M1 N256 A/B or PDK signoff is claimed."
+  ]
+}

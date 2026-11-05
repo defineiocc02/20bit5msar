@@ -1,0 +1,52 @@
+{
+    "status":  "PAUSE_CLEANUP_COMPLETE",
+    "retired_owned_tasks":  13,
+    "definitions_preserved":  true,
+    "cache_cleanup":  [
+                          {
+                              "path":  "D:\\Temp\\SAR20DEBUG_SOURCE_SMOKE_20261105\\worker_prefs",
+                              "status":  "deleted_regenerable",
+                              "bytes":  14474145
+                          },
+                          {
+                              "path":  "D:\\Temp\\SAR20DEBUG_GRAPH1_20261105\\worker_prefs",
+                              "status":  "deleted_regenerable",
+                              "bytes":  19449832
+                          },
+                          {
+                              "path":  "D:\\Temp\\SAR20DEBUG_CLASSIFY_20261105\\worker_prefs",
+                              "status":  "deleted_regenerable",
+                              "bytes":  19460072
+                          },
+                          {
+                              "path":  "D:\\Temp\\SAR20_WORKER_TMP\\DEBUG_SOURCE_SMOKE_20261105",
+                              "status":  "deleted_regenerable",
+                              "bytes":  0
+                          },
+                          {
+                              "path":  "D:\\Temp\\SAR20_WORKER_TMP\\DEBUG_GRAPH1_20261105",
+                              "status":  "deleted_regenerable",
+                              "bytes":  4993598
+                          },
+                          {
+                              "path":  "D:\\Temp\\SAR20_WORKER_TMP\\DEBUG_CLASSIFY_20261105",
+                              "status":  "deleted_regenerable",
+                              "bytes":  5001343
+                          }
+                      ],
+    "cache_logical_bytes_removed_in_recovery":  63378990,
+    "previous_partial_cache_bytes_not_counted":  true,
+    "original_tasks":  [
+                           {
+                               "TaskName":  "SAR20_MatlabControl",
+                               "State":  3
+                           },
+                           {
+                               "TaskName":  "SAR20_ReadDesktop",
+                               "State":  3
+                           }
+                       ],
+    "original_matlab_retained":  true,
+    "raw_and_as_run_preserved":  true,
+    "default_model_unchanged":  true
+}

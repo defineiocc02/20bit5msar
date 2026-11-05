@@ -1,0 +1,72 @@
+{
+  "source_check": {
+    "unchanged_src_files": 97,
+    "changed_src_files": [
+      "frontend/behavior_frontend_init.m",
+      "frontend/behavior_frontend_step.m",
+      "model/behavior_dac_backend_parameters.m",
+      "model/behavior_prepare_configuration.m",
+      "model/behavior_training_configuration.m"
+    ],
+    "new_src_files": [
+      "model/behavior_i1_guard.m"
+    ],
+    "i2_plan_function_bytes_equal": true,
+    "i2_advance_arithmetic_source_preserved": true,
+    "model_bytes_equal": true
+  },
+  "recorded_i2_fixture": {
+    "plan_rows": 264,
+    "dem_enabled": 0,
+    "first_three_rows": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      [
+        12,
+        18,
+        13,
+        14,
+        16,
+        9,
+        10,
+        11
+      ],
+      [
+        7,
+        3,
+        2,
+        8,
+        6,
+        5,
+        15,
+        17
+      ]
+    ],
+    "fixed_ab_matches": 1,
+    "uses": {
+      "17": 118,
+      "18": 114
+    },
+    "fixture_sha256": "f30b3cfaac944909df8bbb0fe42c793c2d6d77ca97d80db64251f15036f244ed"
+  },
+  "independent_formula_oracle": {
+    "cases": 27,
+    "max_abs_diff_v": 4.579669976578771e-16,
+    "tau_zero_and_inf_abstract_cases": true
+  },
+  "not_executed": [
+    "candidate MATLAB",
+    "Simulink",
+    "I2 all-output bit comparison",
+    "I1 actual ADC graph"
+  ],
+  "boundary": "Static identity and independent equations only; no claim about candidate MATLAB runtime."
+}

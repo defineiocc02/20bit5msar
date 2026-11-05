@@ -1,0 +1,440 @@
+{
+  "format": "YAML 1.2 JSON subset; no external parser needed",
+  "revision": "0.3",
+  "date": "2026-10-20",
+  "status": "design_input_unverified",
+  "coordination": {
+    "product_thread_id": "01a15810-ff21-7da0-97f9-74db157b02ce",
+    "title": "调查产品",
+    "scope": "SAR20-5 only"
+  },
+  "target": {
+    "process_nm": 180,
+    "sample_rate_hz": 5000000,
+    "sample_period_ns": 200,
+    "frontend_banks": 2,
+    "fsr_diff_v": 8.192,
+    "input_vcm_v": 2.048,
+    "core_vcm_v": 0.9,
+    "reference_v": 4.096,
+    "output_reconstructed_bits": 20,
+    "snr_db_min": 100,
+    "sinad_db_min": 98,
+    "thd_dbc_max": -105,
+    "test_input_hz": 100000,
+    "test_amplitude_dbfs": -1,
+    "test_temperature_c": 25,
+    "cross_sample_decimation": false,
+    "core_vcm_interface": "internal necessary bias, no VCMIN pad; AD7961 pin21 remains high-impedance REF/2 AO"
+  },
+  "architecture": {
+    "primary": "CICC2026_Uestc_CT_stage2_tracking",
+    "borrow_adi_only_at_frontend": true,
+    "stage1_information_bits": 10,
+    "stage1_coarse_auxiliary_bits": 6,
+    "stage1_raw_bits": 11,
+    "ra_gain": 32,
+    "stage2_continuous_time": true,
+    "sample_hold_after_ra": false,
+    "stage2_information_bits": 11,
+    "stage2_raw_bits": 12,
+    "interstage_redundancy_bits": 2,
+    "tracking_decisions": 8,
+    "tracking_feedback_updates": 7,
+    "tracking_raw_bits": 8,
+    "tracking_feedback_location": "on_chip",
+    "sinc2_location": "FPGA_Simulink_subsystem",
+    "calibration_location": "FPGA_PC_Simulink_subsystem",
+    "chop_assisted_az_required_for_20bit": true
+  },
+  "frontend": {
+    "initial_mode": "two_bank_ping_pong",
+    "per_bank_rate_hz": 2500000,
+    "nominal_acquisition_ns": 200,
+    "effective_acquisition_subtracts_guard": true,
+    "preserve_adc1_codebook": true,
+    "reported_bank_capacitance_f": 2.8e-11,
+    "capacitance_definition": "TBD single/differential per-side/total",
+    "physical_pool": {
+      "initially_enabled": false,
+      "required_later_research_capability": true,
+      "total": 18,
+      "acquire": 8,
+      "convert": 8,
+      "spare": 2,
+      "causal_rule": "conv[n] == acq[n-1]"
+    }
+  },
+  "timing": {
+    "evidence": "ASSUMED_NOT_STA",
+    "core_budget_ns": 180,
+    "core_end_ns": 175,
+    "raw_commit_deadline_ns": 370,
+    "tracking_reference_ns": 10,
+    "tracking_engineering_candidate_ns": 20,
+    "phases": [
+      {
+        "name": "coarse_aux",
+        "start_ns": 0,
+        "end_ns": 30
+      },
+      {
+        "name": "stage1_fine",
+        "start_ns": 30,
+        "end_ns": 55
+      },
+      {
+        "name": "ra_head_start",
+        "start_ns": 55,
+        "end_ns": 80
+      },
+      {
+        "name": "ct_sar2",
+        "start_ns": 80,
+        "end_ns": 140
+      },
+      {
+        "name": "tracking",
+        "start_ns": 140,
+        "end_ns": 160
+      },
+      {
+        "name": "raw_pair_latch",
+        "start_ns": 160,
+        "end_ns": 175
+      },
+      {
+        "name": "reset_guard",
+        "start_ns": 175,
+        "end_ns": 200
+      }
+    ],
+    "comparison_tracking_window_ns": 10,
+    "engineering_phase_table_is_active_default": false,
+    "comparison_rule": "M2/M3 use identical backend timing; engineering candidate is a separate experiment"
+  },
+  "io": {
+    "status": "design_input_not_pad_STA_verified",
+    "active": true,
+    "commercial_pin_reference": "AD7961 CP-32-7 external 4.096V REF / echo LVDS profile",
+    "frame_bits": 32,
+    "fields": [
+      {
+        "name": "D1",
+        "msb": 31,
+        "lsb": 21,
+        "bits": 11
+      },
+      {
+        "name": "D2",
+        "msb": 20,
+        "lsb": 9,
+        "bits": 12
+      },
+      {
+        "name": "DT",
+        "msb": 8,
+        "lsb": 1,
+        "bits": 8
+      },
+      {
+        "name": "VALID",
+        "msb": 0,
+        "lsb": 0,
+        "bits": 1
+      }
+    ],
+    "lanes": 1,
+    "sclk_hz": 250000000,
+    "mode": "LVDS_echo_falling_launch_next_rising_capture",
+    "latency_samples": 2,
+    "slot_boundary": "CNV_rising",
+    "missing_slot_policy": "emit_VALID0_in_exact_Nminus2_slot; never_repeat_latest_or_compress",
+    "bank_pol_pair_source": "FPGA_CNV_sample_id_and_shared_EN_reset_epoch",
+    "bank_sideband_pin": null,
+    "ovr_sideband_pin": null,
+    "inband_seq": false,
+    "inband_dem_dither_metadata": false,
+    "bundle_setup_ns": 10,
+    "preamble_rise_ns": 8,
+    "first_data_fall_ns": 10,
+    "data_rises_ns": [
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      64,
+      68,
+      72,
+      76,
+      80,
+      84,
+      88,
+      92,
+      96,
+      100,
+      104,
+      108,
+      112,
+      116,
+      120,
+      124,
+      128,
+      132,
+      136
+    ],
+    "last_fall_ns": 138,
+    "quiet_ns": 62,
+    "normal_en_bits": "1010",
+    "shutdown_reset_en_bits": "0000",
+    "test_en_bits": "0100",
+    "test_frame_hex": "A55A5AA5",
+    "no_CS_SDI_config_registers": true,
+    "data_preamble_rise_is_ignored": true,
+    "frame_snapshot_before_first_CLK_fall_ns": 10,
+    "pad_level": "1.8V_control_and_LVDS",
+    "frame_payload_unchanged": true,
+    "lvds_output_enable": "continuous in normal/test, disabled only in shutdown/invalid EN",
+    "unread_slot_window_less_than": 4294967296,
+    "invalid_raw_bits": "ignored_when_VALID0_not_required_zero"
+  },
+  "research_digital": {
+    "all_algorithms_in_simulink_system": true,
+    "dem_hardware_default": false,
+    "dither_hardware_default": false,
+    "dem_requires_physical_masks_and_nominal_charge_invariance": true,
+    "dither_requires_same_sample_cancellation_and_headroom": true,
+    "automatic_adi_2bit_range_expansion": false,
+    "prng_advances_with": "CNV/sample_id, not SPI reads",
+    "hardware_seed_contract": "required before enable",
+    "calibration": "Foreground estimate DAC weights and shared RA gain, then freeze coefficients; LMS optional; no ground-truth access; no mandatory on-chip/background LMS"
+  },
+  "noise_budget": {
+    "evidence": "ASSUMED_INPUT_REFERRED_RANDOM_ERROR_POWER",
+    "fractions": {
+      "sampling": 0.5,
+      "ra_after_tracking": 0.15,
+      "ra_az": 0.08,
+      "comparator_after_tracking": 0.07,
+      "reference_driver": 0.1,
+      "quantization_digital": 0.05,
+      "margin": 0.05
+    },
+    "correlation_requires_covariance": true,
+    "physical_ktc_closed": false
+  },
+  "nonidealities": [
+    "static_bank_slice_aperture_skew",
+    "common_local_jitter",
+    "duty_nonoverlap_mismatch",
+    "input_driver_Ron_nonlinearity_settling",
+    "ktc_hold_noise",
+    "leakage_charge_injection",
+    "fixed_cap_mismatch_gradient_parasitics",
+    "bank_gain_offset_bandwidth",
+    "reference_dynamic_charge_recovery",
+    "ra_gain_poles_slew_clip_memory",
+    "ra_az_and_colored_amplification_noise",
+    "comparator_offset_noise_regeneration_timeout",
+    "dac2_kickback_replica_delay_amplitude",
+    "dem_dither_mapping_headroom",
+    "digital_coefficient_quantization_rounding_saturation",
+    "AZ_pair_state_hold_polarity_selective_reset"
+  ],
+  "validation": {
+    "slx_generated": false,
+    "model_compile_passed": false,
+    "simulink_run_passed": false,
+    "static_spec_check_only": true,
+    "open_inputs": [
+      "W1/W2 exact weight and switching tables",
+      "CINC coupling/reset",
+      "28pF capacitance definition",
+      "RA/comparator noise PSD and timing",
+      "PDK and Pad parameters",
+      "DEM/dither receiver seed/configuration contract",
+      "LVDS receiver/driver/echo delay and timed bundle crossing",
+      "Ringamp selective reset and paired-AZ storage",
+      "Residual polarity switch / CT2 signed-range charge map"
+    ],
+    "scope": "Complete integrated product profile including ADI frontend, CAAZ, LVDS and static/dynamic/nonideal acceptance",
+    "native_milestones": {
+      "vendor_M1": {
+        "status": "passed",
+        "evidence": "../sar20_5_simulink_20261020/results/m1_verified/NATIVE_MANIFEST.json"
+      },
+      "active_stage1_M2": {
+        "status": "passed_single_DC_five_conversions",
+        "evidence": "../sar20_5_simulink_20261020/models/m2_verified_20261021/NATIVE_MANIFEST.json"
+      },
+      "paper_M3_ideal_short": {
+        "status": "passed_DC_and_sine_two_records_each",
+        "evidence": "../sar20_5_simulink_20261020/results/m3_verified/NATIVE_MANIFEST.json"
+      },
+      "paper_M3_sustained_operation": {
+        "status": "ideal_32_and_128_requested_runs_passed_36_and_132_actual_records",
+        "evidence": "../sar20_5_simulink_20261020/results/paper_sustained/NATIVE_MANIFEST.json"
+      },
+      "paper_static_dynamic_nonideal": {
+        "status": "not_accepted",
+        "performance_outputs_must_come_from_actual_records": true
+      }
+    }
+  },
+  "interface_revision_pending": {
+    "user_contract": "commercial_ADC_pin_and_voltage_compatible; FPGA software may change",
+    "selected_profile": "AD7961 external REF4.096/REFIN0/EN1010/echo LVDS",
+    "final_pin_table_pending": false,
+    "actual_LVDS_Pad_and_CDC_validation_pending": true
+  },
+  "chop_assisted_az": {
+    "scope": "SAR20-5 only; SAR16 unchanged",
+    "required_design_feature": true,
+    "simulation_baseline_bypass_required": true,
+    "source_file": "/Users/zhaoyi/Downloads/C32_C32-1.pdf",
+    "source_sha256": "5921d65cfae061ca6301a6104460c2eff3803245c1bc976acecac16adfa79759",
+    "source_pdf_pages": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "source_is_42_page_presentation": true,
+    "source_mechanism": "even AZ refresh; odd AZ hold and reversed input; output averaging",
+    "implementation_proposal": "full differential DAC1 residual sign reversal before shared Ringamp; CT2/TA8 retained",
+    "spec_file": "CHOP_AZ_SPEC.md",
+    "refresh_period_samples": 2,
+    "raw_sample_period_ns": 200,
+    "refresh_period_ns": 400,
+    "nominal_inter_service_hold_ns": 200,
+    "pair_id_rule": "floor(sample_id/2)",
+    "candidate_polarity_sequence": [
+      1,
+      -1,
+      -1,
+      1
+    ],
+    "pku_basic_polarity_sequence_for_comparison": [
+      1,
+      -1
+    ],
+    "candidate_sequence_evidence": "engineering proposal, not original-PPT timing",
+    "signal_reset_separate_from_az_write": true,
+    "feedback_polarity_must_stay_negative": true,
+    "switch_only_while_readout_isolated": true,
+    "az_state_reused_across_tracking_decisions": true,
+    "hold_new_independent_az_draw": false,
+    "input_sampling_ktc_cancellation_claim": false,
+    "model_nonidealities": [
+      "finite_AZ_settling",
+      "storage_noise_per_pair",
+      "hold_leakage",
+      "hold_noise",
+      "switch_injection",
+      "previous_residue_feedthrough",
+      "positive_negative_gain_skew",
+      "AZ_coupling_skew",
+      "CINC_reset_and_replica_error",
+      "saturation_timeout"
+    ],
+    "required_model_tags": [
+      "sample_id",
+      "bank",
+      "pair_id",
+      "pair_pos",
+      "polarity",
+      "reset_epoch",
+      "az_valid"
+    ],
+    "fixed_raw_rate_hz": 5000000,
+    "optional_nonoverlap_pair_output_hz": 2500000,
+    "full_nyquist_noise_reduction_guaranteed": false,
+    "controls_are_internal_not_new_package_pins": [
+      "AZ_WRITE",
+      "AZ_HOLD",
+      "RST_SIG",
+      "RESIDUE_POL",
+      "READOUT_EN"
+    ],
+    "experiments": [
+      "A_every_sample_AZ_no_chop",
+      "B_every_sample_AZ_with_chop",
+      "C_pair_hold_no_chop",
+      "D_pair_hold_chop_demod"
+    ],
+    "physical_open_gates": [
+      "Ringamp_actual_AZ_storage_nodes",
+      "selective_signal_reset",
+      "residual_switch_charge_map",
+      "hold_noise_budget",
+      "CT_signed_range_and_replica"
+    ]
+  },
+  "legacy_io_rev01": {
+    "frame_bits": 32,
+    "fields": [
+      {
+        "name": "D1",
+        "msb": 31,
+        "lsb": 21,
+        "bits": 11
+      },
+      {
+        "name": "D2",
+        "msb": 20,
+        "lsb": 9,
+        "bits": 12
+      },
+      {
+        "name": "DT",
+        "msb": 8,
+        "lsb": 1,
+        "bits": 8
+      },
+      {
+        "name": "VALID",
+        "msb": 0,
+        "lsb": 0,
+        "bits": 1
+      }
+    ],
+    "lanes": 4,
+    "sclk_hz": 50000000,
+    "config_sclk_hz_max": 5000000,
+    "mode": "CPOL0_CPHA0",
+    "latency_samples": 2,
+    "bank_sideband_pin": 30,
+    "ovr_sideband_pin": 29,
+    "inband_seq": false,
+    "inband_dem_dither_metadata": false,
+    "bundle_setup_ns": 10,
+    "cs_fall_ns": 10,
+    "data_rises_ns": [
+      25,
+      45,
+      65,
+      85,
+      105,
+      125,
+      145,
+      165
+    ],
+    "last_fall_ns": 175,
+    "cs_rise_ns": 180,
+    "status": "superseded_rev0.1_transport_do_not_use_for_new_bondmap",
+    "active": false
+  }
+}

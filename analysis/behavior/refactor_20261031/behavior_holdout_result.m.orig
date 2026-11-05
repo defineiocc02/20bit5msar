@@ -1,0 +1,81 @@
+function [R,data]=behavior_holdout_result(out,opt,refCfg,C,limits,P)
+%BEHAVIOR_HOLDOUT_RESULT Evaluate actual frozen main-output RAW/code/reference.
+% No fit, gain/offset adjustment, row selection by error, or coefficient writes.
+% Call (out,opt,refCfg,C,limits,savedP); reads records at actual FPGA ready.
+% Predeclared gates apply to pre-round voltage and code center (code-2^19)*LSB. The FFT's DC-only +0.5 convention is not used here.
+    assert(~opt.enabled&&refCfg.enabled&&strcmp(C.lifecycle,'frozen_for_holdout'));
+    assert(nargin==6&&isequaln(opt,P.cal_cfg)&&isequaln(refCfg,P.training.reference), ...
+        'holdout:savedP','Pass actual saved P and matching cal_cfg/reference.');
+    V=behavior_record_view(out,P);
+    assert(V.reference_enabled&&V.frozen_enabled,'holdout:mode','Require actual paired reference and frozen diagnostics.');
+    rr=V.raw;rf=V.ref4;dd=V.frozen12;cc=V.code20;rt=V.time_s;
+    assert(size(rr,1)==opt.N_train&&isequal(rr(:,4),(opt.first_id:opt.first_id+opt.N_train-1).')&& ...
+        all(rr(:,5)==opt.epoch)&&all(rr(:,6)==1)&&isequal(rf(:,2:3),rr(:,4:5))&& ...
+        all(rf(:,4)==1)&&all(isfinite(rf(:,1)))&&all(dd(:,10:11)==1,'all'), ...
+        'holdout:rows','Missing/invalid public holdout row or frozen result.');
+    [cnv,adcReady]=check_adc_reference(out,rr,rf,refCfg);
+    voltage=dd(:,9);den=dd(:,8);assert(all(isfinite(den)&den>0)&&all(isfinite(voltage)));
+    lsb=2*C.public_cfg.vref_v/2^20;
+    actualCode=min(2^20-1,max(0,round(voltage*(2^20/(2*C.public_cfg.vref_v))+2^19)));
+    assert(words(cc,actualCode),'holdout:integer','Actual CodeLog differs from actual frozen voltage rounding.');
+    ev=voltage-rf(:,1);codeCenter=(cc-2^19)*lsb;ec=codeCenter-rf(:,1);
+    vr=sqrt(mean(ev.^2));vm=max(abs(ev));cr=sqrt(mean(ec.^2));cm=max(abs(ec));
+    passed=vr<=limits.holdout_rms_limit_v&&vm<=limits.holdout_max_abs_limit_v&& ...
+        cr<=limits.holdout_rms_limit_v&&cm<=limits.holdout_max_abs_limit_v;
+    R=struct('schema','sar20-registered-holdout/v1','status','registered_holdout_failed','passed',passed, ...
+        'records',size(rr,1),'sample_id',rr(:,4),'epoch',opt.epoch, ...
+        'voltage_rms_v',vr,'voltage_max_abs_v',vm,'integer_center_rms_v',cr,'integer_center_max_abs_v',cm, ...
+        'rail_codes',nnz(cc==0|cc==2^20-1),'coefficient_sha256',C.coefficient_sha256, ...
+        'public_cfg_sha256',C.public_cfg_sha256,'limits',limits,'reference_declaration',refCfg, ...
+        'reference_join_exact',true,'refit',false,'coefficient_updated',false,'gain_offset_fit',false, ...
+        'scope','This registered stimulus/chip/public configuration; no broader physical or interface acceptance');
+    R.readiness_boundary=V.readiness_boundary;
+    if passed,R.status='registered_holdout_passed';end
+    data=struct('raw',rr,'code20',cc,'reference_v',rf(:,1),'voltage_v',voltage, ...
+        'code_center_v',codeCenter,'voltage_error_v',ev,'integer_error_v',ec, ...
+        'actual_ready_time_s',rt,'actual_record_ready_time_s',rt, ...
+        'actual_adc_raw_ready_time_s',adcReady,'actual_CNV_time_s',cnv,'actual_frozen_diagnostic12',dd);
+end
+function [t,x]=series(s,w)
+    assert(isa(s,'timeseries'));t=s.Time(:);d=s.Data;
+    if s.IsTimeFirst,x=reshape(d,numel(t),[]);else,x=reshape(permute(d,[ndims(d) 1:ndims(d)-1]),numel(t),[]);end
+    assert(size(x,2)==w);
+end
+function b=words(a,c),b=isequal(size(a),size(c))&&isequal(typecast(a(:),'uint64'),typecast(c(:),'uint64'));end
+
+function x=at_times(t,data,wanted,label)
+    [found,index]=ismember(wanted,t);
+    assert(all(found),'recordResult:time','Missing exact actual timestamp in %s.',label);
+    for j=1:numel(wanted)
+        assert(nnz(t==wanted(j))==1,'recordResult:time','Ambiguous actual timestamp in %s.',label);
+    end
+    x=data(index,:);
+end
+function [cnv,adcReady]=check_adc_reference(out,rr,rf,refCfg)
+% Original declared reference is checked at actual ADC CNV, not receive time.
+    [te,event]=series(out.get('event_log'),2);
+    [tf,ref]=series(out.get('train_ref_log'),4);
+    [ta,raw]=series(out.get('raw_log'),6);[tq,ready]=series(out.get('ready_log'),1);
+    assert(all(ismember(ready,[0 1])),'recordResult:adcReady','ADC Ready must be binary.');
+    art=tq(ready==1);ar=at_times(ta,raw,art,'raw_log');
+    cnv=zeros(size(rr,1),1);adcReady=cnv;
+    for k=1:size(rr,1)
+        row=find(event(:,1)==rr(k,4)&event(:,2)==1);
+        assert(isscalar(row),'recordResult:CNV','Require one actual ADC CNV for each public record.');
+        cnv(k)=te(row);
+        assert(cnv(k)==rr(k,4)*refCfg.sample_period_s,'recordResult:CNV','Actual CNV differs from registered aperture.');
+        original=at_times(tf,ref,cnv(k),'train_ref_log');
+        expected=refCfg.offset_v+refCfg.amplitude_v*sin(2*pi*refCfg.frequency_hz*cnv(k)+refCfg.phase_rad);
+        assert(original(2)==rr(k,4)&&original(3)==rr(k,5)&&original(4)==1&& ...
+            words(expected,original(1))&&words(original,rf(k,:)), ...
+            'recordResult:reference','CNV reference, paired reference or declared source differs.');
+        rows=event(:,1)==rr(k,4);held=at_times(tf,ref,te(rows),'train_ref_log');
+        assert(all(held(:,2)==rr(k,4))&&all(held(:,3)==rr(k,5))&&all(held(:,4)==1)&& ...
+            words(held(:,1),repmat(original(1),sum(rows),1)), ...
+            'recordResult:hold','Original public reference changed after actual CNV.');
+        r=find(ar(:,4)==rr(k,4)&ar(:,5)==rr(k,5));
+        assert(isscalar(r)&&words(ar(r,:),rr(k,:)), ...
+            'recordResult:ADCjoin','RX/public RAW differs from unique early ADC RawReady word.');
+        adcReady(k)=art(r);
+    end
+end

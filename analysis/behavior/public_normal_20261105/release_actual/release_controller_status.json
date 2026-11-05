@@ -1,0 +1,15 @@
+{
+    "exit_code":  null,
+    "config_now":  "91981e9d23fb7bd70fcd28398388b4f7a574a8147994a948a594c23e70d5bba8",
+    "latest_now":  "3bd2403aa07af03d53a22f88312aa1acb80b4a4a8dc27ec25395f5461d89c97a",
+    "config_replaced":  false,
+    "worker":  "NOT_STARTED",
+    "error":  "System.Management.Automation.MethodInvocationException: 使用“3”个参数调用“Replace”时发生异常:“路径的形式不合法。” ---\u003e System.ArgumentException: 路径的形式不合法。\r\n   在 System.IO.Path.NewNormalizePath(String path, Int32 maxPathLength, Boolean expandShortPaths)\r\n   在 System.IO.Path.NormalizePath(String path, Boolean fullCheck, Int32 maxPathLength, Boolean expandShortPaths)\r\n   在 System.IO.Path.GetFullPathInternal(String path)\r\n   在 System.IO.File.InternalReplace(String sourceFileName, String destinationFileName, String destinationBackupFileName, Boolean ignoreMetadataErrors)\r\n   在 CallSite.Target(Closure , CallSite , Type , Object , Object , Object )\r\n   --- 内部异常堆栈跟踪的结尾 ---\r\n   在 System.Management.Automation.ExceptionHandlingOps.CheckActionPreference(FunctionContext funcContext, Exception exception)\r\n   在 System.Management.Automation.Interpreter.ActionCallInstruction`2.Run(InterpretedFrame frame)\r\n   在 System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\r\n   在 System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\n在 \u003cScriptBlock\u003e、D:\\Temp\\SAR20RELEASE_20261105\\release_controller.ps1 中: 第 124 行",
+    "tasks_unchanged":  true,
+    "status":  "failed",
+    "latest_before":  "3bd2403aa07af03d53a22f88312aa1acb80b4a4a8dc27ec25395f5461d89c97a",
+    "gui_preserved":  true,
+    "phase":  "preflight",
+    "state_now":  "4297ae2ae8ddc3cffe0a433f93763cd02114d9d77a4f5eb15e26dca42af040a1",
+    "model_now":  "9895796eaf77f6e42e6d24bc0a6dc38cd0dec8acad59283a90a622e4e272b563"
+}

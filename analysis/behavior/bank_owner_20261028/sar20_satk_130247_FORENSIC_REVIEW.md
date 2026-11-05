@@ -1,0 +1,12 @@
+# 130247Z SATK partial 原件复核
+
+结论：本次停止于 scratch 的 `parent_add`，**没有进入 OFF 位门或 ON 仿真**。两次 transport 编辑成功，随后 SATK 创建九个父级块但返回 partial；部分图与清理回执均已保全，不能重复整批 add。
+
+- **身份**：实际外入口 SHA `4111b0cf1970d42c980ec389c666675a03bb59eb4a5b98f2e6f28e75a40230a6`，inner runner `33b767fb78a818d3624cdf349bc6430c066301dc5952fd9568838380277a12df`，manifest `2da961f6b82fc70e3e2ae1879613083579fb34154659bc34c578c755d2049789`，均与冻结 v5 一致。实际 source receipt 的 22 候选、87 生产、223 SATK 文件摘要及 4 核心入口与锁定清单相符；same-path 缓存的内存字节未独立证明。130247 的 `candidate.zip` 镜像缺 README 和两份 Python 生成脚本；其余共同文件逐字节与冻结 ZIP 一致，原生 entry 回执记录启动时完整 manifest 校验通过。
+- **先完成的内容**：原生 pure preflight 报 `PURE_PREFLIGHT_ONLY`，其中结构/篡改检查通过，但明确没有实际模型 update/sim。`transport_add` 和 `transport_fault_wire` 返回 `status: ok`。partial 相对工厂 graph 解析为 277→287 blocks、340→341 edges，新增连接只有 `PinTransport#out7 → RxFault`；原 `Fpga#out1 → CodeLog` 保持。已有 transport 编辑不可在该 partial 上盲目重做。
+- **失败事实**：`parent_add_response.txt` 返回 `status: partial`，创建 SID454–462 的九块；其中 BankOwner 与 BankCommand 的 `FunctionName` 均报 `PARAM_SET_FAILED`，栈分别指向两 S-function 的初始化第 8/5 行。partial SLX XML 中两块均存在 `Parameters=sar20_pp_verified_parameters(P)`，且没有显式 `FunctionName` 属性；XML 缺项不等于已经独立观察 `get_param` 的运行时返回值。九块当前均未连接。
+- **原因假设**：两个 S-function 同行设置 dialog 参数并读取 `DialogPrm(1).Data`，故 SATK 在设置 FunctionName 时 dialog 参数尚不可用是可检验假设；响应未提供可判定的更深异常原因，不能写成已证根因。下一步应在另存的 owned scratch 副本上分别读回两块实际参数，并用最小、可逆的分步配置验证参数/FunctionName 顺序与端口；失败保留原 partial 和新诊断。
+- **未做的事项**：`parent_wires`、CodeLog cutover、root 输出接线和最终 SATK 图检查都未到达；没有 factory OFF 对照、30 路位门、负向模型 update、RX nominal/frozen/bank ON 或 N8 仿真回执。pure preflight 不能代替这些门。若从 partial 继续，应从两块配置修复及逐口检查开始，不能重新执行 transport 添加/连线或九块的整批 add；然后依序完成接线、图检查、OFF 先于 ON 等全部未执行门。修改 installer 必须作为新候选重新冻结/记 SHA，不覆盖本次原件。
+- **恢复证据**：`SarPPBase_partial.slx` SHA `c46d8612b5c0fe8b831b038347543b8485921f60415927aa6c5429d871cdadf7`，`SarPP_partial.slx` SHA `5413a38f33d813b3f5ac390828c030a53d7b862926554f905a5f6d86da62e325`，与各自任务内最终 SLX 和 cleanup 记值一致；两份 last_saved 均为主图 6319… 原副本。两 partial 的公共 P 均 N8、epoch1、bank OFF。inner cleanup 和 outer exit 回执记录两 owned scratch 已保存/关闭、main 文件及公开 workspace/DecodeP/logger 不变、RNG/path/cwd 恢复；未比较主私有 P，且本次未独立查看远端实时状态。
+
+原件：`runs/az_probe_20261028T130247Z/`；只读核验脚本 `/tmp/sar20_satk_130247_forensic.py` SHA `fea2e14ff8f423bc8c1205a57fca2b75762593daf4630b5c63faecab4443544b`，结果 `/tmp/sar20_satk_130247_forensic.json` SHA `1ea6e3375f519340a19b5b610e09f49283179764ba79c0b515ad35ec2d673a6a`。未操作 Windows/current。

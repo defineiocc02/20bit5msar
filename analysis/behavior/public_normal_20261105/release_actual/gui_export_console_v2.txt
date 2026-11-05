@@ -1,0 +1,18 @@
+??? 错误使用 assert
+normal_10v_configuration resolves outside the current source: .
+
+出错 SAR20>verify_project_resolution (第 360 行)
+        assert(~isempty(resolved)&&strcmpi(canon(resolved),expected{k}), ...
+
+出错 SAR20 (第 33 行)
+    verify_project_resolution(root,src,config);
+
+出错 gui_export_current>export_current_model (第 10 行)
+    addpath(root,'-begin');setup=SAR20('setup'); %#ok<NASGU>
+
+出错 gui_export_current (第 3 行)
+disp(jsonencode(export_current_model()));
+
+出错 run (第 112 行)
+evalin('caller', strcat(scriptStem, ';'));
+

@@ -1,0 +1,61 @@
+{
+  "status": "static_inventory_pass_only_matlab_NOT_RUN",
+  "production_root": "/Users/zhaoyi/Obsidan/项目库产物文件夹/sar20_5_simulink_20261020",
+  "candidate_root": "/private/tmp/sar20_ni_candidate.yAbWvD/candidate",
+  "production_source_file_count": 102,
+  "unrelated_parallel_worktree_drift": {
+    "current/src/analysis/behavior_spectrum.m": {
+      "production_now_sha256": "f567aab44fc37579c00812b673264afa464ec99d074f07ad0fa6d6955fcd4f3e",
+      "isolated_snapshot_sha256": "c6c2cf78780d628e7b4c7c7772e09dc5024dcee14bc717fd1147129c2153345a"
+    }
+  },
+  "changed_files": {
+    "config/adc_parameters.m": {
+      "production_sha256": "949a7c863755debe859e9f4ead028ddf3ea7f4c3d1d98699083a0ce76170e540",
+      "candidate_sha256": "f91372be10dbb453e488e71f911566a55ed004275b99b060bddea73ae95f6df1"
+    },
+    "current/src/calibration/public_calibration_config.m": {
+      "production_sha256": "d15ae8e4af25d443f14a93a25e7305f3f0c29c58b9c55355eea1aec6a978d769",
+      "candidate_sha256": "4e5b8617860b61f2d595d67bba5cd5f489d6e8bd639e9416fd808773a0cc60c9"
+    },
+    "current/src/calibration/behavior_cal_collector_step.m": {
+      "production_sha256": "4d9a3a59dffd904991db49a93e157196dbec9e1ec7791ad470b73c01d976f676",
+      "candidate_sha256": "d98a0005fe43fb15a8881ba3b85faff3b350d1f79bfb8726f361d9ba4629a6cd"
+    },
+    "current/src/model/behavior_prepare_configuration.m": {
+      "production_sha256": "62d944cd3bfcc3c52bdfe44b668463d9ad394e20980d5e2a820262a076734222",
+      "candidate_sha256": "3513898f825776fa0fd16567c9631ff2b2c1bb6a242d8b1787b756230eb77ccd"
+    },
+    "current/src/model/behavior_ra_noise_guard.m": {
+      "production_sha256": "fca18b3b205ec892c37dd1c3e37f5575ed10fea23c10bf162b9f0969a10d49ec",
+      "candidate_sha256": "f34f5c0ef9283729729bdaf444af5d724b50422ee92bd29b0ea7952caa019d1b"
+    },
+    "current/src/model/behavior_training_configuration.m": {
+      "production_sha256": "5eadbe2d56cadb4d2fc8f681bffcc5d907fffb3494902390a6d105ab9887db5e",
+      "candidate_sha256": "cd6a4fe8f5247e3ca95a3b477892898b2e920e85fbab1dcec32aa0a48ebf81dc"
+    }
+  },
+  "unchanged_critical": {
+    "config/nominal.mat": "d8b38e49bbb5ecc244c652bb736121bd34271d3fabb5649577344279f2716299",
+    "current/src/calibration/behavior_public_cal_features.m": "2e3d25e9a67ae2f7c567e2070f222b8d9c97eb4b8f793345a6f4ec53242152f9",
+    "current/src/calibration/behavior_public_cal_fit.m": "c5b9508bb16dbb3a373b046d84e8f005bb659d758deda5790f07add7703fd7c6",
+    "current/src/frontend/behavior_frontend_step.m": "b4ef15be2d162d82bea86d862246fceeaa6e66bee0c0847552e9f28acac1aa54",
+    "current/src/physics/behavior_backend_step.m": "b6fd6bcd73b8673542a93537a34f5a65d81a49d1a58ef6914230638fb26f4d75",
+    "current/src/calibration/sar20_pp_parameters.m": "94ee01b5ba879eb0a92e1c77373c2a5d185874913437f3ce82cda7e83defbf96"
+  },
+  "baseline_wrappers": {
+    "baseline_prepare_configuration": "a9144515fa73697d5c1a0093ed302a799b72c24c4f5faf7d66c3b48fcd94a118",
+    "baseline_ra_noise_guard": "b627c1b3fc65a21bb628f5d74902abee8bba860a6d97d128c7ba2e67a06c42cb",
+    "baseline_training_configuration": "4d1d70b895d007aa8d3a174e8e391bb2287265fc5f4994be45a3abc8b884e55d",
+    "baseline_public_calibration_config": "3b5c28b5ab0931912b3d68d60ff3c367aca7e5a0b9ff5e3e442f06122ec70dfd"
+  },
+  "patch_sha256": "32414a8a16efd91b40a0a06e85b27a15f0414ddb33b0ac8b7f6d7b84133c4abe",
+  "test_sha256": "8a643e63a645d8f5519a9be3e0681227dbbd7e1cb88608c915113764891947b3",
+  "readme_sha256": "d6a0f1689362172c8b3f076aa79ff32645e3a87f25f46abee3c8f9b6f4ce64e5",
+  "production_model_sha256": "f358f226b530a4efcc6fab784de0545f7e8bd1df78554d20e537eaef4c53abf7",
+  "limits": [
+    "No MATLAB/Simulink process was started or contacted.",
+    "No production files were written.",
+    "Static inventory does not execute MATLAB tests or prove numerical equivalence."
+  ]
+}

@@ -1,0 +1,85 @@
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,6 @@
+ # SAR20-5 行为级工程
+ 
+-同一主SLX已接入公开LVDS和有限DAC→RA解析耦合；默认N8、`P.transport.enabled=false`、DAC建立关闭。图像导出时的模型字节身份见[metadata](analysis/behavior/current_figures/metadata.json)；当前模型以实际SLX文件为准，运行状态见[检查点](CHECKPOINT.md)。
++同一主SLX已接入公开LVDS和有限DAC→RA解析耦合；默认N8、`P.transport.enabled=false`、DAC耦合off且τDAC=0（理想即时建立；DAC本身仍工作）。图像导出时的模型字节身份见[metadata](analysis/behavior/current_figures/metadata.json)；当前模型以实际SLX文件为准，运行状态见[检查点](CHECKPOINT.md)。
+ 
+ **唯一入口 `SAR20.m`；唯一开发模型 `current/models/SarAdc.slx`；参数工厂 `config/adc_parameters.m`。** 实际仿真在 Windows MATLAB R2024a，目录 `D:/Academic/Projects/sar20m1/SAR20`。Mac同步工作版本与证据，未宣称在Mac原生运行。
+ 
+@@ -11,11 +11,11 @@
+ | 现在看什么 | 当前事实 |
+ |---|---|
+ | 唯一开发/运行/调参 | `current/models/SarAdc.slx` / `SAR20.m` / `config/adc_parameters.m`；实际核在`current/src` |
+-| 已接主通路 | 6b预转换＋SAR1、真实DAC残差、32×名义RA/AZ、CINC/12D2/8TA7、数字重构；18/8/8/2池、DEM、物理dither及公开加回已完成整图对照 |
++| 已接主通路 | 6b预转换＋SAR1、真实DAC残差、32×名义RA/AZ、CINC/12D2/8TA7、数字重构；18/8/8/2片池、DEM、物理dither及公开加回已完成整图对照；片池不是校准系数乒乓Bank |
+ | 当前实际结果 | 当前主图 DAC τ=1ns、RX N256得SNDR106.913dB；τ0的RX长训练2048条满684秩、单次拟合后冻结，新登记的1024条独立RX holdout通过原误差门，冻结码SNDR117.458dB。[条件与原件](analysis/behavior/RESULTS.md) |
+ | 已接数字扩展 | 片外TrainRef、仅公开RAW/Ref训练、不可变h解码；名义支路与校准主输出可在同一批原始判决下比较，默认均off |
+ | 已接孔径误差 | 同一采样电荷上的公共/局部jitter及18片固定skew；真实八片孔径可查。仅充分建立的signal endpoint近似，其他时序仍名义 |
+-| 仍未完成 | 乒乓bank、全时钟抖动/有限RC联合、参考恢复/比较器等关键非理想、全范围DNL/INL；AZ＋混合DAC的N8区间已做独立公式核验，N256联合性能待补；RX holdout只限同一固定芯片与声明理想参考，系数仍未产品接受 |
++| 仍未完成 | 校准系数乒乓Bank尚未接入；当前固定M8，[M1仅完成隔离scratch的N8功能对照](analysis/behavior/m1_m8_20261028/sar20_independent_m1_114345_REVIEW.md)；全时钟抖动/有限RC联合、参考恢复/比较器等关键非理想、全范围DNL/INL仍未完成；AZ＋混合DAC的N8区间已做独立公式核验，N256联合性能待补；RX holdout只限同一固定芯片与声明理想参考，系数仍未产品接受 |
+ | 已接传输 | 同一SLX默认transport off直出；`P.transport.enabled=true`后apply，按公开pin TX/RX在N−2槽输出record；ADC状态/48事件不改 |
+ 
+ 证据版本不能串用：**101.91 dB SNDR**来自旧 NativeCt 固定A/B、冻结校准分支的256点记录；旧 PoolCt 的8点短验证没有可继承的频谱性能。早期独立352态组件、684参数函数、静态检查或重放也不等于接入整张ADC图。当前状态以上述唯一主图的实际 `SAR20('run')`、保存的SLX/P/source/raw及各自验证回执为准。
+@@ -45,7 +45,7 @@
+ 
+ 1. `Driver`是片外激励配置[V/Hz/rad]；`Calendar`是控制时序的行为日历。
+ 2. `EventStep`是仿真调度边界，**不是芯片边界**。其中`Adc`为片内ADC，`Fpga`为片外数字算法。图上说明来自已应用P，而非未应用的工厂文件。
+-3. 沿 `Sample → PreconvertSar1/DacTrial → RaAzCt → Compare2/Sar2Tracking → ChargeReturn/RaReset` 看采集、一级切换、放大/CT反馈、判决和电荷返还。6位Flash预转换+5次细SAR形成10位有效DT量化；后续为12次D2、8次tracking比较及7次物理更新，RA后没有新增采样保持。
++3. 沿 `Sample → PreconvertSar1/DacTrial → RaAzCt → Compare2/Sar2Tracking → ChargeReturn/RaReset` 看采集、一级切换、放大/CT反馈、判决和电荷返还。6位Flash预转换与5次细SAR形成10位有效一级量化；后续当前固定M8，含12次D2、8次tracking比较及7次物理更新，RA后没有新增采样保持。
+ 4. ADC模拟/控制由`SampleCharge[353]`、`RaCtState[48]`、`SarState[51]`三个标准UnitDelay保存唯一状态。FE353保留旧317字前缀，追加18片实际孔径和18片开采时刻；没有复制电荷记忆。其它stage计算下一状态；片外训练参考/收集器另有明确的仪器及数字存储。比较、存储和FPGA算术采用标准块；耦合电荷、RC与CINC保留明确计算核。
+ 5. FPGA只使用公开D1/D2/DT及ID/epoch重构，最后20位round/saturate。默认名义支路；显式冻结时使用固定h的`(u+Bh)/den`。TrainRef是Adc外的声明仪器参考，仅供训练和独立评价，不进入冻结解码。内部仍为double算法。原始`DT[7:0]`指tracking判决，不是“离散时间DT一级”的位数。
+ 6. 日志区分pre-decide真实端点、final-next待锁存状态及post-decide/pre-ChargeReturn返回命令。ADC RawReady仍在CNV后86.25ns；transport on时，同ID的RX raw_ready在CNV后538ns，FPGA才消费record。frame_ready/raw_ready/sample_ready含义见[参数表](docs/PARAMETERS.md)；原始ADC Ready不等于接收ready。
+@@ -81,17 +81,19 @@
+ 
+ ## 结果、参数与边界
+ 
+-LVDS接入阶段的公开N8 [off](runs/behavior_f346bc5e-867f-48be-b3ac-085fa7e1bcfa/summary.json)为4.1919s，[RX on](runs/behavior_57add412-83ce-4070-8780-4e73759bf46f/summary.json)为5.1550s，[RX训练收集](runs/behavior_2d81bd58-eba0-498d-bd3f-4d5dea99bb94/summary.json)为5.5110s，均为单次真实计时，不作统计benchmark。训练收齐8条、fit调用一次后按欠秩门拒绝，无h/冻结；[Terminate证明](runs/az_probe_20261027T011012Z/receipt.json)与[主图训练结果](runs/behavior_2d81bd58-eba0-498d-bd3f-4d5dea99bb94/training.json)记录了真实Update后末态，OP仅作诊断。旧**直通RAW**的1024码冻结holdout SNDR为**117.7364dB**，同RAW名义支路101.6084dB；本组AZ/kTC/随机噪声关闭，不能当成已完成长RX校准。开启采样kTC与配对AZ/斩波的既有N256为**77.9401秒，SNDR102.2580dB，ENOB16.6940bit**。[结果、条件与未完成项](analysis/behavior/RESULTS.md)区分各配置；不能跨配置继承性能，也不是完整论文或180nm性能复现。
++LVDS接入阶段的公开N8 [off](runs/behavior_f346bc5e-867f-48be-b3ac-085fa7e1bcfa/summary.json)为4.1919s，[RX on](runs/behavior_57add412-83ce-4070-8780-4e73759bf46f/summary.json)为5.1550s，[RX训练收集](runs/behavior_2d81bd58-eba0-498d-bd3f-4d5dea99bb94/summary.json)为5.5110s，均为单次真实计时，不作统计benchmark。训练收齐8条、fit调用一次后按欠秩门拒绝，无h/冻结；[Terminate证明](runs/az_probe_20261027T011012Z/receipt.json)与[主图训练结果](runs/behavior_2d81bd58-eba0-498d-bd3f-4d5dea99bb94/training.json)记录了真实Update后末态，OP仅作诊断。旧**直通RAW**的1024码冻结holdout SNDR为**117.7364dB**，同RAW名义支路101.6084dB；本组AZ/kTC/随机噪声关闭，不能当作RX路径训练证据；当前独立RX训练与holdout见本页表格及结果页。开启采样kTC与配对AZ/斩波的既有N256为**77.9401秒，SNDR102.2580dB，ENOB16.6940bit**。[结果、条件与未完成项](analysis/behavior/RESULTS.md)区分各配置；不能跨配置继承性能，也不是完整论文或180nm性能复现。
+ 
+-当前同一主图的[256码对照](analysis/behavior/RESULTS.md)：DAC关闭时SNDR **109.827136dB**，0.1ns为**109.844923dB**，1ns为**106.913367dB**。三组保存了各自SLX、完整P、源码、原字、整数码和频谱；关闭组的旧29路日志与先前[RX N256](runs/behavior_c9d33df5-a215-44c8-984c-224b70fd37c1/summary.json)逐位相同。1ns组有限RA和固定CINC负载仍开启，kTC/失配/DEM/dither/AZ/jitter/cal关闭；这不是全NI或完整论文复现。
++当前同一主图的[256码对照](analysis/behavior/RESULTS.md)：DAC耦合关闭且τDAC=0时SNDR **109.827136dB**，0.1ns为**109.844923dB**，1ns为**106.913367dB**。三组保存了各自SLX、完整P、源码、原字、整数码和频谱；关闭组的旧29路日志与先前[RX N256](runs/behavior_c9d33df5-a215-44c8-984c-224b70fd37c1/summary.json)逐位相同。1ns组有限RA和固定CINC负载仍开启，kTC/失配/DEM/dither/AZ/jitter/cal关闭；这不是全NI或完整论文复现。
+ 
+-同一主图另完成[AZ保持斩波＋混合18片τ的N8实跑](runs/az_probe_20261028T093824Z/receipt.json)及[RA/AZ近极点两侧的N8实跑](runs/az_probe_20261028T094010Z/receipt.json)，实际每ID保留12次D2、8次tracking比较及7次反馈；[隔离只读探针与独立公式核验](analysis/behavior/finite_dac_current_20261028/AZ_DAC_JOINT_ORACLE.md)将三组区间的预CINC RA端点与12态expm对照。这些短记录不产生频谱结论。[当前RX训练N8](runs/az_probe_20261028T094225Z/receipt.json)核对8条公开接收RAW与外部参考，fit一次后按欠秩拒绝，未生成h；旧直通RAW的长训练/holdout不能据此迁移到RX。
++[事件查找候选的N256隔离对照](analysis/behavior/event_lookup_20261028/REVIEW.md)仅有一对旧→新无profile计时：136.147900→136.908603秒，30路Time/Data逐位一致；本次没有提速，候选未进入current。[真实profiler回执](runs/az_probe_20261028T122805Z/validation/receipt.json)记录一次插桩N256、耗时182.056秒；各函数含子时间重叠，插桩和无profile耗时不能用来计算加速比。该profiler回执状态标记独立回读待完成，后续独立证据另核。
++
++同一主图另完成[AZ保持斩波＋混合18片τ的N8实跑](runs/az_probe_20261028T093824Z/receipt.json)及[RA/AZ近极点两侧的N8实跑](runs/az_probe_20261028T094010Z/receipt.json)，实际每ID保留12次D2、8次tracking比较及7次反馈；[隔离只读探针与独立公式核验](analysis/behavior/finite_dac_current_20261028/AZ_DAC_JOINT_ORACLE.md)将三组区间的预CINC RA端点与12态expm对照。这些短记录不产生频谱结论。[当前RX训练N8](runs/az_probe_20261028T094225Z/receipt.json)核对8条公开接收RAW与外部参考，fit一次后按欠秩拒绝，未生成h；旧直通RAW的长训练/holdout不能当作RX路径训练证据；当前RX长训练与独立holdout另见本页表格及结果页。
+ 
+ 当前孔径误差N256整图对照：关闭时SNDR109.8271dB；上述combined开启时**SNR95.9983dB、SNDR95.7876dB**，实际held误差RMS41.556µV。它低于Rev0.5近100kHz主目标SNR100/SINAD98dB，暴露了这组时序参数的预算不足；单次sim75.17/75.80秒。其余多项NI仍关闭，不能宣称全非理想已达标。
+ 
+ [参数表](docs/PARAMETERS.md)列出位置、单位和有效范围。改AZ模式建议编辑工厂的`P.backend.az.mode`，后续统一派生数字模式；不要只改单边。`nominal.mat`是名义几何/尺度，不是训练系数。重新设计名义CT几何必须同步核对数字名义码权，不能假定单改电容会自动重建数字系数。
+ 
+-当前主图另以31个真实DC仿真点在正侧约7.8–31.3µV定位三个相邻跃迁，得到码524290/524291的[条件局部DNL区间](analysis/behavior/RESULTS.md)；旧局部窗口与A0对照仍是历史证据。完整DNL/INL、零点跳码排除、更多噪声/失配/抖动及乒乓bank尚未完成。当前RX长训练/独立holdout的通过范围见结果页，不能外推到有限DAC＋校准、所有芯片或工艺。原论文与定义保留在`docs/`；未测项目不填0，关闭或0/Inf配置不计入覆盖。
++当前主图以31个DC仿真点在正侧约7.8–31.3µV定位三个相邻跃迁，得到码524290/524291的[条件局部DNL区间](analysis/behavior/RESULTS.md)。[近零固定端点A0对照](analysis/behavior/local_static_20261028/sar20_independent_gain3_120823_REVIEW.md)中，−LSB/4096与0V端点码差在A0=1e4/1e5/Inf时分别为4/1/1；新点来自复制图，旧锚来自原图，尚无同A0跨环境逐位门。这支持有限增益影响该条件下的端点码差，不证明唯一根因或窗内缺码。完整DNL/INL、零点窗内单调性与缺码排除、更多噪声/失配/抖动及乒乓Bank尚未完成。当前RX长训练/独立holdout的通过范围见结果页，不能外推到有限DAC＋校准、所有芯片或工艺。原论文与定义保留在`docs/`；未测项目不填0，关闭或0/Inf配置不计入覆盖。
+ 
+ 最新固定失配四组N256的SNDR分别为101.122/100.703/101.340/101.283dB（DEM/dither＝00/01/10/11），单次75.3–78.6秒；本组AZ/kTC关闭，不能与上面的thermal-AZ配置混用。实际[ADI＋AZ联合ID5解释](runs/behavior_90c97b0c-9945-448a-867e-2735d45c02cf/sample_5_explain.md)可直接沿选片、电荷、VX/VY、判决到code979626阅读。联合例只作功能调试，不作为N256频谱记录。
+ 
+--- a/docs/PARAMETERS.md
++++ b/docs/PARAMETERS.md
+@@ -47,7 +47,7 @@
+ | `options.ktc_enabled/temperature_K/ktc_seed` | bool、K、uint32整数 | kTC已在实际capture向同一存储电荷注入一次；差分方差2kBT/Csample_half。这是理想源、充分建立、独立两半/片噪声的capture端点近似，不产生采集中完整随机波形。有效开启统计是enabled且T>0。关闭用false并保留298.15K；T0只是零噪声控制，不称热噪声覆盖。已通过整图关闭对照、同seed重复及256码动态验证；不是所有非理想已完成。 |
+ | `options.tau_sample_s` | s，0或Inf可用 | 连续正弦采样的一阶解析建立；kTC开启时必须全0，有限RC随机建立的联合模型未实现、明确拒绝。 |
+ | `options.tau_precharge_s` | s，0或Inf可用 | tail/bias预充一阶建立；默认0完全建立。它不表示已覆盖完整开关噪声/电荷注入。 |
+-| `options.tau_dac_s` / `P.front.tau_dac_s` | s，18片各一值 | 0为全建立、正有限值为DAC切换的一阶建立、Inf为保持负例。正有限值需同时设`P.backend.dac_coupling.enabled=true`，由prepare绑定同一18片映射和旧FE状态到RA；RA slew须为Inf。工厂默认0/off；不能只改单边。当前主图1ns已完成N8和N256实跑。 |
++| `options.tau_dac_s` / `P.front.tau_dac_s` | s，18片各一值 | 0为全建立、正有限值为DAC切换的一阶建立、Inf为保持负例。任何非零值（包括Inf保持负例）均需设`P.backend.dac_coupling.enabled=true`，由prepare绑定同一18片映射和旧FE状态到RA；RA slew须为Inf。Inf-only不计有限建立覆盖。工厂默认0/off；不能只改单边。当前主图1ns已完成N8和N256实跑。 |
+ | `A.A0/UGB_hz/Cf_f/tau_reset_s` | 1、Hz、F、s | 设计者指定的单环近似与复位衰减：NG=1+Ctop/Cf，g=A0/(A0+NG)，τ=NG/(2πUGB)。这些不是从论文识别出的开环极点或稳定性。A0或UGB取Inf分别关闭相应限制；没有MNA/高精度子步。数字名义gain仍32，改变Cf不隐式用模拟真值修正数字增益。 |
+ | `P.backend.ra.vos_input_v/slew_v_per_s` | V、V/s | 输入失调和端点slew近似，slew=Inf关闭。不是晶体管级slew/噪声识别。 |
+ | `P.backend.az.mode` | 标签 | off、ordinary、chop、hold、hold_chop；ordinary/chop逐样本写，hold类偶ID写、奇ID保留。chop类按公共ID使用POL[+−−+]；RA前完整Qres（含DAC1残差及tail-dither电荷）一起乘POL；数字仅解调D2/DT，D1原码和数字dither加回支路不翻。factory同步digital mode/NI；不得只改单边。 |
+@@ -59,7 +59,7 @@
+ | `P.front.jitter.enabled/common_sigma_s/local_sigma_s/fixed_slice_skew_s/seed` | bool、s、s、18×1 s、uint32整数 | 默认off；公共/局部RMS非负，skew为有符号物理片偏移。seed/ID/epoch定义公共量，局部量再以物理片号为key；不是DEM观察顺序。仅移动signal端点取值，tail/bias及其余事件仍名义。enabled但RMS/skew全0是零激励对照；finiteRC+jitter拒绝。 |
+ | `P.backend.ni.cinc_kick` | bool | 标称2×2电荷解及瞬时delta-Q作用在同一RA输出，随后单极点恢复；默认开启。CINC900fF为明确工程选择，未做电路提取；replica匹配且瞬时，不含开关过渡及非零复制延迟。 |
+ 
+-这些项目前不可用：kTC+有限采样RC联合模式、全时钟抖动、finiteRC+jitter、RA/AZ/参考/比较器随机噪声、非线性RA、参考恢复。有限DAC耦合已接入，校准关闭时已验证N8及0.1ns、1ns两组N256；AZ保持斩波与18片混合τ的N8功能实跑及近极点上下各1 ULP的预CINC端点独立区间核验已完成，N256联合性能待补。τDAC=0的当前RX长训练与新登记holdout已完成且只在其固定条件下通过，有限DAC与校准联合仍被拒绝。乒乓bank未接。未实现项应拒绝或保持明确关闭；`P.ni`是派生报告，不是独立功能开关。
++这些项目前不可用：kTC+有限采样RC联合模式、全时钟抖动、finiteRC+jitter、RA/AZ/参考/比较器随机噪声、非线性RA、参考恢复。有限DAC耦合已接入，校准关闭时已验证N8及0.1ns、1ns两组N256；AZ保持斩波与18片混合τ的N8功能实跑及近极点上下各1 ULP的预CINC端点独立区间核验已完成，N256联合性能待补。τDAC=0的当前RX长训练与新登记holdout已完成且只在其固定条件下通过，有限DAC与校准联合仍被拒绝。校准系数乒乓Bank未接；主图固定M8，[M1只完成隔离scratch的N8功能对照](../analysis/behavior/m1_m8_20261028/sar20_independent_m1_114345_REVIEW.md)，其N256性能未测。未实现项应拒绝或保持明确关闭；`P.ni`是派生报告，不是独立功能开关。
+ 
+ ## 复跑DEM/dither与同芯片对照
+ 
+@@ -171,6 +171,6 @@
+ 
+ 通常在factory把 `N=8` 改为256后执行上述apply/check/run，factory自动给出同seed长plan。若实验脚本直接修改已有P，必须同时扩大 `P.front.plan_rows`、清空待重建的 `P.front.plan`，再prepare，并逐项断言新plan的**整个旧长度前缀**与旧表完全相等。保持input、C、pool/DEM/dither/kTC seed、epoch和NI开关不变；通过 `SAR20('apply',P)` 统一应用P、DecodeP及可见说明，再 `SAR20('check'); r=SAR20('run');`。不要自行assign/save绕过说明一致性。实验结束用apply(p0)恢复实验前配置；只有明确要恢复工厂默认时才用无参apply，历史run目录不覆盖。
+ 
+-参数捕获补丁已通过实际同图12路逐位门与参数切换；N8 6.6428914→4.3252889s是单对无profile计时，不能称统计benchmark。hold_chop有限leak复跑3.8009591s属于另一次模式验证，不与前一对混作提速比例。
++参数捕获补丁已通过实际同图12路逐位门与参数切换；N8 6.6428914→4.3252889s是单对无profile计时，不能称统计benchmark。hold_chop有限leak复跑3.8009591s属于另一次模式验证，不与前一对混作提速比例。另一个[事件查找候选N256单对对照](../analysis/behavior/event_lookup_20261028/REVIEW.md)为136.147900→136.908603s，本次未提速且未晋升。[122805 profiler](../runs/az_probe_20261028T122805Z/validation/receipt.json)仅用于热点定位，插桩墙钟和父子含子时间不可用作速度比；原回执标记独立回读待完成。
+ 
+ **当前限制：** System布局仍在收敛，不能把日志位门当视觉验收；图像的导出模型身份查current_figures/metadata.json；当前SLX可能因保存参数而具有不同字节身份。

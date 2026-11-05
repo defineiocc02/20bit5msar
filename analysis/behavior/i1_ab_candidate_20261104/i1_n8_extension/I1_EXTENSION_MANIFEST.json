@@ -1,0 +1,27 @@
+{
+  "schema": "sar20-i1-n8-extension/v1",
+  "item_count": 4,
+  "items": [
+    {
+      "path": "I1_README.md",
+      "bytes": 1582,
+      "sha256": "392d6d49eb7d2a98fe8afd5bad5bdfb2bea13983e9fa9e266aa391773ae15360"
+    },
+    {
+      "path": "n8_diff_paths.m",
+      "bytes": 645,
+      "sha256": "29faeaf3aea99bdbada65cd99f2f34cc5eecae7054f6164718172ef49e2f706c"
+    },
+    {
+      "path": "sar20_i1_n8_i1.m",
+      "bytes": 12585,
+      "sha256": "5a246c75573b95101ca4eb57ce35cd2e308b8acd7e91abb524d68f91ec2cf710"
+    },
+    {
+      "path": "sar20_i1_n8_validate.m",
+      "bytes": 4381,
+      "sha256": "4fec6bfd135516ef59e4f401f9d24b5e7c18044087801b42bc2c4025dc00242a"
+    }
+  ],
+  "manifest_excludes_itself": true
+}

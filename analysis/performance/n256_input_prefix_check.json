@@ -1,0 +1,56 @@
+{
+  "status": "saved_input_and_public_plan_prefix_checked",
+  "old_plan_shape": [
+    276,
+    8
+  ],
+  "new_plan_shape": [
+    276,
+    8
+  ],
+  "old_plan_prefix_bitwise_equal": true,
+  "fields": {
+    "fs_hz": {
+      "old": 5000000.0,
+      "current": 5000000.0,
+      "equal": true
+    },
+    "sample_period_s": {
+      "old": 2e-07,
+      "current": 2e-07,
+      "equal": true
+    },
+    "seed": {
+      "old": 20261020.0,
+      "current": 20261020.0,
+      "equal": true
+    },
+    "capture/first_sample_id": {
+      "old": 4.0,
+      "current": 4.0,
+      "equal": true
+    },
+    "stimulus/frequency_hz": {
+      "old": 97656.25,
+      "current": 97656.25,
+      "equal": true
+    },
+    "stimulus/amplitude_v": {
+      "old": 3.650563842595822,
+      "current": 3.650563842595822,
+      "equal": true
+    },
+    "stimulus/phase_rad": {
+      "old": 0.731,
+      "current": 0.731,
+      "equal": true
+    },
+    "stimulus/offset_v": {
+      "old": 0.0,
+      "current": 0.0,
+      "equal": true
+    }
+  },
+  "workspace_sha256": "cb7edc989b9bc386b7e863ba32cdf4d734b0629fdc4cd421bb2c11b753c720c5",
+  "scope": "Saved public configuration only; current N256 output has not been assumed or generated."
+}

@@ -1,0 +1,17 @@
+{
+  "release": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/analysis/behavior/ra_ou_20261030/release_20261031",
+  "manifest_sha256": "d714bff5f09e3edd796c6a177f8ae122486d3bc048c84373b411d1a263179ac1",
+  "previous_manifest_sha256": "6c1691a46f05d042ceb9a44a79189e08c241c7a2ed10a8393a3785c857f56894",
+  "baseline_manifest_sha256": "0d9dbb7132357967d0d9a930911436898d038b3f2d2c1e38fb3f088dd9356642",
+  "files": 12,
+  "baseline_files": 105,
+  "candidate_files": 109,
+  "smoke_sha256": "5af30f4a7e4e6caf4570b4cd6252373a91937cb60e2bf285f63fbeaf4efa2210",
+  "changed_in_refreeze": [
+    "current/src/model/behavior_ra_noise_guard.m",
+    "current/src/physics/behavior_ra_noise_validate_backend.m"
+  ],
+  "changed_tests_in_refreeze": [
+    "tests/sar20_ou_guard_selftest.m"
+  ]
+}

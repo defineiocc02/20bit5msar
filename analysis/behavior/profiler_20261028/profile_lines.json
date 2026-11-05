@@ -1,0 +1,1463 @@
+{
+  "schema": "sar20-122805-profile-lines-readonly/v1",
+  "before_function_table_empty": true,
+  "profiler_timer": "performance",
+  "history_shape": [
+    5000000,
+    4
+  ],
+  "profiled_sim_wall_s": 182.0560521,
+  "archive_hashes": {
+    "profile_before.mat": "3759b06419384439f5c75d5be15fdae9fab5cec278b051cfd40b4d5102ed118d",
+    "profile_after.mat": "1b04ece02a31ce7d45bcfdc8d03b940a2e3a5de2ff8b7e74ab8b3c18c7f214a2",
+    "profile_delta.mat": "988563421c074d42231037b9f282093058e49aae2b3fb33d47734da61912fd80"
+  },
+  "scope": "Single profiled N256; line total may include child functions; no exclusive-time or speedup claim.",
+  "functions": [
+    {
+      "name": "behavior_backend_step>validate_inputs",
+      "file": "current/src/physics/behavior_backend_step.m",
+      "sha256": "140f08d0f3084f27d21d46b72584cfbf94c984b992fd6d115412278265ce6e14",
+      "calls": 50304,
+      "inclusive_s": 26.340896756714535,
+      "partial_data": false,
+      "executed_lines": [
+        {
+          "line": 408,
+          "executions": 50304,
+          "total_s": 14.40441583101412,
+          "text": "assert(exist('sar20_cdac2_network','file')==2,'behavior:dependency', ..."
+        },
+        {
+          "line": 367,
+          "executions": 402432,
+          "total_s": 4.57744640985569,
+          "text": "v=p.ni.(allowed{k});assert(isscalar(v)&&ismember(v,[0 1]),'behavior:niFlag','NI flags must be booleans.');"
+        },
+        {
+          "line": 364,
+          "executions": 50304,
+          "total_s": 1.1154191024016067,
+          "text": "assert(isequal(sort(fieldnames(p.ni)),sort(allowed(:))), ..."
+        },
+        {
+          "line": 353,
+          "executions": 50304,
+          "total_s": 1.0452991022506315,
+          "text": "assert(numel(flags)==3&&all(ismember(flags,[0 1])), ..."
+        },
+        {
+          "line": 350,
+          "executions": 50304,
+          "total_s": 0.6574784014156154,
+          "text": "all(ismember([c.d2_signs(:);c.ta_signs(:)],[-1 0 1])), ..."
+        },
+        {
+          "line": 386,
+          "executions": 50304,
+          "total_s": 0.5878484012656952,
+          "text": "isscalar(p.ct.replica_enabled)&&ismember(p.ct.replica_enabled,[0 1]), ..."
+        },
+        {
+          "line": 374,
+          "executions": 50304,
+          "total_s": 0.3457067007443404,
+          "text": "for name={'write_tau_s','leak_tau_s'}"
+        },
+        {
+          "line": 371,
+          "executions": 251520,
+          "total_s": 0.34535340074357973,
+          "text": "assert(~p.ni.(unsupported{k}),'behavior:unsupportedNI', ..."
+        },
+        {
+          "line": 375,
+          "executions": 100608,
+          "total_s": 0.3269870007040351,
+          "text": "v=p.az.(name{1});assert(numel(v)==2&&isreal(v)&&all(~isnan(v(:))&v(:)>=0), ..."
+        },
+        {
+          "line": 356,
+          "executions": 50304,
+          "total_s": 0.2324485005004844,
+          "text": "isscalar(p.ra.A0)&&p.ra.A0>0&&isscalar(p.ra.UGB_hz)&&p.ra.UGB_hz>0&& ..."
+        },
+        {
+          "line": 389,
+          "executions": 50304,
+          "total_s": 0.1837634003956606,
+          "text": "assert(isfield(p.az,'mode')&&any(strcmp(p.az.mode,modes))&& ..."
+        },
+        {
+          "line": 410,
+          "executions": 50304,
+          "total_s": 0.18202020039190733,
+          "text": "end"
+        },
+        {
+          "line": 342,
+          "executions": 50304,
+          "total_s": 0.1754863003778392,
+          "text": "assert(isstruct(c)&&isscalar(c)&&all(isfield(c,fields)), ..."
+        },
+        {
+          "line": 377,
+          "executions": 100608,
+          "total_s": 0.17112670036845257,
+          "text": "end"
+        },
+        {
+          "line": 379,
+          "executions": 50304,
+          "total_s": 0.16145770034763426,
+          "text": "all(isfinite([p.az.target_input_half_v(:);p.az.initial_input_half_v(:)])), ..."
+        },
+        {
+          "line": 381,
+          "executions": 50304,
+          "total_s": 0.15333800033015174,
+          "text": "assert(isscalar(p.ct.reference_v)&&isfinite(p.ct.reference_v)&&p.ct.reference_v>0&& ..."
+        },
+        {
+          "line": 385,
+          "executions": 50304,
+          "total_s": 0.1414173003044853,
+          "text": "all(isfinite([p.ct.initial_main_qb_c(:);p.ct.initial_replica_qb_c(:)]))&& ..."
+        },
+        {
+          "line": 383,
+          "executions": 50304,
+          "total_s": 0.1410096003036075,
+          "text": "all(isfinite(p.ct.output_parasitic_half_f(:))&p.ct.output_parasitic_half_f(:)>=0)&& ..."
+        },
+        {
+          "line": 357,
+          "executions": 50304,
+          "total_s": 0.1403762003022437,
+          "text": "isscalar(p.ra.Cf_f)&&isfinite(p.ra.Cf_f)&&p.ra.Cf_f>0&& ..."
+        },
+        {
+          "line": 358,
+          "executions": 50304,
+          "total_s": 0.13217260028458055,
+          "text": "isscalar(p.ra.tau_reset_s)&&isfinite(p.ra.tau_reset_s)&&p.ra.tau_reset_s>=0&& ..."
+        },
+        {
+          "line": 378,
+          "executions": 50304,
+          "total_s": 0.10263870022099117,
+          "text": "assert(numel(p.az.target_input_half_v)==2&&numel(p.az.initial_input_half_v)==2&& ..."
+        },
+        {
+          "line": 390,
+          "executions": 50304,
+          "total_s": 0.0972005002092822,
+          "text": "logical(p.ni.az)==~strcmp(p.az.mode,'off'), ..."
+        },
+        {
+          "line": 384,
+          "executions": 50304,
+          "total_s": 0.09417380020276542,
+          "text": "numel(p.ct.initial_main_qb_c)==2&&numel(p.ct.initial_replica_qb_c)==2&& ..."
+        },
+        {
+          "line": 359,
+          "executions": 50304,
+          "total_s": 0.09259470019936546,
+          "text": "isscalar(p.ra.slew_v_per_s)&&p.ra.slew_v_per_s>0&& ..."
+        },
+        {
+          "line": 347,
+          "executions": 50304,
+          "total_s": 0.09034490019452143,
+          "text": "isreal(c.qres_c)&&isreal(c.ctop_f)&&all(isfinite([c.qres_c;c.ctop_f]))&&c.ctop_f>=0, ..."
+        },
+        {
+          "line": 360,
+          "executions": 50304,
+          "total_s": 0.08562070018434977,
+          "text": "isscalar(p.ra.vos_input_v)&&isfinite(p.ra.vos_input_v), ..."
+        },
+        {
+          "line": 352,
+          "executions": 50304,
+          "total_s": 0.05579970012014222,
+          "text": "flags=[c.ra_on;c.az_on;c.reset];"
+        },
+        {
+          "line": 393,
+          "executions": 50304,
+          "total_s": 0.05320680011455946,
+          "text": "if p.ni.az"
+        },
+        {
+          "line": 355,
+          "executions": 50304,
+          "total_s": 0.050045100107752004,
+          "text": "assert(isstruct(p)&&strcmp(p.schema,'behavior-backend-parameters/v1')&& ..."
+        },
+        {
+          "line": 382,
+          "executions": 50304,
+          "total_s": 0.049123900105768566,
+          "text": "numel(p.ct.output_parasitic_half_f)==2&& ..."
+        },
+        {
+          "line": 366,
+          "executions": 50304,
+          "total_s": 0.03531410007603472,
+          "text": "for k=1:numel(allowed)"
+        },
+        {
+          "line": 368,
+          "executions": 402432,
+          "total_s": 0.032173100069271834,
+          "text": "end"
+        },
+        {
+          "line": 372,
+          "executions": 251520,
+          "total_s": 0.02965580006385184,
+          "text": "'NI %s is not implemented in this deterministic kernel.',unsupported{k});"
+        },
+        {
+          "line": 349,
+          "executions": 50304,
+          "total_s": 0.02394390005155356,
+          "text": "assert(numel(c.d2_signs)==12&&numel(c.ta_signs)==7&& ..."
+        },
+        {
+          "line": 346,
+          "executions": 50304,
+          "total_s": 0.021050400045323575,
+          "text": "assert(isscalar(c.qres_c)&&isscalar(c.ctop_f)&& ..."
+        },
+        {
+          "line": 392,
+          "executions": 50304,
+          "total_s": 0.018255700039306308,
+          "text": "assert(~c.az_on||p.ni.az,'behavior:azOffWrite','AZoff cannot receive write commands.');"
+        },
+        {
+          "line": 370,
+          "executions": 50304,
+          "total_s": 0.01700460003661257,
+          "text": "for k=1:numel(unsupported)"
+        },
+        {
+          "line": 344,
+          "executions": 50304,
+          "total_s": 0.013109500028226037,
+          "text": "assert(isnumeric(dt)&&isreal(dt)&&isscalar(dt)&&isfinite(dt)&&dt>=0, ..."
+        },
+        {
+          "line": 341,
+          "executions": 50304,
+          "total_s": 0.010783700023218363,
+          "text": "fields={'qres_c','ctop_f','d2_signs','ta_signs','ra_on','az_on','reset'};"
+        },
+        {
+          "line": 373,
+          "executions": 251520,
+          "total_s": 0.00852030001834504,
+          "text": "end"
+        },
+        {
+          "line": 388,
+          "executions": 50304,
+          "total_s": 0.006511900014020759,
+          "text": "modes={'off','ordinary','chop','hold','hold_chop'};"
+        },
+        {
+          "line": 362,
+          "executions": 50304,
+          "total_s": 0.006274900013510475,
+          "text": "allowed={'cap_mismatch','cinc_kick','az','ra_noise','az_noise', ..."
+        },
+        {
+          "line": 369,
+          "executions": 50304,
+          "total_s": 0.006186900013321003,
+          "text": "unsupported={'ra_noise','az_noise','reference_noise','nonlinear_ra','replica_delay'};"
+        },
+        {
+          "line": 407,
+          "executions": 50304,
+          "total_s": 0.005150900011090392,
+          "text": "end"
+        }
+      ],
+      "children": [
+        {
+          "name": "ismember",
+          "calls": 553344,
+          "inclusive_s": 5.2912089113924905
+        }
+      ]
+    },
+    {
+      "name": "behavior_backend_step",
+      "file": "current/src/physics/behavior_backend_step.m",
+      "sha256": "140f08d0f3084f27d21d46b72584cfbf94c984b992fd6d115412278265ce6e14",
+      "calls": 50304,
+      "inclusive_s": 62.50626663458211,
+      "partial_data": false,
+      "executed_lines": [
+        {
+          "line": 21,
+          "executions": 50304,
+          "total_s": 26.556792757179377,
+          "text": "validate_inputs(cmd,dt,p);"
+        },
+        {
+          "line": 117,
+          "executions": 50304,
+          "total_s": 13.873299029870571,
+          "text": "predicted=observe(s,old,p);"
+        },
+        {
+          "line": 137,
+          "executions": 50304,
+          "total_s": 8.390376018065302,
+          "text": "actual=observe(s,cmd,p);"
+        },
+        {
+          "line": 118,
+          "executions": 50304,
+          "total_s": 6.645234614307841,
+          "text": "[main,replica]=switch_networks(cmd,p);"
+        },
+        {
+          "line": 54,
+          "executions": 50304,
+          "total_s": 1.094456902356473,
+          "text": "oldTarget=target_parameters(old,p);"
+        },
+        {
+          "line": 22,
+          "executions": 50304,
+          "total_s": 0.9560130020583897,
+          "text": "cmd=normalize_command(cmd);"
+        },
+        {
+          "line": 57,
+          "executions": 50304,
+          "total_s": 0.712089801533199,
+          "text": "[s,azPole,azAsymptote]=advance_az(s,old.az_on,dt,p);"
+        },
+        {
+          "line": 98,
+          "executions": 75456,
+          "total_s": 0.49705420107020637,
+          "text": "nextVx=nextVx+amplitude*dac_ramp_response(dt,tau,tauD);"
+        },
+        {
+          "line": 142,
+          "executions": 50304,
+          "total_s": 0.43667020094019376,
+          "text": "assert(all(isfinite([s.vx_v;s.az_input_half_v;y.vy_v;y.vtop_v])), ..."
+        },
+        {
+          "line": 127,
+          "executions": 37990,
+          "total_s": 0.35024770075411765,
+          "text": "load=output_load(main,replica,p);"
+        },
+        {
+          "line": 144,
+          "executions": 50304,
+          "total_s": 0.33521790072175695,
+          "text": "end"
+        },
+        {
+          "line": 135,
+          "executions": 50304,
+          "total_s": 0.3147263006776366,
+          "text": "s=az_latch(s,cmd,p);"
+        },
+        {
+          "line": 139,
+          "executions": 50304,
+          "total_s": 0.3118050006713467,
+          "text": "y.kick_half_v=kickHalf;y.kick_diff_v=diff_pair(kickHalf);"
+        },
+        {
+          "line": 138,
+          "executions": 50304,
+          "total_s": 0.24044300051769735,
+          "text": "y=actual;y.predicted=predicted;y.actual=actual;"
+        },
+        {
+          "line": 136,
+          "executions": 50304,
+          "total_s": 0.12037490025917895,
+          "text": "s.previous_switch_charge_c=switchCharge;s.command=cmd;"
+        },
+        {
+          "line": 40,
+          "executions": 50304,
+          "total_s": 0.10894520023456968,
+          "text": "isequal(size(s.az_input_half_v),[2 1]), ..."
+        },
+        {
+          "line": 140,
+          "executions": 50304,
+          "total_s": 0.10517240022644647,
+          "text": "y.prediction_semantics='predicted=old-command endpoint; actual=new-command endpoint, both behavioral';"
+        },
+        {
+          "line": 141,
+          "executions": 50304,
+          "total_s": 0.10472840022549051,
+          "text": "y.units='voltages V; switch charge C; capacitances F; tau s';"
+        },
+        {
+          "line": 111,
+          "executions": 50304,
+          "total_s": 0.10411230022416398,
+          "text": "s.vx_v=nextVx;s.time_s=s.time_s+dt;"
+        },
+        {
+          "line": 126,
+          "executions": 50304,
+          "total_s": 0.0706181001520477,
+          "text": "if cmd.ra_on&&~cmd.reset&&p.ni.cinc_kick"
+        },
+        {
+          "line": 107,
+          "executions": 50304,
+          "total_s": 0.06388150013754314,
+          "text": "maximumChange=double(p.ra.slew_v_per_s)*dt;"
+        },
+        {
+          "line": 46,
+          "executions": 9432,
+          "total_s": 0.06267410013494348,
+          "text": "assert(~cold&&old.ra_on&&~old.reset&&isequaln(cmd,old)&& ..."
+        },
+        {
+          "line": 80,
+          "executions": 9432,
+          "total_s": 0.061219500131811586,
+          "text": "e=decay(dt,tau);"
+        },
+        {
+          "line": 119,
+          "executions": 50304,
+          "total_s": 0.05760120012402103,
+          "text": "switchCharge=main.cinc_injected_charge_c+replica.cinc_injected_charge_c;"
+        },
+        {
+          "line": 43,
+          "executions": 50304,
+          "total_s": 0.0557989001201405,
+          "text": "old=s.command;"
+        },
+        {
+          "line": 37,
+          "executions": 50304,
+          "total_s": 0.051703000111321624,
+          "text": "assert(strcmp(s.schema,'behavior-backend-state/v2')&& ..."
+        },
+        {
+          "line": 97,
+          "executions": 75456,
+          "total_s": 0.05129440011044187,
+          "text": "amplitude=factor*(forcing.delta_q_c(k)/p.ra.Cf_f);"
+        },
+        {
+          "line": 108,
+          "executions": 50304,
+          "total_s": 0.048502400104430424,
+          "text": "if isfinite(p.ra.slew_v_per_s)"
+        },
+        {
+          "line": 128,
+          "executions": 37990,
+          "total_s": 0.03693290007952015,
+          "text": "kickHalf=(switchCharge-s.previous_switch_charge_c)./load;"
+        },
+        {
+          "line": 123,
+          "executions": 50304,
+          "total_s": 0.026379500056797647,
+          "text": "if cmd.reset||~cmd.ra_on||(~old.ra_on&&cmd.ra_on)"
+        },
+        {
+          "line": 39,
+          "executions": 50304,
+          "total_s": 0.0254693000548379,
+          "text": "isscalar(s.vx_v)&&isfinite(s.vx_v)&& ..."
+        },
+        {
+          "line": 47,
+          "executions": 9432,
+          "total_s": 0.02516310005417862,
+          "text": "isinf(p.ra.slew_v_per_s)&&forcing.dt_s==dt&& ..."
+        },
+        {
+          "line": 103,
+          "executions": 3143,
+          "total_s": 0.024719900053224365,
+          "text": "nextVx=startVx*decay(dt,double(p.ra.tau_reset_s));"
+        },
+        {
+          "line": 38,
+          "executions": 50304,
+          "total_s": 0.024431100052602555,
+          "text": "isscalar(s.time_s)&&isfinite(s.time_s)&& ..."
+        },
+        {
+          "line": 115,
+          "executions": 9432,
+          "total_s": 0.023565300050738397,
+          "text": "old.qres_c=forcing.q_endpoint_c;cmd.qres_c=forcing.q_endpoint_c;"
+        },
+        {
+          "line": 129,
+          "executions": 37990,
+          "total_s": 0.02108140004539032,
+          "text": "if any(kickHalf~=0)"
+        },
+        {
+          "line": 120,
+          "executions": 50304,
+          "total_s": 0.019941000042934927,
+          "text": "kickHalf=zeros(2,1);"
+        },
+        {
+          "line": 124,
+          "executions": 12576,
+          "total_s": 0.017352700037362067,
+          "text": "s.ct_reset_vx_v=s.vx_v;"
+        },
+        {
+          "line": 24,
+          "executions": 50304,
+          "total_s": 0.015603200033595218,
+          "text": "if cold"
+        },
+        {
+          "line": 55,
+          "executions": 50304,
+          "total_s": 0.01457080003137236,
+          "text": "startVx=s.vx_v;"
+        },
+        {
+          "line": 44,
+          "executions": 50304,
+          "total_s": 0.013860600029843231,
+          "text": "useDac=nargin==5&&~isempty(forcing);"
+        },
+        {
+          "line": 56,
+          "executions": 50304,
+          "total_s": 0.012902600027780563,
+          "text": "initialAz=s.az_input_half_v;"
+        },
+        {
+          "line": 36,
+          "executions": 50304,
+          "total_s": 0.012565200027054108,
+          "text": "else"
+        },
+        {
+          "line": 82,
+          "executions": 9432,
+          "total_s": 0.01246280002683363,
+          "text": "if p.ni.az"
+        },
+        {
+          "line": 53,
+          "executions": 50304,
+          "total_s": 0.011774800025352299,
+          "text": "if cold,old.az_on=false;end"
+        },
+        {
+          "line": 64,
+          "executions": 9432,
+          "total_s": 0.011760800025322154,
+          "text": "dcVos=double(p.ra.vos_input_v);"
+        },
+        {
+          "line": 96,
+          "executions": 75456,
+          "total_s": 0.011759100025318494,
+          "text": "if tauD==0||isinf(tauD)||forcing.delta_q_c(k)==0,continue;end"
+        },
+        {
+          "line": 60,
+          "executions": 50304,
+          "total_s": 0.011524800024814024,
+          "text": "if dt==0"
+        },
+        {
+          "line": 48,
+          "executions": 9432,
+          "total_s": 0.0114123000245718,
+          "text": "forcing.source_time_s==s.time_s&&forcing.sample_id==old.sample_id&&forcing.epoch==old.epoch, ..."
+        },
+        {
+          "line": 61,
+          "executions": 37729,
+          "total_s": 0.011078800023853743,
+          "text": "nextVx=startVx;"
+        },
+        {
+          "line": 95,
+          "executions": 75456,
+          "total_s": 0.011030600023749964,
+          "text": "tauD=forcing.tau_dac_s(k);"
+        },
+        {
+          "line": 45,
+          "executions": 50304,
+          "total_s": 0.010820600023297813,
+          "text": "if useDac"
+        },
+        {
+          "line": 23,
+          "executions": 50304,
+          "total_s": 0.010783600023218149,
+          "text": "cold=isempty(s);"
+        },
+        {
+          "line": 66,
+          "executions": 9432,
+          "total_s": 0.010548100022711093,
+          "text": "if p.ni.az"
+        },
+        {
+          "line": 112,
+          "executions": 50304,
+          "total_s": 0.008823600018998075,
+          "text": "if useDac"
+        },
+        {
+          "line": 62,
+          "executions": 12575,
+          "total_s": 0.0072707000156545295,
+          "text": "elseif old.ra_on&&~old.reset"
+        },
+        {
+          "line": 94,
+          "executions": 9432,
+          "total_s": 0.006669600014360303,
+          "text": "for k=1:numel(forcing.delta_q_c)"
+        },
+        {
+          "line": 110,
+          "executions": 50304,
+          "total_s": 0.006443100013872626,
+          "text": "end"
+        },
+        {
+          "line": 132,
+          "executions": 50304,
+          "total_s": 0.006299700013563871,
+          "text": "end"
+        },
+        {
+          "line": 50,
+          "executions": 50304,
+          "total_s": 0.006248200013452987,
+          "text": "end"
+        },
+        {
+          "line": 104,
+          "executions": 50304,
+          "total_s": 0.006058000013043467,
+          "text": "end"
+        },
+        {
+          "line": 99,
+          "executions": 75456,
+          "total_s": 0.005591300012038617,
+          "text": "end"
+        },
+        {
+          "line": 42,
+          "executions": 50304,
+          "total_s": 0.005328800011473428,
+          "text": "end"
+        },
+        {
+          "line": 65,
+          "executions": 9432,
+          "total_s": 0.004944600010646209,
+          "text": "constant=oldTarget.target_v+oldTarget.noise_gain*dcVos;"
+        },
+        {
+          "line": 63,
+          "executions": 9432,
+          "total_s": 0.004509600009709611,
+          "text": "factor=oldTarget.finite_gain;"
+        },
+        {
+          "line": 131,
+          "executions": 37990,
+          "total_s": 0.003803600008189524,
+          "text": "end"
+        },
+        {
+          "line": 125,
+          "executions": 50304,
+          "total_s": 0.0037335000080385913,
+          "text": "end"
+        },
+        {
+          "line": 70,
+          "executions": 9432,
+          "total_s": 0.003350900007214816,
+          "text": "tau=oldTarget.tau_s;"
+        },
+        {
+          "line": 116,
+          "executions": 50304,
+          "total_s": 0.0032349000069650568,
+          "text": "end"
+        },
+        {
+          "line": 79,
+          "executions": 9432,
+          "total_s": 0.002446100005266693,
+          "text": "else"
+        },
+        {
+          "line": 93,
+          "executions": 9432,
+          "total_s": 0.0023806000051256647,
+          "text": "if useDac"
+        },
+        {
+          "line": 81,
+          "executions": 9432,
+          "total_s": 0.002214300004767605,
+          "text": "nextVx=xinf+(startVx-xinf)*e;"
+        },
+        {
+          "line": 71,
+          "executions": 9432,
+          "total_s": 0.002084000004487056,
+          "text": "if tau==0"
+        },
+        {
+          "line": 92,
+          "executions": 9432,
+          "total_s": 0.001690800003640458,
+          "text": "end"
+        },
+        {
+          "line": 68,
+          "executions": 9432,
+          "total_s": 0.0014137000030438347,
+          "text": "end"
+        },
+        {
+          "line": 69,
+          "executions": 9432,
+          "total_s": 0.0013994000030130452,
+          "text": "xinf=factor*constant;"
+        },
+        {
+          "line": 101,
+          "executions": 9432,
+          "total_s": 0.0013588000029256294,
+          "text": "end"
+        },
+        {
+          "line": 100,
+          "executions": 9432,
+          "total_s": 0.0011344000024424744,
+          "text": "end"
+        },
+        {
+          "line": 102,
+          "executions": 3143,
+          "total_s": 0.0003259000007016946,
+          "text": "else"
+        }
+      ],
+      "children": [
+        {
+          "name": "behavior_backend_step>validate_inputs",
+          "calls": 50304,
+          "inclusive_s": 26.340896756714535
+        },
+        {
+          "name": "behavior_backend_step>normalize_command",
+          "calls": 50304,
+          "inclusive_s": 0.7623406016413941
+        },
+        {
+          "name": "behavior_backend_step>target_parameters",
+          "calls": 50304,
+          "inclusive_s": 0.974830702098906
+        },
+        {
+          "name": "behavior_backend_step>advance_az",
+          "calls": 50304,
+          "inclusive_s": 0.26085390056164404
+        },
+        {
+          "name": "behavior_backend_step>observe",
+          "calls": 100608,
+          "inclusive_s": 22.070009147518892
+        },
+        {
+          "name": "behavior_backend_step>switch_networks",
+          "calls": 50304,
+          "inclusive_s": 6.452461813892783
+        },
+        {
+          "name": "behavior_backend_step>az_latch",
+          "calls": 50304,
+          "inclusive_s": 0.1920769004135604
+        },
+        {
+          "name": "behavior_backend_step>diff_pair",
+          "calls": 50304,
+          "inclusive_s": 0.03568610007683567
+        },
+        {
+          "name": "behavior_backend_step>decay",
+          "calls": 12575,
+          "inclusive_s": 0.04154780008945648
+        },
+        {
+          "name": "behavior_backend_step>output_load",
+          "calls": 37990,
+          "inclusive_s": 0.23772090051183636
+        },
+        {
+          "name": "behavior_backend_step>dac_ramp_response",
+          "calls": 75456,
+          "inclusive_s": 0.42457390091414926
+        }
+      ]
+    },
+    {
+      "name": "behavior_backend_step>observe",
+      "file": "current/src/physics/behavior_backend_step.m",
+      "sha256": "140f08d0f3084f27d21d46b72584cfbf94c984b992fd6d115412278265ce6e14",
+      "calls": 100608,
+      "inclusive_s": 22.070009147518892,
+      "partial_data": false,
+      "executed_lines": [
+        {
+          "line": 232,
+          "executions": 100608,
+          "total_s": 9.450677620348236,
+          "text": "p.ct.reference_v,zeros(2,1),s.main_qb_c);"
+        },
+        {
+          "line": 233,
+          "executions": 100608,
+          "total_s": 5.896888412696579,
+          "text": "nominal=sar20_cdac2_network(p.ct.net_nominal,0,d,t,p.ct.reference_v);"
+        },
+        {
+          "line": 241,
+          "executions": 100608,
+          "total_s": 2.811124306052626,
+          "text": "'time_s',s.time_s,'ra_on',active);"
+        },
+        {
+          "line": 226,
+          "executions": 100608,
+          "total_s": 0.9995204021520654,
+          "text": "z=target_parameters(c,p);"
+        },
+        {
+          "line": 243,
+          "executions": 100608,
+          "total_s": 0.792220301705728,
+          "text": "y.az.sense_error_v=p.ra.vos_input_v-diff_pair(s.az_input_half_v);"
+        },
+        {
+          "line": 244,
+          "executions": 100608,
+          "total_s": 0.4682370010081601,
+          "text": "y.az.sense_error_with_source_v=y.az.sense_error_v+diff_pair(s.az.write_source_half_v);"
+        },
+        {
+          "line": 227,
+          "executions": 100608,
+          "total_s": 0.4586829009875893,
+          "text": "net=select_main(p);"
+        },
+        {
+          "line": 242,
+          "executions": 100608,
+          "total_s": 0.2633581005670358,
+          "text": "y.az=s.az;"
+        },
+        {
+          "line": 246,
+          "executions": 100608,
+          "total_s": 0.25390680054668624,
+          "text": "end"
+        },
+        {
+          "line": 245,
+          "executions": 100608,
+          "total_s": 0.10191810021943966,
+          "text": "if ~active,y.ct_nodes_half_v(:,1)=0;end"
+        },
+        {
+          "line": 234,
+          "executions": 100608,
+          "total_s": 0.0460098000990636,
+          "text": "y=struct('vx_v',s.vx_v,'vy_v',double(active)*actual.vy, ..."
+        },
+        {
+          "line": 236,
+          "executions": 100608,
+          "total_s": 0.040263700086691695,
+          "text": "'target_v',z.target_v,'noise_gain',z.noise_gain,'finite_gain',z.finite_gain, ..."
+        },
+        {
+          "line": 240,
+          "executions": 100608,
+          "total_s": 0.03850110008289664,
+          "text": "'ct_nodes_half_v',actual.nodes_delta_v,'az_input_half_v',s.az_input_half_v, ..."
+        },
+        {
+          "line": 235,
+          "executions": 100608,
+          "total_s": 0.03707480007982568,
+          "text": "'vtop_v',(s.vx_v-z.target_v)/z.noise_gain, ..."
+        },
+        {
+          "line": 228,
+          "executions": 100608,
+          "total_s": 0.03364810007244766,
+          "text": "active=c.ra_on&&~c.reset;"
+        },
+        {
+          "line": 238,
+          "executions": 100608,
+          "total_s": 0.032306400069558844,
+          "text": "'dac2_actual_ra_v',actual.dac_ra_v,'tracking_actual_ra_v',actual.track_ra_v, ..."
+        },
+        {
+          "line": 231,
+          "executions": 100608,
+          "total_s": 0.032077500069066,
+          "text": "actual=sar20_cdac2_network(net,s.vx_v-s.ct_reset_vx_v,d,t, ..."
+        },
+        {
+          "line": 237,
+          "executions": 100608,
+          "total_s": 0.031071000066898908,
+          "text": "'tau_ra_s',z.tau_s,'cinc_alpha',actual.alpha, ..."
+        },
+        {
+          "line": 229,
+          "executions": 100608,
+          "total_s": 0.030303400065246188,
+          "text": "d=c.d2_signs;t=c.ta_signs;"
+        },
+        {
+          "line": 239,
+          "executions": 100608,
+          "total_s": 0.027738400059723493,
+          "text": "'dac2_nominal_ra_v',nominal.dac_ra_v,'tracking_nominal_ra_v',nominal.track_ra_v, ..."
+        },
+        {
+          "line": 230,
+          "executions": 100608,
+          "total_s": 0.026366600056769874,
+          "text": "if ~active,d=zeros(12,1);t=zeros(7,1);end"
+        }
+      ],
+      "children": [
+        {
+          "name": "behavior_backend_step>target_parameters",
+          "calls": 100608,
+          "inclusive_s": 0.8557066018424203
+        },
+        {
+          "name": "behavior_backend_step>select_main",
+          "calls": 100608,
+          "inclusive_s": 0.31175030067122894
+        },
+        {
+          "name": "sar20_cdac2_network",
+          "calls": 201216,
+          "inclusive_s": 14.69740383164495
+        },
+        {
+          "name": "behavior_backend_step>diff_pair",
+          "calls": 201216,
+          "inclusive_s": 0.2443181005260408
+        }
+      ]
+    },
+    {
+      "name": "behavior_backend_step>switch_networks",
+      "file": "current/src/physics/behavior_backend_step.m",
+      "sha256": "140f08d0f3084f27d21d46b72584cfbf94c984b992fd6d115412278265ce6e14",
+      "calls": 50304,
+      "inclusive_s": 6.452461813892783,
+      "partial_data": false,
+      "executed_lines": [
+        {
+          "line": 251,
+          "executions": 50304,
+          "total_s": 3.322850607154423,
+          "text": "main=sar20_cdac2_network(select_main(p),0,d,t,p.ct.reference_v);"
+        },
+        {
+          "line": 255,
+          "executions": 50304,
+          "total_s": 2.6074417056140775,
+          "text": "replica=sar20_cdac2_network(replicaNet,0,-factor*d,-factor*t,p.ct.reference_v);"
+        },
+        {
+          "line": 254,
+          "executions": 50304,
+          "total_s": 0.14909010032100561,
+          "text": "if ~p.ni.cap_mismatch,replicaNet=p.ct.net_nominal;end"
+        },
+        {
+          "line": 256,
+          "executions": 50304,
+          "total_s": 0.07353900015833667,
+          "text": "end"
+        },
+        {
+          "line": 253,
+          "executions": 50304,
+          "total_s": 0.06632990014281477,
+          "text": "replicaNet=p.ct.net_replica;"
+        },
+        {
+          "line": 252,
+          "executions": 50304,
+          "total_s": 0.05931590012771295,
+          "text": "factor=double(p.ct.replica_enabled);"
+        },
+        {
+          "line": 250,
+          "executions": 50304,
+          "total_s": 0.025587900055093253,
+          "text": "if ~c.ra_on||c.reset,d=zeros(12,1);t=zeros(7,1);end"
+        },
+        {
+          "line": 249,
+          "executions": 50304,
+          "total_s": 0.025546300055003687,
+          "text": "d=c.d2_signs;t=c.ta_signs;"
+        }
+      ],
+      "children": [
+        {
+          "name": "behavior_backend_step>select_main",
+          "calls": 50304,
+          "inclusive_s": 0.1411376003038831
+        },
+        {
+          "name": "sar20_cdac2_network",
+          "calls": 100608,
+          "inclusive_s": 5.448781711731761
+        }
+      ]
+    },
+    {
+      "name": "sar20_cdac2_network",
+      "file": "current/src/physics/sar20_cdac2_network.m",
+      "sha256": "5e09dc030392512d01e800414a8b56e1db80b6e054fc3d7faa0671a49ce0f794",
+      "calls": 301824,
+      "inclusive_s": 20.14618554337671,
+      "partial_data": false,
+      "executed_lines": [
+        {
+          "line": 82,
+          "executions": 301824,
+          "total_s": 3.138705606757941,
+          "text": "alpha = mean(input_gain);"
+        },
+        {
+          "line": 65,
+          "executions": 603648,
+          "total_s": 1.7682346038071823,
+          "text": "node = matrix \\ (qin + qdac + qtrack + qmemory);"
+        },
+        {
+          "line": 58,
+          "executions": 603648,
+          "total_s": 1.7265410037174118,
+          "text": "[cm * sar_sign(1:n_main); cl * sar_sign(n_main + (1:n_sub))];"
+        },
+        {
+          "line": 47,
+          "executions": 603648,
+          "total_s": 0.9613336020698455,
+          "text": "cm = net.main_f(side, :);"
+        },
+        {
+          "line": 67,
+          "executions": 603648,
+          "total_s": 0.9035510019454339,
+          "text": "gi = matrix \\ [cs; 0];"
+        },
+        {
+          "line": 52,
+          "executions": 603648,
+          "total_s": 0.6860326014770954,
+          "text": "matrix = [a -cb; -cb b];"
+        },
+        {
+          "line": 49,
+          "executions": 603648,
+          "total_s": 0.5761035012404073,
+          "text": "ct = net.track_f(side, :);"
+        },
+        {
+          "line": 87,
+          "executions": 301824,
+          "total_s": 0.5670359012208839,
+          "text": "end"
+        },
+        {
+          "line": 48,
+          "executions": 603648,
+          "total_s": 0.5580172012014657,
+          "text": "cl = net.sub_f(side, :);"
+        },
+        {
+          "line": 69,
+          "executions": 603648,
+          "total_s": 0.5565071011982143,
+          "text": "gt = matrix \\ qtrack;"
+        },
+        {
+          "line": 68,
+          "executions": 603648,
+          "total_s": 0.5490348011821258,
+          "text": "gd = matrix \\ qdac;"
+        },
+        {
+          "line": 80,
+          "executions": 301824,
+          "total_s": 0.5225445011250895,
+          "text": "r.cinc_injected_charge_c = net.cinc_f .* (dv + tv);"
+        },
+        {
+          "line": 66,
+          "executions": 603648,
+          "total_s": 0.4957575010674145,
+          "text": "v(side, :) = node';"
+        },
+        {
+          "line": 75,
+          "executions": 301824,
+          "total_s": 0.46353890099804473,
+          "text": "r.vy = v(1, 1) - v(2, 1);"
+        },
+        {
+          "line": 79,
+          "executions": 301824,
+          "total_s": 0.44610960096051766,
+          "text": "r.switch_node_delta_v = dv + tv;"
+        },
+        {
+          "line": 59,
+          "executions": 603648,
+          "total_s": 0.4434659009548255,
+          "text": "qtrack = -polarity * vref / 2 * [0; ct * track_sign];"
+        },
+        {
+          "line": 81,
+          "executions": 301824,
+          "total_s": 0.4359036009385432,
+          "text": "r.node_effective_cap_f = net.cinc_f ./ input_gain;"
+        },
+        {
+          "line": 86,
+          "executions": 301824,
+          "total_s": 0.33395570071903935,
+          "text": "r.ra_load_per_output_f = equivalent_load;"
+        },
+        {
+          "line": 83,
+          "executions": 301824,
+          "total_s": 0.3267219007034643,
+          "text": "r.alpha = alpha;"
+        },
+        {
+          "line": 77,
+          "executions": 301824,
+          "total_s": 0.3224325006942288,
+          "text": "r.vy_common_delta = (v(1, 1) + v(2, 1)) / 2;"
+        },
+        {
+          "line": 84,
+          "executions": 301824,
+          "total_s": 0.2846298006128359,
+          "text": "r.dac_ra_v = -(dv(1) - dv(2)) / alpha;"
+        },
+        {
+          "line": 78,
+          "executions": 301824,
+          "total_s": 0.27973490060229667,
+          "text": "r.nodes_delta_v = v;"
+        },
+        {
+          "line": 76,
+          "executions": 301824,
+          "total_s": 0.27385540058963753,
+          "text": "r.vz = v(1, 2) - v(2, 2);"
+        },
+        {
+          "line": 85,
+          "executions": 301824,
+          "total_s": 0.25232750054328584,
+          "text": "r.track_ra_v = -(tv(1) - tv(2)) / alpha;"
+        },
+        {
+          "line": 64,
+          "executions": 603648,
+          "total_s": 0.24260410052235043,
+          "text": "floating_qb_c(side)];"
+        },
+        {
+          "line": 54,
+          "executions": 603648,
+          "total_s": 0.2394589005155785,
+          "text": "qin = [cs * polarity * vx / 2; 0];"
+        },
+        {
+          "line": 50,
+          "executions": 603648,
+          "total_s": 0.16242490034971674,
+          "text": "a = cs + sum(cm) + cb + net.parasitic_main_f(side);"
+        },
+        {
+          "line": 25,
+          "executions": 301824,
+          "total_s": 0.15788540033994275,
+          "text": "if ~isstruct(net) || ~isfield(net, 'main_f') || ~isfield(net, 'sub_f') || ..."
+        },
+        {
+          "line": 51,
+          "executions": 603648,
+          "total_s": 0.1465526003155421,
+          "text": "b = sum(cl) + sum(ct) + net.dummy_f(side) + cb + net.parasitic_sub_f(side);"
+        },
+        {
+          "line": 26,
+          "executions": 301824,
+          "total_s": 0.13183880028386186,
+          "text": "~isfield(net, 'track_f') || size(net.main_f, 1) ~= 2 || ..."
+        },
+        {
+          "line": 45,
+          "executions": 603648,
+          "total_s": 0.09178450019762101,
+          "text": "cs = net.cinc_f(side);"
+        },
+        {
+          "line": 27,
+          "executions": 301824,
+          "total_s": 0.08944360019258084,
+          "text": "size(net.sub_f, 1) ~= 2 || size(net.track_f, 1) ~= 2 || ..."
+        },
+        {
+          "line": 28,
+          "executions": 301824,
+          "total_s": 0.08919930019205484,
+          "text": "size(net.main_f, 2) + size(net.sub_f, 2) ~= 12 || ..."
+        },
+        {
+          "line": 46,
+          "executions": 603648,
+          "total_s": 0.07744200016674023,
+          "text": "cb = net.bridge_f(side);"
+        },
+        {
+          "line": 20,
+          "executions": 201216,
+          "total_s": 0.07212400015529004,
+          "text": "reset_noise_v = zeros(2, 1);"
+        },
+        {
+          "line": 19,
+          "executions": 301824,
+          "total_s": 0.071722700154426,
+          "text": "if nargin < 6"
+        },
+        {
+          "line": 39,
+          "executions": 301824,
+          "total_s": 0.06662790014345639,
+          "text": "v = zeros(2, 2);"
+        },
+        {
+          "line": 34,
+          "executions": 301824,
+          "total_s": 0.05061180010897217,
+          "text": "n_sub = size(net.sub_f, 2);"
+        },
+        {
+          "line": 35,
+          "executions": 301824,
+          "total_s": 0.05013220010793954,
+          "text": "if numel(sar_sign) ~= n_main + n_sub || numel(track_sign) ~= size(net.track_f, 2)"
+        },
+        {
+          "line": 57,
+          "executions": 603648,
+          "total_s": 0.049333400106219644,
+          "text": "qdac = -polarity * vref / 2 * ..."
+        },
+        {
+          "line": 40,
+          "executions": 301824,
+          "total_s": 0.04850320010443215,
+          "text": "input_gain = zeros(2, 1);"
+        },
+        {
+          "line": 62,
+          "executions": 603648,
+          "total_s": 0.047911800103158805,
+          "text": "effective_a = a - cb^2 / b;"
+        },
+        {
+          "line": 29,
+          "executions": 301824,
+          "total_s": 0.04689560010097082,
+          "text": "size(net.track_f, 2) ~= 7"
+        },
+        {
+          "line": 33,
+          "executions": 301824,
+          "total_s": 0.045664100098319275,
+          "text": "n_main = size(net.main_f, 2);"
+        },
+        {
+          "line": 23,
+          "executions": 201216,
+          "total_s": 0.04436360009551918,
+          "text": "floating_qb_c = zeros(2, 1);"
+        },
+        {
+          "line": 22,
+          "executions": 301824,
+          "total_s": 0.04375390009420644,
+          "text": "if nargin < 7"
+        },
+        {
+          "line": 41,
+          "executions": 301824,
+          "total_s": 0.04145100008924806,
+          "text": "dv = zeros(2, 1);"
+        },
+        {
+          "line": 18,
+          "executions": 301824,
+          "total_s": 0.04104140008836616,
+          "text": "track_sign = double(track_sign(:));"
+        },
+        {
+          "line": 17,
+          "executions": 301824,
+          "total_s": 0.04040450008699485,
+          "text": "sar_sign = double(sar_sign(:));"
+        },
+        {
+          "line": 73,
+          "executions": 603648,
+          "total_s": 0.03989940008590732,
+          "text": "equivalent_load(side) = cs * (1 - gi(1));"
+        },
+        {
+          "line": 43,
+          "executions": 301824,
+          "total_s": 0.03620840007796023,
+          "text": "equivalent_load = zeros(2, 1);"
+        },
+        {
+          "line": 74,
+          "executions": 603648,
+          "total_s": 0.03512450007562649,
+          "text": "end"
+        },
+        {
+          "line": 71,
+          "executions": 603648,
+          "total_s": 0.03359710007233785,
+          "text": "dv(side) = gd(1);"
+        },
+        {
+          "line": 42,
+          "executions": 301824,
+          "total_s": 0.033515700072162584,
+          "text": "tv = zeros(2, 1);"
+        },
+        {
+          "line": 63,
+          "executions": 603648,
+          "total_s": 0.032467000069904633,
+          "text": "qmemory = [-cb * floating_qb_c(side) / b + effective_a * reset_noise_v(side); ..."
+        },
+        {
+          "line": 24,
+          "executions": 301824,
+          "total_s": 0.028362900061068105,
+          "text": "end"
+        },
+        {
+          "line": 70,
+          "executions": 603648,
+          "total_s": 0.027040400058220632,
+          "text": "input_gain(side) = gi(1);"
+        },
+        {
+          "line": 72,
+          "executions": 603648,
+          "total_s": 0.026392400056825426,
+          "text": "tv(side) = gt(1);"
+        },
+        {
+          "line": 53,
+          "executions": 603648,
+          "total_s": 0.025845900055648758,
+          "text": "polarity = 3 - 2 * side;"
+        },
+        {
+          "line": 44,
+          "executions": 301824,
+          "total_s": 0.022985800049490676,
+          "text": "for side = 1:2"
+        },
+        {
+          "line": 21,
+          "executions": 301824,
+          "total_s": 0.021472200046231748,
+          "text": "end"
+        },
+        {
+          "line": 38,
+          "executions": 301824,
+          "total_s": 0.012805500027571498,
+          "text": "end"
+        },
+        {
+          "line": 32,
+          "executions": 301824,
+          "total_s": 0.009109300019613216,
+          "text": "end"
+        }
+      ],
+      "children": [
+        {
+          "name": "mean",
+          "calls": 301824,
+          "inclusive_s": 2.767381605958444
+        }
+      ]
+    }
+  ]
+}

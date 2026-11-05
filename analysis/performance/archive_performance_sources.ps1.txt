@@ -1,0 +1,65 @@
+$ErrorActionPreference='Stop'
+$ProgressPreference='SilentlyContinue'
+[Console]::OutputEncoding=[Text.UTF8Encoding]::new($false)
+Add-Type -AssemblyName System.IO.Compression
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$root='D:\Academic\Projects\sar20m1\SAR20'
+$task=Get-ScheduledTask -TaskName SAR20_MatlabControl
+if([string]$task.State -eq 'Running'){throw 'Own MATLAB controller still running'}
+$binding=Get-Content (Join-Path $root 'state\current_binding.json') -Raw -Encoding UTF8|ConvertFrom-Json
+if(-not (Test-Path -LiteralPath $binding.workspace_snapshot_file)){throw 'Active workspace snapshot missing'}
+$files=@(Get-ChildItem (Join-Path $root 'runs') -File -Recurse -Filter *.slx)
+$dirs=@(Get-ChildItem (Join-Path $root 'runs') -Directory -Recurse|Where-Object {$_.Name -eq 'as_run'})
+foreach($dir in $dirs){$files+=@(Get-ChildItem -LiteralPath $dir.FullName -File -Recurse)}
+$control=Join-Path $root 'runs\control'
+$files+=@(Get-ChildItem -LiteralPath $control -File -Recurse)
+$activeLog=Join-Path $control 'matlab_startup.log'
+$files=@($files|Where-Object {$_.FullName -ne $activeLog}|Sort-Object FullName -Unique)
+$archive=Join-Path $root 'evidence\performance_sources.zip'
+# Resume only this partial archive; every existing entry is checked below.
+$rows=New-Object Collections.Generic.List[object]
+$mode=if(Test-Path -LiteralPath $archive){[IO.Compression.ZipArchiveMode]::Update}else{[IO.Compression.ZipArchiveMode]::Create}
+$zip=[IO.Compression.ZipFile]::Open($archive,$mode)
+try {
+ foreach($file in $files){
+  $rel=$file.FullName.Substring($root.Length+1).Replace('\','/')
+  $sha=(Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLower()
+  $entry=if($mode -eq [IO.Compression.ZipArchiveMode]::Update){$zip.GetEntry($rel)}else{$null}
+  if($null -ne $entry){
+   if($entry.Length -ne $file.Length){throw ('Partial archive length mismatch: '+$rel)}
+   $stream=$entry.Open();$alg=[Security.Cryptography.SHA256]::Create()
+   try {$priorHash=[BitConverter]::ToString($alg.ComputeHash($stream)).Replace('-','').ToLower()}finally{$stream.Dispose();$alg.Dispose()}
+   if($priorHash -ne $sha){throw ('Partial archive hash mismatch: '+$rel)}
+  }else{
+   $entry=$zip.CreateEntry($rel,[IO.Compression.CompressionLevel]::Optimal)
+   $src=[IO.File]::OpenRead($file.FullName);$dst=$entry.Open()
+   try {$src.CopyTo($dst)} finally {$src.Dispose();$dst.Dispose()}
+  }
+  $rows.Add(@{path=$rel;bytes=$file.Length;sha256=$sha})
+ }
+ $manifest=@{schema='sar20-performance-source-archive/v1';files=$rows.ToArray()}|ConvertTo-Json -Depth 6 -Compress
+ $writer=New-Object IO.StreamWriter($zip.CreateEntry('ORIGINAL_FILES.json').Open(),[Text.UTF8Encoding]::new($false))
+ try {$writer.Write($manifest)} finally {$writer.Dispose()}
+} finally {$zip.Dispose()}
+$zip=[IO.Compression.ZipFile]::OpenRead($archive)
+try {
+ foreach($row in $rows){
+  $entry=$zip.GetEntry($row.path)
+  if($null -eq $entry -or $entry.Length -ne $row.bytes){throw 'Archive entry/length mismatch'}
+  $stream=$entry.Open();$alg=[Security.Cryptography.SHA256]::Create()
+  try {$hash=[BitConverter]::ToString($alg.ComputeHash($stream)).Replace('-','').ToLower()} finally {$stream.Dispose();$alg.Dispose()}
+  if($hash -ne $row.sha256){throw ('Archive readback SHA mismatch: '+$row.path)}
+ }
+} finally {$zip.Dispose()}
+if([string](Get-ScheduledTask -TaskName SAR20_MatlabControl).State -eq 'Running'){throw 'Controller changed state before removal'}
+foreach($file in $files){Remove-Item -LiteralPath $file.FullName -Force}
+foreach($dir in $dirs){Remove-Item -LiteralPath $dir.FullName -Recurse -Force}
+# Preserve the active MATLAB logfile and its directory.
+Unregister-ScheduledTask -TaskName SAR20_MatlabControl -Confirm:$false
+$loose=@(Get-ChildItem -LiteralPath $root -File -Recurse -Filter *.slx|ForEach-Object {$_.FullName.Substring($root.Length+1)})
+if($loose.Count -ne 1 -or $loose[0] -ne 'current\runtime_work\pool_pole_precision_trial_r1\models\PoolCt.slx'){throw 'Expected exactly the canonical loose SLX'}
+if(-not (Test-Path -LiteralPath $binding.workspace_snapshot_file)){throw 'Active workspace snapshot removed'}
+$result=@{status='source_snapshots_readback_sha_verified_then_archived';archive=$archive;archive_sha256=(Get-FileHash -LiteralPath $archive).Hash.ToLower();archived_files=$rows.Count;loose_slx=$loose;active_workspace_snapshot_preserved=$true;controller_unregistered=$true;active_matlab_log_preserved=(Test-Path -LiteralPath $activeLog);raw_or_selected_deleted=$false}
+$json=$result|ConvertTo-Json -Depth 5 -Compress
+[IO.File]::WriteAllText((Join-Path $root 'evidence\performance_sources.json'),$json,[Text.UTF8Encoding]::new($false))
+$json

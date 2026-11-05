@@ -1,0 +1,454 @@
+function files=behavior_sample_plot(runPath,id)
+%BEHAVIOR_SAMPLE_PLOT Current SAR20 AZ diagnostics (2026-10-27): actual sample logs only.
+% Requires az_commit_log8 and az_route_log6; no absent service state is invented.
+% Commit=final RaReset next48 fed to the sole UnitDelay. BackLog=pre-decide probe.
+% Route POL is derived public control; route charge is an actual wire observation.
+% Input runPath: simout.mat/simout, parameters.mat/P, summary.json (SAR20 entry).
+% id defaults4. Only reads saved logs/config; never loads/runs a model.
+% Stairs join discrete event observations, not reconstructed continuous states.
+% BackLog is after due/prepare and before decide/final reset, not committed reset.
+% FrontLog residual is observed before release ChargeReturn consumption, not its result.
+% Returns ADC-only PNG/FIG/nodes/events and separate actual-record CSV; no resimulation.
+    if nargin<2,id=4;end
+    assert(isscalar(id)&&isfinite(id)&&id>=0&&id==floor(id),'BehaviorPlot:id','Invalid sample ID.');
+    runPath=char(runPath);loaded=load(fullfile(runPath,'simout.mat'),'simout');
+    parameters=load(fullfile(runPath,'parameters.mat'),'P');out=loaded.simout;P=parameters.P;
+    metaPath=fullfile(runPath,'summary.json');meta=jsondecode(fileread(metaPath));
+    assert(isfield(meta,'simulation_completed')&&meta.simulation_completed, ...
+        'BehaviorPlot:summary','Require a completed actual simulation; a failed diagnostic verdict is allowed.');
+    runStatus='unrecorded';if isfield(meta,'status'),runStatus=char(meta.status);end
+    finishedUtc='';finishedUtcScope='finished_utc not recorded in source summary';
+    if isfield(meta,'finished_utc')
+        finishedUtc=char(meta.finished_utc);finishedUtcScope='finished_utc copied from source summary';
+    end
+    assert(isa(out,'Simulink.SimulationOutput')&&isempty(out.ErrorMessage), ...
+        'BehaviorPlot:capture','Require actual error-free Simulink output.');
+    D=behavior_sample_debug(out,P,id);R=D.record;
+    groups=D.groups;allTime=D.all_time;use=D.take;time=D.time;
+    raw=D.raw;ready=D.ready;fe=D.front;bk=D.back;ctrl=D.control;
+    az=D.az;route=D.route;latch=D.adc_latch;
+    assert(~isempty(az)&&~isempty(route),'BehaviorPlot:azLogs','Actual ADC AZ/route diagnostics are required.');
+    assert(all(ismember(az(:,2),[0 1]))&&all(ismember(az(:,6),[0 1]))&& ...
+        all(ismember(route(:,1),[-1 1]))&&all(ismember(route(:,4:5),[0 1]),'all'), ...
+        'BehaviorPlot:azFlags','Malformed actual AZ flags or public POL log.');
+    rawValid=raw(latch,6)==1;
+    validityLabel='Valid raw record; diagnostic sample, not a performance result';
+    if ~rawValid,validityLabel='INVALID raw record: diagnostic only, not performance input';end
+    if ~strcmp(runStatus,'complete'),validityLabel=[validityLabel ' | run verdict=' runStatus];end
+    final=raw(latch,:);finalCode=R.code20;dith=public_dither(id,P.digital);
+    d1v=R.d1_v;d2v=R.d2_v;dtv=R.dt_v;
+    voltage=((d1v+d2v)+dtv)+dith;formulaCode=NaN;
+    if isfinite(voltage)
+        formulaCode=min(2^20-1,max(0,round(voltage*2^20/P.digital.fsr_diff_v+2^19)));
+    end
+    nominalFormulaCode=formulaCode;frozen=D.frozen;bank=D.bank;
+    if frozen.used
+        voltage=frozen.voltage_v;
+        formulaCode=min(2^20-1,max(0,round(voltage*2^20/frozen.fsr_v+2^19)));
+    end
+    if ~R.available||~R.valid,validityLabel=[validityLabel ' | record: ' R.reason ' / invalid'];end
+    if bank.enabled&&~bank.valid,validityLabel=[validityLabel ' | Bank code unverified/invalid'];end
+    if bank.enabled,formulaCode=NaN;end % nominal formula is not the Bank equation
+    kinds=cell(numel(groups),1);indices=cell(numel(groups),1);
+    evKind={};evIndex=[];evBit=[];evTime=[];evPlannedTime=[];evGroup=[];
+    d2Markers=[];taMarkers=[];updateMarkers=[];
+    for g=1:numel(groups)
+        tokens=groups(g).events;kinds{g}=strjoin({tokens.type},' | ');
+        indices{g}=strtrim(sprintf('%g ',[tokens.index]));
+        for j=1:numel(tokens)
+            token=tokens(j);evKind{end+1,1}=token.type; %#ok<AGROW>
+            evIndex(end+1,1)=token.index;evBit(end+1,1)=token.bit; %#ok<AGROW>
+            evTime(end+1,1)=time(g);evPlannedTime(end+1,1)=id*P.Ts_s+token.offset_s; %#ok<AGROW>
+            evGroup(end+1,1)=g; %#ok<AGROW>
+            switch token.type
+                case 'd2_decide',d2Markers(end+1,:)=[g token.index]; %#ok<AGROW>
+                case 'ta_compare',taMarkers(end+1,:)=[g token.index]; %#ok<AGROW>
+                case 'ta_feedback',updateMarkers(end+1,:)=[g token.index]; %#ok<AGROW>
+            end
+        end
+    end
+    assert(size(d2Markers,1)==12&&size(taMarkers,1)==8&&size(updateMarkers,1)==7, ...
+        'BehaviorPlot:calendar','Saved model calendar is not 12D2/8TA/7updates.');
+    expectedTime=zeros(size(time));for g=1:numel(groups),expectedTime(g)=id*P.Ts_s+groups(g).time_s;end
+    metadataFiles={metaPath};modelHash=char(meta.model_sha256);
+    azMode='off';if isfield(P.backend.az,'mode'),azMode=char(P.backend.az.mode);end
+    [~,runName]=fileparts(runPath);hashText='';
+    if ~isempty(modelHash),hashText=[' | model SHA ' modelHash(1:min(12,numel(modelHash)))];end
+    prefix=fullfile(runPath,sprintf('sample_%g_az',id));
+    files=struct('png',[prefix '.png'],'fig',[prefix '.fig'], ...
+        'tracking_png',[prefix '_tracking.png'],'tracking_fig',[prefix '_tracking.fig'], ...
+        'csv',[prefix '_nodes.csv'], ...
+        'event_csv',[prefix '_events.csv'],'sample_id',id,'epoch',P.epoch, ...
+        'raw_D1',final(1),'raw_D2',final(2),'raw_DT',final(3),'actual_code20',finalCode,'raw_valid_at_ready',rawValid, ...
+        'sample_scope',validityLabel, ...
+        'd1_v',d1v,'d2_v',d2v,'dt_v',dtv,'public_dither_v',dith, ...
+        'formula_code20',formulaCode,'contribution_equation_matches_code',formulaCode==finalCode, ...
+        'contribution_check_scope','DUT logged contribution identity; not an independent oracle', ...
+        'source_curve_scope','Saved P.input stimulus assumption evaluated at event times; not an external training reference', ...
+        'native_time_equals_calendar',isequal(time,expectedTime), ...
+        'native_calendar_time_max_abs_delta_s',max(abs(time-expectedTime)), ...
+        'metadata_files',{metadataFiles},'run_path',runPath,'run_name',runName,'model_sha256',modelHash, ...
+        'model_version',P.schema,'input',P.input,'seed',P.seed, ...
+        'config_sha256',meta.config_sha256,'utc',meta.utc,'finished_utc',finishedUtc, ...
+        'finished_utc_scope',finishedUtcScope,'source_run_status',runStatus, ...
+        'capture_boundary',meta.capture_boundary, ...
+        'observation_scope','BackLog is actual pre-decide probe; az_commit_log is final RaReset UnitDelay-next (pending latch); neither is kernel prediction', ...
+        'az_mode',azMode,'az_added_scalar_log_width',14, ...
+        'FrontLog_nan_values_preserved',sum(isnan(fe(:))), ...
+        'az_valid_rows',sum(az(:,2)~=0), ...
+        'az_pair_tag_matches_when_valid',all(az(az(:,2)~=0,3)==floor(id/2)), ...
+        'az_epoch_tag_matches_when_valid',all(az(az(:,2)~=0,4)==P.epoch), ...
+        'route_pol_provenance','Derived public control, separately logged; not inferred from Qres ratio', ...
+        'event_source','Declared calendar tokens mapped by actual EventLog group identity; not separately instrumented internal event timestamps');
+    files.record=R;files.adc_raw_ready_time_s=D.adc_ready_time_s;
+    files.actual_record_ready_time_s=R.time_s;
+    files.source_log_binding='Run-directory logs only; model/config summary hashes do not prove simout identity or prevent mixed archives';
+    if bank.enabled
+        files.bank=bank;files.nominal_formula_code20=nominalFormulaCode;
+        files.contribution_equation_matches_code=NaN;
+        files.contribution_check_scope='Bank code observed; nominal branches are comparison only, Bank internal equation not logged';
+    end
+    files.record_csv=fullfile(runPath,sprintf('sample_%g_record.csv',id));
+    recordTable=table(R.candidate_time_s,R.candidate_raw(:,1),R.candidate_raw(:,2), ...
+        R.candidate_raw(:,3),R.candidate_raw(:,4),R.candidate_raw(:,5),R.candidate_raw(:,6),R.candidate_code20, ...
+        'VariableNames',{'actual_record_ready_time_s','record_D1','record_D2','record_DT','record_ID', ...
+        'record_epoch','record_valid','actual_code20_observed'});
+    selectedRecord=R.available&(R.candidate_raw(:,5)==P.epoch);
+    recordTable.selected_unique_id_epoch=selectedRecord;
+    recordTable.actual_d1_branch_v=nan(size(selectedRecord));
+    recordTable.actual_d2_branch_v=nan(size(selectedRecord));
+    recordTable.actual_dt_branch_v=nan(size(selectedRecord));
+    if R.available
+        recordTable.actual_d1_branch_v(selectedRecord)=d1v;
+        recordTable.actual_d2_branch_v(selectedRecord)=d2v;
+        recordTable.actual_dt_branch_v(selectedRecord)=dtv;
+    end
+    if bank.enabled
+        recordTable.bank_code_valid=nan(size(selectedRecord));recordTable.bank_slot=nan(size(selectedRecord));
+        recordTable.bank_version=nan(size(selectedRecord));recordTable.bank_fault=nan(size(selectedRecord));
+        recordTable.bank_raw_words_valid=nan(size(selectedRecord));recordTable.bank_log_join_valid=nan(size(selectedRecord));
+        if R.available
+            recordTable.bank_raw_words_valid(selectedRecord)=bank.raw_words_valid;
+            recordTable.bank_log_join_valid(selectedRecord)=double(bank.valid);
+        end
+        if R.available&&bank.available
+            recordTable.bank_code_valid(selectedRecord)=bank.code_valid;recordTable.bank_slot(selectedRecord)=bank.slot;
+            recordTable.bank_version(selectedRecord)=bank.version;recordTable.bank_fault(selectedRecord)=bank.fault;
+        end
+    end
+    if frozen.enabled
+        recordTable.frozen_u_ra_v=nan(size(selectedRecord));
+        recordTable.frozen_bh_canonical_ra_v=nan(size(selectedRecord));
+        recordTable.frozen_den=nan(size(selectedRecord));
+        recordTable.frozen_actual_voltage_v=nan(size(selectedRecord));
+        recordTable.frozen_valid=nan(size(selectedRecord));recordTable.frozen_used=nan(size(selectedRecord));
+        if R.available
+            q=R.frozen12;recordTable.frozen_u_ra_v(selectedRecord)=q(1);
+            recordTable.frozen_bh_canonical_ra_v(selectedRecord)=q(7);recordTable.frozen_den(selectedRecord)=q(8);
+            recordTable.frozen_actual_voltage_v(selectedRecord)=q(9);
+            recordTable.frozen_valid(selectedRecord)=q(10);recordTable.frozen_used(selectedRecord)=q(11);
+        end
+    end
+    writetable(recordTable,files.record_csv);
+    if frozen.enabled
+        files.frozen=frozen;
+        if frozen.used
+            files.contribution_check_scope='Actual frozen_log diag9 to code; d1/d2/dt/dither are nominal comparisons only';
+            files.final_voltage_v=voltage;
+        end
+    end
+    aperture=aperture_view(out,P,allTime,use,groups,final(4),final(5), ...
+        @(ts)read_series(ts,28,'aperture_log',true));
+    if aperture.enabled
+        files.aperture=aperture;
+        files.aperture_scope=['Signal endpoint aperture approximation only; all other event times remain nominal; ' ...
+            'tail/bias precharge timing does not move with jitter'];
+        if aperture.used
+            files.aperture_csv=fullfile(runPath,sprintf('sample_%g_aperture.csv',id));
+            apertureTable=table((1:8).',aperture.physical_ids.', ...
+                repmat(aperture.nominal_cnv_s,8,1),aperture.actual_tap_s.', ...
+                aperture.actual_tap_from_cnv_ps.',aperture.acquire_open_s.', ...
+                aperture.acquire_open_from_cnv_ps.', ...
+                'VariableNames',{'observed_slot','actual_physical_slice_id','actual_nominal_CNV_s', ...
+                'actual_signal_aperture_s','actual_signal_aperture_from_CNV_ps', ...
+                'actual_acquire_open_s','actual_acquire_open_from_CNV_ps'});
+            writetable(apertureTable,files.aperture_csv);
+        end
+    end
+    % Input is explicitly evaluated from saved source parameters only at the
+    % actual logged timestamps. It is labelled separately from measured nodes.
+    source=P.input.offset_v+P.input.amplitude_v*sin(2*pi*P.input.frequency_hz*time+P.input.phase_rad);
+    nodes=table(time,(time-id*P.Ts_s)*1e9,D.event(:,2),source,fe(:,1),fe(:,2),bk(:,1),bk(:,2), ...
+        ctrl(:,1),raw(:,1),raw(:,2),raw(:,3),ready,kinds,indices, ...
+        'VariableNames',{'native_time_s','time_from_CNV_ns','group','declared_source_at_events_v', ...
+        'FrontLog_held_v','FrontLog_residual_observed_pre_return_v','VX_pre_decide_reset_v','VY_pre_decide_reset_v', ...
+        'D1_trial','D1_raw','D2_raw','DT_raw','raw_latch_ready','calendar_kinds','calendar_indices'});
+    nodes.AZ_probe_diff_v=bk(:,7);
+    nodes.AZ_final_next_diff_v=az(:,1);nodes.AZ_final_next_valid=az(:,2);
+    nodes.AZ_final_next_pair_id=az(:,3);nodes.AZ_final_next_epoch=az(:,4);
+    nodes.AZ_final_next_age_s=az(:,5);nodes.AZ_final_next_write_active=az(:,6);
+    nodes.AZ_final_next_write_count=az(:,7);nodes.AZ_final_next_write_elapsed_s=az(:,8);
+    nodes.POL_derived_public_control=route(:,1);
+    nodes.Qres_raw_precompare_c=route(:,2);nodes.Qres_routed_precompare_c=route(:,3);
+    nodes.RAon_precompare=route(:,4);nodes.AZon_precompare=route(:,5);
+    nodes.Vtop_backend_local_predecide_v=bk(:,3);
+    nodes.Vtop_return_postdecide_preChargeReturn_v=route(:,6);
+    releaseRows=ctrl(:,12)~=0;files.release_rows=sum(releaseRows);
+    files.return_vtop_max_abs_delta_v=NaN;
+    if any(releaseRows)
+        files.return_vtop_max_abs_delta_v=max(abs(route(releaseRows,6)-route(releaseRows,1).*bk(releaseRows,3)));
+    end
+    writetable(nodes,files.csv);
+    tokenRows=evGroup;events=table(evTime,evPlannedTime,evGroup,evKind,evIndex,evBit, ...
+        repmat(id,numel(evGroup),1),repmat(P.epoch,numel(evGroup),1), ...
+        fe(tokenRows,1),fe(tokenRows,2),bk(tokenRows,1),bk(tokenRows,2), ...
+        'VariableNames',{'native_group_time_s','declared_token_time_s','group','calendar_kind','index0','bit0', ...
+        'sample_id','epoch','FrontLog_held_v','FrontLog_residual_observed_pre_return_v','VX_pre_decide_reset_v','VY_pre_decide_reset_v'});
+    writetable(events,files.event_csv);
+    fig=figure('Visible','off','Color','white','Position',[100 100 1400 1950]);
+    closer=onCleanup(@()close(fig)); %#ok<NASGU>
+    layout=tiledlayout(fig,8,1,'TileSpacing','compact','Padding','compact');
+    x=(time-id*P.Ts_s)*1e9;
+    a=nexttile(layout);yyaxis(a,'left');
+    inputLine=stairs(a,x,source,'--','LineWidth',1);hold(a,'on');
+    heldLine=stairs(a,x,fe(:,1),'LineWidth',1.3);ylabel(a,'Input / held (V)');
+    yyaxis(a,'right');residualLine=stairs(a,x,1e3*fe(:,2),'LineWidth',1.3);
+    ylabel(a,'FrontLog residual (mV)');grid(a,'on');
+    legend(a,[inputLine heldLine residualLine], ...
+        {'P.input (saved)','Held (FrontLog)','Residual (release row: pre-return)'},'Location','best');
+    a=nexttile(layout);yyaxis(a,'left');
+    stairs(a,x,1e6*bk(:,7),'--','LineWidth',1.1);hold(a,'on');
+    stairs(a,x,1e6*az(:,1),'LineWidth',1.3);ylabel(a,'AZdiff (uV)');
+    yyaxis(a,'right');stairs(a,x,1e9*az(:,5),':','LineWidth',1.1);ylabel(a,'AZ age (ns)');grid(a,'on');
+    legend(a,{'AZ probe','AZ final-next','Age final-next'},'Location','eastoutside');
+    title(a,'AZ storage | probe and final-next (pending latch)');
+    a=nexttile(layout);yyaxis(a,'left');
+    stairs(a,x,az(:,2),'LineWidth',1.3);hold(a,'on');stairs(a,x,az(:,6),'--','LineWidth',1.1);
+    ylabel(a,'AZ flags (0/1)');ylim(a,[-.1 1.1]);
+    yyaxis(a,'right');stairs(a,x,az(:,3),':','LineWidth',1.2);ylabel(a,'Stored pair ID');grid(a,'on');
+    legend(a,{'Valid (next)','Write (next)','Pair (next)'},'Location','eastoutside');
+    if strcmp(azMode,'off')
+        title(a,sprintf('AZ service | Disabled (off) | writes %g..%g', ...
+            min(az(:,7)),max(az(:,7))),'Interpreter','none');
+    else
+        % Expected service tags use this actual RAW sample, not backend defaults.
+        title(a,sprintf('AZ service | expected pair %g, sample epoch %g | writes %g..%g', ...
+            floor(final(4)/2),final(5),min(az(:,7)),max(az(:,7))),'Interpreter','none');
+    end
+    subtitle(a,sprintf('Actual stored epoch %g..%g | valid rows %g/%g', ...
+        min(az(:,4)),max(az(:,4)),sum(az(:,2)~=0),size(az,1)));
+    a=nexttile(layout);yyaxis(a,'left');
+    stairs(a,x,1e12*route(:,2),'LineWidth',1.2);hold(a,'on');
+    stairs(a,x,1e12*route(:,3),'--','LineWidth',1.2);ylabel(a,'Qres (pC)');
+    yyaxis(a,'right');stairs(a,x,route(:,1),':','LineWidth',1.2);ylabel(a,'Public POL');ylim(a,[-1.2 1.2]);grid(a,'on');
+    legend(a,{'Qraw (pre-decide)','Qcmd (pre-decide)','POL (public)'},'Location','eastoutside');
+    title(a,'Qres routing | same pre-decide phase');
+    a=nexttile(layout);yyaxis(a,'left');stairs(a,x,bk(:,1),'LineWidth',1.3);hold(a,'on');stairs(a,x,bk(:,2),'LineWidth',1.3);
+    ylabel(a,'VX/VY (V)');ylim(a,padded_limits(bk(:,1:2)));
+    yyaxis(a,'right');stairs(a,x,1e3*bk(:,3),':','LineWidth',1.1);
+    ylabel(a,'Vtop (mV)');ylim(a,padded_limits(1e3*bk(:,3)));grid(a,'on');
+    legend(a,{'VX pre-decide','VY pre-decide','Vtop local pre-decide'},'Location','eastoutside');
+    title(a,'RA/CT | pre-decide');
+    a=nexttile(layout);stairs(a,x,1e3*route(:,6),'LineWidth',1.2);hold(a,'on');
+    scatter(a,x(releaseRows),1e3*route(releaseRows,6),45,[.85 .3 0],'filled');
+    ylabel(a,'Return Vtop (mV)');grid(a,'on');
+    legend(a,{'Vtop return (post-decide)','FE consumption (release)'},'Location','eastoutside');
+    title(a,'ReturnContext | post-decide, pre-ChargeReturn; release only');
+    a=nexttile(layout);stairs(a,x,ctrl(:,1),'LineWidth',1);hold(a,'on');
+    stairs(a,x,raw(:,1),'LineWidth',1);stairs(a,x,raw(:,2),'LineWidth',1);stairs(a,x,raw(:,3),'LineWidth',1);
+    grid(a,'on');ylabel(a,'RAW / trial');legend(a,{'D1 trial','D1','D2','DT'},'Location','eastoutside');
+    a=nexttile(layout);hold(a,'on');
+    scatter(a,x(d2Markers(:,1)),ones(12,1),32,'b','filled');
+    scatter(a,x(taMarkers(:,1)),2*ones(8,1),32,[.9 .45 0],'filled');
+    scatter(a,x(updateMarkers(:,1)),3*ones(7,1),32,[0 .55 .2],'filled');
+    for q=1:size(d2Markers,1),text(a,x(d2Markers(q,1)),1.12,sprintf('%g',d2Markers(q,2)),'FontSize',8,'HorizontalAlignment','center');end
+    for q=1:8,text(a,x(taMarkers(q,1)),2.12,sprintf('%g',taMarkers(q,2)),'FontSize',8,'HorizontalAlignment','center');end
+    for q=1:7,text(a,x(updateMarkers(q,1)),3.12,sprintf('%g',updateMarkers(q,2)),'FontSize',8,'HorizontalAlignment','center');end
+    plot(a,[x(latch) x(latch)],[.6 3.5],'k--');
+    yticks(a,[1 2 3]);yticklabels(a,{'12 D2 compares','8 TA compares','7 TA feedbacks'});ylim(a,[.6 3.5]);grid(a,'on');
+    xlabel(a,'Time from CNV (ns)');
+    axesList=findall(fig,'Type','axes');for q=1:numel(axesList),xlim(axesList(q),[min(x) max(x)]);end
+    % Compact figure identity; full run/config/source identities remain in files.
+    configHash=char(meta.config_sha256);
+    shortModel=modelHash(1:min(12,numel(modelHash)));shortConfig=configHash(1:min(12,numel(configHash)));
+    validityShort='ADC valid';if ~rawValid,validityShort='ADC INVALID';end
+    if ~R.available,validityShort=[validityShort ' | record missing/duplicate'];
+    elseif ~R.valid,validityShort=[validityShort ' | record INVALID'];
+    else,validityShort=[validityShort ' | record valid'];end
+    if bank.enabled
+        if bank.valid,validityShort=[validityShort ' | Bank valid'];
+        else,validityShort=[validityShort ' | Bank unverified/invalid'];end
+    end
+    if ~strcmp(runStatus,'complete'),validityShort=[validityShort ' | verdict=' runStatus];end
+    files.export_utc=char(datetime('now','TimeZone','UTC','Format','yyyy-MM-dd''T''HH:mm:ss''Z'''));
+    utcLine=['Run ' char(meta.utc) ' | export ' files.export_utc];
+    recordMode='direct';recordLabel='RecordReady/direct';
+    if D.transport_enabled,recordMode='RX';recordLabel='RXready';end
+    recordLine=sprintf('ADC RawReady %.9g ns | %s %.9g ns | valid=%g | %s', ...
+        1e9*(D.adc_ready_time_s-time(1)),recordLabel,1e9*(R.time_s-time(1)),R.raw(6),R.reason);
+    title(layout,sprintf('ID %g | epoch %g | AZ=%s | record=%s | %s',id,P.epoch,azMode,recordMode,validityShort), ...
+        'Interpreter','none','FontSize',12,'FontWeight','bold');
+    if frozen.used
+        utcLine=sprintf('%s | frozen h %s',utcLine,frozen.coefficient_sha256(1:min(12,end)));
+    end
+    if bank.enabled
+        utcLine=sprintf('%s | Bank code_valid=%g checked_valid=%g slot=%g version=%g fault=%g', ...
+            utcLine,bank.code_valid,double(bank.valid),bank.slot,bank.version,bank.fault);
+    end
+    subtitle(layout,{sprintf('RAW D1 %g | D2 %g | DT %g | code20 %g',final(1),final(2),final(3),finalCode), ...
+        sprintf('Model %s | Config %s',shortModel,shortConfig),recordLine,utcLine}, ...
+        'Interpreter','none','FontSize',9);
+    % One main heading and uniform compact panel/legend hierarchy.
+    for q=1:numel(axesList)
+        axesList(q).FontSize=9;axesList(q).Title.FontSize=9;
+        axesList(q).XLabel.FontSize=9;axesList(q).YLabel.FontSize=9;
+    end
+    legends=findall(fig,'Type','legend');for q=1:numel(legends),legends(q).FontSize=9;end
+    exportgraphics(fig,files.png,'Resolution',170);
+    savefig(fig,files.fig);
+    % Independent event timeline: two scales, the same observed CNV origin.
+    % Points are actual logger times, not serial edges or inferred deadlines.
+    files.timing_png=fullfile(runPath,sprintf('sample_%g_timing.png',id));
+    files.timing_fig=fullfile(runPath,sprintf('sample_%g_timing.fig',id));
+    cnvRows=[];
+    for g=1:numel(groups)
+        tokens=groups(g).events;
+        if any(strcmp({tokens.type},'cnv')),cnvRows(end+1)=g;end %#ok<AGROW>
+    end
+    assert(isscalar(cnvRows),'BehaviorPlot:timingCNV','Need one actual CNV group for shared origin.');
+    cnvTime=time(cnvRows);adcNs=1e9*(D.adc_ready_time_s-cnvTime);
+    recordNs=1e9*(R.time_s-cnvTime);physicalNs=1e9*(time-cnvTime);
+    files.timing=struct('scope','Two scales with the same actual CNV origin; event markers, not clock waveform', ...
+        'actual_CNV_time_s',cnvTime,'actual_ADC_ready_time_s',D.adc_ready_time_s, ...
+        'actual_record_ready_time_s',R.time_s,'record_available',R.available,'record_valid',R.valid, ...
+        'ADC_from_CNV_ns',adcNs,'record_from_CNV_ns',recordNs);
+    timingFigure=figure('Visible','off','Color','white','Position',[100 100 1200 600]);
+    timingCloser=onCleanup(@()close(timingFigure)); %#ok<NASGU>
+    timingLayout=tiledlayout(timingFigure,2,1,'TileSpacing','compact','Padding','compact');
+    ax=nexttile(timingLayout);hold(ax,'on');
+    plot(ax,[0 adcNs],[1 1],'-','Color',[.65 .65 .65]);
+    scatter(ax,[0 adcNs],[1 1],48,[0 .4 .8],'filled');
+    text(ax,0,1.13,'CNV 0','FontSize',10,'HorizontalAlignment','left');
+    text(ax,adcNs,1.13,sprintf('ADC RawReady %.9g ns',adcNs), ...
+        'FontSize',10,'HorizontalAlignment','right');
+    physicalBounds=[min([0;physicalNs]) max([0;physicalNs;adcNs])];
+    span=max(diff(physicalBounds),eps);xlim(ax,physicalBounds+[-.03 .08]*span);
+    ylim(ax,[.7 1.4]);yticks(ax,[]);grid(ax,'on');
+    title(ax,'ADC event scale | only actual ADC events','FontSize',10);
+    xlabel(ax,'Time from the same actual CNV (ns)');
+    ax=nexttile(timingLayout);hold(ax,'on');
+    plot(ax,[0 adcNs],[2 2],'-','Color',[.65 .65 .65]);
+    scatter(ax,adcNs,2,48,[0 .4 .8],'filled');
+    text(ax,adcNs,2.15,sprintf('ADC %.9g ns',adcNs),'FontSize',10,'HorizontalAlignment','center');
+    observed=[0 adcNs];
+    if R.available&&isfinite(recordNs)
+        observed(end+1)=recordNs;
+        plot(ax,[0 recordNs],[1 1],'-','Color',[.65 .65 .65]);
+        color=[0 .55 .25];if ~R.valid,color=[.85 .3 0];end
+        scatter(ax,recordNs,1,48,color,'filled');
+        text(ax,recordNs,1.15,sprintf('%s %.9g ns | valid=%g',recordLabel,recordNs,R.raw(6)), ...
+            'FontSize',10,'HorizontalAlignment','right');
+    else
+        text(ax,0,1.15,['Record: ' R.reason],'FontSize',10,'Interpreter','none');
+    end
+    xline(ax,0,'--','CNV 0','LabelVerticalAlignment','bottom');
+    publicBounds=[min(observed) max(observed)];span=max(diff(publicBounds),eps);
+    xlim(ax,publicBounds+[-.03 .12]*span);ylim(ax,[.7 2.4]);
+    yticks(ax,[1 2]);yticklabels(ax,{'Record','ADC'});grid(ax,'on');
+    title(ax,'Public record scale | actual ready observations','FontSize',10);
+    xlabel(ax,'Time from the same actual CNV (ns)');
+    title(timingLayout,sprintf('ID %g | epoch %g | AZ=%s | record=%s | 分尺度，共CNV原点', ...
+        id,P.epoch,azMode,recordMode),'Interpreter','none','FontSize',12);
+    subtitle(timingLayout,{sprintf('Model %s | Config %s',shortModel,shortConfig),utcLine}, ...
+        'Interpreter','none','FontSize',9);
+    exportgraphics(timingFigure,files.timing_png,'Resolution',170);savefig(timingFigure,files.timing_fig);
+    % Display-only zoom: preserve the same actual samples and their timestamps.
+    % No added samples or interpolation; marker identities come from the calendar.
+    trackingFigure=figure('Visible','off','Color','white','Position',[100 100 1100 500]);
+    trackingCloser=onCleanup(@()close(trackingFigure)); %#ok<NASGU>
+    trackingAxes=axes(trackingFigure);hold(trackingAxes,'on');
+    stairs(trackingAxes,x,1e3*bk(:,2),'LineWidth',1.4,'DisplayName','VY (pre-decide)');
+    plot(trackingAxes,x(taMarkers(:,1)),1e3*bk(taMarkers(:,1),2),'o', ...
+        'Color',[.9 .45 0],'MarkerFaceColor',[.9 .45 0],'DisplayName','TA comparisons');
+    for q=1:size(taMarkers,1)
+        text(trackingAxes,x(taMarkers(q,1)),1e3*bk(taMarkers(q,1),2), ...
+            sprintf(' TA%g',taMarkers(q,2)),'FontSize',9,'VerticalAlignment','bottom');
+    end
+    for q=1:size(updateMarkers,1)
+        xline(trackingAxes,x(updateMarkers(q,1)),':','Color',[0 .55 .2], ...
+            'HandleVisibility','off');
+    end
+    xlim(trackingAxes,[75 85]);window=x>=75&x<=85;
+    % Include the previous stairs level visible at the left zoom boundary.
+    previous=find(x<75,1,'last');if ~isempty(previous),window(previous)=true;end
+    if any(window),ylim(trackingAxes,padded_limits(1e3*bk(window,2)));end
+    grid(trackingAxes,'on');xlabel(trackingAxes,'Time from actual sample CNV (ns)');
+    ylabel(trackingAxes,'Actual VY pre decide/reset (mV)');
+    title(trackingAxes,sprintf('ID %g | epoch %g | AZ=%s | ADC tracking',id,P.epoch,azMode), ...
+        'Interpreter','none','FontSize',12);
+    subtitle(trackingAxes,'VY pre-decide | TA comparisons and 7 feedback events','FontSize',9);
+    trackingAxes.FontSize=9;
+    legend(trackingAxes,'Location','best','FontSize',9);
+    exportgraphics(trackingFigure,files.tracking_png,'Resolution',170);
+    savefig(trackingFigure,files.tracking_fig);
+end
+
+function [time,data]=read_series(series,width,name,allowNaN)
+    if nargin<4,allowNaN=false;end
+    assert(isa(series,'timeseries'),'BehaviorPlot:logger', ...
+        'Missing actual logger %s. Add the declared compact logger; no data is synthesized.',name);
+    time=series.Time(:);data=squeeze(series.Data);
+    if width==1,data=data(:);elseif size(data,1)~=numel(time),data=data.';end
+    legal=isfinite(data);if allowNaN,legal=legal|isnan(data);end
+    assert(isequal(size(data),[numel(time) width])&&isreal(data)&&all(legal(:))&& ...
+        all(isfinite(time))&&all(diff(time)>=0),'BehaviorPlot:shape','Malformed actual logger %s.',name);
+end
+
+function value=public_dither(id,p)
+    value=0;if ~p.dither_enabled,return;end
+    modulus=2147483647;word=mod(double(p.dither_seed),modulus-1)+1;
+    for k=1:id+1,word=mod(16807*word,modulus);end
+    value=(floor(4*word/modulus)-1.5)*p.dither_amplitude_v;
+end
+
+function limits=padded_limits(values)
+% Display complete observed extrema with margin; no physical clipping threshold.
+    values=values(:);limits=[min(values) max(values)];
+    padding=max([diff(limits)*.12,max(abs(limits))*.001,eps]);
+    limits=limits+[-padding padding];
+end
+
+function aperture=aperture_view(out,P,allTime,take,groups,id,epoch,reader)
+% aperture-log28: Sample.next353 at actual CNV only; all other rows may be NaN.
+% Read saved actual seconds/IDs only. No plan, seed or aperture reconstruction.
+    aperture=struct('enabled',false,'used',false,'reason','保存P未启用jitter');
+    if ~isfield(P.front,'jitter')||~isfield(P.front.jitter,'enabled')|| ...
+            ~P.front.jitter.enabled,return;end
+    aperture.enabled=true;listed=out.who;if isstring(listed),listed=cellstr(listed);end
+    if ~any(strcmp(listed,'aperture_log'))
+        aperture.reason='aperture_log未记录';return;
+    end
+    [ta,z]=reader(out.get('aperture_log'));
+    if ~isequal(ta,allTime)
+        aperture.reason='实际aperture_log轴不完整或不同轴，未记录本sample孔径';return;
+    end
+    cnv=[];
+    for g=1:numel(groups)
+        tokens=groups(g).events;
+        if any(strcmp({tokens.type},'cnv')),cnv(end+1)=g;end %#ok<AGROW>
+    end
+    if ~isscalar(cnv)
+        aperture.reason='保存日历未定位唯一实际CNV组，未记录本sample孔径';return;
+    end
+    z=z(take,:);q=z(cnv,:);eventTimes=allTime(take);
+    if q(3)~=1||q(1)~=id||q(2)~=epoch||~isfinite(q(4))
+        aperture.reason='实际CNV行无有效且ID/epoch匹配的孔径记录；不读取其它事件代替';return;
+    end
+    aperture.used=true;aperture.reason='实际CNV的Sample.next353观察';
+    aperture.sample_id=q(1);aperture.epoch=q(2);aperture.valid=q(3);
+    aperture.event_cnv_s=eventTimes(cnv);aperture.nominal_cnv_s=q(4);
+    aperture.physical_ids=q(5:12);aperture.actual_tap_s=q(13:20);
+    aperture.acquire_open_s=q(21:28);
+    aperture.actual_tap_from_cnv_ps=(q(13:20)-q(4))*1e12;
+    aperture.acquire_open_from_cnv_ps=(q(21:28)-q(4))*1e12;
+end

@@ -1,0 +1,88 @@
+function [s,y,d]=behavior_reference_queue_step(s,ref,event,raw,ready,p)
+%BEHAVIOR_REFERENCE_QUEUE_STEP Pure public tag join, never estimates a reference.
+% Inputs: explicit state; TrainRef4[V,ID,epoch,valid]; Event2[cycle,group];
+% public RXRaw6[D1,D2,DT,ID,epoch,valid]; raw_ready=Transport.ready3(2); p.
+% NEVER connect frame_ready=ready3(1): startup frames are not public RAW records.
+% Output y original Ref4 when disabled; otherwise only matched close is valid.
+% All queue state is predicted here and committed by an external UnitDelay.
+% CNV ingestion precedes close lookup if both group IDs are explicitly equal.
+% Reference/RX invalidity is observable, not filled from another sample.
+% diag=[reason,matched,inserted,epoch_changed], reason:0 bypass,1 nonclose,
+% 2 matched,3 noRXready,4 negativeStartup,5 invalidRX,6 missing,7 epochMismatch,
+% 8 invalidReference. Query never pops; repeated Outputs do not consume state.
+    if isempty(s),s=behavior_reference_queue_init();end
+    assert(isa(ref,'double')&&isreal(ref)&&numel(ref)==4,'referenceQueue:refWidth','Need double TrainRef4.');
+    ref=ref(:);
+    y=ref;
+    d=[0;0;0;0];
+    if ~p.enabled,return;end
+    assert(isa(event,'double')&&isreal(event)&&numel(event)==2&&all(isfinite(event))&& ...
+        all(event==floor(event))&&event(1)>=0&&event(1)<=2^32-1&&event(2)>=1, ...
+        'referenceQueue:event','Need public Event2=[nonnegative cycle;positive group].');
+    assert(isscalar(ready)&&isreal(ready)&&ismember(ready,[0 1]), ...
+        'referenceQueue:ready','RXready must be logical.');
+    assert(~ready||event(2)==p.close_group,'referenceQueue:readyPhase','RXready is only allowed at the public slot-close group.');
+    y=[NaN;-1;-1;0];d(1)=1;
+    if event(2)==p.cnv_group
+        check_reference(ref);
+        if ref(2)>=0
+            assert(ref(2)==event(1),'referenceQueue:CNVTag','TrainRef must be latched for this public CNV ID.');
+            if ~s.has_epoch||s.active_epoch~=ref(3)
+                s.occupied(:)=false;s.active_epoch=ref(3);s.has_epoch=true;d(4)=1;
+            end
+            used=find(s.occupied);
+            if ~isempty(used)
+                assert(ref(2)>=max(s.ref4(2,used)), ...
+                    'referenceQueue:CNVOrder','CNV reference ID moved backwards within epoch.');
+            end
+            slot=mod(ref(2),4)+1;
+            duplicate=s.occupied(slot)&&s.ref4(2,slot)==ref(2)&&s.ref4(3,slot)==ref(3);
+            if duplicate
+                assert(bits(s.ref4(:,slot),ref),'referenceQueue:duplicateCNV','Same CNV reference tags changed value/validity.');
+            else
+                s.ref4(:,slot)=ref;s.occupied(slot)=true;d(3)=1;
+            end
+        end
+    end
+    if event(2)~=p.close_group,return;end
+    assert(isa(raw,'double')&&isreal(raw)&&numel(raw)==6, ...
+        'referenceQueue:rawWidth','Need public RXRaw6.');
+    raw=raw(:);
+    assert(all(isfinite(raw(4:6)))&&all(raw(4:5)==floor(raw(4:5)))&& ...
+        raw(4)>=-2&&raw(5)>=-1&&all(raw(4:5)<=2^32-1)&&ismember(raw(6),[0 1]), ...
+        'referenceQueue:rawTags','Invalid public RX ID/epoch/valid.');
+    y=[NaN;raw(4);raw(5);0];
+    if raw(4)<0
+        assert(~ready&&raw(6)==0,'referenceQueue:startupRawReady', ...
+            'Negative startup requires raw_ready=0; connect Transport.ready3(2), never frame_ready.');
+        assert(event(1)<2&&raw(4)==event(1)-2,'referenceQueue:startupTarget', ...
+            'Startup slots zero/one must retain public RX target -2/-1.');
+        d(1)=4;return;
+    end
+    d(1)=3;if ~ready,return;end
+    assert(raw(5)>=0,'referenceQueue:rawEpoch','Public ready RAW requires nonnegative epoch.');
+    % Registered transport contract: slot n closes target n-2. Tags originate
+    % in public RX, not in ADC sideband or a queue-derived substitute.
+    assert(raw(4)==event(1)-2,'referenceQueue:slotTarget','Public RX target must equal slot cycle minus two.');
+    if raw(6)==0,d(1)=5;return;end
+    if ~s.has_epoch||s.active_epoch~=raw(5),d(1)=7;return;end
+    found=find(s.occupied & s.ref4(2,:).'==raw(4) & s.ref4(3,:).'==raw(5));
+    if isempty(found),d(1)=6;return;end
+    assert(isscalar(found),'referenceQueue:duplicateTag','Ambiguous reference tags.');
+    if s.ref4(4,found)==0,d(1)=8;return;end
+    y=s.ref4(:,found);d(1)=2;d(2)=1;
+end
+function check_reference(r)
+    assert(all(isfinite(r(2:4)))&&all(r(2:3)==floor(r(2:3)))&& ...
+        all(r(2:3)>=-1)&&all(r(2:3)<=2^32-1)&&ismember(r(4),[0 1]), ...
+        'referenceQueue:refTags','Reference tags/validity are malformed.');
+    if r(2)<0||r(3)<0
+        assert(r(2)==-1&&r(3)==-1&&r(4)==0, ...
+            'referenceQueue:negativeReference','Unavailable instrument reference must use [-1,-1,valid0].');
+    else
+        assert(isfinite(r(1)),'referenceQueue:refValue','Tagged external reference voltage must be finite.');
+    end
+end
+function same=bits(a,b)
+    same=isequal(typecast(a(:),'uint64'),typecast(b(:),'uint64'));
+end

@@ -1,0 +1,160 @@
+{
+  "schema": "joint-ni-independent-actual-v1",
+  "transfer_items_sha_verified": 70,
+  "inputs_sha256": {
+    "ni_n8_match/P_used.mat": "395c598bf0ace3f04aa32db6580678c370dbde51b61b2145bf318c47e7ef5501",
+    "ni_n8_joint/P_used.mat": "c2ad940039914e5220ac53be4abccedc0d232277df0f9baab50b73b7d9aabd5a",
+    "ni_n256/P_used.mat": "367fa711a225b512015f5f7170481ef217c4441aaab2587121525b6e6d1114f2",
+    "ni_n8_match/simout.mat": "1a683b788a2f8640887c385024d0239f39b18916d3e4af1da0112d833c738dca",
+    "ni_n8_joint/simout.mat": "8feb39898f0e2e0f04f6903226f6c401ab5148b0f81941ed5abe45a4f04bc244",
+    "ni_n256/simout.mat": "6a8fc6dcfa8212a480c937934edef55884caf5dbcec6104564ea26444539e04f",
+    "ni_profile/P_pair.mat": "f1e92f8d16917cbd3d6cd9619e15d184149342fe2b4d098c0ce70cb382044a5d",
+    "ni_n256/selected.mat": "3e6b8c8bea41803dc635c0b215d396ac62c0079ac9e67c419cc78dfd7f17af84",
+    "ni_n256/spectrum.mat": "d26001d441c608b94057b544878516096506f90049d149664d5ea04b540bb2bd",
+    "ni_n256/stimulus_reference.mat": "6e10bd80591ae5cc19a040c82ebc9092e23b08d91b43a5d0c358dccdea73c768"
+  },
+  "profile_identity_and_actual_array_checked": true,
+  "matched_to_joint_diff_paths": [
+    "P/backend/ct/net_actual/cinc_f",
+    "P/backend/ct/net_replica/cinc_f",
+    "P/backend/ni/cap_mismatch"
+  ],
+  "jointN8_to_N256_diff_paths": [
+    "P/N",
+    "P/backend/dac_coupling/public_plan",
+    "P/cal_cfg/N_train",
+    "P/cal_cfg/public_cfg/plan_rows",
+    "P/debug/dac_enabled",
+    "P/debug/dac_max_points",
+    "P/front/plan",
+    "P/front/plan_rows",
+    "P/n_cycles",
+    "P/schedule/n_cycles",
+    "P/schedule/stop_time_s",
+    "P/stop_time_s",
+    "P/training/reference/records"
+  ],
+  "event_rows": [
+    576,
+    576,
+    12480
+  ],
+  "actual_raw_counts": [
+    12,
+    12,
+    260
+  ],
+  "actual_selected_counts": [
+    8,
+    8,
+    256
+  ],
+  "joint_N256_prefix_raw_code_time_equals_N8": true,
+  "first_feedback_group": 15,
+  "feedback_times_s": [
+    4.625e-08,
+    2.4624999999999997e-07,
+    4.4624999999999996e-07,
+    6.4625e-07,
+    8.462499999999999e-07,
+    1.04625e-06,
+    1.24625e-06,
+    1.44625e-06,
+    1.64625e-06,
+    1.84625e-06,
+    2.04625e-06,
+    2.2462500000000003e-06
+  ],
+  "feedback_signs": [
+    1,
+    1,
+    1,
+    -1,
+    1,
+    1,
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    1
+  ],
+  "matched_kick_v": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "joint_kick_v": [
+    -6.215099333178875e-05,
+    -6.21509933318165e-05,
+    -6.21509933318165e-05,
+    6.215099333181325e-05,
+    -6.215099333178875e-05,
+    -6.215099333178875e-05,
+    -6.21509933318165e-05,
+    6.21509933318165e-05,
+    -6.21509933318165e-05,
+    6.215099333181304e-05,
+    -6.215099333181304e-05,
+    -6.21509933318165e-05
+  ],
+  "joint_kick_independent_2x2_v": [
+    -6.215099333181324e-05,
+    -6.215099333181324e-05,
+    -6.215099333181324e-05,
+    6.215099333181324e-05,
+    -6.215099333181324e-05,
+    -6.215099333181324e-05,
+    -6.215099333181324e-05,
+    6.215099333181324e-05,
+    -6.215099333181324e-05,
+    6.215099333181324e-05,
+    -6.215099333181324e-05,
+    -6.215099333181324e-05
+  ],
+  "pair_prestate_max_abs_difference": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.9600513158532625e-69,
+    0.0
+  ],
+  "saved_metrics": {
+    "snr_db": 97.9023688150202,
+    "sndr_db": 96.91476563956078,
+    "sfdr_db": 107.50204285146853,
+    "thd_db": -103.83123188688114,
+    "enob": 15.806439475010098
+  },
+  "independent_metrics": {
+    "snr_db": 97.90236881501079,
+    "sndr_db": 96.91476563954816,
+    "sfdr_db": 107.50204285149265,
+    "thd_db": -103.831231886856,
+    "enob": 15.806439475008
+  },
+  "max_nonDC_fft_relative_power_error": 3.2723658144021183e-10,
+  "stimulus_reference_recomputed": {
+    "mean_v": 6.979370117230215e-05,
+    "raw_rms_v": 8.103084924760043e-05,
+    "fit_offset_v": 6.979370117182575e-05,
+    "fit_gain": 1.0000071138622844,
+    "fit_residual_rms_v": 3.684599741231686e-05
+  },
+  "rail_endpoint_code_count": 0,
+  "configuration_scope": "kTC on, one deterministic shared capacitor mismatch sample, DAC tau 1 ns, AZ 8 ns/1 us, CINC 1.001/0.999; calibration off; RA OU/comparator/reference noise and jitter off",
+  "limits": "First D2 kick compares actual same-event pre/post stage wires; signs derived from previous control bit; replica remains enabled. Stimulus reference is declared model input, not an independently measured external reference. No PDK, silicon, mismatch population, full noise or DNL/INL claim.",
+  "verifier_sha256": "64479fe902593bb14ef9b796cf99079efd423d938553fea20f47cb31526fa73d"
+}

@@ -1,0 +1,31 @@
+{
+  "old_model_sha256": "ae2d2b023362fd39b1cfaad39278b8c91fbad23d542f19df864547fb7e77e733",
+  "new_model_sha256": "a190eae2be57e24f0fb923bad7bbf4144873f28ddc97b8196fdd80a512adbe9f",
+  "old_state_sha256": "63d4d082b511837b47afc559b1079f7b2a3bdc847bd0d861e4b65a8b6c378ee5",
+  "new_state_sha256": "4098360e7ce05a32d6c5b7eb1dab1d4560f68c8a72c035d52b79c9db4182fd92",
+  "source_pin_count": 105,
+  "source_mismatches": [],
+  "old_blocks": 290,
+  "new_blocks": 290,
+  "old_edges": 361,
+  "new_edges": 361,
+  "blocks_changed": [],
+  "edges_removed": [],
+  "edges_added": [],
+  "solver_config_equal": true,
+  "saved_model_workspace_differences": [],
+  "saved_state_config_differences": [],
+  "changed_slx_entries": [
+    {
+      "entry": "metadata/coreProperties.xml",
+      "old_sha256": "8bbb361f14a7620c7614ca4456d7d026cadf15fd710732df7b82eae6316b8443",
+      "new_sha256": "55b475981fbf2769801b22f7425f02a84a72cade986e7fc4879d71d264a93c6a"
+    },
+    {
+      "entry": "simulink/blockdiagram.xml",
+      "old_sha256": "4b8c4910e0ab9f621a438fab0ba81f91bb99b6d24c4b03e900505811c64456ee",
+      "new_sha256": "95b54d129f0df4050438fb7d707bcc4d4f3c5607f42ddd814fb1b93efee59cd1"
+    }
+  ],
+  "scope": "Read-only archived SLX/JSON structural and saved-workspace comparison; no Simulink compile or numerical equivalence proof."
+}

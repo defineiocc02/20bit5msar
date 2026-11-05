@@ -1,0 +1,8 @@
+{
+    "actual_manifest_sha256":  "b745258c9d2852d5ece026bb243df44d9b60927efba39541639e6e4a93210ba2",
+    "error":  "",
+    "expected_manifest_sha256":  "b745258c9d2852d5ece026bb243df44d9b60927efba39541639e6e4a93210ba2",
+    "expected_zip_sha256":  "1d22839dbc5403eb4e31fadbdbd9cb5c76f586e22356a5232060756b7ae2dec7",
+    "status":  "verified_not_run",
+    "file_count":  119
+}

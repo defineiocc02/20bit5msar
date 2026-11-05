@@ -1,0 +1,103 @@
+{
+  "scope": "all config/current MATLAB sources relative to v2; no tests or model",
+  "baseline_file_count": 108,
+  "candidate_file_count": 111,
+  "changes": [
+    {
+      "path": "config/adc_parameters.m",
+      "status": "modified",
+      "baseline_sha256": "a1a41c369422aafcbeaad79ad50d394c65c95a00393bba1f96dc4628f53beefa",
+      "candidate_sha256": "23d56eeab9cd676f3046768dd953f87605a3cb6d03eaf28ee15c8cd9b19012c3"
+    },
+    {
+      "path": "current/src/control/behavior_comparator_keyed_normal.m",
+      "status": "added",
+      "baseline_sha256": null,
+      "candidate_sha256": "564c41d9b814f312871a008eb53c2f62231ef617135302141ae4df591be70082"
+    },
+    {
+      "path": "current/src/control/behavior_comparator_sample.m",
+      "status": "added",
+      "baseline_sha256": null,
+      "candidate_sha256": "d4807bb6674660cc60f83f35879ecce792659ba21302623184291fbb114ccbda"
+    },
+    {
+      "path": "current/src/control/behavior_control_stage.m",
+      "status": "modified",
+      "baseline_sha256": "6ca6bedc8e0f0c57c297eb1b474c0dd53116411be2e6c7f89f4f2174fbe6e00a",
+      "candidate_sha256": "a80afa99e69112b325932bedecb4f554cabbcf32df26865c096bfbf0609d9429"
+    },
+    {
+      "path": "current/src/control/behavior_control_stage_sfun.m",
+      "status": "modified",
+      "baseline_sha256": "a8d70ff7a56a0d6bb4b9c4aa677a15759245f056a5670c4ba69c15d67504b4e4",
+      "candidate_sha256": "82ce9f15147e1c85661a71ae38d71f5ec0738b79c80652402df704ba49ddcc63"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_init.m",
+      "status": "modified",
+      "baseline_sha256": "a85eb3e4cf2c0a1254a53021a51382c64b90c182768598b570e86df94d13ec83",
+      "candidate_sha256": "732804127d6131d399fcd40b4a140fa2e65d19c6f8ddde8801958fc73792f3ed"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_step.m",
+      "status": "modified",
+      "baseline_sha256": "76019658055d1ecce45ad7e692e331062cf013c45765a002150d641fb0c708e8",
+      "candidate_sha256": "c67997b19ec4bd74de6f68302403d0f2dcd33d0031572b6173e2a621120e31b4"
+    },
+    {
+      "path": "current/src/frontend/behavior_jitter_prepare_front.m",
+      "status": "modified",
+      "baseline_sha256": "701ce1e8ccc54305b7f39f0730b039397ef497d252ff0b3f1c9ba8710dcd7828",
+      "candidate_sha256": "ca0b02f1b0666413e40b90028e9a338b1126c715a23bcc4ad61dcdb0010c84b2"
+    },
+    {
+      "path": "current/src/model/behavior_applied_note.m",
+      "status": "modified",
+      "baseline_sha256": "2968ea85c9b8ea6d19f42a69e5d886d115650884f938c57c8b731978bb4d67c3",
+      "candidate_sha256": "a511fe00f336d2ff3130cb5c445e0913973a5834d4c0c6f69b4b274d7aaed960"
+    },
+    {
+      "path": "current/src/model/behavior_comparator_configuration.m",
+      "status": "added",
+      "baseline_sha256": null,
+      "candidate_sha256": "910c0c908b546ef7aa4590c59e287d2f449dd3b098b1f29b3b6e816be95a70df"
+    },
+    {
+      "path": "current/src/model/behavior_dac_coupling_configuration.m",
+      "status": "modified",
+      "baseline_sha256": "987f62fcdbb90372399b1870606cbea685c5bdd3c54f58870f2328047070e48d",
+      "candidate_sha256": "25e0b141d946de35e8db9e6f72056238e65271e08f4c79697183d6f963309059"
+    },
+    {
+      "path": "current/src/model/behavior_prepare_configuration.m",
+      "status": "modified",
+      "baseline_sha256": "42a2e8b90c5dadafae4ca29a099a7f34696f8abb337deed6236e46e9b1d24df4",
+      "candidate_sha256": "d39c2a18bffcf9e9da64f15b5cfec21ecf2d62dcf69fea09417d88999b9ffa33"
+    },
+    {
+      "path": "current/src/model/behavior_ra_noise_guard.m",
+      "status": "modified",
+      "baseline_sha256": "2f3ac4a06011a29b66dac7c771867120fc1e538d20c7760ff6b982ea50c9ee33",
+      "candidate_sha256": "bb2d744407a3f2bacabf624b3afcb7b155014b4077fd28c1116e9fae68208f73"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_stage.m",
+      "status": "modified",
+      "baseline_sha256": "4d80a4e3e4bbbc0acb5522c6bbe5e26ca8f7ce81f0008088feb122de3c72be72",
+      "candidate_sha256": "6f8ab9377578758b7e94cf044d13b000b0eeb39fa65139b901e707292f8b5fa4"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_step.m",
+      "status": "modified",
+      "baseline_sha256": "b6fd6bcd73b8673542a93537a34f5a65d81a49d1a58ef6914230638fb26f4d75",
+      "candidate_sha256": "c0f31de27796061cc1b724a4821571cb41871ead9a7a3c23cd47c7dfbec2e5ae"
+    },
+    {
+      "path": "current/src/physics/behavior_ra_noise_validate_backend.m",
+      "status": "modified",
+      "baseline_sha256": "54ed5c6bca945e211f8c115cdfd101ff824765b8eaa6d3636107532e8b690f36",
+      "candidate_sha256": "afad7dd5e9f7993a6d106557a4a92b233bcb12bdab174a7e0f2031b62ac781bb"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "exit_code":  0,
+    "stage":  "complete",
+    "error":  "",
+    "probe_sha256":  "bc94d54b8767357be9edc0bc4d53a87f15fe996d0c4adc0fee615a9ca2e54408",
+    "status":  "process_exited",
+    "original_task_unchanged":  true,
+    "gui_preserved":  true
+}

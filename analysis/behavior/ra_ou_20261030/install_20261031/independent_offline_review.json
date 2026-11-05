@@ -1,0 +1,354 @@
+{
+  "schema": "sar20-ou-independent-offline-review/v1",
+  "status": "independent_offline_review_passed",
+  "checks": [
+    {
+      "check": "expected_source_count",
+      "ok": true,
+      "detail": "count=109"
+    },
+    {
+      "check": "off_manifest_count_109",
+      "ok": true,
+      "detail": "count=109"
+    },
+    {
+      "check": "off_manifest_missing",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "off_manifest_extra",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "off_manifest_hash_match",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "off_zip_count_109",
+      "ok": true,
+      "detail": "count=109"
+    },
+    {
+      "check": "off_zip_bytes_match_manifest",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "off_run_complete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "off_model_snapshot_identity",
+      "ok": true,
+      "detail": "c2c46299b88f1bb5 vs c2c46299b88f1bb5"
+    },
+    {
+      "check": "off_ra_noise_flag",
+      "ok": true,
+      "detail": "ni.ra_noise=None"
+    },
+    {
+      "check": "off_records_8_ids_4_11",
+      "ok": true,
+      "detail": "8 [4, 5, 6, 7, 8, 9, 10, 11]"
+    },
+    {
+      "check": "off_ready_all_valid",
+      "ok": true,
+      "detail": "{\"readiness_boundary\": \"direct_raw\", \"all_ready_count\": 12, \"valid1_count\": 12, \"invalid_count\": 0, \"valid0_count\": 0, \""
+    },
+    {
+      "check": "off_global_rng_unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_manifest_count_109",
+      "ok": true,
+      "detail": "count=109"
+    },
+    {
+      "check": "on_manifest_missing",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "on_manifest_extra",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "on_manifest_hash_match",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "on_zip_count_109",
+      "ok": true,
+      "detail": "count=109"
+    },
+    {
+      "check": "on_zip_bytes_match_manifest",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "on_run_complete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_model_snapshot_identity",
+      "ok": true,
+      "detail": "41f8b0dfc6b6dd94 vs 41f8b0dfc6b6dd94"
+    },
+    {
+      "check": "on_ra_noise_flag",
+      "ok": true,
+      "detail": "ni.ra_noise=True"
+    },
+    {
+      "check": "on_backend_ra_noise",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_sigma_1mV",
+      "ok": true,
+      "detail": "0.001"
+    },
+    {
+      "check": "on_seed",
+      "ok": true,
+      "detail": "20261030"
+    },
+    {
+      "check": "on_records_8_ids_4_11",
+      "ok": true,
+      "detail": "8 [4, 5, 6, 7, 8, 9, 10, 11]"
+    },
+    {
+      "check": "on_ready_all_valid",
+      "ok": true,
+      "detail": "{\"readiness_boundary\": \"direct_raw\", \"all_ready_count\": 12, \"valid1_count\": 12, \"invalid_count\": 0, \"valid0_count\": 0, \""
+    },
+    {
+      "check": "on_global_rng_unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "off_id4_raw_matches_isolated",
+      "ok": true,
+      "detail": "[1900, 3283, 234, 4, 1, 1]"
+    },
+    {
+      "check": "on_id4_raw_matches_isolated",
+      "ok": true,
+      "detail": "[1900, 3285, 131, 4, 1, 1]"
+    },
+    {
+      "check": "off_id4_code_matches",
+      "ok": true,
+      "detail": "963400"
+    },
+    {
+      "check": "on_id4_code_matches",
+      "ok": true,
+      "detail": "963404"
+    },
+    {
+      "check": "restored_state_model_sha",
+      "ok": true,
+      "detail": "b246548885ed9d76 vs b246548885ed9d76"
+    },
+    {
+      "check": "restored_state_cfg_ra_noise_off",
+      "ok": true,
+      "detail": "False"
+    },
+    {
+      "check": "restored_state_bank_off",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "restored_state_source_is_factory",
+      "ok": true,
+      "detail": "'explicit'"
+    },
+    {
+      "check": "latest_pointer_is_on_run",
+      "ok": true,
+      "detail": "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\behavior_1fd9057b-cfd0-4166-a5ba-05f21927b19c"
+    }
+  ],
+  "runs": {
+    "off": {
+      "code20": [
+        963400,
+        979654,
+        989058,
+        991473,
+        986858,
+        975288,
+        956933,
+        932073
+      ],
+      "raw": [
+        [
+          1900,
+          3283,
+          234,
+          4,
+          1,
+          1
+        ],
+        [
+          1932,
+          2907,
+          85,
+          5,
+          1,
+          1
+        ],
+        [
+          1941,
+          3366,
+          85,
+          6,
+          1,
+          1
+        ],
+        [
+          1960,
+          2486,
+          42,
+          7,
+          1,
+          1
+        ],
+        [
+          1939,
+          3240,
+          85,
+          8,
+          1,
+          1
+        ],
+        [
+          1928,
+          2731,
+          213,
+          9,
+          1,
+          1
+        ],
+        [
+          1878,
+          2771,
+          43,
+          10,
+          1,
+          1
+        ],
+        [
+          1838,
+          2484,
+          42,
+          11,
+          1,
+          1
+        ]
+      ],
+      "summary": "/tmp/sar20_ou_preinstall_20261031/fetched/off_run/summary.json",
+      "elapsed_s": 4.5945793
+    },
+    "on": {
+      "code20": [
+        963404,
+        979654,
+        989056,
+        991470,
+        986855,
+        975287,
+        956929,
+        932075
+      ],
+      "raw": [
+        [
+          1900,
+          3285,
+          131,
+          4,
+          1,
+          1
+        ],
+        [
+          1932,
+          2908,
+          0,
+          5,
+          1,
+          1
+        ],
+        [
+          1941,
+          3365,
+          175,
+          6,
+          1,
+          1
+        ],
+        [
+          1960,
+          2634,
+          0,
+          7,
+          1,
+          1
+        ],
+        [
+          1939,
+          3238,
+          255,
+          8,
+          1,
+          1
+        ],
+        [
+          1928,
+          2731,
+          224,
+          9,
+          1,
+          1
+        ],
+        [
+          1878,
+          2770,
+          192,
+          10,
+          1,
+          1
+        ],
+        [
+          1838,
+          2484,
+          225,
+          11,
+          1,
+          1
+        ]
+      ],
+      "summary": "/tmp/sar20_ou_preinstall_20261031/fetched/on_run/summary.json",
+      "elapsed_s": 4.0954859
+    }
+  },
+  "restored_model_sha256": "b246548885ed9d76ef8851ef80719125149e18be5ce1e42e4843662f8b4071ee"
+}

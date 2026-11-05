@@ -1,0 +1,10 @@
+{
+  "status": "static_contract_checks_passed",
+  "candidate_manifest_sha256": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+  "source_files_pinned": 20,
+  "layout_sha256": "fab1aa95520b2e9af897cfe93e539083c8b3afbb8524bae5eedb574559393b31",
+  "sigma_zero_before_keyed_normal": true,
+  "endpoint_state_and_observation_bit_gates_present": true,
+  "actual_2015_tap_available_in_this_check": false,
+  "matlab_or_simulink_executed": false
+}

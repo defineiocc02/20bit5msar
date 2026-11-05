@@ -1,0 +1,68 @@
+--- a/current/src/model/behavior_dac_coupling_configuration.m
++++ b/current/src/model/behavior_dac_coupling_configuration.m
+@@ -1,7 +1,7 @@
+ function P=behavior_dac_coupling_configuration(P,enabled)
+ %BEHAVIOR_DAC_COUPLING_CONFIGURATION Bind immutable FE driving metadata only.
+-% Candidate call after frontend normalization. Does not enable/modify tau_dac,
+-% states, graph, event calendar or current prepare's finite-DAC rejection.
++% Called by prepare after FE normalization; binds enabled, tau[18], schema and plan.
++% Does not alter FE tau/state, the graph or the event calendar.
+ % No C truth is copied; public plan preserves the FE reduction order.
+     assert(isscalar(enabled)&&isreal(enabled)&&ismember(enabled,[0 1]), ...
+         'behaviorDAC:enabled','Use one explicit logical coupling flag.');
+--- a/current/src/physics/behavior_backend_stage.m
++++ b/current/src/physics/behavior_backend_stage.m
+@@ -8,8 +8,9 @@
+ % Advance ignores NEW command and advances only the command in the incoming
+ % state. Commit requires eventTime==state.time_s and applies NEW command at dt0.
+ % Both blocks represent successive transforms of ONE state, not two memories.
+-% Candidate optional oldFrontend353 is read ONLY in finite-DAC active advance;
+-% off/all-zero tau retains the original backend_step call/operations.
++% Sfun supplies OLD FE353 for enabled/nonzero-tau advance, even when RA is off.
++% The stage builds forcing only when the retained RA is on and not reset.
++% Off/all-zero tau retains the original backend_step call/operations.
+     assert((ischar(kind)&&isrow(kind))||(isstring(kind)&&isscalar(kind)), ...
+         'behavior:stageKind','Stage kind must be advance or commit.');
+     kind=char(kind);
+--- a/current/src/physics/behavior_backend_step.m
++++ b/current/src/physics/behavior_backend_step.m
+@@ -16,7 +16,7 @@
+ %Model: target=Qres/Cf, NG=1+Ctop/Cf, gain=A0/(A0+NG), tau=NG/(2*pi*UGB).
+ %CINC kicks this same RA state; CT output loading is separate from front Ctop.
+ %Endpoint slew limiting is an engineering approximation, not a nonlinear ODE solve.
+-%Candidate optional forcing is derived read-only from the OLD FE owner. The
++%Optional forcing is derived read-only from the OLD FE owner. The
+ %off/all-zero-tau path supplies no forcing and retains the original arithmetic.
+     validate_inputs(cmd,dt,p);
+     cmd=normalize_command(cmd);
+--- a/current/src/control/behavior_sar_step.m
++++ b/current/src/control/behavior_sar_step.m
+@@ -28,6 +28,7 @@
+                 'behavior:sar:tags','CNV requires sample_id and epoch.');
+             assert(isempty(s.pending.type),'behavior:sar:pendingAtCNV','Uncommitted feedback at CNV.');
+             s=initial_state();s.active=true;s.sample_id=event.sample_id;s.epoch=event.epoch;
++            % Sample-ID parity tag only; not a calibration coefficient bank.
+             s.bank=mod(s.sample_id,2);s.sample_v=physical(comparison,'sample_v');
+         case 'coarse_latch'
+             require_active(s);
+--- a/current/src/transport/sar20_lvds_rx_step.m
++++ b/current/src/transport/sar20_lvds_rx_step.m
+@@ -249,6 +249,7 @@
+         y.valid = 0;
+     end
+     if s.slot_target_id >= 0
++        % Public sample-ID parity tag; not a coefficient-bank selector.
+         y.bank = mod(s.slot_target_id, 2);
+         y.pair_id = floor(s.slot_target_id / 2);
+         y.polarity = cfg.polarity_sequence(mod(s.slot_target_id, numel(cfg.polarity_sequence)) + 1);
+--- a/config/make_adi_cases.m
++++ b/config/make_adi_cases.m
+@@ -71,7 +71,7 @@
+                 assert(isequaln(digital,baseline),'adiCases:truthLeak', ...
+                     'The nominal digital codebook changed outside public dither configuration.');
+                 Cs=sum(q.front.group_C_f,1);
+-                % Bank-specific kappa is reported from actual analog C for
++                % Per-sample selected-slice kappa is reported from actual analog C for
+                 % auditing only. It is never written into digital parameters.
+                 plan=q.front.plan;
+                 kappa=zeros(P.first_id+N,1);

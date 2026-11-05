@@ -1,0 +1,1258 @@
+{
+  "status": "actual_step_sensitivity_observed_no_convergence_verdict",
+  "analysis_source_sha256": "09204a602c2cb835fcafae0e646a20be9f8c38b173b28931fc64f10014c1e00e",
+  "scope": "N8 compact captures; no FFT, full-state, PRNG, or KCL acceptance",
+  "max_step_s": [
+    1.25e-10,
+    6.25e-11
+  ],
+  "raw_sha256": [
+    "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+    "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765"
+  ],
+  "model_sha256": [
+    "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5",
+    "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741"
+  ],
+  "elapsed_s": [
+    110.5248622,
+    208.1844647
+  ],
+  "native_tout_bits_equal": true,
+  "all_logger_time_descriptors_equal": true,
+  "time_mapping": "Rows follow saved global/owner cadence and start/count. Native grids and descriptors are compared exactly between the two arms. Descriptor-to-native floating differences are reported, not accepted against an invented time tolerance.",
+  "source_config_identity": "See independent engineering_check; not inferred from filenames",
+  "bitwise_equal_loggers": [
+    "adc_cmd1",
+    "adc_control",
+    "adc_driver",
+    "adc_record_epoch",
+    "coarse_valid_log",
+    "link_clock_control",
+    "link_host_clk_en",
+    "pool_analog_open_time",
+    "pool_command",
+    "pool_core_tail_dither",
+    "pool_reference_tail_dither",
+    "sar1_cmd1",
+    "sar1_cnv",
+    "sar1_digital",
+    "sar1_ready"
+  ],
+  "logger_comparisons": [
+    {
+      "logger": "adc_cmd1",
+      "rows": 2361,
+      "width": 6,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "adc_cmd2",
+      "rows": 2361,
+      "width": 9,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 3064,
+      "first_difference": {
+        "row_0based": 216,
+        "column_1based": 1,
+        "native_time_s": 6.999999999999999e-08,
+        "values": {
+          "be125": 2776.0,
+          "be62p5": 2778.0
+        }
+      }
+    },
+    {
+      "logger": "adc_cmp2",
+      "rows": 2361,
+      "width": 4,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 3163,
+      "first_difference": {
+        "row_0based": 196,
+        "column_1based": 4,
+        "native_time_s": 4.500000000000002e-08,
+        "values": {
+          "be125": 0.0966337520313747,
+          "be62p5": 0.09796019511014617
+        }
+      }
+    },
+    {
+      "logger": "adc_control",
+      "rows": 2361,
+      "width": 33,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "adc_ct",
+      "rows": 2361,
+      "width": 10,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2691,
+      "first_difference": {
+        "row_0based": 186,
+        "column_1based": 1,
+        "native_time_s": 3.2500000000000006e-08,
+        "values": {
+          "be125": 0.011834032127873624,
+          "be62p5": 0.011911351426490713
+        }
+      }
+    },
+    {
+      "logger": "adc_driver",
+      "rows": 2361,
+      "width": 6,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "adc_fpga",
+      "rows": 2361,
+      "width": 18,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 9540,
+      "first_difference": {
+        "row_0based": 229,
+        "column_1based": 1,
+        "native_time_s": 8.625e-08,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "adc_frontend",
+      "rows": 2361,
+      "width": 12,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 4402,
+      "first_difference": {
+        "row_0based": 160,
+        "column_1based": 1,
+        "native_time_s": 0.0,
+        "values": {
+          "be125": 2.436771425916508,
+          "be62p5": 2.436823551875464
+        }
+      }
+    },
+    {
+      "logger": "adc_held",
+      "rows": 2361,
+      "width": 12,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 4402,
+      "first_difference": {
+        "row_0based": 160,
+        "column_1based": 1,
+        "native_time_s": 0.0,
+        "values": {
+          "be125": 2.436771425916508,
+          "be62p5": 2.436823551875464
+        }
+      }
+    },
+    {
+      "logger": "adc_record",
+      "rows": 2361,
+      "width": 11,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 3304,
+      "first_difference": {
+        "row_0based": 229,
+        "column_1based": 2,
+        "native_time_s": 8.625e-08,
+        "values": {
+          "be125": 2777.0,
+          "be62p5": 2779.0
+        }
+      }
+    },
+    {
+      "logger": "adc_record_epoch",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "coarse_valid_log",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "link_clock_control",
+      "rows": 2361,
+      "width": 33,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "link_fpga_input",
+      "rows": 2361,
+      "width": 44,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2580,
+      "first_difference": {
+        "row_0based": 591,
+        "column_1based": 35,
+        "native_time_s": 5.3875e-07,
+        "values": {
+          "be125": 2777.0,
+          "be62p5": 2779.0
+        }
+      }
+    },
+    {
+      "logger": "link_fpga_output",
+      "rows": 2361,
+      "width": 18,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 7730,
+      "first_difference": {
+        "row_0based": 591,
+        "column_1based": 1,
+        "native_time_s": 5.3875e-07,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "link_host_clk_en",
+      "rows": 11801,
+      "width": 2,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 0.0,
+        "be62p5": 0.0
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "link_reference_fpga_oracle",
+      "rows": 2361,
+      "width": 18,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 9540,
+      "first_difference": {
+        "row_0based": 229,
+        "column_1based": 1,
+        "native_time_s": 8.625e-08,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "link_rx_record",
+      "rows": 11801,
+      "width": 11,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 0.0,
+        "be62p5": 0.0
+      },
+      "bitwise_equal": false,
+      "differing_elements": 12898,
+      "first_difference": {
+        "row_0based": 2952,
+        "column_1based": 2,
+        "native_time_s": 5.380000000000001e-07,
+        "values": {
+          "be125": 2777.0,
+          "be62p5": 2779.0
+        }
+      }
+    },
+    {
+      "logger": "link_rx_status",
+      "rows": 11801,
+      "width": 17,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 0.0,
+        "be62p5": 0.0
+      },
+      "bitwise_equal": false,
+      "differing_elements": 30,
+      "first_difference": {
+        "row_0based": 2952,
+        "column_1based": 7,
+        "native_time_s": 5.380000000000001e-07,
+        "values": {
+          "be125": 3457528491.0,
+          "be62p5": 3457529429.0
+        }
+      }
+    },
+    {
+      "logger": "link_tx_pins_oe",
+      "rows": 11801,
+      "width": 5,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 0.0,
+        "be62p5": 0.0
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2240,
+      "first_difference": {
+        "row_0based": 2776,
+        "column_1based": 1,
+        "native_time_s": 4.940000000000001e-07,
+        "values": {
+          "be125": 0.0,
+          "be62p5": 1.0
+        }
+      }
+    },
+    {
+      "logger": "link_tx_source_record",
+      "rows": 11801,
+      "width": 11,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 0.0,
+        "be62p5": 0.0
+      },
+      "bitwise_equal": false,
+      "differing_elements": 16502,
+      "first_difference": {
+        "row_0based": 1150,
+        "column_1based": 2,
+        "native_time_s": 8.749999999999998e-08,
+        "values": {
+          "be125": 2777.0,
+          "be62p5": 2779.0
+        }
+      }
+    },
+    {
+      "logger": "link_visible_pins",
+      "rows": 11801,
+      "width": 7,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 0.0,
+        "be62p5": 0.0
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2240,
+      "first_difference": {
+        "row_0based": 2776,
+        "column_1based": 4,
+        "native_time_s": 4.940000000000001e-07,
+        "values": {
+          "be125": 0.0,
+          "be62p5": 1.0
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_capture",
+      "rows": 2361,
+      "width": 90,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 37680,
+      "first_difference": {
+        "row_0based": 161,
+        "column_1based": 1,
+        "native_time_s": 1.249999999999988e-09,
+        "values": {
+          "be125": 2.4367171347996743,
+          "be62p5": 2.436769260758626
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_cmd2_feedback",
+      "rows": 2361,
+      "width": 9,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 3064,
+      "first_difference": {
+        "row_0based": 216,
+        "column_1based": 1,
+        "native_time_s": 6.999999999999999e-08,
+        "values": {
+          "be125": 2776.0,
+          "be62p5": 2778.0
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_ct",
+      "rows": 2361,
+      "width": 10,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2691,
+      "first_difference": {
+        "row_0based": 186,
+        "column_1based": 1,
+        "native_time_s": 3.2500000000000006e-08,
+        "values": {
+          "be125": 0.011834032127873624,
+          "be62p5": 0.011911351426490713
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_held",
+      "rows": 2361,
+      "width": 12,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 4400,
+      "first_difference": {
+        "row_0based": 161,
+        "column_1based": 1,
+        "native_time_s": 1.249999999999988e-09,
+        "values": {
+          "be125": 2.436763452043692,
+          "be62p5": 2.4368155780026486
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_key_nodes",
+      "rows": 2361,
+      "width": 6,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 13100,
+      "first_difference": {
+        "row_0based": 161,
+        "column_1based": 1,
+        "native_time_s": 1.249999999999988e-09,
+        "values": {
+          "be125": -3.869307782656298e-06,
+          "be62p5": -3.869328325994312e-06
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_open_time",
+      "rows": 2361,
+      "width": 18,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "pool_analog_ra",
+      "rows": 2361,
+      "width": 21,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 4350,
+      "first_difference": {
+        "row_0based": 186,
+        "column_1based": 1,
+        "native_time_s": 3.2500000000000006e-08,
+        "values": {
+          "be125": 0.014976684085531438,
+          "be62p5": 0.015069037034172924
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_ra_output_observed",
+      "rows": 2361,
+      "width": 21,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 4350,
+      "first_difference": {
+        "row_0based": 186,
+        "column_1based": 1,
+        "native_time_s": 3.2500000000000006e-08,
+        "values": {
+          "be125": 0.014976684085531438,
+          "be62p5": 0.015069037034172924
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_ra_via_sar1",
+      "rows": 2361,
+      "width": 21,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 4350,
+      "first_difference": {
+        "row_0based": 186,
+        "column_1based": 1,
+        "native_time_s": 3.2500000000000006e-08,
+        "values": {
+          "be125": 0.014976684085531438,
+          "be62p5": 0.015069037034172924
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_residual",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2200,
+      "first_difference": {
+        "row_0based": 161,
+        "column_1based": 1,
+        "native_time_s": 1.249999999999988e-09,
+        "values": {
+          "be125": 1.225341361841275e-05,
+          "be62p5": 1.2253457271407443e-05
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_tracking_state",
+      "rows": 2361,
+      "width": 9,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 513,
+      "first_difference": {
+        "row_0based": 222,
+        "column_1based": 4,
+        "native_time_s": 7.750000000000003e-08,
+        "values": {
+          "be125": 1.0,
+          "be62p5": -1.0
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_vin",
+      "rows": 2361,
+      "width": 18,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 40416,
+      "first_difference": {
+        "row_0based": 9,
+        "column_1based": 1,
+        "native_time_s": -1.8875000000000002e-07,
+        "values": {
+          "be125": 2.0964943956274866,
+          "be62p5": 2.101561210716124
+        }
+      }
+    },
+    {
+      "logger": "pool_analog_vx_via_sar1",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2175,
+      "first_difference": {
+        "row_0based": 186,
+        "column_1based": 1,
+        "native_time_s": 3.2500000000000006e-08,
+        "values": {
+          "be125": 0.014976684085531438,
+          "be62p5": 0.015069037034172924
+        }
+      }
+    },
+    {
+      "logger": "pool_cmp1_next_state",
+      "rows": 2361,
+      "width": 16,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2189,
+      "first_difference": {
+        "row_0based": 172,
+        "column_1based": 6,
+        "native_time_s": 1.499999999999999e-08,
+        "values": {
+          "be125": 0.004247512926874068,
+          "be62p5": 0.004299638892112018
+        }
+      }
+    },
+    {
+      "logger": "pool_cmp1_old_state",
+      "rows": 2361,
+      "width": 16,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2188,
+      "first_difference": {
+        "row_0based": 173,
+        "column_1based": 6,
+        "native_time_s": 1.6250000000000003e-08,
+        "values": {
+          "be125": 0.004247512926874068,
+          "be62p5": 0.004299638892112018
+        }
+      }
+    },
+    {
+      "logger": "pool_cmp2_next_state",
+      "rows": 2361,
+      "width": 16,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 3163,
+      "first_difference": {
+        "row_0based": 196,
+        "column_1based": 6,
+        "native_time_s": 4.500000000000002e-08,
+        "values": {
+          "be125": 0.0966337520313747,
+          "be62p5": 0.09796019511014617
+        }
+      }
+    },
+    {
+      "logger": "pool_cmp2_old_state",
+      "rows": 2361,
+      "width": 16,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 3162,
+      "first_difference": {
+        "row_0based": 197,
+        "column_1based": 6,
+        "native_time_s": 4.625000000000001e-08,
+        "values": {
+          "be125": 0.0966337520313747,
+          "be62p5": 0.09796019511014617
+        }
+      }
+    },
+    {
+      "logger": "pool_command",
+      "rows": 2361,
+      "width": 3,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "pool_core_tail_dither",
+      "rows": 2361,
+      "width": 5,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "pool_decode_next",
+      "rows": 2361,
+      "width": 256,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 9500,
+      "first_difference": {
+        "row_0based": 591,
+        "column_1based": 48,
+        "native_time_s": 5.3875e-07,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "pool_decode_ref_next",
+      "rows": 2361,
+      "width": 256,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 11672,
+      "first_difference": {
+        "row_0based": 229,
+        "column_1based": 48,
+        "native_time_s": 8.625e-08,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "pool_decode_ref_state",
+      "rows": 2361,
+      "width": 256,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 11666,
+      "first_difference": {
+        "row_0based": 230,
+        "column_1based": 48,
+        "native_time_s": 8.749999999999998e-08,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "pool_decode_state",
+      "rows": 2361,
+      "width": 256,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 9494,
+      "first_difference": {
+        "row_0based": 592,
+        "column_1based": 48,
+        "native_time_s": 5.4e-07,
+        "values": {
+          "be125": 2.43673046875,
+          "be62p5": 2.43678515625
+        }
+      }
+    },
+    {
+      "logger": "pool_front_readout",
+      "rows": 2361,
+      "width": 18,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 18816,
+      "first_difference": {
+        "row_0based": 9,
+        "column_1based": 1,
+        "native_time_s": -1.8875000000000002e-07,
+        "values": {
+          "be125": 2.0964943956274866,
+          "be62p5": 2.101561210716124
+        }
+      }
+    },
+    {
+      "logger": "pool_reference_tail_dither",
+      "rows": 2361,
+      "width": 5,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "sar1_analog",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2201,
+      "first_difference": {
+        "row_0based": 160,
+        "column_1based": 1,
+        "native_time_s": 0.0,
+        "values": {
+          "be125": 2.436771425916508,
+          "be62p5": 2.436823551875464
+        }
+      }
+    },
+    {
+      "logger": "sar1_cmd1",
+      "rows": 2361,
+      "width": 6,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "sar1_cnv",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "sar1_comparator",
+      "rows": 2361,
+      "width": 4,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2189,
+      "first_difference": {
+        "row_0based": 172,
+        "column_1based": 4,
+        "native_time_s": 1.499999999999999e-08,
+        "values": {
+          "be125": 0.004247512926874068,
+          "be62p5": 0.004299638892112018
+        }
+      }
+    },
+    {
+      "logger": "sar1_digital",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    },
+    {
+      "logger": "sar1_held",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": false,
+      "differing_elements": 2201,
+      "first_difference": {
+        "row_0based": 160,
+        "column_1based": 1,
+        "native_time_s": 0.0,
+        "values": {
+          "be125": 2.436771425916508,
+          "be62p5": 2.436823551875464
+        }
+      }
+    },
+    {
+      "logger": "sar1_ready",
+      "rows": 2361,
+      "width": 1,
+      "difference_scope": "entire_capture_including_warmup",
+      "time_descriptor_bits_equal": true,
+      "mapped_native_grid_bits_equal": true,
+      "descriptor_to_native_max_abs_s": {
+        "be125": 4.235164736271502e-22,
+        "be62p5": 4.235164736271502e-22
+      },
+      "bitwise_equal": true,
+      "differing_elements": 0
+    }
+  ],
+  "physical_probe_differences": {
+    "vx": {
+      "logger": "pool_analog_ra",
+      "column_1based": 1,
+      "unit": "Vdiff",
+      "scope": "entire_capture_including_warmup",
+      "semantics": "Outputs endpoint probe; Update commits afterward",
+      "max_abs_difference_v": 0.0017080058185084679
+    },
+    "vy": {
+      "logger": "pool_analog_ct",
+      "column_1based": 1,
+      "unit": "Vdiff",
+      "scope": "entire_capture_including_warmup",
+      "semantics": "Outputs endpoint probe; Update commits afterward",
+      "max_abs_difference_v": 0.00835916375547116
+    }
+  },
+  "codes": [
+    {
+      "sample_id": 4,
+      "values": {
+        "be125": 963374,
+        "be62p5": 963377
+      },
+      "delta_code": 3,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": 2.34375e-05
+    },
+    {
+      "sample_id": 5,
+      "values": {
+        "be125": 979637,
+        "be62p5": 979639
+      },
+      "delta_code": 2,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": 1.5625e-05
+    },
+    {
+      "sample_id": 6,
+      "values": {
+        "be125": 989054,
+        "be62p5": 989055
+      },
+      "delta_code": 1,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": 7.8125e-06
+    },
+    {
+      "sample_id": 7,
+      "values": {
+        "be125": 991473,
+        "be62p5": 991472
+      },
+      "delta_code": -1,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": -7.8125e-06
+    },
+    {
+      "sample_id": 8,
+      "values": {
+        "be125": 986861,
+        "be62p5": 986860
+      },
+      "delta_code": -1,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": -7.8125e-06
+    },
+    {
+      "sample_id": 9,
+      "values": {
+        "be125": 975306,
+        "be62p5": 975304
+      },
+      "delta_code": -2,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": -1.5625e-05
+    },
+    {
+      "sample_id": 10,
+      "values": {
+        "be125": 956960,
+        "be62p5": 956956
+      },
+      "delta_code": -4,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": -3.125e-05
+    },
+    {
+      "sample_id": 11,
+      "values": {
+        "be125": 932112,
+        "be62p5": 932107
+      },
+      "delta_code": -5,
+      "delta_direction": "be62p5 - be125",
+      "nominal_input_delta_v": -3.90625e-05
+    }
+  ],
+  "code_voltage_scope": "nominal Q20 code scaling, not a measured analog node difference",
+  "convergence_limit": null,
+  "missing_evidence": [
+    "no frozen time-discretization error budget",
+    "compact omits full analog retained state and sample-kTC RNG/charge words",
+    "comparator old/predicted state logs exist; RNG sequence not accepted here"
+  ]
+}

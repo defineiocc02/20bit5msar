@@ -1,0 +1,76 @@
+[
+  {
+    "op": "add_block",
+    "type": "Mux",
+    "name": "PhysicalStateMux",
+    "ref": "mux",
+    "params": {
+      "Inputs": "12"
+    }
+  },
+  {
+    "op": "add_block",
+    "type": "ToWorkspace",
+    "name": "PhysicalStateTap",
+    "ref": "sink",
+    "params": {
+      "VariableName": "physical_state_tap",
+      "SaveFormat": "Timeseries",
+      "MaxDataPoints": "inf",
+      "Decimation": "1",
+      "SampleTime": "-1"
+    }
+  },
+  {
+    "op": "connect",
+    "target": "blk_116.y1 -> #mux.u1"
+  },
+  {
+    "op": "connect",
+    "target": "blk_148.y1 -> #mux.u2"
+  },
+  {
+    "op": "connect",
+    "target": "blk_232.y3 -> #mux.u3"
+  },
+  {
+    "op": "connect",
+    "target": "blk_244.y1 -> #mux.u4"
+  },
+  {
+    "op": "connect",
+    "target": "blk_261.y3 -> #mux.u5"
+  },
+  {
+    "op": "connect",
+    "target": "blk_297.y3 -> #mux.u6"
+  },
+  {
+    "op": "connect",
+    "target": "blk_149.y1 -> #mux.u7"
+  },
+  {
+    "op": "connect",
+    "target": "blk_232.y1 -> #mux.u8"
+  },
+  {
+    "op": "connect",
+    "target": "blk_244.y4 -> #mux.u9"
+  },
+  {
+    "op": "connect",
+    "target": "blk_261.y4 -> #mux.u10"
+  },
+  {
+    "op": "connect",
+    "target": "blk_297.y1 -> #mux.u11"
+  },
+  {
+    "op": "connect",
+    "target": "blk_232.y4 -> #mux.u12"
+  },
+  {
+    "op": "connect",
+    "target": "#mux.y1 -> #sink.u1"
+  }
+]

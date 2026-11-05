@@ -1,0 +1,38 @@
+{
+  "status": "static_checks_pass_only",
+  "reference_source_files": 109,
+  "modified_source_files": [
+    "SAR20.m",
+    "config/adc_parameters.m",
+    "current/src/control/behavior_sar_step.m",
+    "current/src/digital/behavior_decode.m",
+    "current/src/digital/behavior_decode_parameters.m",
+    "current/src/frontend/behavior_frontend_init.m",
+    "current/src/frontend/behavior_frontend_stage.m",
+    "current/src/frontend/behavior_frontend_step.m",
+    "current/src/model/behavior_applied_note.m",
+    "current/src/model/behavior_dac_backend_parameters.m",
+    "current/src/model/behavior_dac_coupling_configuration.m",
+    "current/src/model/behavior_prepare_configuration.m",
+    "current/src/model/behavior_ra_noise_guard.m",
+    "current/src/model/behavior_training_configuration.m",
+    "current/src/physics/behavior_backend_stage.m",
+    "current/src/physics/behavior_backend_step.m",
+    "current/src/physics/behavior_ra_noise_validate_backend.m"
+  ],
+  "added_source_files": [
+    "current/src/model/behavior_single_guard.m"
+  ],
+  "unchanged_calendar": true,
+  "model_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "model_has_rebound_bias_but_workspace_requires_runtime_check": true,
+  "exact_codebook_entries_crosschecked": 2048,
+  "numeric_assumptions": {
+    "unit_cap_f": 2.7e-14,
+    "ctop_f": 2.8053e-11,
+    "csignal_f": 2.7648e-11,
+    "cf_f": 8.64e-13
+  },
+  "actual_matlab_simulink_execution": "NOT_RUN",
+  "scope": "source and independent rational codebook checks; not candidate execution or paper reproduction"
+}

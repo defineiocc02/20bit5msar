@@ -1,0 +1,231 @@
+--- a/config/adc_parameters.m
++++ b/config/adc_parameters.m
+@@ -50,8 +50,8 @@
+     unit=top_sampling_cap_f/(8*1039);
+     % DEM/dither flags enable actual switching/charge actions, not plot labels.
+     % Mismatch requires explicit actual C_f in frontend options. Sampling kT/C
+-    % is injected once into retained capacitor charge at the actual aperture;
+-    % the current equilibrium-noise model requires tau_sample_s=0.
++    % is injected once into retained capacitor charge at nominal capture.
++    % Equal-tau single-bank finite RC uses a time-limited thermal innovation.
+     options=struct('plan_rows',max(32,N+P.first_id+4),'unit_cap_f',unit, ...
+         'input',P.input,'dem_enabled',false,'dither_enabled',false, ...
+         'mismatch_enabled',false,'ktc_enabled',false);
+@@ -62,12 +62,12 @@
+     % Zero guard is an ideal upper-bound assumption, not a measured nonoverlap.
+     options.single_bank=true;options.single_guard_s=0;
+     % Sampling thermal noise: absolute temperature [K >=0] and independent
+-    % uint32 seed. Differential variance=2*kB*T/Csample_half per physical slice.
+-    % T=0 produces zero thermal perturbation and is not enabled NI coverage.
++    % uint32 seed. Equilibrium differential variance=2*kB*T/Csample_half;
++    % eight equal-tau numerical segments aggregate as one bank. T=0 or Inf tau
++    % produces no new thermal perturbation and is not active noise coverage.
+     options.temperature_K=298.15;options.ktc_seed=20261027;
+-    % Endpoint aperture error [s], default off; event/compare calendar unchanged.
+-    % Enable through explicit P.front.jitter and apply; prepare binds the actual
+-    % coarse-latch bound. Finite sampling RC with jitter is not implemented.
++    % Single-bank endpoint jitter remains OFF in this isolated candidate.
++    % No event/compare calendar changes; finite-RC jitter is not implemented.
+     options.jitter=behavior_jitter_parameters();
+     % Settling time constants [s >=0], zero=fully settled, Inf=hold. Sampling,
+     % tail precharge can use positive tau. Finite DAC-to-RA interval coupling
+--- a/current/src/frontend/behavior_frontend_init.m
++++ b/current/src/frontend/behavior_frontend_init.m
+@@ -6,8 +6,9 @@
+ %B_c/B_target_c[18,3] [C] store C*bottom-voltage sums: signal/tail/bias groups.
+ %Cold init clears charge/tags; runtime reset in step retains analog charge.
+ %Model: grouped differential RC/charge behavior; frozen C is not a calibration input.
+-%kTC: one differential capture kick with variance 2*kB*T/Csample_half per slice.
+-%Default off preserves prior state ABI and capture arithmetic. Counter seed is explicit.
++%kTC: equilibrium for tau=0; single-bank equal-tau finite-RC innovation at capture.
++%Eight numerical segments form one bank. Default off preserves prior state ABI and
++%capture arithmetic. Counter seed is explicit. No hidden random state.
+     if nargin==0,p=struct();end
+     assert(isstruct(p)&&isscalar(p),'behaviorFE:config','p must be a scalar struct.');
+     defaults=struct('schema','sar20-behavior-frontend/v1','plan_rows',1024, ...
+@@ -78,9 +79,18 @@
+         if isscalar(v),v=repmat(v,18,1);end
+         p.(key{1})=double(v(:));
+     end
+-    assert(~p.ktc_enabled||all(p.tau_sample_s==0), ...
+-        'behaviorFE:ktcFiniteSamplingUnsupported', ...
+-        'This equilibrium capture-noise mode requires tau_sample_s=0; finite-RC stochastic buildup is not implemented.');
++    if p.ktc_enabled
++        if p.single_bank
++            % Same tau makes these eight entries an aggregate single RC bank.
++            assert(all(p.tau_sample_s(1:8)==p.tau_sample_s(1)), ...
++                'singleBank:ktcUnequalTau', ...
++                'Sampling kTC requires equal tau across the eight numerical segments.');
++        else
++            assert(all(p.tau_sample_s==0), ...
++                'behaviorFE:ktcFiniteSamplingUnsupported', ...
++                'Finite-RC kTC is qualified only for a single bank.');
++        end
++    end
+     p.jitter=behavior_jitter_parameters(p.jitter);
+     if p.single_bank
+         assert(~p.dem_enabled&&~p.dither_enabled&&~p.jitter.enabled, ...
+--- a/current/src/frontend/behavior_frontend_step.m
++++ b/current/src/frontend/behavior_frontend_step.m
+@@ -58,6 +58,16 @@
+                 assert(all(cmd.t_s>s.acquire_open_s(ids)), ...
+                     'singleBank:apertureBeforeOpen','Capture must follow the physical acquisition opening.');
+             end
++            % Recheck the sampling/jitter boundary here as callers can alter a
++            % normalized parameter struct after init. Never overwrite an RC state
++            % with an ideal endpoint under an unsupported jitter configuration.
++            assert(~p.jitter.enabled||all(p.tau_sample_s(ids)==0), ...
++                'behaviorFE:jitterFiniteSamplingUnsupported', ...
++                'Finite-RC sampling with displaced aperture is not implemented.');
++            if is_single(p)
++                assert(~p.jitter.enabled,'singleBank:unsupportedNI', ...
++                    'This isolated RC+kTC candidate keeps single-bank jitter OFF.');
++            end
+             s=apply_ideal_acquire(s,ids,cmd.t_s,p);
+             if p.jitter.enabled
+                 [ta,~,~]=behavior_aperture_times(cmd.t_s,ids,cmd.id,cmd.epoch,p.jitter);
+@@ -73,14 +83,31 @@
+                 s.actual_aperture_s(ids)=cmd.t_s;
+             end
+             if p.ktc_enabled
+-                assert(all(p.tau_sample_s(ids)==0), ...
+-                    'behaviorFE:ktcFiniteSamplingUnsupported', ...
+-                    'Full equilibrium kTC capture kicks require settled sampling (tau_sample_s=0).');
+-                % Csample is per half; independent P/N thermal samples give
+-                % differential variance 2*kB*T/Csample_half. Inject exactly
+-                % once into the SAME retained B before q_initial/held latch.
+-                dv=sample_ktc_diff(ids,cmd.id,cmd.epoch,p);
+-                s.B_c(ids,1)=s.B_c(ids,1)+p.group_C_f(ids,1).*dv;
++                tau=p.tau_sample_s(ids);
++                if is_single(p)
++                    assert(all(~isnan(tau)&tau>=0)&&all(tau==tau(1)), ...
++                        'singleBank:ktcUnequalTau', ...
++                        'Sampling kTC requires one nonnegative tau for all bank segments.');
++                else
++                    assert(all(tau==0), ...
++                        'behaviorFE:ktcFiniteSamplingUnsupported', ...
++                        'Finite-RC kTC is qualified only for a single bank.');
++                end
++                % Existing equilibrium keyed sample and exact tau=0 arithmetic
++                % are retained. For finite tau, scale only the independent NEW
++                % innovation. Old stochastic charge already in B was propagated
++                % by advance() and must not be injected again. Inf means no new
++                % thermal innovation and leaves the retained B bit-for-bit held.
++                if ~all(isinf(tau))
++                    dv=sample_ktc_diff(ids,cmd.id,cmd.epoch,p);
++                    finiteMask=tau>0 & isfinite(tau);
++                    if any(finiteMask)
++                        duration=cmd.t_s-s.acquire_open_s(ids);
++                        dv(finiteMask)=dv(finiteMask).* ...
++                            sqrt(-expm1(-2*duration(finiteMask)./tau(finiteMask)));
++                    end
++                    s.B_c(ids,1)=s.B_c(ids,1)+p.group_C_f(ids,1).*dv;
++                end
+             end
+             s.q_initial_c(ids)=sum(s.B_c(ids,:),2);
+             s.v_capture_v(ids)=s.B_c(ids,1)./p.group_C_f(ids,1);
+@@ -129,6 +156,16 @@
+             s.phase(ids)=0;s.capture_valid(ids)=false;
+             s.active_id=-1;s.active_epoch=-1;s.has_dac_command=false;
+         case 'reset'
++            % An interrupted finite-RC acquisition would need an additional
++            % stochastic endpoint. This capture-only model refuses to silently
++            % discard that innovation; no new event/key/state is introduced.
++            if p.ktc_enabled&&is_single(p)&&p.temperature_K>0
++                active=find(s.phase==1 & s.acquire_open_s<cmd.t_s);
++                tau=p.tau_sample_s(active);
++                assert(~any(tau>0 & isfinite(tau)), ...
++                    'singleBank:ktcInterruptedAcquisition', ...
++                    'Finite-RC thermal acquisition must complete before reset.');
++            end
+             % An active RA/top-node return must be committed before reset.
+             assert(~any(s.phase==2),'behaviorFE:resetReturn','Release active slices with backend vtop before reset.');
+             % Digital reset cancels ownership/tags; analog B is deliberately retained.
+@@ -275,6 +312,7 @@
+     assert(u.amplitude_v>=0&&u.frequency_hz>=0,'behaviorFE:input','Negative amplitude/frequency.');
+ end
+ 
++% In a single bank, the existing j key identifies a numerical segment, not a converter.
+ function dv=sample_ktc_diff(ids,id,epoch,p)
+ % Analog-only keyed noise. No rand/randn/RandStream or mutable RNG state.
+ % Tuple lanes: explicit ktc_seed, physical slice, sample ID, epoch. Uniforms
+--- a/current/src/frontend/behavior_jitter_prepare_front.m
++++ b/current/src/frontend/behavior_jitter_prepare_front.m
+@@ -10,7 +10,14 @@
+     assert(~f.jitter.enabled||all(f.tau_sample_s==0), ...
+         'behaviorFE:jitterFiniteSamplingUnsupported', ...
+         'Endpoint aperture mode requires fully settled sampling; finite-RC aperture propagation is not implemented.');
+-    assert(~f.ktc_enabled||all(f.tau_sample_s==0), ...
+-        'behaviorFE:ktcFiniteSamplingUnsupported', ...
+-        'Full equilibrium kTC cannot be combined with finite sampling RC.');
++    if f.ktc_enabled&&any(f.tau_sample_s(:)~=0)
++        % The following frontend_init performs full type/range validation.
++        % This binding guard only allows the equal-tau single-bank extension.
++        t=f.tau_sample_s;
++        single=isfield(f,'single_bank')&&isscalar(f.single_bank)&& ...
++            (isequal(f.single_bank,true)||isequal(f.single_bank,1));
++        equalTau=isscalar(t)||(numel(t)==18&&all(t(1:8)==t(1)));
++        assert(single&&equalTau,'behaviorFE:ktcFiniteSamplingUnsupported', ...
++            'Finite-RC kTC requires one tau for the single bank numerical segments.');
++    end
+ end
+--- a/current/src/model/behavior_applied_note.m
++++ b/current/src/model/behavior_applied_note.m
+@@ -110,7 +110,10 @@
+         assert(isscalar(T)&&isfinite(T)&&T>=0&&isscalar(seed)&& ...
+             isfinite(seed)&&seed>=0&&seed==floor(seed), ...
+             'adc:noteKtc','kTC requires applied temperature_K and ktc_seed.');
+-        if T>0,text=sprintf('ON, T=%.6g K, seed=%.0f',T,seed);
++        if T>0&&isfield(front,'single_bank')&&front.single_bank&& ...
++                isfield(front,'tau_sample_s')&&isinf(front.tau_sample_s(1))
++            text=sprintf('OFF注入(采样保持, flag=1), seed=%.0f',seed);
++        elseif T>0,text=sprintf('ON, T=%.6g K, seed=%.0f',T,seed);
+         else,text=sprintf('OFF注入(T=0对照, flag=1), seed=%.0f',seed);end
+     elseif ~isempty(T)&&~isempty(seed)
+         text=sprintf('OFF, T=%.6g K, seed=%.0f',T,seed);
+--- a/current/src/model/behavior_prepare_configuration.m
++++ b/current/src/model/behavior_prepare_configuration.m
+@@ -82,7 +82,8 @@
+     % Coverage summary: frontend Cp OR active fixed RA-output load; not a scan.
+     P.ni.parasitic=any(P.front.Cp_f>0)|| ...
+         (P.backend.ni.cinc_kick&&any(P.backend.ct.output_parasitic_half_f>0));
+-    P.ni.sample_ktc=P.front.ktc_enabled&&P.front.temperature_K>0;
++    P.ni.sample_ktc=P.front.ktc_enabled&&P.front.temperature_K>0&& ...
++        ~(P.front.single_bank&&isinf(P.front.tau_sample_s(1)));
+     P.ni.jitter=P.front.jitter.enabled&&(P.front.jitter.common_sigma_s>0|| ...
+         P.front.jitter.local_sigma_s>0||any(P.front.jitter.fixed_slice_skew_s~=0));
+     assert(size(P.front.plan,1)>=P.n_cycles+1,'adc:planLength', ...
+--- a/current/src/model/behavior_ra_noise_guard.m
++++ b/current/src/model/behavior_ra_noise_guard.m
+@@ -211,17 +211,24 @@
+     t=P.front.tau_sample_s;
+     assert(isa(t,'double')&&isreal(t)&&numel(t)==18&&all(~isnan(t(:))&t(:)>=0), ...
+         'sar20RA:coverageSampling','Sampling tau must be 18 nonnegative values; Inf means hold.');
+-    finiteEffect=any(isfinite(t(:))&t(:)>0);
+-    P=coverage_flag(P,'sample_settling',finiteEffect,mode, ...
+-        'sar20RA:coverageSampling','sample_settling counts positive finite tau only; zero/Inf are not finite settling.');
+     ktc=P.front.ktc_enabled;
+     temp=P.front.temperature_K;
+     assert(binary(ktc)&&isa(temp,'double')&&isreal(temp)&&isscalar(temp)&&isfinite(temp)&&temp>=0, ...
+         'sar20RA:coverageKTC','Explicit kT/C flag and finite nonnegative temperature required.');
+-    assert(~logical(ktc)||all(t(:)==0),'sar20RA:coverageKTC', ...
+-        'Enabled kT/C requires fully settled sampling; finite-RC stochastic buildup is not implemented.');
+-    P=coverage_flag(P,'sample_ktc',logical(ktc)&&temp>0,mode, ...
+-        'sar20RA:coverageKTC','sample_ktc must match enabled positive-temperature sampling.');
++    single=isfield(P.front,'single_bank')&&isequal(P.front.single_bank,true);
++    % Only the first eight rows participate in the new single-bank kTC mode.
++    % Retain the historical OFF calculation to preserve legacy outputs.
++    tCoverage=t(:);if single&&logical(ktc),tCoverage=t(1:8);end
++    finiteEffect=any(isfinite(tCoverage)&tCoverage>0);
++    P=coverage_flag(P,'sample_settling',finiteEffect,mode, ...
++        'sar20RA:coverageSampling','sample_settling counts positive finite sampling tau only.');
++    ktcTauOK=all(t(:)==0)||(single&&all(t(1:8)==t(1)));
++    assert(~logical(ktc)||ktcTauOK,'sar20RA:coverageKTC', ...
++        'Finite-RC kT/C requires equal-tau segments in one single bank.');
++    % Inf retains the old B but produces no new Johnson innovation.
++    ktcActive=logical(ktc)&&temp>0&&~(single&&isinf(t(1)));
++    P=coverage_flag(P,'sample_ktc',ktcActive,mode, ...
++        'sar20RA:coverageKTC','sample_ktc must reflect enabled nonzero thermal innovation.');
+     j=P.front.jitter;
+     normalized=behavior_jitter_parameters(j);
+     assert(isequaln(j,normalized),'sar20RA:coverageJitter','Jitter settings must be normalized and complete.');

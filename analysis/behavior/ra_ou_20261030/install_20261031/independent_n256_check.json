@@ -1,0 +1,149 @@
+{
+  "checks": [
+    {
+      "check": "off_manifest_109",
+      "ok": true,
+      "detail": 109
+    },
+    {
+      "check": "off_manifest_match",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "off_zip_bytes",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "check": "off_complete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "off_records_256",
+      "ok": true,
+      "detail": 256
+    },
+    {
+      "check": "off_model_snapshot",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "off_rng_unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "off_ra_off",
+      "ok": true,
+      "detail": false
+    },
+    {
+      "check": "off_sndr",
+      "ok": true,
+      "detail": [
+        109.82713604379477,
+        109.82713604379477
+      ]
+    },
+    {
+      "check": "off_enob",
+      "ok": true,
+      "detail": [
+        17.95135150229149,
+        17.95135150229149
+      ]
+    },
+    {
+      "check": "on_manifest_109",
+      "ok": true,
+      "detail": 109
+    },
+    {
+      "check": "on_manifest_match",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "check": "on_zip_bytes",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "check": "on_complete",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_records_256",
+      "ok": true,
+      "detail": 256
+    },
+    {
+      "check": "on_model_snapshot",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_rng_unchanged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_ra_on",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "on_sigma",
+      "ok": true,
+      "detail": 0.001
+    },
+    {
+      "check": "on_seed",
+      "ok": true,
+      "detail": 20261030
+    },
+    {
+      "check": "on_sndr",
+      "ok": true,
+      "detail": [
+        101.19425675940113,
+        101.19425675940113
+      ]
+    },
+    {
+      "check": "on_enob",
+      "ok": true,
+      "detail": [
+        16.517318398571618,
+        16.517318398571618
+      ]
+    },
+    {
+      "check": "state_ra_off",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "state_bank_off",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "state_model_sha",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "state_not_n256_on",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "ok": true,
+  "state_model_sha": "dee65dacf4c0adcc5897aceb8549fc9df8dd66227c30c0a1374a631350cdeea5",
+  "status": "N256_INDEPENDENT_CHECKS_PASS"
+}

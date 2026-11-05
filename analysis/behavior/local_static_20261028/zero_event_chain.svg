@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1370" viewBox="0 0 1800 1370">
+<rect width="1800" height="1370" fill="#f5f7fa"/>
+<g font-family="PingFang SC,Microsoft YaHei,Arial,sans-serif" fill="#183041">
+<text x="55" y="57" font-size="32" font-weight="700" fill="#152d40">两个零邻域端点：从 SAR1 首判到最终码</text>
+<text x="55" y="94" font-size="20" font-weight="normal" fill="#4c6577">真实行为模型仿真 · DC · ID4 / epoch1 · 四次实际预热 · 单次记录 N=1 · Fs=5 MS/s</text>
+<text x="55" y="125" font-size="18" font-weight="normal" fill="#4c6577">τDAC / τ采样 = 0；AZ / kTC / 失配 / DEM / dither / jitter 关闭；有限 RA 与 CINC 开启；transport off</text>
+<rect x="48" y="150" width="1704" height="70" rx="10" fill="#e8f0f7"/>
+<text x="70" y="179" font-size="18" font-weight="700" fill="#234e6c">读图路径</text>
+<text x="175" y="179" font-size="19" font-weight="normal" fill="#183041">Top → System → ADC → 各阶段；返回 System → FPGA / Calibration（名义旁路）</text>
+<text x="175" y="206" font-size="16" font-weight="normal" fill="#527084">14张截图是保存的默认 N8 图；两端点为 SimulationInput 覆盖的 N1 / DC 条件，不从截图读取本次数值。</text>
+<rect x="48" y="245" width="1704" height="824" rx="10" fill="#fff" stroke="#b9cbd8" stroke-width="1.5"/>
+<rect x="49" y="246" width="1702" height="51" rx="9" fill="#dceaf3"/>
+<line x1="210" y1="246" x2="210" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<line x1="515" y1="246" x2="515" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<line x1="875" y1="246" x2="875" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<line x1="1260" y1="246" x2="1260" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<text x="67" y="279" font-size="18" font-weight="700" fill="#294a60">事件</text>
+<text x="225" y="279" font-size="18" font-weight="700" fill="#294a60">定位：实际阶段图</text>
+<text x="535" y="279" font-size="19" font-weight="700" fill="#20638a">0 V 端点</text>
+<text x="895" y="279" font-size="19" font-weight="700" fill="#a5532b">−30.517578125 nV 端点</text>
+<text x="1280" y="279" font-size="18" font-weight="700" fill="#294a60">证据标签</text>
+<line x1="49" y1="389" x2="1751" y2="389" stroke="#d8e1e8" stroke-width="1"/>
+<rect x="49" y="389" width="1702" height="111" fill="#f7fafc"/>
+<line x1="49" y1="500" x2="1751" y2="500" stroke="#d8e1e8" stroke-width="1"/>
+<line x1="49" y1="600" x2="1751" y2="600" stroke="#d8e1e8" stroke-width="1"/>
+<rect x="49" y="600" width="1702" height="110" fill="#f7fafc"/>
+<line x1="49" y1="710" x2="1751" y2="710" stroke="#d8e1e8" stroke-width="1"/>
+<line x1="49" y1="814" x2="1751" y2="814" stroke="#d8e1e8" stroke-width="1"/>
+<rect x="49" y="814" width="1702" height="145" fill="#f7fafc"/>
+<line x1="49" y1="959" x2="1751" y2="959" stroke="#d8e1e8" stroke-width="1"/>
+<line x1="49" y1="1069" x2="1751" y2="1069" stroke="#d8e1e8" stroke-width="1"/>
+<line x1="210" y1="297" x2="210" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<line x1="515" y1="297" x2="515" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<line x1="875" y1="297" x2="875" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<line x1="1260" y1="297" x2="1260" y2="1069" stroke="#d1dce4" stroke-width="1"/>
+<text x="67" y="330" font-size="21" font-weight="700" fill="#183041">0 ns</text>
+<text x="67" y="357" font-size="16" font-weight="normal" fill="#60798a">CNV</text>
+<text x="225" y="329" font-size="18" font-weight="700" fill="#183041">SampleRaAdvance</text>
+<text x="225" y="355" font-size="16" font-weight="normal" fill="#60798a">Sample / FrontLog</text>
+<text x="535" y="332" font-size="21" font-weight="700" fill="#20638a">held = 0 V</text>
+<text x="895" y="332" font-size="21" font-weight="700" fill="#a5532b">held = −30.517578125 nV</text>
+<text x="1280" y="332" font-size="18" font-weight="normal" fill="#183041">[实] front_log.held</text>
+<text x="1280" y="359" font-size="16" font-weight="normal" fill="#60798a">由实际事件 ID4 定位</text>
+<text x="67" y="424" font-size="21" font-weight="700" fill="#183041">15 ns</text>
+<text x="67" y="453" font-size="16" font-weight="normal" fill="#60798a">fine_decide</text>
+<text x="225" y="416" font-size="17" font-weight="700" fill="#183041">Sar1TrialRaCt</text>
+<text x="225" y="440" font-size="16" font-weight="normal" fill="#183041">→ ResidueCtCompare</text>
+<text x="225" y="464" font-size="16" font-weight="normal" fill="#183041">→ SarDecisionTracking</text>
+<text x="535" y="425" font-size="19" font-weight="normal" fill="#20638a">Vres = 0 nV</text>
+<text x="535" y="457" font-size="19" font-weight="700" fill="#20638a">D1 写位后 = 1040</text>
+<text x="895" y="425" font-size="19" font-weight="normal" fill="#a5532b">Vres = −30.517578128 nV</text>
+<text x="895" y="457" font-size="19" font-weight="700" fill="#a5532b">D1 写位后 = 1024</text>
+<text x="1280" y="417" font-size="18" font-weight="normal" fill="#183041">[实] front_log、raw_log</text>
+<text x="1280" y="445" font-size="17" font-weight="normal" fill="#815c18">[推] bit4 分别为 1 / 0</text>
+<text x="1280" y="472" font-size="16" font-weight="normal" fill="#98603a">[未] Compare1 独立输出未保存</text>
+<text x="67" y="535" font-size="21" font-weight="700" fill="#183041">31.25 ns</text>
+<text x="67" y="564" font-size="16" font-weight="normal" fill="#60798a">ra_start</text>
+<text x="225" y="535" font-size="17" font-weight="700" fill="#183041">DacCtFeedback</text>
+<text x="225" y="561" font-size="16" font-weight="normal" fill="#183041">→ Sar1TrialRaCt</text>
+<text x="535" y="545" font-size="21" font-weight="700" fill="#20638a">Qres = 0 pC</text>
+<text x="895" y="545" font-size="21" font-weight="700" fill="#a5532b">Qres = +0.217211293 pC</text>
+<text x="1280" y="538" font-size="18" font-weight="normal" fill="#183041">[实] front_log.Qres</text>
+<text x="1280" y="565" font-size="16" font-weight="normal" fill="#60798a">对应最终 D1：1040 / 1039</text>
+<text x="67" y="634" font-size="21" font-weight="700" fill="#183041">43.75 ns</text>
+<text x="67" y="664" font-size="16" font-weight="normal" fill="#60798a">d2_prepare</text>
+<text x="225" y="634" font-size="17" font-weight="700" fill="#183041">Sar1TrialRaCt</text>
+<text x="225" y="660" font-size="16" font-weight="normal" fill="#183041">→ Backend / BackLog</text>
+<text x="535" y="635" font-size="19" font-weight="normal" fill="#20638a">VX = 0 V</text>
+<text x="535" y="666" font-size="19" font-weight="normal" fill="#20638a">VY = 0 V</text>
+<text x="895" y="635" font-size="19" font-weight="normal" fill="#a5532b">VX = +0.239176359 V</text>
+<text x="895" y="666" font-size="19" font-weight="normal" fill="#a5532b">VY = +0.186250247 V</text>
+<text x="1280" y="634" font-size="18" font-weight="normal" fill="#183041">[实] back_log VX / VY</text>
+<text x="1280" y="662" font-size="16" font-weight="normal" fill="#98603a">[未] 完整 RaPreLog 未保存</text>
+<text x="67" y="745" font-size="21" font-weight="700" fill="#183041">47.5 ns</text>
+<text x="67" y="774" font-size="16" font-weight="normal" fill="#60798a">d2_decide</text>
+<text x="225" y="743" font-size="17" font-weight="700" fill="#183041">ResidueCtCompare</text>
+<text x="225" y="769" font-size="16" font-weight="normal" fill="#183041">→ SarDecisionTracking</text>
+<text x="535" y="744" font-size="19" font-weight="normal" fill="#20638a">D2raw = 2048</text>
+<text x="535" y="775" font-size="19" font-weight="normal" fill="#20638a">最终 D2 = 2374</text>
+<text x="895" y="744" font-size="19" font-weight="normal" fill="#a5532b">D2raw = 3072</text>
+<text x="895" y="775" font-size="19" font-weight="normal" fill="#a5532b">最终 D2 = 3417</text>
+<text x="1280" y="744" font-size="18" font-weight="normal" fill="#183041">[实] raw_log</text>
+<text x="1280" y="772" font-size="16" font-weight="normal" fill="#60798a">该行不等于有效最终码</text>
+<text x="67" y="848" font-size="21" font-weight="700" fill="#183041">最终 RAW</text>
+<text x="67" y="878" font-size="16" font-weight="normal" fill="#60798a">名义分项</text>
+<text x="225" y="847" font-size="18" font-weight="700" fill="#183041">FPGA</text>
+<text x="225" y="875" font-size="16" font-weight="normal" fill="#183041">→ Calibration</text>
+<text x="225" y="902" font-size="16" font-weight="normal" fill="#60798a">训练 / 冻结均关闭</text>
+<text x="535" y="844" font-size="19" font-weight="normal" fill="#20638a">D1: 0 µV</text>
+<text x="535" y="873" font-size="19" font-weight="normal" fill="#20638a">D2: +15.625 µV</text>
+<text x="535" y="902" font-size="19" font-weight="normal" fill="#20638a">DT: −11.71875 µV</text>
+<text x="535" y="931" font-size="19" font-weight="700" fill="#20638a">合计: +3.90625 µV</text>
+<text x="895" y="844" font-size="19" font-weight="normal" fill="#a5532b">D1: −8000 µV</text>
+<text x="895" y="873" font-size="19" font-weight="normal" fill="#a5532b">D2: +7984.375 µV</text>
+<text x="895" y="902" font-size="19" font-weight="normal" fill="#a5532b">DT: −11.71875 µV</text>
+<text x="895" y="931" font-size="19" font-weight="700" fill="#a5532b">合计: −27.34375 µV</text>
+<text x="1280" y="847" font-size="18" font-weight="normal" fill="#183041">[实] 0V full 预检分项日志</text>
+<text x="1280" y="874" font-size="18" font-weight="normal" fill="#815c18">[推] 负点 RAW + P.digital</text>
+<text x="1280" y="902" font-size="16" font-weight="normal" fill="#98603a">[未] 负点分项日志未完整保存</text>
+<text x="1280" y="926" font-size="16" font-weight="normal" fill="#60798a">分项和均为计算值</text>
+<text x="67" y="993" font-size="21" font-weight="700" fill="#183041">86.25 ns</text>
+<text x="67" y="1022" font-size="16" font-weight="normal" fill="#60798a">raw_latch</text>
+<text x="225" y="994" font-size="17" font-weight="700" fill="#183041">ADC Raw → FPGA code</text>
+<text x="225" y="1021" font-size="16" font-weight="normal" fill="#60798a">transport off</text>
+<text x="535" y="993" font-size="18" font-weight="normal" fill="#20638a">RAW = [1040,2374,42]</text>
+<text x="535" y="1025" font-size="21" font-weight="700" fill="#20638a">code20 = 524289</text>
+<text x="895" y="993" font-size="18" font-weight="normal" fill="#a5532b">RAW = [1039,3417,42]</text>
+<text x="895" y="1025" font-size="21" font-weight="700" fill="#a5532b">code20 = 524285</text>
+<text x="1280" y="993" font-size="18" font-weight="normal" fill="#183041">[实] ID4 / epoch1 / valid1</text>
+<text x="1280" y="1021" font-size="16" font-weight="normal" fill="#60798a">ADC / record-ready = 0.88625 µs</text>
+<rect x="48" y="1090" width="1704" height="230" rx="10" fill="#fff1e0" stroke="#e1c39c"/>
+<text x="70" y="1124" font-size="20" font-weight="700" fill="#8e4a19">[未测] 输入区间内的中间码</text>
+<text x="70" y="1155" font-size="18" font-weight="normal" fill="#6f4b2f">端点只测到 524285 与 524289；524286–524288 是否出现、是否有平台均未知。不能据此声明缺码、DNL 或 INL。</text>
+<text x="70" y="1188" font-size="18" font-weight="normal" fill="#6f4b2f">D1 分项差 −8 mV，D2 分项差 +7.96875 mV；0V来自日志，负点由 RAW 重建；均为数字贡献，不是模拟节点。</text>
+<text x="70" y="1222" font-size="17" font-weight="normal" fill="#6f4b2f">0 V 的 P 来自事后固定工厂/源码重建，旧预检未独立保存 P；新负点仅存9路完整日志。四次预热不证明稳态。</text>
+<text x="70" y="1253" font-size="17" font-weight="normal" fill="#6f4b2f">[实] 实际行为模型日志　 [推] 依据已记录 RAW / 配置推算　 [未] 未保存或未测；这不是芯片/PDK 结果。</text>
+<text x="70" y="1283" font-size="16" font-weight="normal" fill="#6f4b2f">来源：112407 零点端点回执、ZERO_112407_REVIEW 与 independent_112407.json；模型 SHA 63190994…</text>
+</g></svg>

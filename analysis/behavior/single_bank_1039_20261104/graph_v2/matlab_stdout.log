@@ -1,0 +1,19 @@
+                   found: 0
+            settingsPath: ''
+                 enabled: 0
+                dataRoot: ''
+                gatePass: 1
+             kgIndexPath: ''
+           librariesPath: ''
+              policyPath: ''
+                    tier: ''
+           ignoredLegacy: 0
+       ignoredLegacyPath: ''
+    pointerTargetMissing: 0
+       pointerTargetPath: ''
+
+[Autolayout] skip: model=SarAdc, scope=blk_123, empty_handles
+[警告: 执行 'tools.utils.DVListener' 类析构函数时，捕获到以下错误:
+没有为类 'tools.utils.DVListener' 定义方法 'delete'，或者该方法已从 MATLAB 的搜索路径中删除。] 
+[警告: 执行 'tools.utils.DiagnosticCapture' 类析构函数时，捕获到以下错误:
+没有为类 'tools.utils.DiagnosticCapture' 定义方法 'delete'，或者该方法已从 MATLAB 的搜索路径中删除。] 

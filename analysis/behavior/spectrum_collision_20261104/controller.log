@@ -1,0 +1,9 @@
+2026-11-04T07:24:25.6835367Z attached: SAR20_FFT_PID:27628
+
+2026-11-04T07:25:00.1870344Z returned_check_matlab_receipt: BASELINE RED: bin 64 returns metrics although H3 and H1 are indistinguishable.
+CANDIDATE GREEN: bin 64 collision is explicit and all five metrics are absent.
+PASS: all N=256 bins: 120 legacy-identical, 7 collision statuses.
+PASS: short capture, coherence threshold and length/degenerate-power error identifiers.
+PASS: historical N=256 bin 5: candidate, original and stored metrics match field by field and bit for bit.
+
+2026-11-04T07:25:02.1165004Z COM reference released; MATLAB remains open.

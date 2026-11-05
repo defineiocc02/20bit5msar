@@ -1,0 +1,273 @@
+{
+  "status": "independent_archived_scratch_readback_pass",
+  "receipt_sha256": "e477b90af1dbfb87aaadf09274c2d8881558f546a200afbea25f45dc9c439e42",
+  "exit_sha256": "1cbcdb5010ef2cb59a5581b530d0a34d63c14c90ddbfce9109fa1adbde77fa31",
+  "candidate_archive_sha256": "d1dbc19f007cbd0df375c36159160778c1bcd89b4ddcd401a6bae49686b5d2d2",
+  "candidate_asrun_subset_count": 34,
+  "candidate_frozen_omitted_nonruntime_files": [
+    "pingpong_132220_finalize_v1/CAPTURE_AUDIT.md",
+    "pingpong_132220_finalize_v1/README.md",
+    "pingpong_132220_finalize_v1/README_FINALIZE.md",
+    "pingpong_132220_finalize_v1/README_RESUME.md",
+    "pingpong_132220_finalize_v1/create_real_qualification.py",
+    "pingpong_132220_finalize_v1/extract_prior_audit_summary.py"
+  ],
+  "case_files": {
+    "factory_base": {
+      "parameters_sha256": "d7e54720e4129f5b186f328644609f6a266f59eeed35fb453d343e5948f1823f",
+      "model_sha256": "e45b5efcb585888d95f029c28d0b6edf77c7455f14432211be114abb3ec4f6a0",
+      "source_manifest_sha256": "2d088dc20c8956691e2f2490c74b014c87624bd906648a2b0c4222f4862485c5",
+      "simout_sha256": "b483ff1dd385e880192d3fc2bc15c519f05aece5013f7f832a8a52b6d5fdcaea",
+      "seconds": 9.5234526,
+      "DecodeP_fingerprint": "86511daf1106ca1060b308c31197319da93962d66d5880d0ffd3b1bccb25cd98",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "bank_enabled": false,
+      "frozen_enabled": false
+    },
+    "factory_off": {
+      "parameters_sha256": "acae36f2c6cbb3e9baa9546f851b8a1890342c34b8715f95fffa5e4055242c27",
+      "model_sha256": "65c346a4a302b9e9fcb6b55ec757add6a79cb04516d6ef9788540fb1ed91e58c",
+      "source_manifest_sha256": "2d088dc20c8956691e2f2490c74b014c87624bd906648a2b0c4222f4862485c5",
+      "simout_sha256": "63d03509f3df1df958fb2de957ec5c33376b6ca8bf17f3821ad7fc70fac7fa70",
+      "seconds": 6.7383691,
+      "DecodeP_fingerprint": "86511daf1106ca1060b308c31197319da93962d66d5880d0ffd3b1bccb25cd98",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "bank_enabled": false,
+      "frozen_enabled": false
+    },
+    "rx_nominal": {
+      "parameters_sha256": "f312380c03355889760a6fe355a3aff5752864204405e84ff2eae9172135cf13",
+      "model_sha256": "a28e19949cecd4196504a715ee63c7e40235c29621519f7b372149b0565f7f80",
+      "source_manifest_sha256": "2d088dc20c8956691e2f2490c74b014c87624bd906648a2b0c4222f4862485c5",
+      "simout_sha256": "5c263a67318fafe26152d02d7ce0aeb77460ee5e7f6db9c9310007d718987982",
+      "seconds": 7.738404,
+      "DecodeP_fingerprint": "592c09bb442d0f751b504b1b660f8c1adb42301dd50a51bf794be8753c7dcfec",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "bank_enabled": false,
+      "frozen_enabled": false
+    },
+    "rx_old_frozen": {
+      "parameters_sha256": "222cfbe5c55ada8eaeede5b3d81c6176330d79e15c36d1be1fb8ecb9bc1ac0f7",
+      "model_sha256": "2e61f3f21a346de41219e55d5de264afc4cf0d2f47328303264540324d6983f0",
+      "source_manifest_sha256": "2d088dc20c8956691e2f2490c74b014c87624bd906648a2b0c4222f4862485c5",
+      "simout_sha256": "9fa384587c2db491d01269c08c2406a95fc3c4d5818d3fd09d33e8e2acfc6cf6",
+      "seconds": 8.3694664,
+      "DecodeP_fingerprint": "592c09bb442d0f751b504b1b660f8c1adb42301dd50a51bf794be8753c7dcfec",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "bank_enabled": false,
+      "frozen_enabled": true
+    },
+    "rx_bank_on": {
+      "parameters_sha256": "68b68d2e2d9aac0b52f1f5710930690b65e9c041692adafc5f4476e7b3b0c26c",
+      "model_sha256": "82ede85bdc7c6a6ac5b1837e6f21c29711de9ee8ab2c26f151672dae76f9a99a",
+      "source_manifest_sha256": "2d088dc20c8956691e2f2490c74b014c87624bd906648a2b0c4222f4862485c5",
+      "simout_sha256": "a64c8c45a2490295e5b1ac4fd3a1a4224f97b889691cadf340541e9553abcc4c",
+      "seconds": 7.9601781,
+      "DecodeP_fingerprint": "592c09bb442d0f751b504b1b660f8c1adb42301dd50a51bf794be8753c7dcfec",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "bank_enabled": true,
+      "frozen_enabled": false
+    }
+  },
+  "old_30_off_bit_equal": true,
+  "on_29_noncode_bit_equal": true,
+  "prior_132220_13_and_130247_3_pins_match": true,
+  "ready_total": 12,
+  "selected_N8": 8,
+  "ready_time_s": [
+    5.38e-07,
+    7.38e-07,
+    9.38e-07,
+    1.138e-06,
+    1.338e-06,
+    1.538e-06,
+    1.738e-06,
+    1.938e-06,
+    2.1379999999999997e-06,
+    2.3380000000000003e-06,
+    2.538e-06,
+    2.738e-06
+  ],
+  "ready_id": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "epoch": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "rx_valid": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "bank_code": [
+    836245,
+    873644,
+    906544,
+    934525,
+    957226,
+    974353,
+    985688,
+    991083,
+    990470,
+    983856,
+    971327,
+    953044
+  ],
+  "nominal_code": [
+    836242,
+    873642,
+    906537,
+    934522,
+    957224,
+    974355,
+    985685,
+    991084,
+    990467,
+    983851,
+    971322,
+    953039
+  ],
+  "bank_minus_nominal_LSB": [
+    3,
+    2,
+    7,
+    3,
+    2,
+    -2,
+    3,
+    -1,
+    3,
+    5,
+    5,
+    5
+  ],
+  "bank_slot": [
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "bank_version": [
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "all_ready_codes_equal_old_frozen": true,
+  "all_ready_root_outputs_equal": true,
+  "off_root_disabled_contract": true,
+  "cache_field_fingerprints": {
+    "h": "c4df605f26b8f475d03d6f0c579ce2ff6f3b36ba306264b4ee152495d69f18cc",
+    "h_by_slice": "c189a072b131ef72bbb618a267d9b71645c0041bd6688d5e624caf69d6567aad",
+    "plan": "e0dbf9c7641a7a18f4be8508c5486e1e698c11e900eea19133a99ca763ffb307",
+    "public_cfg": "e7d394a3ecba5f40d4fef1dbf02149800402a0b838a8fdb420c108705c58c038",
+    "coefficient_sha256": "5335fbad19c9e37c20dd23a42a770c50404a45df1665469a580cfb678a511b8f",
+    "public_cfg_sha256": "a7311571b0c456a39d02d73e5029d575df8c14744daa43b60bd37f7522390c34"
+  },
+  "negative_update_receipt": {
+    "forged_qualification": {
+      "rejected": true,
+      "outer_identifier": "Simulink:Parameters:InvParamSetting",
+      "expected_identifier": "pp:qualificationFile"
+    },
+    "reference_v_changed": {
+      "rejected": true,
+      "outer_identifier": "Simulink:Parameters:InvParamSetting",
+      "expected_identifier": "pp:profile"
+    },
+    "M1_wrong_calendar": {
+      "rejected": true,
+      "outer_identifier": "Simulink:Parameters:InvParamSetting",
+      "expected_identifier": "pp:tracking"
+    },
+    "missing_provenance": {
+      "rejected": true,
+      "outer_identifier": "Simulink:Parameters:InvParamSetting",
+      "expected_identifier": "pp:bankFields"
+    },
+    "finite_tau": {
+      "rejected": true,
+      "outer_identifier": "Simulink:Parameters:InvParamSetting",
+      "expected_identifier": "bankOwner:actualTau"
+    },
+    "infinite_tau": {
+      "rejected": true,
+      "outer_identifier": "Simulink:Parameters:InvParamSetting",
+      "expected_identifier": "bankOwner:actualTau"
+    }
+  },
+  "source_counts": {
+    "candidate": 23,
+    "production": 87,
+    "satk_disk": 223,
+    "satk_entry_paths": 4
+  },
+  "limits": {
+    "private_main_P_compared": false,
+    "same_path_cached_bytes_independently_verified": false,
+    "nonready_root_hold_or_clock_pulse_tested": false,
+    "actual_rx_fault_injection": false,
+    "different_h_proven": false,
+    "drain_proven": false,
+    "background_training": false,
+    "main_integrated": false,
+    "product_accepted": false
+  }
+}

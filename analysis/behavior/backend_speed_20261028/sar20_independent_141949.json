@@ -1,0 +1,144 @@
+{
+  "status": "archived_AB_independently_rechecked",
+  "cases": {
+    "n8": {
+      "N": 8,
+      "all_ready": 12,
+      "selected_id_first": 4,
+      "selected_id_last": 11,
+      "epoch": 1,
+      "fs_hz": 5000000.0,
+      "fin_hz": 97656.25,
+      "tau_s": 1e-09,
+      "p_sha256": "4ef39e1ee171306f00ac763ac763c8a577c499872ea8ee589c2964ccd20d85a7",
+      "slx_sha256": "3a26114ba8f0f593137071a58c4ffe6b311a19de2ec2932fd2365ff47e7d8850",
+      "reference_simout_sha256": "d38c2625052cac1da471effe7740f8581bce5aa8482a4426e0704ef6aec15ff8",
+      "old_simout_sha256": "f7ae6e9d0bb21c593a379e36c15d689dd4d3513d10983e0c701e50515b3b3f95",
+      "new_simout_sha256": "46dc96f8cf50741e000912c0745bcdde52c895b3e3bd6c7bfe242fea6e945e76",
+      "new_records_sha256": "6b7fa772185b8b04652c503d304e829873bb001c8b86db27c88774faeedae7fb",
+      "log_count": 30,
+      "all_three_30_logs_bit_equal": true,
+      "all_ready_raw_code_time_equal": true,
+      "old_update_s": 0.3273626,
+      "old_sim_s": 9.3062627,
+      "new_update_s": 0.2615362,
+      "new_sim_s": 5.3788457
+    },
+    "n256": {
+      "N": 256,
+      "all_ready": 260,
+      "selected_id_first": 4,
+      "selected_id_last": 259,
+      "epoch": 1,
+      "fs_hz": 5000000.0,
+      "fin_hz": 97656.25,
+      "tau_s": 1e-09,
+      "p_sha256": "844365f7cb953682dc35385068bd21a153c7bbd7e8f2f21459fe1b7454c957a2",
+      "slx_sha256": "1c903ad632930cf169726fbca1e4231bd3444ce78588da22c1323129ac5bed79",
+      "reference_simout_sha256": "3bb0d0c44c9859f58ff1cbced2badc7adfe0fba932b9b21bda5e092364931a91",
+      "old_simout_sha256": "aa39e45f08c708bce7296c3a1bacbbe86212f445be4611219fbd8b597de66acc",
+      "new_simout_sha256": "27163a3a3eb158ee2b822129198e694aba93d3bf7ffaedb442f2120dafb0464b",
+      "new_records_sha256": "e63bd10d080007a10c8ee0524e1266139d6280cdb1e3db5551f7e9aaf8af2468",
+      "log_count": 30,
+      "all_three_30_logs_bit_equal": true,
+      "all_ready_raw_code_time_equal": true,
+      "old_update_s": 0.2411142,
+      "old_sim_s": 129.0781867,
+      "new_update_s": 0.6346331,
+      "new_sim_s": 101.5095796
+    }
+  },
+  "frozen_zip_sha256": "3ba1b23d7e92d25801769d4c4796cc89db934ebe311400fdf6e43fe06e4b8a38",
+  "native_receipt_sha256": "36662eb715cc8dc2794ca71027fff06d707aaabe5a5e89898d849f59d7ecf47c",
+  "entry_receipt_sha256": "59cfbde3cc89be6d2eef3b5a95475406172086b00595e28a52e14fb940919e88",
+  "outer_receipt_sha256": "c4ba2b9f218d0bc1e79d2d55f51371e88610a7c5186d379161b349191f715775",
+  "recovery_sha256": "09fd93753cc75c94e19b69df03ccc3b72d94967a79706de600672183e9b25695",
+  "pure_cases": 24,
+  "setup_negatives": [
+    {
+      "name": "negative_Cf",
+      "expected": "behavior:parameters",
+      "error_ids": [
+        "Simulink:blocks:MSFB_Setup",
+        "behavior:parameters"
+      ]
+    },
+    {
+      "name": "negative_CT_reference",
+      "expected": "behavior:ctParameters",
+      "error_ids": [
+        "Simulink:blocks:MSFB_Setup",
+        "behavior:ctParameters"
+      ]
+    },
+    {
+      "name": "NI_not_boolean",
+      "expected": "behavior:niFlag",
+      "error_ids": [
+        "Simulink:blocks:MSFB_Setup",
+        "behavior:niFlag"
+      ]
+    },
+    {
+      "name": "NI_unknown",
+      "expected": "behavior:niSchema",
+      "error_ids": [
+        "Simulink:blocks:MSFB_Setup",
+        "behavior:niSchema"
+      ]
+    },
+    {
+      "name": "NI_unsupported",
+      "expected": "behavior:unsupportedNI",
+      "error_ids": [
+        "Simulink:blocks:MSFB_Setup",
+        "behavior:unsupportedNI"
+      ]
+    },
+    {
+      "name": "AZ_negative_tau",
+      "expected": "behavior:azTau",
+      "error_ids": [
+        "Simulink:blocks:MSFB_Setup",
+        "behavior:azTau"
+      ]
+    }
+  ],
+  "event_negatives": [
+    {
+      "name": "invalid_sign",
+      "expected": "behavior:stageCommandSigns",
+      "error_ids": [
+        "Simulink:blocks:MSFB_BlockMethodFailed",
+        "behavior:stageCommandSigns"
+      ],
+      "phase": "sim"
+    },
+    {
+      "name": "invalid_tag",
+      "expected": "behavior:stageCommandTags",
+      "error_ids": [
+        "Simulink:blocks:MSFB_BlockMethodFailed",
+        "behavior:stageCommandTags"
+      ],
+      "phase": "sim"
+    },
+    {
+      "name": "AZ_off_write",
+      "expected": "behavior:azOffWrite",
+      "error_ids": [
+        "Simulink:blocks:MSFB_BlockMethodFailed",
+        "behavior:azOffWrite"
+      ],
+      "phase": "sim"
+    }
+  ],
+  "saved_partial_models": 6,
+  "missing_dependency": {
+    "status": "pending_separate_process",
+    "scope": "Run mode missing in a separate MATLAB process before full acceptance."
+  },
+  "outer_bad_receipt_path_detected": true,
+  "targeted_recovery_only": true,
+  "recovery_rng_verified_by_native_assertion_not_after_snapshot": true
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS_static_only",
+  "changed_source": [
+    "config/adc_parameters.m",
+    "current/src/frontend/behavior_frontend_init.m",
+    "current/src/frontend/behavior_frontend_step.m",
+    "current/src/frontend/behavior_jitter_prepare_front.m",
+    "current/src/model/behavior_applied_note.m",
+    "current/src/model/behavior_prepare_configuration.m",
+    "current/src/model/behavior_ra_noise_guard.m",
+    "tests/static_check.py"
+  ],
+  "unchanged_353_ABI": true,
+  "unchanged_random_helper_and_keys": true,
+  "single_equal_tau_and_finite_jitter_guards_present": true,
+  "model_sha256": "d4e7fc99ab040857e535df07d73447e71c65e7d51dcadf7b17f4bad88594a6a0",
+  "model_warning": "historical d4 model, not the separately audited 485 graph",
+  "matlab_execution": "NOT_RUN",
+  "simulink_execution": "NOT_RUN",
+  "actual_circuit_validation": "NOT_RUN"
+}

@@ -1,0 +1,28 @@
+{
+  "status": "static_isolation_checks_passed",
+  "baseline_files": 118,
+  "changed_from_v2": [
+    "MANIFEST.json",
+    "README_SINGLE.md",
+    "STATIC_CHECK.json",
+    "config/adc_parameters.m",
+    "current/models/SarAdc.slx",
+    "current/src/model/behavior_dac_coupling_configuration.m",
+    "current/src/model/behavior_ra_noise_guard.m",
+    "current/src/physics/behavior_backend_stage.m",
+    "current/src/physics/behavior_backend_step.m",
+    "current/src/physics/behavior_ra_noise_validate_backend.m",
+    "tests/static_check.py"
+  ],
+  "added_to_v2": [
+    "OU_AZ_DAC_README.md",
+    "tests/joint_math_oracle.py",
+    "tests/test_joint_ou_az_dac.m"
+  ],
+  "removed": [],
+  "baseline_zip_sha256": "09e6c7c82635d8f6bf1cf4cc8e86f0ec42036524bfe6518dfcb37ea05fb06eb7",
+  "graph_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "unchanged_backend_state_sfun_and_noise_generator": true,
+  "deterministic_ra_arithmetic_source_unchanged": true,
+  "matlab_or_simulink_run": false
+}

@@ -1,0 +1,25 @@
+{
+  "status": "read_only_layout_guide_for_isolated_A_candidate",
+  "main_integrated": false,
+  "source_model_sha256": "82ede85bdc7c6a6ac5b1837e6f21c29711de9ee8ab2c26f151672dae76f9a99a",
+  "source_P_sha256": "68b68d2e2d9aac0b52f1f5710930690b65e9c041692adafc5f4476e7b3b0c26c",
+  "evidence_observed_utc": "2026-10-28T13:35:37.1346181Z",
+  "checks": "five P/model/simout hashes; 34 critical edges; selected timestamps and saved logger rows; no new MATLAB or model edit; rendered preview manually inspected",
+  "source_sha256": {
+    "SarPP.slx": "82ede85bdc7c6a6ac5b1837e6f21c29711de9ee8ab2c26f151672dae76f9a99a",
+    "receipt.json": "e477b90af1dbfb87aaadf09274c2d8881558f546a200afbea25f45dc9c439e42",
+    "final_graph_receipt.json": "e605d4ee87f4ccce84e833296d3e2e67ecc34c2a695e840787c9e6474ccf60db",
+    "rx_bank_on/parameters.mat": "68b68d2e2d9aac0b52f1f5710930690b65e9c041692adafc5f4476e7b3b0c26c",
+    "rx_bank_on/simout.mat": "a64c8c45a2490295e5b1ac4fd3a1a4224f97b889691cadf340541e9553abcc4c",
+    "status.json": "a6d728e58a0a8c1a884cef3bfa9c9749cfd810f1362c0ff7d250ccfb960b0e9b",
+    "candidate.zip": "d1dbc19f007cbd0df375c36159160778c1bcd89b4ddcd401a6bae49686b5d2d2"
+  },
+  "candidate_sha256": {
+    "sarpp_actual_map.png": "1a6808d81080cbb65dc5c43a390a14ab689e522087bf87ca3e617d78f47ab87c",
+    "sarpp_actual_map.svg": "b0623f92546a15f50338da57e7d0c9fb05b96bb1c8bd06934f88334f46e27fd1",
+    "README.md": "2ffceedb7c406a767be6a5067ad48570980dd11542f4d50d2b5c157815003d63",
+    "read_actual.py": "5ac762abc78ac7bb26ea69d012aca6f9e90c9697b84557688f6cd601402274aa",
+    "readback.json": "cb5188557269c2401c140905e8b02b541d7f78d1ae19204470b56d1a51a0e89c",
+    "build_map.py": "4509c3b87f03eb6d44596da860576762b3726079a35dd80675d5c2a40042e5be"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "single-bank-fig01-02-actual-n8/v1",
+  "sample_id": 5,
+  "epoch": 1,
+  "t_cnv_s": 1e-06,
+  "source_file_sha256": {
+    "model": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "parameters": "9ea34cfd83187fff350ea266dabd79d377e48d99c292bba3fbbb4a84445b07e6",
+    "simout": "df04c47373902db44a2082e5c5e6ade994cd9d4313735ff9a602c5b518cd4f28",
+    "source_zip": "09e6c7c82635d8f6bf1cf4cc8e86f0ec42036524bfe6518dfcb37ea05fb06eb7",
+    "source_manifest": "2cbdffe537b694cef6107ce893ea8bca7f8ef5d95f6ff7d993f020150c6dd514",
+    "paper": "7ef975d3d689436880cc049296b68d44eec8c1063897041bb569f3f7017f9167",
+    "reader": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+  },
+  "data_scope": "48 actual event rows; metadata from saved P; no interpolation for data",
+  "raw_words": {
+    "D1": 1924,
+    "D2": 2471,
+    "DT": 213,
+    "code20": 979656
+  },
+  "ta_bits_first_to_last": [
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1
+  ],
+  "actual_stage_counts_at_raw": [
+    12,
+    8,
+    7
+  ],
+  "actual_event_token_counts": {
+    "fine_decide": 5,
+    "d2_decide": 12,
+    "d2_feedback": 12,
+    "ta_compare": 8,
+    "ta_feedback": 7
+  },
+  "configuration": {
+    "fs_hz": 5000000.0,
+    "full_scale_diff_v": 8.192,
+    "input_frequency_hz": 97656.25,
+    "input_peak_v": 3.650563842595822,
+    "single_bank": true,
+    "single_guard_s": 0.0,
+    "ra_A0": 10000.0,
+    "ra_UGB_hz": 1200000000.0,
+    "ra_Cf_f": 8.64e-13,
+    "sample_tau_s": 0,
+    "dac_tau_s": 0,
+    "noise_az_dem_dither_jitter_mismatch": "off in this P"
+  },
+  "stored_open_s": 8.9e-07,
+  "capture_time_s": 1e-06,
+  "stored_window_s": 1.1e-07,
+  "source_semantics": {
+    "front_log": "ChargeReturn FE_retobs event-stage observation; Vres=column 2, not a continuous waveform",
+    "back_log": "RaAzCt observation before decision/reset: VX column 1, VY column 2; event samples only",
+    "adi_wire_log": "actual stage-next control and command-wire counter; not independent committed analog-state evidence",
+    "calendar": "event label derived from saved calendar joined to actual event_log group/time"
+  },
+  "reference_style": "User-selected CICC paper Fig1/2; Arial plot labels, 146 mm width; no copied paper plots",
+  "limitations": [
+    "M=8 only; no M sweep, SNR improvement, PSD or FFT was measured.",
+    "No independently measured transistor clock waveform; AZ is off.",
+    "Opening time is saved state metadata, not a sampled switch waveform.",
+    "Return charge and full FE state are not present in these N8 logs.",
+    "Currents, topology and PDK/silicon performance are not inferred."
+  ],
+  "outputs": {
+    "fig01_tracking_M8_actual.png": "8b02a6866cd598de19b140ef400e08b332d18f61ecc847797cd02ee9e107acaf",
+    "fig02_nodes_actual.png": "7167118613c4aff70b17eb9b7d9befcede9b44edfa2589136857eff316fc460b",
+    "fig02_timing_actual.png": "9e76cf81f3f50dfda8464b799e4ff8a4808705da46db5480c22040547da1ba22",
+    "fig01_tracking_M8_actual.pdf": "3764383cbbb4c41d2123243a71b44cc53028224327d6c330dd6a25e4d752b2b1",
+    "fig02_nodes_actual.pdf": "722a58e48638f1ab383d03903db3a2f4406ba428daf5edb03735206b7dc23d42",
+    "fig02_timing_actual.pdf": "73189fd03ff3bb4b92a26bd26ddb6fb00bfc8eba11e048382119d2e09e9382d5",
+    "fig01_tracking_M8_actual.svg": "0f852c36dadfc628e90133e2e4d6f4d9e6c970ff2f5c122a295809483307f83f",
+    "fig02_nodes_actual.svg": "b0677d557ca96958b86aad8088318ea5cac469a2ef80acd67e7487fa8c20125c",
+    "fig02_timing_actual.svg": "cc16bfeee23a71a1ef728d67dfea2bfe8fb4a992ba2f5c54705bb0f09a79e680"
+  },
+  "tables": {
+    "events_sample.csv": "8b278fe7bf73c1ce9a91df0836310847294989f5f60ba661a93351daf120f462",
+    "decisions_sample.csv": "d840fbbd3729ad569c6aa803e9300bfb2ec7933bfcff4881a2bdcf7fbdd259c6"
+  },
+  "plot_script_sha256": "c0b226901730fe2986bf7c9b1b764a7f142699dd5d40fae23fad2ce3b878355a",
+  "style_helper_sha256": "48191dd8e35c255d0b605acffa429b4a2a2b29160fa222d0c11142edb8bfda33",
+  "delivery_directory": ".",
+  "README": {
+    "path": "README.md",
+    "sha256": "b4c6aeedae10a4f5434ef09235effd8088434c23121b9c1ad599d30639fc20a6",
+    "note": "Added after rendering; relative paths start at this directory."
+  }
+}

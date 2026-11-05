@@ -1,0 +1,1 @@
+{"status":"passed","stage":"complete","pid":35952,"elapsed_s":1.3909028,"rng_unchanged":true,"report":{"status":"passed","scope":"pure guard tests only; no SLX simulation","flash_preconvert_noise":false,"sar1_fine_and_sar2_tracking_only":true}}

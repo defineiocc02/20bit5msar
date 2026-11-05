@@ -1,0 +1,801 @@
+--- a/config/adc_parameters.m
++++ b/config/adc_parameters.m
+@@ -50,8 +50,8 @@
+     unit=top_sampling_cap_f/(8*1039);
+     % DEM/dither flags enable actual switching/charge actions, not plot labels.
+     % Mismatch requires explicit actual C_f in frontend options. Sampling kT/C
+-    % is injected once into retained capacitor charge at the actual aperture;
+-    % the current equilibrium-noise model requires tau_sample_s=0.
++    % is injected once into retained capacitor charge at nominal capture.
++    % Equal-tau single-bank finite RC uses a time-limited thermal innovation.
+     options=struct('plan_rows',max(32,N+P.first_id+4),'unit_cap_f',unit, ...
+         'input',P.input,'dem_enabled',false,'dither_enabled',false, ...
+         'mismatch_enabled',false,'ktc_enabled',false);
+@@ -62,12 +62,12 @@
+     % Zero guard is an ideal upper-bound assumption, not a measured nonoverlap.
+     options.single_bank=true;options.single_guard_s=0;
+     % Sampling thermal noise: absolute temperature [K >=0] and independent
+-    % uint32 seed. Differential variance=2*kB*T/Csample_half per physical slice.
+-    % T=0 produces zero thermal perturbation and is not enabled NI coverage.
++    % uint32 seed. Equilibrium differential variance=2*kB*T/Csample_half;
++    % eight equal-tau numerical segments aggregate as one bank. T=0 or Inf tau
++    % produces no new thermal perturbation and is not active noise coverage.
+     options.temperature_K=298.15;options.ktc_seed=20261027;
+-    % Endpoint aperture error [s], default off; event/compare calendar unchanged.
+-    % Enable through explicit P.front.jitter and apply; prepare binds the actual
+-    % coarse-latch bound. Finite sampling RC with jitter is not implemented.
++    % Single-bank endpoint jitter remains OFF in this isolated candidate.
++    % No event/compare calendar changes; finite-RC jitter is not implemented.
+     options.jitter=behavior_jitter_parameters();
+     % Settling time constants [s >=0], zero=fully settled, Inf=hold. Sampling,
+     % tail precharge can use positive tau. Finite DAC-to-RA interval coupling
+@@ -95,8 +95,9 @@
+     % sigma_vx_rms is differential VX stationary RMS in V at fixed RA pole;
+     % 1 mV is an example stress assumption, not a fitted circuit parameter.
+     % SAR20('apply',P); SAR20('check'); SAR20('run');
+-    % ON requires infinite slew, finite UGB and zero DAC tau; AZ, comparator
+-    % noise, reference recovery, training, Frozen and Bank must remain OFF.
++    % ON requires infinite slew and finite UGB. This isolated candidate permits
++    % ordinary AZ and finite DAC tau only for the bound fixed-Ctop single bank.
++    % Stochastic AZ/comparator/reference noise, training, Frozen and Bank stay OFF.
+     % Other combinations, noise sources and circuit/PDK behavior are unverified.
+     % ON checks P.ni labels against actual RA gain/UGB, finite sampling tau,
+     % selected physical C mismatch and the narrow front-Cp/RA-load indicator.
+--- /dev/null
++++ b/current/src/control/behavior_comparator_keyed_normal.m
+@@ -0,0 +1,38 @@
++function [z,digest_hex]=behavior_comparator_keyed_normal(seed,epoch,id,eventCode,eventIndex)
++%BEHAVIOR_COMPARATOR_KEYED_NORMAL Stateless domain-separated event noise.
++% SHA-256 payload uses its OWN comparator domain and exact integer words.
++% Same tuple produces the same sample, regardless of Outputs call count/order.
++% As in the existing RA helper, IEEE log/cos may differ across platforms; this
++% is a behavioral Gaussian assumption, not comparator or process qualification.
++    assert(isa(seed,'uint64')&&isscalar(seed),'sar20Cmp:seed','Seed must be uint64 scalar.');
++    keys={epoch,id,eventCode,eventIndex};
++    for k=1:numel(keys)
++        v=keys{k};assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v)&& ...
++            v>=0&&v<=2^32-1&&v==floor(v),'sar20Cmp:key','Keys must be uint32-valued.');
++    end
++    payload=[uint8('SAR20-COMPARATOR-v1'),uint8(0),word(seed), ...
++        word(uint64(epoch)),word(uint64(id)),word(uint64(eventCode)),word(uint64(eventIndex))];
++    assert(usejava('jvm'),'sar20Cmp:jvm','Keyed comparator noise requires the MATLAB JVM.');
++    md=java.security.MessageDigest.getInstance('SHA-256');
++    md.update(typecast(payload(:),'int8'));
++    digest=typecast(md.digest(),'uint8');
++    assert(numel(digest)==32,'sar20Cmp:digest','SHA-256 digest must be 32 bytes.');
++    a=readword(digest(1:8));b=readword(digest(9:16));
++    scale=4503599627370496;
++    u1=(double(bitshift(a,-12))+0.5)/scale;
++    u2=(double(bitshift(b,-12))+0.5)/scale;
++    assert(u1>0&&u1<1&&u2>0&&u2<1,'sar20Cmp:uniform','Invalid open-interval uniforms.');
++    z=sqrt(-2*log(u1))*cos(2*pi*u2);
++    assert(isfinite(z),'sar20Cmp:normal','Nonfinite comparator sample.');
++    if nargout>1
++        digest_hex=lower(reshape(dec2hex(digest(:),2).',1,[]));
++    end
++end
++function b=word(v)
++    b=zeros(1,8,'uint8');
++    for j=1:8,b(j)=uint8(bitand(bitshift(v,-8*(8-j)),uint64(255)));end
++end
++function v=readword(b)
++    v=uint64(0);
++    for j=1:8,v=bitor(bitshift(v,8),uint64(b(j)));end
++end
+--- /dev/null
++++ b/current/src/control/behavior_comparator_sample.m
+@@ -0,0 +1,55 @@
++function [c,diag]=behavior_comparator_sample(event,c,p)
++%BEHAVIOR_COMPARATOR_SAMPLE Stateless comparator input-referred perturbation.
++% The event is an actual scheduled fine_decide, d2_decide, or ta_compare.
++% c is the existing physical comparison struct; only its selected decision bit
++% can change. SAR1 uses vres_v; SAR2 and TA share the physical vy_v comparator.
++% No input waveform, ADC state, scheduler time, valid/late flag or RNG mutates.
++% With zero offset and zero RMS, retain the actual native decision bit,
++% including its zero-tie behavior. With a perturbation yielding EXACTLY zero,
++% tie_decision is an explicit engineering assumption, not a claim about the SLX.
++    diag=struct('applied',false,'channel',0,'event_code',0,'input_v',NaN, ...
++        'offset_v',0,'noise_v',0,'effective_v',NaN,'decision',NaN);
++    switch event.type
++        case 'fine_decide'
++            ch=1;ev=1;voltage='vres_v';decision='decision1';
++            offset=p.sar1_offset_v;sigma=p.sar1_noise_rms_v;limit=5;
++        case 'd2_decide'
++            ch=2;ev=2;voltage='vy_v';decision='decision2';
++            offset=p.sar2_offset_v;sigma=p.sar2_noise_rms_v;limit=12;
++        case 'ta_compare'
++            ch=2;ev=3;voltage='vy_v';decision='decision2';
++            offset=p.sar2_offset_v;sigma=p.sar2_noise_rms_v;limit=8;
++        otherwise
++            error('sar20Cmp:event','Expected an actual comparator event.');
++    end
++    assert(isfield(event,'sample_id')&&isfield(event,'epoch')&& ...
++        isfield(event,'index')&&isscalar(event.index)&&isfinite(event.index)&& ...
++        event.index==floor(event.index)&&event.index>=0&&event.index<limit, ...
++        'sar20Cmp:eventKey','Event requires valid sample/epoch/index keys.');
++    assert(isfield(c,voltage)&&isfield(c,decision)&& ...
++        isnumeric(c.(voltage))&&isreal(c.(voltage))&&isscalar(c.(voltage))&& ...
++        isfinite(c.(voltage))&&isscalar(c.(decision))&& ...
++        ismember(c.(decision),[0 1]),'sar20Cmp:input','Require physical input and native decision.');
++    v=double(c.(voltage));native=double(c.(decision));
++    diag.channel=ch;diag.event_code=ev;diag.input_v=v;diag.offset_v=offset;
++    diag.effective_v=v;diag.decision=native;
++    if ~p.enabled || (offset==0 && sigma==0)
++        return; % no added arithmetic and no RNG/hash: exact native decision
++    end
++    noise=0;
++    if sigma>0
++        z=behavior_comparator_keyed_normal(p.seed_u64,event.epoch,event.sample_id,ev,event.index);
++        noise=sigma*z;
++    end
++    effective=(v+offset)+noise;
++    assert(isfinite(effective),'sar20Cmp:nonfinite','Comparator effective input must be finite.');
++    if effective>0
++        bit=1;
++    elseif effective<0
++        bit=0;
++    else
++        bit=double(p.tie_decision);
++    end
++    c.(decision)=bit;
++    diag.applied=true;diag.noise_v=noise;diag.effective_v=effective;diag.decision=bit;
++end
+--- a/current/src/control/behavior_control_stage.m
++++ b/current/src/control/behavior_control_stage.m
+@@ -53,7 +53,15 @@
+         if ~any(strcmp(event.type,accepted)),continue;end
+         event.absolute_time_s=cycle*P.Ts_s+group.time_s;
+         event.sample_id=cycle;event.epoch=epoch;
+-        [s,out]=behavior_sar_step(s,event,comparison,P.control);
++        % Optional comparator input perturbation: pure, keyed by the actual
++        % event. Missing/disabled configuration preserves the native bits exactly.
++        eventComparison=comparison;
++        if strcmp(kind,'decide') && isfield(P.control,'comparator') && ...
++                P.control.comparator.enabled && ...
++                any(strcmp(event.type,{'fine_decide','d2_decide','ta_compare'}))
++            eventComparison=behavior_comparator_sample(event,comparison,P.control.comparator);
++        end
++        [s,out]=behavior_sar_step(s,event,eventComparison,P.control);
+         rawReady=rawReady||out.record_ready;
+         isCnv=isCnv||strcmp(event.type,'cnv');
+         isRelease=isRelease||strcmp(event.type,'release');
+--- a/current/src/control/behavior_control_stage_sfun.m
++++ b/current/src/control/behavior_control_stage_sfun.m
+@@ -5,6 +5,10 @@
+ % Only the parent numeric Unit Delay retains SAR state; this block has no DWork.
+     block.NumDialogPrms=2;block.DialogPrmsTunable={'Nontunable','Nontunable'};
+     kind=block.DialogPrm(1).Data;P=block.DialogPrm(2).Data;
++    % Inspect actual dialog P before simulation; never rebuild/rebind stale P.
++    if isstruct(P)&&isfield(P,'control')&&isstruct(P.control)
++        behavior_comparator_configuration(P,'check');
++    end
+     assert(any(strcmp(kind,{'due','prepare','decide'})), ...
+         'behavior:stageSfun:kind','Unknown controller stage kind.');
+     block.NumInputPorts=4;block.NumOutputPorts=3;
+--- a/current/src/frontend/behavior_frontend_init.m
++++ b/current/src/frontend/behavior_frontend_init.m
+@@ -6,8 +6,9 @@
+ %B_c/B_target_c[18,3] [C] store C*bottom-voltage sums: signal/tail/bias groups.
+ %Cold init clears charge/tags; runtime reset in step retains analog charge.
+ %Model: grouped differential RC/charge behavior; frozen C is not a calibration input.
+-%kTC: one differential capture kick with variance 2*kB*T/Csample_half per slice.
+-%Default off preserves prior state ABI and capture arithmetic. Counter seed is explicit.
++%kTC: equilibrium for tau=0; single-bank equal-tau finite-RC innovation at capture.
++%Eight numerical segments form one bank. Default off preserves prior state ABI and
++%capture arithmetic. Counter seed is explicit. No hidden random state.
+     if nargin==0,p=struct();end
+     assert(isstruct(p)&&isscalar(p),'behaviorFE:config','p must be a scalar struct.');
+     defaults=struct('schema','sar20-behavior-frontend/v1','plan_rows',1024, ...
+@@ -78,9 +79,18 @@
+         if isscalar(v),v=repmat(v,18,1);end
+         p.(key{1})=double(v(:));
+     end
+-    assert(~p.ktc_enabled||all(p.tau_sample_s==0), ...
+-        'behaviorFE:ktcFiniteSamplingUnsupported', ...
+-        'This equilibrium capture-noise mode requires tau_sample_s=0; finite-RC stochastic buildup is not implemented.');
++    if p.ktc_enabled
++        if p.single_bank
++            % Same tau makes these eight entries an aggregate single RC bank.
++            assert(all(p.tau_sample_s(1:8)==p.tau_sample_s(1)), ...
++                'singleBank:ktcUnequalTau', ...
++                'Sampling kTC requires equal tau across the eight numerical segments.');
++        else
++            assert(all(p.tau_sample_s==0), ...
++                'behaviorFE:ktcFiniteSamplingUnsupported', ...
++                'Finite-RC kTC is qualified only for a single bank.');
++        end
++    end
+     p.jitter=behavior_jitter_parameters(p.jitter);
+     if p.single_bank
+         assert(~p.dem_enabled&&~p.dither_enabled&&~p.jitter.enabled, ...
+--- a/current/src/frontend/behavior_frontend_step.m
++++ b/current/src/frontend/behavior_frontend_step.m
+@@ -58,6 +58,16 @@
+                 assert(all(cmd.t_s>s.acquire_open_s(ids)), ...
+                     'singleBank:apertureBeforeOpen','Capture must follow the physical acquisition opening.');
+             end
++            % Recheck the sampling/jitter boundary here as callers can alter a
++            % normalized parameter struct after init. Never overwrite an RC state
++            % with an ideal endpoint under an unsupported jitter configuration.
++            assert(~p.jitter.enabled||all(p.tau_sample_s(ids)==0), ...
++                'behaviorFE:jitterFiniteSamplingUnsupported', ...
++                'Finite-RC sampling with displaced aperture is not implemented.');
++            if is_single(p)
++                assert(~p.jitter.enabled,'singleBank:unsupportedNI', ...
++                    'This isolated RC+kTC candidate keeps single-bank jitter OFF.');
++            end
+             s=apply_ideal_acquire(s,ids,cmd.t_s,p);
+             if p.jitter.enabled
+                 [ta,~,~]=behavior_aperture_times(cmd.t_s,ids,cmd.id,cmd.epoch,p.jitter);
+@@ -73,14 +83,31 @@
+                 s.actual_aperture_s(ids)=cmd.t_s;
+             end
+             if p.ktc_enabled
+-                assert(all(p.tau_sample_s(ids)==0), ...
+-                    'behaviorFE:ktcFiniteSamplingUnsupported', ...
+-                    'Full equilibrium kTC capture kicks require settled sampling (tau_sample_s=0).');
+-                % Csample is per half; independent P/N thermal samples give
+-                % differential variance 2*kB*T/Csample_half. Inject exactly
+-                % once into the SAME retained B before q_initial/held latch.
+-                dv=sample_ktc_diff(ids,cmd.id,cmd.epoch,p);
+-                s.B_c(ids,1)=s.B_c(ids,1)+p.group_C_f(ids,1).*dv;
++                tau=p.tau_sample_s(ids);
++                if is_single(p)
++                    assert(all(~isnan(tau)&tau>=0)&&all(tau==tau(1)), ...
++                        'singleBank:ktcUnequalTau', ...
++                        'Sampling kTC requires one nonnegative tau for all bank segments.');
++                else
++                    assert(all(tau==0), ...
++                        'behaviorFE:ktcFiniteSamplingUnsupported', ...
++                        'Finite-RC kTC is qualified only for a single bank.');
++                end
++                % Existing equilibrium keyed sample and exact tau=0 arithmetic
++                % are retained. For finite tau, scale only the independent NEW
++                % innovation. Old stochastic charge already in B was propagated
++                % by advance() and must not be injected again. Inf means no new
++                % thermal innovation and leaves the retained B bit-for-bit held.
++                if ~all(isinf(tau))
++                    dv=sample_ktc_diff(ids,cmd.id,cmd.epoch,p);
++                    finiteMask=tau>0 & isfinite(tau);
++                    if any(finiteMask)
++                        duration=cmd.t_s-s.acquire_open_s(ids);
++                        dv(finiteMask)=dv(finiteMask).* ...
++                            sqrt(-expm1(-2*duration(finiteMask)./tau(finiteMask)));
++                    end
++                    s.B_c(ids,1)=s.B_c(ids,1)+p.group_C_f(ids,1).*dv;
++                end
+             end
+             s.q_initial_c(ids)=sum(s.B_c(ids,:),2);
+             s.v_capture_v(ids)=s.B_c(ids,1)./p.group_C_f(ids,1);
+@@ -129,6 +156,16 @@
+             s.phase(ids)=0;s.capture_valid(ids)=false;
+             s.active_id=-1;s.active_epoch=-1;s.has_dac_command=false;
+         case 'reset'
++            % An interrupted finite-RC acquisition would need an additional
++            % stochastic endpoint. This capture-only model refuses to silently
++            % discard that innovation; no new event/key/state is introduced.
++            if p.ktc_enabled&&is_single(p)&&p.temperature_K>0
++                active=find(s.phase==1 & s.acquire_open_s<cmd.t_s);
++                tau=p.tau_sample_s(active);
++                assert(~any(tau>0 & isfinite(tau)), ...
++                    'singleBank:ktcInterruptedAcquisition', ...
++                    'Finite-RC thermal acquisition must complete before reset.');
++            end
+             % An active RA/top-node return must be committed before reset.
+             assert(~any(s.phase==2),'behaviorFE:resetReturn','Release active slices with backend vtop before reset.');
+             % Digital reset cancels ownership/tags; analog B is deliberately retained.
+@@ -177,8 +214,14 @@
+                 s.B_c(j,2:3)=relax(s.B_c(j,2:3),s.B_target_c(j,2:3),t-t0,p.tau_precharge_s(j));
+             end
+         else
+-            v0=s.B_c(j,1)/C(1);v=rc_sine(v0,s.time_s,t,tau,s.input);
+-            s.B_c(j,1)=C(1)*v;
++            % In the new single-bank kTC hold mode, Inf tau means retain the
++            % signal charge bit-for-bit, including guard=0. Dividing by C and
++            % multiplying back can change its last bit. Keep the historical
++            % arithmetic for kTC OFF and for every finite/zero tau.
++            if ~(is_single(p)&&p.ktc_enabled&&isinf(tau))
++                v0=s.B_c(j,1)/C(1);v=rc_sine(v0,s.time_s,t,tau,s.input);
++                s.B_c(j,1)=C(1)*v;
++            end
+             s.B_c(j,2:3)=relax(s.B_c(j,2:3),s.B_target_c(j,2:3),dt,p.tau_precharge_s(j));
+         end
+     end
+@@ -275,6 +318,7 @@
+     assert(u.amplitude_v>=0&&u.frequency_hz>=0,'behaviorFE:input','Negative amplitude/frequency.');
+ end
+ 
++% In a single bank, the existing j key identifies a numerical segment, not a converter.
+ function dv=sample_ktc_diff(ids,id,epoch,p)
+ % Analog-only keyed noise. No rand/randn/RandStream or mutable RNG state.
+ % Tuple lanes: explicit ktc_seed, physical slice, sample ID, epoch. Uniforms
+--- a/current/src/frontend/behavior_jitter_prepare_front.m
++++ b/current/src/frontend/behavior_jitter_prepare_front.m
+@@ -10,7 +10,14 @@
+     assert(~f.jitter.enabled||all(f.tau_sample_s==0), ...
+         'behaviorFE:jitterFiniteSamplingUnsupported', ...
+         'Endpoint aperture mode requires fully settled sampling; finite-RC aperture propagation is not implemented.');
+-    assert(~f.ktc_enabled||all(f.tau_sample_s==0), ...
+-        'behaviorFE:ktcFiniteSamplingUnsupported', ...
+-        'Full equilibrium kTC cannot be combined with finite sampling RC.');
++    if f.ktc_enabled&&any(f.tau_sample_s(:)~=0)
++        % The following frontend_init performs full type/range validation.
++        % This binding guard only allows the equal-tau single-bank extension.
++        t=f.tau_sample_s;
++        single=isfield(f,'single_bank')&&isscalar(f.single_bank)&& ...
++            (isequal(f.single_bank,true)||isequal(f.single_bank,1));
++        equalTau=isscalar(t)||(numel(t)==18&&all(t(1:8)==t(1)));
++        assert(single&&equalTau,'behaviorFE:ktcFiniteSamplingUnsupported', ...
++            'Finite-RC kTC requires one tau for the single bank numerical segments.');
++    end
+ end
+--- a/current/src/model/behavior_applied_note.m
++++ b/current/src/model/behavior_applied_note.m
+@@ -36,6 +36,16 @@
+     % displays the actual prepared P and is separately validated by the guard.
+     if isfield(P.backend.ni,'ra_noise')&&P.backend.ni.ra_noise
+         note=[note ra_noise_suffix(P)];
++    end
++    % Optional comparator profile is visible; absent profile keeps prior text.
++    if isfield(P.control,'comparator')
++        behavior_comparator_configuration(P,'check');
++        c=P.control.comparator;seedHex=upper(dec2hex(c.seed_u64,16));
++        note=[note sprintf(['\nCMP=%s | SAR1 fine offset=%.17g V, sigma=%.17g V rms' ...
++            '\nSAR2/TA offset=%.17g V, sigma=%.17g V rms' ...
++            '\nFlash comparator noise not modeled | seed=0x%s | tie=%d'], ...
++            flagtext(c.enabled),c.sar1_offset_v,c.sar1_noise_rms_v, ...
++            c.sar2_offset_v,c.sar2_noise_rms_v,seedHex,double(c.tie_decision))];
+     end
+     texts={'片外 Driver：输入源配置 [V,Hz,rad]',note, ...
+         '片内 ADC：Sample / DAC / RA-AZ / CT / SAR-Tracking', ...
+@@ -110,7 +120,10 @@
+         assert(isscalar(T)&&isfinite(T)&&T>=0&&isscalar(seed)&& ...
+             isfinite(seed)&&seed>=0&&seed==floor(seed), ...
+             'adc:noteKtc','kTC requires applied temperature_K and ktc_seed.');
+-        if T>0,text=sprintf('ON, T=%.6g K, seed=%.0f',T,seed);
++        if T>0&&isfield(front,'single_bank')&&front.single_bank&& ...
++                isfield(front,'tau_sample_s')&&isinf(front.tau_sample_s(1))
++            text=sprintf('OFF注入(采样保持, flag=1), seed=%.0f',seed);
++        elseif T>0,text=sprintf('ON, T=%.6g K, seed=%.0f',T,seed);
+         else,text=sprintf('OFF注入(T=0对照, flag=1), seed=%.0f',seed);end
+     elseif ~isempty(T)&&~isempty(seed)
+         text=sprintf('OFF, T=%.6g K, seed=%.0f',T,seed);
+--- /dev/null
++++ b/current/src/model/behavior_comparator_configuration.m
+@@ -0,0 +1,166 @@
++function P=behavior_comparator_configuration(P,mode)
++%BEHAVIOR_COMPARATOR_CONFIGURATION Validate optional bounded comparator profile.
++% 'derive' operates on explicit apply; 'check' inspects actual dialog P.
++% A missing profile is the legacy exact OFF path and does not change P shape.
++% Active CMP with OU is limited to the bound linear single-bank case below;
++% training/Frozen/Bank remain OFF. Comparator delay/invalid/late are absent.
++    if nargin<2,mode='check';end
++    assert(any(strcmp(mode,{'derive','check'})),'sar20Cmp:mode','Use derive or check.');
++    assert(isstruct(P)&&isscalar(P)&&isfield(P,'control')&&isstruct(P.control)&& ...
++        isscalar(P.control),'sar20Cmp:P','Require explicit P.control.');
++    if ~isfield(P.control,'comparator')
++        % A removed profile must not leave a false noise-coverage claim. Older
++        % configs without this label remain a legacy OFF path.
++        if isfield(P,'ni')&&isstruct(P.ni)&&isscalar(P.ni)
++            if isfield(P.ni,'comparator_noise')
++                assert(binary(P.ni.comparator_noise)&&~logical(P.ni.comparator_noise), ...
++                    'sar20Cmp:coverage','Missing comparator profile cannot report enabled noise.');
++            end
++            if isfield(P.ni,'comparator_noise_scope')
++                none=struct('sar1_fine',false,'sar2_and_tracking',false,'flash_preconvert',false);
++                assert(isequaln(P.ni.comparator_noise_scope,none), ...
++                    'sar20Cmp:scope','Missing comparator profile cannot claim comparator coverage.');
++            end
++        end
++        return;
++    end
++    c=P.control.comparator;
++    names={'enabled';'sar1_offset_v';'sar1_noise_rms_v';'sar2_offset_v'; ...
++        'sar2_noise_rms_v';'seed_u64';'tie_decision'};
++    assert(isstruct(c)&&isscalar(c)&&isequal(sort(fieldnames(c)),sort(names)), ...
++        'sar20Cmp:config','Comparator profile must contain exactly the declared fields.');
++    assert(binary(c.enabled)&&binary(c.tie_decision),'sar20Cmp:flag','Flags must be 0/1.');
++    for f={'sar1_offset_v','sar1_noise_rms_v','sar2_offset_v','sar2_noise_rms_v'}
++        v=c.(f{1});assert(isa(v,'double')&&isreal(v)&&isscalar(v)&&isfinite(v), ...
++            'sar20Cmp:scale','Comparator offset/noise values must be finite double V.');
++    end
++    assert(c.sar1_noise_rms_v>=0&&c.sar2_noise_rms_v>=0, ...
++        'sar20Cmp:noise','Comparator noise RMS cannot be negative.');
++    assert(isa(c.seed_u64,'uint64')&&isscalar(c.seed_u64), ...
++        'sar20Cmp:seed','Comparator seed must be uint64 scalar.');
++    assert(isfield(P,'ni')&&isstruct(P.ni)&&isscalar(P.ni), ...
++        'sar20Cmp:coverage','P.ni must be an explicit scalar coverage struct.');
++    % Reapply may add a missing label; check never fabricates one. A present
++    % malformed label is rejected even during derive, matching NI contracts.
++    if strcmp(mode,'derive')&&~isfield(P.ni,'comparator_noise')
++        P.ni.comparator_noise=false;
++    end
++    assert(isfield(P.ni,'comparator_noise')&&binary(P.ni.comparator_noise), ...
++        'sar20Cmp:coverage','P.ni.comparator_noise must be an explicit binary flag.');
++    fine=logical(c.enabled)&&c.sar1_noise_rms_v>0;
++    sar2=logical(c.enabled)&&c.sar2_noise_rms_v>0;
++    noise=fine||sar2;
++    % This candidate acts on five SAR1 fine comparisons and SAR2/TA only.
++    % The six-bit Flash preconverter never receives this noise model.
++    scope=struct('sar1_fine',logical(fine),'sar2_and_tracking',logical(sar2), ...
++        'flash_preconvert',false);
++    active=logical(c.enabled)&&(noise||c.sar1_offset_v~=0||c.sar2_offset_v~=0);
++    if strcmp(mode,'derive')
++        P.ni.comparator_noise=logical(noise);
++        P.ni.comparator_noise_scope=scope;
++    else
++        assert(logical(P.ni.comparator_noise)==logical(noise), ...
++            'sar20Cmp:coverage','Comparator noise coverage is stale; apply P.');
++        assert(isfield(P.ni,'comparator_noise_scope')&&isequaln(P.ni.comparator_noise_scope,scope), ...
++            'sar20Cmp:scope','Comparator channel/Flash coverage is stale; apply P.');
++    end
++    if active
++        assert(isfield(P,'backend')&&isstruct(P.backend)&&isfield(P.backend,'ni')&& ...
++            isstruct(P.backend.ni)&&isfield(P.backend.ni,'ra_noise')&& ...
++            binary(P.backend.ni.ra_noise), ...
++            'sar20Cmp:raNoiseBinding','Require the actual binary RA OU enable.');
++        for key={'training','cal_cfg','frozen','bank'}
++            name=key{1};
++            assert(isfield(P,name)&&isstruct(P.(name))&&isscalar(P.(name))&& ...
++                isfield(P.(name),'enabled')&&binary(P.(name).enabled), ...
++                'sar20Cmp:qualificationFlags','Require explicit %s.enabled.',name);
++            assert(~logical(P.(name).enabled),'sar20Cmp:unqualifiedCalibration', ...
++                'Nonzero comparator stress requires %s.enabled OFF.',name);
++        end
++        % The event-key index is meaningful only under the exact fixed calendar.
++        % Check the ACTUAL P at model setup, not only the values once prepared.
++        validate_active_calendar(P);
++        if P.backend.ni.ra_noise
++            validate_joint_ra_binding(P);
++        end
++    end
++end
++function validate_active_calendar(P)
++% No regeneration or mutation of P; rederive only for this comparison.
++    fields={'calendar','adc_groups','groups','transport','schedule', ...
++        'Ts_s','N','first_id','n_cycles','stop_time_s'};
++    assert(all(isfield(P,fields))&&isstruct(P.transport)&&isscalar(P.transport)&& ...
++        isfield(P.transport,'enabled')&&binary(P.transport.enabled)&& ...
++        isstruct(P.schedule)&&isscalar(P.schedule)&& ...
++        all(isfield(P.schedule,{'sample_period_s','n_cycles','groups','stop_time_s'}))&& ...
++        isfield(P.control,'sample_period_s'), ...
++        'sar20Cmp:calendarContract','Nonzero comparator stress requires complete saved calendar/schedule.');
++    % This overlay is limited to the single-bank M8 baseline. It does not
++    % qualify pool, runtime transport, or a separately prepared M1 profile.
++    assert(isfield(P,'front')&&isstruct(P.front)&&isscalar(P.front)&&isfield(P.front,'single_bank')&& ...
++        isequal(P.front.single_bank,true)&&isfield(P.control,'single_bank')&& ...
++        isequal(P.control.single_bank,true)&&~logical(P.transport.enabled), ...
++        'sar20Cmp:singleOnly','Active comparator profile requires the direct single-bank baseline.');
++    assert((~isfield(P.control,'tracking_count')||isequal(double(P.control.tracking_count),8))&& ...
++        isfield(P,'digital')&&isstruct(P.digital)&&isscalar(P.digital)&&isfield(P.digital,'tracking_mode')&& ...
++        strcmp(P.digital.tracking_mode,'finite_sinc2')&& ...
++        (~isfield(P.digital,'tracking_count')||isequal(double(P.digital.tracking_count),8)), ...
++        'sar20Cmp:m8Only','Active comparator profile supports only M8.');
++    assert(isstruct(P.calendar)&&all(isfield(P.calendar,{'type','index','bit'})), ...
++        'sar20Cmp:calendarContract','Actual M8 calendar is required.');
++    types={P.calendar.type};
++    ta=P.calendar(strcmp(types,'ta_compare'));fb=P.calendar(strcmp(types,'ta_feedback'));
++    assert(numel(ta)==8&&isequal([ta.index],0:7)&&isequal([ta.bit],7:-1:0)&& ...
++        numel(fb)==7&&isequal([fb.index],0:6)&&isequal([fb.bit],7:-1:1), ...
++        'sar20Cmp:m8Only','M8 requires eight comparisons and seven physical updates.');
++    for key={'Ts_s','N','first_id','n_cycles','stop_time_s'}
++        v=P.(key{1});
++        assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v), ...
++            'sar20Cmp:calendarContract','Invalid scalar schedule field %s.',key{1});
++    end
++    v=P.control.sample_period_s;
++    assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v)&& ...
++        abs(P.Ts_s-200e-9)<1e-18&&P.N>=1&&P.N==floor(P.N)&&P.first_id>=0&& ...
++        P.first_id==floor(P.first_id)&&P.n_cycles==floor(P.n_cycles)&& ...
++        v==P.Ts_s, ...
++        'sar20Cmp:calendarContract','Invalid period, sample counts or saved time metadata.');
++    on=logical(P.transport.enabled);
++    calendar=behavior_calendar(P.control);
++    adc=behavior_event_groups(calendar,false);
++    groups=behavior_event_groups(calendar,on);
++    assert(numel(adc)==48&&numel(groups)==48+double(on)&& ...
++        isequaln(P.calendar,calendar)&&isequaln(P.adc_groups,adc)&& ...
++        isequaln(P.groups,groups)&&isequaln(P.schedule.groups,groups), ...
++        'sar20Cmp:calendarContract','Actual event groups differ from the fixed canonical calendar.');
++    expectedCycles=P.first_id+P.N+2*double(on);
++    expectedStop=(expectedCycles-1)*P.Ts_s+groups(end).time_s;
++    assert(P.n_cycles==expectedCycles&&P.stop_time_s==expectedStop&& ...
++        isequaln(P.schedule.sample_period_s,P.Ts_s)&& ...
++        isequaln(P.schedule.n_cycles,P.n_cycles)&& ...
++        isequaln(P.schedule.stop_time_s,P.stop_time_s), ...
++        'sar20Cmp:calendarContract','Actual scheduler period, cycle count or stop differs.');
++end
++function validate_joint_ra_binding(P)
++% No state or profile mutation: verify the actual fixed-Ctop single-bank RA.
++% The full coverage check still belongs to behavior_ra_noise_guard/RaAdvance.
++    behavior_ra_noise_validate_backend(P.backend);
++    assert(isfield(P.backend,'dac_coupling')&&isstruct(P.backend.dac_coupling)&& ...
++        isscalar(P.backend.dac_coupling)&& ...
++        all(isfield(P.backend.dac_coupling,{'fixed_single_bank_ctop_f','tau_dac_s','public_plan','frontend_schema'}))&& ...
++        isfield(P,'front')&&isstruct(P.front)&&isscalar(P.front)&& ...
++        all(isfield(P.front,{'plan','tau_dac_s','schema','group_C_f','Cp_f'})), ...
++        'sar20Cmp:jointBinding','OU plus comparator requires prepared fixed-Ctop FE metadata.');
++    f=P.front;c=P.backend.dac_coupling;
++    assert(isequal(c.public_plan,f.plan)&&isequal(c.tau_dac_s,f.tau_dac_s)&& ...
++        isequal(c.frontend_schema,f.schema),'sar20Cmp:jointBinding', ...
++        'OU plus comparator frontend plan/tau/schema differs from the applied binding.');
++    behavior_single_guard(P,true);
++    ids=f.plan(1,:);
++    actual=sum(f.group_C_f(ids,:),'all')+sum(f.Cp_f(ids));
++    assert(isequal(typecast(actual,'uint64'),typecast(c.fixed_single_bank_ctop_f,'uint64')), ...
++        'sar20Cmp:jointBinding','OU plus comparator fixed Ctop differs from actual FE.');
++end
++function b=binary(v)
++    b=(isnumeric(v)||islogical(v))&&isreal(v)&&isscalar(v)&& ...
++        isfinite(double(v))&&ismember(double(v),[0 1]);
++end
+--- a/current/src/model/behavior_dac_coupling_configuration.m
++++ b/current/src/model/behavior_dac_coupling_configuration.m
+@@ -20,4 +20,17 @@
+     end
+     P.backend.dac_coupling=struct('enabled',logical(enabled),'tau_dac_s',double(t(:)), ...
+         'frontend_schema',f.schema,'public_plan',double(f.plan));
++    % New OU+AZ/DAC mode is limited to the actual fixed one-bank capacitance.
++    % This is immutable parameter metadata, not a second stored analog state.
++    hasComparator=isfield(P,'control')&&isstruct(P.control)&&isscalar(P.control)&& ...
++        isfield(P.control,'comparator');
++    if P.backend.ni.ra_noise&&(P.backend.ni.az||any(t(:)>0)||hasComparator)
++        assert(isfield(f,'single_bank')&&isequal(f.single_bank,true)&& ...
++            all(isfinite(t(:)))&&isfield(f,'group_C_f')&&isfield(f,'Cp_f')&& ...
++            size(f.plan,2)==8&&all(f.plan==repmat(1:8,size(f.plan,1),1),'all'), ...
++            'sar20RA:singleBankLinear','Combined OU requires fixed single-bank plan and finite DAC taus.');
++        ids=f.plan(1,:);
++        P.backend.dac_coupling.fixed_single_bank_ctop_f= ...
++            sum(f.group_C_f(ids,:),'all')+sum(f.Cp_f(ids));
++    end
+ end
+--- a/current/src/model/behavior_prepare_configuration.m
++++ b/current/src/model/behavior_prepare_configuration.m
+@@ -82,7 +82,8 @@
+     % Coverage summary: frontend Cp OR active fixed RA-output load; not a scan.
+     P.ni.parasitic=any(P.front.Cp_f>0)|| ...
+         (P.backend.ni.cinc_kick&&any(P.backend.ct.output_parasitic_half_f>0));
+-    P.ni.sample_ktc=P.front.ktc_enabled&&P.front.temperature_K>0;
++    P.ni.sample_ktc=P.front.ktc_enabled&&P.front.temperature_K>0&& ...
++        ~(P.front.single_bank&&isinf(P.front.tau_sample_s(1)));
+     P.ni.jitter=P.front.jitter.enabled&&(P.front.jitter.common_sigma_s>0|| ...
+         P.front.jitter.local_sigma_s>0||any(P.front.jitter.fixed_slice_skew_s~=0));
+     assert(size(P.front.plan,1)>=P.n_cycles+1,'adc:planLength', ...
+--- a/current/src/model/behavior_ra_noise_guard.m
++++ b/current/src/model/behavior_ra_noise_guard.m
+@@ -66,6 +66,18 @@
+                 'calConfig:zeroDitherQualification','Zero dither is ordinary-only; %s must be off.',name);
+         end
+     end
++    % Optional comparator configuration must be checked/derived on actual P.
++    hasComparator=isfield(P,'control')&&isstruct(P.control)&&isscalar(P.control)&& ...
++        isfield(P.control,'comparator');
++    if ~hasComparator&&isfield(P.ni,'comparator_noise')
++        assert(binary(P.ni.comparator_noise)&&~logical(P.ni.comparator_noise), ...
++            'sar20RA:comparatorNoise','Missing comparator model cannot claim noise coverage.');
++    end
++    if isfield(P,'control')&&isstruct(P.control)&&isscalar(P.control)
++        P=behavior_comparator_configuration(P,mode);
++    elseif isfield(P.ni,'comparator_noise_scope')
++        error('sar20Cmp:scope','Comparator coverage requires an explicit control structure.');
++    end
+     if ~on
+         if isfield(P.ni,'ra_noise')
+             assert(binary(P.ni.ra_noise)&&~logical(P.ni.ra_noise), ...
+@@ -76,10 +88,6 @@
+         if isfield(P.ni,'reference_recovery')
+             assert(binary(P.ni.reference_recovery)&&~logical(P.ni.reference_recovery), ...
+                 'sar20RA:referenceRecovery','Reference recovery is not implemented.');
+-        end
+-        if isfield(P.ni,'comparator_noise')
+-            assert(binary(P.ni.comparator_noise)&&~logical(P.ni.comparator_noise), ...
+-                'sar20RA:comparatorNoise','Comparator noise is not implemented.');
+         end
+         return;
+     end
+@@ -107,11 +115,10 @@
+         assert(binary(P.ni.reference_recovery)&&~logical(P.ni.reference_recovery), ...
+             'sar20RA:referenceRecovery','RA OU profile cannot claim reference-recovery coverage.');
+     end
+-    % No comparator-noise implementation is provided by this candidate;
+-    % reject both a false coverage claim and a nonzero coarse source.
+-    assert(isfield(P.ni,'comparator_noise')&&binary(P.ni.comparator_noise)&& ...
+-        ~logical(P.ni.comparator_noise), ...
+-        'sar20RA:comparatorNoise','RA OU profile requires comparator_noise coverage OFF.');
++    % The comparator configuration checked above owns fine/SAR2 coverage.
++    % The separate six-bit Flash coarse-noise source remains unimplemented.
++    assert(isfield(P.ni,'comparator_noise')&&binary(P.ni.comparator_noise), ...
++        'sar20RA:comparatorNoise','Explicit comparator noise coverage is required.');
+     assert(isfield(P,'control')&&isstruct(P.control)&&isscalar(P.control)&& ...
+         isfield(P.control,'sar1')&&isstruct(P.control.sar1)&&isscalar(P.control.sar1)&& ...
+         isfield(P.control.sar1,'coarse_noise_rms_v'), ...
+@@ -126,9 +133,23 @@
+         'sar20RA:unqualifiedCalibration','RA noise ON requires digital calibration mode OFF.');
+     assert(isfield(P,'front')&&isstruct(P.front)&&isscalar(P.front)&& ...
+         isfield(P.front,'tau_dac_s')&&isa(P.front.tau_dac_s,'double')&& ...
+-        isreal(P.front.tau_dac_s)&&numel(P.front.tau_dac_s)==18&& ...
+-        all(P.front.tau_dac_s(:)==0), ...
+-        'sar20RA:finiteDAC','RA noise ON requires actual front DAC taus all zero.');
++        isreal(P.front.tau_dac_s)&&isequal(size(P.front.tau_dac_s),[18 1])&& ...
++        all(isfinite(P.front.tau_dac_s(:))&P.front.tau_dac_s(:)>=0)&& ...
++        isequal(P.front.tau_dac_s,P.backend.dac_coupling.tau_dac_s), ...
++        'sar20RA:finiteDAC','RA noise ON needs finite front DAC taus equal to the prepared binding.');
++    if P.backend.ni.az||any(P.front.tau_dac_s(:)>0)|| ...
++            isfield(P.backend.dac_coupling,'fixed_single_bank_ctop_f')
++        f=P.front;c=P.backend.dac_coupling;
++        assert(isfield(f,'single_bank')&&isequal(f.single_bank,true)&& ...
++            isfield(f,'plan')&&isequal(c.public_plan,f.plan)&& ...
++            isfield(f,'schema')&&isequal(c.frontend_schema,f.schema)&& ...
++            isfield(f,'group_C_f')&&isfield(f,'Cp_f'), ...
++            'sar20RA:singleBankLinear','Joint OU metadata must remain bound to the actual single bank.');
++        ids=f.plan(1,:);
++        actualCtop=sum(f.group_C_f(ids,:),'all')+sum(f.Cp_f(ids));
++        assert(isequal(typecast(c.fixed_single_bank_ctop_f,'uint64'),typecast(actualCtop,'uint64')), ...
++            'sar20RA:singleBankCtop','The joint OU Ctop binding is stale; reapply the actual frontend.');
++    end
+ end
+ 
+ function validate_control_and_m8(P)
+@@ -211,17 +232,24 @@
+     t=P.front.tau_sample_s;
+     assert(isa(t,'double')&&isreal(t)&&numel(t)==18&&all(~isnan(t(:))&t(:)>=0), ...
+         'sar20RA:coverageSampling','Sampling tau must be 18 nonnegative values; Inf means hold.');
+-    finiteEffect=any(isfinite(t(:))&t(:)>0);
+-    P=coverage_flag(P,'sample_settling',finiteEffect,mode, ...
+-        'sar20RA:coverageSampling','sample_settling counts positive finite tau only; zero/Inf are not finite settling.');
+     ktc=P.front.ktc_enabled;
+     temp=P.front.temperature_K;
+     assert(binary(ktc)&&isa(temp,'double')&&isreal(temp)&&isscalar(temp)&&isfinite(temp)&&temp>=0, ...
+         'sar20RA:coverageKTC','Explicit kT/C flag and finite nonnegative temperature required.');
+-    assert(~logical(ktc)||all(t(:)==0),'sar20RA:coverageKTC', ...
+-        'Enabled kT/C requires fully settled sampling; finite-RC stochastic buildup is not implemented.');
+-    P=coverage_flag(P,'sample_ktc',logical(ktc)&&temp>0,mode, ...
+-        'sar20RA:coverageKTC','sample_ktc must match enabled positive-temperature sampling.');
++    single=isfield(P.front,'single_bank')&&isequal(P.front.single_bank,true);
++    % Only the first eight rows participate in the new single-bank kTC mode.
++    % Retain the historical OFF calculation to preserve legacy outputs.
++    tCoverage=t(:);if single&&logical(ktc),tCoverage=t(1:8);end
++    finiteEffect=any(isfinite(tCoverage)&tCoverage>0);
++    P=coverage_flag(P,'sample_settling',finiteEffect,mode, ...
++        'sar20RA:coverageSampling','sample_settling counts positive finite sampling tau only.');
++    ktcTauOK=all(t(:)==0)||(single&&all(t(1:8)==t(1)));
++    assert(~logical(ktc)||ktcTauOK,'sar20RA:coverageKTC', ...
++        'Finite-RC kT/C requires equal-tau segments in one single bank.');
++    % Inf retains the old B but produces no new Johnson innovation.
++    ktcActive=logical(ktc)&&temp>0&&~(single&&isinf(t(1)));
++    P=coverage_flag(P,'sample_ktc',ktcActive,mode, ...
++        'sar20RA:coverageKTC','sample_ktc must reflect enabled nonzero thermal innovation.');
+     j=P.front.jitter;
+     normalized=behavior_jitter_parameters(j);
+     assert(isequaln(j,normalized),'sar20RA:coverageJitter','Jitter settings must be normalized and complete.');
+--- a/current/src/physics/behavior_backend_stage.m
++++ b/current/src/physics/behavior_backend_stage.m
+@@ -31,8 +31,13 @@
+             if finiteCoupling&&s.command.ra_on&&~s.command.reset
+                 assert(nargin==6,'behaviorDAC:oldFrontRequired','Finite coupling requires the actual OLD FE state input.');
+                 forcing=behavior_dac_forcing_from_frontend(oldFrontend,s,eventTime,p);
+-                % ON is rejected by the backend finite-DAC guard.
+-                [s,y]=behavior_backend_step(s,s.command,dt,p,forcing);
++                if noiseInterval
++                    % Hash the original binary64 endpoint, never t0+dt.
++                    [s,y]=behavior_backend_step(s,s.command,dt,p,forcing,double(eventTime));
++                else
++                    % Preserve the legacy OFF/zero-duration call and arithmetic.
++                    [s,y]=behavior_backend_step(s,s.command,dt,p,forcing);
++                end
+             else
+                 if noiseInterval
+                     [s,y]=behavior_backend_step(s,s.command,dt,p,[],double(eventTime));
+--- a/current/src/physics/behavior_backend_step.m
++++ b/current/src/physics/behavior_backend_step.m
+@@ -7,7 +7,8 @@
+ %does NOT multiply Qres or DAC2 signs by polarity. AZ samples input-referred
+ %Vos in an isolated signal path, never Qres/ideal VX; deterministic source
+ %injection is latched once per write. This candidate adds explicit RA OU noise;
+-%AZ, reference, comparator and transistor-level noise remain unsupported.
++%stochastic AZ, reference and transistor-level noise remain unsupported here.
++%Comparator noise is separate in controller; Flash/invalid/late remain unsupported.
+ %First advance dt under s.command, then latch cmd; s=[] requires dt=0 for cold init.
+ %Outputs: next s; y.predicted before new cmd/y.actual after it; vx/vy/vtop are
+ %differential [V], CT nodes[2,2] [V] have P/N rows and A/B columns; kick [V].
+@@ -43,13 +44,34 @@
+     end
+     old=s.command;
+     useDac=nargin>=5&&~isempty(forcing);
+-    assert(~(p.ni.ra_noise&&useDac),'sar20RA:finiteDAC', ...
+-        'RA OU cannot consume finite-DAC forcing in this unqualified candidate.');
+     if useDac
+         assert(~cold&&old.ra_on&&~old.reset&&isequaln(cmd,old)&& ...
+             isinf(p.ra.slew_v_per_s)&&forcing.dt_s==dt&& ...
+             forcing.source_time_s==s.time_s&&forcing.sample_id==old.sample_id&&forcing.epoch==old.epoch, ...
+             'behaviorDAC:forcingInterval','Forcing must describe this retained linear-RA interval, not a new endpoint command.');
++        if p.ni.ra_noise
++            % In the real stage forcing comes exclusively from OLD FE state.
++            % Check its tags, starting charge, eight-segment binding and DAC
++            % poles even when a direct function caller supplies a structure.
++            assert(all(isfield(forcing,{'q0_c','delta_q_c','tau_dac_s','q_endpoint_c', ...
++                'physical_ids','polarity'})),'sar20RA:forcing','Incomplete joint forcing.');
++            binding=p.dac_coupling;
++            assert(binding.enabled&&any(binding.tau_dac_s>0)&& ...
++                old.sample_id>=0&&old.sample_id==floor(old.sample_id)&& ...
++                old.sample_id<size(binding.public_plan,1),'sar20RA:forcing','Invalid joint service ID.');
++            ids=binding.public_plan(old.sample_id+1,:).';
++            assert(isequal(ids,(1:8).')&&isequal(forcing.physical_ids(:),ids)&& ...
++                isequal(forcing.tau_dac_s(:),binding.tau_dac_s(ids))&& ...
++                isa(forcing.q0_c,'double')&&isreal(forcing.q0_c)&&isscalar(forcing.q0_c)&&isfinite(forcing.q0_c)&& ...
++                isequal(typecast(forcing.q0_c,'uint64'),typecast(old.qres_c,'uint64'))&& ...
++                isa(forcing.delta_q_c,'double')&&isreal(forcing.delta_q_c)&& ...
++                isequal(size(forcing.delta_q_c),[8 1])&& ...
++                all(isfinite(forcing.delta_q_c(:)))&& ...
++                all(forcing.delta_q_c(forcing.tau_dac_s==0)==0)&& ...
++                isa(forcing.q_endpoint_c,'double')&&isreal(forcing.q_endpoint_c)&&isscalar(forcing.q_endpoint_c)&& ...
++                isfinite(forcing.q_endpoint_c)&&isequal(forcing.polarity,1), ...
++                'sar20RA:forcing','Joint forcing differs from the fixed single-bank interval binding.');
++        end
+     end
+     % A cold AZ-on command is the first endpoint write edge, not a retained
+     % interval that was already writing. Cold init has dt0 and never advances a.
+@@ -396,6 +418,13 @@
+     end
+     if p.ni.ra_noise
+         behavior_ra_noise_validate_backend(p);
++        if p.ni.az||any(p.dac_coupling.tau_dac_s(:)>0)|| ...
++                isfield(p.dac_coupling,'fixed_single_bank_ctop_f')
++            assert(isa(c.ctop_f,'double')&& ...
++                isequal(typecast(c.ctop_f,'uint64'), ...
++                typecast(p.dac_coupling.fixed_single_bank_ctop_f,'uint64')), ...
++                'sar20RA:singleBankCtop','Joint OU requires the bound constant single-bank Ctop at every event.');
++        end
+         % Validate the actual command's tau even at cold init / dt=0.
+         checkNG=1+c.ctop_f/p.ra.Cf_f;
+         checkTau=checkNG/(2*pi*p.ra.UGB_hz);
+--- a/current/src/physics/behavior_ra_noise_validate_backend.m
++++ b/current/src/physics/behavior_ra_noise_validate_backend.m
+@@ -3,7 +3,8 @@
+ % OFF returns without changing any legacy parameter or numerical operation.
+ % This isolated candidate supports differential VX output noise only, with
+ % 0<=sigma_vx_rms<Inf [V], scalar uint64 seed, finite positive UGB/Cf, infinite
+-% slew, and zero DAC tau. AZ-on and finite-DAC combinations are not qualified.
++% slew. The new joint case is limited to fixed-Ctop single-bank, ordinary AZ
++% (or AZ off), and finite nonnegative DAC taus; it is a candidate, not signoff.
+     assert(isstruct(p)&&isscalar(p)&&isfield(p,'ni')&&isstruct(p.ni)&& ...
+         isscalar(p.ni)&&isfield(p.ni,'ra_noise')&&binary(p.ni.ra_noise), ...
+         'sar20RA:flag','Backend ra_noise must be one binary flag.');
+@@ -49,8 +50,11 @@
+     assert(isa(p.ra.slew_v_per_s,'double')&&isreal(p.ra.slew_v_per_s)&& ...
+         isscalar(p.ra.slew_v_per_s)&&isinf(p.ra.slew_v_per_s)&&p.ra.slew_v_per_s>0, ...
+         'sar20RA:finiteSlew','ON OU requires infinite slew; finite slew is unverified.');
+-    assert(isfield(p.ni,'az')&&binary(p.ni.az)&&~logical(p.ni.az), ...
+-        'sar20RA:az','ON OU requires AZ OFF in this unqualified candidate.');
++    assert(isfield(p,'az')&&isstruct(p.az)&&isscalar(p.az)&& ...
++        isfield(p.az,'mode')&&ischar(p.az.mode)&&isrow(p.az.mode)&& ...
++        ((~logical(p.ni.az)&&strcmp(p.az.mode,'off'))|| ...
++         (logical(p.ni.az)&&strcmp(p.az.mode,'ordinary'))), ...
++        'sar20RA:az','ON OU supports AZ off or ordinary only; chop/hold are not qualified.');
+     % Nominal is always used by observe; actual/replica are additionally used
+     % when backend cap mismatch selection is enabled. Verify real 7-cap arrays.
+     assert(isfield(p,'ct')&&isstruct(p.ct)&&isscalar(p.ct)&& ...
+@@ -76,8 +80,21 @@
+         isscalar(p.dac_coupling)&&isfield(p.dac_coupling,'tau_dac_s'), ...
+         'sar20RA:dacBinding','ON OU needs prepared DAC tau binding.');
+     t=p.dac_coupling.tau_dac_s;
+-    assert(isa(t,'double')&&isreal(t)&&numel(t)==18&&all(t(:)==0), ...
+-        'sar20RA:finiteDAC','ON OU requires all 18 DAC taus zero.');
++    assert(isa(t,'double')&&isreal(t)&&isequal(size(t),[18 1])&& ...
++        all(isfinite(t(:))&t(:)>=0), ...
++        'sar20RA:finiteDAC','ON OU accepts finite nonnegative DAC taus only; Inf hold is unqualified.');
++    if p.ni.az||any(t(:)>0)||isfield(p.dac_coupling,'fixed_single_bank_ctop_f')
++        c=p.dac_coupling;
++        assert(all(isfield(c,{'enabled','frontend_schema','public_plan','fixed_single_bank_ctop_f'}))&& ...
++            binary(c.enabled)&&(c.enabled||all(t(:)==0))&& ...
++            ischar(c.frontend_schema)&&strcmp(c.frontend_schema,'sar20-behavior-frontend/v1')&& ...
++            isa(c.public_plan,'double')&&isreal(c.public_plan)&&size(c.public_plan,1)>=2&& ...
++            size(c.public_plan,2)==8&&isequal(c.public_plan(1,:),1:8)&& ...
++            isa(c.fixed_single_bank_ctop_f,'double')&&isreal(c.fixed_single_bank_ctop_f)&& ...
++            isscalar(c.fixed_single_bank_ctop_f)&&isfinite(c.fixed_single_bank_ctop_f)&& ...
++            c.fixed_single_bank_ctop_f>0, ...
++            'sar20RA:singleBankLinear','Joint mode requires bound single-bank plan, finite taus and fixed Ctop.');
++    end
+ end
+ 
+ function validate_ct_network(net,name)

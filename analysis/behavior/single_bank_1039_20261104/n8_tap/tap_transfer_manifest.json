@@ -1,0 +1,82 @@
+[
+    {
+        "path":  "tap/binding_after.mat",
+        "sha256":  "45ee71cdb7f37fde14bafb112c7286a92b93632febda4ec28d288d20354f3fda",
+        "bytes":  119264
+    },
+    {
+        "path":  "tap/binding_before.mat",
+        "sha256":  "a6e3bf5180b0bb96331271252e82eb1ab5cc0d388a614688d5cebca77388c5cb",
+        "bytes":  119264
+    },
+    {
+        "path":  "tap/complete.json",
+        "sha256":  "a32b9dba96fd69032947b7b5c12d1a7ec4066d9f3bd191b901d9e30f4b7562e9",
+        "bytes":  2908
+    },
+    {
+        "path":  "tap/P_difference.json",
+        "sha256":  "491d967ae2b0b588d7c1a81e0a681e5003144ef6e47618e0cb40d8bdd5800a09",
+        "bytes":  231
+    },
+    {
+        "path":  "tap/P_used.mat",
+        "sha256":  "9ea34cfd83187fff350ea266dabd79d377e48d99c292bba3fbbb4a84445b07e6",
+        "bytes":  2937024
+    },
+    {
+        "path":  "tap/rng_before.mat",
+        "sha256":  "17a1390d6a40ba9cfaec76b1fcee930fc946c681a4d328f6407960b8199bf59e",
+        "bytes":  11712
+    },
+    {
+        "path":  "tap/simout.mat",
+        "sha256":  "df04c47373902db44a2082e5c5e6ade994cd9d4313735ff9a602c5b518cd4f28",
+        "bytes":  892610
+    },
+    {
+        "path":  "tap/sim_complete.json",
+        "sha256":  "243da6a52a31219cdfd638708fb356a2a509fc648747a507888eecdfbedc862c",
+        "bytes":  1993
+    },
+    {
+        "path":  "tap/started.json",
+        "sha256":  "d60d5f5ba1dc30e96fcdb24a1adfaba56038826c79790f0f2122a8d0a740e62f",
+        "bytes":  775
+    },
+    {
+        "path":  "tap/validation.json",
+        "sha256":  "589d3ebefab71495337d2a617e37542e6ad7c6b11d3ae22cc16c80a734cd263e",
+        "bytes":  1813
+    },
+    {
+        "path":  "tap/validation.mat",
+        "sha256":  "ef19b7c63123e9dfa1cc68086c6fcc78e72797917642aa97426375da743993aa",
+        "bytes":  19608
+    },
+    {
+        "path":  "tap_controller_status.json",
+        "sha256":  "40891242f2c03bee3b2ddbc0fcdd3f7d33c792c4e180442a356a492e6310296d",
+        "bytes":  146
+    },
+    {
+        "path":  "tap_stdout.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "tap_stderr.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "tap_task_before.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    },
+    {
+        "path":  "tap_task_after.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    }
+]

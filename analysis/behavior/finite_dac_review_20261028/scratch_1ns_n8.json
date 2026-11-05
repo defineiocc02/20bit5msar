@@ -1,0 +1,347 @@
+{
+  "schema": "sar20-finite-dac-as-run-readonly/v1",
+  "run": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/az_probe_20261027T023003Z/dac_finite_1ns",
+  "baseline": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/az_probe_20261027T022517Z/dac_off_tau0",
+  "expect": "finite",
+  "scratch": true,
+  "sha256": {
+    "parameters.mat": "1af8e40dff5281b8bd3c8d569549e06b6b34deea53043939326c20d8af41d33f",
+    "simout.mat": "3f1a7f28828d896d5abe520198f4ebe52c01d685741adaefa79045da76fa83d0",
+    "summary.json": "f58ea0c18014293f326593fe40a1b74d8ef98f0b089f869a2b6d1559f8ff9088",
+    "SarDac.slx": "6a042b8d2c8b3f210b666a9c54a731e6e76d8dd41537c9ecebbbb7f9b882a8ce"
+  },
+  "baseline_sha256": {
+    "parameters.mat": "4e2a281875fdf81cbeab54ca75a22cdaa24f4a2e7a5b03599cd57189026900d0",
+    "simout.mat": "064750a0b3a241e005e7af1f1cc6448041c38d9a3c69afc9e084b6aac57d5c68",
+    "summary.json": "9f6ff33caece343fc827edc5368c9e5f6c0a674e456bb850523f3a6b05ce380d",
+    "SarDac.slx": "a1515e2a0f0439c6f9a5541151224bd8f37b0d799c9025e38f2e02abc939da47"
+  },
+  "verifier_sha256": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467",
+  "source_execution_boundary": "Scratch archive: no production source.zip/manifest claim.",
+  "baseline_source_boundary": "Scratch archive: no production source.zip/manifest claim.",
+  "analytic_tolerance_used": [],
+  "analytic_pass_declared": false,
+  "scope": "Actual saved behavioral run only; no simulation, ADC physics, silicon or signoff claim.",
+  "as_run_graph": {
+    "old_FE_to_advance_input4": true,
+    "RaAdvance_dialog": "'advance',P.backend",
+    "checked_binding": false,
+    "actual_RaAdvance_pre_CINC_probe_edge": true,
+    "added_native_edges_vs_baseline": [],
+    "removed_native_edges_vs_baseline": [],
+    "unit_delay_trigger_inventory_unchanged": true,
+    "solver_config_P_inventory_equal": true
+  },
+  "saved_P_differences_vs_baseline": [
+    "P/backend/dac_coupling/enabled",
+    "P/backend/dac_coupling/tau_dac_s",
+    "P/front/tau_dac_s",
+    "P/ni/dac_settling"
+  ],
+  "configuration": {
+    "N": 8,
+    "first_id": 4,
+    "epoch": 1,
+    "transport": "on",
+    "dac_coupling": true,
+    "tau_s": [
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09,
+      1e-09
+    ],
+    "finite_dac_NI": true,
+    "probe_enabled": true,
+    "saved_calendar_token_budget": {
+      "d2_decide": 12,
+      "ta_compare": 8,
+      "ta_feedback": 7
+    }
+  },
+  "actual_records": [
+    {
+      "time_s": 1.338e-06,
+      "raw6": [
+        1900.0,
+        3283.0,
+        234.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code20": 963400.0
+    },
+    {
+      "time_s": 1.538e-06,
+      "raw6": [
+        1932.0,
+        2907.0,
+        85.0,
+        5.0,
+        1.0,
+        1.0
+      ],
+      "code20": 979654.0
+    },
+    {
+      "time_s": 1.738e-06,
+      "raw6": [
+        1942.0,
+        1683.0,
+        42.0,
+        6.0,
+        1.0,
+        1.0
+      ],
+      "code20": 989061.0
+    },
+    {
+      "time_s": 1.938e-06,
+      "raw6": [
+        1959.0,
+        3677.0,
+        85.0,
+        7.0,
+        1.0,
+        1.0
+      ],
+      "code20": 991470.0
+    },
+    {
+      "time_s": 2.1379999999999997e-06,
+      "raw6": [
+        1939.0,
+        3240.0,
+        85.0,
+        8.0,
+        1.0,
+        1.0
+      ],
+      "code20": 986858.0
+    },
+    {
+      "time_s": 2.3380000000000003e-06,
+      "raw6": [
+        1927.0,
+        3787.0,
+        42.0,
+        9.0,
+        1.0,
+        1.0
+      ],
+      "code20": 975285.0
+    },
+    {
+      "time_s": 2.538e-06,
+      "raw6": [
+        1878.0,
+        2771.0,
+        42.0,
+        10.0,
+        1.0,
+        1.0
+      ],
+      "code20": 956933.0
+    },
+    {
+      "time_s": 2.738e-06,
+      "raw6": [
+        1838.0,
+        2483.0,
+        234.0,
+        11.0,
+        1.0,
+        1.0
+      ],
+      "code20": 932072.0
+    }
+  ],
+  "unclassified_or_outside_ready_records": [
+    {
+      "time_s": 5.38e-07,
+      "raw6": [
+        1648.0,
+        2890.0,
+        213.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "code20": 836244.0
+    },
+    {
+      "time_s": 7.38e-07,
+      "raw6": [
+        1720.0,
+        1703.0,
+        42.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "code20": 876485.0
+    },
+    {
+      "time_s": 9.38e-07,
+      "raw6": [
+        1801.0,
+        3437.0,
+        170.0,
+        2.0,
+        1.0,
+        1.0
+      ],
+      "code20": 911423.0
+    },
+    {
+      "time_s": 1.138e-06,
+      "raw6": [
+        1846.0,
+        2765.0,
+        213.0,
+        3.0,
+        1.0,
+        1.0
+      ],
+      "code20": 940544.0
+    }
+  ],
+  "validity": {
+    "ready_rows_in_window": 8,
+    "valid_1": 8,
+    "valid_0": 0,
+    "valid_other_or_nonfinite": 0,
+    "timeout": "not separately observed",
+    "overrange": "not independently observed; controller invalid latch is not hardware overrange"
+  },
+  "actual_event_and_io": {
+    "48_groups_per_selected_id": true,
+    "actual_calendar_bits_match_saved_P": true,
+    "baseline_event_Time_Data_bits_match": true,
+    "ADC_and_RX_RAW6_same_id_epoch": true,
+    "ADC_ready_actual_raw_latch": true,
+    "RX_ready_actual_group49_id_plus_2": true,
+    "RX_actual_time_matches_saved_parent_slot": true,
+    "actual_valid_RX_frame_same_RAW6": true,
+    "nominal_RAW_decode_exact": true,
+    "comparator_counts": "saved 12/8/7 token budget; individual comparator counter history not independently logged",
+    "reset_state": "BackLog is pre-final-reset; committed reset state not asserted"
+  },
+  "interval": {
+    "status": "actual endpoint deltas reported; no numerical pass/tolerance declared",
+    "group_start": 12,
+    "group_end": 13,
+    "rows": [
+      {
+        "id": 4,
+        "t0_s": 8.3125e-07,
+        "t1_s": 8.4375e-07,
+        "Q0_C": -4.322554693387721e-14,
+        "Q1_C": 1.7884303813825164e-13,
+        "inferred_Qinf_C": 1.788438657139327e-13,
+        "actual_pre_VX_V": 0.19228125702556598,
+        "independent_expm_VX_V": 0.19228125702555077,
+        "raw_delta_V": 1.5210055437364645e-14
+      },
+      {
+        "id": 5,
+        "t0_s": 1.0312499999999999e-06,
+        "t1_s": 1.04375e-06,
+        "Q0_C": -7.097345691193172e-14,
+        "Q1_C": 1.5109512796057518e-13,
+        "inferred_Qinf_C": 1.5109595553625549e-13,
+        "actual_pre_VX_V": 0.1617273938289837,
+        "independent_expm_VX_V": 0.161727393828967,
+        "raw_delta_V": 1.6708856520608606e-14
+      },
+      {
+        "id": 6,
+        "t0_s": 1.2312499999999999e-06,
+        "t1_s": 1.24375e-06,
+        "Q0_C": -2.3810632184015267e-13,
+        "Q1_C": -2.6232823939507194e-14,
+        "inferred_Qinf_C": -2.6232034357521663e-14,
+        "actual_pre_VX_V": -0.033319160622775346,
+        "independent_expm_VX_V": -0.03331916062278536,
+        "raw_delta_V": 1.001282390333813e-14
+      },
+      {
+        "id": 7,
+        "t0_s": 1.4312499999999998e-06,
+        "t1_s": 1.44375e-06,
+        "Q0_C": 2.7382950476582046e-13,
+        "Q1_C": 2.684927327362561e-13,
+        "inferred_Qinf_C": 2.6849271284788357e-13,
+        "actual_pre_VX_V": 0.29575520951601164,
+        "independent_expm_VX_V": 0.29575520951599743,
+        "raw_delta_V": 1.4210854715202004e-14
+      },
+      {
+        "id": 8,
+        "t0_s": 1.6312499999999998e-06,
+        "t1_s": 1.64375e-06,
+        "Q0_C": 1.6357899586076946e-13,
+        "Q1_C": 1.5872172339234271e-13,
+        "inferred_Qinf_C": 1.5872170529090542e-13,
+        "actual_pre_VX_V": 0.1748737881868655,
+        "independent_expm_VX_V": 0.1748737881868704,
+        "raw_delta_V": -4.912736883966318e-15
+      },
+      {
+        "id": 9,
+        "t0_s": 1.8312499999999998e-06,
+        "t1_s": 1.84375e-06,
+        "Q0_C": 3.1614744628868875e-13,
+        "Q1_C": 3.1081067456356565e-13,
+        "inferred_Qinf_C": 3.1081065467519426e-13,
+        "actual_pre_VX_V": 0.34235247024928295,
+        "independent_expm_VX_V": 0.3423524702492701,
+        "raw_delta_V": 1.2823075934420558e-14
+      },
+      {
+        "id": 10,
+        "t0_s": 2.03125e-06,
+        "t1_s": 2.0437499999999997e-06,
+        "Q0_C": -1.0183378064650403e-13,
+        "Q1_C": 1.1003971823447972e-13,
+        "inferred_Qinf_C": 1.1004050781646889e-13,
+        "actual_pre_VX_V": 0.11673367522591144,
+        "independent_expm_VX_V": 0.11673367522589254,
+        "raw_delta_V": 1.890154699424329e-14
+      },
+      {
+        "id": 11,
+        "t0_s": 2.23125e-06,
+        "t1_s": 2.2437500000000003e-06,
+        "Q0_C": -1.6245722665098314e-13,
+        "Q1_C": 4.9394719762177206e-14,
+        "inferred_Qinf_C": 4.939550926384751e-14,
+        "actual_pre_VX_V": 0.0499565211638997,
+        "independent_expm_VX_V": 0.04995652116388403,
+        "raw_delta_V": 1.567496132892643e-14
+      }
+    ],
+    "max_abs_delta_V": 1.890154699424329e-14,
+    "boundary": "Qinf inferred from actual FE endpoints; coupling posterior, not an independent FE physics oracle"
+  },
+  "actual_code_fft": {
+    "status": "not run for N8 or Inf hold negative case"
+  },
+  "checks_passed": true,
+  "promotion_accepted": false,
+  "checks_boundary": "IO/timing and applicable bit gates only; analytic interval has no tolerance or pass verdict; this script does not grant promotion acceptance."
+}

@@ -1,0 +1,14 @@
+{
+    "model_sha256":  "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "satk_receipt_sha256":  "c0502a7519395b297aca991492826799778826e563a7e877a05b993ca5bcfd49",
+    "prepared_P_sha256":  "dfa91dda5a686563b9b0fe17c5e8d906d94e6ff9168251bc27a0830099947e4f",
+    "utc":  "2026-11-04T11:54:04.1760830Z",
+    "job":  "D:\\Temp\\SAR20SBGRAPH_20261104",
+    "source_model_sha256":  "d4e7fc99ab040857e535df07d73447e71c65e7d51dcadf7b17f4bad88594a6a0",
+    "gui_pid":  27628,
+    "protected_task_sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+    "gui_start_utc":  "2026-10-28T08:05:54.8833190Z",
+    "manifest_sha256":  "2cbdffe537b694cef6107ce893ea8bca7f8ef5d95f6ff7d993f020150c6dd514",
+    "status":  "SATK_BIAS_SAVED_PENDING_INDEPENDENT_GRAPH_AUDIT",
+    "model_path":  "D:\\Temp\\SAR20SBGRAPH_20261104\\bias_scratch\\current\\models\\SarAdc.slx"
+}

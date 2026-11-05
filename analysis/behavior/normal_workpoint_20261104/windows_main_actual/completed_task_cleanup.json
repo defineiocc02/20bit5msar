@@ -1,0 +1,11 @@
+{
+    "status":  "completed_owned_tasks_removed",
+    "original_GUI_pid":  27628,
+    "removed":  [
+                    "SAR20_NORMAL_GATES_20261104_NX",
+                    "SAR20_NORMAL_RECOVER_20261104_NX",
+                    "SAR20_NORMAL_PROFILE_SW_20261104_NX",
+                    "SAR20_NORMAL_MAIN_20261104_NX"
+                ],
+    "source_and_raw_deleted":  false
+}

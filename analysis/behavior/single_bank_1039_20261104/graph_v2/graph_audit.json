@@ -1,0 +1,98 @@
+{
+  "schema": "sar20-single-bank-independent-graph-audit/v1",
+  "status": "saved_scope_graph_checks_passed",
+  "modified_model_checked": true,
+  "baseline_sha256": "d4e7fc99ab040857e535df07d73447e71c65e7d51dcadf7b17f4bad88594a6a0",
+  "modified_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "satk_receipt_sha256": "c0502a7519395b297aca991492826799778826e563a7e877a05b993ca5bcfd49",
+  "prepared_P_file_sha256": "dfa91dda5a686563b9b0fe17c5e8d906d94e6ff9168251bc27a0830099947e4f",
+  "reviewed_utc": "2026-11-04T11:57:32.894430+00:00",
+  "scope_comparison": {
+    "old_bias": "-17*DecodeP.vref_v/1024",
+    "new_bias": "DecodeP.d1_bias_v",
+    "bias_sid": "185",
+    "block_count_baseline": 290,
+    "block_count_modified": 290,
+    "edge_count_baseline": 361,
+    "edge_count_modified": 361,
+    "edge_additions": 0,
+    "edge_removals": 0,
+    "changed_block_sids": [
+      "185"
+    ],
+    "all_other_system_xml_bytes_identical": true,
+    "system_123_xml_is_exact_bias_text_replacement": true,
+    "solver_config_P_entries_equal": true,
+    "block_position_or_zorder_changed": false
+  },
+  "zip_member_inventory": {
+    "baseline_count": 38,
+    "modified_count": 38,
+    "names_equal": true,
+    "changed_members": [
+      "metadata/coreProperties.xml",
+      "simulink/blockdiagram.xml",
+      "simulink/modelDictionary.xml",
+      "simulink/modelWorkspace.mxarray",
+      "simulink/systems/system_123.xml",
+      "simulink/windowsInfo.xml"
+    ],
+    "changed_member_sha256_and_size": {
+      "metadata/coreProperties.xml": {
+        "baseline_sha256": "aa01f6a58e3bb44ce72349db5500872d89ba3adf80adf91d2ceaaa5947802d0c",
+        "modified_sha256": "d899ab420dec486f98f029f05ab2d8d56b2318173553890c37c35d40845bc9af",
+        "baseline_bytes": 737,
+        "modified_bytes": 737
+      },
+      "simulink/blockdiagram.xml": {
+        "baseline_sha256": "dc5d4186fb3275b24013544c5e53fdf81e5fd45fbe5434665212f1318a4639f3",
+        "modified_sha256": "0d07eb160e5e49245137697df5232bc76de5df0ccf8934d96ee0f043c6c020ed",
+        "baseline_bytes": 2125,
+        "modified_bytes": 2125
+      },
+      "simulink/modelDictionary.xml": {
+        "baseline_sha256": "5fde8e70f8a42a29a27e59374ea857f3041b4c2f4f6c3e703d23ca4a25abbd17",
+        "modified_sha256": "66bebbef1de3759dc8f0d9b251aa827648dea061bf8bfe1f41367ee67c324992",
+        "baseline_bytes": 313,
+        "modified_bytes": 313
+      },
+      "simulink/modelWorkspace.mxarray": {
+        "baseline_sha256": "32c2607af2589cf23e390b49c6f9756cf19ce4c58cd40b9f2ffe24b50fb3ac4b",
+        "modified_sha256": "906e194325faf75f868cd52d37d63a071a15991ddd7776e4c3eff6052c93188f",
+        "baseline_bytes": 224264,
+        "modified_bytes": 225016
+      },
+      "simulink/systems/system_123.xml": {
+        "baseline_sha256": "428059a5922a8675069ad6b8daa35748b5262dcf7d1f3e607d11bfb6e1ab15ad",
+        "modified_sha256": "f52ec8ab3b1072ba240b306d91c8c903c18b27253b8030e3131a1f25546b012d",
+        "baseline_bytes": 26792,
+        "modified_bytes": 26786
+      },
+      "simulink/windowsInfo.xml": {
+        "baseline_sha256": "f28a3fe8ba4a5f6a1245c7f24fb0fa1a3d4dc3e4e6f7e64b4a70b8ce4c0049d4",
+        "modified_sha256": "06372bb91adf49b14e51f0a1ec50105b4a1e5e87b13dda80d53a074349ce50af",
+        "baseline_bytes": 4317,
+        "modified_bytes": 4317
+      }
+    }
+  },
+  "nonblock_changes": {
+    "metadata/coreProperties.xml": "modified timestamp and revision 1.387 to 1.388",
+    "simulink/blockdiagram.xml": "ModelVersionFormat autoincrement revision 1.387 to 1.388",
+    "simulink/modelDictionary.xml": "System and Interface UUID changed; downstream reference semantics not independently evaluated",
+    "simulink/windowsInfo.xml": "Property Inspector and Referenced Files window entries reordered with ObjectID reassignment; UI metadata, no block position changes observed",
+    "simulink/modelWorkspace.mxarray": "bytes changed, as expected from reported prepared P/DecodeP; opaque bytes were not independently decoded or compared here"
+  },
+  "workspace_evidence": {
+    "satk_receipt_reports_prepared_P_file_sha256": "dfa91dda5a686563b9b0fe17c5e8d906d94e6ff9168251bc27a0830099947e4f",
+    "independently_decoded": false,
+    "required_runtime_gate": "load private model and compare saved ModelWorkspace P and DecodeP against the actual prepared P by full field/type/shape/value bits before simulation"
+  },
+  "limits": [
+    "No MATLAB or Simulink execution during this review.",
+    "Saved SLX graph audit is not proof of numeric execution, 12/8/7 actual feedback, paper reproduction, PDK or silicon.",
+    "Workspace and dictionary UUID changes must not be summarized as a single-change SLX.",
+    "The frozen prepared P uses 5 MS/s, guard=0 and ideal sampling; no ADI/10MS/s enabled."
+  ],
+  "independent_reader_sha256": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+}

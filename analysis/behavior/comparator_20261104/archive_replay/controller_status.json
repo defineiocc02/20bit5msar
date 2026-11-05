@@ -1,0 +1,12 @@
+{
+    "exit_code":  0,
+    "stage":  "complete",
+    "fixture_sha_verified":  true,
+    "error":  "",
+    "manifest_sha256":  "9a09207d4f8f247f0fca022706ec61a4a44f4a9a18c6225b59ee77f8a444e27a",
+    "status":  "passed",
+    "free_kb":  21225576,
+    "original_task_unchanged":  true,
+    "gui_preserved":  true,
+    "gui_pid":  27628
+}

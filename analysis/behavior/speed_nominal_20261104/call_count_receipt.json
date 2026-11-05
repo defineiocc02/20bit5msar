@@ -1,0 +1,1 @@
+{"status":"passed","mode":"call_count","pid":40588,"report":{"status":"passed","columns":["cap_mismatch","baseline_calls","candidate_calls"],"rows":[[0,6,5],[1,6,6]],"scope":"instrumented direct kernel; not a timing result"},"rng_unchanged":true}

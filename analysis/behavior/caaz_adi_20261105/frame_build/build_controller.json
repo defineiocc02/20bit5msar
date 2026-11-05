@@ -1,0 +1,7 @@
+{
+    "status":  "failed",
+    "launch_pid":  22772,
+    "error":  "System.Management.Automation.RuntimeException: Builder exit 1\n在 \u003cScriptBlock\u003e、D:\\Temp\\SAR20PKU_FRAME_20261105\\controller.ps1 中: 第 25 行",
+    "simulation_run":  false,
+    "exit_code":  1
+}

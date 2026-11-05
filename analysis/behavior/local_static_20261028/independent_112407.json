@@ -1,0 +1,474 @@
+{
+  "schema": "sar20-zero-112407-independent/v1",
+  "verifier_sha256": "40ee5c67b41af84bee926b2ec2ff1fbefb6154fe8c7bd0befedca9aa2714fa63",
+  "result_receipt_sha256": "6329d10755872f51f97268cc80bdfb8c9652fe703fbdcd45f1afee034ea048be",
+  "old_zero_simout_sha256": "f2fbddd8b8f6571277e164a21665c5a32808bf78039686fc587cbb3e06c9678a",
+  "negative_signals_sha256": "735364a0e1d7fd9a6166bf6915d8ee446cef0bfa567621f3e66fc57057bf6983",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "source_files_verified": 87,
+  "reconstructed_zero_vs_negative_P_differences": [
+    "P/front/input/offset_v",
+    "P/input/offset_v",
+    "P/xFE0"
+  ],
+  "zero_P_provenance": "Pzero_reconstructed.mat is reconstructed later from pinned factory source; the 110315 zero preflight did not separately save its actual P.",
+  "zero_preflight_full_vs_capped_nine_logs_bit_equal": true,
+  "five_48_event_ids_and_times_equal": true,
+  "zero": {
+    "raw6": [
+      1040.0,
+      2374.0,
+      42.0,
+      4.0,
+      1.0,
+      1.0
+    ],
+    "code20": 524289,
+    "all_ready_raw6": [
+      [
+        1040.0,
+        2374.0,
+        42.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      [
+        1040.0,
+        2374.0,
+        42.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1040.0,
+        2374.0,
+        42.0,
+        2.0,
+        1.0,
+        1.0
+      ],
+      [
+        1040.0,
+        2374.0,
+        42.0,
+        3.0,
+        1.0,
+        1.0
+      ],
+      [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "all_ready_code20": [
+      524289.0,
+      524289.0,
+      524289.0,
+      524289.0,
+      524289.0
+    ],
+    "actual_ready_s": 8.8625e-07,
+    "held_input_v": 0.0
+  },
+  "negative": {
+    "raw6": [
+      1039.0,
+      3417.0,
+      42.0,
+      4.0,
+      1.0,
+      1.0
+    ],
+    "code20": 524285,
+    "all_ready_raw6": [
+      [
+        1039.0,
+        3417.0,
+        42.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      [
+        1039.0,
+        3417.0,
+        42.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1039.0,
+        3417.0,
+        42.0,
+        2.0,
+        1.0,
+        1.0
+      ],
+      [
+        1039.0,
+        3417.0,
+        42.0,
+        3.0,
+        1.0,
+        1.0
+      ],
+      [
+        1039.0,
+        3417.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "all_ready_code20": [
+      524285.0,
+      524285.0,
+      524285.0,
+      524285.0,
+      524285.0
+    ],
+    "actual_ready_s": 8.8625e-07,
+    "held_input_v": -3.0517578125e-08
+  },
+  "first_changed_fields": {
+    "front_log": {
+      "held_V": {
+        "group": 1,
+        "relative_ns": 0.0,
+        "zero": 0.0,
+        "negative": -3.0517578125e-08,
+        "negative_minus_zero": -3.0517578125e-08,
+        "changed_rows": 48
+      },
+      "vres_V": {
+        "group": 2,
+        "relative_ns": 12.499999999999986,
+        "zero": 0.0,
+        "negative": -3.051757812841722e-08,
+        "negative_minus_zero": -3.051757812841722e-08,
+        "changed_rows": 47
+      },
+      "qres_C": {
+        "group": 2,
+        "relative_ns": 12.499999999999986,
+        "zero": 0.0,
+        "negative": -8.285984849412681e-19,
+        "negative_minus_zero": -8.285984849412681e-19,
+        "changed_rows": 47
+      },
+      "vtop_equiv_V": {
+        "group": 2,
+        "relative_ns": 12.499999999999986,
+        "zero": -0.0,
+        "negative": 2.9592803033616715e-08,
+        "negative_minus_zero": 2.9592803033616715e-08,
+        "changed_rows": 47
+      }
+    },
+    "back_log": {
+      "VX_V": {
+        "group": 1,
+        "relative_ns": 0.0,
+        "zero": 0.0,
+        "negative": 4.308938031385229e-49,
+        "negative_minus_zero": 4.308938031385229e-49,
+        "changed_rows": 48
+      },
+      "VY_V": {
+        "group": 13,
+        "relative_ns": 43.75000000000001,
+        "zero": 0.0,
+        "negative": 0.18625024694449563,
+        "negative_minus_zero": 0.18625024694449563,
+        "changed_rows": 36
+      },
+      "Vtop_V": {
+        "group": 1,
+        "relative_ns": 0.0,
+        "zero": 0.0,
+        "negative": 1.2673347151133023e-50,
+        "negative_minus_zero": 1.2673347151133023e-50,
+        "changed_rows": 48
+      },
+      "target_V": {
+        "group": 2,
+        "relative_ns": 12.499999999999986,
+        "zero": 0.0,
+        "negative": -9.765625001093518e-07,
+        "negative_minus_zero": -9.765625001093518e-07,
+        "changed_rows": 47
+      },
+      "CTreset_V": {
+        "group": 1,
+        "relative_ns": 0.0,
+        "zero": 0.0,
+        "negative": 4.308938031385229e-49,
+        "negative_minus_zero": 4.308938031385229e-49,
+        "changed_rows": 48
+      }
+    },
+    "control_log": {
+      "trial": {
+        "group": 4,
+        "relative_ns": 16.24999999999995,
+        "zero": 1048.0,
+        "negative": 1032.0,
+        "negative_minus_zero": -16.0,
+        "changed_rows": 45
+      },
+      "D1": {
+        "group": 3,
+        "relative_ns": 14.999999999999963,
+        "zero": 1040.0,
+        "negative": 1024.0,
+        "negative_minus_zero": -16.0,
+        "changed_rows": 46
+      },
+      "D2": {
+        "group": 16,
+        "relative_ns": 47.49999999999997,
+        "zero": 2048.0,
+        "negative": 3072.0,
+        "negative_minus_zero": 1024.0,
+        "changed_rows": 33
+      }
+    },
+    "raw_log": {
+      "D1": {
+        "group": 3,
+        "relative_ns": 14.999999999999963,
+        "zero": 1040.0,
+        "negative": 1024.0,
+        "negative_minus_zero": -16.0,
+        "changed_rows": 46
+      },
+      "D2": {
+        "group": 16,
+        "relative_ns": 47.49999999999997,
+        "zero": 2048.0,
+        "negative": 3072.0,
+        "negative_minus_zero": 1024.0,
+        "changed_rows": 33
+      }
+    },
+    "code_log": {
+      "intermediate_or_final_code": {
+        "group": 3,
+        "relative_ns": 14.999999999999963,
+        "zero": 522246.0,
+        "negative": 505862.0,
+        "negative_minus_zero": -16384.0,
+        "changed_rows": 44
+      }
+    }
+  },
+  "event_kinds": [
+    [
+      "cnv"
+    ],
+    [
+      "coarse_latch",
+      "fine_prepare"
+    ],
+    [
+      "fine_decide"
+    ],
+    [
+      "fine_feedback",
+      "fine_prepare"
+    ],
+    [
+      "fine_decide"
+    ],
+    [
+      "fine_feedback",
+      "fine_prepare"
+    ],
+    [
+      "fine_decide"
+    ],
+    [
+      "fine_feedback",
+      "fine_prepare"
+    ],
+    [
+      "fine_decide"
+    ],
+    [
+      "fine_feedback",
+      "fine_prepare"
+    ],
+    [
+      "fine_decide"
+    ],
+    [
+      "fine_feedback",
+      "ra_start"
+    ],
+    [
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_prepare"
+    ],
+    [
+      "d2_decide"
+    ],
+    [
+      "d2_feedback",
+      "d2_end"
+    ],
+    [
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "ta_feedback",
+      "ta_compare"
+    ],
+    [
+      "tracking_end"
+    ],
+    [
+      "raw_latch"
+    ],
+    [
+      "release"
+    ]
+  ],
+  "final_nominal_contributions_from_public_RAW": {
+    "zero": {
+      "D1_v": 0.0,
+      "D2_v": 1.562500000000175e-05,
+      "DT_v": -1.171875e-05,
+      "total_v": 3.906250000001748e-06,
+      "code20": 524289
+    },
+    "negative": {
+      "D1_v": -0.008000000000000007,
+      "D2_v": 0.007984375000000002,
+      "DT_v": -1.171875e-05,
+      "total_v": -2.7343750000005218e-05,
+      "code20": 524285
+    }
+  },
+  "contribution_scope": "Independently reconstructed from final public RAW and saved P.digital; individual D1/D2/DT logger histories were capped and not saved at these points.",
+  "decision_scope": "First fine compare outcome inferred from D1 bit write; separate Compare1 output not logged.",
+  "window": {
+    "low_v": -3.0517578125e-08,
+    "high_v": 0,
+    "span_V": 3.0517578125e-08,
+    "endpoint_codes": [
+      524285,
+      524289
+    ],
+    "scope": "Only two actual endpoints; intermediate codes/thresholds and missing codes unmeasured."
+  },
+  "no_new_DNL_or_INL": true,
+  "simulation_scope": "Original zero actual preflight and one new negative simulation; individual full simout at the new point is not retained, only nine saved timeseries and native status."
+}

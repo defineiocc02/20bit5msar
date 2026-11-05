@@ -1,0 +1,104 @@
+{
+  "width": 2015,
+  "time_reference": "event_log",
+  "sources": [
+    {
+      "mux_port": 1,
+      "source": "blk_116.y1",
+      "name": "event2",
+      "first": 1,
+      "last": 2,
+      "width": 2
+    },
+    {
+      "mux_port": 2,
+      "source": "blk_148.y1",
+      "name": "FE_old",
+      "first": 3,
+      "last": 355,
+      "width": 353
+    },
+    {
+      "mux_port": 3,
+      "source": "blk_232.y3",
+      "name": "FE_sample_next",
+      "first": 356,
+      "last": 708,
+      "width": 353
+    },
+    {
+      "mux_port": 4,
+      "source": "blk_244.y1",
+      "name": "FE_due_next",
+      "first": 709,
+      "last": 1061,
+      "width": 353
+    },
+    {
+      "mux_port": 5,
+      "source": "blk_261.y3",
+      "name": "FE_trial_next",
+      "first": 1062,
+      "last": 1414,
+      "width": 353
+    },
+    {
+      "mux_port": 6,
+      "source": "blk_297.y3",
+      "name": "FE_final_next",
+      "first": 1415,
+      "last": 1767,
+      "width": 353
+    },
+    {
+      "mux_port": 7,
+      "source": "blk_149.y1",
+      "name": "RA_old",
+      "first": 1768,
+      "last": 1815,
+      "width": 48
+    },
+    {
+      "mux_port": 8,
+      "source": "blk_232.y1",
+      "name": "RA_advance_next",
+      "first": 1816,
+      "last": 1863,
+      "width": 48
+    },
+    {
+      "mux_port": 9,
+      "source": "blk_244.y4",
+      "name": "RA_due_next",
+      "first": 1864,
+      "last": 1911,
+      "width": 48
+    },
+    {
+      "mux_port": 10,
+      "source": "blk_261.y4",
+      "name": "RA_trial_next",
+      "first": 1912,
+      "last": 1959,
+      "width": 48
+    },
+    {
+      "mux_port": 11,
+      "source": "blk_297.y1",
+      "name": "RA_final_next",
+      "first": 1960,
+      "last": 2007,
+      "width": 48
+    },
+    {
+      "mux_port": 12,
+      "source": "blk_232.y4",
+      "name": "RA_advance_obs",
+      "first": 2008,
+      "last": 2015,
+      "width": 8
+    }
+  ],
+  "observation": "old is UnitDelay output; next is stage next, not independent committed state",
+  "VY": "RA_advance_obs is an existing stage output, not independently measured analog waveform"
+}

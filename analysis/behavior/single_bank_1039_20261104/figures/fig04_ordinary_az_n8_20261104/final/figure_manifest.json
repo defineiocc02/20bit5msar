@@ -1,0 +1,127 @@
+{
+  "schema": "sar20-ordinary-az-figure-n8/v1",
+  "input_sha256": {
+    "zeroVos_simout": "d472f01a80a832cd483783e4ceca0640a692e0094d1a64f5400411e5201a934c",
+    "offset_only_simout": "1ddd21542873c8e249c3e101e57d1b9f7193ed5975f9729415111df11a0f16d6",
+    "ordinary_az_simout": "4d015eb879c0666d1697d2fa77e79c94cf644b701ddd47c19fc3bf45756f6964",
+    "zeroVos_P": "236ddfb427dfc07e7f7e27dd58746deb30946891717d255b53789aa8127a1e9f",
+    "offset_only_P": "b5ff829b18c1a7658218295c44858eeafdafd00e5cfefa726d4742aa671e9cbe",
+    "ordinary_az_P": "c7580a4ba9d7bfef97726164b64a4080964c7f99e542e55960192d20c2172c5c",
+    "model": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "source_zip": "09e6c7c82635d8f6bf1cf4cc8e86f0ec42036524bfe6518dfcb37ea05fb06eb7",
+    "reader": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467",
+    "slide_pdf": "3b85bbbfc0fd4cbf071187bbccc8b3487c640094ddccb867a7f1dd2c7bdefce0"
+  },
+  "parameters": {
+    "write_tau_s": 1e-09,
+    "hold_leak_tau_s": "Inf",
+    "injected_Vos_v": 0.001,
+    "A0": 10000.0,
+    "nominal_G": 32.0,
+    "fsr_diff_v": 8.192,
+    "sample_period_s": 2e-07
+  },
+  "actual_group_tokens": {
+    "d2_decide": 12,
+    "ta_compare": 8,
+    "ta_feedback": 7
+  },
+  "actual_event_rows_per_run": 576,
+  "sample0_write_duration_ns": 31.250000000000004,
+  "sample0_final_next_at_ra_start_v": 0.0009999999999999731,
+  "actual_zeroVos_code20": [
+    836246,
+    876484,
+    911425,
+    940546,
+    963402,
+    979656,
+    989060,
+    991475,
+    986860,
+    975290,
+    956935,
+    932071
+  ],
+  "actual_offset_AZ_off_code20": [
+    836379,
+    876617,
+    911558,
+    940679,
+    963536,
+    979790,
+    989193,
+    991609,
+    986993,
+    975423,
+    957069,
+    932204
+  ],
+  "actual_offset_AZ_on_code20": [
+    836246,
+    876484,
+    911425,
+    940546,
+    963402,
+    979656,
+    989060,
+    991475,
+    986860,
+    975290,
+    956935,
+    932071
+  ],
+  "actual_AZ_off_minus_zeroVos_lsb": [
+    133,
+    133,
+    133,
+    133,
+    134,
+    134,
+    133,
+    134,
+    133,
+    133,
+    134,
+    133
+  ],
+  "actual_AZ_on_minus_zeroVos_lsb": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "theory": {
+    "NG_from_saved_backend": 33.46875,
+    "F_A0_over_A0_plus_NG": 0.9966642892070601,
+    "G_nominal": 32.0,
+    "predicted_offset_lsb": 133.4284317175952,
+    "scope": "model linear predictor, not observed data"
+  },
+  "scope": [
+    "AZ values are RaReset final-next prior to UnitDelay, not independent committed-state history.",
+    "RA VX is actual pre-decision event endpoint; lines only guide the eye.",
+    "12 records include 4 warmup and 8 selected; 1mV is a model test assumption.",
+    "Ordinary AZ/RA behavior is not a 3-stage ringamp transistor, power or chip measurement."
+  ],
+  "plot_script_sha256": "5bbf5a2229297684fc556e3d6b9a01b6b85fbd4c199e7a4b90da0c267748ade5",
+  "style_helper_sha256": "48191dd8e35c255d0b605acffa429b4a2a2b29160fa222d0c11142edb8bfda33",
+  "outputs_sha256": {
+    "az_final_next_id0.csv": "e45754e92126bd9ef475e0581fe93ebca0e66481be81c956f3e8d9e2010a1ba6",
+    "code_difference_12.csv": "53115aa8a061c43b7a59157e098f3b6399972800b3fb6cf5ddd4b4b2a09587e6",
+    "fig04_ordinary_az_n8.pdf": "057184ed6d6fbb9fc2b4805691a6e33b59fce06c2a64a621d68631a921d3186b",
+    "fig04_ordinary_az_n8.png": "6e92eaf4110360a610434213c019e3f12db48180aca3e60eda984583648059a6",
+    "fig04_ordinary_az_n8.svg": "35be6495488f5063d329e6c942846e0d23330693aea07bccf1aa9b8d8c18bf53",
+    "ra_output_id5.csv": "5a6dbf86ac799cfc879e86606f5dd9e8f7b52ea3ffc4c676c0107accaf13ab7f"
+  },
+  "delivery_directory": ".",
+  "README_sha256": "30597ad4b441a1900a5c4df3d32cda418f7fe0b21d51e30e7953c7c1a715c605"
+}

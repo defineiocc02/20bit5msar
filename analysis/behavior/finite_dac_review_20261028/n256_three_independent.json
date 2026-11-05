@@ -1,0 +1,300 @@
+{
+  "schema": "sar20-three-actual-n256-independent-raw-fft/v1",
+  "verifier_sha256": "ddd5c8c2ac8be55e7dd2178ac9aeb625ce51c4ade1d0f4ee50ea71e48acf32e3",
+  "cases": [
+    {
+      "label": "off",
+      "run": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/behavior_59a2b584-fa64-48ef-8608-80ce71bbf10b",
+      "sha256": {
+        "parameters.mat": "2ad634ebbbecf8f205a3d0895fa12aa88ecb927c3e6d8a8c306724af3ee138f9",
+        "simout.mat": "8b8981eae9d82c40351e284f5eec7d0878e7194930f1f08da769843ec43b9f11",
+        "summary.json": "94a5fff110aeb7050409c60c89ec3acb41ced1bb8a4c37552b19a7591839a724",
+        "SarAdc.slx": "d4394ceac369f1b9796a7e2f75c3b536a8bdac080cd7e75d575a74bf6cd58cdd",
+        "source.zip": "185d17288a3e3f3ed2da1a2b8e627153f49eb650aa06e7b08f312de4cd1183ce",
+        "source_manifest.json": "008981fd68c840e2a52c25bdea7609f7684220d8a0ccbd00e0f29fbce4b8710e",
+        "selected.mat": "8a64995a96b622bc73ba836fada81aee2a0f4adf43f6ca7e5e11276a7b4c020d",
+        "spectrum.mat": "d396a8cedb121da3b51d4660c5975e8d46e7a781e4fdaea95aad045997873edc"
+      },
+      "source_execution_boundary": "Saved source ZIP and manifest match; no independent MATLAB per-function which/call trace is implied.",
+      "input_hashes": {
+        "selected_raw6_256x6_binary64_le_rowmajor": "f98a61008c91f333d832b65105ffcf53a5e76e835ff3a9102c0e7e913a0ecf7a",
+        "selected_code20_256_binary64_le": "77c54a7514e312e3c14d58c0836589d8378e551783e999423ead5e3e64a16ae1",
+        "actual_RX_ready_time_256_binary64_le": "3eacad99d8bd13151911eae2be0465641d5b095b79c9430ef83ce3a70cdc0d58",
+        "FFT_input_code_fs_fin_fsr_sha256": "0ac6adcebbb1c6aec3aba01b1a361c873d1db6cac525740aa269bb5f42820523",
+        "definition": "SHA-256 of ASCII SAR20-FFT-input/v1 + NUL, then 256 code20 binary64 little-endian, then Fs/Fin/FSR as three binary64 little-endian values"
+      },
+      "settings": {
+        "N": 256,
+        "first_id": 4,
+        "epoch": 1,
+        "fs_hz": 5000000.0,
+        "fin_hz": 97656.25,
+        "fsr_diff_v": 8.192,
+        "input_amplitude_v": 3.650563842595822,
+        "input_phase_rad": 0.731,
+        "input_offset_v": 0.0,
+        "tau_uniform_s": 0.0,
+        "dac_coupling_enabled": false,
+        "finite_dac_ni": false,
+        "parasitic_ni": true,
+        "az": false,
+        "ktc": false,
+        "mismatch": false,
+        "dem": false,
+        "dither": false,
+        "jitter": false,
+        "training": false,
+        "frozen": false,
+        "calibration_mode": "off",
+        "RA_A0": 10000.0,
+        "RA_UGB_hz": 1200000000.0
+      },
+      "selected_and_actual_RX_RAW_code_time_bits_equal": true,
+      "same_run_ADC_to_RX_RAW6_by_ID_epoch_bits_equal": true,
+      "ADC_raw_latch_and_RX_group49_N_minus_2_actual_timing_checked": true,
+      "valid_records": 256,
+      "summary_and_spectrum_mat_five_metrics_bit_equal": true,
+      "fundamental_bin": 5,
+      "harmonic_bins_H2_to_H10": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "independent_fft": {
+        "snr_db": 110.1500956744492,
+        "sndr_db": 109.82713604386538,
+        "sfdr_db": 123.08859210626109,
+        "thd_db": -121.27397592876177,
+        "enob": 17.95135150230322
+      },
+      "saved_matlab_fft": {
+        "snr_db": 110.15009567437517,
+        "sndr_db": 109.82713604379477,
+        "sfdr_db": 123.08859210623758,
+        "thd_db": -121.27397592873541,
+        "enob": 17.95135150229149
+      },
+      "numpy_minus_saved_matlab": {
+        "snr_db": 7.403855306620244e-11,
+        "sndr_db": 7.061373707983876e-11,
+        "sfdr_db": 2.3504753698944114e-11,
+        "thd_db": -2.6361135496699717e-11,
+        "enob": 1.1727507853720454e-11
+      },
+      "max_abs_numpy_minus_saved_power_v2": 1.7763568394002505e-15,
+      "spectrum_identity_boundary": "spectrum.mat SHA is measured on readback; summary has no recorded spectrum.mat SHA. FFT input binding is verified by the independently read actual code, metadata and recomputed spectrum, not by an as-run input hash stored in spectrum.mat.",
+      "fft_scope": "256 actual valid codes; coherent rectangular single-sided FFT, H2-H10, no ENOB amplitude correction; no INL/DNL/PVT or silicon claim."
+    },
+    {
+      "label": "0.1ns",
+      "run": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/behavior_96ebc182-7e6f-43d4-8eea-0d81960769b3",
+      "sha256": {
+        "parameters.mat": "90de07b7e9838ea4ea56a057244ab38a67655ed5a41b648e5101d3f9639c47c0",
+        "simout.mat": "348fc3c75bca7c3c4e63037281a35f3d63089300538f53fd243bc0c60170e496",
+        "summary.json": "ce61b2e4a13d2b5d2639213cc0f6ef6de35ce9cf5858abe996d06f5eaa961d5f",
+        "SarAdc.slx": "b8b441d081de5d13a9974973fb9ba7853b6529180bc80ba1df358e173769c7c5",
+        "source.zip": "c63398e84bf8145ea0322b9a98c85e234e38b0022b575ad3dc73cd74a16d83e9",
+        "source_manifest.json": "008981fd68c840e2a52c25bdea7609f7684220d8a0ccbd00e0f29fbce4b8710e",
+        "selected.mat": "47b69d1d0236738901014f214c23c0c333f8837e961a77324e364640d269c025",
+        "spectrum.mat": "a6b07ac90e7dba0de4a84322fbca2ee67f9d47425970df9a5e63bad34626e34e"
+      },
+      "source_execution_boundary": "Saved source ZIP and manifest match; no independent MATLAB per-function which/call trace is implied.",
+      "input_hashes": {
+        "selected_raw6_256x6_binary64_le_rowmajor": "06b2b3be026f4cb2fb8ec5422ccc0996a64a5a6e89ccbba91b75d4e2badeb4f2",
+        "selected_code20_256_binary64_le": "36d30e407ed2a6b708c409bab8f10823daf362d27b5d9995c2293f1a21a568ae",
+        "actual_RX_ready_time_256_binary64_le": "3eacad99d8bd13151911eae2be0465641d5b095b79c9430ef83ce3a70cdc0d58",
+        "FFT_input_code_fs_fin_fsr_sha256": "81863d8b76f4ad22f1447ad9e6c7e1aedd8bbae2e8c885590b41d4255fb29df7",
+        "definition": "SHA-256 of ASCII SAR20-FFT-input/v1 + NUL, then 256 code20 binary64 little-endian, then Fs/Fin/FSR as three binary64 little-endian values"
+      },
+      "settings": {
+        "N": 256,
+        "first_id": 4,
+        "epoch": 1,
+        "fs_hz": 5000000.0,
+        "fin_hz": 97656.25,
+        "fsr_diff_v": 8.192,
+        "input_amplitude_v": 3.650563842595822,
+        "input_phase_rad": 0.731,
+        "input_offset_v": 0.0,
+        "tau_uniform_s": 1e-10,
+        "dac_coupling_enabled": true,
+        "finite_dac_ni": true,
+        "parasitic_ni": true,
+        "az": false,
+        "ktc": false,
+        "mismatch": false,
+        "dem": false,
+        "dither": false,
+        "jitter": false,
+        "training": false,
+        "frozen": false,
+        "calibration_mode": "off",
+        "RA_A0": 10000.0,
+        "RA_UGB_hz": 1200000000.0
+      },
+      "selected_and_actual_RX_RAW_code_time_bits_equal": true,
+      "same_run_ADC_to_RX_RAW6_by_ID_epoch_bits_equal": true,
+      "ADC_raw_latch_and_RX_group49_N_minus_2_actual_timing_checked": true,
+      "valid_records": 256,
+      "summary_and_spectrum_mat_five_metrics_bit_equal": true,
+      "fundamental_bin": 5,
+      "harmonic_bins_H2_to_H10": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "independent_fft": {
+        "snr_db": 110.17725946649983,
+        "sndr_db": 109.84492300954088,
+        "sfdr_db": 122.88802758933724,
+        "thd_db": -121.17209490228107,
+        "enob": 17.954306147764267
+      },
+      "saved_matlab_fft": {
+        "snr_db": 110.17725946648176,
+        "sndr_db": 109.8449230095205,
+        "sfdr_db": 122.88802758933934,
+        "thd_db": -121.17209490223188,
+        "enob": 17.95430614776088
+      },
+      "numpy_minus_saved_matlab": {
+        "snr_db": 1.807620719773695e-11,
+        "sndr_db": 2.0378365661599673e-11,
+        "sfdr_db": -2.1032064978498966e-12,
+        "thd_db": -4.919797902402934e-11,
+        "enob": 3.3857361358968774e-12
+      },
+      "max_abs_numpy_minus_saved_power_v2": 3.552713678800501e-15,
+      "spectrum_identity_boundary": "spectrum.mat SHA is measured on readback; summary has no recorded spectrum.mat SHA. FFT input binding is verified by the independently read actual code, metadata and recomputed spectrum, not by an as-run input hash stored in spectrum.mat.",
+      "fft_scope": "256 actual valid codes; coherent rectangular single-sided FFT, H2-H10, no ENOB amplitude correction; no INL/DNL/PVT or silicon claim."
+    },
+    {
+      "label": "1ns",
+      "run": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/behavior_47c22b65-fdff-402b-b315-ea0599df6891",
+      "sha256": {
+        "parameters.mat": "aba69d20e43b7cb02dcd784cc4ce28e94cc3243d2b7722bf9a5394432fd603b0",
+        "simout.mat": "71f55b65bff8ec64b9ad9d73fb1f3c56fae47270fef6f6a30afe668b5351ddea",
+        "summary.json": "5ef29ec528156083f37a370ea24ee726376b5e2911fb7af2b2879a99f96406dc",
+        "SarAdc.slx": "72f06700677f047740e47d4b5369b9bb7fcffaa98d0eff543ae70faf3186886d",
+        "source.zip": "c63d9bd357fe360eceaf07a70bc5b67e1f1d0a3141a1083087c7f7e1491eac52",
+        "source_manifest.json": "008981fd68c840e2a52c25bdea7609f7684220d8a0ccbd00e0f29fbce4b8710e",
+        "selected.mat": "98c5f5d750cc8b9cbd76b410357160329c0dd082cbe67f75acf3f2d94c6aad13",
+        "spectrum.mat": "d61418354c09a3f309201c681025fc888c2ba1df51137c9b2fc300bea5f03a5f"
+      },
+      "source_execution_boundary": "Saved source ZIP and manifest match; no independent MATLAB per-function which/call trace is implied.",
+      "input_hashes": {
+        "selected_raw6_256x6_binary64_le_rowmajor": "815fef4ab623104f4638b05c88dbe78d854b643e316a3b06ccd7797a3b00e235",
+        "selected_code20_256_binary64_le": "4e29f2e8c72f39d3ba142091a4b3268122ee05307367885a98f14955fbfb8969",
+        "actual_RX_ready_time_256_binary64_le": "3eacad99d8bd13151911eae2be0465641d5b095b79c9430ef83ce3a70cdc0d58",
+        "FFT_input_code_fs_fin_fsr_sha256": "fba08c739cd0d82322b3de40bd209f95a50bf9727535908d476c334c7195105d",
+        "definition": "SHA-256 of ASCII SAR20-FFT-input/v1 + NUL, then 256 code20 binary64 little-endian, then Fs/Fin/FSR as three binary64 little-endian values"
+      },
+      "settings": {
+        "N": 256,
+        "first_id": 4,
+        "epoch": 1,
+        "fs_hz": 5000000.0,
+        "fin_hz": 97656.25,
+        "fsr_diff_v": 8.192,
+        "input_amplitude_v": 3.650563842595822,
+        "input_phase_rad": 0.731,
+        "input_offset_v": 0.0,
+        "tau_uniform_s": 1e-09,
+        "dac_coupling_enabled": true,
+        "finite_dac_ni": true,
+        "parasitic_ni": true,
+        "az": false,
+        "ktc": false,
+        "mismatch": false,
+        "dem": false,
+        "dither": false,
+        "jitter": false,
+        "training": false,
+        "frozen": false,
+        "calibration_mode": "off",
+        "RA_A0": 10000.0,
+        "RA_UGB_hz": 1200000000.0
+      },
+      "selected_and_actual_RX_RAW_code_time_bits_equal": true,
+      "same_run_ADC_to_RX_RAW6_by_ID_epoch_bits_equal": true,
+      "ADC_raw_latch_and_RX_group49_N_minus_2_actual_timing_checked": true,
+      "valid_records": 256,
+      "summary_and_spectrum_mat_five_metrics_bit_equal": true,
+      "fundamental_bin": 5,
+      "harmonic_bins_H2_to_H10": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "independent_fft": {
+        "snr_db": 107.24936869246955,
+        "sndr_db": 106.91336724697155,
+        "sfdr_db": 118.61480776157977,
+        "thd_db": -118.19471653385878,
+        "enob": 17.46733675198863
+      },
+      "saved_matlab_fft": {
+        "snr_db": 107.24936869245516,
+        "sndr_db": 106.91336724695776,
+        "sfdr_db": 118.6148077615603,
+        "thd_db": -118.19471653385249,
+        "enob": 17.46733675198634
+      },
+      "numpy_minus_saved_matlab": {
+        "snr_db": 1.4381384971784428e-11,
+        "sndr_db": 1.3784529073745944e-11,
+        "sfdr_db": 1.9468870959826745e-11,
+        "thd_db": -6.295408638834488e-12,
+        "enob": 2.2879476091475226e-12
+      },
+      "max_abs_numpy_minus_saved_power_v2": 3.195833299231363e-22,
+      "spectrum_identity_boundary": "spectrum.mat SHA is measured on readback; summary has no recorded spectrum.mat SHA. FFT input binding is verified by the independently read actual code, metadata and recomputed spectrum, not by an as-run input hash stored in spectrum.mat.",
+      "fft_scope": "256 actual valid codes; coherent rectangular single-sided FFT, H2-H10, no ENOB amplitude correction; no INL/DNL/PVT or silicon claim."
+    }
+  ],
+  "full_saved_P_differences_vs_off": {
+    "0.1ns": [
+      "P/backend/dac_coupling/enabled",
+      "P/backend/dac_coupling/tau_dac_s",
+      "P/front/tau_dac_s",
+      "P/ni/dac_settling"
+    ],
+    "1ns": [
+      "P/backend/dac_coupling/enabled",
+      "P/backend/dac_coupling/tau_dac_s",
+      "P/front/tau_dac_s",
+      "P/ni/dac_settling"
+    ]
+  },
+  "same_source_manifest_file_hashes_all_three": true,
+  "same_native_edges_and_solver_all_three": true,
+  "changed_code_vs_off": {
+    "0.1ns": {
+      "changed_count": 1,
+      "max_abs_counts": 1.0
+    },
+    "1ns": {
+      "changed_count": 57,
+      "max_abs_counts": 5.0
+    }
+  },
+  "scope": "Read-only posterior check of three saved public N256 runs; no ADC simulation, no new tolerance, no altered current or inferred continuous/internal FE state."
+}

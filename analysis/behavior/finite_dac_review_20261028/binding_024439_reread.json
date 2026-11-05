@@ -1,0 +1,49 @@
+{
+  "schema": "sar20-independent-binding-archive/v1",
+  "run": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/az_probe_20261027T024439Z",
+  "input_sha256": {
+    "binding/before.slx": "bdf5e9b5a6c5a3579291f45d1b5358eca1881fe867d6ea8675f4fa80d0001e92",
+    "binding/after.slx": "eb0d68158888f48f7cffacdefb07145322a215efc14b1e70ea9db4ca1c27067e",
+    "binding/binding_source.m": "0647b6d33e3b536fb98d07b727936dce43ed2fb685d2a2a5ffa7f978534ca997",
+    "receipt.json": "db8131ee376ebd001a7fd8274a38808cdc15f2347ad8e49b39d41e013e488eab"
+  },
+  "block_count_before_after": [
+    277,
+    277
+  ],
+  "native_edge_count_before_after": [
+    340,
+    340
+  ],
+  "saved_graph_edges_equal": true,
+  "saved_config_equal": true,
+  "only_block_parameter_difference": [
+    [
+      "321",
+      "Parameters",
+      "'advance',P.backend",
+      "'advance',behavior_dac_backend_parameters(P)"
+    ]
+  ],
+  "old_FE_to_RA_input4_in_after": true,
+  "five_023003_and_024439_saved_candidate_source_hashes": {
+    "src/physics/behavior_backend_sfun.m": "4fbc0e7b356aea1b90d0c54348982c2a44fef05117650d4c0e05793aa8ecf807",
+    "src/physics/behavior_backend_stage.m": "8178bb79505b90308e1c84a48e73e3d42bd4e104304f2dfd08a59a48d65d99a4",
+    "src/physics/behavior_backend_step.m": "cd35673a0b3fcee4c695a55e0058794988ca83b04c4578c415857a6f4416283a",
+    "src/physics/behavior_dac_forcing_from_frontend.m": "744429184147aa6ea4fb9d0643832c0e7434cde2636a38fdb213a752a9fe8e2f",
+    "src/model/behavior_dac_coupling_configuration.m": "eba9ab946d6a607f4ed88c22a5388a8a0c23125aa99b0d5e19a9c8cf0db01b9d"
+  },
+  "helper_source_matches_binding_snapshot": true,
+  "receipt_native_compile_and_rejection_identifiers": {
+    "valid_binding_compile": true,
+    "stale_binding_pure": "behaviorDAC:staleBinding",
+    "stale_binding_native": "Simulink:Parameters:InvParamSetting",
+    "training_rejected": "calConfig:finiteDACCalibration",
+    "registered_bench_rejected": "calBench:dacRegistered",
+    "frozen_rejected": "calConfig:finiteDACCalibration"
+  },
+  "ADC_simulation_run": false,
+  "main_integrated": false,
+  "boundary": "Compile and rejection identifiers are copied from native receipt, not re-executed; no per-function MATLAB call trace was independently saved.",
+  "verifier_sha256": "373a5f4bb25396fc7309015e121abe1bcb8fc5a02c963908b12c9cb370e2f5ff"
+}

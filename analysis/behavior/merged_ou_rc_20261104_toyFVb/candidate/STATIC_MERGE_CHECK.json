@@ -1,0 +1,30 @@
+{
+  "status": "PASS_static_source_merge_only",
+  "m_files_compared": 109,
+  "ou_only": [
+    "current/src/model/behavior_dac_coupling_configuration.m",
+    "current/src/physics/behavior_backend_stage.m",
+    "current/src/physics/behavior_backend_step.m",
+    "current/src/physics/behavior_ra_noise_validate_backend.m"
+  ],
+  "rc_only": [
+    "current/src/frontend/behavior_frontend_init.m",
+    "current/src/frontend/behavior_frontend_step.m",
+    "current/src/frontend/behavior_jitter_prepare_front.m",
+    "current/src/model/behavior_applied_note.m",
+    "current/src/model/behavior_prepare_configuration.m"
+  ],
+  "merged_overlap": [
+    "config/adc_parameters.m",
+    "current/src/model/behavior_ra_noise_guard.m"
+  ],
+  "guard0_inf_signal_hold_fix": true,
+  "unchanged_state_pack_frontend_backend_sfunctions": true,
+  "control_sfun_matches_archived_cmp_candidate": true,
+  "noise_key_helpers_unchanged": true,
+  "control_sfun_outputs_body_unchanged": true,
+  "comparator_sources_match_archived_cmp_candidate": true,
+  "graph_static_due_ct_vy_decide_wiring": true,
+  "graph_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "matlab_or_simulink_run_for_merged_candidate": false
+}

@@ -1,0 +1,98 @@
+﻿[
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\binding_before.mat",
+        "Hash":  "6446EF08478269E25421BFE8FE9B8B71F0294C295DC9933BB593468AB402E20C"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\binding_after.mat",
+        "Hash":  "EF8849E86A442658CD5B5A9CA3596CD2DA04B3EFA2B2E40154234D1BA23D7689"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\P_fixture.mat",
+        "Hash":  "7BA67F7F579B159BE309565547DC5EFDC2B9376857EB7B10E251A008C2B944E0"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\P_used.mat",
+        "Hash":  "81DAE4A99E40400E0504363298AE51778B71CE4BFEFC6D9AB8799466FEE5BD0D"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\rng_before.mat",
+        "Hash":  "9EF8309D290019A2B0E8D3F4623D75E04BF61733FFD113BEEB8F71EA430C4B2B"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\simout.mat",
+        "Hash":  "59EC9170881DA0A471B4AF7AF1533C1F4FB74FFF5CAA27185E16C1B54227AE91"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2\\complete.json",
+        "Hash":  "850E81C85DE245C42191656696FC30FA7DC2070E5D69357CBFEB930BB53704C7"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\binding_before.mat",
+        "Hash":  "713A2EFE88F1DF66FEBFD98392E902FCED71B5BAEAEDCF1C51D4F5D599555DDC"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\binding_after.mat",
+        "Hash":  "342527289FF26E5DE3D2B3AED66F0F4732E503F672D9594EA077ACB228EF321D"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\P_fixture.mat",
+        "Hash":  "7BA67F7F579B159BE309565547DC5EFDC2B9376857EB7B10E251A008C2B944E0"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\P_used.mat",
+        "Hash":  "081DE70D3CCC5E019494B69A86BF44C7E24477723A6B790F26976E38F19A1B56"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\rng_before.mat",
+        "Hash":  "AA5847F44F2BE01CC48BAB2E1E3B197BECCB8AF6C3E74EFF94B5665B82F84BD7"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\simout.mat",
+        "Hash":  "D72025A3053186018284977E76E2266509D5FA6AB8B8EEC933549B5851F4EC23"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2\\complete.json",
+        "Hash":  "FF28C60207197703517488ADAB0C857F9E20CE7BE1481D60094232D15591FA0A"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\i2_compare\\comparison.json",
+        "Hash":  "F27E3A78E197D9AA5297C12D7E9106E7379F18AB0780DCE7CA0E3BBCD1097752"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\controller_status.json",
+        "Hash":  "91EDB8B25FCA1B9CF40D7CBFB661DF6A23732BBF508AFE478BC0C09C22321366"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2_wrapper.json",
+        "Hash":  "6E1A1FFA3C31FE71CBF966571008E3C802C3DDF32B6AD91AE97860CB76C3DDF4"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2_wrapper.json",
+        "Hash":  "FB28A7A0715883B97B3632EE6DBF4B2798C516BAE3EA7C5DCAE2CDCA75E4BF68"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2_stdout.log",
+        "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2_stdout.log",
+        "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\baseline_i2_stderr.log",
+        "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\candidate_i2_stderr.log",
+        "Hash":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\existing_task_before.xml",
+        "Hash":  "92611B338DDCCB0E7F039C636F30394CB57AC3FA436EABFAB83EDDAB4F81F09F"
+    },
+    {
+        "Path":  "D:\\Temp\\SAR20I1N8_YJqAKM\\existing_task_after.xml",
+        "Hash":  "92611B338DDCCB0E7F039C636F30394CB57AC3FA436EABFAB83EDDAB4F81F09F"
+    }
+]

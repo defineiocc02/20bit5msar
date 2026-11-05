@@ -1,0 +1,169 @@
+function [P,report,normalNominal]=normal_10v_configuration(Pbase)
+%NORMAL_10V_CONFIGURATION Isolated 10 V differential FSR design hypothesis.
+% Input Pbase is an already prepared single-bank 8.192 V P. Output P is
+% re-prepared. The function reads the bundled nominal.mat; it writes no files,
+% RNG, model workspace or calibration, and derives no weights from actual C.
+%
+% Explicit assumption: paper/slides 5 Vp means differential input amplitude
+% corresponding to +/-5 V input, i.e. 10 V peak-to-peak differential FSR.
+% Set front reference to 5 V, SAR coarse delta to 10/1024 V, digital D1
+% reference to 5 V, 20-bit code scale to 10 V, and -1 dBFS peak input.
+% CT nominal CINC/reference/capacitors remain the old engineering design.
+% Existing physical NI and ordinary AZ settings in Pbase are retained.
+%
+% normalNominal is an in-memory companion to nominal.mat. Its D1 codebook
+% describes the 1039Cu single-bank model (not the old 1056Cu pool). It is
+% never saved automatically or installed into the existing factory.
+    assert(isstruct(Pbase)&&isscalar(Pbase)&&isfield(Pbase,'front')&& ...
+        isfield(Pbase.front,'single_bank')&&Pbase.front.single_bank&& ...
+        isfield(Pbase,'digital')&&isfield(Pbase,'control')&&isfield(Pbase,'backend'), ...
+        'normal10v:input','Use the complete prepared single-bank baseline P.');
+    assert(Pbase.Ts_s==200e-9&&Pbase.front.vref_v==4.096&& ...
+        Pbase.digital.vref_v==4.096&&Pbase.digital.fsr_diff_v==8.192&& ...
+        Pbase.fsr_diff_v==8.192&&Pbase.control.sar1.delta_v==8.192/1024, ...
+        'normal10v:baseline','Input must be the explicit 5 MS/s, 8.192 V baseline.');
+    assert(~Pbase.front.dem_enabled&&~Pbase.front.dither_enabled&& ...
+        ~Pbase.transport.enabled&&~Pbase.training.enabled&&~Pbase.cal_cfg.enabled&& ...
+        ~Pbase.frozen.enabled&&~Pbase.bank.enabled&& ...
+        strcmp(Pbase.digital.calibration_mode,'off')&&Pbase.digital.d1_bias_v==0, ...
+        'normal10v:mode','Require single bank, no ADI, transport, or legacy calibration.');
+    assert(~Pbase.training.reference.enabled,'normal10v:reference', ...
+        'An active 8.192 V training reference cannot be carried into the new range.');
+    nominalPath=fullfile(fileparts(mfilename('fullpath')),'nominal.mat');
+    assert(strcmp(sha(nominalPath), ...
+        'd8b38e49bbb5ecc244c652bb736121bd34271d3fabb5649577344279f2716299'), ...
+        'normal10v:nominalIdentity','The archived nominal design identity differs.');
+    original=load(nominalPath,'nominal');
+    assert(isfield(original,'nominal')&&isstruct(original.nominal), ...
+        'normal10v:nominal','Explicit archived nominal design is required.');
+    normalNominal=original.nominal;
+    n=normalNominal.dac2.net_nominal;
+    ref2=double(normalNominal.dac2.reference_v);
+    assert(isequaln(Pbase.backend.ct.net_nominal,n)&& ...
+        Pbase.backend.ct.reference_v==ref2, ...
+        'normal10v:ctNominal','The input P must use the supplied unchanged nominal CT design.');
+    assert(isequal(size(n.cinc_f),[2 1])&& ...
+        all(n.cinc_f==900e-15)&&ref2==1.8&& ...
+        isequal(n.main_f(1,:),n.main_f(2,:))&& ...
+        isequal(n.sub_f(1,:),n.sub_f(2,:))&& ...
+        isequal(n.track_f(1,:),n.track_f(2,:))&& ...
+        n.bridge_f(1)==n.bridge_f(2)&&n.dummy_f(1)==n.dummy_f(2)&& ...
+        n.parasitic_sub_f(1)==n.parasitic_sub_f(2)&& ...
+        numel(n.main_f(1,:))+numel(n.sub_f(1,:))==12&& ...
+        numel(n.track_f(1,:))==7&&all(n.track_f(1,:)==n.track_f(1,1)), ...
+        'normal10v:ctGeometry','Expected explicit symmetric nominal 900 fF CT network.');
+    subTotal=sum(n.sub_f(1,:))+sum(n.track_f(1,:))+n.dummy_f(1)+ ...
+        n.bridge_f(1)+n.parasitic_sub_f(1);
+    beta=n.bridge_f(1)/subTotal;
+    calculatedWeights=(2*ref2/n.cinc_f(1))* ...
+        [n.main_f(1,:) beta*n.sub_f(1,:)];
+    calculatedOffset=-sum(calculatedWeights)/2;
+    calculatedTA=(ref2/n.cinc_f(1))*beta*n.track_f(1,1);
+    savedWeights=double(normalNominal.fpga.weights.d2(:));
+    savedOffset=double(normalNominal.fpga.weights.d2_offset_v);
+    savedTA=double(normalNominal.fpga.tracking_scale_v);
+    tol=1e-12;
+    assert(numel(savedWeights)==12&& ...
+        max(abs(calculatedWeights(:)-savedWeights))<=tol&& ...
+        abs(calculatedOffset-savedOffset)<=tol&&abs(calculatedTA-savedTA)<=tol, ...
+        'normal10v:ctWeights','Saved public D2/TA coefficients must match nominal CT geometry.');
+    assert(isequaln(Pbase.digital.d2_weights_ra_v(:),savedWeights)&& ...
+        Pbase.digital.d2_offset_ra_v==savedOffset&& ...
+        Pbase.digital.tracking_step_ra_v==savedTA&&Pbase.digital.ra_gain==32, ...
+        'normal10v:decodeWeights','Input P must retain its nominal public D2/TA coefficients.');
+    % Convert the public design copy, including fields not consumed by the
+    % present model, so no companion nominal record claims the old range.
+    vref1=5;fsr=10;delta=fsr/1024;
+    amplitude=(fsr/2)*10^(-1/20);
+    assert(isfield(Pbase,'input')&&isfield(Pbase.input,'offset_v')&& ...
+        isnumeric(Pbase.input.offset_v)&&isreal(Pbase.input.offset_v)&& ...
+        isscalar(Pbase.input.offset_v)&&isfinite(Pbase.input.offset_v)&& ...
+        abs(Pbase.input.offset_v)+amplitude<fsr/2, ...
+        'normal10v:inputRange','The inherited input offset would push the -1 dBFS sine outside +/-5 V.');
+    normalNominal.sar1.delta_v=delta;
+    normalNominal.fpga.fsr_diff_v=fsr;
+    normalNominal.fpga.delta1_v=delta;
+    normalNominal.fpga.weights.d1=vref1*[1 1/2 1/4 1/8 1/16 1/32 ...
+        1/32 1/64 1/128 1/256 1/512];
+    normalNominal.fpga.weights.d1_offset_v=-1039*vref1/1024;
+    normalNominal.fpga.dither_enable=false;
+    % Original CT coefficients remain exactly as stored; no actual C access.
+    P=Pbase;
+    P.front.vref_v=vref1;
+    P.control.sar1.delta_v=delta;
+    P.digital.vref_v=vref1;
+    P.digital.fsr_diff_v=fsr;
+    P.digital.d1_bias_v=0;
+    P.fsr_diff_v=fsr;
+    P.input.amplitude_v=amplitude;
+    P=behavior_prepare_configuration(P);
+    behavior_dac_backend_parameters(P);
+    assert(P.front.vref_v==5&&P.digital.vref_v==5&&P.fsr_diff_v==10&& ...
+        P.digital.fsr_diff_v==10&&P.control.sar1.delta_v==10/1024, ...
+        'normal10v:rangeJoin','Prepared range, coarse threshold and public decode differ.');
+    assert(isequaln(P.backend,Pbase.backend)&&isequaln(P.front.C_f,Pbase.front.C_f)&& ...
+        isequaln(P.front.Cp_f,Pbase.front.Cp_f)&& ...
+        isequaln(P.front.tau_sample_s,Pbase.front.tau_sample_s)&& ...
+        isequaln(P.front.tau_precharge_s,Pbase.front.tau_precharge_s)&& ...
+        isequaln(P.front.tau_dac_s,Pbase.front.tau_dac_s)&& ...
+        isequaln(P.front.plan,Pbase.front.plan)&&isequaln(P.calendar,Pbase.calendar)&& ...
+        isequaln(P.adc_groups,Pbase.adc_groups)&&isequaln(P.groups,Pbase.groups), ...
+        'normal10v:unrequestedPhysics','Backend, C, timing, plan and ADC event calendar must be unchanged.');
+    report=struct();
+    report.status='PREPARED_RANGE_CONFIGURATION_ONLY';
+    report.range_assumption='5 V differential peak is inferred as 10 V differential peak-to-peak FSR';
+    report.paper_limit='Vref1, ADC2 reference, CINC and unpublished bottom-plate contract remain design assumptions';
+    report.original_fsr_v=Pbase.digital.fsr_diff_v;
+    report.fsr_diff_v=fsr;
+    report.input_peak_v=P.input.amplitude_v;
+    report.input_level_dbfs=-1;
+    report.vref1_v=vref1;
+    report.coarse_delta_v=delta;
+    report.d1_bias_v=P.digital.d1_bias_v;
+    report.d1_word_offset_v=normalNominal.fpga.weights.d1_offset_v;
+    report.cinc_nominal_f=n.cinc_f(1);
+    report.ct_reference_v=ref2;
+    report.ct_bridge_fraction=beta;
+    report.d2_weights_from_nominal_ra_v=calculatedWeights(:);
+    report.d2_offset_from_nominal_ra_v=calculatedOffset;
+    report.tracking_step_from_nominal_ra_v=calculatedTA;
+    report.preserved_public_d2_weights_ra_v=P.digital.d2_weights_ra_v;
+    report.preserved_public_d2_offset_ra_v=P.digital.d2_offset_ra_v;
+    report.preserved_public_tracking_step_ra_v=P.digital.tracking_step_ra_v;
+    report.output_lsb_v=fsr/2^20;
+    report.ct_signed_tracking_amplitude_input_v=calculatedTA/P.digital.ra_gain;
+    report.ct_signed_amplitude_in_output_lsb=report.ct_signed_tracking_amplitude_input_v/report.output_lsb_v;
+    report.dt_min_raw_bit_flip_ra_v=calculatedTA/4;
+    report.dt_min_raw_bit_flip_input_v=report.dt_min_raw_bit_flip_ra_v/P.digital.ra_gain;
+    report.cinc_for_signed_amplitude_one_output_lsb_f=(ref2*beta*n.track_f(1,1))/ ...
+        (P.digital.ra_gain*report.output_lsb_v);
+    report.cinc_alternative_scope=['Derived equality of one signed feedback amplitude to one output LSB; ' ...
+        'not a claim of M8 resolution, not paper-disclosed, and not applied'];
+    report.nominal_vs_actual='Digital weights use archived nominal CT design only, never actual C';
+    report.graph_simulation='NOT_RUN_BY_CONSTRUCTOR';
+    report.changes=diff_values(Pbase,P,'P');
+    report.nominal_changes=diff_values(original.nominal,normalNominal,'nominal');
+end
+function rows=diff_values(a,b,path)
+    rows=struct('path',{},'before',{},'after',{});
+    if isequaln(a,b),return;end
+    if isstruct(a)&&isstruct(b)&&isscalar(a)&&isscalar(b)&& ...
+            isequal(sort(fieldnames(a)),sort(fieldnames(b)))
+        names=fieldnames(a);
+        for k=1:numel(names)
+            key=names{k};d=diff_values(a.(key),b.(key),[path '.' key]);
+            rows=[rows d]; %#ok<AGROW>
+        end
+    else
+        rows=struct('path',path,'before',a,'after',b);
+    end
+end
+
+function h=sha(file)
+    d=dir(file);assert(isscalar(d)&&~d.isdir&&d.bytes<=300e6, ...
+        'normal10v:nominalFile','Missing or oversized nominal file.');
+    f=fopen(file,'rb');assert(f>=0,'normal10v:nominalFile','Cannot open nominal file.');
+    c=onCleanup(@()fclose(f)); %#ok<NASGU>
+    b=fread(f,Inf,'*uint8');md=java.security.MessageDigest.getInstance('SHA-256');
+    md.update(typecast(b(:),'int8'));h=lower(reshape(dec2hex(typecast(md.digest(),'uint8'),2).',1,[]));
+end

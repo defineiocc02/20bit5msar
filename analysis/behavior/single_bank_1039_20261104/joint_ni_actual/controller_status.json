@@ -1,0 +1,15 @@
+{
+    "exit_code":  0,
+    "completed":  [
+                      "prepare",
+                      "n8_match",
+                      "n8_joint",
+                      "compare_n8",
+                      "n256"
+                  ],
+    "error":  "",
+    "gui_preserved":  true,
+    "status":  "passed",
+    "original_task_unchanged":  true,
+    "phase":  "complete"
+}

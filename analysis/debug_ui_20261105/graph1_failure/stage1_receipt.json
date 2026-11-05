@@ -1,0 +1,35 @@
+{
+  "schema_version": "sar20-modelgraph-stage1-receipt/v1",
+  "baseline_sha256": "91973cf76507d37acc12515b55ebfe731ad197fe8ca1ecc9014fa07cbd35c27e",
+  "source_model_path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\models\\SarAdc.slx",
+  "private_model_path": "D:\\Temp\\SAR20DEBUG_GRAPH1_20261105\\model_work\\SarAdc.slx",
+  "private_work_root": "D:\\Temp\\SAR20DEBUG_GRAPH1_20261105\\model_work",
+  "library_gate": {
+    "found": false,
+    "settingsPath": "",
+    "enabled": false,
+    "dataRoot": "",
+    "gatePass": true,
+    "kgIndexPath": "",
+    "librariesPath": "",
+    "policyPath": "",
+    "tier": "",
+    "ignoredLegacy": false,
+    "ignoredLegacyPath": "",
+    "pointerTargetMissing": false,
+    "pointerTargetPath": ""
+  },
+  "no_simulation": true,
+  "stage": "layout_physical_view_fpga_d1_d2_dt",
+  "scopes": [],
+  "topology_verification": {},
+  "started_at": "20261105T170118",
+  "status": "partial_private_saved",
+  "partial_snapshot": {
+    "path": "D:\\Temp\\SAR20DEBUG_GRAPH1_20261105\\model_work\\receipts\\stage1_failure_partial_20261105T170127.slx",
+    "sha256": "428212ae98e7dd379a0b9d23136f0ab483a10a7b0e3fd4f0ff60fa23d994ef76",
+    "candidate_sha256": "428212ae98e7dd379a0b9d23136f0ab483a10a7b0e3fd4f0ff60fa23d994ef76"
+  },
+  "error": "错误使用 run_modelgraph_stage1>partialStop (第 648 行)\nroot_eventstep_preview stopped; private partial SHA=089c6f18ee2a7330ae89b348b523aaec32a30bac72c42090925c10c9fe20b3f2 at\nD:\\Temp\\SAR20DEBUG_GRAPH1_20261105\\model_work\\receipts\\root_eventstep_preview_partial_20261105T170125.slx. Read/check receipt saved.\n\n出错 run_modelgraph_stage1>runScopeEdit (第 417 行)\n    partialStop(model, get_param(model,'FileName'), scope, label, result, receiptDir, receipt, before);\n\n出错 run_modelgraph_stage1 (第 134 行)\n    runScopeEdit(model, 'root', 'root_eventstep_preview', ...\n\n出错 graph_stage1_host>run_graph_stage1 (第 10 行)\n        r.stage=run_modelgraph_stage1('D:/Academic/Projects/sar20m1/SAR20', ...\n\n出错 graph_stage1_host (第 3 行)\nrestoredefaultpath;addpath(job,fullfile(job,'scripts'),'-begin');run_graph_stage1(job);\n\n出错 run (第 112 行)\nevalin('caller', strcat(scriptStem, ';'));",
+  "finished_at": "20261105T170127"
+}

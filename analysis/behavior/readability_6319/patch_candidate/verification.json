@@ -1,0 +1,31 @@
+{
+  "scope": "Temporary-tree patch round trip and read-only evidence crosscheck; no model compile or simulation.",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "project_file_sha256_still_matches_bases": true,
+  "temporary_patch_roundtrip_pass": true,
+  "source_comment_noncomment_lines_identical": true,
+  "factory_assumptions_alters_generated_P": true,
+  "patch_tool_output": {
+    "docs_candidate.diff": "patching file README.md\npatching file 'docs/PARAMETERS.md'",
+    "source_comments_candidate.diff": "patching file 'current/src/model/behavior_dac_coupling_configuration.m'\npatching file 'current/src/physics/behavior_backend_stage.m'\npatching file 'current/src/physics/behavior_backend_step.m'\npatching file 'current/src/control/behavior_sar_step.m'\npatching file 'current/src/transport/sar20_lvds_rx_step.m'\npatching file 'config/make_adi_cases.m'",
+    "factory_assumptions_candidate.diff": "patching file 'config/adc_parameters.m'"
+  },
+  "evidence_sha256": {
+    "analysis/behavior/local_static_20261028/sar20_independent_gain3_120823.json": "c6a3156965c487752bbd6b3bcd4b02fdf5c083cc0e85c82face0368bd49fa037",
+    "analysis/behavior/event_lookup_20261028/review.json": "b13cf4cc96ecb80f79d69f05d5db84cc0015df170bfea9425fc2b243d8e6175b",
+    "runs/az_probe_20261028T122805Z/validation/receipt.json": "64879767de47f1271fa42317387760ef7fc1b64dca03e2935fb1951aa62efa03",
+    "analysis/behavior/m1_m8_20261028/sar20_independent_m1_114345.json": "66df685a5f7f8a85afe20cba55cd44d482966ff7b604cc5979ad217975d00b22"
+  },
+  "A0_endpoint_code_deltas": [
+    4,
+    1,
+    1
+  ],
+  "N256_old_new_wall_s": [
+    136.1479,
+    136.9086034
+  ],
+  "profiled_wall_s": 182.0560521,
+  "profile_pending_independent_readback": true,
+  "M1_provenance": "isolated scratch N8, not current integration or N256 performance"
+}

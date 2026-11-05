@@ -1,0 +1,13 @@
+{
+    "model_sha256":  "d4e7fc99ab040857e535df07d73447e71c65e7d51dcadf7b17f4bad88594a6a0",
+    "source_manifest_sha256":  "9fd129263be9b5449e4c244965068c2af14baa87bc0a2729a77786de36f01489",
+    "utc":  "2026-11-04T10:52:55.2199613Z",
+    "job":  "D:\\Temp\\SAR20DIAGRAM_d1ab41ac29ad4ecb9a9bbef47702a694",
+    "protected_task_sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+    "protected_gui_start_utc":  "2026-10-28T08:05:54.8833190Z",
+    "matlab_exe_sha256":  "585564904c42986555d326e1b4c4e6ffc71550e43bf61b4fc1e8dd2ec4640ebe",
+    "protected_gui_pid":  27628,
+    "status":  "ready_to_launch",
+    "quiet_window_scope":  "coordinator attests N8 terminal; process/task checks are not a global lock",
+    "source_count":  109
+}

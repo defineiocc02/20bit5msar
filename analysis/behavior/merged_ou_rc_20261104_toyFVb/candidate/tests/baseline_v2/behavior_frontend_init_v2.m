@@ -1,0 +1,142 @@
+function [s,p] = behavior_frontend_init_v2(p)
+%BEHAVIOR_FRONTEND_INIT Initialize explicit 18-slice frontend state and parameters.
+%Version: v1 (2026-10-27). Caller: behavior model initializer; pass returned p to step.
+%Input: optional options struct; C_f[18,38]/Cp_f[18] [F], source [V,Hz,rad], tau [s].
+%Outputs: cold state s and normalized p; phase=0 park/1 acquire/2 convert/3 captured.
+%B_c/B_target_c[18,3] [C] store C*bottom-voltage sums: signal/tail/bias groups.
+%Cold init clears charge/tags; runtime reset in step retains analog charge.
+%Model: grouped differential RC/charge behavior; frozen C is not a calibration input.
+%kTC: one differential capture kick with variance 2*kB*T/Csample_half per slice.
+%Default off preserves prior state ABI and capture arithmetic. Counter seed is explicit.
+    if nargin==0,p=struct();end
+    assert(isstruct(p)&&isscalar(p),'behaviorFE:config','p must be a scalar struct.');
+    defaults=struct('schema','sar20-behavior-frontend/v1','plan_rows',1024, ...
+        'pool_seed',20269121,'dem_enabled',true,'dem_seed',20261222, ...
+        'dither_enabled',true,'dither_seed',20261223,'dither_input_amplitude_v',0.001, ...
+        'vref_v',4.096,'unit_cap_f',1e-15,'C_f',[],'Cp_f',zeros(18,1),'plan',[], ...
+        'tau_sample_s',0,'tau_precharge_s',0,'tau_dac_s',0, ...
+        'mismatch_enabled',false,'ktc_enabled',false,'temperature_K',298.15,'ktc_seed',20261027, ...
+        'jitter',behavior_jitter_parameters(),'single_bank',false,'single_guard_s',0, ...
+        'input',struct('offset_v',0,'amplitude_v',0.5,'frequency_hz',1e4,'phase_rad',0));
+    names=fieldnames(p);
+    assert(all(ismember(names,fieldnames(defaults))),'behaviorFE:unknownConfig','Unknown p field.');
+    for k=1:numel(names),defaults.(names{k})=p.(names{k});end
+    p=defaults;
+    assert((islogical(p.single_bank)||isnumeric(p.single_bank))&&isreal(p.single_bank)&& ...
+        isscalar(p.single_bank)&&isfinite(double(p.single_bank))&&any(double(p.single_bank)==[0 1]), ...
+        'singleBank:flag','single_bank must be an explicit binary flag.');
+    p.single_bank=logical(p.single_bank);
+    assert(isnumeric(p.single_guard_s)&&isreal(p.single_guard_s)&&isscalar(p.single_guard_s)&& ...
+        isfinite(p.single_guard_s)&&p.single_guard_s>=0, ...
+        'singleBank:guard','single_guard_s must be finite nonnegative seconds.');
+    p.single_guard_s=double(p.single_guard_s);
+    assert(p.single_bank||p.single_guard_s==0,'singleBank:guardMode','Guard requires single_bank.');
+    assert(strcmp(p.schema,'sar20-behavior-frontend/v1'),'behaviorFE:schema','Unsupported schema.');
+    assert(isscalar(p.plan_rows)&&isfinite(p.plan_rows)&&p.plan_rows==floor(p.plan_rows)&& ...
+        p.plan_rows>=2&&p.plan_rows<=1e6,'behaviorFE:planRows','plan_rows must be integer 2..1e6.');
+    for key={'pool_seed','dem_seed','dither_seed','ktc_seed'}
+        v=p.(key{1});assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v)&& ...
+            v>=0&&v<=2^32-1&&v==floor(v),'behaviorFE:seed','Seeds must be uint32-valued.');
+        p.(key{1})=double(v);
+    end
+    for key={'dem_enabled','dither_enabled','mismatch_enabled','ktc_enabled'}
+        v=p.(key{1});assert((islogical(v)||isnumeric(v))&&isreal(v)&&isscalar(v)&& ...
+            isfinite(double(v))&&any(double(v)==[0 1]),'behaviorFE:flag','Flags must be 0 or 1.');
+        p.(key{1})=logical(v);
+    end
+    assert(isnumeric(p.temperature_K)&&isreal(p.temperature_K)&&isscalar(p.temperature_K)&& ...
+        isfinite(p.temperature_K)&&p.temperature_K>=0, ...
+        'behaviorFE:temperature','temperature_K must be a finite nonnegative Kelvin scalar.');
+    p.temperature_K=double(p.temperature_K);
+    for key={'vref_v','unit_cap_f'}
+        v=p.(key{1});assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v)&&v>0, ...
+            'behaviorFE:positive','Vref and unit capacitance must be finite positive SI values.');
+    end
+    assert(isnumeric(p.dither_input_amplitude_v)&&isreal(p.dither_input_amplitude_v)&& ...
+        isscalar(p.dither_input_amplitude_v)&&isfinite(p.dither_input_amplitude_v)&& ...
+        p.dither_input_amplitude_v>=0,'behaviorFE:ditherAmplitude','Dither amplitude must be nonnegative V.');
+    nominal=p.unit_cap_f*repmat([16 32*ones(1,31) 16 8 4 2 1 17],18,1);
+    if p.single_bank,nominal(:,38)=0;end % disconnected: no 17Cu physical bias
+    if isempty(p.C_f),p.C_f=nominal;end
+    assert(isnumeric(p.C_f)&&isreal(p.C_f)&&isequal(size(p.C_f),[18 38])&& ...
+        all(isfinite(p.C_f(:))),'behaviorFE:C','C_f must be finite 18x38 F.');
+    if p.single_bank
+        assert(all(p.C_f(:,1:37)>0,'all')&&all(p.C_f(:,38)==0), ...
+            'singleBank:geometry','Single bank has 37 positive groups and a disconnected column 38.');
+    else
+        assert(all(p.C_f(:)>0),'behaviorFE:C','Pool C_f must remain positive 18x38 F.');
+    end
+    p.C_f=double(p.C_f);
+    assert(p.mismatch_enabled||isequal(p.C_f,nominal),'behaviorFE:mismatchFlag', ...
+        'Non-nominal C requires explicit mismatch_enabled=true; no random mismatch is generated.');
+    assert(isnumeric(p.Cp_f)&&isreal(p.Cp_f)&&numel(p.Cp_f)==18&& ...
+        all(isfinite(p.Cp_f(:)))&&all(p.Cp_f(:)>=0),'behaviorFE:Cp','Cp_f must contain 18 nonnegative F values.');
+    p.Cp_f=double(p.Cp_f(:));
+    for key={'tau_sample_s','tau_precharge_s','tau_dac_s'}
+        v=p.(key{1});assert(isnumeric(v)&&isreal(v)&&(isscalar(v)||numel(v)==18)&& ...
+            all(~isnan(v(:)))&&all(v(:)>=0),'behaviorFE:tau','tau must be scalar/18-vector >=0 s (Inf holds).');
+        if isscalar(v),v=repmat(v,18,1);end
+        p.(key{1})=double(v(:));
+    end
+    assert(~p.ktc_enabled||all(p.tau_sample_s==0), ...
+        'behaviorFE:ktcFiniteSamplingUnsupported', ...
+        'This equilibrium capture-noise mode requires tau_sample_s=0; finite-RC stochastic buildup is not implemented.');
+    p.jitter=behavior_jitter_parameters(p.jitter);
+    if p.single_bank
+        assert(~p.dem_enabled&&~p.dither_enabled&&~p.jitter.enabled, ...
+            'singleBank:unsupportedNI','Single baseline keeps DEM, dither and jitter OFF.');
+    end
+    assert(~p.jitter.enabled||all(p.tau_sample_s==0), ...
+        'behaviorFE:jitterFiniteSamplingUnsupported', ...
+        'Endpoint aperture jitter currently requires tau_sample_s=0; finite-RC sampling at displaced endpoints is not implemented.');
+    p.input=check_input(p.input);
+    if p.single_bank
+        % Eight numerical segments form one bank; never select an alternate bank.
+        canonical=repmat(1:8,p.plan_rows,1);
+    else
+        canonical=make_plan(p.plan_rows,p.pool_seed);
+    end
+    if isempty(p.plan),p.plan=canonical;else
+        assert(isnumeric(p.plan)&&isreal(p.plan)&&isequal(p.plan,canonical), ...
+            'behaviorFE:plan','Supplied plan must equal same-seed canonical plan_rows x 8.');
+    end
+    p.group_C_f=[sum(p.C_f(:,1:33),2),sum(p.C_f(:,34:37),2),p.C_f(:,38)];
+    s=struct('schema',p.schema,'time_s',0,'has_time',false,'input',p.input, ...
+        'phase',zeros(18,1),'B_c',zeros(18,3),'B_target_c',zeros(18,3), ...
+        'q_initial_c',zeros(18,1),'v_capture_v',zeros(18,1), ...
+        'target_id',-ones(18,1),'target_epoch',-ones(18,1), ...
+        'capture_id',-ones(18,1),'capture_epoch',-ones(18,1), ...
+        'capture_valid',false(18,1),'aperture_s',nan(18,1), ...
+        'active_id',-1,'active_epoch',-1,'d1_code',0,'has_dac_command',false, ...
+        'event_count',0, ...
+        'dem_shift',nan(18,1),'dither_input_v',zeros(18,1), ...
+        'actual_aperture_s',nan(18,1),'acquire_open_s',nan(18,1));
+end
+
+function u=check_input(u)
+    fields={'offset_v';'amplitude_v';'frequency_hz';'phase_rad'};
+    assert(isstruct(u)&&isscalar(u)&&isequal(sort(fieldnames(u)),sort(fields)), ...
+        'behaviorFE:input','input requires offset/amplitude V, frequency Hz and phase rad.');
+    for k=1:numel(fields)
+        v=u.(fields{k});assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v), ...
+            'behaviorFE:input','Input parameters must be finite real scalars.');
+    end
+    assert(u.frequency_hz>=0&&u.amplitude_v>=0,'behaviorFE:input','Frequency/amplitude cannot be negative.');
+end
+
+function plan=make_plan(n,seed)
+% Same public Fisher-Yates/PM recurrence as sar20_make_slice_plan, pool=true.
+    plan=zeros(n,8);plan(1,:)=1:8;
+    for row=2:n
+        candidates=setdiff(1:18,plan(row-1,:),'stable');
+        for j=numel(candidates):-1:2
+            seed=mod(16807*(mod(seed,2147483646)+1),2147483647);
+            % Fisher-Yates step: swap the current slot with a keyed partner.
+        q=1+mod(floor(seed),j);
+        tmp=candidates(j);
+        candidates(j)=candidates(q);
+        candidates(q)=tmp;
+        end
+        plan(row,:)=candidates(1:8);
+    end
+end

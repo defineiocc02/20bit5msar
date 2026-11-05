@@ -1,0 +1,94 @@
+{
+  "schema": "ra-start-conditional-drift-figure/v1",
+  "inputs_sha256": {
+    "observed_model": "e13bd2529024346f510446de5c9046689c62c4d61b6e9869dea0d5da1cb86bfb",
+    "source_manifest": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+    "P_used": "6814e2b18bed35405a0ff17573724662878f0000c8509c23c775e1e2c5d93e55",
+    "simout": "d6c33eed9831b7aaef889de5de369e906fbedff021dfaa50753ad6546609eaff",
+    "physical_tap": "281647a8aa6af3ede88004beb1dd567470e1d632ec46931a0876e6f7dae1613e",
+    "observer": "80857951cc64995ee56193102d9a197cb2500e5dd3e416571d2f59eaab86c77b",
+    "complete": "9317c5abfe2d884b2b7bc13f172eca182d1670fa2a8dbfc8514d1e28e0893e1c",
+    "baseline_P": "e42b739ed7c465845ed0e415a9f2fdfdd1afa0caaf0c18055c3f77fbfe683b61",
+    "baseline_simout": "2267e645ebc3000e1ad8e2ff56eec2f7c58d9205922cb9746c98b855792db705",
+    "reader": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+  },
+  "sample_id": 5,
+  "epoch": 1,
+  "t_start_s": 1.0312499999999999e-06,
+  "t_stop_s": 1.04375e-06,
+  "first_d2_event_s": 1.045e-06,
+  "conditional_grid_points": 125,
+  "last_grid_s": 1.04365e-06,
+  "grid_min_vx_v": -0.016613778666725667,
+  "grid_min_delay_ns": 0.8000000000000601,
+  "first_nonnegative_grid_delay_ns": 2.5999999999999837,
+  "recorded_endpoint_vx_v": 0.04564364809795924,
+  "start_qres_over_cf_v": -0.2619103036993726,
+  "recorded_endpoint_qres_over_cf_v": 0.051235292957553136,
+  "frozen_equilibrium_formula": "A0/(A0+NG) * (Qres/Cf + NG*(Vos-AZdiff))",
+  "recorded_events": [
+    {
+      "name": "ra_start",
+      "time_s": 1.0312499999999999e-06,
+      "obs8": [
+        3.9337702394101745e-63,
+        0.0,
+        0.007798800526802519,
+        -0.2619103036993726,
+        33.583408474066324,
+        4.454137887101585e-09,
+        0.001,
+        3.9337702394101745e-63
+      ]
+    },
+    {
+      "name": "first_d2_prepare",
+      "time_s": 1.04375e-06,
+      "obs8": [
+        0.04564364809795924,
+        0.03554405430040936,
+        -0.00016650021881822562,
+        0.051235292957553136,
+        33.583408474066324,
+        4.454137887101585e-09,
+        0.0009999987500007813,
+        3.9337702394101745e-63
+      ]
+    },
+    {
+      "name": "first_d2_decide",
+      "time_s": 1.045e-06,
+      "obs8": [
+        0.046195240358779276,
+        0.035973595454267086,
+        -0.00015007567223693244,
+        0.05123529296153227,
+        33.583408474066324,
+        4.454137887101585e-09,
+        0.0009999986250009455,
+        3.9337702394101745e-63
+      ]
+    }
+  ],
+  "verified": [
+    "source hashes and receipt bindings",
+    "P value identity with baseline",
+    "32 preexisting logs time/data bit equal",
+    "standalone tap equals simout tap",
+    "FE/RA group-end next equals next event old bits",
+    "t0 conditional obs8 equals actual back_log bits",
+    "t1 recorded obs8 equals actual tap and back_log bits"
+  ],
+  "limitations": [
+    "Conditional drift starts from actual t0 state but injects no new interior OU innovations; it is not an observed OU sample path.",
+    "Original t1 endpoint is outside the 125 point grid; difference to last grid is not itself an innovation measurement.",
+    "Frozen equilibrium is a calculated reference, not a recorded VX trajectory.",
+    "RA event points are model stage observations, not transistor or silicon waveforms."
+  ],
+  "plot_script_sha256": "c4b64af3d7eaf1239aed85cf112a50400cfb1b342ecb5e10dc672009f1f64b24",
+  "style_helper_sha256": "48191dd8e35c255d0b605acffa429b4a2a2b29160fa222d0c11142edb8bfda33",
+  "outputs_sha256": {
+    "ra_start_dense_sample5.png": "0bbb50fb74bd21fb14b195754799178f598d0a812a08b8112bec2c0deee38189",
+    "ra_start_dense_sample5.csv": "42f1ad2dce478ce35ab30a181c6a04c779d3d854165d11f9e9bbc07f79a703f0"
+  }
+}

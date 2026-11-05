@@ -1,0 +1,124 @@
+{
+  "schema": "normal-fft256-two-actual-runs/v1",
+  "input_sha256": {
+    "normal": {
+      "P_used.mat": "14e24420b15bdf89cacec3af91fb1f29ccf51ae7166e6cd2673e6119e3120c50",
+      "simout.mat": "ae7fe4a36606bb08796cf734c9769cfb222adcaa85a02ebb71bf41c5902b4540",
+      "selected.mat": "250008db50e34e42a23e85fa89fb771249244d17aad81fe793b967594dc82bfe",
+      "spectrum.mat": "afc638378fb8458c5fe9c5b1cf58b9f58bb076e3cdb6b2ff8f9637e782ce12ec",
+      "public_records.csv": "450c0cf2c7607c99507de608f5839c0ea4515b2aee3c4d104bc3522ec8770134",
+      "complete.json": "b3b99d78b86f45a700bf0d2e60b1cf42eb4630319026971e625bae7760a1ca3c"
+    },
+    "baseline": {
+      "P_used.mat": "c018907732a2bd03424458d209d3b464f1d26df110879f04aaaa06c443fa8fc4",
+      "simout.mat": "d46d95ed7fc5cbab2b1bcc29e374c0980a45ba16888d7d0683d9223a6cdda3ce",
+      "selected.mat": "fa9da404629966190a4264d4ad3a7d7fa4d5135a83cf5a67dc6fb8ab39d13844",
+      "spectrum.mat": "999b5bd562ec0bf8549001fbe2ee275214126c889b5436dd19c8d70edd743655",
+      "public_records.csv": "2d6beff0bb80e1b46af743ee3002908dce0a025d0fa4c9ec7106372dde73d87a",
+      "complete.json": "59b17b05c0317997b0f113115f84f2d307cfdac74dcaad8ccfb96c8e93887067"
+    },
+    "model": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "source_manifest": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+    "dynamic_review": "fe34b72d834dd7a5941e95b1b36f5f18dd6afdfabbbee8ce530775a108b1881e",
+    "reader": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+  },
+  "baseline_configuration": {
+    "N": 256,
+    "fs_hz": 5000000.0,
+    "fsr_diff_v": 10.0,
+    "vref_v": 5.0,
+    "fin_hz": 97656.25,
+    "input_peak_v": 4.456254690668728,
+    "input_phase_rad": 0.731,
+    "period_s": 2e-07,
+    "A0": 10000.0,
+    "UGB_hz": 1200000000.0,
+    "sample_ktc": false,
+    "cap_mismatch": false,
+    "ra_noise": false,
+    "comparator_noise": false,
+    "az": false,
+    "jitter": false,
+    "observer_adi": false,
+    "calibration_mode": "off"
+  },
+  "normal_configuration": {
+    "N": 256,
+    "fs_hz": 5000000.0,
+    "fsr_diff_v": 10.0,
+    "vref_v": 5.0,
+    "fin_hz": 97656.25,
+    "input_peak_v": 4.456254690668728,
+    "input_phase_rad": 0.731,
+    "period_s": 2e-07,
+    "A0": 10000.0,
+    "UGB_hz": 1200000000.0,
+    "sample_ktc": true,
+    "cap_mismatch": true,
+    "ra_noise": true,
+    "comparator_noise": true,
+    "az": true,
+    "jitter": false,
+    "observer_adi": false,
+    "calibration_mode": "off"
+  },
+  "baseline_metrics_native": {
+    "snr_db": 109.61843896229934,
+    "sndr_db": 109.16497669575521,
+    "sfdr_db": 120.36407119754776,
+    "thd_db": -119.20216676012839,
+    "enob": 17.84135825510884
+  },
+  "normal_metrics_native": {
+    "snr_db": 99.71241422727026,
+    "sndr_db": 99.13276590396679,
+    "sfdr_db": 111.78407088195453,
+    "thd_db": -108.16556427335165,
+    "enob": 16.17487805713734
+  },
+  "baseline_metrics_independent": {
+    "snr_db": 109.61843896224929,
+    "sndr_db": 109.16497669573319,
+    "sfdr_db": 120.3640711976473,
+    "thd_db": -119.20216676036091,
+    "enob": 17.84135825510518
+  },
+  "normal_metrics_independent": {
+    "snr_db": 99.71241422727641,
+    "sndr_db": 99.13276590396788,
+    "sfdr_db": 111.78407088195453,
+    "thd_db": -108.16556427331727,
+    "enob": 16.174878057137523
+  },
+  "max_relative_power_error": {
+    "baseline": 6.094963712399698e-10,
+    "normal": 4.120594676625802e-09
+  },
+  "one_sided_nonDC_bins_each": 128,
+  "full_scale_sine_power_v2": 12.5,
+  "y_limits_dbfs": [
+    -165,
+    5
+  ],
+  "baseline_dbfs_range": [
+    -152.4020323054988,
+    -0.9999986680613248
+  ],
+  "normal_dbfs_range": [
+    -146.65619699465913,
+    -0.999954986411886
+  ],
+  "scope": [
+    "Actual code spectra, one 256-point record per case; not paper FFT or silicon measurement.",
+    "Baseline retains finite A0/UGB and other inherited modeled behavior; it is not a fully ideal converter.",
+    "Normal model parameters are estimates; not PDK-typical or foundry data. Comparator noise is SAR2/TA only.",
+    "P was saved/injected; runtime dialog was not independently probed.",
+    "Calibration and physical ADI are off; no noise-population, DNL/INL or signoff conclusion."
+  ],
+  "plot_script_sha256": "8b5a0eb913057bf46365d2c58028813619400ef4d38caa5333983213080df545",
+  "style_helper_sha256": "48191dd8e35c255d0b605acffa429b4a2a2b29160fa222d0c11142edb8bfda33",
+  "outputs_sha256": {
+    "normal_fft256.png": "2e19960a77ab9f661baecc5ac08614b1690eb6128df41ab933d6741024c392b9",
+    "normal_fft256_bins.csv": "ffba577b51c8e56526c17d6c751e18c202d166e8e202881ba933a2dd7b5bb904"
+  }
+}

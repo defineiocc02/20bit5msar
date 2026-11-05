@@ -1,0 +1,5817 @@
+{
+  "cases": {
+    "be125": {
+      "actual_raw": {
+        "DecodeCfg": {
+          "bipolar": 1,
+          "calibration_mode": "off",
+          "dither": {
+            "amplitude_v": 0.001,
+            "enabled": 1,
+            "mapping": "sar20_dither_value(sample_id,seed,amplitude_v)",
+            "seed": 20261223.0
+          },
+          "dt_count": 8.0,
+          "dt_encoding": "bipolar_from_raw_bits",
+          "dt_mode": 0.0,
+          "dt_weights": [
+            [
+              8.0
+            ],
+            [
+              7.0
+            ],
+            [
+              6.0
+            ],
+            [
+              5.0
+            ],
+            [
+              4.0
+            ],
+            [
+              3.0
+            ],
+            [
+              2.0
+            ],
+            [
+              1.0
+            ]
+          ],
+          "fixed": {
+            "accumulator_bits": 54.0,
+            "coefficient_fraction_bits": 20.0,
+            "count": 8.0,
+            "counts_per_v": 128000.0,
+            "denominator": 8388608.0,
+            "input_reference": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                0.03125
+              ]
+            ],
+            "limit": 9007199254740991.0,
+            "nominal_absolute_bound_q": 13511753203712.0,
+            "rounding": "nearest_away_from_zero",
+            "scale": 1048576.0,
+            "source": "product_fixed_reconstruct; voltage theta quantized before count-domain sum",
+            "volts_per_count": 7.8125e-06
+          },
+          "ra_gain": 32.0,
+          "sinc2_scale": 0.125,
+          "unary_group_dem_enabled": 1,
+          "unary_group_dem_schedule": "pool_cyclic_shift31_v1",
+          "unary_group_dem_seed": 20261222.0,
+          "width": {
+            "control": 33.0,
+            "fpga": 18.0,
+            "record": 11.0,
+            "state": 256.0
+          },
+          "word_width": {
+            "code": 20.0,
+            "d1": 11.0,
+            "d2": 12.0,
+            "dt": 8.0,
+            "lvds": 32.0
+          }
+        },
+        "PoolAnalogCfg": {
+          "A0": [
+            [
+              10000.0
+            ],
+            [
+              10000.0
+            ]
+          ],
+          "C_T_f": [
+            [
+              5e-14
+            ],
+            [
+              5e-14
+            ]
+          ],
+          "C_input_f": [
+            [
+              5e-14
+            ],
+            [
+              5e-14
+            ]
+          ],
+          "C_reference_f": [
+            [
+              1e-09
+            ],
+            [
+              1e-09
+            ]
+          ],
+          "R_reset_m_ohm": [
+            [
+              1096.0493696924943
+            ],
+            [
+              1096.0493696924943
+            ]
+          ],
+          "UGB_hz": [
+            [
+              1200000000.0
+            ],
+            [
+              1200000000.0
+            ]
+          ],
+          "assumptions": {
+            "A0": 10000.0,
+            "C_T_f": 5e-14,
+            "C_az_f": 1e-12,
+            "C_input_f": 5e-14,
+            "C_reference_f": 1e-09,
+            "R_az_leak_ohm": "Inf",
+            "R_branch_ohm": 50.0,
+            "R_reference_ohm": 0.0,
+            "R_sample_ohm": 50.0,
+            "R_sample_strap_ohm": 1.0,
+            "R_source_ohm": 0.0,
+            "R_top_group_ohm": 1.0,
+            "R_top_sample_ohm": 1.0,
+            "R_transfer_ohm": 50.0,
+            "UGB_hz": 1200000000.0,
+            "az_pole_input_gain": 1.0,
+            "az_write_tau_s": 1e-09,
+            "max_step_s": 1.25e-10,
+            "reset_tau_m_recipe_s": 1e-09,
+            "tau_reset_z_s": 1e-09
+          },
+          "az": {
+            "C_f": [
+              [
+                1e-12
+              ],
+              [
+                1e-12
+              ]
+            ],
+            "R_leak_ohm": [
+              [
+                "Inf"
+              ],
+              [
+                "Inf"
+              ]
+            ],
+            "R_write_ohm": [
+              [
+                1000.0000000000001
+              ],
+              [
+                1000.0000000000001
+              ]
+            ],
+            "initial_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "pole_input_gain": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "scope": "Finite same-owner AZ capacitor/write/leak RC, infinite-Z read; old az_calendar retained. Input-referred gain is new A, not the legacy output-offset coupling; F0 target/noise are zero.",
+            "write_duration_s": 5.5e-08,
+            "write_target_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ]
+          },
+          "ct_sides": [
+            {
+              "bottom_main_ron_unique_ohm": [
+                1000.0
+              ],
+              "bottom_replica_ron_unique_ohm": [
+                1000.0
+              ],
+              "c_out_f": 5e-13,
+              "dt_s": 1.25e-09,
+              "reset_main_ron_ohm": 100.0,
+              "reset_replica_ron_ohm": 100.0,
+              "rout_ohm": 500.0,
+              "side": 1.0,
+              "temperature_K": 298.15,
+              "temperature_main_K": 298.15,
+              "temperature_replica_K": 298.15,
+              "temperature_reset_main_K": 298.15,
+              "temperature_reset_replica_K": 298.15
+            },
+            {
+              "bottom_main_ron_unique_ohm": [
+                1000.0
+              ],
+              "bottom_replica_ron_unique_ohm": [
+                1000.0
+              ],
+              "c_out_f": 5e-13,
+              "dt_s": 1.25e-09,
+              "reset_main_ron_ohm": 100.0,
+              "reset_replica_ron_ohm": 100.0,
+              "rout_ohm": 500.0,
+              "side": 2.0,
+              "temperature_K": 298.15,
+              "temperature_main_K": 298.15,
+              "temperature_replica_K": 298.15,
+              "temperature_reset_main_K": 298.15,
+              "temperature_reset_replica_K": 298.15
+            }
+          ],
+          "noise": {
+            "sample_kTC_enabled": 1,
+            "temperature_K": 298.15
+          },
+          "profile": "pool18_8_8_2_F2_unary_group_dem_tail_dither_nominal",
+          "schema": "pool-analog-F0/v1",
+          "tail_dither": {
+            "counter_key": "sample_id+seed only; epoch joins capture/control/RX",
+            "enabled": 1,
+            "input_amplitude_v": 0.001,
+            "nominal_sample_Cu": 1024.0,
+            "nominal_tail_Cu": 15.0,
+            "physical_columns": [
+              [
+                34.0,
+                35.0,
+                36.0,
+                37.0
+              ]
+            ],
+            "seed": 20261223.0,
+            "source": "same-owner physical acquire source through existing finite R_branch; no held overwrite",
+            "tail_amplitude_v": 0.06826666666666667,
+            "tail_source_scale": 68.26666666666667
+          },
+          "tau_a_s": [
+            [
+              1.3262911924324613e-06
+            ],
+            [
+              1.3262911924324613e-06
+            ]
+          ],
+          "tau_reset_z_s": [
+            [
+              1e-09
+            ],
+            [
+              1e-09
+            ]
+          ],
+          "time": {
+            "dt_s": 1.25e-09,
+            "fs_hz": 5000000.0,
+            "sample_period_s": 2e-07,
+            "start_time_s": -2e-07,
+            "stop_time_s": 2.7499999999999995e-06
+          },
+          "unary_group_dem": {
+            "enabled": 1,
+            "physical_group_count": 31.0,
+            "schedule": "pool_cyclic_shift31_v1",
+            "seed": 20261222.0,
+            "tag_key": "sample_id/epoch/physical_slice_id; invariant across SAR trial bits",
+            "unit_size_cu": 32.0
+          }
+        },
+        "p": {
+          "bits": {
+            "d1_info": 10.0,
+            "d1_raw": 11.0,
+            "d2_info": 11.0,
+            "d2_raw": 12.0,
+            "dt": 8.0,
+            "frame": 32.0,
+            "latency_samples": 2.0,
+            "tracking_count": 8.0,
+            "tracking_updates": 7.0
+          },
+          "cmp1": {
+            "available_s": 1.25e-09,
+            "base_delay_s": 1e-10,
+            "noise_rms_v": 0.0,
+            "offset_v": 0.0,
+            "reference_v": 0.008,
+            "regeneration_tau_s": 2e-11,
+            "seed": 20261421.0
+          },
+          "cmp2": {
+            "available_s": 1.25e-09,
+            "base_delay_s": 1e-10,
+            "noise_rms_v": 0.0,
+            "offset_v": 0.0,
+            "reference_v": 0.00038935756002595715,
+            "regeneration_tau_s": 2e-11,
+            "seed": 20261422.0
+          },
+          "ct_network": {
+            "bottom_ron_ohm": 1000.0,
+            "boundary": "45-node passive C/G per differential half; Rout=500 ohm is deterministic VX damping; main/replica bottom Ron=1 kohm; reset Ron from product DAC2; temperature applies only to passive-network FDT sources; no Rout Johnson source, nonlinear RA feedback, or switch-off topology",
+            "delay_fraction": 0.0,
+            "delay_s": 0.0,
+            "reset_ron_ohm": 100.0,
+            "rout_ohm": 500.0,
+            "rout_source": "product_p.ra.output_resistance_ohm",
+            "state_width": 260.0,
+            "temperature_k": 298.15,
+            "temperature_scope": "passive_CT_network_only"
+          },
+          "dac1": {
+            "cap_unit_f": 2.6948989412897018e-14,
+            "dem_seed": 20261222.0,
+            "mismatch_sigma_unit": 0.001,
+            "offset_v": -4.224,
+            "reference_v": 4.096,
+            "tau_s": 0.0,
+            "unit_actual_f": {
+              "max_F": 3.382941150091534e-15,
+              "min_F": 3.354713013536943e-15,
+              "shape": [
+                18,
+                1039
+              ]
+            },
+            "unit_nominal_f": 3.3686236766121272e-15
+          },
+          "dac2": {
+            "cinc_mismatch_sigma": 0.0,
+            "mismatch_sigma": 0.0,
+            "reference_noise_rms_v": 0.0,
+            "reference_seed": 20261522.0,
+            "reset_noise_enabled": 0,
+            "reset_noise_seed": 20261524.0,
+            "reset_ron_ohm": 100.0,
+            "tau_s": 0.0,
+            "temperature_k": 298.15
+          },
+          "dt_s": 1.25e-09,
+          "fpga": {
+            "cal_enable": 0,
+            "cal_epsilon": 1e-12,
+            "cal_mu": 0.2,
+            "cal_reference_by_id": [],
+            "cal_train_count": 64.0,
+            "cal_training": 0,
+            "cinc_ratio": 0.7787151200519142,
+            "delta1_v": 0.008,
+            "delta2_v": 0.0005,
+            "dither_amplitude_v": 0.001,
+            "dither_enable": 1,
+            "dither_seed": 20261223.0,
+            "dt_encoding": "bipolar_from_raw_bits",
+            "fixed_point": {
+              "accumulator_bits": 54.0,
+              "coefficient_fraction_bits": 20.0,
+              "rounding": "nearest_away_from_zero"
+            },
+            "fsr_diff_v": 8.192,
+            "lowpass_taps": [
+              [
+                1.0,
+                0.0
+              ]
+            ],
+            "nominal_half_weights_tracking_units": [
+              [
+                720.0,
+                480.0,
+                320.0,
+                208.0,
+                128.0,
+                80.0,
+                48.0,
+                24.0,
+                16.0,
+                8.0,
+                4.0,
+                2.0
+              ]
+            ],
+            "nominal_weight_source": "DERIVED_INTEGER_NOMINAL_GEOMETRY_NO_ACTUAL_CAPACITANCE",
+            "ra_gain": 32.0,
+            "sinc2_scale": 0.125,
+            "tracking_scale_v": 0.00025,
+            "weights": {
+              "cinc_ratio": 0.7787151200519142,
+              "d1": [
+                [
+                  4.096,
+                  2.048,
+                  1.024,
+                  0.512,
+                  0.256,
+                  0.128,
+                  0.128,
+                  0.064,
+                  0.032,
+                  0.016,
+                  0.008
+                ]
+              ],
+              "d1_offset_v": -4.224,
+              "d2": [
+                [
+                  0.36,
+                  0.24,
+                  0.16,
+                  0.10400000000000001,
+                  0.064,
+                  0.04,
+                  0.024,
+                  0.012,
+                  0.008,
+                  0.004,
+                  0.002,
+                  0.001
+                ]
+              ],
+              "d2_offset_v": -0.5095
+            }
+          },
+          "front": {
+            "active_slice_count": 8.0,
+            "aperture_skew_s": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "bank_cap_f": 2.8e-11,
+            "c_slice_f": [
+              [
+                3.4495092096199848e-12
+              ],
+              [
+                3.4495978408672646e-12
+              ],
+              [
+                3.4495282950743155e-12
+              ],
+              [
+                3.449511041402933e-12
+              ],
+              [
+                3.449566812371441e-12
+              ],
+              [
+                3.449300645608531e-12
+              ],
+              [
+                3.4496464054951594e-12
+              ],
+              [
+                3.4494253959983025e-12
+              ],
+              [
+                3.449393895057494e-12
+              ],
+              [
+                3.4493491648495217e-12
+              ],
+              [
+                3.4493832927005494e-12
+              ],
+              [
+                3.449399843165339e-12
+              ],
+              [
+                3.4495154770825434e-12
+              ],
+              [
+                3.44949949656745e-12
+              ],
+              [
+                3.449387030606871e-12
+              ],
+              [
+                3.4495585450428682e-12
+              ],
+              [
+                3.4494805470447554e-12
+              ],
+              [
+                3.4495795843969556e-12
+              ]
+            ],
+            "cap_definition": "ASSUMED per-side bank capacitance; must resolve SPEC open input",
+            "common_jitter_rms_s": 0.0,
+            "conv_plan": {
+              "max": 18.0,
+              "min": 1.0,
+              "shape": [
+                276,
+                8
+              ]
+            },
+            "dem_enabled": 1,
+            "gain": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "injection_c": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "interleave_enabled": 1,
+            "jitter_seed": 20261122.0,
+            "ktc_chi": 2.0,
+            "leakage_a": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "local_jitter_rms_s": 0.0,
+            "noise_enabled": 0,
+            "noise_seed": 20261121.0,
+            "offset_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "pool_enabled": 1,
+            "r_on_ohm": 50.0,
+            "r_source_ohm": 0.0,
+            "ron_linear": 0.0,
+            "ron_quadratic": 0.0,
+            "shuffle_seed": 20269121.0,
+            "tau_scale": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "temperature_k": 298.15
+          },
+          "fs_hz": 5000000.0,
+          "fsr_diff_v": 8.192,
+          "nonideal": 1,
+          "ra": {
+            "amplification_noise_rms_v": 0.0,
+            "az": {
+              "coupling_gain": [
+                [
+                  1.0
+                ],
+                [
+                  1.0
+                ]
+              ],
+              "hold_noise_bandwidth_hz": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "hold_noise_rms_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "initial_pair_id": -1.0,
+              "initial_state_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "initial_valid": 0,
+              "leak_tau_s": [
+                [
+                  "Inf"
+                ],
+                [
+                  "Inf"
+                ]
+              ],
+              "mode": "hold_chop",
+              "offset_mean_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "pair_average_enabled": 0,
+              "polarity_injection_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "polarity_sequence": [
+                [
+                  1.0,
+                  -1.0,
+                  -1.0,
+                  1.0
+                ]
+              ],
+              "residual_injection_gain": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "seed": 20261321.0,
+              "write_duration_s": 5.5e-08,
+              "write_noise_rms_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "write_tau_s": [
+                [
+                  1e-09
+                ],
+                [
+                  1e-09
+                ]
+              ]
+            },
+            "az_noise_rms_v": 0.0,
+            "az_seed": 20261321.0,
+            "clip_v": "Inf",
+            "cubic_per_v2": 0.0,
+            "gain": 32.0,
+            "gain_error": 0.0,
+            "intrinsic_output_cap_f": [
+              [
+                5e-13
+              ],
+              [
+                5e-13
+              ]
+            ],
+            "memory_fraction": 0.0,
+            "noise_bandwidth_hz": 300000000.0,
+            "noise_seed": 20261322.0,
+            "offset_v": 0.0,
+            "output_resistance_ohm": 500.0,
+            "reset_tau_s": 0.0,
+            "settling_tolerance_v": 0.0005,
+            "slew_v_per_s": "Inf",
+            "tau_s": 0.0,
+            "total_output_cap_actual_f": [
+              [
+                8.983127839065542e-13
+              ],
+              [
+                8.983127839065542e-13
+              ]
+            ],
+            "total_output_cap_nominal_f": [
+              [
+                8.983127839065544e-13
+              ],
+              [
+                8.983127839065544e-13
+              ]
+            ],
+            "vcm_v": 0.9
+          },
+          "sample_period_s": 2e-07,
+          "timing": {
+            "aperture_offset_s": 0.0,
+            "capture_to_reset_guard_s": 3.7499999999999906e-09,
+            "coarse_end_s": 1.25e-08,
+            "coarse_start_s": 0.0,
+            "core_deadline_s": 1.8000000000000002e-07,
+            "decision_offset_s": 1.25e-09,
+            "edge_status": "Only ~90 ns conversion and 10 ns tracking are paper-supported; exact internal edges are assumptions.",
+            "edge_ticks": {
+              "coarse_end": 10.0,
+              "coarse_start": 0.0,
+              "fine_end": 25.0,
+              "fine_start": 10.0,
+              "ra_start": 25.0,
+              "raw_latch": 69.0,
+              "reset_start": 72.0,
+              "sar2_end": 59.0,
+              "sar2_start": 35.0,
+              "track_end": 68.0,
+              "track_start": 60.0
+            },
+            "edges_s": [
+              [
+                0.0,
+                1.25e-08,
+                3.125e-08,
+                4.375e-08,
+                7.375e-08,
+                7.5e-08,
+                8.500000000000001e-08,
+                8.625000000000001e-08,
+                9e-08,
+                2e-07
+              ]
+            ],
+            "fine_decision_offset_s": 2.5e-09,
+            "fine_end_s": 3.125e-08,
+            "fine_slot_s": 3.7500000000000005e-09,
+            "fine_start_s": 1.25e-08,
+            "nonoverlap_guard_s": 1e-08,
+            "post_tracking_capture_guard_s": 1.2500000000000013e-09,
+            "ra_start_s": 3.125e-08,
+            "raw_latch_s": 8.625000000000001e-08,
+            "reset_start_s": 9e-08,
+            "sample_ticks": 160.0,
+            "sar1_fine_slots": 5.0,
+            "sar2_decision_offset_s": 1.25e-09,
+            "sar2_end_s": 7.375e-08,
+            "sar2_slot_s": 2.5e-09,
+            "sar2_slots": 12.0,
+            "sar2_start_s": 4.375e-08,
+            "schedule_status": "A_level_integer_tick_candidate_not_STA",
+            "source_profile": "paper90",
+            "source_status": "R_D_90ns_conversion_and_10ns_tracking_only",
+            "track_count": 8.0,
+            "track_end_s": 8.500000000000001e-08,
+            "track_slot_s": 1.25e-09,
+            "track_start_s": 7.5e-08,
+            "track_window_s": 1.000000000000001e-08,
+            "tracking_start_s": 7.5e-08,
+            "tracking_window_s": 1.000000000000001e-08
+          },
+          "tracking": {
+            "actual_steps_ra_v": [
+              [
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025
+              ]
+            ],
+            "count": 8.0,
+            "digital_on": {
+              "sinc2_scale": 0.125,
+              "tracking_scale_v": 0.00025
+            },
+            "enabled": 1,
+            "encoding": "bipolar_from_raw_bits",
+            "step_ra_v": 0.00025
+          }
+        }
+      },
+      "explicit_run_readbacks": {
+        "pool_calendar_mapping": {
+          "aperture_matches_logged_cnv": true,
+          "capture_id_epoch_valid_match": true,
+          "full_state_charge_recorded": false,
+          "scope": "Compact event/tag/aperture and selected-node records only; not full-state, charge, settling, KCL, or F2 source-mask verification.",
+          "selected_valid_sample_ids": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "status": "compact_capture_tags_and_apertures_checked_full_charge_not_recorded"
+        },
+        "sample_kTC": {
+          "enabled": true,
+          "formula_prng_timing": "Reused verified noise overlay unchanged; no per-run RNG reseed.",
+          "source_constraint": "R_source=0 and R_reference=0 required when enabled",
+          "state_schema": "pool-analog-state/v4",
+          "state_width": 5181,
+          "temperature_K": 298.15
+        },
+        "tail_dither_compact_gate": {
+          "D2_decisions": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "TA_decisions": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "committed_tracking_sign_width": 7,
+          "full_state_kTC_charge_or_ledger_gate_run": false,
+          "full_state_tail_mask_or_plate_charge_gate_run": false,
+          "scope": "Compact validates public ID/epoch dither selection, exact Q20 code, 12/8 events and committed seven-element tracking-sign prefixes through the next old-state readback. It does not record full physical tail mask, node plate charge, whole-state calendar, or kTC charge ledger.",
+          "status": "compact_public_RX_Q20_ID_epoch_and_12_8_7_gates_checked"
+        },
+        "unary_group_dem": {
+          "C_and_state_columns_repacked": false,
+          "F0_h76_consumer_allowed": false,
+          "SAR_trial_index_in_key": false,
+          "actual_C_selects_permutation": false,
+          "capacitors_per_group": 32,
+          "enabled": true,
+          "mask_varies_with": [
+            "sample_id",
+            "epoch",
+            "physical_slice_id"
+          ],
+          "nominal_group_charge_invariant": true,
+          "physical_groups": 31,
+          "schedule": "pool_cyclic_shift31_v1",
+          "seed": 20261222.0
+        }
+      },
+      "identity": {
+        "bytes": {
+          "raw.mat": 11725700,
+          "result.json": 64425,
+          "selected.mat": 1999622
+        },
+        "model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5",
+        "native_job": "20261026T023817Z",
+        "raw_sha256": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+        "result_sha256": "ee05bf94c7a58bfcd0a0a1c8df057fb98f30a08f02dc268b3a439b0259e3002b",
+        "selected_sha256": "be0abb53b264bc9ad89ffd10c1abcbd2e0461458f9de141fa61c640abebcf533"
+      },
+      "nonideal_coverage": {
+        "AZ_noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "AZ_storage": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "CT45": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "CT_resistor_noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "C_T": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Explicit physical T input capacitance, not an epsilon gauge.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "Ca": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Explicit RA input capacitance is active at m.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "DAC_switch_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Actual DAC1 reference switches have finite Ron; legacy dac1.tau_s=0 is not this owner settling model.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "NL": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_feedback": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_gain_offset_cubic": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_slew_clip": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_takeover_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite T-to-m transfer is part of the same continuous Cf/RA/CT network.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_CT_main_mismatch": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved actual main CT geometry, compared with nominal using the existing F tolerance.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_CT_replica_mismatch": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved replica geometry, not a freshly drawn or independently identified chip.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_Cp": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved actual top parasitics are retained per slice and per half; no extra scaling.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_DAC1_mismatch": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved actual grouped C is used; this does not resolve hidden intra-branch cell modes.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_mismatch": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Capacitor mismatch in this saved chip only; no inferred transistor or opamp mismatch.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "analytic_driver": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_decisions": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_delay": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_noise": {
+          "enabled": false,
+          "implementation": "existing_CMP16",
+          "implemented": true,
+          "note": "Existing comparator source disabled by p_f0, not a new-owner noise proof.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_offset": {
+          "enabled": false,
+          "implementation": "existing_CMP16",
+          "implemented": true,
+          "note": "Existing comparator offset disabled by p_f0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "dem": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "dither": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "dynamic_pool": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "F1 ID-keyed18/8/8/2 calendar; same physical owner. Actual ownership/KCL/paired runs are pending.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_RA_A0": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite open-loop A0 is active; zero legacy gain_error does not make the physical feedback ideal.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_RA_bandwidth": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Declared A0/UGB pole is active with tau=A0/(2*pi*UGB), independently of the disabled legacy target pole.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_m_reset": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite m reset Ron uses the declared nominal RC recipe.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_z_reset": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "z relaxes continuously with its explicit reset pole; no instantaneous voltage clear.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "front_gain_offset": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "injection": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "jitter": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "leak": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "physical_CDAC_memory": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "reference_KCL": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "reference_dynamics": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Rref=0 fixes deviation; not a finite-reference NI run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "replica_nonzero_delay": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "residual_chop": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "sampling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "sampling_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite sample Ron/strap and actual branch C establish continuously even when external Rs is zero.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "sampling_kTC": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "shared_Rs": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "R=0 uses an ideal source constraint.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "top_join_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite top-to-T switches retain the real eighteen top-node histories.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "training": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "unary_group_dem": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "31x32Cu physical-group source-level permutation; C/state columns unchanged; actual charge/open/mismatch response pending.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        }
+      },
+      "nonideal_coverage_scope": "Implementation is candidate code responsibility, enabled is F0 configuration, scanned=false is not a run claim.",
+      "run": {
+        "capture_mode": "compact",
+        "elapsed_s": 110.5248622,
+        "full_state_charge_recorded": false,
+        "records": 8,
+        "sample_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "simulation_run": true,
+        "slot_count": 14,
+        "spectrum_bins": 0,
+        "stage": "complete",
+        "status": "pool_analog_actual_capture_pending_independent_physics_verification"
+      }
+    },
+    "be250": {
+      "actual_raw": {
+        "DecodeCfg": {
+          "bipolar": 1,
+          "calibration_mode": "off",
+          "dither": {
+            "amplitude_v": 0.001,
+            "enabled": 1,
+            "mapping": "sar20_dither_value(sample_id,seed,amplitude_v)",
+            "seed": 20261223.0
+          },
+          "dt_count": 8.0,
+          "dt_encoding": "bipolar_from_raw_bits",
+          "dt_mode": 0.0,
+          "dt_weights": [
+            [
+              8.0
+            ],
+            [
+              7.0
+            ],
+            [
+              6.0
+            ],
+            [
+              5.0
+            ],
+            [
+              4.0
+            ],
+            [
+              3.0
+            ],
+            [
+              2.0
+            ],
+            [
+              1.0
+            ]
+          ],
+          "fixed": {
+            "accumulator_bits": 54.0,
+            "coefficient_fraction_bits": 20.0,
+            "count": 8.0,
+            "counts_per_v": 128000.0,
+            "denominator": 8388608.0,
+            "input_reference": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                0.03125
+              ]
+            ],
+            "limit": 9007199254740991.0,
+            "nominal_absolute_bound_q": 13511753203712.0,
+            "rounding": "nearest_away_from_zero",
+            "scale": 1048576.0,
+            "source": "product_fixed_reconstruct; voltage theta quantized before count-domain sum",
+            "volts_per_count": 7.8125e-06
+          },
+          "ra_gain": 32.0,
+          "sinc2_scale": 0.125,
+          "unary_group_dem_enabled": 1,
+          "unary_group_dem_schedule": "pool_cyclic_shift31_v1",
+          "unary_group_dem_seed": 20261222.0,
+          "width": {
+            "control": 33.0,
+            "fpga": 18.0,
+            "record": 11.0,
+            "state": 256.0
+          },
+          "word_width": {
+            "code": 20.0,
+            "d1": 11.0,
+            "d2": 12.0,
+            "dt": 8.0,
+            "lvds": 32.0
+          }
+        },
+        "PoolAnalogCfg": {
+          "A0": [
+            [
+              10000.0
+            ],
+            [
+              10000.0
+            ]
+          ],
+          "C_T_f": [
+            [
+              5e-14
+            ],
+            [
+              5e-14
+            ]
+          ],
+          "C_input_f": [
+            [
+              5e-14
+            ],
+            [
+              5e-14
+            ]
+          ],
+          "C_reference_f": [
+            [
+              1e-09
+            ],
+            [
+              1e-09
+            ]
+          ],
+          "R_reset_m_ohm": [
+            [
+              1096.0493696924943
+            ],
+            [
+              1096.0493696924943
+            ]
+          ],
+          "UGB_hz": [
+            [
+              1200000000.0
+            ],
+            [
+              1200000000.0
+            ]
+          ],
+          "assumptions": {
+            "A0": 10000.0,
+            "C_T_f": 5e-14,
+            "C_az_f": 1e-12,
+            "C_input_f": 5e-14,
+            "C_reference_f": 1e-09,
+            "R_az_leak_ohm": "Inf",
+            "R_branch_ohm": 50.0,
+            "R_reference_ohm": 0.0,
+            "R_sample_ohm": 50.0,
+            "R_sample_strap_ohm": 1.0,
+            "R_source_ohm": 0.0,
+            "R_top_group_ohm": 1.0,
+            "R_top_sample_ohm": 1.0,
+            "R_transfer_ohm": 50.0,
+            "UGB_hz": 1200000000.0,
+            "az_pole_input_gain": 1.0,
+            "az_write_tau_s": 1e-09,
+            "max_step_s": 2.5e-10,
+            "reset_tau_m_recipe_s": 1e-09,
+            "tau_reset_z_s": 1e-09
+          },
+          "az": {
+            "C_f": [
+              [
+                1e-12
+              ],
+              [
+                1e-12
+              ]
+            ],
+            "R_leak_ohm": [
+              [
+                "Inf"
+              ],
+              [
+                "Inf"
+              ]
+            ],
+            "R_write_ohm": [
+              [
+                1000.0000000000001
+              ],
+              [
+                1000.0000000000001
+              ]
+            ],
+            "initial_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "pole_input_gain": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "scope": "Finite same-owner AZ capacitor/write/leak RC, infinite-Z read; old az_calendar retained. Input-referred gain is new A, not the legacy output-offset coupling; F0 target/noise are zero.",
+            "write_duration_s": 5.5e-08,
+            "write_target_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ]
+          },
+          "ct_sides": [
+            {
+              "bottom_main_ron_unique_ohm": [
+                1000.0
+              ],
+              "bottom_replica_ron_unique_ohm": [
+                1000.0
+              ],
+              "c_out_f": 5e-13,
+              "dt_s": 1.25e-09,
+              "reset_main_ron_ohm": 100.0,
+              "reset_replica_ron_ohm": 100.0,
+              "rout_ohm": 500.0,
+              "side": 1.0,
+              "temperature_K": 298.15,
+              "temperature_main_K": 298.15,
+              "temperature_replica_K": 298.15,
+              "temperature_reset_main_K": 298.15,
+              "temperature_reset_replica_K": 298.15
+            },
+            {
+              "bottom_main_ron_unique_ohm": [
+                1000.0
+              ],
+              "bottom_replica_ron_unique_ohm": [
+                1000.0
+              ],
+              "c_out_f": 5e-13,
+              "dt_s": 1.25e-09,
+              "reset_main_ron_ohm": 100.0,
+              "reset_replica_ron_ohm": 100.0,
+              "rout_ohm": 500.0,
+              "side": 2.0,
+              "temperature_K": 298.15,
+              "temperature_main_K": 298.15,
+              "temperature_replica_K": 298.15,
+              "temperature_reset_main_K": 298.15,
+              "temperature_reset_replica_K": 298.15
+            }
+          ],
+          "noise": {
+            "sample_kTC_enabled": 1,
+            "temperature_K": 298.15
+          },
+          "profile": "pool18_8_8_2_F2_unary_group_dem_tail_dither_nominal",
+          "schema": "pool-analog-F0/v1",
+          "tail_dither": {
+            "counter_key": "sample_id+seed only; epoch joins capture/control/RX",
+            "enabled": 1,
+            "input_amplitude_v": 0.001,
+            "nominal_sample_Cu": 1024.0,
+            "nominal_tail_Cu": 15.0,
+            "physical_columns": [
+              [
+                34.0,
+                35.0,
+                36.0,
+                37.0
+              ]
+            ],
+            "seed": 20261223.0,
+            "source": "same-owner physical acquire source through existing finite R_branch; no held overwrite",
+            "tail_amplitude_v": 0.06826666666666667,
+            "tail_source_scale": 68.26666666666667
+          },
+          "tau_a_s": [
+            [
+              1.3262911924324613e-06
+            ],
+            [
+              1.3262911924324613e-06
+            ]
+          ],
+          "tau_reset_z_s": [
+            [
+              1e-09
+            ],
+            [
+              1e-09
+            ]
+          ],
+          "time": {
+            "dt_s": 1.25e-09,
+            "fs_hz": 5000000.0,
+            "sample_period_s": 2e-07,
+            "start_time_s": -2e-07,
+            "stop_time_s": 2.7499999999999995e-06
+          },
+          "unary_group_dem": {
+            "enabled": 1,
+            "physical_group_count": 31.0,
+            "schedule": "pool_cyclic_shift31_v1",
+            "seed": 20261222.0,
+            "tag_key": "sample_id/epoch/physical_slice_id; invariant across SAR trial bits",
+            "unit_size_cu": 32.0
+          }
+        },
+        "p": {
+          "bits": {
+            "d1_info": 10.0,
+            "d1_raw": 11.0,
+            "d2_info": 11.0,
+            "d2_raw": 12.0,
+            "dt": 8.0,
+            "frame": 32.0,
+            "latency_samples": 2.0,
+            "tracking_count": 8.0,
+            "tracking_updates": 7.0
+          },
+          "cmp1": {
+            "available_s": 1.25e-09,
+            "base_delay_s": 1e-10,
+            "noise_rms_v": 0.0,
+            "offset_v": 0.0,
+            "reference_v": 0.008,
+            "regeneration_tau_s": 2e-11,
+            "seed": 20261421.0
+          },
+          "cmp2": {
+            "available_s": 1.25e-09,
+            "base_delay_s": 1e-10,
+            "noise_rms_v": 0.0,
+            "offset_v": 0.0,
+            "reference_v": 0.00038935756002595715,
+            "regeneration_tau_s": 2e-11,
+            "seed": 20261422.0
+          },
+          "ct_network": {
+            "bottom_ron_ohm": 1000.0,
+            "boundary": "45-node passive C/G per differential half; Rout=500 ohm is deterministic VX damping; main/replica bottom Ron=1 kohm; reset Ron from product DAC2; temperature applies only to passive-network FDT sources; no Rout Johnson source, nonlinear RA feedback, or switch-off topology",
+            "delay_fraction": 0.0,
+            "delay_s": 0.0,
+            "reset_ron_ohm": 100.0,
+            "rout_ohm": 500.0,
+            "rout_source": "product_p.ra.output_resistance_ohm",
+            "state_width": 260.0,
+            "temperature_k": 298.15,
+            "temperature_scope": "passive_CT_network_only"
+          },
+          "dac1": {
+            "cap_unit_f": 2.6948989412897018e-14,
+            "dem_seed": 20261222.0,
+            "mismatch_sigma_unit": 0.001,
+            "offset_v": -4.224,
+            "reference_v": 4.096,
+            "tau_s": 0.0,
+            "unit_actual_f": {
+              "max_F": 3.382941150091534e-15,
+              "min_F": 3.354713013536943e-15,
+              "shape": [
+                18,
+                1039
+              ]
+            },
+            "unit_nominal_f": 3.3686236766121272e-15
+          },
+          "dac2": {
+            "cinc_mismatch_sigma": 0.0,
+            "mismatch_sigma": 0.0,
+            "reference_noise_rms_v": 0.0,
+            "reference_seed": 20261522.0,
+            "reset_noise_enabled": 0,
+            "reset_noise_seed": 20261524.0,
+            "reset_ron_ohm": 100.0,
+            "tau_s": 0.0,
+            "temperature_k": 298.15
+          },
+          "dt_s": 1.25e-09,
+          "fpga": {
+            "cal_enable": 0,
+            "cal_epsilon": 1e-12,
+            "cal_mu": 0.2,
+            "cal_reference_by_id": [],
+            "cal_train_count": 64.0,
+            "cal_training": 0,
+            "cinc_ratio": 0.7787151200519142,
+            "delta1_v": 0.008,
+            "delta2_v": 0.0005,
+            "dither_amplitude_v": 0.001,
+            "dither_enable": 1,
+            "dither_seed": 20261223.0,
+            "dt_encoding": "bipolar_from_raw_bits",
+            "fixed_point": {
+              "accumulator_bits": 54.0,
+              "coefficient_fraction_bits": 20.0,
+              "rounding": "nearest_away_from_zero"
+            },
+            "fsr_diff_v": 8.192,
+            "lowpass_taps": [
+              [
+                1.0,
+                0.0
+              ]
+            ],
+            "nominal_half_weights_tracking_units": [
+              [
+                720.0,
+                480.0,
+                320.0,
+                208.0,
+                128.0,
+                80.0,
+                48.0,
+                24.0,
+                16.0,
+                8.0,
+                4.0,
+                2.0
+              ]
+            ],
+            "nominal_weight_source": "DERIVED_INTEGER_NOMINAL_GEOMETRY_NO_ACTUAL_CAPACITANCE",
+            "ra_gain": 32.0,
+            "sinc2_scale": 0.125,
+            "tracking_scale_v": 0.00025,
+            "weights": {
+              "cinc_ratio": 0.7787151200519142,
+              "d1": [
+                [
+                  4.096,
+                  2.048,
+                  1.024,
+                  0.512,
+                  0.256,
+                  0.128,
+                  0.128,
+                  0.064,
+                  0.032,
+                  0.016,
+                  0.008
+                ]
+              ],
+              "d1_offset_v": -4.224,
+              "d2": [
+                [
+                  0.36,
+                  0.24,
+                  0.16,
+                  0.10400000000000001,
+                  0.064,
+                  0.04,
+                  0.024,
+                  0.012,
+                  0.008,
+                  0.004,
+                  0.002,
+                  0.001
+                ]
+              ],
+              "d2_offset_v": -0.5095
+            }
+          },
+          "front": {
+            "active_slice_count": 8.0,
+            "aperture_skew_s": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "bank_cap_f": 2.8e-11,
+            "c_slice_f": [
+              [
+                3.4495092096199848e-12
+              ],
+              [
+                3.4495978408672646e-12
+              ],
+              [
+                3.4495282950743155e-12
+              ],
+              [
+                3.449511041402933e-12
+              ],
+              [
+                3.449566812371441e-12
+              ],
+              [
+                3.449300645608531e-12
+              ],
+              [
+                3.4496464054951594e-12
+              ],
+              [
+                3.4494253959983025e-12
+              ],
+              [
+                3.449393895057494e-12
+              ],
+              [
+                3.4493491648495217e-12
+              ],
+              [
+                3.4493832927005494e-12
+              ],
+              [
+                3.449399843165339e-12
+              ],
+              [
+                3.4495154770825434e-12
+              ],
+              [
+                3.44949949656745e-12
+              ],
+              [
+                3.449387030606871e-12
+              ],
+              [
+                3.4495585450428682e-12
+              ],
+              [
+                3.4494805470447554e-12
+              ],
+              [
+                3.4495795843969556e-12
+              ]
+            ],
+            "cap_definition": "ASSUMED per-side bank capacitance; must resolve SPEC open input",
+            "common_jitter_rms_s": 0.0,
+            "conv_plan": {
+              "max": 18.0,
+              "min": 1.0,
+              "shape": [
+                276,
+                8
+              ]
+            },
+            "dem_enabled": 1,
+            "gain": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "injection_c": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "interleave_enabled": 1,
+            "jitter_seed": 20261122.0,
+            "ktc_chi": 2.0,
+            "leakage_a": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "local_jitter_rms_s": 0.0,
+            "noise_enabled": 0,
+            "noise_seed": 20261121.0,
+            "offset_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "pool_enabled": 1,
+            "r_on_ohm": 50.0,
+            "r_source_ohm": 0.0,
+            "ron_linear": 0.0,
+            "ron_quadratic": 0.0,
+            "shuffle_seed": 20269121.0,
+            "tau_scale": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "temperature_k": 298.15
+          },
+          "fs_hz": 5000000.0,
+          "fsr_diff_v": 8.192,
+          "nonideal": 1,
+          "ra": {
+            "amplification_noise_rms_v": 0.0,
+            "az": {
+              "coupling_gain": [
+                [
+                  1.0
+                ],
+                [
+                  1.0
+                ]
+              ],
+              "hold_noise_bandwidth_hz": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "hold_noise_rms_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "initial_pair_id": -1.0,
+              "initial_state_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "initial_valid": 0,
+              "leak_tau_s": [
+                [
+                  "Inf"
+                ],
+                [
+                  "Inf"
+                ]
+              ],
+              "mode": "hold_chop",
+              "offset_mean_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "pair_average_enabled": 0,
+              "polarity_injection_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "polarity_sequence": [
+                [
+                  1.0,
+                  -1.0,
+                  -1.0,
+                  1.0
+                ]
+              ],
+              "residual_injection_gain": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "seed": 20261321.0,
+              "write_duration_s": 5.5e-08,
+              "write_noise_rms_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "write_tau_s": [
+                [
+                  1e-09
+                ],
+                [
+                  1e-09
+                ]
+              ]
+            },
+            "az_noise_rms_v": 0.0,
+            "az_seed": 20261321.0,
+            "clip_v": "Inf",
+            "cubic_per_v2": 0.0,
+            "gain": 32.0,
+            "gain_error": 0.0,
+            "intrinsic_output_cap_f": [
+              [
+                5e-13
+              ],
+              [
+                5e-13
+              ]
+            ],
+            "memory_fraction": 0.0,
+            "noise_bandwidth_hz": 300000000.0,
+            "noise_seed": 20261322.0,
+            "offset_v": 0.0,
+            "output_resistance_ohm": 500.0,
+            "reset_tau_s": 0.0,
+            "settling_tolerance_v": 0.0005,
+            "slew_v_per_s": "Inf",
+            "tau_s": 0.0,
+            "total_output_cap_actual_f": [
+              [
+                8.983127839065542e-13
+              ],
+              [
+                8.983127839065542e-13
+              ]
+            ],
+            "total_output_cap_nominal_f": [
+              [
+                8.983127839065544e-13
+              ],
+              [
+                8.983127839065544e-13
+              ]
+            ],
+            "vcm_v": 0.9
+          },
+          "sample_period_s": 2e-07,
+          "timing": {
+            "aperture_offset_s": 0.0,
+            "capture_to_reset_guard_s": 3.7499999999999906e-09,
+            "coarse_end_s": 1.25e-08,
+            "coarse_start_s": 0.0,
+            "core_deadline_s": 1.8000000000000002e-07,
+            "decision_offset_s": 1.25e-09,
+            "edge_status": "Only ~90 ns conversion and 10 ns tracking are paper-supported; exact internal edges are assumptions.",
+            "edge_ticks": {
+              "coarse_end": 10.0,
+              "coarse_start": 0.0,
+              "fine_end": 25.0,
+              "fine_start": 10.0,
+              "ra_start": 25.0,
+              "raw_latch": 69.0,
+              "reset_start": 72.0,
+              "sar2_end": 59.0,
+              "sar2_start": 35.0,
+              "track_end": 68.0,
+              "track_start": 60.0
+            },
+            "edges_s": [
+              [
+                0.0,
+                1.25e-08,
+                3.125e-08,
+                4.375e-08,
+                7.375e-08,
+                7.5e-08,
+                8.500000000000001e-08,
+                8.625000000000001e-08,
+                9e-08,
+                2e-07
+              ]
+            ],
+            "fine_decision_offset_s": 2.5e-09,
+            "fine_end_s": 3.125e-08,
+            "fine_slot_s": 3.7500000000000005e-09,
+            "fine_start_s": 1.25e-08,
+            "nonoverlap_guard_s": 1e-08,
+            "post_tracking_capture_guard_s": 1.2500000000000013e-09,
+            "ra_start_s": 3.125e-08,
+            "raw_latch_s": 8.625000000000001e-08,
+            "reset_start_s": 9e-08,
+            "sample_ticks": 160.0,
+            "sar1_fine_slots": 5.0,
+            "sar2_decision_offset_s": 1.25e-09,
+            "sar2_end_s": 7.375e-08,
+            "sar2_slot_s": 2.5e-09,
+            "sar2_slots": 12.0,
+            "sar2_start_s": 4.375e-08,
+            "schedule_status": "A_level_integer_tick_candidate_not_STA",
+            "source_profile": "paper90",
+            "source_status": "R_D_90ns_conversion_and_10ns_tracking_only",
+            "track_count": 8.0,
+            "track_end_s": 8.500000000000001e-08,
+            "track_slot_s": 1.25e-09,
+            "track_start_s": 7.5e-08,
+            "track_window_s": 1.000000000000001e-08,
+            "tracking_start_s": 7.5e-08,
+            "tracking_window_s": 1.000000000000001e-08
+          },
+          "tracking": {
+            "actual_steps_ra_v": [
+              [
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025,
+                0.00025
+              ]
+            ],
+            "count": 8.0,
+            "digital_on": {
+              "sinc2_scale": 0.125,
+              "tracking_scale_v": 0.00025
+            },
+            "enabled": 1,
+            "encoding": "bipolar_from_raw_bits",
+            "step_ra_v": 0.00025
+          }
+        }
+      },
+      "explicit_run_readbacks": {
+        "pool_calendar_mapping": {
+          "aperture_matches_logged_cnv": true,
+          "capture_id_epoch_valid_match": true,
+          "full_state_charge_recorded": false,
+          "scope": "Compact event/tag/aperture and selected-node records only; not full-state, charge, settling, KCL, or F2 source-mask verification.",
+          "selected_valid_sample_ids": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "status": "compact_capture_tags_and_apertures_checked_full_charge_not_recorded"
+        },
+        "sample_kTC": {
+          "enabled": true,
+          "formula_prng_timing": "Reused verified noise overlay unchanged; no per-run RNG reseed.",
+          "source_constraint": "R_source=0 and R_reference=0 required when enabled",
+          "state_schema": "pool-analog-state/v4",
+          "state_width": 5181,
+          "temperature_K": 298.15
+        },
+        "tail_dither_compact_gate": {
+          "D2_decisions": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "TA_decisions": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "committed_tracking_sign_width": 7,
+          "full_state_kTC_charge_or_ledger_gate_run": false,
+          "full_state_tail_mask_or_plate_charge_gate_run": false,
+          "scope": "Compact validates public ID/epoch dither selection, exact Q20 code, 12/8 events and committed seven-element tracking-sign prefixes through the next old-state readback. It does not record full physical tail mask, node plate charge, whole-state calendar, or kTC charge ledger.",
+          "status": "compact_public_RX_Q20_ID_epoch_and_12_8_7_gates_checked"
+        },
+        "unary_group_dem": {
+          "C_and_state_columns_repacked": false,
+          "F0_h76_consumer_allowed": false,
+          "SAR_trial_index_in_key": false,
+          "actual_C_selects_permutation": false,
+          "capacitors_per_group": 32,
+          "enabled": true,
+          "mask_varies_with": [
+            "sample_id",
+            "epoch",
+            "physical_slice_id"
+          ],
+          "nominal_group_charge_invariant": true,
+          "physical_groups": 31,
+          "schedule": "pool_cyclic_shift31_v1",
+          "seed": 20261222.0
+        }
+      },
+      "identity": {
+        "bytes": {
+          "raw.mat": 11725112,
+          "result.json": 64423,
+          "selected.mat": 1999622
+        },
+        "model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb",
+        "native_job": "20261025T193531Z",
+        "raw_sha256": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0",
+        "result_sha256": "850915c886847c36546fa663fa2a95f6f86a01da72d47b5d4e0da44b61b07d69",
+        "selected_sha256": "e4daf1add75586a0a35d39594df205fca8c83249c3424980ec6b20e55ea087e9"
+      },
+      "nonideal_coverage": {
+        "AZ_noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "AZ_storage": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "CT45": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "CT_resistor_noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "C_T": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Explicit physical T input capacitance, not an epsilon gauge.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "Ca": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Explicit RA input capacitance is active at m.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "DAC_switch_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Actual DAC1 reference switches have finite Ron; legacy dac1.tau_s=0 is not this owner settling model.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "NL": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_feedback": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_gain_offset_cubic": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_slew_clip": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "RA_takeover_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite T-to-m transfer is part of the same continuous Cf/RA/CT network.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_CT_main_mismatch": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved actual main CT geometry, compared with nominal using the existing F tolerance.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_CT_replica_mismatch": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved replica geometry, not a freshly drawn or independently identified chip.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_Cp": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved actual top parasitics are retained per slice and per half; no extra scaling.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_DAC1_mismatch": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Saved actual grouped C is used; this does not resolve hidden intra-branch cell modes.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "actual_mismatch": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Capacitor mismatch in this saved chip only; no inferred transistor or opamp mismatch.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "analytic_driver": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_decisions": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_delay": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_noise": {
+          "enabled": false,
+          "implementation": "existing_CMP16",
+          "implemented": true,
+          "note": "Existing comparator source disabled by p_f0, not a new-owner noise proof.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "comparator_offset": {
+          "enabled": false,
+          "implementation": "existing_CMP16",
+          "implemented": true,
+          "note": "Existing comparator offset disabled by p_f0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "dem": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "dither": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "dynamic_pool": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "F1 ID-keyed18/8/8/2 calendar; same physical owner. Actual ownership/KCL/paired runs are pending.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_RA_A0": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite open-loop A0 is active; zero legacy gain_error does not make the physical feedback ideal.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_RA_bandwidth": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Declared A0/UGB pole is active with tau=A0/(2*pi*UGB), independently of the disabled legacy target pole.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_m_reset": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite m reset Ron uses the declared nominal RC recipe.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "finite_z_reset": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "z relaxes continuously with its explicit reset pole; no instantaneous voltage clear.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "front_gain_offset": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "injection": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "jitter": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "leak": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "noise": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "physical_CDAC_memory": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "reference_KCL": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "reference_dynamics": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Rref=0 fixes deviation; not a finite-reference NI run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "replica_nonzero_delay": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "residual_chop": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "sampling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "New F0 owner/retained path; not yet run.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "sampling_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite sample Ron/strap and actual branch C establish continuously even when external Rs is zero.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "sampling_kTC": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "shared_Rs": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "R=0 uses an ideal source constraint.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "top_join_finite_settling": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "Finite top-to-T switches retain the real eighteen top-node histories.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "training": {
+          "enabled": false,
+          "implementation": "not_implemented",
+          "implemented": false,
+          "note": "Not migrated into this owner; deliberately disabled in F0.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "unary_group_dem": {
+          "enabled": true,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "note": "31x32Cu physical-group source-level permutation; C/state columns unchanged; actual charge/open/mismatch response pending.",
+          "scan_status": "not_scanned",
+          "scanned": false
+        }
+      },
+      "nonideal_coverage_scope": "Implementation is candidate code responsibility, enabled is F0 configuration, scanned=false is not a run claim.",
+      "run": {
+        "capture_mode": "compact",
+        "elapsed_s": 82.4468398,
+        "full_state_charge_recorded": false,
+        "records": 8,
+        "sample_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "simulation_run": true,
+        "slot_count": 14,
+        "spectrum_bins": 0,
+        "stage": "complete",
+        "status": "pool_analog_actual_capture_pending_independent_physics_verification"
+      }
+    },
+    "be62p5": {
+      "identity": {
+        "native_job": null,
+        "native_run_root": "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\run_tp394bdae9_7cbe_4949_9cd7_da5d4830e619",
+        "archived_model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+        "model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+        "raw_sha256": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+        "selected_sha256": "6053ef798750561c012fcb1f6b51fb747aa5afe18574ac5e1a733a8c9856ed87",
+        "result_sha256": "8c00c76c4100e0a2e380d048cbdb9081cf29a119a11bc9d9bda418cf358d463d",
+        "origin_sha256": "611335d107162d4d532f60ba7b59b346a09623928d54cbb7235edb090a0e7fac",
+        "bytes": {
+          "raw.mat": 11641586,
+          "selected.mat": 1999622,
+          "result.json": 47907
+        },
+        "local_files_match_origin": true
+      },
+      "actual_raw": {
+        "PoolAnalogCfg": {
+          "schema": "pool-analog-F0/v1",
+          "profile": "pool18_8_8_2_F2_unary_group_dem_tail_dither_nominal",
+          "assumptions": {
+            "A0": 10000.0,
+            "C_T_f": 5e-14,
+            "C_az_f": 1e-12,
+            "C_input_f": 5e-14,
+            "C_reference_f": 1e-09,
+            "R_az_leak_ohm": "Inf",
+            "R_branch_ohm": 50.0,
+            "R_reference_ohm": 0.0,
+            "R_sample_ohm": 50.0,
+            "R_sample_strap_ohm": 1.0,
+            "R_source_ohm": 0.0,
+            "R_top_group_ohm": 1.0,
+            "R_top_sample_ohm": 1.0,
+            "R_transfer_ohm": 50.0,
+            "UGB_hz": 1200000000.0,
+            "az_pole_input_gain": 1.0,
+            "az_write_tau_s": 1e-09,
+            "max_step_s": 6.25e-11,
+            "reset_tau_m_recipe_s": 1e-09,
+            "tau_reset_z_s": 1e-09
+          },
+          "A0": [
+            [
+              10000.0
+            ],
+            [
+              10000.0
+            ]
+          ],
+          "UGB_hz": [
+            [
+              1200000000.0
+            ],
+            [
+              1200000000.0
+            ]
+          ],
+          "tau_a_s": [
+            [
+              1.3262911924324613e-06
+            ],
+            [
+              1.3262911924324613e-06
+            ]
+          ],
+          "C_T_f": [
+            [
+              5e-14
+            ],
+            [
+              5e-14
+            ]
+          ],
+          "C_input_f": [
+            [
+              5e-14
+            ],
+            [
+              5e-14
+            ]
+          ],
+          "C_reference_f": [
+            [
+              1e-09
+            ],
+            [
+              1e-09
+            ]
+          ],
+          "R_reset_m_ohm": [
+            [
+              1096.0493696924943
+            ],
+            [
+              1096.0493696924943
+            ]
+          ],
+          "noise": {
+            "sample_kTC_enabled": 1,
+            "temperature_K": 298.15
+          },
+          "unary_group_dem": {
+            "enabled": 1,
+            "physical_group_count": 31.0,
+            "schedule": "pool_cyclic_shift31_v1",
+            "seed": 20261222.0,
+            "tag_key": "sample_id/epoch/physical_slice_id; invariant across SAR trial bits",
+            "unit_size_cu": 32.0
+          },
+          "tail_dither": {
+            "counter_key": "sample_id+seed only; epoch joins capture/control/RX",
+            "enabled": 1,
+            "input_amplitude_v": 0.001,
+            "nominal_sample_Cu": 1024.0,
+            "nominal_tail_Cu": 15.0,
+            "physical_columns": [
+              [
+                34.0,
+                35.0,
+                36.0,
+                37.0
+              ]
+            ],
+            "seed": 20261223.0,
+            "source": "same-owner physical acquire source through existing finite R_branch; no held overwrite",
+            "tail_amplitude_v": 0.06826666666666667,
+            "tail_source_scale": 68.26666666666667
+          },
+          "az": {
+            "C_f": [
+              [
+                1e-12
+              ],
+              [
+                1e-12
+              ]
+            ],
+            "R_leak_ohm": [
+              [
+                "Inf"
+              ],
+              [
+                "Inf"
+              ]
+            ],
+            "R_write_ohm": [
+              [
+                1000.0000000000001
+              ],
+              [
+                1000.0000000000001
+              ]
+            ],
+            "initial_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ],
+            "pole_input_gain": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ]
+            ],
+            "scope": "Finite same-owner AZ capacitor/write/leak RC, infinite-Z read; old az_calendar retained. Input-referred gain is new A, not the legacy output-offset coupling; F0 target/noise are zero.",
+            "write_duration_s": 5.5e-08,
+            "write_target_v": [
+              [
+                0.0
+              ],
+              [
+                0.0
+              ]
+            ]
+          },
+          "time": {
+            "dt_s": 1.25e-09,
+            "fs_hz": 5000000.0,
+            "sample_period_s": 2e-07,
+            "start_time_s": -2e-07,
+            "stop_time_s": 2.7499999999999995e-06
+          },
+          "C_signal_per_slice_range_f": [
+            3.449300645608531e-12,
+            3.449646405495159e-12
+          ],
+          "selected_8_slice_group_Ceq_records": [
+            {
+              "sample_id": 4,
+              "slice_ids_1based": [
+                2,
+                18,
+                15,
+                8,
+                13,
+                17,
+                5,
+                7
+              ],
+              "Ceq_per_half_f": 2.7596199093863293e-11
+            },
+            {
+              "sample_id": 5,
+              "slice_ids_1based": [
+                1,
+                14,
+                6,
+                16,
+                3,
+                11,
+                9,
+                10
+              ],
+              "Ceq_per_half_f": 2.7595522544520713e-11
+            },
+            {
+              "sample_id": 6,
+              "slice_ids_1based": [
+                5,
+                7,
+                18,
+                8,
+                15,
+                13,
+                12,
+                2
+              ],
+              "Ceq_per_half_f": 2.7596118389983876e-11
+            },
+            {
+              "sample_id": 7,
+              "slice_ids_1based": [
+                17,
+                3,
+                6,
+                4,
+                10,
+                1,
+                9,
+                14
+              ],
+              "Ceq_per_half_f": 2.7595572295224984e-11
+            },
+            {
+              "sample_id": 8,
+              "slice_ids_1based": [
+                2,
+                15,
+                13,
+                11,
+                12,
+                7,
+                16,
+                8
+              ],
+              "Ceq_per_half_f": 2.7595913830958896e-11
+            },
+            {
+              "sample_id": 9,
+              "slice_ids_1based": [
+                18,
+                4,
+                9,
+                3,
+                1,
+                5,
+                6,
+                17
+              ],
+              "Ceq_per_half_f": 2.759587003057641e-11
+            },
+            {
+              "sample_id": 10,
+              "slice_ids_1based": [
+                14,
+                13,
+                12,
+                16,
+                8,
+                11,
+                2,
+                10
+              ],
+              "Ceq_per_half_f": 2.7595729056273837e-11
+            },
+            {
+              "sample_id": 11,
+              "slice_ids_1based": [
+                15,
+                4,
+                1,
+                7,
+                18,
+                5,
+                9,
+                3
+              ],
+              "Ceq_per_half_f": 2.7596122274025153e-11
+            }
+          ],
+          "sampled_branch_sum_matches_C_signal_exactly": true,
+          "CT45_summary": {
+            "implementation": "implemented_candidate",
+            "implemented": true,
+            "enabled": true,
+            "scanned": false,
+            "scan_status": "not_scanned",
+            "note": "Candidate source path in this owner; this capture is not a parameter scan."
+          }
+        },
+        "p": {
+          "front": {
+            "active_slice_count": 8.0,
+            "bank_cap_f": 2.8e-11,
+            "cap_definition": "ASSUMED per-side bank capacitance; must resolve SPEC open input",
+            "ktc_chi": 2.0,
+            "noise_enabled": 0,
+            "local_jitter_rms_s": 0.0,
+            "common_jitter_rms_s": 0.0,
+            "r_source_ohm": 0.0,
+            "r_on_ohm": 50.0,
+            "dem_enabled": 1,
+            "interleave_enabled": 1,
+            "pool_enabled": 1,
+            "shuffle_seed": 20269121.0,
+            "jitter_seed": 20261122.0,
+            "noise_seed": 20261121.0,
+            "temperature_k": 298.15,
+            "c_slice_f": [
+              [
+                3.4495092096199848e-12
+              ],
+              [
+                3.4495978408672646e-12
+              ],
+              [
+                3.4495282950743155e-12
+              ],
+              [
+                3.449511041402933e-12
+              ],
+              [
+                3.449566812371441e-12
+              ],
+              [
+                3.449300645608531e-12
+              ],
+              [
+                3.4496464054951594e-12
+              ],
+              [
+                3.4494253959983025e-12
+              ],
+              [
+                3.449393895057494e-12
+              ],
+              [
+                3.4493491648495217e-12
+              ],
+              [
+                3.4493832927005494e-12
+              ],
+              [
+                3.449399843165339e-12
+              ],
+              [
+                3.4495154770825434e-12
+              ],
+              [
+                3.44949949656745e-12
+              ],
+              [
+                3.449387030606871e-12
+              ],
+              [
+                3.4495585450428682e-12
+              ],
+              [
+                3.4494805470447554e-12
+              ],
+              [
+                3.4495795843969556e-12
+              ]
+            ]
+          },
+          "ra": {
+            "amplification_noise_rms_v": 0.0,
+            "az": {
+              "coupling_gain": [
+                [
+                  1.0
+                ],
+                [
+                  1.0
+                ]
+              ],
+              "hold_noise_bandwidth_hz": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "hold_noise_rms_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "initial_pair_id": -1.0,
+              "initial_state_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "initial_valid": 0,
+              "leak_tau_s": [
+                [
+                  "Inf"
+                ],
+                [
+                  "Inf"
+                ]
+              ],
+              "mode": "hold_chop",
+              "offset_mean_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "pair_average_enabled": 0,
+              "polarity_injection_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "polarity_sequence": [
+                [
+                  1.0,
+                  -1.0,
+                  -1.0,
+                  1.0
+                ]
+              ],
+              "residual_injection_gain": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "seed": 20261321.0,
+              "write_duration_s": 5.5e-08,
+              "write_noise_rms_v": [
+                [
+                  0.0
+                ],
+                [
+                  0.0
+                ]
+              ],
+              "write_tau_s": [
+                [
+                  1e-09
+                ],
+                [
+                  1e-09
+                ]
+              ]
+            },
+            "az_noise_rms_v": 0.0,
+            "az_seed": 20261321.0,
+            "clip_v": "Inf",
+            "cubic_per_v2": 0.0,
+            "gain": 32.0,
+            "gain_error": 0.0,
+            "intrinsic_output_cap_f": [
+              [
+                5e-13
+              ],
+              [
+                5e-13
+              ]
+            ],
+            "memory_fraction": 0.0,
+            "noise_bandwidth_hz": 300000000.0,
+            "noise_seed": 20261322.0,
+            "offset_v": 0.0,
+            "output_resistance_ohm": 500.0,
+            "reset_tau_s": 0.0,
+            "settling_tolerance_v": 0.0005,
+            "slew_v_per_s": "Inf",
+            "tau_s": 0.0,
+            "total_output_cap_actual_f": [
+              [
+                8.983127839065542e-13
+              ],
+              [
+                8.983127839065542e-13
+              ]
+            ],
+            "total_output_cap_nominal_f": [
+              [
+                8.983127839065544e-13
+              ],
+              [
+                8.983127839065544e-13
+              ]
+            ],
+            "vcm_v": 0.9
+          },
+          "cmp1": {
+            "available_s": 1.25e-09,
+            "base_delay_s": 1e-10,
+            "noise_rms_v": 0.0,
+            "offset_v": 0.0,
+            "reference_v": 0.008,
+            "regeneration_tau_s": 2e-11,
+            "seed": 20261421.0
+          },
+          "cmp2": {
+            "available_s": 1.25e-09,
+            "base_delay_s": 1e-10,
+            "noise_rms_v": 0.0,
+            "offset_v": 0.0,
+            "reference_v": 0.00038935756002595715,
+            "regeneration_tau_s": 2e-11,
+            "seed": 20261422.0
+          },
+          "calibration": {
+            "mode": "off",
+            "storage_rows": 0.0
+          },
+          "dither": {
+            "actual_scale": 1.0,
+            "amplitude_v": 0.001,
+            "enabled": 1,
+            "seed": 20261223.0
+          },
+          "timing": {
+            "aperture_offset_s": 0.0,
+            "capture_to_reset_guard_s": 3.7499999999999906e-09,
+            "coarse_end_s": 1.25e-08,
+            "coarse_start_s": 0.0,
+            "core_deadline_s": 1.8000000000000002e-07,
+            "decision_offset_s": 1.25e-09,
+            "edge_status": "Only ~90 ns conversion and 10 ns tracking are paper-supported; exact internal edges are assumptions.",
+            "edge_ticks": {
+              "coarse_end": 10.0,
+              "coarse_start": 0.0,
+              "fine_end": 25.0,
+              "fine_start": 10.0,
+              "ra_start": 25.0,
+              "raw_latch": 69.0,
+              "reset_start": 72.0,
+              "sar2_end": 59.0,
+              "sar2_start": 35.0,
+              "track_end": 68.0,
+              "track_start": 60.0
+            },
+            "edges_s": [
+              [
+                0.0,
+                1.25e-08,
+                3.125e-08,
+                4.375e-08,
+                7.375e-08,
+                7.5e-08,
+                8.500000000000001e-08,
+                8.625000000000001e-08,
+                9e-08,
+                2e-07
+              ]
+            ],
+            "fine_decision_offset_s": 2.5e-09,
+            "fine_end_s": 3.125e-08,
+            "fine_slot_s": 3.7500000000000005e-09,
+            "fine_start_s": 1.25e-08,
+            "nonoverlap_guard_s": 1e-08,
+            "post_tracking_capture_guard_s": 1.2500000000000013e-09,
+            "ra_start_s": 3.125e-08,
+            "raw_latch_s": 8.625000000000001e-08,
+            "reset_start_s": 9e-08,
+            "sample_ticks": 160.0,
+            "sar1_fine_slots": 5.0,
+            "sar2_decision_offset_s": 1.25e-09,
+            "sar2_end_s": 7.375e-08,
+            "sar2_slot_s": 2.5e-09,
+            "sar2_slots": 12.0,
+            "sar2_start_s": 4.375e-08,
+            "schedule_status": "A_level_integer_tick_candidate_not_STA",
+            "source_profile": "paper90",
+            "source_status": "R_D_90ns_conversion_and_10ns_tracking_only",
+            "track_count": 8.0,
+            "track_end_s": 8.500000000000001e-08,
+            "track_slot_s": 1.25e-09,
+            "track_start_s": 7.5e-08,
+            "track_window_s": 1.000000000000001e-08,
+            "tracking_start_s": 7.5e-08,
+            "tracking_window_s": 1.000000000000001e-08
+          }
+        },
+        "DecodeCfg": {
+          "calibration_mode": "off",
+          "dither": {
+            "amplitude_v": 0.001,
+            "enabled": 1,
+            "mapping": "sar20_dither_value(sample_id,seed,amplitude_v)",
+            "seed": 20261223.0
+          },
+          "dt_count": 8.0,
+          "dt_encoding": "bipolar_from_raw_bits",
+          "dt_weights": [
+            [
+              8.0
+            ],
+            [
+              7.0
+            ],
+            [
+              6.0
+            ],
+            [
+              5.0
+            ],
+            [
+              4.0
+            ],
+            [
+              3.0
+            ],
+            [
+              2.0
+            ],
+            [
+              1.0
+            ]
+          ],
+          "sinc2_scale": 0.125,
+          "unary_group_dem_enabled": 1,
+          "unary_group_dem_schedule": "pool_cyclic_shift31_v1",
+          "unary_group_dem_seed": 20261222.0,
+          "word_width": {
+            "code": 20.0,
+            "d1": 11.0,
+            "d2": 12.0,
+            "dt": 8.0,
+            "lvds": 32.0
+          }
+        }
+      },
+      "explicit_run_readbacks": {
+        "sample_kTC": {
+          "enabled": true,
+          "temperature_K": 298.15,
+          "state_schema": "pool-analog-state/v4",
+          "state_width": 5181,
+          "source_constraint": "R_source=0 and R_reference=0 required when enabled",
+          "formula_prng_timing": "Reused verified noise overlay unchanged; no per-run RNG reseed."
+        },
+        "pool_calendar_mapping": {
+          "status": "compact_capture_tags_and_apertures_checked_full_charge_not_recorded",
+          "profile": "pool18_8_8_2_F2_unary_group_dem_tail_dither_nominal",
+          "sample_kTC_enabled": true,
+          "sample_kTC_temperature_K": 298.15,
+          "state_layout_version": "pool-analog-state/v4",
+          "state_layout_width": 5181,
+          "valid_front_rows": 1008,
+          "unique_id_epoch_pairs": 14,
+          "full_stream_valid_sample_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "expected_stream_sample_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "selected_valid_sample_ids": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "expected_selected_sample_ids": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "selected_valid_front_rows": 576,
+          "CNV_pre_update_rows_checked": 14,
+          "post_update_capture_rows_checked": 994,
+          "physical_time_source": "native tout owner stride; logger axes retained separately by original row",
+          "capture_slice_events_checked": 112,
+          "minimum_open_to_capture_s": 1.8999999999999966e-07,
+          "selected_sids_match_saved_plan": true,
+          "capture_id_epoch_valid_match": true,
+          "aperture_matches_logged_cnv": true,
+          "compact_key_node_width": 6,
+          "full_state_charge_recorded": false,
+          "full_state_calendar_transition_proof": false,
+          "unary_group_source_level_proof": false,
+          "scope": "Compact event/tag/aperture and selected-node records only; not full-state, charge, settling, KCL, or F2 source-mask verification."
+        },
+        "unary_group_dem": {
+          "enabled": true,
+          "schedule": "pool_cyclic_shift31_v1",
+          "seed": 20261222.0,
+          "physical_groups": 31,
+          "capacitors_per_group": 32,
+          "mask_varies_with": [
+            "sample_id",
+            "epoch",
+            "physical_slice_id"
+          ],
+          "SAR_trial_index_in_key": false,
+          "actual_C_selects_permutation": false,
+          "C_and_state_columns_repacked": false,
+          "nominal_group_charge_invariant": true,
+          "F0_h76_consumer_allowed": false
+        },
+        "tail_dither_compact_gate": {
+          "status": "compact_public_RX_Q20_ID_epoch_and_12_8_7_gates_checked",
+          "sample_ids": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "epochs": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "dither_input_v": [
+            -0.0005,
+            -0.0015,
+            0.0005,
+            -0.0015,
+            0.0005,
+            -0.0015,
+            -0.0005,
+            -0.0005
+          ],
+          "independent_Q20_code20": [
+            963377,
+            979639,
+            989055,
+            991472,
+            986860,
+            975304,
+            956956,
+            932107
+          ],
+          "actual_code20": [
+            963377,
+            979639,
+            989055,
+            991472,
+            986860,
+            975304,
+            956956,
+            932107
+          ],
+          "D2_decisions": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "TA_decisions": [
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "committed_tracking_sign_cardinality": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "tail_trace_valid_fresh_values_checked": 16,
+          "TA_to_next_old_state_rows_checked": 64,
+          "committed_tracking_sign_width": 7,
+          "committed_state_source": "old-state y8 compact Selector: [sample_id,epoch,ct_tracking_sign(1:7)]",
+          "Update_to_next_old_state_period_s": [
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.2500000000001998e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.2500000000001998e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.2500000000001998e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.249999999999988e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2499999999997763e-09,
+            1.2500000000001998e-09,
+            1.2500000000001998e-09
+          ],
+          "seven_slot_retained_sign_vector_logged": true,
+          "full_state_tail_mask_or_plate_charge_gate_run": false,
+          "full_state_kTC_charge_or_ledger_gate_run": false,
+          "scope": "Compact validates public ID/epoch dither selection, exact Q20 code, 12/8 events and committed seven-element tracking-sign prefixes through the next old-state readback. It does not record full physical tail mask, node plate charge, whole-state calendar, or kTC charge ledger."
+        }
+      },
+      "nonideal_coverage": {
+        "sampling": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "physical_CDAC_memory": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "RA_feedback": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "CT45": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "reference_KCL": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "analytic_driver": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "comparator_decisions": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "comparator_delay": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "residual_chop": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "AZ_storage": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Candidate source path in this owner; this capture is not a parameter scan."
+        },
+        "finite_RA_A0": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Finite open-loop A0 is active; zero legacy gain_error does not make the physical feedback ideal."
+        },
+        "finite_RA_bandwidth": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Declared A0/UGB pole is active with tau=A0/(2*pi*UGB), independently of the disabled legacy target pole."
+        },
+        "sampling_finite_settling": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Finite sample Ron/strap and actual branch C establish continuously even when external Rs is zero."
+        },
+        "DAC_switch_finite_settling": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Actual DAC1 reference switches have finite Ron; legacy dac1.tau_s=0 is not this owner settling model."
+        },
+        "top_join_finite_settling": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Finite top-to-T switches retain the real eighteen top-node histories."
+        },
+        "RA_takeover_finite_settling": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Finite T-to-m transfer is part of the same continuous Cf/RA/CT network."
+        },
+        "C_T": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Explicit physical T input capacitance, not an epsilon gauge."
+        },
+        "Ca": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Explicit RA input capacitance is active at m."
+        },
+        "actual_Cp": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved Cp range and exact P/N copy status are in saved_mismatch_summary; no extraction/signoff claim."
+        },
+        "actual_DAC1_mismatch": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved IID unit mismatch only; ranges and branch ratios are in saved_mismatch_summary, not calibrated or extracted values."
+        },
+        "actual_CT_main_mismatch": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved actual main CT geometry, compared with nominal using the existing F tolerance."
+        },
+        "actual_CT_replica_mismatch": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved replica geometry, not a freshly drawn or independently identified chip."
+        },
+        "actual_mismatch": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Capacitor mismatch in this saved chip only; no inferred transistor or opamp mismatch."
+        },
+        "finite_m_reset": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Finite m reset Ron uses the declared nominal RC recipe."
+        },
+        "finite_z_reset": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "z relaxes continuously with its explicit reset pole; no instantaneous voltage clear."
+        },
+        "shared_Rs": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "R=0 uses an ideal source constraint."
+        },
+        "reference_dynamics": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Rref=0 fixes deviation; not a finite-reference NI run."
+        },
+        "noise": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Complete CT/RA/AZ/CMP noise suite is not implemented/enabled. Sample-kTC is reported separately; noise.enabled=false does not mean kTC is off."
+        },
+        "jitter": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Jitter/skew is not implemented; only finite nonzero local/common RMS, aperture_skew_s, or aperture_offset_s count enabled. Saved maxima local/common/skew/offset=0/0/0/0 s."
+        },
+        "dem": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved F2 group DEM: 31 groups x 32 Cu, schedule=pool_cyclic_shift31_v1, seed=20261222; compact unary_group_source_level_proof=false and full-state/tail-mask/plate-charge gates=false; not 1039-unit/per-cap DEM or parameter sweep."
+        },
+        "dither": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved tail-dither effective enabled=1; seed=20261223, amplitude=0.001 V; compact gate does not claim full tail-mask/plate-charge proof."
+        },
+        "leak": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "NL": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "injection": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "training": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "sampling_kTC": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Sample-only kTC at 298.15 K; ABI pool-analog-state/v4/5181; compact full-state charge and kTC ledger gates=false. This is one noise source, not total noise coverage."
+        },
+        "CT_resistor_noise": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "RA_noise": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "AZ_noise": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "front_gain_offset": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "RA_gain_offset_cubic": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "RA_slew_clip": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "replica_nonzero_delay": {
+          "implementation": "not_implemented",
+          "implemented": false,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Not implemented in this owner and not enabled or represented in the saved F2 profile."
+        },
+        "dynamic_pool": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "F1 ID-keyed18/8/8/2 calendar; same physical owner. Actual ownership/KCL/paired runs are pending."
+        },
+        "comparator_noise": {
+          "implementation": "existing_CMP16",
+          "implemented": true,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Existing comparator source disabled by saved SAR20_P flags, not a new-owner noise proof."
+        },
+        "comparator_offset": {
+          "implementation": "existing_CMP16",
+          "implemented": true,
+          "enabled": false,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Existing comparator offset disabled by saved SAR20_P flags."
+        },
+        "scope": "implemented describes candidate source coverage; enabled mirrors effective saved config; scanned=false means no parameter sweep. Aggregate noise is not a complete noise inventory.",
+        "unary_group_dem": {
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "enabled": true,
+          "scanned": false,
+          "scan_status": "not_scanned",
+          "note": "Saved F2 group DEM: 31 groups x 32 Cu, schedule=pool_cyclic_shift31_v1, seed=20261222; compact unary_group_source_level_proof=false and full-state/tail-mask/plate-charge gates=false; not 1039-unit/per-cap DEM or parameter sweep."
+        },
+        "saved_mismatch_summary": {
+          "status": "saved_model_mismatch_assumption_not_calibration_or_extraction_signoff",
+          "unit_model": "independent_IID_unit_array",
+          "unit_iid_mismatch_enabled": true,
+          "unit_nominal_f": 3.3686236766121272e-15,
+          "unit_sigma_fraction": 0.001,
+          "unit_actual_range_f": [
+            3.354713013536943e-15,
+            3.382941150091534e-15
+          ],
+          "unit_actual_ratio_range": [
+            0.9958705203042525,
+            1.0042502442700296
+          ],
+          "unit_ratio_sample_std": 0.0010035343154403433,
+          "branch_weight_cu": [
+            16,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            32,
+            16,
+            8,
+            4,
+            2,
+            1,
+            17
+          ],
+          "branch_ratio_range": [
+            0.9981015673140753,
+            1.0016303510954956
+          ],
+          "offset_17cu_branch_ratio_range": [
+            1,
+            1
+          ],
+          "signal_C_slice_range_f": [
+            3.449300645608531e-12,
+            3.449646405495159e-12
+          ],
+          "signal_C_slice_ratio_range": [
+            0.9999507172955535,
+            1.0000509529323298
+          ],
+          "saved_Cp_range_f": [
+            1.6843118383060636e-15,
+            1.6843118383060636e-15
+          ],
+          "P_N_C_branch_identical": true,
+          "P_N_Cp_identical": true,
+          "independent_P_N_asymmetry_present": false,
+          "spatial_gradient_enabled": false,
+          "paper_28pF_definition_status": "TBD",
+          "scope": "Nominal Cu and sigma are model scaling assumptions; P/N Cbranch/Cp are copied identical. No independent P/N asymmetry or gradient."
+        }
+      },
+      "nonideal_coverage_scope": {
+        "coverage_object_keys": 49,
+        "feature_rows": 47,
+        "implemented_enabled_count": 28,
+        "implemented_disabled_count": 6,
+        "not_implemented_count": 13,
+        "all_feature_rows_scanned_false": true,
+        "status_count_detail": {
+          "('implemented_candidate', True, True)": 28,
+          "('implemented_candidate', True, False)": 4,
+          "('not_implemented', False, False)": 13,
+          "('existing_CMP16', True, False)": 2
+        },
+        "metadata_keys": [
+          "saved_mismatch_summary",
+          "scope"
+        ],
+        "scope": "Current BE62.5 result coverage schema has 47 feature rows plus two metadata keys; all feature rows scanned=false."
+      },
+      "run": {
+        "capture_mode": "compact",
+        "elapsed_s": 208.1844647,
+        "full_state_charge_recorded": false,
+        "records": 8,
+        "sample_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "simulation_run": true,
+        "slot_count": 14,
+        "spectrum_bins": 0,
+        "stage": "complete",
+        "status": "pool_analog_actual_capture_pending_independent_physics_verification"
+      },
+      "configuration_comparison": {
+        "baseline_cases": [
+          "be250",
+          "be125"
+        ],
+        "PoolAnalogCfg_assumptions_differ_only_by_max_step_s": true,
+        "p_front_compared_fields": [
+          "active_slice_count",
+          "bank_cap_f",
+          "c_slice_f",
+          "cap_definition",
+          "common_jitter_rms_s",
+          "dem_enabled",
+          "interleave_enabled",
+          "jitter_seed",
+          "ktc_chi",
+          "local_jitter_rms_s",
+          "noise_enabled",
+          "noise_seed",
+          "pool_enabled",
+          "r_on_ohm",
+          "r_source_ohm",
+          "shuffle_seed",
+          "temperature_k"
+        ],
+        "p_front_compared_fields_all_equal_to_be250_receipt": true,
+        "max_step_s": 6.25e-11,
+        "all_other_checked_nonideal_switches_and_values_match_existing_facts": true,
+        "coverage_schema_note": "The BE62.5 current F2 result includes explicit F2 rows; the older fact_table separates F2 actual toggles from generic disabled registry rows. Compare actual raw/result fields, not generic row labels."
+      }
+    }
+  },
+  "fact_table": [
+    {
+      "actual": {
+        "A0": [
+          [
+            10000.0
+          ],
+          [
+            10000.0
+          ]
+        ],
+        "UGB_hz": [
+          [
+            1200000000.0
+          ],
+          [
+            1200000000.0
+          ]
+        ],
+        "legacy_p_ra_clip_v": "Inf",
+        "legacy_p_ra_gain": 32.0,
+        "legacy_p_ra_gain_error": 0.0,
+        "legacy_p_ra_slew_v_per_s": "Inf",
+        "legacy_p_ra_tau_s": 0.0,
+        "tau_a_s": [
+          [
+            1.3262911924324613e-06
+          ],
+          [
+            1.3262911924324613e-06
+          ]
+        ]
+      },
+      "bandwidth_status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "feature": "finite_RA_A0_and_bandwidth",
+      "note": "Owner finite pole is PoolAnalogCfg A0/UGB/tau. Legacy p.ra gain_error/tau_s=0 and slew/clip=Inf do not make the owner ideal.",
+      "status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "actual_enabled": true,
+      "actual_implementation": "explicit F2 sample-kTC overlay recorded in raw and result",
+      "actual_temperature_K": 298.15,
+      "feature": "sample_kTC_overlay",
+      "generic_registry_row": {
+        "enabled": false,
+        "implementation": "not_implemented",
+        "implemented": false,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "note": "The generic F0 registry row is not the F2 sample-kTC overlay toggle.",
+      "scanned": false
+    },
+    {
+      "actual": {
+        "CMP1_noise_rms_v": 0.0,
+        "CMP2_noise_rms_v": 0.0,
+        "DAC2_reference_noise_rms_v": 0.0,
+        "DAC2_reset_noise_enabled": 0,
+        "RA_AZ_noise_rms_v": 0.0,
+        "RA_amplification_noise_rms_v": 0.0,
+        "front_common_jitter_rms_s": 0.0,
+        "front_local_jitter_rms_s": 0.0,
+        "front_noise_enabled": 0
+      },
+      "feature": "front_noise_and_jitter",
+      "jitter_registry": {
+        "enabled": false,
+        "implementation": "not_implemented",
+        "implemented": false,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "noise_registry": {
+        "enabled": false,
+        "implementation": "not_implemented",
+        "implemented": false,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "scanned": false
+    },
+    {
+      "actual": {
+        "enabled": 1,
+        "physical_group_count": 31.0,
+        "schedule": "pool_cyclic_shift31_v1",
+        "seed": 20261222.0,
+        "tag_key": "sample_id/epoch/physical_slice_id; invariant across SAR trial bits",
+        "unit_size_cu": 32.0
+      },
+      "feature": "physical_unary_group_DEM",
+      "generic_dem_registry_row": {
+        "enabled": false,
+        "implementation": "not_implemented",
+        "implemented": false,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "note": "Explicit 31x32Cu physical-group path is enabled; the generic DEM registry row is a different unmigrated path.",
+      "status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "DecodeCfg": {
+        "amplitude_v": 0.001,
+        "enabled": 1,
+        "mapping": "sar20_dither_value(sample_id,seed,amplitude_v)",
+        "seed": 20261223.0
+      },
+      "actual": {
+        "counter_key": "sample_id+seed only; epoch joins capture/control/RX",
+        "enabled": 1,
+        "input_amplitude_v": 0.001,
+        "seed": 20261223.0,
+        "source": "same-owner physical acquire source through existing finite R_branch; no held overwrite",
+        "tail_amplitude_v": 0.06826666666666667
+      },
+      "feature": "public_tail_dither",
+      "generic_dither_registry_row": {
+        "enabled": false,
+        "implementation": "not_implemented",
+        "implemented": false,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "status": {
+        "enabled": true,
+        "implementation": "explicit_saved_F2_tail_dither",
+        "implemented": true,
+        "scanned": false
+      }
+    },
+    {
+      "AZ_storage": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "RA_feedback": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "actual": {
+        "AZ_hold_noise_rms_v": [
+          [
+            0.0
+          ],
+          [
+            0.0
+          ]
+        ],
+        "AZ_leak_tau_s": [
+          [
+            "Inf"
+          ],
+          [
+            "Inf"
+          ]
+        ],
+        "AZ_mode": "hold_chop",
+        "AZ_pair_average_enabled": 0,
+        "AZ_write_duration_s": 5.5e-08,
+        "AZ_write_noise_rms_v": [
+          [
+            0.0
+          ],
+          [
+            0.0
+          ]
+        ],
+        "AZ_write_tau_s": [
+          [
+            1e-09
+          ],
+          [
+            1e-09
+          ]
+        ],
+        "PoolAnalogCfg_AZ_C_f": [
+          [
+            1e-12
+          ],
+          [
+            1e-12
+          ]
+        ],
+        "PoolAnalogCfg_AZ_R_leak_ohm": [
+          [
+            "Inf"
+          ],
+          [
+            "Inf"
+          ]
+        ],
+        "PoolAnalogCfg_AZ_R_write_ohm": [
+          [
+            1000.0000000000001
+          ],
+          [
+            1000.0000000000001
+          ]
+        ],
+        "RA_Cout_actual_f": [
+          [
+            8.983127839065542e-13
+          ],
+          [
+            8.983127839065542e-13
+          ]
+        ],
+        "RA_gain": 32.0,
+        "Rout_ohm": 500.0
+      },
+      "feature": "RA_AZ_storage_and_chop",
+      "residual_chop": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "actual": {
+        "cmp1": {
+          "available_s": 1.25e-09,
+          "base_delay_s": 1e-10,
+          "noise_rms_v": 0.0,
+          "offset_v": 0.0,
+          "reference_v": 0.008,
+          "regeneration_tau_s": 2e-11,
+          "seed": 20261421.0
+        },
+        "cmp2": {
+          "available_s": 1.25e-09,
+          "base_delay_s": 1e-10,
+          "noise_rms_v": 0.0,
+          "offset_v": 0.0,
+          "reference_v": 0.00038935756002595715,
+          "regeneration_tau_s": 2e-11,
+          "seed": 20261422.0
+        }
+      },
+      "decision_status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "delay_status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "feature": "comparator_decisions_and_delay",
+      "noise_status": {
+        "enabled": false,
+        "implementation": "existing_CMP16",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "offset_status": {
+        "enabled": false,
+        "implementation": "existing_CMP16",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "CT_resistor_noise_status": {
+        "enabled": false,
+        "implementation": "not_implemented",
+        "implemented": false,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "actual": {
+        "CT_sides": [
+          {
+            "bottom_main_ron_unique_ohm": [
+              1000.0
+            ],
+            "bottom_replica_ron_unique_ohm": [
+              1000.0
+            ],
+            "c_out_f": 5e-13,
+            "dt_s": 1.25e-09,
+            "reset_main_ron_ohm": 100.0,
+            "reset_replica_ron_ohm": 100.0,
+            "rout_ohm": 500.0,
+            "side": 1.0,
+            "temperature_K": 298.15,
+            "temperature_main_K": 298.15,
+            "temperature_replica_K": 298.15,
+            "temperature_reset_main_K": 298.15,
+            "temperature_reset_replica_K": 298.15
+          },
+          {
+            "bottom_main_ron_unique_ohm": [
+              1000.0
+            ],
+            "bottom_replica_ron_unique_ohm": [
+              1000.0
+            ],
+            "c_out_f": 5e-13,
+            "dt_s": 1.25e-09,
+            "reset_main_ron_ohm": 100.0,
+            "reset_replica_ron_ohm": 100.0,
+            "rout_ohm": 500.0,
+            "side": 2.0,
+            "temperature_K": 298.15,
+            "temperature_main_K": 298.15,
+            "temperature_replica_K": 298.15,
+            "temperature_reset_main_K": 298.15,
+            "temperature_reset_replica_K": 298.15
+          }
+        ],
+        "C_T_f": [
+          [
+            5e-14
+          ],
+          [
+            5e-14
+          ]
+        ],
+        "C_input_f": [
+          [
+            5e-14
+          ],
+          [
+            5e-14
+          ]
+        ],
+        "p_ct_network": {
+          "bottom_ron_ohm": 1000.0,
+          "boundary": "45-node passive C/G per differential half; Rout=500 ohm is deterministic VX damping; main/replica bottom Ron=1 kohm; reset Ron from product DAC2; temperature applies only to passive-network FDT sources; no Rout Johnson source, nonlinear RA feedback, or switch-off topology",
+          "delay_fraction": 0.0,
+          "delay_s": 0.0,
+          "reset_ron_ohm": 100.0,
+          "rout_ohm": 500.0,
+          "rout_source": "product_p.ra.output_resistance_ohm",
+          "state_width": 260.0,
+          "temperature_k": 298.15,
+          "temperature_scope": "passive_CT_network_only"
+        }
+      },
+      "feature": "passive_CT45_network",
+      "mismatch_status": {
+        "main": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "scan_status": "not_scanned",
+          "scanned": false
+        },
+        "replica": {
+          "enabled": false,
+          "implementation": "implemented_candidate",
+          "implemented": true,
+          "scan_status": "not_scanned",
+          "scanned": false
+        }
+      },
+      "status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "DAC_switch_settling": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "RA_takeover_settling": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "actual": {
+        "R_branch_ohm": 50.0,
+        "R_reference_ohm": 0.0,
+        "R_sample_ohm": 50.0,
+        "R_sample_strap_ohm": 1.0,
+        "R_source_ohm": 0.0,
+        "R_top_group_ohm": 1.0,
+        "R_top_sample_ohm": 1.0,
+        "R_transfer_ohm": 50.0,
+        "reset_m_recipe_R_ohm": [
+          [
+            1096.0493696924943
+          ],
+          [
+            1096.0493696924943
+          ]
+        ],
+        "reset_z_tau_s": [
+          [
+            1e-09
+          ],
+          [
+            1e-09
+          ]
+        ]
+      },
+      "feature": "finite_sampling_DAC_and_reference_paths",
+      "reference_KCL": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "sampling_settling": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      },
+      "top_join_settling": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "actual": {
+        "DecodeCfg": {
+          "bipolar": 1,
+          "calibration_mode": "off",
+          "dither": {
+            "amplitude_v": 0.001,
+            "enabled": 1,
+            "mapping": "sar20_dither_value(sample_id,seed,amplitude_v)",
+            "seed": 20261223.0
+          },
+          "dt_count": 8.0,
+          "dt_encoding": "bipolar_from_raw_bits",
+          "dt_mode": 0.0,
+          "dt_weights": [
+            [
+              8.0
+            ],
+            [
+              7.0
+            ],
+            [
+              6.0
+            ],
+            [
+              5.0
+            ],
+            [
+              4.0
+            ],
+            [
+              3.0
+            ],
+            [
+              2.0
+            ],
+            [
+              1.0
+            ]
+          ],
+          "fixed": {
+            "accumulator_bits": 54.0,
+            "coefficient_fraction_bits": 20.0,
+            "count": 8.0,
+            "counts_per_v": 128000.0,
+            "denominator": 8388608.0,
+            "input_reference": [
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                0.03125
+              ],
+              [
+                1.0
+              ],
+              [
+                1.0
+              ],
+              [
+                0.03125
+              ]
+            ],
+            "limit": 9007199254740991.0,
+            "nominal_absolute_bound_q": 13511753203712.0,
+            "rounding": "nearest_away_from_zero",
+            "scale": 1048576.0,
+            "source": "product_fixed_reconstruct; voltage theta quantized before count-domain sum",
+            "volts_per_count": 7.8125e-06
+          },
+          "ra_gain": 32.0,
+          "sinc2_scale": 0.125,
+          "unary_group_dem_enabled": 1,
+          "unary_group_dem_schedule": "pool_cyclic_shift31_v1",
+          "unary_group_dem_seed": 20261222.0,
+          "width": {
+            "control": 33.0,
+            "fpga": 18.0,
+            "record": 11.0,
+            "state": 256.0
+          },
+          "word_width": {
+            "code": 20.0,
+            "d1": 11.0,
+            "d2": 12.0,
+            "dt": 8.0,
+            "lvds": 32.0
+          }
+        },
+        "p_bits": {
+          "d1_info": 10.0,
+          "d1_raw": 11.0,
+          "d2_info": 11.0,
+          "d2_raw": 12.0,
+          "dt": 8.0,
+          "frame": 32.0,
+          "latency_samples": 2.0,
+          "tracking_count": 8.0,
+          "tracking_updates": 7.0
+        },
+        "p_tracking": {
+          "actual_steps_ra_v": [
+            [
+              0.00025,
+              0.00025,
+              0.00025,
+              0.00025,
+              0.00025,
+              0.00025,
+              0.00025
+            ]
+          ],
+          "count": 8.0,
+          "digital_on": {
+            "sinc2_scale": 0.125,
+            "tracking_scale_v": 0.00025
+          },
+          "enabled": 1,
+          "encoding": "bipolar_from_raw_bits",
+          "step_ra_v": 0.00025
+        }
+      },
+      "feature": "tracking_and_decode",
+      "scanned": false,
+      "status": {
+        "enabled": true,
+        "implementation": "implemented_candidate",
+        "implemented": true,
+        "scan_status": "not_scanned",
+        "scanned": false
+      }
+    },
+    {
+      "feature": "three_actual_max_step_settings",
+      "actual": [
+        {
+          "case": "be250",
+          "max_step_s": 2.5e-10
+        },
+        {
+          "case": "be125",
+          "max_step_s": 1.25e-10
+        },
+        {
+          "case": "be62p5",
+          "max_step_s": 6.25e-11
+        }
+      ],
+      "shared_values": {
+        "algorithm_dt_s": 1.25e-09,
+        "sample_period_s": 2e-07,
+        "sample_rate_hz": 5000000.0,
+        "sample_kTC_enabled": true,
+        "temperature_K": 298.15,
+        "physical_group_dem_enabled": true,
+        "dem_schedule": "pool_cyclic_shift31_v1",
+        "dem_seed": 20261222,
+        "tail_dither_enabled": true,
+        "tail_dither_seed": 20261223,
+        "tail_dither_amplitude_v": 0.001
+      },
+      "status": {
+        "actual_runs": 3,
+        "scanned": false,
+        "scan_status": "not_scanned"
+      },
+      "note": "Each maximum-step setting is one returned compact N8 capture. They differ only in max_step among the compared saved physical/digital settings; this is not a parameter sweep."
+    }
+  ],
+  "interpretation": [
+    "Result nonideal_coverage rows separate implementation, enabled, and scanned; every scanned flag here is false, so these are two actual runs, not parameter scans.",
+    "The explicit F2 sample-kTC overlay is enabled at 298.15 K in PoolAnalogCfg and result.sample_kTC, despite the generic nonideal_coverage.sampling_kTC row being not_implemented/disabled in the F0 registry. Keep these namespaces distinct.",
+    "The explicit 31x32Cu unary-group DEM and public tail dither are enabled in raw and result; generic nonideal_coverage.dem/dither refer to different unmigrated generic paths and remain false.",
+    "The finite owner RA is active through PoolAnalogCfg A0/UGB/tau; legacy p.ra.gain_error/tau_s values of zero and slew/clip Inf do not disable that owner path.",
+    "Both are compact N8 records with spectrum=[] and full_state_charge_recorded=false; no FFT, full-state charge, KCL, or physical sweep is claimed.",
+    "BE62.5 raw, selected and result SHA256 match analysis/p0_data/be62p5/ORIGIN.json; result.raw_sha256 and archived model SHA also match the raw/origin binding.",
+    "BE62.5 owner assumptions match the existing 250/125 facts except max_step_s=62.5ps; algorithm dt=1.25ns, Fs=5MHz, Ts=200ns, selected IDs=4..11, p.front values, kTC/DEM/tail-dither flags and seeds remain unchanged.",
+    "The new BE62.5 result carries 47 nonideal feature rows plus saved_mismatch_summary/scope metadata; every feature row is scanned=false. Three distinct actual one-off runs do not constitute a parameter scan.",
+    "The older per-case generic coverage registry labels are not interchangeable with explicit F2 owner toggles; use the top-level fact_table and explicit raw/result readbacks for sample-kTC, physical group DEM and tail dither."
+  ],
+  "pair_comparison": {
+    "algorithm_dt_s_both": 1.25e-09,
+    "be125_max_step_s": 1.25e-10,
+    "be250_max_step_s": 2.5e-10,
+    "nonideal_coverage_rows_identical": true,
+    "only_selected_setting_difference": "PoolAnalogCfg.assumptions.max_step_s",
+    "result_model_sha_differs": true,
+    "sample_period_s_both": 2e-07,
+    "selected_raw_config_equal_except_max_step": true,
+    "be62p5_max_step_s": 6.25e-11,
+    "three_point_scope": "Three independent one-off actual captures; no parameter scan claim."
+  },
+  "parser": {
+    "parse_api": "mat_reader.variable and mat_reader.mat_value",
+    "path": "analysis/mat_reader.py",
+    "runtime": "dependencies/analysis_env/bin/python",
+    "sha256": "4294d5b18c044f146c24afefa7f0eb1b0e2be72733177c1351cd27086f858e8f"
+  },
+  "scan_summary": {
+    "all_scanned_false": true,
+    "implemented_disabled_count": 6,
+    "implemented_enabled_count": 25,
+    "not_implemented_count": 16,
+    "rows": 47,
+    "be62p5_current_result_schema": {
+      "coverage_object_keys": 49,
+      "feature_rows": 47,
+      "implemented_enabled_count": 28,
+      "implemented_disabled_count": 6,
+      "not_implemented_count": 13,
+      "all_feature_rows_scanned_false": true,
+      "status_count_detail": {
+        "('implemented_candidate', True, True)": 28,
+        "('implemented_candidate', True, False)": 4,
+        "('not_implemented', False, False)": 13,
+        "('existing_CMP16', True, False)": 2
+      },
+      "metadata_keys": [
+        "saved_mismatch_summary",
+        "scope"
+      ],
+      "scope": "Current BE62.5 result coverage schema has 47 feature rows plus two metadata keys; all feature rows scanned=false."
+    },
+    "all_three_actual_runs_are_single_captures_not_a_scan": true
+  },
+  "schema": "sar20-be250-be125-be62p5-nonideal-actual-config-check/v2",
+  "scope": "Three actual short compact N8 captures in analysis/p0_data (BE250, BE125, BE62.5); no FFT, no full-state charge, no parameter scan; independent physics verification remains pending.",
+  "source_files": {
+    "local_sha_manifest_sha256": "8e2a38810c39b845d9820d4757d4674645e8c48f5e225333e775108cd37986d7",
+    "paths_manifest_sha256": "11475d6f055f0e5ff73efdce4ecf26c1fb2a9077eae21a3a5816b521444c5c31",
+    "be62p5_origin_sha256": "611335d107162d4d532f60ba7b59b346a09623928d54cbb7235edb090a0e7fac",
+    "be62p5_local_files_sha_match_origin": true
+  },
+  "status": "sha_bound_raw_parameter_and_result_facts_read",
+  "timing_comparison": {
+    "algorithm_dt_s": 1.25e-09,
+    "be125_max_step_s": 1.25e-10,
+    "be250_max_step_s": 2.5e-10,
+    "same_algorithm_timing": true,
+    "sample_period_s": 2e-07,
+    "sample_rate_hz": 5000000.0,
+    "scan_claim": false,
+    "be62p5_max_step_s": 6.25e-11,
+    "three_actual_max_step_settings_s": [
+      2.5e-10,
+      1.25e-10,
+      6.25e-11
+    ],
+    "all_three_share_algorithm_dt_s": 1.25e-09,
+    "all_three_share_sample_period_s": 2e-07
+  },
+  "three_point_comparison": {
+    "runs": [
+      {
+        "case": "be250",
+        "max_step_s": 2.5e-10,
+        "simulation_run": true,
+        "records": 8,
+        "sample_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "case": "be125",
+        "max_step_s": 1.25e-10,
+        "simulation_run": true,
+        "records": 8,
+        "sample_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "case": "be62p5",
+        "max_step_s": 6.25e-11,
+        "simulation_run": true,
+        "records": 8,
+        "sample_ids": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "verified_difference": "PoolAnalogCfg.assumptions.max_step_s only among selected owner assumptions; other compared F2 physical/digital nonideal settings and p.front fields match the prior receipt.",
+    "unchanged_algorithm_dt_s": 1.25e-09,
+    "unchanged_sample_period_s": 2e-07,
+    "unchanged_sample_rate_hz": 5000000.0,
+    "max_step_cases_are_not_a_scan": true,
+    "all_outputs_compact_no_fft": true,
+    "physical_capture_status": "simulation returned; compact 8 records; spectrum empty; full-state charge not recorded; physics verification pending"
+  },
+  "sample_kTC_budget": {
+    "status": "analytical_kTC_budget_only_not_measured_not_N8_SNR_estimate",
+    "evidence_scope": "Existing BE250/BE125 group calculation plus BE62.5 raw recheck; selected sample IDs 4..11; no FFT or noise-SNR estimation from N8.",
+    "paper": {
+      "path": "docs/PAPERS/01_CICC2026/A_3.6mW_5MS_s_100dB-SNDR_2-Step_SAR_ADC_with_Continuous-Time_Second-Stage_and_Tracking_Averaging.pdf",
+      "sha256": "7ef975d3d689436880cc049296b68d44eec8c1063897041bb569f3f7017f9167",
+      "printed_page_2_fig2_DAC1_label": "1039 × 27 fF",
+      "fig2_unit_product_pF": 28.053,
+      "printed_page_2_text": "The total sampling capacitor is 28pF to meet kT/C noise requirement.",
+      "printed_page_4_table1_CS_pF": 28.0,
+      "P_N_half_split": "not disclosed; Fig. 2 shows one simplified DAC1 bank without an explicit P/N split",
+      "mapping_status": "unresolved_per_half_vs_combined_PN",
+      "conditional_reading": "If 28pF is per side, the model per-side group Ceq is close. If 28pF is the combined P+N total, the model two-side sum is about 1.97x that figure."
+    },
+    "model_capacitance": {
+      "nominal_bank_cap_f": 2.8e-11,
+      "nominal_cap_definition": "ASSUMED per-side bank capacitance; must resolve SPEC open input",
+      "actual_C_source": "PoolAnalogCfg.C_signal_f[s] = sum(PoolAnalogCfg.C_branch_f[s,1:33,half]); saved P/N signal branches match exactly",
+      "capture_weight": "w_s=C_signal_f[s]/sum(C_signal_f[selected 8 slices])",
+      "Ceq_per_half_f_range": [
+        2.7595522544520713e-11,
+        2.7596199093863293e-11
+      ],
+      "Ceq_per_half_f_mean": 2.7595880939428395e-11,
+      "PplusN_physical_group_cap_f_mean": 5.519176187885679e-11,
+      "group_records": [
+        {
+          "sample_id": 4,
+          "slice_ids_1based": [
+            2,
+            18,
+            15,
+            8,
+            13,
+            17,
+            5,
+            7
+          ],
+          "Ceq_per_half_f": 2.7596199093863293e-11
+        },
+        {
+          "sample_id": 5,
+          "slice_ids_1based": [
+            1,
+            14,
+            6,
+            16,
+            3,
+            11,
+            9,
+            10
+          ],
+          "Ceq_per_half_f": 2.7595522544520713e-11
+        },
+        {
+          "sample_id": 6,
+          "slice_ids_1based": [
+            5,
+            7,
+            18,
+            8,
+            15,
+            13,
+            12,
+            2
+          ],
+          "Ceq_per_half_f": 2.7596118389983876e-11
+        },
+        {
+          "sample_id": 7,
+          "slice_ids_1based": [
+            17,
+            3,
+            6,
+            4,
+            10,
+            1,
+            9,
+            14
+          ],
+          "Ceq_per_half_f": 2.7595572295224984e-11
+        },
+        {
+          "sample_id": 8,
+          "slice_ids_1based": [
+            2,
+            15,
+            13,
+            11,
+            12,
+            7,
+            16,
+            8
+          ],
+          "Ceq_per_half_f": 2.7595913830958896e-11
+        },
+        {
+          "sample_id": 9,
+          "slice_ids_1based": [
+            18,
+            4,
+            9,
+            3,
+            1,
+            5,
+            6,
+            17
+          ],
+          "Ceq_per_half_f": 2.759587003057641e-11
+        },
+        {
+          "sample_id": 10,
+          "slice_ids_1based": [
+            14,
+            13,
+            12,
+            16,
+            8,
+            11,
+            2,
+            10
+          ],
+          "Ceq_per_half_f": 2.7595729056273837e-11
+        },
+        {
+          "sample_id": 11,
+          "slice_ids_1based": [
+            15,
+            4,
+            1,
+            7,
+            18,
+            5,
+            9,
+            3
+          ],
+          "Ceq_per_half_f": 2.7596122274025153e-11
+        }
+      ],
+      "differential_equivalent_cap_f": 1.3797940469714197e-11,
+      "differential_equivalent_cap_note": "Ceq_side/2 is only the kT/C mathematical equivalent for differential variance, not the physical P+N capacitor sum."
+    },
+    "formula": {
+      "k_B_J_per_K": 1.380649e-23,
+      "temperature_K": 298.15,
+      "single_half_equilibrium_variance_V2": "k_B*T/Ceq_side",
+      "differential_equilibrium_variance_V2": "k_B*T/Ceq_P + k_B*T/Ceq_N; equal independent sides: 2*k_B*T/Ceq_side",
+      "finite_aperture_code_formula": "For each slice/side: Cmode=diag(Cbranch_signal[1:33], Cp+sum(Ctail)); A=Cmode^-1*Gmode; F=exp(-A*Ta); Sigma(Ta)=kBT*Cmode^-1 - F*(kBT*Cmode^-1)*F^T. Then branch-weighted slice variances are summed with saved C_signal weights across slices and P/N.",
+      "units": "C in F, T in K, kBT/C in V^2, sigma in V_rms; SNR=10log10(Vsignal_rms^2/sigma_diff^2).",
+      "budget_scope": "The numeric RMS/SNR values below use full-aperture equilibrium kT/C as a reference. The actual owner injects finite-aperture RC covariance and does not expose a realized N8 noise estimate."
+    },
+    "activation": {
+      "PoolAnalogCfg.noise.sample_kTC_enabled": true,
+      "PoolAnalogCfg.noise.temperature_K": 298.15,
+      "legacy_p.front.noise_enabled": false,
+      "legacy_p.front.ktc_chi": 2.0,
+      "legacy_route_note": "The chi=2 scalar formula belongs to the disabled generic front-noise path; it is not an extra factor on the active physical sample-kTC covariance.",
+      "source_reference_constraint": "R_source=0 and R_reference=0 ideal/noiseless constraints",
+      "thermal_modes": "signal bottoms 1:33 plus sample/strap/top-sample resistors; tail/reference bottoms 34:38 are noiseless fixed targets but load the top",
+      "excluded": "RA/AZ/DAC branch noise and finite source/reference noise modes"
+    },
+    "SNR_budget": {
+      "input_convention": "Differential sine peak amplitude divided by sqrt(2) for RMS; compare differential RMS to differential kT/C RMS.",
+      "saved_differential_peak_v": 3.650563842595822,
+      "saved_differential_rms_v": 2.5813384482539257,
+      "FSR_diff_v": 8.192,
+      "fullscale_sine_peak_v": 4.096,
+      "single_half_equilibrium_sigma_v_rms": 1.2213409450114997e-05,
+      "differential_equilibrium_sigma_v_rms": 1.7272369287168353e-05,
+      "kTC_only_equilibrium_SNR_at_saved_tone_dB": 103.48986070791872,
+      "kTC_only_equilibrium_SNR_at_fullscale_sine_dB": 104.48986070791872,
+      "not_a_measurement": "These are conditional one-source analytical references, not measured SNR/SNDR, not an N8 estimate, and not a reproduction of the paper performance."
+    },
+    "source_code_sha256": {
+      "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_config.m": "c9883392d8faf2af2f6e2c5953cd92b269b42504a5cd7c85f57471e57d787105",
+      "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_latch.m": "1547fe3bbf9fe1bbd1a4fc5c562ccca334d2ebe4fa7fc6eeafe867c88a492823",
+      "current/runtime_work/pool_pole_precision_trial_r1/pool_sample_kTC_impulse.m": "25c59c7d2f77b9569adab2dbb496b6f32b74b333bce6d0411cdff565a1febc5a",
+      "current/matlab/sar20_stimulus.m": "07d4279d894d03e2790eb3789bcfdf3f04a025c650c0f0a48053bd4cde9cb51a"
+    }
+  }
+}

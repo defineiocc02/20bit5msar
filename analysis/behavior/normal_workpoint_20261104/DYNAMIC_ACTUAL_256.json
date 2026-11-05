@@ -1,0 +1,52 @@
+{
+  "normal_merged_n256": {
+    "metrics": {
+      "snr_db": 99.71241422727641,
+      "sndr_db": 99.13276590396788,
+      "sfdr_db": 111.78407088195453,
+      "thd_db": -108.16556427331727,
+      "enob": 16.174878057137523
+    },
+    "delta_from_MATLAB": {
+      "snr_db": 6.153300091682468e-12,
+      "sndr_db": 1.0942358130705543e-12,
+      "sfdr_db": 0.0,
+      "thd_db": 3.437605755607365e-11,
+      "enob": 1.8118839761882555e-13
+    },
+    "N": 256,
+    "Fs_hz": 5000000.0,
+    "fin_hz": 97656.25,
+    "fsr_diff_v": 10,
+    "amplitude_dbfs": -1,
+    "window": "rectangular coherent bin5; DC excluded; H2-H10 folded",
+    "sim_s": 73.9689511,
+    "simout_sha256": "ae7fe4a36606bb08796cf734c9769cfb222adcaa85a02ebb71bf41c5902b4540",
+    "P_used_sha256": "14e24420b15bdf89cacec3af91fb1f29ccf51ae7166e6cd2673e6119e3120c50"
+  },
+  "ideal_merged_n256": {
+    "metrics": {
+      "snr_db": 109.61843896224929,
+      "sndr_db": 109.16497669573319,
+      "sfdr_db": 120.3640711976473,
+      "thd_db": -119.20216676036091,
+      "enob": 17.84135825510518
+    },
+    "delta_from_MATLAB": {
+      "snr_db": -5.005063030694146e-11,
+      "sndr_db": -2.2026824808563106e-11,
+      "sfdr_db": 9.954703727999004e-11,
+      "thd_db": -2.3251800485013518e-10,
+      "enob": -3.659295089164516e-12
+    },
+    "N": 256,
+    "Fs_hz": 5000000.0,
+    "fin_hz": 97656.25,
+    "fsr_diff_v": 10,
+    "amplitude_dbfs": -1,
+    "window": "rectangular coherent bin5; DC excluded; H2-H10 folded",
+    "sim_s": 59.4172631,
+    "simout_sha256": "d46d95ed7fc5cbab2b1bcc29e374c0980a45ba16888d7d0683d9223a6cdda3ce",
+    "P_used_sha256": "c018907732a2bd03424458d209d3b464f1d26df110879f04aaaa06c443fa8fc4"
+  }
+}

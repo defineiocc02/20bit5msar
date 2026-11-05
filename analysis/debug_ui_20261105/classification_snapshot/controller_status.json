@@ -1,0 +1,10 @@
+{
+    "original_tasks_unchanged":  true,
+    "model_sha256":  "9626ccf94faa8ad91092ff9ecd05d283fedff08f4abb4ff0049c8585ad4bbb89",
+    "simulation_run":  false,
+    "worker_pid":  45212,
+    "status":  "passed",
+    "exit_code":  0,
+    "launch_pid":  21904,
+    "gui_preserved":  true
+}

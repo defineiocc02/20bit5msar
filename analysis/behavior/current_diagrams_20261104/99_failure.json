@@ -1,0 +1,10 @@
+{
+    "stage":  "postflight",
+    "worker_may_still_be_running":  false,
+    "utc":  "2026-11-04T10:53:52.6041808Z",
+    "job":  "D:\\Temp\\SAR20DIAGRAM_d1ab41ac29ad4ecb9a9bbef47702a694",
+    "status":  "failed",
+    "launcher_pid":  45344,
+    "error":  "Dedicated MATLAB worker exited with code .",
+    "worker_started":  true
+}

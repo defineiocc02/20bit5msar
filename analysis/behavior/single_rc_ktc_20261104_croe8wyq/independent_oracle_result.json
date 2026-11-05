@@ -1,0 +1,69 @@
+{
+  "status": "PASS_math_and_independent_python_only",
+  "scope": "not MATLAB, not Simulink, no circuit validation",
+  "convolution": [
+    {
+      "tau_s": 1e-09,
+      "formula_v": 0.4525368553170869,
+      "convolution_v": 0.45253685532138094,
+      "abs_error_v": 4.294065103493949e-12
+    },
+    {
+      "tau_s": 5e-09,
+      "formula_v": 0.4458664927544201,
+      "convolution_v": 0.4458664927544276,
+      "abs_error_v": 7.494005416219807e-15
+    },
+    {
+      "tau_s": 2e-08,
+      "formula_v": 0.41215718907250853,
+      "convolution_v": 0.4121571890725086,
+      "abs_error_v": 5.551115123125783e-17
+    },
+    {
+      "tau_s": 1e-07,
+      "formula_v": 0.3173697972933601,
+      "convolution_v": 0.31736979729336046,
+      "abs_error_v": 3.3306690738754696e-16
+    },
+    {
+      "tau_s": 1e-06,
+      "formula_v": 0.2747083802520398,
+      "convolution_v": 0.2747083802520398,
+      "abs_error_v": 0.0
+    }
+  ],
+  "max_convolution_abs_error_v": 4.294065103493949e-12,
+  "aggregate_variance": {
+    "segment_sum_V2": 2.5747324636777134e-10,
+    "one_bank_V2": 2.5747324636777134e-10
+  },
+  "conditional_covariance": {
+    "previous_variance_V2": 1.1017577022533276e-10,
+    "cross_V2": 4.053140078112865e-11,
+    "next_variance_V2": 2.723839154370287e-10,
+    "alpha": 0.36787944117144233
+  },
+  "keyed_empirical": {
+    "count": 198000,
+    "seed": 20261027,
+    "epoch": 1,
+    "aggregate_mean_z": -0.0027978497314238653,
+    "aggregate_variance": 0.9990850011927019,
+    "max_abs_segment_pair_cov": 0.005669449023620736,
+    "stationary_state_variance": 0.9964189422159804,
+    "stationary_lag1_cov": 0.3634266185411552,
+    "expected_lag1_cov": 0.36787944117144233
+  },
+  "illustrative_5ms": {
+    "status": "illustrative assumption, NOT measured or circuit qualified",
+    "Csignal_half_F": 2.7648e-11,
+    "temperature_K": 298.15,
+    "T_acq_s": 1.05e-07,
+    "tau_s": 5e-09,
+    "R_effective_ohm_if_lumped": 180.84490740740742,
+    "retained_voltage_factor": 7.582560427911907e-10,
+    "innovation_variance_factor": 1.0,
+    "differential_innovation_rms_V": 1.725608159346608e-05
+  }
+}

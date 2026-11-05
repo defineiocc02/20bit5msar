@@ -1,0 +1,186 @@
+{
+  "negative": {
+    "raw6": [
+      1039.0,
+      3417.0,
+      42.0,
+      4.0,
+      1.0,
+      1.0
+    ],
+    "code": 524285,
+    "ready_s": 8.8625e-07,
+    "held_input_V": -3.0517578125e-08,
+    "fine_first_15ns": {
+      "vres_V": -3.051757812841722e-08,
+      "qres_C": -8.285984849412681e-19,
+      "d1_word_after_compare": 1024
+    },
+    "RA_start_31p25ns": {
+      "qres_C": 2.1721129261363618e-13,
+      "vres_V": 0.007999969482421864,
+      "target_V": 0.2559990234374998,
+      "vx_V": 1.1552279528175703e-62,
+      "ctop_F": 2.8000000000000003e-11,
+      "ng": 34.00000000000001,
+      "tau_s": 4.509390054270369e-09
+    },
+    "first_D2_prepare_43p75ns": {
+      "vx_actual_V": 0.2391763587845565,
+      "vx_analytic_V": 0.23917635878455645,
+      "actual_minus_analytic_V": 5.551115123125783e-17,
+      "vy_actual_V": 0.18625024694449563
+    },
+    "D2_end_73p75ns": {
+      "vx_V": 0.25511098708372526,
+      "vy_V": -0.000302930239798655,
+      "vy_independent_MNA_V": -0.000302930239798655,
+      "actual_minus_MNA_V": 0.0,
+      "ct_reset_vx_V": 1.1552279528175703e-62
+    },
+    "TA_end_85ns": {
+      "vx_V": 0.25512987721014896,
+      "vy_V": -9.354143271983497e-05,
+      "vy_independent_MNA_V": -9.354143271983497e-05,
+      "actual_minus_MNA_V": 0.0,
+      "ct_reset_vx_V": 1.1552279528175703e-62
+    },
+    "decode": {
+      "coarse": 32,
+      "fine": 15,
+      "d2_bits": "110101011001",
+      "dt_bits": "00101010",
+      "d1_dac_V": 0.06,
+      "d1_bias_V": -0.068,
+      "d1_V": -0.008000000000000007,
+      "d2_ra_V": 0.25550000000000006,
+      "d2_input_V": 0.007984375000000002,
+      "dt_statistic": -12,
+      "dt_input_V": -1.171875e-05,
+      "voltage_V": -2.7343750000005218e-05,
+      "unrounded_code": 524284.5
+    },
+    "CT_input_gain_alpha": 0.7787151200519142
+  },
+  "zero": {
+    "raw6": [
+      1040.0,
+      2374.0,
+      42.0,
+      4.0,
+      1.0,
+      1.0
+    ],
+    "code": 524289,
+    "ready_s": 8.8625e-07,
+    "held_input_V": 0.0,
+    "fine_first_15ns": {
+      "vres_V": 0.0,
+      "qres_C": 0.0,
+      "d1_word_after_compare": 1040
+    },
+    "RA_start_31p25ns": {
+      "qres_C": 0.0,
+      "vres_V": 0.0,
+      "target_V": 0.0,
+      "vx_V": 0.0,
+      "ctop_F": 2.8000000000000003e-11,
+      "ng": 34.00000000000001,
+      "tau_s": 4.509390054270369e-09
+    },
+    "first_D2_prepare_43p75ns": {
+      "vx_actual_V": 0.0,
+      "vx_analytic_V": 0.0,
+      "actual_minus_analytic_V": 0.0,
+      "vy_actual_V": 0.0
+    },
+    "D2_end_73p75ns": {
+      "vx_V": 0.0,
+      "vy_V": -0.0003893575600259479,
+      "vy_independent_MNA_V": -0.0003893575600259571,
+      "actual_minus_MNA_V": 9.215718466126788e-18,
+      "ct_reset_vx_V": 0.0
+    },
+    "TA_end_85ns": {
+      "vx_V": 0.0,
+      "vy_V": -0.00019467878001296933,
+      "vy_independent_MNA_V": -0.00019467878001297855,
+      "actual_minus_MNA_V": 9.215718466126788e-18,
+      "ct_reset_vx_V": 0.0
+    },
+    "decode": {
+      "coarse": 32,
+      "fine": 16,
+      "d2_bits": "100101000110",
+      "dt_bits": "00101010",
+      "d1_dac_V": 0.068,
+      "d1_bias_V": -0.068,
+      "d1_V": 0.0,
+      "d2_ra_V": 0.000500000000000056,
+      "d2_input_V": 1.562500000000175e-05,
+      "dt_statistic": -12,
+      "dt_input_V": -1.171875e-05,
+      "voltage_V": 3.906250000001748e-06,
+      "unrounded_code": 524288.5
+    },
+    "CT_input_gain_alpha": 0.7787151200519142
+  },
+  "provenance": {
+    "negative_P_sha": "be1d4d1c447a474d23639d470e6031901035a0fde8da5bc93b7c95d274bf9640",
+    "negative_signals_sha": "735364a0e1d7fd9a6166bf6915d8ee446cef0bfa567621f3e66fc57057bf6983",
+    "zero_actual_preflight_simout_sha": "f2fbddd8b8f6571277e164a21665c5a32808bf78039686fc587cbb3e06c9678a",
+    "zero_P_reconstructed_sha": "1085032fa1ff72dc0422e1a28695d3801651a9ea41724b4f4bf912e6b59263bd",
+    "model_sha": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+    "source_manifest_sha": "517e380a78bac0c341ce9299b0e22dfbd280180b54b7b897a370c3a6f1f07ff3",
+    "archived_sources_checked": 87,
+    "P_difference_to_zero_reconstruction": [
+      "P/front/input/offset_v",
+      "P/input/offset_v",
+      "P/xFE0"
+    ],
+    "zero_P_caveat": "Pzero reconstructed from matching factory and pinned 110315 setup; prior zero preflight did not independently save actual P."
+  },
+  "model": {
+    "Cs_F": 2.7151515151515164e-11,
+    "Ctop_F": 2.8000000000000013e-11,
+    "Cf_F": 8.484848484848485e-13,
+    "noise_gain": 34.000000000000014,
+    "gain_factor": 0.9966115208291808,
+    "tau_ra_s": 4.50939005427037e-09,
+    "RA_gain": 32.0,
+    "nominal_lsb_V": 7.8125e-06,
+    "ct_reference_V": 1.8,
+    "CINC_enabled_and_matching_opposite_replica": true
+  },
+  "difference_zero_minus_negative": {
+    "input_V": 3.0517578125e-08,
+    "D1_V": 0.008000000000000007,
+    "D2_V": -0.00796875,
+    "DT_V": 0.0,
+    "decoded_V": 3.125000000000697e-05,
+    "code": 4
+  },
+  "gain_counterfactual": [
+    {
+      "A0": 10000,
+      "F": 0.9966115208291808,
+      "low_endpoint_fixed_target_gain_deficit_input_V": 2.7107729958375693e-05
+    },
+    {
+      "A0": 20000,
+      "F": 0.9983028850953379,
+      "low_endpoint_fixed_target_gain_deficit_input_V": 1.3576867445459836e-05
+    },
+    {
+      "A0": 40000,
+      "F": 0.9991507218863965,
+      "low_endpoint_fixed_target_gain_deficit_input_V": 6.794198990916563e-06
+    },
+    {
+      "A0": "Inf",
+      "F": 1.0,
+      "low_endpoint_fixed_target_gain_deficit_input_V": 0.0
+    }
+  ],
+  "scope": "Actual two endpoints and independent first RA interval/CT MNA; target/higher-gain values are frozen-Q analytic counterfactual, not simulated. No inference about unobserved intermediate codes."
+}

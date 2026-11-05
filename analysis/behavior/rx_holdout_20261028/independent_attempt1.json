@@ -1,0 +1,152 @@
+{
+  "schema": "sar20-rx-holdout-independent-terminal-audit/v1",
+  "status": "terminal_public_holdout_independently_audited",
+  "analog_held_or_actual_C_read": false,
+  "refit": false,
+  "gain_offset_fit": false,
+  "coefficient_update": false,
+  "new_tolerance": false,
+  "outside_or_unclassified_ready": [
+    {
+      "time_s": 5.38e-07,
+      "raw6": [
+        1809.0,
+        2389.0,
+        213.0,
+        0.0,
+        3.0,
+        1.0
+      ]
+    },
+    {
+      "time_s": 7.38e-07,
+      "raw6": [
+        1711.0,
+        2887.0,
+        213.0,
+        1.0,
+        3.0,
+        1.0
+      ]
+    },
+    {
+      "time_s": 9.38e-07,
+      "raw6": [
+        1587.0,
+        2887.0,
+        85.0,
+        2.0,
+        3.0,
+        1.0
+      ]
+    },
+    {
+      "time_s": 1.138e-06,
+      "raw6": [
+        1455.0,
+        2459.0,
+        213.0,
+        3.0,
+        3.0,
+        1.0
+      ]
+    }
+  ],
+  "record_counts": {
+    "all_ready": 1028,
+    "selected": 1024,
+    "valid_1": 1024,
+    "valid_0": 0,
+    "other": 0
+  },
+  "receipt_status": "rx_registered_holdout_passed_not_accepted",
+  "receipt_sha256": "708794ed98fbb55d02eaaad15cedffd86c629edb0c82d566d29a1c253f5d78fc",
+  "pre_holdout_pins": {
+    "protocol_sha256": "a0d418f409782a79e0636815e0844f93cab878abda016927ebd562ca5e7784ad",
+    "coefficient_file_sha256": "a2f88afe4ae6d2c987a58aac7bf0f44a34ff45eb52a2632e9ba473c48f8d553d",
+    "coefficient_sha256": "a634c9a0c63c636a4c8966bc7d0e04d6d9ad4cf550156e6ed7ffe7806d6483ed",
+    "public_cfg_sha256": "dec94f6c795fce4422231b3dd94cb51523a239b9e70de2a52e7e90b9356741af"
+  },
+  "selected_mat_sha256": "d8094c1dcc6af053865febd13e950eb39ed4194de2311f14fb746dbdc0da10c9",
+  "whole_parameters_and_simout_sha": "not read or hashed: files contain excluded analog state/data",
+  "protocol_and_immutable_cache": {
+    "protocol_holdout": {
+      "records": 1024,
+      "first_id": 4,
+      "epoch": 3,
+      "source": {
+        "offset_v": 0,
+        "amplitude_v": 3.650563842595822,
+        "frequency_hz": 141601.5625,
+        "phase_rad": 2.137
+      }
+    },
+    "holdout_rms_limit_v": 7.8125e-06,
+    "holdout_max_abs_limit_v": 3.125e-05,
+    "predeclared_voltage_oracle_tolerance_v": 1e-12,
+    "h_684_bytes_hash_verified": true,
+    "public_cfg_semantic_identity_verified": true,
+    "public_cfg_hash_boundary": "Compared declared MATLAB cfg hash and full public cfg identity; MATLAB orderfields/jsonencode hash not independently reserialized in Python.",
+    "public_plan_all_rows_reconstructed_and_matched": true,
+    "holdout_reservation_sha256": "121d097f5e21edcd8b9398cfc8acf8253c737989a2d431c9145bc52a1e2a81ca"
+  },
+  "actual_RX_raw_and_selected_bits_equal": true,
+  "actual_public_reference_exact_CNVRX_join": true,
+  "reference_formula_python_max_abs_delta_v": 4.440892098500626e-16,
+  "reference_scope": "Declared ideal external reference with zero stated uncertainty; not measured hardware reference.",
+  "actual_frozen_diag_and_public_reconstruction": {
+    "voltage_max_abs_delta_v": 1.3322676295501878e-15,
+    "original_oracle_voltage_tolerance_v": 1e-12,
+    "integer_code_mismatches": 0,
+    "max_abs_u_delta_v": 8.326672684688674e-17,
+    "max_abs_Bh_delta_v": 2.842170943040401e-14,
+    "max_abs_den_delta": 7.105427357601002e-15,
+    "note": "Only public RAW, immutable h and public plan/config feed the independent basis; no analog held/C truth."
+  },
+  "fixed_registered_gates": {
+    "passed": true,
+    "actual_metrics": {
+      "voltage_rms_v": 2.6250846484154534e-06,
+      "voltage_max_abs_v": 7.066346749518004e-06,
+      "integer_center_rms_v": 3.4766449202517185e-06,
+      "integer_center_max_abs_v": 1.0093582921699706e-05
+    },
+    "numpy_minus_terminal_receipt": {
+      "voltage_rms_v": 0.0,
+      "voltage_max_abs_v": 0.0,
+      "integer_center_rms_v": 0.0,
+      "integer_center_max_abs_v": 0.0
+    }
+  },
+  "actual_code_fft": {
+    "N": 1024,
+    "fs_hz": 5000000.0,
+    "fin_hz": 141601.5625,
+    "bin": 29,
+    "frozen": {
+      "snr_db": 117.52021173998753,
+      "sndr_db": 117.45816851188864,
+      "sfdr_db": 136.08277322674653,
+      "thd_db": -135.94005244782954,
+      "enob": 19.21896486908449
+    },
+    "nominal": {
+      "snr_db": 102.12865423727035,
+      "sndr_db": 102.04993935764675,
+      "sfdr_db": 115.68054130797432,
+      "thd_db": -119.50651210892106,
+      "enob": 16.6594583650576
+    },
+    "frozen_numpy_minus_summary": {
+      "snr_db": -4.3584691411524545e-11,
+      "sndr_db": -4.295941380405566e-11,
+      "sfdr_db": 1.9042545318370685e-12,
+      "thd_db": -2.0747847884194925e-12,
+      "enob": -7.137401780710206e-12
+    },
+    "scope": "Actual valid codes; rectangular coherent FFT, H2-H10, no ENOB amplitude correction. FFT uses code+0.5 center; registered accuracy gates use code-2^19 with no +0.5."
+  },
+  "acceptance": "NOT_ACCEPTED; registered holdout gate only, no automatic bank activation",
+  "limits": "Same chip/profile, registered ideal external reference, 1024 actual public RX records; no PDK, silicon, extra nonideal or generalized performance claim.",
+  "verifier_sha256": "bfcedbee5fbedf0a449b05ce2a9b599f586481b17af45230f42a7ff2db435a4b"
+}

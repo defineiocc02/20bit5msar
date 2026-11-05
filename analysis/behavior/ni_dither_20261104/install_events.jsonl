@@ -1,0 +1,12 @@
+{"path":"config/adc_parameters.m","status":"replace_intent"}
+{"path":"config/adc_parameters.m","before":"949a7c863755debe859e9f4ead028ddf3ea7f4c3d1d98699083a0ce76170e540","status":"installed","after":"f91372be10dbb453e488e71f911566a55ed004275b99b060bddea73ae95f6df1"}
+{"path":"current/src/calibration/public_calibration_config.m","status":"replace_intent"}
+{"path":"current/src/calibration/public_calibration_config.m","before":"d15ae8e4af25d443f14a93a25e7305f3f0c29c58b9c55355eea1aec6a978d769","status":"installed","after":"4e5b8617860b61f2d595d67bba5cd5f489d6e8bd639e9416fd808773a0cc60c9"}
+{"path":"current/src/calibration/behavior_cal_collector_step.m","status":"replace_intent"}
+{"path":"current/src/calibration/behavior_cal_collector_step.m","before":"4d9a3a59dffd904991db49a93e157196dbec9e1ec7791ad470b73c01d976f676","status":"installed","after":"d98a0005fe43fb15a8881ba3b85faff3b350d1f79bfb8726f361d9ba4629a6cd"}
+{"path":"current/src/model/behavior_prepare_configuration.m","status":"replace_intent"}
+{"path":"current/src/model/behavior_prepare_configuration.m","before":"62d944cd3bfcc3c52bdfe44b668463d9ad394e20980d5e2a820262a076734222","status":"installed","after":"3513898f825776fa0fd16567c9631ff2b2c1bb6a242d8b1787b756230eb77ccd"}
+{"path":"current/src/model/behavior_ra_noise_guard.m","status":"replace_intent"}
+{"path":"current/src/model/behavior_ra_noise_guard.m","before":"fca18b3b205ec892c37dd1c3e37f5575ed10fea23c10bf162b9f0969a10d49ec","status":"installed","after":"f34f5c0ef9283729729bdaf444af5d724b50422ee92bd29b0ea7952caa019d1b"}
+{"path":"current/src/model/behavior_training_configuration.m","status":"replace_intent"}
+{"path":"current/src/model/behavior_training_configuration.m","before":"5eadbe2d56cadb4d2fc8f681bffcc5d907fffb3494902390a6d105ab9887db5e","status":"installed","after":"cd6a4fe8f5247e3ca95a3b477892898b2e920e85fbab1dcec32aa0a48ebf81dc"}

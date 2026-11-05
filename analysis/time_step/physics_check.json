@@ -1,0 +1,1951 @@
+{
+  "schema": "sar20-be-step-per-id-d2-ta-check/v1",
+  "status": "observed_event_differences_no_convergence_verdict",
+  "scope": "Independent per-ID logger-event check for actual compact N8 be250 vs be125 captures; no FFT, fit, or invented threshold.",
+  "inputs": {
+    "be250": {
+      "raw_sha256": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0",
+      "model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb",
+      "max_step_s": 2.5e-10
+    },
+    "be125": {
+      "raw_sha256": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+      "model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5",
+      "max_step_s": 1.25e-10
+    },
+    "reader_origin": [
+      {
+        "original_path": "preparation/fast_prefix_independent_r1/compare_fast_prefix.py",
+        "source_sha256": "f74530e6bf539d32ef23ce0373dd8f3ce49f31c290a24173c1fe2c1a2d71277f",
+        "functions": [
+          "_matlab_class",
+          "_scalar_double",
+          "_locate_simulation_output",
+          "read_solver_tout",
+          "read_logger_plan",
+          "_read_logger_plan_from_file",
+          "_time_bits"
+        ]
+      },
+      {
+        "original_path": "tools/verify_analog_owner.py",
+        "source_sha256": "c254a61e1ed18e64726db04af0682a6b35156a985c7132f917c73aa7001187ab",
+        "functions": [
+          "require",
+          "mat_value",
+          "variable"
+        ]
+      }
+    ],
+    "logger_time_mapping": "For 2361-row loggers, physical row time is native SimulationOutput.tout[::5]; descriptor t0/dt is not used to infer event time.",
+    "fields": {
+      "control_sample_id": "p/idx/control.sample_id",
+      "D2_event": "p/idx/control.sar2_decide",
+      "TA_event": "p/idx/control.track_decide",
+      "comparator_input": "p/idx/comparator.v_input",
+      "comparator_decision": "p/idx/comparator.decision",
+      "held_voltage": "p/idx/held.v_held",
+      "CT_voltage": "p/idx/ct.vy"
+    }
+  },
+  "shared_time_and_control_rows_bitwise_equal": true,
+  "comparator_input_equals_ct_vy_bitwise_on_all_D2_TA_events": true,
+  "samples": [
+    {
+      "sample_id": 4,
+      "control_rows_0based": [
+        800,
+        959
+      ],
+      "control_time_native_tout_s": [
+        8.000000000000002e-07,
+        9.987500000000002e-07
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 800,
+        "time_native_tout_s": 8.000000000000002e-07,
+        "be250_v": 3.430356243593771,
+        "be125_v": 3.4304041426373915,
+        "delta_be125_minus_be250_v": 4.789904362034747e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 8e-07,
+          "acquisition_duration_s": 1.8999999999999998e-07,
+          "acquisition_error_v": -0.00023063985328208858
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 8e-07,
+          "acquisition_duration_s": 1.8999999999999998e-07,
+          "acquisition_error_v": -0.0001827408096617411
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 836,
+          "time_native_tout_s": 8.450000000000002e-07,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.15509738995934005,
+          "v_input_be125_v": 0.15663477418463126,
+          "delta_v_be125_minus_be250": 0.0015373842252912051,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_input_value_difference": {
+          "row_0based": 836,
+          "time_native_tout_s": 8.450000000000002e-07,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.15509738995934005,
+          "v_input_be125_v": 0.15663477418463126,
+          "delta_v_be125_minus_be250": 0.0015373842252912051,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_decision_difference": {
+          "row_0based": 854,
+          "time_native_tout_s": 8.675000000000002e-07,
+          "sar2_bit": 2,
+          "track_index": -1,
+          "v_input_be250_v": -0.00016314240945736522,
+          "v_input_be125_v": 0.0010412075137482696,
+          "delta_v_be125_minus_be250": 0.0012043499232056347,
+          "decision_be250": 0,
+          "decision_be125": 1
+        }
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 860,
+          "time_native_tout_s": 8.750000000000001e-07,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.000382494138830432,
+          "v_input_be125_v": 1.895802226866354e-05,
+          "delta_v_be125_minus_be250": -0.00036353611656176845,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_input_value_difference": {
+          "row_0based": 860,
+          "time_native_tout_s": 8.750000000000001e-07,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.000382494138830432,
+          "v_input_be125_v": 1.895802226866354e-05,
+          "delta_v_be125_minus_be250": -0.00036353611656176845,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_decision_difference": {
+          "row_0based": 861,
+          "time_native_tout_s": 8.762500000000001e-07,
+          "sar2_bit": 0,
+          "track_index": 1,
+          "v_input_be250_v": 0.0001982786617492846,
+          "v_input_be125_v": -0.00016605934582361045,
+          "delta_v_be125_minus_be250": -0.0003643380075728951,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "final_valid_record": {
+        "row_0based": 1028,
+        "time_native_tout_s": 1.085e-06,
+        "raw_D2_be250": 3291,
+        "raw_D2_be125": 3293,
+        "raw_DT_be250": 234,
+        "raw_DT_be125": 170,
+        "code20_be250": 963368,
+        "code20_be125": 963374,
+        "code20_delta_be125_minus_be250": 6
+      }
+    },
+    {
+      "sample_id": 5,
+      "control_rows_0based": [
+        960,
+        1119
+      ],
+      "control_time_native_tout_s": [
+        1.0000000000000002e-06,
+        1.1987500000000002e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 960,
+        "time_native_tout_s": 1.0000000000000002e-06,
+        "be250_v": 3.5574135776351845,
+        "be125_v": 3.5574450135438935,
+        "delta_be125_minus_be250_v": 3.143590870902102e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 1e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": -0.0001513403700577065
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 1e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": -0.00011990446134868549
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 996,
+          "time_native_tout_s": 1.0450000000000002e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.1566735344475928,
+          "v_input_be125_v": -0.1578409665650925,
+          "delta_v_be125_minus_be250": -0.0011674321174997004,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 996,
+          "time_native_tout_s": 1.0450000000000002e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.1566735344475928,
+          "v_input_be125_v": -0.1578409665650925,
+          "delta_v_be125_minus_be250": -0.0011674321174997004,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1008,
+          "time_native_tout_s": 1.06e-06,
+          "sar2_bit": 5,
+          "track_index": -1,
+          "v_input_be250_v": 0.0006527960978507099,
+          "v_input_be125_v": -0.00017823644805064516,
+          "delta_v_be125_minus_be250": -0.0008310325459013551,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1020,
+          "time_native_tout_s": 1.075e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.0002294158000476125,
+          "v_input_be125_v": 0.00022295721734879757,
+          "delta_v_be125_minus_be250": -6.458582698814938e-06,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_input_value_difference": {
+          "row_0based": 1020,
+          "time_native_tout_s": 1.075e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.0002294158000476125,
+          "v_input_be125_v": 0.00022295721734879757,
+          "delta_v_be125_minus_be250": -6.458582698814938e-06,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_decision_difference": null
+      },
+      "final_valid_record": {
+        "row_0based": 1188,
+        "time_native_tout_s": 1.2850000000000002e-06,
+        "raw_D2_be250": 801,
+        "raw_D2_be125": 796,
+        "raw_DT_be250": 210,
+        "raw_DT_be125": 210,
+        "code20_be250": 979633,
+        "code20_be125": 979637,
+        "code20_delta_be125_minus_be250": 4
+      }
+    },
+    {
+      "sample_id": 6,
+      "control_rows_0based": [
+        1120,
+        1279
+      ],
+      "control_time_native_tout_s": [
+        1.2000000000000002e-06,
+        1.3987500000000002e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 1120,
+        "time_native_tout_s": 1.2000000000000002e-06,
+        "be250_v": 3.6309640960291754,
+        "be125_v": 3.63097859597899,
+        "delta_be125_minus_be250_v": 1.4499949814616997e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 1.2e-06,
+          "acquisition_duration_s": 1.9000000000000009e-07,
+          "acquisition_error_v": -6.976877685360705e-05
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 1.2e-06,
+          "acquisition_duration_s": 1.9000000000000009e-07,
+          "acquisition_error_v": -5.5268827038990054e-05
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 1156,
+          "time_native_tout_s": 1.2450000000000002e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.1474305759223948,
+          "v_input_be125_v": -0.1481866236845931,
+          "delta_v_be125_minus_be250": -0.0007560477621982864,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1156,
+          "time_native_tout_s": 1.2450000000000002e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.1474305759223948,
+          "v_input_be125_v": -0.1481866236845931,
+          "delta_v_be125_minus_be250": -0.0007560477621982864,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": null
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1180,
+          "time_native_tout_s": 1.275e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.00020432525364915498,
+          "v_input_be125_v": -0.00016010840280132615,
+          "delta_v_be125_minus_be250": -0.00036443365645048116,
+          "decision_be250": 1,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1180,
+          "time_native_tout_s": 1.275e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.00020432525364915498,
+          "v_input_be125_v": -0.00016010840280132615,
+          "delta_v_be125_minus_be250": -0.00036443365645048116,
+          "decision_be250": 1,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1180,
+          "time_native_tout_s": 1.275e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.00020432525364915498,
+          "v_input_be125_v": -0.00016010840280132615,
+          "delta_v_be125_minus_be250": -0.00036443365645048116,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "final_valid_record": {
+        "row_0based": 1348,
+        "time_native_tout_s": 1.4850000000000002e-06,
+        "raw_D2_be250": 818,
+        "raw_D2_be125": 818,
+        "raw_DT_be250": 170,
+        "raw_DT_be125": 84,
+        "code20_be250": 989053,
+        "code20_be125": 989054,
+        "code20_delta_be125_minus_be250": 1
+      }
+    },
+    {
+      "sample_id": 7,
+      "control_rows_0based": [
+        1280,
+        1439
+      ],
+      "control_time_native_tout_s": [
+        1.4000000000000001e-06,
+        1.5987500000000002e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 1280,
+        "time_native_tout_s": 1.4000000000000001e-06,
+        "be250_v": 3.649901536473109,
+        "be125_v": 3.6498988823700547,
+        "delta_be125_minus_be250_v": -2.654103054222645e-06,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 1.4e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 1.2853968666348692e-05
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 1.4e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 1.0199865612126047e-05
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 1316,
+          "time_native_tout_s": 1.4450000000000001e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.07709015793196562,
+          "v_input_be125_v": 0.07725208961694206,
+          "delta_v_be125_minus_be250": 0.00016193168497644073,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_input_value_difference": {
+          "row_0based": 1316,
+          "time_native_tout_s": 1.4450000000000001e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.07709015793196562,
+          "v_input_be125_v": 0.07725208961694206,
+          "delta_v_be125_minus_be250": 0.00016193168497644073,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_decision_difference": null
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1340,
+          "time_native_tout_s": 1.475e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.00012558340911592982,
+          "v_input_be125_v": -0.00018916728457499447,
+          "delta_v_be125_minus_be250": -6.358387545906465e-05,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1340,
+          "time_native_tout_s": 1.475e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.00012558340911592982,
+          "v_input_be125_v": -0.00018916728457499447,
+          "delta_v_be125_minus_be250": -6.358387545906465e-05,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": null
+      },
+      "final_valid_record": {
+        "row_0based": 1508,
+        "time_native_tout_s": 1.6850000000000002e-06,
+        "raw_D2_be250": 2730,
+        "raw_D2_be125": 2730,
+        "raw_DT_be250": 85,
+        "raw_DT_be125": 85,
+        "code20_be250": 991473,
+        "code20_be125": 991473,
+        "code20_delta_be125_minus_be250": 0
+      }
+    },
+    {
+      "sample_id": 8,
+      "control_rows_0based": [
+        1440,
+        1599
+      ],
+      "control_time_native_tout_s": [
+        1.6000000000000001e-06,
+        1.7987500000000001e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 1440,
+        "time_native_tout_s": 1.6000000000000001e-06,
+        "be250_v": 3.6139410603504065,
+        "be125_v": 3.6139212921156285,
+        "delta_be125_minus_be250_v": -1.9768234778005933e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 1.6000000000000001e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 9.528325821905881e-05
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 1.6000000000000001e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 7.551502344105288e-05
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 1476,
+          "time_native_tout_s": 1.6450000000000001e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.12241196745034415,
+          "v_input_be125_v": 0.12231619048304207,
+          "delta_v_be125_minus_be250": -9.577696730207752e-05,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_input_value_difference": {
+          "row_0based": 1476,
+          "time_native_tout_s": 1.6450000000000001e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.12241196745034415,
+          "v_input_be125_v": 0.12231619048304207,
+          "delta_v_be125_minus_be250": -9.577696730207752e-05,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_decision_difference": null
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1500,
+          "time_native_tout_s": 1.675e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.00044354053992989764,
+          "v_input_be125_v": -4.3583594452155793e-05,
+          "delta_v_be125_minus_be250": -0.0004871241343820534,
+          "decision_be250": 1,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1500,
+          "time_native_tout_s": 1.675e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.00044354053992989764,
+          "v_input_be125_v": -4.3583594452155793e-05,
+          "delta_v_be125_minus_be250": -0.0004871241343820534,
+          "decision_be250": 1,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1500,
+          "time_native_tout_s": 1.675e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": 0.00044354053992989764,
+          "v_input_be125_v": -4.3583594452155793e-05,
+          "delta_v_be125_minus_be250": -0.0004871241343820534,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "final_valid_record": {
+        "row_0based": 1668,
+        "time_native_tout_s": 1.885e-06,
+        "raw_D2_be250": 2901,
+        "raw_D2_be125": 2901,
+        "raw_DT_be250": 234,
+        "raw_DT_be125": 85,
+        "code20_be250": 986864,
+        "code20_be125": 986861,
+        "code20_delta_be125_minus_be250": -3
+      }
+    },
+    {
+      "sample_id": 9,
+      "control_rows_0based": [
+        1600,
+        1759
+      ],
+      "control_time_native_tout_s": [
+        1.8000000000000003e-06,
+        1.99875e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 1600,
+        "time_native_tout_s": 1.8000000000000003e-06,
+        "be250_v": 3.5236235465590573,
+        "be125_v": 3.523586961524787,
+        "delta_be125_minus_be250_v": -3.658503427050874e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 1.8e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 0.0001762791435648836
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 1.8e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 0.00013969410929437487
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 1636,
+          "time_native_tout_s": 1.8450000000000003e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.1165365857352228,
+          "v_input_be125_v": -0.11604073487005177,
+          "delta_v_be125_minus_be250": 0.0004958508651710242,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1636,
+          "time_native_tout_s": 1.8450000000000003e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.1165365857352228,
+          "v_input_be125_v": -0.11604073487005177,
+          "delta_v_be125_minus_be250": 0.0004958508651710242,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1658,
+          "time_native_tout_s": 1.8725e-06,
+          "sar2_bit": 0,
+          "track_index": -1,
+          "v_input_be250_v": -0.0005904213845638825,
+          "v_input_be125_v": 0.00031244606619678245,
+          "delta_v_be125_minus_be250": 0.000902867450760665,
+          "decision_be250": 0,
+          "decision_be125": 1
+        }
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1660,
+          "time_native_tout_s": 1.875e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.0002236826562263553,
+          "v_input_be125_v": -9.756827110974437e-05,
+          "delta_v_be125_minus_be250": 0.00012611438511661094,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1660,
+          "time_native_tout_s": 1.875e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.0002236826562263553,
+          "v_input_be125_v": -9.756827110974437e-05,
+          "delta_v_be125_minus_be250": 0.00012611438511661094,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1661,
+          "time_native_tout_s": 1.8762500000000002e-06,
+          "sar2_bit": 0,
+          "track_index": 1,
+          "v_input_be250_v": -3.685822975962274e-05,
+          "v_input_be125_v": 8.995706073725773e-05,
+          "delta_v_be125_minus_be250": 0.00012681529049688047,
+          "decision_be250": 0,
+          "decision_be125": 1
+        }
+      },
+      "final_valid_record": {
+        "row_0based": 1828,
+        "time_native_tout_s": 2.085e-06,
+        "raw_D2_be250": 1206,
+        "raw_D2_be125": 1207,
+        "raw_DT_be250": 42,
+        "raw_DT_be125": 85,
+        "code20_be250": 975311,
+        "code20_be125": 975306,
+        "code20_delta_be125_minus_be250": -5
+      }
+    },
+    {
+      "sample_id": 10,
+      "control_rows_0based": [
+        1760,
+        1919
+      ],
+      "control_time_native_tout_s": [
+        2e-06,
+        2.19875e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 1760,
+        "time_native_tout_s": 2e-06,
+        "be250_v": 3.380307454157546,
+        "be125_v": 3.380254602596656,
+        "delta_be125_minus_be250_v": -5.285156088996601e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 2e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 0.000254622954483974
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 2e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 0.00020177139359400798
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 1796,
+          "time_native_tout_s": 2.045e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.10935098963826938,
+          "v_input_be125_v": -0.10846435662253098,
+          "delta_v_be125_minus_be250": 0.0008866330157383945,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1796,
+          "time_native_tout_s": 2.045e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": -0.10935098963826938,
+          "v_input_be125_v": -0.10846435662253098,
+          "delta_v_be125_minus_be250": 0.0008866330157383945,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1810,
+          "time_native_tout_s": 2.0624999999999997e-06,
+          "sar2_bit": 4,
+          "track_index": -1,
+          "v_input_be250_v": -0.000973663363102515,
+          "v_input_be125_v": 0.00030960011174562446,
+          "delta_v_be125_minus_be250": 0.0012832634748481395,
+          "decision_be250": 0,
+          "decision_be125": 1
+        }
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1820,
+          "time_native_tout_s": 2.075e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.00014522724312155105,
+          "v_input_be125_v": -0.0003937570152558876,
+          "delta_v_be125_minus_be250": -0.00024852977213433655,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1820,
+          "time_native_tout_s": 2.075e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.00014522724312155105,
+          "v_input_be125_v": -0.0003937570152558876,
+          "delta_v_be125_minus_be250": -0.00024852977213433655,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1821,
+          "time_native_tout_s": 2.07625e-06,
+          "sar2_bit": 0,
+          "track_index": 1,
+          "v_input_be250_v": 4.208358926575639e-05,
+          "v_input_be125_v": -0.00020576338131216503,
+          "delta_v_be125_minus_be250": -0.00024784697057792144,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "final_valid_record": {
+        "row_0based": 1988,
+        "time_native_tout_s": 2.285e-06,
+        "raw_D2_be250": 1228,
+        "raw_D2_be125": 1234,
+        "raw_DT_be250": 85,
+        "raw_DT_be125": 21,
+        "code20_be250": 956966,
+        "code20_be125": 956960,
+        "code20_delta_be125_minus_be250": -6
+      }
+    },
+    {
+      "sample_id": 11,
+      "control_rows_0based": [
+        1920,
+        2079
+      ],
+      "control_time_native_tout_s": [
+        2.2e-06,
+        2.39875e-06
+      ],
+      "held_at_first_sample_row": {
+        "row_0based": 1920,
+        "time_native_tout_s": 2.2e-06,
+        "be250_v": 3.1861483945139257,
+        "be125_v": 3.186080071363611,
+        "delta_be125_minus_be250_v": -6.832315031468639e-05,
+        "be250": {
+          "valid": 1,
+          "aperture_s": 2.1999999999999997e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 0.00032914026648445116
+        },
+        "be125": {
+          "valid": 1,
+          "aperture_s": 2.1999999999999997e-06,
+          "acquisition_duration_s": 1.8999999999999987e-07,
+          "acquisition_error_v": 0.0002608171161697648
+        }
+      },
+      "D2": {
+        "event_count": 12,
+        "first_event": {
+          "row_0based": 1956,
+          "time_native_tout_s": 2.245e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.06136574115037006,
+          "v_input_be125_v": 0.05998844338870636,
+          "delta_v_be125_minus_be250": -0.001377297761663697,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_input_value_difference": {
+          "row_0based": 1956,
+          "time_native_tout_s": 2.245e-06,
+          "sar2_bit": 11,
+          "track_index": -1,
+          "v_input_be250_v": 0.06136574115037006,
+          "v_input_be125_v": 0.05998844338870636,
+          "delta_v_be125_minus_be250": -0.001377297761663697,
+          "decision_be250": 1,
+          "decision_be125": 1
+        },
+        "first_decision_difference": {
+          "row_0based": 1974,
+          "time_native_tout_s": 2.2675e-06,
+          "sar2_bit": 2,
+          "track_index": -1,
+          "v_input_be250_v": 0.00012205727090091528,
+          "v_input_be125_v": -0.0015664521291305627,
+          "delta_v_be125_minus_be250": -0.001688509400031478,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "TA": {
+        "event_count": 8,
+        "first_event": {
+          "row_0based": 1980,
+          "time_native_tout_s": 2.275e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.0002055858363368704,
+          "v_input_be125_v": -0.00034264385073205566,
+          "delta_v_be125_minus_be250": -0.00013705801439518525,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_input_value_difference": {
+          "row_0based": 1980,
+          "time_native_tout_s": 2.275e-06,
+          "sar2_bit": 0,
+          "track_index": 0,
+          "v_input_be250_v": -0.0002055858363368704,
+          "v_input_be125_v": -0.00034264385073205566,
+          "delta_v_be125_minus_be250": -0.00013705801439518525,
+          "decision_be250": 0,
+          "decision_be125": 0
+        },
+        "first_decision_difference": {
+          "row_0based": 1985,
+          "time_native_tout_s": 2.28125e-06,
+          "sar2_bit": 0,
+          "track_index": 5,
+          "v_input_be250_v": 2.689037125866882e-06,
+          "v_input_be125_v": -0.00013587000078130765,
+          "delta_v_be125_minus_be250": -0.00013855903790717454,
+          "decision_be250": 1,
+          "decision_be125": 0
+        }
+      },
+      "final_valid_record": {
+        "row_0based": 2148,
+        "time_native_tout_s": 2.485e-06,
+        "raw_D2_be250": 2668,
+        "raw_D2_be125": 2666,
+        "raw_DT_be250": 45,
+        "raw_DT_be125": 42,
+        "code20_be250": 932121,
+        "code20_be125": 932112,
+        "code20_delta_be125_minus_be250": -9
+      }
+    }
+  ],
+  "interpretation_limits": [
+    "The step change first perturbs analog held/CT comparator values; decision splits occur only where comparator outcomes diverge.",
+    "This demonstrates time-step sensitivity in these eight sampled records, not convergence or error-budget acceptance.",
+    "No full hidden state, PRNG-state, or KCL/BE algebraic-residual inference is made.",
+    "The UGB 1.2 GHz 62.5 ps run should be judged by same-ID, same-event, native-tout trajectory trends; code monotonicity alone is not a convergence criterion."
+  ],
+  "convergence_budget": null,
+  "held_to_code_path_decomposition": {
+    "scope": "N8, eight existing be250/be125 compact samples only; descriptive endpoint decomposition.",
+    "formula": "delta_code * 7.8125e-6 V - (be125 adc_held.v_held - be250 adc_held.v_held)",
+    "code_lsb_v": 7.8125e-06,
+    "rows": [
+      {
+        "sample_id": 4,
+        "delta_held_v": 4.789904362034747e-05,
+        "delta_code": 6,
+        "delta_code_equivalent_v": 4.6875e-05,
+        "delta_code_times_lsb_minus_delta_held_v": -1.0240436203474691e-06,
+        "residual_to_held_abs_ratio": 0.02137920807906186
+      },
+      {
+        "sample_id": 5,
+        "delta_held_v": 3.143590870902102e-05,
+        "delta_code": 4,
+        "delta_code_equivalent_v": 3.125e-05,
+        "delta_code_times_lsb_minus_delta_held_v": -1.8590870902102032e-07,
+        "residual_to_held_abs_ratio": 0.005913896453315215
+      },
+      {
+        "sample_id": 6,
+        "delta_held_v": 1.4499949814616997e-05,
+        "delta_code": 1,
+        "delta_code_equivalent_v": 7.8125e-06,
+        "delta_code_times_lsb_minus_delta_held_v": -6.687449814616997e-06,
+        "residual_to_held_abs_ratio": 0.46120503174952815
+      },
+      {
+        "sample_id": 7,
+        "delta_held_v": -2.654103054222645e-06,
+        "delta_code": 0,
+        "delta_code_equivalent_v": 0.0,
+        "delta_code_times_lsb_minus_delta_held_v": 2.654103054222645e-06,
+        "residual_to_held_abs_ratio": 1.0
+      },
+      {
+        "sample_id": 8,
+        "delta_held_v": -1.9768234778005933e-05,
+        "delta_code": -3,
+        "delta_code_equivalent_v": -2.34375e-05,
+        "delta_code_times_lsb_minus_delta_held_v": -3.6692652219940674e-06,
+        "residual_to_held_abs_ratio": 0.18561420699416614
+      },
+      {
+        "sample_id": 9,
+        "delta_held_v": -3.658503427050874e-05,
+        "delta_code": -5,
+        "delta_code_equivalent_v": -3.90625e-05,
+        "delta_code_times_lsb_minus_delta_held_v": -2.477465729491258e-06,
+        "residual_to_held_abs_ratio": 0.06771801035289304
+      },
+      {
+        "sample_id": 10,
+        "delta_held_v": -5.285156088996601e-05,
+        "delta_code": -6,
+        "delta_code_equivalent_v": -4.6875e-05,
+        "delta_code_times_lsb_minus_delta_held_v": 5.9765608899660085e-06,
+        "residual_to_held_abs_ratio": 0.1130820128928429
+      },
+      {
+        "sample_id": 11,
+        "delta_held_v": -6.832315031468639e-05,
+        "delta_code": -9,
+        "delta_code_equivalent_v": -7.031250000000001e-05,
+        "delta_code_times_lsb_minus_delta_held_v": -1.989349685313621e-06,
+        "residual_to_held_abs_ratio": 0.02911677339453712
+      }
+    ],
+    "summary": {
+      "n_samples": 8,
+      "rms_delta_held_v": 3.9828406539799545e-05,
+      "rms_delta_code_equivalent_v": 3.9451191165476866e-05,
+      "rms_residual_v": 3.7437883784675017e-06,
+      "rms_residual_over_rms_held": 0.09399794527874035,
+      "max_abs_residual_v": 6.687449814616997e-06,
+      "max_abs_residual_sample_id": 6
+    },
+    "interpretation": "The code-equivalent delta follows the measured held delta closely across these eight IDs in RMS scale. The remaining term is a combined downstream/path-plus-decision-quantization residual; it cannot be assigned uniquely to RA, CT, comparator, or digital conversion from this arithmetic. ID6 has the largest residual (6.6875 uV), and ID7 has a small held delta near a quantization step while the code delta is zero. This is not calibration, fitting, FFT, an error-budget pass, or a convergence verdict.",
+    "next_62_5ps_observation": "For the same IDs compare 250->125 and 125->62.5 ps changes at the aperture held value, RA VX, CT VY at each SAR2/TA event, comparator input/decision, raw D2/DT, and code-equivalent-minus-held residual. A shrinking residual trend would be evidence about downstream sensitivity only; no pass threshold is frozen."
+  },
+  "third_point_be62p5": {
+    "status": "actual_third_step_observed_no_convergence_verdict",
+    "scope": "N8 compact actual be62p5; same-ID aperture and first D2/TA comparator event only, compared to the frozen two-arm numeric receipt. No FFT, fitting, calibration, or new threshold.",
+    "input": {
+      "raw_path": "analysis/p0_data/be62p5/raw.mat",
+      "raw_sha256": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+      "selected_sha256": "6053ef798750561c012fcb1f6b51fb747aa5afe18574ac5e1a733a8c9856ed87",
+      "result_sha256": "8c00c76c4100e0a2e380d048cbdb9081cf29a119a11bc9d9bda418cf358d463d",
+      "model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+      "max_step_s": 6.25e-11,
+      "elapsed_s": 208.1844647,
+      "result_status": "pool_analog_actual_capture_pending_independent_physics_verification"
+    },
+    "physical_time_mapping": "Native SimulationOutput.tout; 2361-row public logs map to tout[::5]. Each sample aperture row and first D2/TA event row/time matched the existing physics_check.json row and native time.",
+    "tap_check": "On all 16 first D2/TA events, adc_cmp2.v_input and adc_ct.vy are bitwise equal in the 62.5 ps raw.",
+    "comparisons": [
+      {
+        "sample_id": 4,
+        "held_at_same_aperture": {
+          "row_0based": 800,
+          "native_tout_time_s": 8.000000000000002e-07,
+          "aperture_s": 8e-07,
+          "valid": 1,
+          "be250_v": 3.430356243593771,
+          "be125_v": 3.4304041426373915,
+          "be62p5_v": 3.430428090267562,
+          "delta_250_to_125_v": 4.789904362034747e-05,
+          "delta_125_to_62p5_v": 2.3947630170439993e-05,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.49996050777654905
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 963374,
+          "code20_be62p5": 963377,
+          "delta_code": 3,
+          "delta_code_equivalent_v": 2.34375e-05,
+          "delta_held_v": 2.3947630170439993e-05,
+          "delta_code_equivalent_minus_delta_held_v": -5.101301704399925e-07,
+          "raw_D2_be125": 3293,
+          "raw_D2_be62p5": 3294,
+          "raw_DT_be125": 170,
+          "raw_DT_be62p5": 85
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 836,
+            "native_tout_time_s": 8.450000000000002e-07,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": 0.15509738995934005,
+            "v_y_be125_v": 0.15663477418463126,
+            "v_y_be62p5_v": 0.1574058326133828,
+            "delta_v_y_250_to_125_v": 0.0015373842252912051,
+            "delta_v_y_125_to_62p5_v": 0.0007710584287515532,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5015391832874455,
+            "decision_be250": 1,
+            "decision_be125": 1,
+            "decision_be62p5": 1,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          },
+          "TA": {
+            "row_0based": 860,
+            "native_tout_time_s": 8.750000000000001e-07,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": 0.000382494138830432,
+            "v_y_be125_v": 1.895802226866354e-05,
+            "v_y_be62p5_v": -0.0001629494853287363,
+            "delta_v_y_250_to_125_v": -0.00036353611656176845,
+            "delta_v_y_125_to_62p5_v": -0.00018190750759739985,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5003835913686775,
+            "decision_be250": 1,
+            "decision_be125": 1,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          }
+        }
+      },
+      {
+        "sample_id": 5,
+        "held_at_same_aperture": {
+          "row_0based": 960,
+          "native_tout_time_s": 1.0000000000000002e-06,
+          "aperture_s": 1e-06,
+          "valid": 1,
+          "be250_v": 3.5574135776351845,
+          "be125_v": 3.5574450135438935,
+          "be62p5_v": 3.5574607295364573,
+          "delta_250_to_125_v": 3.143590870902102e-05,
+          "delta_125_to_62p5_v": 1.5715992563780645e-05,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.499937593955116
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 979637,
+          "code20_be62p5": 979639,
+          "delta_code": 2,
+          "delta_code_equivalent_v": 1.5625e-05,
+          "delta_held_v": 1.5715992563780645e-05,
+          "delta_code_equivalent_minus_delta_held_v": -9.099256378064492e-08,
+          "raw_D2_be125": 796,
+          "raw_D2_be62p5": 796,
+          "raw_DT_be125": 210,
+          "raw_DT_be62p5": 82
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 996,
+            "native_tout_time_s": 1.0450000000000002e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": -0.1566735344475928,
+            "v_y_be125_v": -0.1578409665650925,
+            "v_y_be62p5_v": -0.15842623786722143,
+            "delta_v_y_250_to_125_v": -0.0011674321174997004,
+            "delta_v_y_125_to_62p5_v": -0.0005852713021289313,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5013321917015714,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          },
+          "TA": {
+            "row_0based": 1020,
+            "native_tout_time_s": 1.075e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": 0.0002294158000476125,
+            "v_y_be125_v": 0.00022295721734879757,
+            "v_y_be62p5_v": -0.0001694793164586557,
+            "delta_v_y_250_to_125_v": -6.458582698814938e-06,
+            "delta_v_y_125_to_62p5_v": -0.00039243653380745323,
+            "delta_ratio_125_to_62p5_over_250_to_125": 60.762020416562905,
+            "decision_be250": 1,
+            "decision_be125": 1,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          }
+        }
+      },
+      {
+        "sample_id": 6,
+        "held_at_same_aperture": {
+          "row_0based": 1120,
+          "native_tout_time_s": 1.2000000000000002e-06,
+          "aperture_s": 1.2e-06,
+          "valid": 1,
+          "be250_v": 3.6309640960291754,
+          "be125_v": 3.63097859597899,
+          "be62p5_v": 3.6309858439514637,
+          "delta_250_to_125_v": 1.4499949814616997e-05,
+          "delta_125_to_62p5_v": 7.247972473756192e-06,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.4998619006563535
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 989054,
+          "code20_be62p5": 989055,
+          "delta_code": 1,
+          "delta_code_equivalent_v": 7.8125e-06,
+          "delta_held_v": 7.247972473756192e-06,
+          "delta_code_equivalent_minus_delta_held_v": 5.645275262438078e-07,
+          "raw_D2_be125": 818,
+          "raw_D2_be62p5": 818,
+          "raw_DT_be125": 84,
+          "raw_DT_be62p5": 42
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 1156,
+            "native_tout_time_s": 1.2450000000000002e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": -0.1474305759223948,
+            "v_y_be125_v": -0.1481866236845931,
+            "v_y_be62p5_v": -0.14856536587807007,
+            "delta_v_y_250_to_125_v": -0.0007560477621982864,
+            "delta_v_y_125_to_62p5_v": -0.0003787421934769719,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5009500886236872,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": false
+          },
+          "TA": {
+            "row_0based": 1180,
+            "native_tout_time_s": 1.275e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": 0.00020432525364915498,
+            "v_y_be125_v": -0.00016010840280132615,
+            "v_y_be62p5_v": -0.0003421724125452933,
+            "delta_v_y_250_to_125_v": -0.00036443365645048116,
+            "delta_v_y_125_to_62p5_v": -0.00018206400974396715,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.49958066858379147,
+            "decision_be250": 1,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": false
+          }
+        }
+      },
+      {
+        "sample_id": 7,
+        "held_at_same_aperture": {
+          "row_0based": 1280,
+          "native_tout_time_s": 1.4000000000000001e-06,
+          "aperture_s": 1.4e-06,
+          "valid": 1,
+          "be250_v": 3.649901536473109,
+          "be125_v": 3.6498988823700547,
+          "be62p5_v": 3.649897553305569,
+          "delta_250_to_125_v": -2.654103054222645e-06,
+          "delta_125_to_62p5_v": -1.3290644855779021e-06,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.5007584326702677
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 991473,
+          "code20_be62p5": 991472,
+          "delta_code": -1,
+          "delta_code_equivalent_v": -7.8125e-06,
+          "delta_held_v": -1.3290644855779021e-06,
+          "delta_code_equivalent_minus_delta_held_v": -6.483435514422098e-06,
+          "raw_D2_be125": 2730,
+          "raw_D2_be62p5": 2730,
+          "raw_DT_be125": 85,
+          "raw_DT_be62p5": 42
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 1316,
+            "native_tout_time_s": 1.4450000000000001e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": 0.07709015793196562,
+            "v_y_be125_v": 0.07725208961694206,
+            "v_y_be62p5_v": 0.07733290543935364,
+            "delta_v_y_250_to_125_v": 0.00016193168497644073,
+            "delta_v_y_125_to_62p5_v": 8.081582241158125e-05,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.49907355946638277,
+            "decision_be250": 1,
+            "decision_be125": 1,
+            "decision_be62p5": 1,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": false
+          },
+          "TA": {
+            "row_0based": 1340,
+            "native_tout_time_s": 1.475e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": -0.00012558340911592982,
+            "v_y_be125_v": -0.00018916728457499447,
+            "v_y_be62p5_v": -0.00022106790168815782,
+            "delta_v_y_250_to_125_v": -6.358387545906465e-05,
+            "delta_v_y_125_to_62p5_v": -3.190061711316335e-05,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5017092286817433,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": false
+          }
+        }
+      },
+      {
+        "sample_id": 8,
+        "held_at_same_aperture": {
+          "row_0based": 1440,
+          "native_tout_time_s": 1.6000000000000001e-06,
+          "aperture_s": 1.6000000000000001e-06,
+          "valid": 1,
+          "be250_v": 3.6139410603504065,
+          "be125_v": 3.6139212921156285,
+          "be62p5_v": 3.6139114060050326,
+          "delta_250_to_125_v": -1.9768234778005933e-05,
+          "delta_125_to_62p5_v": -9.886110595935804e-06,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.5001008287768341
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 986861,
+          "code20_be62p5": 986860,
+          "delta_code": -1,
+          "delta_code_equivalent_v": -7.8125e-06,
+          "delta_held_v": -9.886110595935804e-06,
+          "delta_code_equivalent_minus_delta_held_v": 2.073610595935804e-06,
+          "raw_D2_be125": 2901,
+          "raw_D2_be62p5": 2901,
+          "raw_DT_be125": 85,
+          "raw_DT_be62p5": 42
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 1476,
+            "native_tout_time_s": 1.6450000000000001e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": 0.12241196745034415,
+            "v_y_be125_v": 0.12231619048304207,
+            "v_y_be62p5_v": 0.12226732624507657,
+            "delta_v_y_250_to_125_v": -9.577696730207752e-05,
+            "delta_v_y_125_to_62p5_v": -4.88642379655041e-05,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5101877762676265,
+            "decision_be250": 1,
+            "decision_be125": 1,
+            "decision_be62p5": 1,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": false
+          },
+          "TA": {
+            "row_0based": 1500,
+            "native_tout_time_s": 1.675e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": 0.00044354053992989764,
+            "v_y_be125_v": -4.3583594452155793e-05,
+            "v_y_be62p5_v": -0.00028729619696523203,
+            "delta_v_y_250_to_125_v": -0.0004871241343820534,
+            "delta_v_y_125_to_62p5_v": -0.00024371260251307623,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5003090286672831,
+            "decision_be250": 1,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": false
+          }
+        }
+      },
+      {
+        "sample_id": 9,
+        "held_at_same_aperture": {
+          "row_0based": 1600,
+          "native_tout_time_s": 1.8000000000000003e-06,
+          "aperture_s": 1.8e-06,
+          "valid": 1,
+          "be250_v": 3.5236235465590573,
+          "be125_v": 3.523586961524787,
+          "be62p5_v": 3.523568667064175,
+          "delta_250_to_125_v": -3.658503427050874e-05,
+          "delta_125_to_62p5_v": -1.8294460611745222e-05,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.5000531221722107
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 975306,
+          "code20_be62p5": 975304,
+          "delta_code": -2,
+          "delta_code_equivalent_v": -1.5625e-05,
+          "delta_held_v": -1.8294460611745222e-05,
+          "delta_code_equivalent_minus_delta_held_v": 2.669460611745222e-06,
+          "raw_D2_be125": 1207,
+          "raw_D2_be62p5": 1208,
+          "raw_DT_be125": 85,
+          "raw_DT_be62p5": 21
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 1636,
+            "native_tout_time_s": 1.8450000000000003e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": -0.1165365857352228,
+            "v_y_be125_v": -0.11604073487005177,
+            "v_y_be62p5_v": -0.11579100552714086,
+            "delta_v_y_250_to_125_v": 0.0004958508651710242,
+            "delta_v_y_125_to_62p5_v": 0.0002497293429109121,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5036380098374494,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          },
+          "TA": {
+            "row_0based": 1660,
+            "native_tout_time_s": 1.875e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": -0.0002236826562263553,
+            "v_y_be125_v": -9.756827110974437e-05,
+            "v_y_be62p5_v": -0.0004237157183764398,
+            "delta_v_y_250_to_125_v": 0.00012611438511661094,
+            "delta_v_y_125_to_62p5_v": -0.0003261474472666954,
+            "delta_ratio_125_to_62p5_over_250_to_125": -2.5861240727227512,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          }
+        }
+      },
+      {
+        "sample_id": 10,
+        "held_at_same_aperture": {
+          "row_0based": 1760,
+          "native_tout_time_s": 2e-06,
+          "aperture_s": 2e-06,
+          "valid": 1,
+          "be250_v": 3.380307454157546,
+          "be125_v": 3.380254602596656,
+          "be62p5_v": 3.3802281749516987,
+          "delta_250_to_125_v": -5.285156088996601e-05,
+          "delta_125_to_62p5_v": -2.642764495730532e-05,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.5000352782830046
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 956960,
+          "code20_be62p5": 956956,
+          "delta_code": -4,
+          "delta_code_equivalent_v": -3.125e-05,
+          "delta_held_v": -2.642764495730532e-05,
+          "delta_code_equivalent_minus_delta_held_v": -4.822355042694682e-06,
+          "raw_D2_be125": 1234,
+          "raw_D2_be62p5": 1234,
+          "raw_DT_be125": 21,
+          "raw_DT_be62p5": 213
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 1796,
+            "native_tout_time_s": 2.045e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": -0.10935098963826938,
+            "v_y_be125_v": -0.10846435662253098,
+            "v_y_be62p5_v": -0.10801843539069099,
+            "delta_v_y_250_to_125_v": 0.0008866330157383945,
+            "delta_v_y_125_to_62p5_v": 0.00044592123183999355,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5029377701084445,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 0,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          },
+          "TA": {
+            "row_0based": 1820,
+            "native_tout_time_s": 2.075e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": -0.00014522724312155105,
+            "v_y_be125_v": -0.0003937570152558876,
+            "v_y_be62p5_v": 0.0002608466997928794,
+            "delta_v_y_250_to_125_v": -0.00024852977213433655,
+            "delta_v_y_125_to_62p5_v": 0.0006546037150487671,
+            "delta_ratio_125_to_62p5_over_250_to_125": -2.6339046200667555,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 1,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          }
+        }
+      },
+      {
+        "sample_id": 11,
+        "held_at_same_aperture": {
+          "row_0based": 1920,
+          "native_tout_time_s": 2.2e-06,
+          "aperture_s": 2.1999999999999997e-06,
+          "valid": 1,
+          "be250_v": 3.1861483945139257,
+          "be125_v": 3.186080071363611,
+          "be62p5_v": 3.186045908030949,
+          "delta_250_to_125_v": -6.832315031468639e-05,
+          "delta_125_to_62p5_v": -3.41633326619295e-05,
+          "delta_ratio_125_to_62p5_over_250_to_125": 0.5000257234126092
+        },
+        "code_path_125_to_62p5": {
+          "code20_be125": 932112,
+          "code20_be62p5": 932107,
+          "delta_code": -5,
+          "delta_code_equivalent_v": -3.90625e-05,
+          "delta_held_v": -3.41633326619295e-05,
+          "delta_code_equivalent_minus_delta_held_v": -4.899167338070499e-06,
+          "raw_D2_be125": 2666,
+          "raw_D2_be62p5": 2664,
+          "raw_DT_be125": 42,
+          "raw_DT_be62p5": 213
+        },
+        "first_event_vy": {
+          "D2": {
+            "row_0based": 1956,
+            "native_tout_time_s": 2.245e-06,
+            "bit_or_track_index": 11,
+            "v_y_be250_v": 0.06136574115037006,
+            "v_y_be125_v": 0.05998844338870636,
+            "v_y_be62p5_v": 0.05929641469198542,
+            "delta_v_y_250_to_125_v": -0.001377297761663697,
+            "delta_v_y_125_to_62p5_v": -0.0006920286967209421,
+            "delta_ratio_125_to_62p5_over_250_to_125": 0.5024539471297849,
+            "decision_be250": 1,
+            "decision_be125": 1,
+            "decision_be62p5": 1,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          },
+          "TA": {
+            "row_0based": 1980,
+            "native_tout_time_s": 2.275e-06,
+            "bit_or_track_index": 0,
+            "v_y_be250_v": -0.0002055858363368704,
+            "v_y_be125_v": -0.00034264385073205566,
+            "v_y_be62p5_v": 0.0003674197938453481,
+            "delta_v_y_250_to_125_v": -0.00013705801439518525,
+            "delta_v_y_125_to_62p5_v": 0.0007100636445774037,
+            "delta_ratio_125_to_62p5_over_250_to_125": -5.180752455161409,
+            "decision_be250": 0,
+            "decision_be125": 0,
+            "decision_be62p5": 1,
+            "prior_250_vs_125_D2_decision_divergence_before_TA": true
+          }
+        }
+      }
+    ],
+    "summary": {
+      "held_delta_ratio_min": 0.4998619006563535,
+      "held_delta_ratio_max": 0.5007584326702677,
+      "first_D2_vy_delta_ratio_min": 0.49907355946638277,
+      "first_D2_vy_delta_ratio_max": 0.5101877762676265,
+      "first_TA_vy_delta_ratio_min_all_samples": -5.180752455161409,
+      "first_TA_vy_delta_ratio_max_all_samples": 60.762020416562905,
+      "rms_delta_held_125_to_62p5_v": 1.9914684025804124e-05,
+      "rms_code_equivalent_minus_held_125_to_62p5_v": 3.5585279516337443e-06,
+      "rms_path_residual_over_rms_held_125_to_62p5": 0.17868864738314905,
+      "same_prior_D2_decisions_250_vs_125_sample_ids": [
+        6,
+        7,
+        8
+      ],
+      "same_raw_D2_word_125_vs_62p5_sample_ids": [
+        5,
+        6,
+        7,
+        8,
+        10
+      ]
+    },
+    "interpretation_limits": [
+      "Same-aperture held differences contract by approximately one half for every ID; first D2-event VY edge-difference ratios are also near one half (see per-ID values). This is observed first-order-like behavior for these logged quantities, not a formal convergence order proof.",
+      "TA first-event VY ratios are near one half for IDs6-8, whose previous 250/125 D2 decision sequences had no logged split; several other IDs had an earlier D2 split, so their TA response is history/path dependent and the adjacent-edge ratio is not a pure isolated BE truncation ratio.",
+      "The Δcode*LSB−Δheld residual mixes downstream RA/CT, comparator decision and quantization. It cannot isolate those contributions; no acceptance budget is frozen.",
+      "Only first D2/TA event tap values and final code/raw words were compared for the third point; this is not full per-bit trajectory, hidden-state, PRNG, charge, KCL or spectrum validation.",
+      "No source/core identity claim is made by this physics receipt; source/anchor evidence remains in the separately reviewed anchor comparison and producer closure."
+    ],
+    "convergence_budget": null
+  },
+  "midpoint_forcing_phase_check": {
+    "scope": "N8, eight selected IDs, existing actual 250/125/62.5 ps held deltas plus same-aperture source/config readback. No fit, calibration, FFT, simulation, or acceptance threshold.",
+    "as_run_source_pins": {
+      "pool_cached_predict": {
+        "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_predict.m",
+        "sha256": "94afa11a8a4f9d93e189e1b66b4339ed255a884fafb2c4581c071fabf8746c92",
+        "matches_saved_actual_binding": true
+      },
+      "pool_cached_matrix": {
+        "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_matrix.m",
+        "sha256": "cc17d176087a1164dad38fe730ab91df0e9f981ef092d60d4bee487a65bd58ff",
+        "matches_saved_actual_binding": true
+      },
+      "pool_mex_matrix": {
+        "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_mex_matrix.m",
+        "sha256": "20d5b9e0ef7022ad7835e8476c2dff61ffa89937a3ea04eaf1e1ac6ca6267b5f",
+        "matches_saved_actual_binding": true
+      },
+      "sar20_driver_waveform": {
+        "path": "current/matlab/sar20_driver_waveform.m",
+        "sha256": "a1bc54bc2cc043aa40ffca2bbd8b0fc4781dbbc6b354838170aa20811d2b176b",
+        "matches_saved_actual_binding": true
+      }
+    },
+    "source_code_semantics": [
+      {
+        "file": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_predict.m",
+        "lines": "108-128",
+        "detail": "Each BE substep uses h=min(max_step_s,stop-cursor); driver is evaluated at cursor+h/2 and passed through driver_half_v=[driver/2;-driver/2] to pool_mex_be."
+      },
+      {
+        "file": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_predict.m",
+        "lines": "205-212",
+        "detail": "At endpoint t it reevaluates driver(t), builds the endpoint source and calls project_state."
+      },
+      {
+        "file": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_predict.m",
+        "lines": "437-445",
+        "detail": "project_state assigns known coordinates and solves zero-C algebraic coordinates; free dynamic voltages remain retained."
+      },
+      {
+        "file": "current/runtime_work/pool_pole_precision_trial_r1/pool_mex_matrix.m",
+        "lines": "110-116",
+        "detail": "R_source_ohm=0 makes ix.driver an ideal known voltage coordinate."
+      },
+      {
+        "file": "current/runtime_work/pool_pole_precision_trial_r1/pool_mex_matrix.m",
+        "lines": "184-203",
+        "detail": "The C template stamps C_input and C_feedback at m/vx, with m=offset+749 and driver=offset+770; driver has no C stamp in this template."
+      },
+      {
+        "file": "current/matlab/sar20_driver_waveform.m",
+        "lines": "14-30",
+        "detail": "Uses stimulus amplitude/frequency/phase and driver tau/gain/cubic/offset/clip to return v and analytic dv/dt."
+      }
+    ],
+    "saved_configuration": {
+      "source_mode": "analytic_driver_consistency_required",
+      "source_consistency_tolerance_v": 1e-12,
+      "cfg_source_driver": {
+        "clip_v": 4.096,
+        "cubic_per_v2": 0.0,
+        "gain": 1.0,
+        "offset_v": 0.0,
+        "tau_s": 0.0,
+        "vcm_v": 2.048
+      },
+      "cfg_source_stimulus": {
+        "amplitude_v": 3.650563842595822,
+        "frequency_hz": 97656.25,
+        "offset_v": 0.0,
+        "phase_rad": 0.731,
+        "tones_amplitude_v": [],
+        "tones_hz": [],
+        "tones_phase_rad": []
+      },
+      "cfg_source_equals_cfg_p_f0_driver_and_stimulus": true,
+      "R_source_ohm": [
+        0.0,
+        0.0
+      ],
+      "C_input_f": [
+        5e-14,
+        5e-14
+      ],
+      "C_feedback_f": [
+        8.623676612127046e-13,
+        8.623676612127046e-13
+      ],
+      "R_sample_ohm_range": [
+        50.0,
+        50.0
+      ],
+      "aperture_offset_s_unique": [
+        0.0
+      ]
+    },
+    "analytic_formula": "At each logged aperture, dV/dt is evaluated in the as-run MATLAB operation order. With tau=0, gain=1, cubic=0, no tones, and |V|<clip, dV/dt=A*(2*pi*f)*cos(2*pi*f*t+phase). The comparison term is dV/dt*(h_old-h_new)/2.",
+    "summary": {
+      "be250_to_be125_measured_over_prediction_range": [
+        0.9857790416362379,
+        1.0026338312231586
+      ],
+      "be250_to_be125_max_relative_deviation": 0.014220958363762137,
+      "be250_to_be125_max_abs_residual_v": 3.828838657858378e-08,
+      "be250_to_be125_rms_residual_v": 3.671305888375815e-08,
+      "be125_to_be62p5_measured_over_prediction_range": [
+        0.987274335697922,
+        1.0023569050751393
+      ],
+      "be125_to_be62p5_max_relative_deviation": 0.012725664302078,
+      "be125_to_be62p5_max_abs_residual_v": 1.7131234822712327e-08,
+      "be125_to_be62p5_rms_residual_v": 1.6426378257015193e-08,
+      "driver_log_max_abs_v_error_v": 0.0,
+      "driver_log_max_abs_dvdt_error_v_per_s": 0.0,
+      "aperture_field_vs_native_row_time_max_abs_s": 4.235164736271502e-22,
+      "aperture_offsets_all_zero": true,
+      "acquisition_duration_s": 1.8999999999999998e-07,
+      "R_source_all_zero_ohm": true,
+      "cfg_source_matches_p_f0_driver_stimulus": true,
+      "aperture_fields_equal_across_three_step_arms": true,
+      "acquisition_duration_range_s": [
+        1.8999999999999987e-07,
+        1.9000000000000009e-07
+      ],
+      "acquisition_duration_span_s": 2.117582368135751e-22
+    },
+    "per_sample": [
+      {
+        "sample_id": 4,
+        "aperture_s": 8e-07,
+        "native_logger_row_time_s": 8.000000000000002e-07,
+        "native_minus_aperture_time_s": 2.117582368135751e-22,
+        "acquisition_duration_s": 1.8999999999999998e-07,
+        "analytic_driver_at_aperture_v": 3.430586883447053,
+        "analytic_driver_derivative_at_aperture_v_per_s": 765808.933355361,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.430586883447053,
+          "v_driven": 3.430586883447053,
+          "dvdt_v_per_s": 765808.933355361,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": 4.789904362034747e-05,
+          "driver_derivative_times_shift_v": 4.786305833471007e-05,
+          "held_minus_prediction_v": 3.59852856374025e-08,
+          "measured_over_prediction": 1.0007518384091914
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": 2.3947630170439993e-05,
+          "driver_derivative_times_shift_v": 2.3931529167355034e-05,
+          "held_minus_prediction_v": 1.6101003084959182e-08,
+          "measured_over_prediction": 1.0006727945787486
+        }
+      },
+      {
+        "sample_id": 5,
+        "aperture_s": 1e-06,
+        "native_logger_row_time_s": 1.0000000000000002e-06,
+        "native_minus_aperture_time_s": 2.117582368135751e-22,
+        "acquisition_duration_s": 1.8999999999999987e-07,
+        "analytic_driver_at_aperture_v": 3.557564918005242,
+        "analytic_driver_derivative_at_aperture_v_per_s": 502377.4566947378,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.557564918005242,
+          "v_driven": 3.557564918005242,
+          "dvdt_v_per_s": 502377.4566947378,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": 3.143590870902102e-05,
+          "driver_derivative_times_shift_v": 3.1398591043421114e-05,
+          "held_minus_prediction_v": 3.73176655999065e-08,
+          "measured_over_prediction": 1.0011885140179793
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": 1.5715992563780645e-05,
+          "driver_derivative_times_shift_v": 1.5699295521710557e-05,
+          "held_minus_prediction_v": 1.6697042070088007e-08,
+          "measured_over_prediction": 1.001063553587293
+        }
+      },
+      {
+        "sample_id": 6,
+        "aperture_s": 1.2e-06,
+        "native_logger_row_time_s": 1.2000000000000002e-06,
+        "native_minus_aperture_time_s": 2.117582368135751e-22,
+        "acquisition_duration_s": 1.9000000000000009e-07,
+        "analytic_driver_at_aperture_v": 3.631033864806029,
+        "analytic_driver_derivative_at_aperture_v_per_s": 231389.75547119285,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.631033864806029,
+          "v_driven": 3.631033864806029,
+          "dvdt_v_per_s": 231389.75547119285,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": 1.4499949814616997e-05,
+          "driver_derivative_times_shift_v": 1.4461859716949555e-05,
+          "held_minus_prediction_v": 3.8090097667442137e-08,
+          "measured_over_prediction": 1.0026338312231586
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": 7.247972473756192e-06,
+          "driver_derivative_times_shift_v": 7.230929858474777e-06,
+          "held_minus_prediction_v": 1.7042615281414953e-08,
+          "measured_over_prediction": 1.0023569050751393
+        }
+      },
+      {
+        "sample_id": 7,
+        "aperture_s": 1.4e-06,
+        "native_logger_row_time_s": 1.4000000000000001e-06,
+        "native_minus_aperture_time_s": 2.117582368135751e-22,
+        "acquisition_duration_s": 1.8999999999999987e-07,
+        "analytic_driver_at_aperture_v": 3.6498886825044425,
+        "analytic_driver_derivative_at_aperture_v_per_s": -43078.26305281966,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.6498886825044425,
+          "v_driven": 3.6498886825044425,
+          "dvdt_v_per_s": -43078.263052820155,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": -2.654103054222645e-06,
+          "driver_derivative_times_shift_v": -2.692391440801229e-06,
+          "held_minus_prediction_v": 3.828838657858378e-08,
+          "measured_over_prediction": 0.9857790416362379
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": -1.3290644855779021e-06,
+          "driver_derivative_times_shift_v": -1.3461957204006145e-06,
+          "held_minus_prediction_v": 1.7131234822712327e-08,
+          "measured_over_prediction": 0.987274335697922
+        }
+      },
+      {
+        "sample_id": 8,
+        "aperture_s": 1.6000000000000001e-06,
+        "native_logger_row_time_s": 1.6000000000000001e-06,
+        "native_minus_aperture_time_s": 0.0,
+        "acquisition_duration_s": 1.8999999999999987e-07,
+        "analytic_driver_at_aperture_v": 3.6138457770921875,
+        "analytic_driver_derivative_at_aperture_v_per_s": -316898.3444031603,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.6138457770921875,
+          "v_driven": 3.6138457770921875,
+          "dvdt_v_per_s": -316898.3444031603,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": -1.9768234778005933e-05,
+          "driver_derivative_times_shift_v": -1.9806146525197523e-05,
+          "held_minus_prediction_v": 3.7911747191589996e-08,
+          "measured_over_prediction": 0.9980858595010716
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": -9.886110595935804e-06,
+          "driver_derivative_times_shift_v": -9.903073262598762e-06,
+          "held_minus_prediction_v": 1.6962666662957333e-08,
+          "measured_over_prediction": 0.9982871310538497
+        }
+      },
+      {
+        "sample_id": 9,
+        "aperture_s": 1.8e-06,
+        "native_logger_row_time_s": 1.8000000000000003e-06,
+        "native_minus_aperture_time_s": 4.235164736271502e-22,
+        "acquisition_duration_s": 1.8999999999999987e-07,
+        "analytic_driver_at_aperture_v": 3.523447267415493,
+        "analytic_driver_derivative_at_aperture_v_per_s": -585951.9796838794,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.5234472674154924,
+          "v_driven": 3.5234472674154924,
+          "dvdt_v_per_s": -585951.9796838805,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": -3.658503427050874e-05,
+          "driver_derivative_times_shift_v": -3.662199873024246e-05,
+          "held_minus_prediction_v": 3.696445973372001e-08,
+          "measured_over_prediction": 0.9989906487626194
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": -1.8294460611745222e-05,
+          "driver_derivative_times_shift_v": -1.831099936512123e-05,
+          "held_minus_prediction_v": 1.653875337600898e-08,
+          "measured_over_prediction": 0.9990967858691803
+        }
+      },
+      {
+        "sample_id": 10,
+        "aperture_s": 2e-06,
+        "native_logger_row_time_s": 2e-06,
+        "native_minus_aperture_time_s": 0.0,
+        "acquisition_duration_s": 1.8999999999999987e-07,
+        "analytic_driver_at_aperture_v": 3.380052831203062,
+        "analytic_driver_derivative_at_aperture_v_per_s": -846192.3517845398,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.380052831203062,
+          "v_driven": 3.380052831203062,
+          "dvdt_v_per_s": -846192.3517845398,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": -5.285156088996601e-05,
+          "driver_derivative_times_shift_v": -5.288702198653374e-05,
+          "held_minus_prediction_v": 3.546109656772916e-08,
+          "measured_over_prediction": 0.9993294934137763
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": -2.642764495730532e-05,
+          "driver_derivative_times_shift_v": -2.644351099326687e-05,
+          "held_minus_prediction_v": 1.5866035961550808e-08,
+          "measured_over_prediction": 0.9994000026711434
+        }
+      },
+      {
+        "sample_id": 11,
+        "aperture_s": 2.1999999999999997e-06,
+        "native_logger_row_time_s": 2.2e-06,
+        "native_minus_aperture_time_s": 4.235164736271502e-22,
+        "acquisition_duration_s": 1.8999999999999987e-07,
+        "analytic_driver_at_aperture_v": 3.1858192542474413,
+        "analytic_driver_derivative_at_aperture_v_per_s": -1093705.2032763362,
+        "driver_clipped_at_aperture": false,
+        "adc_driver_at_native_row": {
+          "v_true": 3.1858192542474413,
+          "v_driven": 3.1858192542474413,
+          "dvdt_v_per_s": -1093705.2032763362,
+          "v_true_minus_formula_v": 0.0,
+          "v_driven_minus_formula_v": 0.0,
+          "dvdt_minus_formula_v_per_s": 0.0
+        },
+        "be250_to_be125": {
+          "h_old_s": 2.5e-10,
+          "h_new_s": 1.25e-10,
+          "equivalent_midpoint_time_shift_s": 6.25e-11,
+          "measured_delta_held_v": -6.832315031468639e-05,
+          "driver_derivative_times_shift_v": -6.835657520477101e-05,
+          "held_minus_prediction_v": 3.3424890084627745e-08,
+          "measured_over_prediction": 0.9995110215808135
+        },
+        "be125_to_be62p5": {
+          "h_old_s": 1.25e-10,
+          "h_new_s": 6.25e-11,
+          "equivalent_midpoint_time_shift_s": 3.125e-11,
+          "measured_delta_held_v": -3.41633326619295e-05,
+          "driver_derivative_times_shift_v": -3.417828760238551e-05,
+          "held_minus_prediction_v": 1.4954940456005572e-08,
+          "measured_over_prediction": 0.9995624432496448
+        }
+      }
+    ],
+    "interpretation": "Across all eight IDs, measured held differences are within 1.43% of dV/dt(aperture)*(h_old-h_new)/2 for 250->125 ps and within 1.28% for 125->62.5 ps; residuals are about 33-38 nV and 15-17 nV respectively. The held aperture field is identical across the three step arms and configured aperture offsets are zero. The 62.5 ps raw adc_driver v_true/v_driven/dvdt at the corresponding native row exactly matches the analytic waveform values; the native row time differs from the stored aperture field by at most 4.24e-22 s, a timestamp representation difference. This strongly supports a dominant equivalent forcing-phase component of the finite-step BE integration, not a physical sample-aperture shift. The BE state recurrence also changes with h, so the residual cannot be assigned solely to midpoint forcing.",
+    "classification": "Expected finite-step temporal integration/truncation sensitivity of the declared midpoint-forcing BE scheme; not evidence of a model bug. This trend does not establish convergence without a frozen error budget.",
+    "evidence_boundary": "The compact raw does not contain the assembled full MNA C matrix. Driver-zero-C follows from the exact bound matrix-stamp source and saved configuration, not from an archived matrix object. C_input is at the m coordinate, not the driver coordinate; project_state changes the known driver endpoint while leaving the dynamic capacitor state.",
+    "time_steps": {
+      "max_step_s": [
+        2.5e-10,
+        1.25e-10,
+        6.25e-11
+      ],
+      "equivalent_midpoint_time_shift_250_to_125_s": 6.25e-11,
+      "equivalent_midpoint_time_shift_125_to_62p5_s": 3.125e-11,
+      "source_phase_shift_250_to_125_rad": 3.834951969714103e-05,
+      "source_phase_shift_125_to_62p5_rad": 1.9174759848570515e-05
+    }
+  }
+}

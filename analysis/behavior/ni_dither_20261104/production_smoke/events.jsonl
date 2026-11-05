@@ -1,0 +1,13 @@
+{"utc":"2026-11-04T08:50:39.986Z","stage":"preflight","details":{}}
+{"utc":"2026-11-04T08:50:39.993Z","stage":"reference","details":{}}
+{"utc":"2026-11-04T08:50:40.401Z","stage":"source_identity","details":{}}
+{"utc":"2026-11-04T08:50:40.779Z","stage":"latest_backup","details":{}}
+{"utc":"2026-11-04T08:50:40.812Z","stage":"targeted_cache_clear","details":{}}
+{"utc":"2026-11-04T08:50:40.999Z","stage":"targeted_cache_cleared","details":{"names":["adc_parameters","public_calibration_config","behavior_cal_collector_step","behavior_prepare_configuration","behavior_ra_noise_guard","behavior_training_configuration"]}}
+{"utc":"2026-11-04T08:50:41.002Z","stage":"resolution","details":{}}
+{"utc":"2026-11-04T08:50:44.989Z","stage":"public_run","details":{"source":"SAR20(run), saved P"}}
+{"utc":"2026-11-04T08:51:13.119Z","stage":"public_run_returned","details":{"run_path":"D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\behavior_af9806da-1b90-4e91-8d64-d4af792ffb3e","status":"complete"}}
+{"utc":"2026-11-04T08:51:13.566Z","stage":"comparison","details":{"run_path":"D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\behavior_af9806da-1b90-4e91-8d64-d4af792ffb3e"}}
+{"utc":"2026-11-04T08:51:13.780Z","stage":"comparison_complete","details":{"bit_equal":true,"numeric_equal":true,"signed_zero_differences":0}}
+{"utc":"2026-11-04T08:51:13.784Z","stage":"restore","details":{}}
+{"utc":"2026-11-04T08:51:16.381Z","stage":"complete","details":{"validation_status":"matched_selected_and_32_logs"}}

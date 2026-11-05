@@ -1,0 +1,82 @@
+{
+  "scope": "Read-only SLX ZIP/XML, saved metadata, current source text, and exported image identities. No MATLAB compile or simulation.",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "metadata_sha256": "dc4b4a042198de675f3191dade498e0052b049ef87c104c4681d706490339a54",
+  "metadata_declares_matching_model_sha": true,
+  "ADC_UnitDelay_owners": {
+    "RaCtState": "149",
+    "SampleCharge": "148",
+    "SarState": "150"
+  },
+  "asserted_signal_edges": {
+    "232": [
+      [
+        "237#out:1",
+        "321#in:4"
+      ],
+      [
+        "237#out:1",
+        "322#in:1"
+      ],
+      [
+        "321#out:2",
+        "452#in:1"
+      ]
+    ],
+    "244": [
+      [
+        "327#out:1",
+        "259#in:1"
+      ]
+    ],
+    "261": [
+      [
+        "334#out:2",
+        "277#in:1"
+      ]
+    ],
+    "297": [
+      [
+        "351#out:1",
+        "309#in:1"
+      ]
+    ]
+  },
+  "routing_sfun_identity": {
+    "232:323": {
+      "name": "Time",
+      "function": "behavior_wiring_sfun",
+      "parameters": "'clock',P"
+    },
+    "285:345": {
+      "name": "RawWords",
+      "function": "behavior_wiring_sfun",
+      "parameters": "'raw',P"
+    },
+    "123:215": {
+      "name": "PublicPol",
+      "function": "behavior_pol_sfun",
+      "parameters": "DecodeP"
+    },
+    "312:359": {
+      "name": "AzPublicPol",
+      "function": "behavior_pol_sfun",
+      "parameters": "P.digital"
+    }
+  },
+  "current_prepare_binds_finite_dac": true,
+  "exported_image_sha256": {
+    "Top.png": "0c0cfdee0d0290e7a165386663d5ac84169771e05449ed308090ba6a382ac1c0",
+    "System.png": "5d99c06c3d89a473a11537c95e8eadbf989b97e1a976badff8bfff3a7f550a34",
+    "ADC.png": "a5b5c8d5b197115141f6ae43693354e31d60570ba2512318d9c77f173367759e",
+    "SampleRaAdvance.png": "b774a2f2a142213ba03af29a4bef4007034d753a3a5be3ee2e849b8c89a12bfe",
+    "DacCtFeedback.png": "ffdbddd09db64c8bd545dad25232186bf457bc283059fef7f8378c6defab532f",
+    "Sar1TrialRaCt.png": "277f8c8da8c911ba361b0c648952283d21b4d2c163cc4b280740641e2302c1db",
+    "ResidueCtCompare.png": "719fd35fda998d25023f7090ffb6d4c9303ac400afa6b25b05c79a063755757a",
+    "SarDecisionTracking.png": "4e9cc764cad1fdd4661f1e70b38ace68f4e995245771451230d6114469fd9568",
+    "ChargeReturnRaReset.png": "6cbca8263500061ab047ad2aab3f295c245c3f1eebee1f350f2452a6e2ab3a1e",
+    "FPGA.png": "f027372ddf64bb1fe5425b69e21aed282b6f0a907b18b709c143e1cf6cff37bf",
+    "Transport.png": "8576b2fa6cce412cb10a72774f426c451dcc36aa5b4f7dc98d638dbe1f949142"
+  },
+  "caveat": "Metadata declares the export binding; PNGs were visually inspected and hashed, not independently regenerated."
+}

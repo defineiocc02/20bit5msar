@@ -1,0 +1,14 @@
+{
+    "exit_code":  0,
+    "zip_sha256":  "268fcbc567e92b8bc2c5ec10c0790eef320cb68b72456912d31144f53d6da99c",
+    "manifest_sha256":  "6bac49b72fded0ee0f6eb2b64b887085ebca77d59a368a373fc44d85346ea0fd",
+    "matlab":  "STARTED",
+    "error":  "",
+    "tasks_unchanged":  true,
+    "status":  "passed",
+    "gui_preserved":  true,
+    "phase":  "complete",
+    "startup":  "-softwareopengl",
+    "report_sha256":  "2177142476d7516a081c40671b037b30b6034736193ab7773b4d94c4e6052269",
+    "receipt_sha256":  "7952ce161ae3275e2ee18c6edd6742497daaad9e8f468b3195f52499ac4575c4"
+}

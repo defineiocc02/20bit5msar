@@ -1,0 +1,107 @@
+[
+    {
+        "path":  "az_pair/pair_receipt.json",
+        "sha256":  "6ef0280cd0cc12c0bedc2aa2bc8f3a051705dfe166cc42ed69ee9ac05cdd26f2",
+        "bytes":  6069
+    },
+    {
+        "path":  "az_pair/P_differences.json",
+        "sha256":  "5139adc7cef7508824bdb10ba0702e3bd53b9c5a4c1e0663950e1d58b00da536",
+        "bytes":  1357
+    },
+    {
+        "path":  "az_pair/P_pair.mat",
+        "sha256":  "38c21cd16864f7db55a63a85dbb7baedee371c417fa4cb2775cea73a7ba2a6e7",
+        "bytes":  4321208
+    },
+    {
+        "path":  "az_pair/rng_before.mat",
+        "sha256":  "91ac590505ae68db25fa6744037a13bbfc5236a82a6678af8d8de525722cc7b6",
+        "bytes":  11712
+    },
+    {
+        "path":  "az_pair/source_binding_after.mat",
+        "sha256":  "d021e7e8d3a85acbf35d9feaef3522fd2a2f0e6a74e096731869427e36349f2d",
+        "bytes":  119984
+    },
+    {
+        "path":  "az_pair/source_binding_before.mat",
+        "sha256":  "cc0624bf1b5523344d9ac227e83330adad82668e6e478101f3f5befbe7b83c52",
+        "bytes":  119984
+    },
+    {
+        "path":  "az_pair/offset_only/P_used.mat",
+        "sha256":  "b5ff829b18c1a7658218295c44858eeafdafd00e5cfefa726d4742aa671e9cbe",
+        "bytes":  1474016
+    },
+    {
+        "path":  "az_pair/offset_only/simout.mat",
+        "sha256":  "1ddd21542873c8e249c3e101e57d1b9f7193ed5975f9729415111df11a0f16d6",
+        "bytes":  869575
+    },
+    {
+        "path":  "az_pair/offset_only/simulation.json",
+        "sha256":  "d948459d9e9718bbf6efbbbfabbf6284d3bfdf16349ace9683f570020f9e1cdd",
+        "bytes":  279
+    },
+    {
+        "path":  "az_pair/offset_only/validation.json",
+        "sha256":  "daba90954940b5cb40e7505b004625643e8829be497f6f152badfab5b1b4d124",
+        "bytes":  2084
+    },
+    {
+        "path":  "az_pair/offset_only/validation.mat",
+        "sha256":  "c6fa731f92d61b6626495cdde2e6db5b1595891be71cd65a0fb5d21ef8e74d3a",
+        "bytes":  27144
+    },
+    {
+        "path":  "az_pair/ordinary_az/P_used.mat",
+        "sha256":  "c7580a4ba9d7bfef97726164b64a4080964c7f99e542e55960192d20c2172c5c",
+        "bytes":  1474040
+    },
+    {
+        "path":  "az_pair/ordinary_az/simout.mat",
+        "sha256":  "4d015eb879c0666d1697d2fa77e79c94cf644b701ddd47c19fc3bf45756f6964",
+        "bytes":  872436
+    },
+    {
+        "path":  "az_pair/ordinary_az/simulation.json",
+        "sha256":  "3040f08e1220cc302b398a2cbda278dad04ba3938a5805f3352459d81b815096",
+        "bytes":  278
+    },
+    {
+        "path":  "az_pair/ordinary_az/validation.json",
+        "sha256":  "d86e85ec0a88234f50504dd3596c86c9f8c015b9d939886ffc65c62dd5624862",
+        "bytes":  2463
+    },
+    {
+        "path":  "az_pair/ordinary_az/validation.mat",
+        "sha256":  "33463172bf1a0c16824d462add537358ca8fa62cb52c21aa2d2e9a806a494938",
+        "bytes":  27144
+    },
+    {
+        "path":  "controller_status.json",
+        "sha256":  "40891242f2c03bee3b2ddbc0fcdd3f7d33c792c4e180442a356a492e6310296d",
+        "bytes":  146
+    },
+    {
+        "path":  "matlab_stdout.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "matlab_stderr.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "existing_task_before.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    },
+    {
+        "path":  "existing_task_after.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    }
+]

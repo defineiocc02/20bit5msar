@@ -1,0 +1,13 @@
+{
+  "status": "python_cross_key_sample_check_passed",
+  "count": 30000,
+  "mean_ou": -0.002248073224661357,
+  "mean_ktc_aggregate": -0.0070861941524188905,
+  "variance_ou": 0.9914488059495241,
+  "variance_ktc_aggregate": 0.9951709449006972,
+  "covariance": -0.0010538248289428823,
+  "correlation": -0.0010609243949840702,
+  "ou_comparator_same_seed_count": 8192,
+  "ou_comparator_same_seed_correlation": -0.0017045650885758915,
+  "limitations": "One fixed pair of fixture seeds, Python translation, no MATLAB, no proof of independence, no closed-loop claim."
+}

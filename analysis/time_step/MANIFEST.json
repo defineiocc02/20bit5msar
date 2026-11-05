@@ -1,0 +1,30 @@
+{
+  "status": "actual_step_milestone_not_full_goal_acceptance",
+  "utc": "2026-10-26T10:48:03.790175+00:00",
+  "model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+  "entry_sha256": "f0988b454def3d6a7c07a7e9696605d927751f5789c7c85fbd3ea090e6a7b20f",
+  "config_sha256": "f14657c26ff44f8e28a1287482e73c3a134214528f4ba889939bc711a7583b09",
+  "files": {
+    "REPORT.md": "407a2c77ed87fec05c6fe0c8aa260dca371b3e1a6cd716102f8ff44e4a4d46f5",
+    "output_codes.csv": "2c07c20fdf99d19204631c21cb4deb47537f05eb83898cc62aaf05b56e363037",
+    "analyze_step.py": "09204a602c2cb835fcafae0e646a20be9f8c38b173b28931fc64f10014c1e00e",
+    "compare_capture.py": "472418a8123e9670da17679682ecf3368afe1b5dc7a30f4b7f0e11e8cd616fba",
+    "run_step.m": "463842579d0b1748ea9fb4326e6bf4049c309c2ac8787ec0a08b272166dabb06",
+    "engineering_check.json": "30e301a17b9470498b57d305e4c016ad241d56dd9e7519925a76682cb07a43eb",
+    "physics_check.json": "e64e1c665c970db0dcf4fbded61437bc2c5f6a24401bbb2bdeac940448aa69ce",
+    "interface_check.json": "7b4dbbd6911b4be566bc62850a7178284cd216467b9749145cd766754171ea57",
+    "random_check.json": "c6c73afb102a0a105472ba3715d81ac8e59525551e438b38f9eee2e8fa4dd567",
+    "nonideal_check.json": "69f553d944a1f40800c136cda4fce652cebcad1a0e3786553dcd5082cd72f27a",
+    "anchor_comparison.json": "35d218cd76521ec45e4976b08c64dfa9857911e4e1d97dc23b9070b8a78ce9d2",
+    "step_comparison.json": "65c3410563de50893cb6ec1c1a5f023ba8b05866ff401218ba7a1b99d31d98b3",
+    "step_comparison_be125_be62p5.json": "2f1210855843dd4938b3b552ebe66d0235bffc5b9e79c498c48810f482e78ff3",
+    "CURRENT_SYNC.json": "3ad1ced84731f21ec2a2394aa9b975a6e003fbd2db5a36c96792354e0119454e",
+    "WINDOWS_SOURCE_ARCHIVE.json": "1cd96f0faa429a8eda48e497f67d908024afbd8d8d32e51815b8120efee71b58",
+    "step62_native.json": "9f966a1a0d08a99c385ca9c404efc65cf4cf8a8156b9b66afad5a95d9ca089cc",
+    "step62_native_step_receipt.json": "8d3e23e80b727ce32e58571daa1db8e59cd1d60f2126884215b7d2c6be748bbd",
+    "sample4_step.png": "10a030f2a1073943127673fd63b694fbcb5f0b261c8b1365ab7ff3320879c46b",
+    "sample4_step_be125_be62p5.png": "b32e9b7c40d6d955e81476640ab0239acbfd86b9ddd4acfd08ef294a712d2db0"
+  },
+  "scope": "Frozen pre-cache step experiment identities; artifact hashes refreshed after adding explicit historical-scope wording. Previous manifest is in analysis/performance/document_preimage.zip.",
+  "artifact_hashes_refreshed_utc": "2026-10-26T14:06:07.681450+00:00"
+}

@@ -1,0 +1,184 @@
+{
+  "schema": "sar20-ou-production-candidate/v1",
+  "status": "frozen_preinstall_validated_pending_guarded_install",
+  "baseline_model_sha256": "a190eae2be57e24f0fb923bad7bbf4144873f28ddc97b8196fdd80a512adbe9f",
+  "baseline_state_sha256": "4098360e7ce05a32d6c5b7eb1dab1d4560f68c8a72c035d52b79c9db4182fd92",
+  "baseline_source_count": 105,
+  "candidate_source_count": 109,
+  "validated_v3_manifest_sha256": "9ed7eeae767fa399c300a18c8127f5a7bef57ec776301ad54239e0a935cd399c",
+  "tested_v3_archive_sha256": "9026cdab07b23652cba07f34bc059fa0205e87d73f746281181a9ed036013d1f",
+  "only_post_v3_change": "config comments; conditional applied-P label; ON-only backend NI/M8 validation and derived/check coverage/group/control guards; numeric OU state-update kernels remain byte-identical",
+  "files": [
+    {
+      "path": "config/adc_parameters.m",
+      "operation": "replace",
+      "baseline_sha256": "010a416c40f3c358e2fd0a7d207e1f773a87adfbd8db4e5c871d829f0ef41308",
+      "target_sha256": "949a7c863755debe859e9f4ead028ddf3ea7f4c3d1d98699083a0ce76170e540",
+      "validated_v3_sha256": "a0f88f7c0dfd7818a8f5a1c80becea9ac8539a612b374f342dd4b1abc83246f7",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/model/behavior_applied_note.m",
+      "operation": "replace",
+      "baseline_sha256": "d2b2492c14eae0dd7535ffe1e93be406cc9a512328af0e3bd971408b9a056b3b",
+      "target_sha256": "6288c5d0f1290f2547761fe9b47f1ae011f8365f8bcb8f60ec744746a3e8b882",
+      "validated_v3_sha256": "d2b2492c14eae0dd7535ffe1e93be406cc9a512328af0e3bd971408b9a056b3b",
+      "difference_from_v3": "conditional ON/zero annotation; OFF text unchanged statically; native graph test pending"
+    },
+    {
+      "path": "current/src/model/behavior_dac_backend_parameters.m",
+      "operation": "replace",
+      "baseline_sha256": "9381e030d7c7a6c80c0acb9dc4d0b44d4b5f0de8f1eb56fb605c840e3add25cb",
+      "target_sha256": "8d5bea354ed6b9cb9b5b4f3d72239eca087a22d3675d430360797b952e530947",
+      "validated_v3_sha256": "8d5bea354ed6b9cb9b5b4f3d72239eca087a22d3675d430360797b952e530947",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/model/behavior_prepare_configuration.m",
+      "operation": "replace",
+      "baseline_sha256": "2cb3729d59409cad60e305c87a9dbae798fc10d5f133f70580b3d48ad186b722",
+      "target_sha256": "62d944cd3bfcc3c52bdfe44b668463d9ad394e20980d5e2a820262a076734222",
+      "validated_v3_sha256": "c85ff526f8940f17c404e7c37d8db008ad68cf81619b99e8f70ca29cd3ce00d9",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/model/behavior_ra_noise_guard.m",
+      "operation": "add",
+      "baseline_sha256": "",
+      "target_sha256": "bd70171d64b49809df7e0ecf8040d6fe5ef6aa5626d65ef2faebec5aeab47ebd",
+      "validated_v3_sha256": "59105b7c59a57795608e7ec6b7e2670a7420464415551a68481ba5ebd8ebcb53",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/behavior_backend_parameters.m",
+      "operation": "replace",
+      "baseline_sha256": "c76dfa78b45a5ecc9eb078d1646847d79b95982d60eae55e2f0dd9458eae1778",
+      "target_sha256": "e69617933908ac9e9b69b4cc66014c45df5b4d8042a4217117569a84a4390256",
+      "validated_v3_sha256": "e69617933908ac9e9b69b4cc66014c45df5b4d8042a4217117569a84a4390256",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/behavior_backend_sfun.m",
+      "operation": "replace",
+      "baseline_sha256": "4fbc0e7b356aea1b90d0c54348982c2a44fef05117650d4c0e05793aa8ecf807",
+      "target_sha256": "c1bd84e0f603079d8a94df80365e45409fc3525903e9efab68e453b2b2eadde0",
+      "validated_v3_sha256": "c1bd84e0f603079d8a94df80365e45409fc3525903e9efab68e453b2b2eadde0",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/behavior_backend_stage.m",
+      "operation": "replace",
+      "baseline_sha256": "8178bb79505b90308e1c84a48e73e3d42bd4e104304f2dfd08a59a48d65d99a4",
+      "target_sha256": "4d80a4e3e4bbbc0acb5522c6bbe5e26ca8f7ce81f0008088feb122de3c72be72",
+      "validated_v3_sha256": "4d80a4e3e4bbbc0acb5522c6bbe5e26ca8f7ce81f0008088feb122de3c72be72",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/behavior_backend_step.m",
+      "operation": "replace",
+      "baseline_sha256": "140f08d0f3084f27d21d46b72584cfbf94c984b992fd6d115412278265ce6e14",
+      "target_sha256": "b6fd6bcd73b8673542a93537a34f5a65d81a49d1a58ef6914230638fb26f4d75",
+      "validated_v3_sha256": "b6fd6bcd73b8673542a93537a34f5a65d81a49d1a58ef6914230638fb26f4d75",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/behavior_ra_noise_validate_backend.m",
+      "operation": "add",
+      "baseline_sha256": "",
+      "target_sha256": "fe4ecb477708ac06903d1328d32c2c886e78892dfe9dcbe9fdefdad23d54ea9f",
+      "validated_v3_sha256": "a8a649891fb0a2061afa7417063756a42bd4709bf18d6b7bd8447847680ca350",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/sar20_ra_keyed_normal.m",
+      "operation": "add",
+      "baseline_sha256": "",
+      "target_sha256": "a6c3117481258767394cd0d330c4c88a8d3222bf4f4ed86510cd92d5e39b796f",
+      "validated_v3_sha256": "a6c3117481258767394cd0d330c4c88a8d3222bf4f4ed86510cd92d5e39b796f",
+      "difference_from_v3": ""
+    },
+    {
+      "path": "current/src/physics/sar20_ra_ou_increment.m",
+      "operation": "add",
+      "baseline_sha256": "",
+      "target_sha256": "3787a6f1d0b163ceb50f2a85ba705c564e4a50bfa01c5da005709913b7aecc1d",
+      "validated_v3_sha256": "3787a6f1d0b163ceb50f2a85ba705c564e4a50bfa01c5da005709913b7aecc1d",
+      "difference_from_v3": ""
+    }
+  ],
+  "source_change_count": {
+    "replace": 8,
+    "add": 4
+  },
+  "tests": [
+    {
+      "path": "tests/sar20_ou_label_probe.m",
+      "sha256": "8c34dd759de4f7c313fa046b9908d381e68424a4d774971292fcc19284b869b8"
+    },
+    {
+      "path": "tests/sar20_ou_label_selftest.m",
+      "sha256": "daa81d80a3396fdf67df2b8b9df361181d1cd04becfbb50e00fc9d9deaa2ddc3"
+    },
+    {
+      "path": "tests/sar20_ou_guard_selftest.m",
+      "sha256": "689058667701ca20c477b1e92e492b4b8ff6e05d8cff0b530ae45a2db365fe6d"
+    }
+  ],
+  "refreeze": {
+    "utc": "2026-10-30T17:09:18.830Z",
+    "previous_manifest_sha256": "6c1691a46f05d042ceb9a44a79189e08c241c7a2ed10a8393a3785c857f56894",
+    "reason": "Two added guard sources were edited after the previous manifest snapshot; pre-install contract tests pass against the actual validated ON/OFF P.",
+    "changed": [
+      {
+        "path": "current/src/model/behavior_ra_noise_guard.m",
+        "old_target_sha256": "feae4d058c814988a21f4951550b926faea6b6a044daecd7d024cf9b38cc2b32",
+        "new_target_sha256": "bd70171d64b49809df7e0ecf8040d6fe5ef6aa5626d65ef2faebec5aeab47ebd"
+      },
+      {
+        "path": "current/src/physics/behavior_ra_noise_validate_backend.m",
+        "old_target_sha256": "ceb9794e53e73485ea87deb52ab6365a48ae29c299e2a807e86620f24409fa67",
+        "new_target_sha256": "fe4ecb477708ac06903d1328d32c2c886e78892dfe9dcbe9fdefdad23d54ea9f"
+      }
+    ],
+    "changed_tests": [
+      {
+        "path": "tests/sar20_ou_guard_selftest.m",
+        "old_sha256": "a035972eb78bd221fd6345085df4292a4b6dd8b83eb1d4a91551eaaea60c971b",
+        "new_sha256": "689058667701ca20c477b1e92e492b4b8ff6e05d8cff0b530ae45a2db365fe6d"
+      }
+    ],
+    "preinstall_evidence": {
+      "host": "windows-codex",
+      "matlab_pid": 27628,
+      "controller": "D:/Temp/SAR20OUPreinstall/controller_20261030T170757Z",
+      "job": "D:/Temp/SAR20OUPreinstall/work_20261030T170757Z",
+      "cases": {
+        "guard_on": {
+          "ok": true,
+          "elapsed_s": 1.4744823,
+          "error_identifier": ""
+        },
+        "guard_off": {
+          "ok": true,
+          "elapsed_s": 0.0006659,
+          "error_identifier": ""
+        },
+        "guard_selftest": {
+          "ok": true,
+          "elapsed_s": 1.2125015,
+          "error_identifier": ""
+        },
+        "label_selftest": {
+          "ok": true,
+          "elapsed_s": 0.2151584,
+          "error_identifier": ""
+        }
+      },
+      "path_restored": true,
+      "cwd_restored": true,
+      "rng_unchanged": true,
+      "receipt_sha256": "435c87aefd37ff19de8714d346b28745f47e17381601e62ee8626897ffd480cd",
+      "local_receipt_sha256": "2adc924277f4c80d8742a1d72ca016c7b672f64bd6c25bcd031f192c041e7ce1"
+    }
+  }
+}

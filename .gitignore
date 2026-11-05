@@ -1,0 +1,36 @@
+# ---- Historical / regenerable run outputs ---------------------------------
+runs/
+evidence/
+dependencies/analysis_env/
+
+# ---- Local-only state pointers (kept out of version control) ---------------
+state/current_binding.json
+state/MIGRATION.json
+state/applied_parameters.json
+
+# ---- Editor / OS / MATLAB scratch ------------------------------------------
+.DS_Store
+*.asv
+*.m~
+*.slx~
+*.autosave
+*.swp
+*~
+
+# ---- Python bytecode & caches (regenerable, thousands of files) ------------
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---- Transient scratch -----------------------------------------------------
+*.tmp
+*.temp
+*.log.tmp
+*.part
+
+# NOTE: PDFs under docs/PAPERS/, the SATK toolkit, all analysis/ evidence,
+# _preserved/ backups, and the binary .mat/.slx artifacts are intentionally
+# COMMITTED. The repository is meant to be a complete engineering archive.
+# See NOTICE.md for third-party rights.

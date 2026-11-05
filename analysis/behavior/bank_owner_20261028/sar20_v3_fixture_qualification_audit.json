@@ -1,0 +1,49 @@
+{
+  "fixture_result": {
+    "status": "synthetic_fixture_v3_only_pass",
+    "production_code_valid": false,
+    "real_project_holdout_used": false,
+    "actual_model_bound": false,
+    "same_run_training_arm_supported": false,
+    "full_bank_integration": false,
+    "nonuniform_h": true,
+    "epochs_tested": [
+      1,
+      2,
+      3
+    ],
+    "dem_on_off_tested": true,
+    "checks": "ignored-input pre/pre/Update/post purity, rejected-hit commit, same-hit conflict, nonuniform public ID/epoch/DEM"
+  },
+  "fixture_receipt_sha256": "cb4347dd69b5561ff6119a5d41282eed7a1372c234566010f2dc7847b40fcda0",
+  "wrapper_receipt_sha256": "a1237043dce8bae4efbf8b94bfa90343cbc0023743e5f09210fe83d109071199",
+  "original_failed_receipt_sha256": "0e6af8a3cff68259eb740fb5a0d97cd82473da839b11328338a762e66f69f228",
+  "cache_inspection_sha256": "3a2c3e38c5d97d43a786331ed3ee04f5349d7784b176af00eb439dedb6a9ee97",
+  "frozen_manifest_sha256": "5e0161e272190337510ed25e3c5c0cf4c9f85ef1102a3ad3e0238bf14cdaaec9",
+  "checked_source_sha256": {
+    "sar20_bank_certificate_sha256.m": "951f1f7f3ede5947be31b73cc7f599e6f658df69853c49646768c252db3c16a5",
+    "sar20_bank_owner_fixture_test.m": "bbc8e307c789ad9def018bce45c675cb9917ab11924743a2810391cc31261518",
+    "sar20_bank_owner_init.m": "0d45e683ed7c3d04ea91181a590a83dd15e934d6f6411ac32d9d210da4eac0ca",
+    "sar20_bank_owner_step.m": "6e3987cbd67f62bac1b176bff4298660e2464284f4104c7aa53d794d0b827b2d",
+    "sar20_bank_require_actual_binding.m": "75b008e4ab45a1377f058a3d12aeadf0984adf58da959d21db99bd8d83be93c1",
+    "sar20_bank_sha256.m": "d050e9f48c6762578f8297bb9b8c32761fa31157d96ce52ed31c575c32a5caea",
+    "rx_bank_owner_fixture_v3_job.m": "38e8610552f4eae8e7f1feabed0189e98f498f4604fc6bf511bc2f921f3ddd9d"
+  },
+  "asrun_candidate_zip_sha256": "d3e92e527157aa4fb1bf55f95d0a911ff1eff126ac4798d5ebbe0a1ee8307b87",
+  "qualification_sha256": "91aa3245b12187c85ca89f337e4a766ead11d7e471b1f76b450b79634bf4b573",
+  "qualification_pinned_receipts_and_audit": true,
+  "training_and_holdout_public_profile_equal": true,
+  "public_profile_field_count": 41,
+  "public_plan_2056x8_equal": true,
+  "public_plan_sha256": "323658320b7d0362f43ff4e2ec098d2b005c43dc7657824b06fe68735999d2f6",
+  "historical_h_sha256": "a634c9a0c63c636a4c8966bc7d0e04d6d9ad4cf550156e6ed7ffe7806d6483ed",
+  "qualification_historical_metrics_equal_receipt_and_prior_audit": true,
+  "limits": [
+    "No MATLAB reexecution, no model/actual P workspace accessed, no archived holdout row files opened or hashed by this audit.",
+    "Candidate source hashes are cross-checked post hoc; wrapper pins only manifest SHA; public dependency same-path cache freshness is not proven.",
+    "Wrapper clears candidate function names even after preflight failure and reports only candidate-path cached files.",
+    "Historical same-chip preimage used whole-P equality including opaque physical fields; it is not exclusively-public evidence.",
+    "Inspected current qualification generator statically opens both old holdout binary files for SHA even though it does not decode their rows; artifact does not pin its producer SHA.",
+    "Qualification artifact is not owner training/qualification certificate and cannot itself authorize integrated BankOwner code_valid."
+  ]
+}

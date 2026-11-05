@@ -1,0 +1,8 @@
+{
+    "candidate_files":  120,
+    "actual_manifest_sha256":  "c8b543245efba559c9a710f2217e6a538d453efdb7b0a270ce43de32a0428add",
+    "error":  "",
+    "expected_zip_sha256":  "34e70704d9a6a4ed9d2eb794e67ee5ee738dfe99db2c8f4cc3f8ab4e9bde8631",
+    "status":  "verified_not_run",
+    "baseline_files":  117
+}

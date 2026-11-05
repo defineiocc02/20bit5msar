@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1590" viewBox="0 0 2200 1590">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#365a70"/></marker></defs>
+<rect width="2200" height="1590" fill="#f3f6fa"/>
+<g font-family="PingFang SC,Microsoft YaHei,Arial,sans-serif" fill="#173044">
+<text x="50" y="55" font-size="32" font-weight="700" fill="#173044">SarPP：隔离 A 阶段候选的真实连接导览</text>
+<text x="50" y="91" font-size="20" font-weight="normal" fill="#7d521d">尚未晋升 current · 133342 实际保存的 RX / Bank-on N8 · 只画已存在块与已核连线</text>
+<text x="50" y="121" font-size="14" font-weight="normal" fill="#4d6b7d">证据观察时间 2026-10-28 13:35:37 UTC  |  SarPP SHA256 82ede85bdc7c6a6ac5b1837e6f21c29711de9ee8ab2c26f151672dae76f9a99a  |  P SHA256 68b68d2e2d9aac0b52f1f5710930690b65e9c041692adafc5f4476e7b3b0c26c</text>
+<rect x="35" y="145" width="2130" height="860" rx="14" fill="#fff" stroke="#9eb5c4" stroke-width="1.6"/>
+<text x="58" y="179" font-size="19" font-weight="700" fill="#173044">SarPP · root</text>
+<rect x="55" y="195" width="1710" height="755" rx="12" fill="#fbfdff" stroke="#b7cbd8" stroke-width="1.6"/>
+<text x="77" y="227" font-size="19" font-weight="700" fill="#173044">EventStep [105] · 仿真事件调度容器，不是芯片物理边界</text>
+<rect x="85" y="335" width="190" height="205" rx="10" fill="#e9f3fc" stroke="#8badc4" stroke-width="1.6"/>
+<text x="103" y="370" font-size="22" font-weight="700" fill="#173044">Adc [112]</text>
+<text x="103" y="400" font-size="16" font-weight="normal" fill="#486b83">片内行为模型</text>
+<text x="103" y="431" font-size="16" font-weight="normal" fill="#486b83">RAW6 / RawReady</text>
+<text x="103" y="461" font-size="15" font-weight="normal" fill="#486b83">原48组ADC事件</text>
+<rect x="345" y="280" width="265" height="300" rx="10" fill="#fff8ea" stroke="#d7bf89" stroke-width="1.6"/>
+<text x="365" y="314" font-size="21" font-weight="700" fill="#173044">Transport [393]</text>
+<text x="365" y="340" font-size="16" font-weight="normal" fill="#86642e">片内 TX / 片外 RX</text>
+<text x="365" y="363" font-size="15" font-weight="normal" fill="#86642e">合一的协议行为容器</text>
+<rect x="372" y="390" width="210" height="58" rx="7" fill="#fff" stroke="#d9c79e" stroke-width="1.6"/>
+<text x="389" y="425" font-size="17" font-weight="700" fill="#173044">PinTransport [416]</text>
+<rect x="372" y="480" width="210" height="56" rx="7" fill="#fff" stroke="#d9c79e" stroke-width="1.6"/>
+<text x="389" y="514" font-size="17" font-weight="700" fill="#173044">TxRxState [415]</text>
+<path d="M420 448V480" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<path d="M535 480V448" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="455" y="471" font-size="13" font-weight="normal" fill="#86642e">next / old</text>
+<rect x="700" y="290" width="190" height="64" rx="8" fill="#f1f6fa" stroke="#b6cad7" stroke-width="1.6"/>
+<text x="718" y="320" font-size="18" font-weight="700" fill="#173044">Record [433]</text>
+<text x="718" y="343" font-size="14" font-weight="normal" fill="#516f82">P.on 选 RxRaw6</text>
+<rect x="640" y="440" width="160" height="64" rx="8" fill="#f1f6fa" stroke="#b6cad7" stroke-width="1.6"/>
+<text x="653" y="469" font-size="16" font-weight="700" fill="#173044">RxRawReady</text>
+<text x="653" y="491" font-size="13" font-weight="normal" fill="#516f82">[431] = Ready3(2)</text>
+<rect x="830" y="440" width="180" height="64" rx="8" fill="#f1f6fa" stroke="#b6cad7" stroke-width="1.6"/>
+<text x="843" y="469" font-size="16" font-weight="700" fill="#173044">RecordReady</text>
+<text x="843" y="491" font-size="13" font-weight="normal" fill="#516f82">[434] 选 raw_ready</text>
+<rect x="1060" y="290" width="220" height="240" rx="10" fill="#edf7f0" stroke="#a9cbb1" stroke-width="1.6"/>
+<text x="1077" y="324" font-size="21" font-weight="700" fill="#173044">Fpga [123]</text>
+<text x="1077" y="353" font-size="16" font-weight="normal" fill="#466a50">片外数字 / Enabled</text>
+<text x="1077" y="382" font-size="16" font-weight="normal" fill="#466a50">现有名义重构</text>
+<rect x="1078" y="409" width="184" height="67" rx="6" fill="#fff" stroke="#c2d7c6" stroke-width="1.6"/>
+<text x="1090" y="437" font-size="15" font-weight="700" fill="#173044">Calibration [375]</text>
+<text x="1090" y="462" font-size="13" font-weight="normal" fill="#466a50">Train / Frozen off</text>
+<text x="1077" y="510" font-size="15" font-weight="normal" fill="#466a50">code20 → Bank u6</text>
+<rect x="1430" y="300" width="200" height="320" rx="10" fill="#eaf3fb" stroke="#8faec5" stroke-width="1.6"/>
+<text x="1446" y="328" font-size="20" font-weight="700" fill="#173044">BankOwner [455]</text>
+<text x="1446" y="356" font-size="15" font-weight="normal" fill="#173044">u4 Record6</text>
+<text x="1446" y="401" font-size="15" font-weight="normal" fill="#173044">u6 FpgaCode</text>
+<text x="1446" y="451" font-size="15" font-weight="normal" fill="#173044">u5 RecordReady</text>
+<text x="1446" y="516" font-size="15" font-weight="normal" fill="#173044">u7 RxFault</text>
+<text x="1446" y="576" font-size="15" font-weight="normal" fill="#173044">u9 command[5]</text>
+<text x="1446" y="606" font-size="15" font-weight="normal" fill="#173044">u10 0[7]</text>
+<rect x="1430" y="205" width="200" height="54" rx="8" fill="#fff7df" stroke="#d7bf78" stroke-width="1.6"/>
+<text x="1446" y="237" font-size="15" font-weight="700" fill="#6f571c">BankOwnerState [454]</text>
+<path d="M1475 259V300" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<path d="M1580 300V259" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="1440" y="280" font-size="12" font-weight="normal" fill="#6f571c">u1 old64</text>
+<text x="1550" y="280" font-size="12" font-weight="normal" fill="#6f571c">y1 next64</text>
+<rect x="780" y="728" width="165" height="57" rx="7" fill="#f6f8fa" stroke="#bdcbd4" stroke-width="1.6"/>
+<text x="796" y="763" font-size="17" font-weight="700" fill="#173044">Event [109]</text>
+<rect x="1015" y="728" width="225" height="68" rx="7" fill="#f6f8fa" stroke="#bdcbd4" stroke-width="1.6"/>
+<text x="1033" y="760" font-size="17" font-weight="700" fill="#173044">BankCommand [456]</text>
+<text x="1033" y="783" font-size="14" font-weight="normal" fill="#5b7385">预定 command[5]</text>
+<rect x="1015" y="835" width="225" height="68" rx="7" fill="#f6f8fa" stroke="#bdcbd4" stroke-width="1.6"/>
+<text x="1033" y="867" font-size="17" font-weight="700" fill="#173044">NoDrainAck [457]</text>
+<text x="1033" y="890" font-size="14" font-weight="normal" fill="#8b5d25">常数 0[7]；无消费端确认</text>
+<path d="M945 757H1015" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<path d="M1240 762H1400V570H1430" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<path d="M1240 869H1410V600H1430" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="1432" y="648" font-size="14" font-weight="normal" fill="#506e81">片外数字 Outputs；10入 / 4出</text>
+<text x="1432" y="672" font-size="14" font-weight="normal" fill="#506e81">其余已连接：u2 Event[2] / u3 ActualTime[s]</text>
+<text x="1432" y="696" font-size="14" font-weight="normal" fill="#506e81">u8 PublicEn；输入与控制线在此省略</text>
+<path d="M275 390H345" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="280" y="378" font-size="13" font-weight="normal" fill="#506e81">Raw</text>
+<path d="M275 470H345" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="280" y="458" font-size="13" font-weight="normal" fill="#506e81">Ready</text>
+<path d="M610 322H700" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="620" y="309" font-size="14" font-weight="normal" fill="#506e81">RxRaw6</text>
+<path d="M610 472H640" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="614" y="459" font-size="13" font-weight="normal" fill="#506e81">Ready3</text>
+<path d="M800 472H830" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<path d="M890 322H1060" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<circle cx="935" cy="322" r="4.5" fill="#365a70"/>
+<path d="M935 322V270H1370V350H1430" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="1160" y="258" font-size="14" font-weight="normal" fill="#506e81">Record6 → u4</text>
+<path d="M1010 472H1060" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<circle cx="1035" cy="472" r="4.5" fill="#365a70"/>
+<path d="M1035 472V625H1350V445H1430" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="1130" y="616" font-size="14" font-weight="normal" fill="#506e81">RecordReady → u5</text>
+<path d="M1280 395H1430" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="1295" y="382" font-size="14" font-weight="normal" fill="#506e81">FpgaCode → u6</text>
+<path d="M610 548H628V690H1380V510H1430" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<text x="807" y="681" font-size="15" font-weight="normal" fill="#956128">PinTransport.y7 → Transport.RxFault → BankOwner.u7</text>
+<path d="M1630 345H1662" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<rect x="1662" y="323" width="110" height="44" rx="6" fill="#fff" stroke="#adc2cf" stroke-width="1.6"/>
+<text x="1670" y="351" font-size="13" font-weight="700" fill="#173044">PublicCode</text>
+<path d="M1772 345H1830" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<rect x="1830" y="320" width="265" height="50" rx="7" fill="#eaf4ee" stroke="#a6c8b0" stroke-width="1.6"/>
+<text x="1848" y="352" font-size="18" font-weight="700" fill="#173044">Code20 [463]</text>
+<text x="1635" y="337" font-size="12" font-weight="normal" fill="#506e81">y2</text>
+<path d="M1630 415H1662" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<rect x="1662" y="393" width="110" height="44" rx="6" fill="#fff" stroke="#adc2cf" stroke-width="1.6"/>
+<text x="1670" y="421" font-size="13" font-weight="700" fill="#173044">PublicValid</text>
+<path d="M1772 415H1830" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<rect x="1830" y="390" width="265" height="50" rx="7" fill="#eaf4ee" stroke="#a6c8b0" stroke-width="1.6"/>
+<text x="1848" y="422" font-size="18" font-weight="700" fill="#173044">CodeValid [464]</text>
+<text x="1635" y="407" font-size="12" font-weight="normal" fill="#506e81">y3</text>
+<path d="M1630 485H1662" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<rect x="1662" y="463" width="110" height="44" rx="6" fill="#fff" stroke="#adc2cf" stroke-width="1.6"/>
+<text x="1670" y="491" font-size="13" font-weight="700" fill="#173044">PublicMeta</text>
+<path d="M1772 485H1830" stroke="#365a70" stroke-width="2.3" fill="none"  marker-end="url(#a)"/>
+<rect x="1830" y="460" width="265" height="50" rx="7" fill="#eaf4ee" stroke="#a6c8b0" stroke-width="1.6"/>
+<text x="1848" y="492" font-size="18" font-weight="700" fill="#173044">CodeMeta [465]</text>
+<text x="1635" y="477" font-size="12" font-weight="normal" fill="#506e81">y4</text>
+<text x="1838" y="538" font-size="14" font-weight="normal" fill="#4b6d58">CodeMeta[9]：hit, time_s, ID, epoch,</text>
+<text x="1838" y="562" font-size="14" font-weight="normal" fill="#4b6d58">input_valid, slot, version, fault, status</text>
+<text x="85" y="920" font-size="16" font-weight="normal" fill="#5a7282">图只画 RX on 的主要已连路径；OFF 时两个 Record switch 实际分别选择 Adc.Raw / Adc.Ready。</text>
+<text x="85" y="947" font-size="15" font-weight="normal" fill="#5a7282">BankOwner 与 Fpga 是 EventStep 内同级；状态64由 UnitDelay 提交，两个 h 槽是 P 中预加载的不可变参数，不存入该64字。</text>
+<rect x="48" y="1035" width="2104" height="158" rx="10" fill="#fff3df" stroke="#e4c798" stroke-width="1.6"/>
+<text x="70" y="1068" font-size="19" font-weight="700" fill="#77501e">配置以 rx_bank_on/parameters.mat 为准：N8、first_id=4、epoch1、RX on、Bank on、Train/Frozen off、τDAC18全0 / DAC耦合 off。</text>
+<text x="70" y="1100" font-size="17" font-weight="normal" fill="#77501e">该案：Fs=5 MS/s，fin=90.33203125 kHz；失配 / DEM / dither on，AZ / kTC / jitter off；A/B 两槽同一 h、版本1/2。</text>
+<text x="70" y="1132" font-size="17" font-weight="700" fill="#9a4d22">注意：SarPP 保存的 EventStep 静态文字仍写 transport=false、DEM/dither off，与该案 P 不符；本导览不使用该陈旧文字。</text>
+<text x="70" y="1164" font-size="16" font-weight="normal" fill="#77501e">各案 (transport, bank, frozen)：factory_base/off=(0,0,0)；rx_nominal=(1,0,0)；rx_old_frozen=(1,0,1)；rx_bank_on=(1,1,0)。</text>
+<rect x="48" y="1214" width="2104" height="152" rx="10" fill="#edf7f1" stroke="#b4d4bd" stroke-width="1.6"/>
+<text x="70" y="1246" font-size="20" font-weight="700" fill="#275c3b">已保存的实际事件示例（该案，非理想点）</text>
+<text x="70" y="1278" font-size="17" font-weight="normal" fill="#275c3b">hit147 / 0.600 µs：预定 PUBLISH slot2/version2、activation ID4；RecordReady=0，BankOwner meta 的 command_status=1。</text>
+<text x="70" y="1308" font-size="17" font-weight="normal" fill="#275c3b">ID4 的 RX ready=1.338 µs：Raw6=[1878,3291,213,4,1,1]；Code20=957226，CodeValid=1，slot/version=2/2。</text>
+<text x="70" y="1338" font-size="16" font-weight="normal" fill="#275c3b">Meta9=[342, 1.338e−6 s, 4, 1, 1, 2, 2, 0, 0]；根口同 ready 事件的对应关系由原生回执核对。</text>
+<rect x="48" y="1388" width="2104" height="158" rx="10" fill="#fff" stroke="#c8d5de" stroke-width="1.6"/>
+<text x="70" y="1420" font-size="20" font-weight="700" fill="#173044">证据边界</text>
+<text x="70" y="1452" font-size="17" font-weight="normal" fill="#173044">12个实际 RX ready 包含 ID0–3 预热与 ID4–11 目标；两槽同 h 只证明版本路由，不是两次独立训练。</text>
+<text x="70" y="1484" font-size="17" font-weight="normal" fill="#173044">NoDrainAck 是实际零常数，不表示已有消费端 drain；未验证后台 Train、动态装载、fault 注入、退休/槽复用或下游时钟合同。</text>
+<text x="70" y="1516" font-size="16" font-weight="normal" fill="#536c7b">Bank off 时 y2 保留 Fpga 码，根 CodeValid=0 是该禁用输出合同，不应误读为 ADC 无效；结果不是产品/硅签核。</text>
+</g></svg>

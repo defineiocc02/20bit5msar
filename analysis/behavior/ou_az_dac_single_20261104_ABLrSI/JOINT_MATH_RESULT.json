@@ -1,0 +1,39 @@
+{
+  "status": "python_quadrature_and_empirical_checks_passed",
+  "matlab_source_executed": false,
+  "deterministic_cases": 20,
+  "max_absolute_quadrature_difference": 5.551115123125783e-17,
+  "quadrature_precision_decimal_digits": 70,
+  "independent_seed_count": 40000,
+  "stationary_means_over_sigma": [
+    -0.0113247858964604,
+    0.0029150387815897565,
+    0.005985548464600927
+  ],
+  "stationary_variances_over_sigma2": [
+    1.0033279291761663,
+    1.015468009732812
+  ],
+  "lag_covariance_over_sigma2": 0.4207059505483254,
+  "theory_lag_covariance_over_sigma2": 0.40948412515236426,
+  "innovation_product_mean": 0.009475145675271555,
+  "joint_az_dac_zero_noise_initial_mean": [
+    -0.12282441346412161,
+    -0.15225310971356493
+  ],
+  "joint_az_dac_independent_quadrature_mean": [
+    -0.1229688318958242,
+    -0.15245600335950724
+  ],
+  "joint_az_dac_variances_over_sigma2": [
+    0.9780471042195404,
+    1.0101150239100998
+  ],
+  "joint_az_dac_theory_variances_over_sigma2": [
+    0.971884340251028,
+    0.9952856435264508
+  ],
+  "joint_az_dac_covariance_over_sigma2": 0.408993646690096,
+  "joint_az_dac_theory_covariance_over_sigma2": 0.3979712088169749,
+  "limitations": "Python transcription; finite seed ensemble; does not prove IID or execute MATLAB/Simulink."
+}

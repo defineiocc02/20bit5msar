@@ -1,0 +1,22 @@
+2026-11-04T08:17:32.4582480Z attached: SAR20_FFT_PID:27628
+
+2026-11-04T08:17:34.5506831Z returned_check_matlab_receipt: ??? 错误使用 assert
+Candidate source mismatch: config/make_adi_cases.m
+
+出错 sar20_ni_n8_driver_20261104>check_sources (第 184 行)
+    assert(inside(file,project)&&isfile(file)&&strcmp(sha(file),char(expected(k).sha256)), ...
+
+出错 sar20_ni_n8_driver_20261104 (第 48 行)
+    expected=check_sources(project,manifest);
+
+出错 sar20_nisim_wrapper_20261104 (第 61 行)
+        sar20_ni_n8_driver_20261104;
+
+出错 sar20_nisim_entry_20261104 (第 1 行)
+sar20_nisim_wrapper_20261104;
+
+出错 run (第 112 行)
+evalin('caller', strcat(scriptStem, ';'));
+
+
+2026-11-04T08:17:34.5591789Z COM reference released; MATLAB remains open.

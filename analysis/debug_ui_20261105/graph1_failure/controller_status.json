@@ -1,0 +1,7 @@
+{
+    "status":  "failed",
+    "launch_pid":  37912,
+    "error":  "System.Management.Automation.RuntimeException: Stage1 worker exited 1\n在 \u003cScriptBlock\u003e、D:\\Temp\\SAR20DEBUG_GRAPH1_20261105\\controller.ps1 中: 第 23 行",
+    "simulation_run":  false,
+    "exit_code":  1
+}

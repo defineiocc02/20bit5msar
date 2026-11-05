@@ -1,0 +1,98 @@
+{
+  "schema": "sar20-normal-main-scratch/v1",
+  "status": "scratch_not_executed",
+  "items": [
+    {
+      "path": "normal_main_controller.ps1",
+      "bytes": 5642,
+      "sha256": "7b3a4d92f19a08e4e1329fefb875a9a0baede5dc4fda11fd100f27bfefec2676"
+    },
+    {
+      "path": "normal_main_entry.m",
+      "bytes": 1380,
+      "sha256": "cdfbb938117afeed43caba979bd508757d91b4a158acf2ca29f39621a00c31b2"
+    },
+    {
+      "path": "normal_main_prepare.ps1",
+      "bytes": 3075,
+      "sha256": "2550ef4f4d2aec5a18fc35d0c43e04aaa39d80fbc95a3333d8606d8ddd05a1a3"
+    },
+    {
+      "path": "normal_main_submit.ps1",
+      "bytes": 4476,
+      "sha256": "65fe1e13179501a60294355dfc403c0db368a2bb48723d1c1e61132f05fdb60b"
+    },
+    {
+      "path": "normal_runtime_index.json",
+      "bytes": 35932,
+      "sha256": "9aa4c6cd0473200d8e3c846cb60da372aebad399ae30b3acb33fae45e4ccc311"
+    },
+    {
+      "path": "reference/normal_bind_runtime.m",
+      "bytes": 1510,
+      "sha256": "dcba4fdf4e5f3f42a674297dcb3a62721345e9d41b80e423b9b627fc396b3498"
+    },
+    {
+      "path": "reference/normal_validate_tap.m",
+      "bytes": 7282,
+      "sha256": "4ee516cfa854647961d909302fb44d7ce6c2b15d6fc4054eeb2f34e0be801810"
+    },
+    {
+      "path": "reference/sb256_analyze.m",
+      "bytes": 4281,
+      "sha256": "99c1fb7816e4517faa0448458bab194241296aba260ca765fdad3b1d42bc9fb8"
+    },
+    {
+      "path": "reference/sb256_diff_paths.m",
+      "bytes": 659,
+      "sha256": "7f20ab7dfa43979cdab25b7097335a7d343f929c1aa5dcd3b4da74a08d4f261e"
+    },
+    {
+      "path": "reference/sb256_diff_values.m",
+      "bytes": 714,
+      "sha256": "42566fde0554b29628adf265e5d7feecaa874c62381115e3611b076e199c19e4"
+    },
+    {
+      "path": "reference/sb256_same_bits.m",
+      "bytes": 1093,
+      "sha256": "d4e7faf5b72d581be895cdfa5f3a6bf51b17e882df792fc78e6322c498b7e527"
+    },
+    {
+      "path": "reference/sb256_series.m",
+      "bytes": 765,
+      "sha256": "a258bc9369bdec0811f665f92032a494bf3daad5dc85c54c3f88506ba0ff5c82"
+    },
+    {
+      "path": "reference/sb_same_bits.m",
+      "bytes": 1078,
+      "sha256": "9d578b62ed698e2944043e707bdcd5d55f0ed13202ec294fdb8518aa72f161f4"
+    },
+    {
+      "path": "reference/sb_series.m",
+      "bytes": 762,
+      "sha256": "b7aa23fcd0d9b9b2dd5b96879ebaab10bedae973aa5a92b640470af854e9f1aa"
+    },
+    {
+      "path": "reference/sb_validate_plain.m",
+      "bytes": 2890,
+      "sha256": "3146c1411b49f10893bfc2cf296caf8fa6faa0fe1223be525858797358cd41c4"
+    },
+    {
+      "path": "scripts/normal_case.m",
+      "bytes": 23005,
+      "sha256": "ca62fca94c2dd58a918bb96ffc7d70fd6123b279402bfb64301aef35dc87d5c9"
+    },
+    {
+      "path": "scripts/normal_compare_outputs.m",
+      "bytes": 3091,
+      "sha256": "4eda44ed2e922e6598a65a815213940181e31b92ffc3dfbf7b82f9ba07d77c63"
+    },
+    {
+      "path": "verify_main.ps1",
+      "bytes": 1698,
+      "sha256": "e3e747e9e399729cc7af231c70fed5d28c80c83de0abde9f48c1788f3db8e845"
+    }
+  ],
+  "execution_change": "Per-worker software OpenGL startup diagnostic; prioritize normal N256 before baseline N256; no ADC numerical source or parameter change.",
+  "metadata_correction": "Correct a 62-character mistyped runtime-index SHA to the actual independently verified 64-character SHA; no ADC source, parameter or numerical rule changed."
+}

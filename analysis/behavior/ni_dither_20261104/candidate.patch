@@ -1,0 +1,231 @@
+--- a/config/adc_parameters.m
++++ b/config/adc_parameters.m
+@@ -140,7 +140,8 @@
+     % parameters/feature flags above; unsupported features are not activated here.
+     % Parasitic includes frontend Cp and active fixed RA-output load, not a scan.
+     P.ni=struct('ra_finite_gain',isfinite(A.A0),'ra_finite_bandwidth',isfinite(A.UGB_hz), ...
+-        'sample_ktc',P.front.ktc_enabled&&P.front.temperature_K>0,'sample_settling',any(P.front.tau_sample_s>0), ...
++        'sample_ktc',P.front.ktc_enabled&&P.front.temperature_K>0, ...
++        'sample_settling',any(isfinite(P.front.tau_sample_s)&P.front.tau_sample_s>0), ...
+         'dac_settling',P.backend.dac_coupling.enabled&& ...
+         any(isfinite(P.front.tau_dac_s)&P.front.tau_dac_s>0), ...
+         'cap_mismatch',P.front.mismatch_enabled||P.backend.ni.cap_mismatch, ...
+--- a/current/src/calibration/public_calibration_config.m
++++ b/current/src/calibration/public_calibration_config.m
+@@ -9,6 +9,8 @@
+ % control: sample_period_s only. No C/Cf/kappa/held/Qres/target/state accepted.
+ % Backend14 sources are digital offset, twelve D2 weights, and TA scale (RA V).
+ % Nominal h scale derives only from gain32 and declared 1024-Cu/eight geometry.
++% The public projection permits an enabled zero-amplitude ordinary diagnostic;
++% feature generation and the training/Frozen/Bank gate retain stricter eligibility.
+     exact(Ppublic,{'mapping';'digital';'control'},'Ppublic');
+     map=Ppublic.mapping;
+     d=Ppublic.digital;
+@@ -50,7 +52,7 @@
+     end
+     assert(isnumeric(map.vref_v)&&isreal(map.vref_v)&&isscalar(map.vref_v)&&isfinite(map.vref_v)&& ...
+         map.vref_v>0&&map.vref_v==d.vref_v&&d.fsr_diff_v==2*d.vref_v&&d.ra_gain==32&& ...
+-        d.tracking_step_ra_v>0&&d.dither_amplitude_v>=0&&(~d.dither_enabled||d.dither_amplitude_v>0), ...
++        d.tracking_step_ra_v>0&&d.dither_amplitude_v>=0, ...
+         'publicCalConfig:scaleJoin','Require matching declared Vref/FSR, gain32, positive TA scale and valid input dither amplitude.');
+     assert(isnumeric(d.d2_weights_ra_v)&&isreal(d.d2_weights_ra_v)&&numel(d.d2_weights_ra_v)==12&& ...
+         all(isfinite(d.d2_weights_ra_v(:)))&&all(d.d2_weights_ra_v(:)>0), ...
+--- a/current/src/calibration/behavior_cal_collector_step.m
++++ b/current/src/calibration/behavior_cal_collector_step.m
+@@ -104,6 +104,16 @@
+     assert(isstruct(o.public_cfg)&&isscalar(o.public_cfg)&& ...
+         isequal(sort(fieldnames(o.public_cfg)),sort(publicKeys)), ...
+         'calCollect:publicOnly','Use current cfg17 public projection, no analog state/reference truth fields.');
++    if o.enabled
++        % Enforce the existing public-feature dither eligibility before any
++        % rows are collected, even if callers bypass the normal P preparation.
++        flag=o.public_cfg.dither_enabled;amplitude=o.public_cfg.dither_input_amplitude_v;
++        assert((isnumeric(flag)||islogical(flag))&&isreal(flag)&&isscalar(flag)&& ...
++            isfinite(double(flag))&&any(double(flag)==[0 1])&& ...
++            isnumeric(amplitude)&&isreal(amplitude)&&isscalar(amplitude)&& ...
++            isfinite(amplitude)&&amplitude>=0&&(~logical(flag)||amplitude>0), ...
++            'publicCal:dither','Enabled training requires a valid public dither; enabled dither must have positive amplitude.');
++    end
+     assert((ischar(o.reference_provenance)||isstring(o.reference_provenance))&& ...
+         isscalar(string(o.reference_provenance))&&(~o.enabled||strlength(string(o.reference_provenance))>0), ...
+         'calCollect:provenance','Enabled collector requires explicit external reference provenance.');
+--- a/current/src/model/behavior_prepare_configuration.m
++++ b/current/src/model/behavior_prepare_configuration.m
+@@ -111,12 +111,8 @@
+         P.ni.ra_noise=logical(P.backend.ni.ra_noise)&& ...
+             P.backend.ra_noise.sigma_vx_rms>0;
+     end
+-    if P.backend.ni.ra_noise
+-        % OU ON: derive coverage from normalized physical values on apply;
+-        % the actual RaAdvance dialog later calls check to reject stale P.
+-        P=behavior_ra_noise_guard(P,'derive');
+-    else
+-        behavior_ra_noise_guard(P); % keep the legacy OFF path unchanged
+-    end
++    % Derive from actual normalized physical parameters for OU ON and OFF.
++    % The actual RaAdvance dialog uses check mode and rejects stale labels.
++    P=behavior_ra_noise_guard(P,'derive');
+     if value,sar20_pp_verified_parameters(P);end % actual prepared P, fail closed
+ end
+--- a/current/src/model/behavior_ra_noise_guard.m
++++ b/current/src/model/behavior_ra_noise_guard.m
+@@ -10,10 +10,10 @@
+ %   check    assert the coverage flags already present in P are consistent
+ %   derive   recompute the coverage map from P and store it
+ %
+-% LEGACY OFF
+-%   An OFF P that predates the ra_noise coverage field is left untouched, so old
+-%   saved configurations keep loading. ON sigma=0 is allowed as a diagnostic but
+-%   records coverage=false: zero stress proves the path is labelled, not enabled.
++% OU OFF/ON both derive or check the physical coverage summary. An OFF P need
++% not contain a ra_noise coverage field; existing false fields are preserved.
++% ON sigma=0 remains a diagnostic and records coverage=false. Old prepared P
++% with stale/missing coverage must be reapplied or explicitly corrected.
+ %
+ % WHY THIS EXISTS
+ %   An ON profile is only meaningful when the specific non-idealities it claims
+@@ -32,10 +32,54 @@
+     on=logical(P.backend.ni.ra_noise);
+     assert(isfield(P,'ni')&&isstruct(P.ni)&&isscalar(P.ni), ...
+         'sar20RA:coverage','Actual P needs its existing NI coverage summary.');
++    % The new zero-amplitude ordinary projection must not become a route to
++    % enable a collector, Frozen cache or Bank by a later workspace edit.
++    assert(isfield(P,'front')&&isstruct(P.front)&&isscalar(P.front)&& ...
++        all(isfield(P.front,{'dither_enabled','dither_input_amplitude_v','dither_seed'}))&& ...
++        binary(P.front.dither_enabled)&&isnumeric(P.front.dither_input_amplitude_v)&& ...
++        isreal(P.front.dither_input_amplitude_v)&&isscalar(P.front.dither_input_amplitude_v)&& ...
++        isfinite(P.front.dither_input_amplitude_v)&&P.front.dither_input_amplitude_v>=0, ...
++        'calConfig:zeroDitherFront','Complete physical dither fields required.');
++    % Mirror the public apply-time dither join on the real model-workspace P.
++    % This also catches a zero-to-nonzero single-side edit after preparation.
++    assert(isfield(P,'digital')&&isstruct(P.digital)&&isscalar(P.digital)&& ...
++        all(isfield(P.digital,{'dither_enabled','dither_seed','dither_amplitude_v'}))&& ...
++        binary(P.digital.dither_enabled)&& ...
++        isnumeric(P.front.dither_seed)&&isreal(P.front.dither_seed)&&isscalar(P.front.dither_seed)&& ...
++        isfinite(P.front.dither_seed)&&P.front.dither_seed>=0&&P.front.dither_seed<=2^32-1&& ...
++        P.front.dither_seed==floor(P.front.dither_seed)&& ...
++        isnumeric(P.digital.dither_seed)&&isreal(P.digital.dither_seed)&&isscalar(P.digital.dither_seed)&& ...
++        isfinite(P.digital.dither_seed)&&P.digital.dither_seed>=0&&P.digital.dither_seed<=2^32-1&& ...
++        P.digital.dither_seed==floor(P.digital.dither_seed)&& ...
++        isnumeric(P.digital.dither_amplitude_v)&&isreal(P.digital.dither_amplitude_v)&& ...
++        isscalar(P.digital.dither_amplitude_v)&&isfinite(P.digital.dither_amplitude_v)&& ...
++        P.digital.dither_amplitude_v>=0&& ...
++        double(P.front.dither_enabled)==double(P.digital.dither_enabled)&& ...
++        double(P.front.dither_seed)==double(P.digital.dither_seed)&& ...
++        double(P.front.dither_input_amplitude_v)==double(P.digital.dither_amplitude_v), ...
++        'calConfig:ditherJoin','Applied frontend/digital dither enable, seed and amplitude must agree.');
++    if P.front.dither_enabled&&P.front.dither_input_amplitude_v==0
++        for field={'training','cal_cfg','frozen','bank'}
++            name=field{1};
++            assert(isfield(P,name)&&isstruct(P.(name))&&isscalar(P.(name))&& ...
++                isfield(P.(name),'enabled')&&binary(P.(name).enabled)&&~P.(name).enabled, ...
++                'calConfig:zeroDitherQualification','Zero dither is ordinary-only; %s must be off.',name);
++        end
++    end
+     if ~on
+         if isfield(P.ni,'ra_noise')
+             assert(binary(P.ni.ra_noise)&&~logical(P.ni.ra_noise), ...
+                 'sar20RA:coverage','OFF cannot report ON noise coverage.');
++        end
++        P=validate_coverage(P,mode);
++        % Unsupported labels cannot be promoted to coverage in OFF profiles.
++        if isfield(P.ni,'reference_recovery')
++            assert(binary(P.ni.reference_recovery)&&~logical(P.ni.reference_recovery), ...
++                'sar20RA:referenceRecovery','Reference recovery is not implemented.');
++        end
++        if isfield(P.ni,'comparator_noise')
++            assert(binary(P.ni.comparator_noise)&&~logical(P.ni.comparator_noise), ...
++                'sar20RA:comparatorNoise','Comparator noise is not implemented.');
+         end
+         return;
+     end
+@@ -149,8 +193,12 @@
+ % Coverage here reflects actual enabled finite effects. Parasitic is the
+ % existing NARROW front-Cp/RA-output-load indicator, not full CT parasitics.
+     for key={'ra_finite_gain','ra_finite_bandwidth','sample_settling','sample_ktc','jitter','cap_mismatch','parasitic'}
+-        assert(isfield(P.ni,key{1})&&binary(P.ni.(key{1})), ...
+-            'sar20RA:coverageFlags','Missing/nonbinary NI label %s.',key{1});
++        name=key{1};
++        % Reapply can populate an older missing summary; direct check cannot.
++        % A present malformed value is always an error rather than normalized.
++        if strcmp(mode,'derive')&&~isfield(P.ni,name),P.ni.(name)=false;end
++        assert(isfield(P.ni,name)&&binary(P.ni.(name)), ...
++            'sar20RA:coverageFlags','Missing/nonbinary NI label %s.',name);
+     end
+     P=coverage_flag(P,'ra_finite_gain',isfinite(P.backend.ra.A0),mode, ...
+         'sar20RA:coverageGain','ra_finite_gain must match actual A0.');
+@@ -200,8 +248,12 @@
+         'sar20RA:coverageCap','Non-nominal frontend C requires mismatch enabled.');
+     ctDiff=false;
+     if P.backend.ni.cap_mismatch
+-        mainDiff=network_diff(P.backend.ct.net_actual,P.backend.ct.net_nominal);
+-        replicaDiff=network_diff(P.backend.ct.net_replica,P.backend.ct.net_nominal);
++        % Keep the existing OU ON shape contract. The historical OU OFF kernel
++        % also permits independently valid 6+6 and 10+2 CT splits; their
++        % differently shaped capacitor arrays still count as non-nominal.
++        sameShape=logical(P.backend.ni.ra_noise);
++        mainDiff=network_diff(P.backend.ct.net_actual,P.backend.ct.net_nominal,sameShape);
++        replicaDiff=network_diff(P.backend.ct.net_replica,P.backend.ct.net_nominal,sameShape);
+         % Replica only influences the numerical path through CINC kick. If its
+         % switching is disabled, its passive load still enters output_load.
+         effectiveReplica=false;
+@@ -231,7 +283,7 @@
+     else,assert(logical(P.ni.(name))==logical(expected),id,message);end
+ end
+ 
+-function different=network_diff(actual,nominal)
++function different=network_diff(actual,nominal,requireSameShape)
+     keys={'cinc_f','bridge_f','main_f','sub_f','track_f','parasitic_main_f','parasitic_sub_f','dummy_f'};
+     different=false;
+     for k=1:numel(keys)
+@@ -240,9 +292,20 @@
+         a=actual.(name);
+         n=nominal.(name);
+         assert(isa(a,'double')&&isa(n,'double')&&isreal(a)&&isreal(n)&& ...
+-            isequal(size(a),size(n))&&all(isfinite(a(:))&a(:)>=0)&&all(isfinite(n(:))&n(:)>=0), ...
++            (~requireSameShape||isequal(size(a),size(n)))&& ...
++            all(isfinite(a(:))&a(:)>=0)&&all(isfinite(n(:))&n(:)>=0), ...
+             'sar20RA:coverageCap','Invalid CT physical capacitance %s.',name);
+-        different=different||~isequal(a,n);
++        if ~requireSameShape&&strcmp(name,'bridge_f')&& ...
++                isvector(a)&&isvector(n)&&numel(a)==2&&numel(n)==2
++            % Both CT and replica_load consume bridge_f only by side index.
++            % A row/column transpose alone does not change either half.
++            same=isequal(a(:),n(:));
++        else
++            % Do not normalize CINC or other shapes: their full-array use may
++            % have shape-dependent behavior beyond side-indexed evaluation.
++            same=isequal(a,n);
++        end
++        different=different||~same;
+     end
+ end
+ 
+--- a/current/src/model/behavior_training_configuration.m
++++ b/current/src/model/behavior_training_configuration.m
+@@ -33,6 +33,25 @@
+         'az_mode','tracking_mode','calibration_mode'});
+     pub=struct('mapping',mapping,'digital',digital,'control',struct('sample_period_s',P.Ts_s));
+     cfg=public_calibration_config(pub);
++    % Preserve the existing calibration eligibility: zero injected dither may
++    % describe ordinary operation but cannot train or reuse Frozen/Bank caches.
++    if cfg.dither_enabled&&cfg.dither_input_amplitude_v==0
++        assert(~on,'calConfig:zeroDitherTraining','Training requires nonzero enabled dither.');
++        if isfield(P,'frozen')
++            assert(isstruct(P.frozen)&&isscalar(P.frozen)&&isfield(P.frozen,'enabled')&& ...
++                (isnumeric(P.frozen.enabled)||islogical(P.frozen.enabled))&& ...
++                isreal(P.frozen.enabled)&&isscalar(P.frozen.enabled)&& ...
++                isequal(double(P.frozen.enabled),0), ...
++                'calConfig:zeroDitherFrozen','Zero dither cannot use a Frozen cache.');
++        end
++        if isfield(P,'bank')
++            assert(isstruct(P.bank)&&isscalar(P.bank)&&isfield(P.bank,'enabled')&& ...
++                (isnumeric(P.bank.enabled)||islogical(P.bank.enabled))&& ...
++                isreal(P.bank.enabled)&&isscalar(P.bank.enabled)&& ...
++                isequal(double(P.bank.enabled),0), ...
++                'calConfig:zeroDitherBank','Zero dither cannot use Bank qualification.');
++        end
++    end
+     limits=struct('relative_singular_cutoff',1e-10,'maximum_condition_number',1e8,'training_rms_limit_v',7.8125e-6);
+     P.cal_cfg=struct('enabled',on,'N_train',P.N,'first_id',P.first_id,'epoch',P.epoch, ...
+         'public_cfg',cfg,'reference_provenance',ref.provenance,'thresholds',limits);

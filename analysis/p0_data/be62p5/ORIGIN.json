@@ -1,0 +1,21 @@
+{
+  "native_run_root": "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\run_tp394bdae9_7cbe_4949_9cd7_da5d4830e619",
+  "archived_model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+  "files": {
+    "raw.mat": {
+      "path": "/Users/zhaoyi/Obsidan/\u9879\u76ee\u5e93/outputs/sar20_5_simulink_20261020/analysis/p0_data/be62p5/raw.mat",
+      "sha256": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+      "bytes": 11641586
+    },
+    "selected.mat": {
+      "path": "/Users/zhaoyi/Obsidan/\u9879\u76ee\u5e93/outputs/sar20_5_simulink_20261020/analysis/p0_data/be62p5/selected.mat",
+      "sha256": "6053ef798750561c012fcb1f6b51fb747aa5afe18574ac5e1a733a8c9856ed87",
+      "bytes": 1999622
+    },
+    "result.json": {
+      "path": "/Users/zhaoyi/Obsidan/\u9879\u76ee\u5e93/outputs/sar20_5_simulink_20261020/analysis/p0_data/be62p5/result.json",
+      "sha256": "8c00c76c4100e0a2e380d048cbdb9081cf29a119a11bc9d9bda418cf358d463d",
+      "bytes": 47907
+    }
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "schema": "sar20-bank-physical-digital-boundary/v1",
+  "status": "actual_saved_three_N8_cases_read_no_new_simulation",
+  "top_receipt_sha256": "e477b90af1dbfb87aaadf09274c2d8881558f546a200afbea25f45dc9c439e42",
+  "source_manifest_sha256": "2d088dc20c8956691e2f2490c74b014c87624bd906648a2b0c4222f4862485c5",
+  "mode_p_differences": {
+    "old_frozen": [
+      "P/frozen/cache",
+      "P/frozen/enabled",
+      "P/frozen/log_points"
+    ],
+    "bank_on": [
+      "P/bank/command_schedule",
+      "P/bank/enabled",
+      "P/bank/initial_slot",
+      "P/bank/lead_samples",
+      "P/bank/provenance_scope",
+      "P/bank/qualification_file",
+      "P/bank/slots"
+    ]
+  },
+  "identical_graph_block_params_and_edges": true,
+  "graph_edges_count": 361,
+  "bank_owner_output_edges": [
+    [
+      "455#out:1",
+      "454#in:1"
+    ],
+    [
+      "455#out:2",
+      "137#in:1"
+    ],
+    [
+      "455#out:2",
+      "458#in:1"
+    ],
+    [
+      "455#out:3",
+      "459#in:1"
+    ],
+    [
+      "455#out:3",
+      "461#in:1"
+    ],
+    [
+      "455#out:4",
+      "460#in:1"
+    ],
+    [
+      "455#out:4",
+      "462#in:1"
+    ]
+  ],
+  "same_Time_Data_class_logs": [
+    "adc_executed_log",
+    "event_log",
+    "front_log",
+    "back_log",
+    "control_log",
+    "raw_log",
+    "ready_log",
+    "record_log",
+    "record_ready_log",
+    "frame_ready_log",
+    "sample_ready_log",
+    "az_route_log",
+    "az_commit_log",
+    "transport_frame_log",
+    "transport_trace_rows_log",
+    "d1_log",
+    "d2_log",
+    "dt_log"
+  ],
+  "ADC_groups_per_cycle": 48,
+  "RX_groups_per_cycle": 49,
+  "budget_declared": {
+    "d2_decide": 12,
+    "ta_compare": 8,
+    "ta_feedback": 7
+  },
+  "actual_ADC_decisions_checked": {
+    "D2": 96,
+    "TA": 64
+  },
+  "ADI_observer": "disabled; actual sign wires and per-slice endpoint states were not independently logged",
+  "ta_CT_mna_max_abs_V": 6.55129162724366e-17,
+  "first_RA_interval_max_abs_V": 0.0,
+  "coefficient_h_sha256": "a634c9a0c63c636a4c8966bc7d0e04d6d9ad4cf550156e6ed7ffe7806d6483ed",
+  "both_slots_same_h_and_match_frozen": true,
+  "training_prefix_replay": {
+    "training_simout_sha256": "984d97797d7279ddbe562cff4d2d6927cc5327514a870e18c411fc701fabb069",
+    "training_P_sha256": "0592cae05896e4ce1d49a9ca9d647cc3cbd402f77fe2689dbb68cf5c1a0db3b5",
+    "ID4_11_RX_raw_and_times_bit_equal": true,
+    "training_P_control_differences": [
+      "P/N",
+      "P/bank",
+      "P/cal_cfg/N_train",
+      "P/cal_cfg/enabled",
+      "P/n_cycles",
+      "P/schedule/n_cycles",
+      "P/schedule/stop_time_s",
+      "P/stop_time_s",
+      "P/training/enabled",
+      "P/training/log_points",
+      "P/training/reference/enabled",
+      "P/training/reference/records",
+      "P/training/snapshot_width"
+    ],
+    "interpretation": "Replay of training conditions and records, not an independent holdout."
+  },
+  "cases": [
+    {
+      "id": 4,
+      "rx_time_s": 1.338e-06,
+      "raw6": [
+        1878.0,
+        3291.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 957224,
+      "frozen_code": 957226,
+      "bank_code": 957226,
+      "bank_minus_nominal_codes": 2,
+      "nominal_d1_V": 3.376,
+      "nominal_d2_V": 0.006796875000000001,
+      "nominal_dt_V": 1.171875e-05,
+      "public_dither_V": -0.0005,
+      "nominal_voltage_V": 3.38230859375,
+      "frozen_u_RA_V": 0.217875,
+      "frozen_Bh_RA_V": 107.63714867209512,
+      "frozen_P_h": 31.887820248273457,
+      "frozen_voltage_V": 3.3823266323114343,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    },
+    {
+      "id": 5,
+      "rx_time_s": 1.538e-06,
+      "raw6": [
+        1911.0,
+        2914.0,
+        170.0,
+        5.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 974355,
+      "frozen_code": 974353,
+      "bank_code": 974353,
+      "bank_minus_nominal_codes": -2,
+      "nominal_d1_V": 3.512,
+      "nominal_d2_V": 0.005640625000000003,
+      "nominal_dt_V": 3.90625e-06,
+      "public_dither_V": -0.0015,
+      "nominal_voltage_V": 3.5161445312499997,
+      "frozen_u_RA_V": 0.18062500000000004,
+      "frozen_Bh_RA_V": 111.95107887211259,
+      "frozen_P_h": 31.890622746954215,
+      "frozen_voltage_V": 3.5161340298010324,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    },
+    {
+      "id": 6,
+      "rx_time_s": 1.738e-06,
+      "raw6": [
+        1938.0,
+        2775.0,
+        42.0,
+        6.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 985685,
+      "frozen_code": 985688,
+      "bank_code": 985688,
+      "bank_minus_nominal_codes": 3,
+      "nominal_d1_V": 3.6,
+      "nominal_d2_V": 0.0041718750000000054,
+      "nominal_dt_V": -1.171875e-05,
+      "public_dither_V": 0.0005,
+      "nominal_voltage_V": 3.60466015625,
+      "frozen_u_RA_V": 0.13312500000000005,
+      "frozen_Bh_RA_V": 114.79569480392178,
+      "frozen_P_h": 31.883165121157695,
+      "frozen_voltage_V": 3.6046866541382028,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    },
+    {
+      "id": 7,
+      "rx_time_s": 1.938e-06,
+      "raw6": [
+        1944.0,
+        2388.0,
+        213.0,
+        7.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 991084,
+      "frozen_code": 991083,
+      "bank_code": 991083,
+      "bank_minus_nominal_codes": -1,
+      "nominal_d1_V": 3.648,
+      "nominal_d2_V": 0.000328125000000002,
+      "nominal_dt_V": 1.171875e-05,
+      "public_dither_V": -0.0015,
+      "nominal_voltage_V": 3.64683984375,
+      "frozen_u_RA_V": 0.010875000000000044,
+      "frozen_Bh_RA_V": 116.29597357403097,
+      "frozen_P_h": 31.892567903396838,
+      "frozen_voltage_V": 3.646832356877831,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    },
+    {
+      "id": 8,
+      "rx_time_s": 2.1379999999999997e-06,
+      "raw6": [
+        1943.0,
+        2470.0,
+        170.0,
+        8.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 990467,
+      "frozen_code": 990470,
+      "bank_code": 990470,
+      "bank_minus_nominal_codes": 3,
+      "nominal_d1_V": 3.64,
+      "nominal_d2_V": 0.001515625000000003,
+      "nominal_dt_V": 3.90625e-06,
+      "public_dither_V": 0.0005,
+      "nominal_voltage_V": 3.6420195312500003,
+      "frozen_u_RA_V": 0.04862500000000004,
+      "frozen_Bh_RA_V": 116.08289293688675,
+      "frozen_P_h": 31.88630914190022,
+      "frozen_voltage_V": 3.6420495523667893,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    },
+    {
+      "id": 9,
+      "rx_time_s": 2.3380000000000003e-06,
+      "raw6": [
+        1936.0,
+        3412.0,
+        170.0,
+        9.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 983851,
+      "frozen_code": 983856,
+      "bank_code": 983856,
+      "bank_minus_nominal_codes": 5,
+      "nominal_d1_V": 3.584,
+      "nominal_d2_V": 0.007828125000000002,
+      "nominal_dt_V": 3.90625e-06,
+      "public_dither_V": -0.0015,
+      "nominal_voltage_V": 3.59033203125,
+      "frozen_u_RA_V": 0.25062500000000004,
+      "frozen_Bh_RA_V": 114.2608694922641,
+      "frozen_P_h": 31.893990162345812,
+      "frozen_voltage_V": 3.590378435228117,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2,
+      "held_model_V": 3.5903789655180627,
+      "nominal_minus_held_V": -4.693426806268164e-05,
+      "frozen_minus_held_V": -5.30289945732676e-07
+    },
+    {
+      "id": 10,
+      "rx_time_s": 2.538e-06,
+      "raw6": [
+        1908.0,
+        2872.0,
+        85.0,
+        10.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 971322,
+      "frozen_code": 971327,
+      "bank_code": 971327,
+      "bank_minus_nominal_codes": 5,
+      "nominal_d1_V": 3.488,
+      "nominal_d2_V": 0.004953125000000003,
+      "nominal_dt_V": -3.90625e-06,
+      "public_dither_V": -0.0005,
+      "nominal_voltage_V": 3.49244921875,
+      "frozen_u_RA_V": 0.15837500000000004,
+      "frozen_Bh_RA_V": 111.21214433940318,
+      "frozen_P_h": 31.888540730235484,
+      "frozen_voltage_V": 3.4924934408743877,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    },
+    {
+      "id": 11,
+      "rx_time_s": 2.738e-06,
+      "raw6": [
+        1874.0,
+        3253.0,
+        170.0,
+        11.0,
+        1.0,
+        1.0
+      ],
+      "nominal_code": 953039,
+      "frozen_code": 953044,
+      "bank_code": 953044,
+      "bank_minus_nominal_codes": 5,
+      "nominal_d1_V": 3.344,
+      "nominal_d2_V": 0.006109375,
+      "nominal_dt_V": 3.90625e-06,
+      "public_dither_V": -0.0005,
+      "nominal_voltage_V": 3.3496132812499995,
+      "frozen_u_RA_V": 0.19562500000000002,
+      "frozen_Bh_RA_V": 106.61855980592026,
+      "frozen_P_h": 31.888085296515268,
+      "frozen_voltage_V": 3.3496581501427722,
+      "frozen_voltage_minus_formula_V": 0.0,
+      "slot": 2,
+      "version": 2
+    }
+  ],
+  "analog_nodes": [
+    {
+      "id": 4,
+      "held_V": 3.3823241078501307,
+      "Qres_RAstart_C": 1.8542866633532185e-13,
+      "vx_first_prepare_V": 0.20417910356733174,
+      "vy_first_prepare_V": 0.15899735514652696,
+      "vx_first_ta_V": 0.21778707041054232,
+      "vy_first_ta_V": 0.0002235460692088148,
+      "vtop_release_V": -2.179411677969149e-05
+    },
+    {
+      "id": 5,
+      "held_V": 3.516133488235879,
+      "Qres_RAstart_C": 1.5370049102785415e-13,
+      "vx_first_prepare_V": 0.1692439165554046,
+      "vy_first_prepare_V": 0.13179279679849806,
+      "vx_first_ta_V": 0.18052216981868038,
+      "vy_first_ta_V": 1.726397301520191e-05,
+      "vtop_release_V": -1.8064983737247727e-05
+    },
+    {
+      "id": 6,
+      "held_V": 3.60468415137806,
+      "Qres_RAstart_C": 1.1328763944725593e-13,
+      "vx_first_prepare_V": 0.12474313719249686,
+      "vy_first_prepare_V": 0.09713936705450761,
+      "vx_first_ta_V": 0.13305700383812413,
+      "vy_first_ta_V": -0.00034496780937770267,
+      "vtop_release_V": -1.3315115349259194e-05
+    },
+    {
+      "id": 7,
+      "held_V": 3.6468362971415886,
+      "Qres_RAstart_C": 9.317158503263393e-15,
+      "vx_first_prepare_V": 0.010259384209000657,
+      "vy_first_prepare_V": 0.00798913760597066,
+      "vx_first_ta_V": 0.010943059831347324,
+      "vy_first_ta_V": 0.00034501738975782034,
+      "vtop_release_V": -1.0950798902941925e-06
+    },
+    {
+      "id": 8,
+      "held_V": 3.642047354531162,
+      "Qres_RAstart_C": 4.1303348483981654e-14,
+      "vx_first_prepare_V": 0.04547995188695546,
+      "vy_first_prepare_V": 0.035415926193605805,
+      "vx_first_ta_V": 0.0485110289638146,
+      "vy_first_ta_V": 8.588420880941975e-06,
+      "vtop_release_V": -4.854535184650039e-06
+    },
+    {
+      "id": 9,
+      "held_V": 3.5903789655180627,
+      "Qres_RAstart_C": 2.1346482478133285e-13,
+      "vx_first_prepare_V": 0.23505132869383955,
+      "vy_first_prepare_V": 0.18303802364218524,
+      "vx_first_ta_V": 0.25071572915778345,
+      "vy_first_ta_V": 0.00016799155700201104,
+      "vtop_release_V": -2.5089307497269018e-05
+    },
+    {
+      "id": 10,
+      "held_V": 3.4924961916014046,
+      "Qres_RAstart_C": 1.349270427337414e-13,
+      "vx_first_prepare_V": 0.14857130080330097,
+      "vy_first_prepare_V": 0.11569471834131156,
+      "vx_first_ta_V": 0.15847262503491494,
+      "vy_first_ta_V": -2.1317299222627737e-05,
+      "vtop_release_V": -1.5858472948192192e-05
+    },
+    {
+      "id": 11,
+      "held_V": 3.3496589533167787,
+      "Qres_RAstart_C": 1.6661985870690622e-13,
+      "vx_first_prepare_V": 0.18346901635259927,
+      "vy_first_prepare_V": 0.14287009709482096,
+      "vx_first_ta_V": 0.19569602888560622,
+      "vy_first_ta_V": 0.0001526506571884599,
+      "vtop_release_V": -1.9583446444766693e-05
+    }
+  ],
+  "readiness_scope": "Compared only valid RX-ready records for code equality; non-ready Bank/Frozen code waveforms differ.",
+  "qualification_scope": "behavior-profile prequalified, NOT_ACCEPTED; no product authorization, fault injection, retirement drain or online retraining proven.",
+  "limitations": "Eight actual samples, no spectrum or overall performance; CT signs inferred, not physically probed; P/front/backend are offline audit inputs, never fed to BankOwner or fitter."
+}

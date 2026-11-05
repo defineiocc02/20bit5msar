@@ -1,0 +1,587 @@
+{
+  "script_sha256": "02d45d65c2a90839484ce328a726975c2dd625a1b9307f6c684aa15458fb1e30",
+  "inner_receipt_sha256": "c73678972aaed93628e4a522880a837867cd54e49b8a38dc8b3cce77b7ef17af",
+  "outer_receipt_sha256": "12e43fa0ee8c4bd120ddc16f62b5dbaf8c841b299d084023a7cc7f975413b801",
+  "cleanup_sha256": "4102a58c880ae5f9eb0db3f0782e651a7348bb3039d6e9cf09b42cfdd8697034",
+  "source_manifest_sha256": "517e380a78bac0c341ce9299b0e22dfbd280180b54b7b897a370c3a6f1f07ff3",
+  "old_source_zip_sha256": "dbeaa905b9a2aa0bcaa28324b76eedbd88a3f54ee7d085338badab771c6e82f1",
+  "new_source_zip_sha256": "b08c712a8354b0546483fbbb62d343bc7ea0c744f0a80c26b6796519c99a7583",
+  "verified_source_files": 87,
+  "verified_original_copy_files": {
+    "receipt.json": "afa9d7267f261b2fd18668e916ef81e2264fb5526cb18503125ec977c2dbce9d",
+    "source_manifest.json": "517e380a78bac0c341ce9299b0e22dfbd280180b54b7b897a370c3a6f1f07ff3",
+    "sar20_zero_refine_job.m": "ecd3c70846f6be9cb281c874f919179b73cc55191bd8e6d65669974bf1f97d3d",
+    "P.mat": "ee36ff1987934b430af26502171cbd74911ef1d9bec572b46dc0a76d0ea55afc",
+    "signals.mat": "c8a07a6aaf0457ee084ed4fe6804f7f32e3a930660be4087af310d8544eabb37",
+    "observed.mat": "3734098a4fccfa48d94fed10cc03e9bee9b988c1f4fb6de508c330cd4d3dfc29",
+    "failed_simout.mat": "d7d07b61c55c6177f50855eb77c93c5a5b1c0f28b5803261c7df9c9127bc29a1"
+  },
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "original_failure": {
+    "status": "failed_partial_preserved",
+    "identifier": "MATLAB:cellfun:NotAScalarOutput",
+    "point_status": "failed",
+    "simulation_error": "",
+    "held_fields_were_empty": true,
+    "nine_saved_series_equal_failed_simout": true
+  },
+  "P_differences_vs_112407_actual_negative": {
+    "point_001": [
+      "P/front/input/offset_v",
+      "P/input/offset_v",
+      "P/xFE0"
+    ],
+    "point_002": [
+      "P/front/input/offset_v",
+      "P/input/offset_v",
+      "P/xFE0"
+    ],
+    "point_003": [
+      "P/front/input/offset_v",
+      "P/input/offset_v",
+      "P/xFE0"
+    ],
+    "midpoint": [
+      "P/front/input/offset_v",
+      "P/input/offset_v",
+      "P/xFE0"
+    ]
+  },
+  "calendar_budget": {
+    "d2_decide": 12,
+    "ta_compare": 8,
+    "ta_feedback": 7
+  },
+  "samples": {
+    "zero": {
+      "voltage_v": 0.0,
+      "held_input_v": 0.0,
+      "raw6": [
+        1040,
+        2374,
+        42,
+        4,
+        1,
+        1
+      ],
+      "code20": 524289,
+      "ready_time_s": 8.8625e-07,
+      "all_ready_raw6": [
+        [
+          1040,
+          2374,
+          42,
+          0,
+          1,
+          1
+        ],
+        [
+          1040,
+          2374,
+          42,
+          1,
+          1,
+          1
+        ],
+        [
+          1040,
+          2374,
+          42,
+          2,
+          1,
+          1
+        ],
+        [
+          1040,
+          2374,
+          42,
+          3,
+          1,
+          1
+        ],
+        [
+          1040,
+          2374,
+          42,
+          4,
+          1,
+          1
+        ]
+      ],
+      "all_ready_code20": [
+        524289,
+        524289,
+        524289,
+        524289,
+        524289
+      ],
+      "all_ready_time_s": [
+        8.625000000000001e-08,
+        2.8625e-07,
+        4.8625e-07,
+        6.8625e-07,
+        8.8625e-07
+      ]
+    },
+    "negative": {
+      "voltage_v": -3.0517578125e-08,
+      "held_input_v": -3.0517578125e-08,
+      "raw6": [
+        1039,
+        3417,
+        42,
+        4,
+        1,
+        1
+      ],
+      "code20": 524285,
+      "ready_time_s": 8.8625e-07,
+      "all_ready_raw6": [
+        [
+          1039,
+          3417,
+          42,
+          0,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          1,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          2,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          3,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          4,
+          1,
+          1
+        ]
+      ],
+      "all_ready_code20": [
+        524285,
+        524285,
+        524285,
+        524285,
+        524285
+      ],
+      "all_ready_time_s": [
+        8.625000000000001e-08,
+        2.8625e-07,
+        4.8625e-07,
+        6.8625e-07,
+        8.8625e-07
+      ]
+    },
+    "midpoint": {
+      "voltage_v": -1.52587890625e-08,
+      "held_input_v": -1.52587890625e-08,
+      "raw6": [
+        1039,
+        3417,
+        42,
+        4,
+        1,
+        1
+      ],
+      "code20": 524285,
+      "ready_time_s": 8.8625e-07,
+      "all_ready_raw6": [
+        [
+          1039,
+          3417,
+          42,
+          0,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          1,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          2,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          3,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          4,
+          1,
+          1
+        ]
+      ],
+      "all_ready_code20": [
+        524285,
+        524285,
+        524285,
+        524285,
+        524285
+      ],
+      "all_ready_time_s": [
+        8.625000000000001e-08,
+        2.8625e-07,
+        4.8625e-07,
+        6.8625e-07,
+        8.8625e-07
+      ]
+    },
+    "point_001": {
+      "voltage_v": -7.62939453125e-09,
+      "held_input_v": -7.62939453125e-09,
+      "raw6": [
+        1039,
+        3417,
+        42,
+        4,
+        1,
+        1
+      ],
+      "code20": 524285,
+      "ready_time_s": 8.8625e-07,
+      "all_ready_raw6": [
+        [
+          1039,
+          3417,
+          42,
+          0,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          1,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          2,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          3,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          4,
+          1,
+          1
+        ]
+      ],
+      "all_ready_code20": [
+        524285,
+        524285,
+        524285,
+        524285,
+        524285
+      ],
+      "all_ready_time_s": [
+        8.625000000000001e-08,
+        2.8625e-07,
+        4.8625e-07,
+        6.8625e-07,
+        8.8625e-07
+      ]
+    },
+    "point_002": {
+      "voltage_v": -3.814697265625e-09,
+      "held_input_v": -3.814697265625e-09,
+      "raw6": [
+        1039,
+        3417,
+        42,
+        4,
+        1,
+        1
+      ],
+      "code20": 524285,
+      "ready_time_s": 8.8625e-07,
+      "all_ready_raw6": [
+        [
+          1039,
+          3417,
+          42,
+          0,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          1,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          2,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          3,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          4,
+          1,
+          1
+        ]
+      ],
+      "all_ready_code20": [
+        524285,
+        524285,
+        524285,
+        524285,
+        524285
+      ],
+      "all_ready_time_s": [
+        8.625000000000001e-08,
+        2.8625e-07,
+        4.8625e-07,
+        6.8625e-07,
+        8.8625e-07
+      ]
+    },
+    "point_003": {
+      "voltage_v": -1.9073486328125e-09,
+      "held_input_v": -1.9073486328125e-09,
+      "raw6": [
+        1039,
+        3417,
+        42,
+        4,
+        1,
+        1
+      ],
+      "code20": 524285,
+      "ready_time_s": 8.8625e-07,
+      "all_ready_raw6": [
+        [
+          1039,
+          3417,
+          42,
+          0,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          1,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          2,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          3,
+          1,
+          1
+        ],
+        [
+          1039,
+          3417,
+          42,
+          4,
+          1,
+          1
+        ]
+      ],
+      "all_ready_code20": [
+        524285,
+        524285,
+        524285,
+        524285,
+        524285
+      ],
+      "all_ready_time_s": [
+        8.625000000000001e-08,
+        2.8625e-07,
+        4.8625e-07,
+        6.8625e-07,
+        8.8625e-07
+      ]
+    }
+  },
+  "controller_first_vs_zero": {
+    "midpoint": {
+      "trial": {
+        "group": 4,
+        "relative_ns": 16.25,
+        "zero": 1048.0,
+        "probe": 1032.0
+      },
+      "D1raw": {
+        "group": 3,
+        "relative_ns": 15.000000000000002,
+        "zero": 1040.0,
+        "probe": 1024.0
+      },
+      "D2raw": {
+        "group": 16,
+        "relative_ns": 47.5,
+        "zero": 2048.0,
+        "probe": 3072.0
+      }
+    },
+    "point_001": {
+      "trial": {
+        "group": 4,
+        "relative_ns": 16.25,
+        "zero": 1048.0,
+        "probe": 1032.0
+      },
+      "D1raw": {
+        "group": 3,
+        "relative_ns": 15.000000000000002,
+        "zero": 1040.0,
+        "probe": 1024.0
+      },
+      "D2raw": {
+        "group": 16,
+        "relative_ns": 47.5,
+        "zero": 2048.0,
+        "probe": 3072.0
+      }
+    },
+    "point_002": {
+      "trial": {
+        "group": 4,
+        "relative_ns": 16.25,
+        "zero": 1048.0,
+        "probe": 1032.0
+      },
+      "D1raw": {
+        "group": 3,
+        "relative_ns": 15.000000000000002,
+        "zero": 1040.0,
+        "probe": 1024.0
+      },
+      "D2raw": {
+        "group": 16,
+        "relative_ns": 47.5,
+        "zero": 2048.0,
+        "probe": 3072.0
+      }
+    },
+    "point_003": {
+      "trial": {
+        "group": 4,
+        "relative_ns": 16.25,
+        "zero": 1048.0,
+        "probe": 1032.0
+      },
+      "D1raw": {
+        "group": 3,
+        "relative_ns": 15.000000000000002,
+        "zero": 1040.0,
+        "probe": 1024.0
+      },
+      "D2raw": {
+        "group": 16,
+        "relative_ns": 47.5,
+        "zero": 2048.0,
+        "probe": 3072.0
+      }
+    }
+  },
+  "narrowest_actual_window": {
+    "low": {
+      "voltage_v": -1.9073486328125e-09,
+      "held_v": -1.9073486328125e-09,
+      "code20": 524285,
+      "ref": "resume:point_003"
+    },
+    "high": {
+      "voltage_v": 0,
+      "held_v": 0,
+      "code20": 524289,
+      "ref": "110315:zero_preflight"
+    },
+    "code_delta": 4,
+    "held_span_v": 1.9073486328125e-09,
+    "scope": "Measured endpoints only; unsampled interior and global monotonicity unproven."
+  },
+  "recorded_cleanup": {
+    "status": "complete",
+    "model_was_preloaded": true,
+    "owned_model_closed": false,
+    "cwd_restored": true,
+    "path_restored_exactly": true,
+    "issues": []
+  },
+  "retention_scope": "New points save nine original native timeseries, P, observed and point receipt; full simout is not saved. 113931 failed simout is retained; only nine saved time series were independently compared.",
+  "nonreplay_scope": "No-replay is asserted by native receipt and guarded source; this offline audit does not independently observe the complete host execution history.",
+  "scope": "Two codes only at measured sample inputs. No interior sample within final bracket; absence of 524286-288 at sampled inputs is not proof of missing codes, code widths, monotonicity, DNL, or INL. Zero P is a later reconstruction."
+}

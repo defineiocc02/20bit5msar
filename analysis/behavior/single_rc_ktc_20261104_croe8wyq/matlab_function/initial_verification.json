@@ -1,0 +1,7 @@
+{
+    "expected_zip_sha256":  "ede479868189a4e5a712e172173db7759208a62e1bfe9d6b31e644e86756feff",
+    "error":  "",
+    "status":  "verified_not_run",
+    "file_count":  130,
+    "actual_manifest_sha256":  "685ff2990f6fef5e0408f9700c02309a9ddcb37910038b5384f8e2b523c0294f"
+}

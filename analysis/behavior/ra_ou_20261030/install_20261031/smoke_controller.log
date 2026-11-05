@@ -1,0 +1,72 @@
+2026-10-30T17:11:30.9140586Z Looking up the registered MATLAB Automation server.
+2026-10-30T17:11:30.9334809Z PID probe Execute returned: SAR20_ATTACH_PID:27628
+
+2026-10-30T17:11:30.9740731Z state=attached; stage=attached_pid_verified
+2026-10-30T17:11:30.9760725Z Calling run(D:/Temp/SAR20OUMain_20261030T171030Z/controller_20261030T171121Z/smoke_entry.m) in the PID-verified MATLAB session.
+2026-10-30T17:12:04.4202532Z MATLAB run Execute returned:                    found: 0
+            settingsPath: ''
+                 enabled: 0
+                dataRoot: ''
+                gatePass: 1
+             kgIndexPath: ''
+           librariesPath: ''
+              policyPath: ''
+                    tier: ''
+           ignoredLegacy: 0
+       ignoredLegacyPath: ''
+    pointerTargetMissing: 0
+       pointerTargetPath: ''
+
+[Autolayout] skip: model=SarAdc, scope=root, empty_handles
+[Autolayout] skip: model=SarAdc, scope=blk_105, empty_handles
+                   found: 0
+            settingsPath: ''
+                 enabled: 0
+                dataRoot: ''
+                gatePass: 1
+             kgIndexPath: ''
+           librariesPath: ''
+              policyPath: ''
+                    tier: ''
+           ignoredLegacy: 0
+       ignoredLegacyPath: ''
+    pointerTargetMissing: 0
+       pointerTargetPath: ''
+
+[Autolayout] skip: model=SarAdc, scope=root, empty_handles
+[Autolayout] skip: model=SarAdc, scope=blk_105, empty_handles
+                   found: 0
+            settingsPath: ''
+                 enabled: 0
+                dataRoot: ''
+                gatePass: 1
+             kgIndexPath: ''
+           librariesPath: ''
+              policyPath: ''
+                    tier: ''
+           ignoredLegacy: 0
+       ignoredLegacyPath: ''
+    pointerTargetMissing: 0
+       pointerTargetPath: ''
+
+[Autolayout] skip: model=SarAdc, scope=root, empty_handles
+[Autolayout] skip: model=SarAdc, scope=blk_105, empty_handles
+                   found: 0
+            settingsPath: ''
+                 enabled: 0
+                dataRoot: ''
+                gatePass: 1
+             kgIndexPath: ''
+           librariesPath: ''
+              policyPath: ''
+                    tier: ''
+           ignoredLegacy: 0
+       ignoredLegacyPath: ''
+    pointerTargetMissing: 0
+       pointerTargetPath: ''
+
+[Autolayout] skip: model=SarAdc, scope=root, empty_handles
+[Autolayout] skip: model=SarAdc, scope=blk_105, empty_handles
+
+2026-10-30T17:12:04.4220691Z state=command_returned; stage=command_returned
+2026-10-30T17:12:04.8948277Z Released the COM reference; MATLAB was not quit.

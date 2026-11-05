@@ -1,0 +1,5 @@
+# RA 区间密集观察器
+
+离线源码完成、Python静态检查通过；MATLAB 未调用，实际2015列tap尚未交付。真实normal N8已有日志不含完整FE353/RA48，不可代称新tap。2015列映射、同组末→下组old位门、原区间端点state/obs位门和sigma0无新OU hash详见README。
+
+observer SHA `5e46bebfbdac75dfb165ca198d22c0d7fcd17e56ab784f367a4b5a642f8385c8`；wrapper SHA `3c10a17bdd16f3c704e5c93a512087078d65201de8e4795e72d8756880aceddd`；pins SHA `4926aa0182de94450d6ae9c3c178d97dfa46c21418d47fdc9dbe9806f313f120`；layout SHA `fab1aa95520b2e9af897cfe93e539083c8b3afbb8524bae5eedb574559393b31`。冻结候选 manifest `73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c` 未修改。本次无ZIP，无生产/图改动。

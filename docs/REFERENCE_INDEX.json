@@ -1,0 +1,182 @@
+[
+  {
+    "path": "docs/PAPERS/01_CICC2026/A_3.6mW_5MS_s_100dB-SNDR_2-Step_SAR_ADC_with_Continuous-Time_Second-Stage_and_Tracking_Averaging.pdf",
+    "sha256": "7ef975d3d689436880cc049296b68d44eec8c1063897041bb569f3f7017f9167",
+    "original_path": "/Users/zhaoyi/Desktop/A_3.6mW_5MS_s_100dB-SNDR_2-Step_SAR_ADC_with_Continuous-Time_Second-Stage_and_Tracking_Averaging.pdf"
+  },
+  {
+    "path": "docs/PAPERS/02_CT_SAR_2019/A_Two-Step_ADC_With_a_Continuous-Time_SAR-Based_First_Stage.pdf",
+    "sha256": "14423e8618e60e17020f8e6f608bb5d0c15cc03f93f81b04048b6ee9d32b1ccb",
+    "original_path": "/Users/zhaoyi/Desktop/A_Two-Step_ADC_With_a_Continuous-Time_SAR-Based_First_Stage.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[00]_A_9.3nV_rtHz_20b_40MS_s_94.2dB_DR_Signal-Chain_Friendly_Precision_SAR_Converter.pdf",
+    "sha256": "2277ec0a2b889ee954f0866f2668adc1bf95f2214fae386c9a1d70203435cd96",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[00]_A_9.3nV_rtHz_20b_40MS_s_94.2dB_DR_Signal-Chain_Friendly_Precision_SAR_Converter.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[00_1]ISSCC2024_ppt.pdf",
+    "sha256": "e7074c0f612c31bb76ad276fefaf6e6cf36479292248dc41085c4dadd1f8193a",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[00_1]ISSCC2024_ppt.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[01]_Hurrell_2010_JSSC扩展版.pdf",
+    "sha256": "d13d34ac6b29a8ef63d54fc711b7b6de1d40edb98100fa0aa53be0ccbf5b9ff6",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[01]_Hurrell_2010_JSSC扩展版.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[02]_ElShater_2019_JSSC扩展版.pdf",
+    "sha256": "39ae123ef70acb1136c0132d1148a0e580fe5413e673b100dd648b8035bddbaf",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[02]_ElShater_2019_JSSC扩展版.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[03]_Li_2023_JSSC扩展版.pdf",
+    "sha256": "946e731419b66ee00bb25f0080be4ee45c5756a727ff9a2515b64779df3d7b79",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[03]_Li_2023_JSSC扩展版.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[04]_Bannon_2014_VLSI_18b_5MSs_100.2dB_DR_SAR_ADC.pdf",
+    "sha256": "40f2025ad848979caad71c39c09edaf3f999ccf8e873904858387a494fb814e3",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[04]_Bannon_2014_VLSI_18b_5MSs_100.2dB_DR_SAR_ADC.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[05]_Analog_Devices_LTC2387-18_Datasheet.pdf",
+    "sha256": "b9a15e9bb11fd52990778104e6d32b41c42484b6219d5581fd89ed70241b334c",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[05]_Analog_Devices_LTC2387-18_Datasheet.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[06]_Steensgaard_2022_24b_2MSs_SAR_ADC.pdf",
+    "sha256": "b1a9b4adab0c98b38dce9839d5dec967e8510d20da99407f3de36cbdf371ba79",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[06]_Steensgaard_2022_24b_2MSs_SAR_ADC.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[07]_Texas_Instruments_ADC3583_Datasheet.pdf",
+    "sha256": "d08918a72583f08e64fff1ef0f7ad57e051e045d72f067bb14b3f89d5a8b0982",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[07]_Texas_Instruments_ADC3583_Datasheet.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[08]_Shen_2018_16bit_16MSs_SAR_ADC.pdf",
+    "sha256": "5695d1e5926fe6a19b44d1e56d7275d4331c85eae0748f962c45a13a7f8d511d",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[08]_Shen_2018_16bit_16MSs_SAR_ADC.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[09]_US10516408B2_Analog_to_Digital_Converter_Stage.pdf",
+    "sha256": "2125e54e0281382b7142669e153a2f489394dd3ea275ee99d83323181d925a07",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[09]_US10516408B2_Analog_to_Digital_Converter_Stage.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[10]_US10505561B2_Dither_Method_and_ADC.pdf",
+    "sha256": "91ae95528592ba16a6a34c4d5336cd3abd18a35f811d22d73e2620dc83363c14",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[10]_US10505561B2_Dither_Method_and_ADC.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[11]_US10511316B2_Dynamic_Element_Matching.pdf",
+    "sha256": "b60174319848efbe086c87e3814468452fbf8b08d85ab20a2baf041bb4136846",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[11]_US10511316B2_Dynamic_Element_Matching.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[12]_US10707889B1_Interleaving_Method_for_ADCs.pdf",
+    "sha256": "1cf38e3f1e701662bfb140bc34e74f3b7c448b40b611095c0d0b7e256d7e92e7",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[12]_US10707889B1_Interleaving_Method_for_ADCs.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[13]_US10541702B1_Auxiliary_Input_for_ADC_Input_Charge.pdf",
+    "sha256": "e6cfd4ffc92598d45e6e0e384428e0d9613cc7e38ab11b9c28dda66bbd12c85e",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[13]_US10541702B1_Auxiliary_Input_for_ADC_Input_Charge.pdf"
+  },
+  {
+    "path": "docs/PAPERS/03_ADI_ISSCC2024/[14]_US10826519B1_Low_Power_Reference_for_ADC.pdf",
+    "sha256": "e5f325271f013ba0f5a63177a516c7348d09d4d02664713abaa10bb37154a122",
+    "original_path": "/Users/zhaoyi/Downloads/ISSCC2024_9.8_参考文献全集/[14]_US10826519B1_Low_Power_Reference_for_ADC.pdf"
+  },
+  {
+    "path": "docs/PAPERS/04_PKU_AZ/C32_C32-1.pdf",
+    "sha256": "5921d65cfae061ca6301a6104460c2eff3803245c1bc976acecac16adfa79759",
+    "original_path": "/Users/zhaoyi/Downloads/C32_C32-1.pdf"
+  },
+  {
+    "path": "docs/PAPERS/05_AD7961/AD7961.pdf",
+    "sha256": "ee5f6a6967f9596c65522955f85cabe01c577fc92fa378cdcdccf3d97f51eb52",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/sources/AD7961.pdf"
+  },
+  {
+    "path": "docs/PAPERS/05_AD7961/AD7961FMCZ_Schematic.pdf",
+    "sha256": "5ec83b572f8ad4dc8fdce8066306847e6a08c549f58b35b2f49ff1bdfdbebcd1",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/sources/AD7961FMCZ_Schematic.pdf"
+  },
+  {
+    "path": "docs/PAPERS/05_AD7961/UG-581_AD7961.pdf",
+    "sha256": "bddd47b3e21a3aabb8b9645b6c0fd445ba23291b6de7c7e8107c37a50ea68ce3",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/sources/UG-581_AD7961.pdf"
+  },
+  {
+    "path": "docs/PAPERS/06_Additional_Mechanism_Patents/US8810443.pdf",
+    "sha256": "9c046d9a9d545511683520e0e5b0097becb9adfedfafd8603d1135194a3fbfa3",
+    "original_path": "/Users/zhaoyi/Downloads/专利/US8810443.pdf"
+  },
+  {
+    "path": "docs/PAPERS/06_Additional_Mechanism_Patents/US9331709.pdf",
+    "sha256": "37da34309566e5d17d354adcdfd36af4c65fcf612bcc94f470a27248f4b97c6c",
+    "original_path": "/Users/zhaoyi/Downloads/专利/US9331709.pdf"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/README.md",
+    "sha256": "588fd8240c194f098e90bf6fa3992722c502247fb3fe7e50183b3445f175c7b7",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/README.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/SAR_ADC_完整产品定义_Rev0.5.pdf",
+    "sha256": "56bee81b86d1d402c9d6533ec8d2344edfc1ff31d0a42d908dfd6cbaef32f7aa",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/SAR_ADC_完整产品定义_Rev0.5.pdf"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/contract/ALIGNMENT.md",
+    "sha256": "7097f8b4f277f3d5be7dfab9064f2b7a112aeb25234d91ff3e848bc85796ac69",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/contract/ALIGNMENT.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/contract/CHOP_AZ_SPEC.md",
+    "sha256": "c13482a33b39be62ea680ac556e949221938598582ce25fd2c0e85d3e5eff73b",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/contract/CHOP_AZ_SPEC.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/contract/MODEL_PLAN.md",
+    "sha256": "40fec4aaaf163356bd081f911a046fb7dba7e38ea8f1b9c599b3a5525ab431c3",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/contract/MODEL_PLAN.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/contract/SPEC.md",
+    "sha256": "14b2c795e6fd7876ff7aba9702543850f9ea5ba0dce2268c7079bd60d81048b1",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/contract/SPEC.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/digital_pin_compat/PROTOCOL.md",
+    "sha256": "c6add73c71d514906a8676e7aae348349b5ddda4fc154023aeba429715d86273",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/digital_pin_compat/PROTOCOL.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/digital_pin_compat/README.md",
+    "sha256": "0dae5ad4289f324740cfc9732a01b24644a52ce82ec94a1eb779265a3a2a07d8",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/digital_pin_compat/README.md"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/manuals/SAR20-5_产品规格书_Rev0.5.pdf",
+    "sha256": "44f838f07becf8cb930aa5cd623a7d7865db7ca84d8bad7a2ad95faa74728dc8",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/manuals/SAR20-5_产品规格书_Rev0.5.pdf"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/module_requirements.csv",
+    "sha256": "aaf5b902421225b169e459faf56f34822827892c6b59cc683115578edaf0d554",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/module_requirements.csv"
+  },
+  {
+    "path": "docs/DEFINITIONS/ProductRev0.5/pinout20_rev05.csv",
+    "sha256": "d015842e4bb3c63ec3ee43ae4d05f148a0e7bb4ffd2fa299e5215bb3e0c4bff6",
+    "original_path": "/Users/zhaoyi/Obsidan/项目库/outputs/sar_adc_product_definition_20261020/rev05/pinout20_rev05.csv"
+  },
+  {
+    "path": "docs/PAPERS/07_SIMSAR_Method/ISCAS2018_Behavioral_Modeling_of_SAR_ADCs_in_Simulink.pdf",
+    "sha256": "dc7c24f513e657e5dce355d15910e9994dab7bf8296f55105c5cda39640b0944",
+    "original_path": "/Users/zhaoyi/Desktop/sar20_handoff_20261026/public_paper_originals/ISCAS2018_Behavioral_Modeling_of_SAR_ADCs_in_Simulink.pdf"
+  }
+]

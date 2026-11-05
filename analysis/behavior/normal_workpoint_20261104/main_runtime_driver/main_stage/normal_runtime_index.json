@@ -1,0 +1,901 @@
+{
+  "schema": "sar20-normal-runtime-index/v1",
+  "candidate_manifest_sha256": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+  "baseline_manifest_sha256": "2cbdffe537b694cef6107ce893ea8bca7f8ef5d95f6ff7d993f020150c6dd514",
+  "merged": [
+    {
+      "path": "SAR20.m",
+      "sha256": "9d0e91591f53ed5f955470b32f1117b888f860d1b1e0f4daaff699a877cfac7c"
+    },
+    {
+      "path": "config/adc_parameters.m",
+      "sha256": "23d56eeab9cd676f3046768dd953f87605a3cb6d03eaf28ee15c8cd9b19012c3"
+    },
+    {
+      "path": "config/make_adi_cases.m",
+      "sha256": "70d2a1612652a167ff1b5f9691683fccdc86ffea248589b90f3a791f836ada6a"
+    },
+    {
+      "path": "config/make_jitter_cases.m",
+      "sha256": "49023af34eda7de0d49d6dcd720c515f9bfa4c4210b48be4ad6faab76477f979"
+    },
+    {
+      "path": "config/make_training_case.m",
+      "sha256": "b8391f8808bbe6befb1ca75cd7bf9c7f04010aa5cf9e4249e4b7f68b99ea21c5"
+    },
+    {
+      "path": "config/make_training_protocol.m",
+      "sha256": "900596128752d73eba09f508cc6ec86186eca3e7c04de0ceb25d069cf419612d"
+    },
+    {
+      "path": "config/nominal.mat",
+      "sha256": "d8b38e49bbb5ecc244c652bb736121bd34271d3fabb5649577344279f2716299"
+    },
+    {
+      "path": "current/src/analysis/behavior_adi_tap_sfun.m",
+      "sha256": "b2445f9d049d70985c382f47fdbdbca3cbb4cee276b8e473c2b87e88398b3164"
+    },
+    {
+      "path": "current/src/analysis/behavior_aperture_tap_sfun.m",
+      "sha256": "5e04f6e6d9a6f0c79177ed6d283e1998a611af990c7d39de45a445b0a8b00725"
+    },
+    {
+      "path": "current/src/analysis/behavior_bank_record_gate.m",
+      "sha256": "fac415a2f7d85e93448398bc9ca735d0a71ae686e6ac3d22278b43ddf7900674"
+    },
+    {
+      "path": "current/src/analysis/behavior_bank_validate_rows.m",
+      "sha256": "1d210ae8407f87712a04bcebe4de7fcb67ab97aebbc8140b9bb9ce5795237143"
+    },
+    {
+      "path": "current/src/analysis/behavior_holdout_result.m",
+      "sha256": "5661394e08b4661a7d293e1fcd50059fa1d40f0cfbc6cf60a126142da220f2a5"
+    },
+    {
+      "path": "current/src/analysis/behavior_record_ready_summary.m",
+      "sha256": "de1e41f7463eeabcd7412cd1480110fdfabee946298080f27af9b8c6ec493a41"
+    },
+    {
+      "path": "current/src/analysis/behavior_record_view.m",
+      "sha256": "9a9f1168294706972e32c5b02f5a98c377c6a2dd89ed33db6faf028a4c5983dd"
+    },
+    {
+      "path": "current/src/analysis/behavior_sample_debug.m",
+      "sha256": "a633b8be901ad14e797458f71f728652d2d288c0a2e9efad7d7577caada73fd2"
+    },
+    {
+      "path": "current/src/analysis/behavior_sample_explain.m",
+      "sha256": "a720c63150bae9b44cf2b4d425930143bca55f5439a4f33a5a85c56dfa549173"
+    },
+    {
+      "path": "current/src/analysis/behavior_sample_plot.m",
+      "sha256": "454644b5c598a371654782f149a51b17005d3ae3fb47c0d058df1ca0df1fe89d"
+    },
+    {
+      "path": "current/src/analysis/behavior_spectrum.m",
+      "sha256": "f567aab44fc37579c00812b673264afa464ec99d074f07ad0fa6d6955fcd4f3e"
+    },
+    {
+      "path": "current/src/analysis/behavior_training_result.m",
+      "sha256": "66e82ae3b4f607d0736a305423084a1e2fbc4c7e4ddd1300f3ac8261c1e797f3"
+    },
+    {
+      "path": "current/src/analysis/summarize_adi_cases.m",
+      "sha256": "05cad2f3372ef444aac58de079695ac7a023aa31018706ddd1c0e4e9f55163c3"
+    },
+    {
+      "path": "current/src/analysis/validate_behavior_adi_case.m",
+      "sha256": "beba6888b39065a74ea1bcff0804fe2be7134677fe45fcf02dc7dd6856346499"
+    },
+    {
+      "path": "current/src/calibration/behavior_cal_collector_snapshot.m",
+      "sha256": "97167d7fcd405f21be98a0f81108013628105362f86abdd737d0e7d0dc727047"
+    },
+    {
+      "path": "current/src/calibration/behavior_cal_collector_step.m",
+      "sha256": "d98a0005fe43fb15a8881ba3b85faff3b350d1f79bfb8726f361d9ba4629a6cd"
+    },
+    {
+      "path": "current/src/calibration/behavior_cal_train_sfun.m",
+      "sha256": "54c2d216d9d3054fc30044b2e54cc01b350d6726a2003e270724ff6ec788ba4b"
+    },
+    {
+      "path": "current/src/calibration/behavior_calibration_workflow.m",
+      "sha256": "096d97393f70b8f349a266e175d606d33c605ff165a4ffbb054dce5f6f63fc26"
+    },
+    {
+      "path": "current/src/calibration/behavior_frozen_setup.m",
+      "sha256": "36a0c4947362f19825d5091ac7785cf95a9cc79b200e752304d09c243108301d"
+    },
+    {
+      "path": "current/src/calibration/behavior_frozen_sfun.m",
+      "sha256": "69d1b3b5660362c6991d95d47898cbd5a5c3cd2ee8883995998214d79439a560"
+    },
+    {
+      "path": "current/src/calibration/behavior_frozen_step.m",
+      "sha256": "89e52af94979c5f542b6c6bfcf88a2bda912b7e37a22e72ffc12ecb95b5984d6"
+    },
+    {
+      "path": "current/src/calibration/behavior_public_cal_features.m",
+      "sha256": "2e3d25e9a67ae2f7c567e2070f222b8d9c97eb4b8f793345a6f4ec53242152f9"
+    },
+    {
+      "path": "current/src/calibration/behavior_public_cal_fit.m",
+      "sha256": "c5b9508bb16dbb3a373b046d84e8f005bb659d758deda5790f07add7703fd7c6"
+    },
+    {
+      "path": "current/src/calibration/behavior_train_reference_sfun.m",
+      "sha256": "caf98a34368aa1e93db5ca55407a86c41da0885e28927cbb5ab12fb32e545840"
+    },
+    {
+      "path": "current/src/calibration/public_calibration_config.m",
+      "sha256": "4e5b8617860b61f2d595d67bba5cd5f489d6e8bd639e9416fd808773a0cc60c9"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_certificate_sha256.m",
+      "sha256": "951f1f7f3ede5947be31b73cc7f599e6f658df69853c49646768c252db3c16a5"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_owner_init.m",
+      "sha256": "0d45e683ed7c3d04ea91181a590a83dd15e934d6f6411ac32d9d210da4eac0ca"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_owner_step.m",
+      "sha256": "6e3987cbd67f62bac1b176bff4298660e2464284f4104c7aa53d794d0b827b2d"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_require_actual_binding.m",
+      "sha256": "75b008e4ab45a1377f058a3d12aeadf0984adf58da959d21db99bd8d83be93c1"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_sha256.m",
+      "sha256": "d050e9f48c6762578f8297bb9b8c32761fa31157d96ce52ed31c575c32a5caea"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_command_sfun.m",
+      "sha256": "7980cf33a18ce78db816e3bb9890fb2c01635a5e4ba529790edf85b691f166d7"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_initial_state.m",
+      "sha256": "2b3df53f1eb2b4c8de15ba0b8ce7847e16524ed02232362402100a2e1a843452"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_parameters.m",
+      "sha256": "94ee01b5ba879eb0a92e1c77373c2a5d185874913437f3ce82cda7e83defbf96"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_qualification_from_bytes.m",
+      "sha256": "3911941301d67913b63361b796f80f89536b681bead56a3c8117549e0dcddf03"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_sfun.m",
+      "sha256": "96ef6cc0bce62e28b88eb21723886da8740c0f7462721a480c3b5ae0467f3eea"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_step.m",
+      "sha256": "3d3d881fa8a00d7cb39301446f19a2537baf2e4d5ecf3fb145a9351faf031f15"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_verified_parameters.m",
+      "sha256": "69edc7908383e71428e164bd083a4cf1433c16705abe39d408cbe5a633fa4ef7"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_verify_v3_qualification.m",
+      "sha256": "0b60694a0beb3759d78c3d6ece6d1fc0c0230451a8e9a405b934264591be64b9"
+    },
+    {
+      "path": "current/src/control/behavior_az_schedule.m",
+      "sha256": "60b245e301363ddd7c662b2f7d2999f5a4d5f6031bc3fd2e5c4cb473c8cbe3e9"
+    },
+    {
+      "path": "current/src/control/behavior_calendar.m",
+      "sha256": "aaea8db96301e176930f06e1e5570968e79e2a21cad446f876f0475bb802879a"
+    },
+    {
+      "path": "current/src/control/behavior_comparator_keyed_normal.m",
+      "sha256": "564c41d9b814f312871a008eb53c2f62231ef617135302141ae4df591be70082"
+    },
+    {
+      "path": "current/src/control/behavior_comparator_sample.m",
+      "sha256": "d4807bb6674660cc60f83f35879ecce792659ba21302623184291fbb114ccbda"
+    },
+    {
+      "path": "current/src/control/behavior_control_parameters.m",
+      "sha256": "7721e5a00e62b237036dee449e833c7fc2f40a4d590c46a16ef3b9db06dc7da5"
+    },
+    {
+      "path": "current/src/control/behavior_control_stage.m",
+      "sha256": "a80afa99e69112b325932bedecb4f554cabbcf32df26865c096bfbf0609d9429"
+    },
+    {
+      "path": "current/src/control/behavior_control_stage_sfun.m",
+      "sha256": "82ce9f15147e1c85661a71ae38d71f5ec0738b79c80652402df704ba49ddcc63"
+    },
+    {
+      "path": "current/src/control/behavior_event_groups.m",
+      "sha256": "dce8b115afdd4ad012eb3e468427ca73af9e9a8fd5a592672ab96c8803549239"
+    },
+    {
+      "path": "current/src/control/behavior_event_source.m",
+      "sha256": "59e1c180ec3f1d71633717640ec445604405f71f8f69b49f679219d31b93629f"
+    },
+    {
+      "path": "current/src/control/behavior_sar_pack.m",
+      "sha256": "20d581af6c937f27d936d62c8d99a08feda3dae6a0cf5db31356cfdc4715e504"
+    },
+    {
+      "path": "current/src/control/behavior_sar_step.m",
+      "sha256": "61e74af8e5b7f07eff48fd53084c50d3ae6e420b133fd82297f14d328ac74a68"
+    },
+    {
+      "path": "current/src/control/behavior_sar_unpack.m",
+      "sha256": "5472b38eeb8a427431fe1507709dce01fd14772fb3c3fd1da116deb1ba0ca4b1"
+    },
+    {
+      "path": "current/src/digital/behavior_decode.m",
+      "sha256": "b7b6e4f5899237e07149cc2d9c780d0d87340c35674b30e2631b4875ea6a7438"
+    },
+    {
+      "path": "current/src/digital/behavior_decode_parameters.m",
+      "sha256": "b694279c7520f64c2277a0b530b7378880a770156b75c2fa7f2b2b0fbee5117d"
+    },
+    {
+      "path": "current/src/digital/behavior_dither_sfun.m",
+      "sha256": "341db604cd38b3d17a6c6d21573e182e838d063746a04c52c6ac8f6b6635bc52"
+    },
+    {
+      "path": "current/src/digital/behavior_pol_sfun.m",
+      "sha256": "76bea3f5a7b8b69c79ce6ad3aaf0854c0f72ba2014bf9457438e3ae0e27a833d"
+    },
+    {
+      "path": "current/src/digital/behavior_public_dither.m",
+      "sha256": "4ccf1eb818eefd7eae38e2579176b09068a41739a397beda21abd50146662c8a"
+    },
+    {
+      "path": "current/src/digital/behavior_public_pol.m",
+      "sha256": "69b6a1a671db0957e3badf7be79d15f92ee400d502454c2a36ce52f88671baf5"
+    },
+    {
+      "path": "current/src/frontend/behavior_aperture_diagnostic.m",
+      "sha256": "5d86e60385f40c01dafa16387d55a875d0f9fc95a26f52af1e1665acf2392f25"
+    },
+    {
+      "path": "current/src/frontend/behavior_aperture_times.m",
+      "sha256": "efc2c1236078cbe5400c8d6b222446d1e81733f7c8cfb28271ed9cb3f9546db0"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_init.m",
+      "sha256": "732804127d6131d399fcd40b4a140fa2e65d19c6f8ddde8801958fc73792f3ed"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_pack.m",
+      "sha256": "cf2cde7f5eed9819387d6bcf7778abf6c76f7d1bff907ca2a7f9657fe32c073e"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_sfun.m",
+      "sha256": "90b87bc7154b4cc29449a609b57992997dc06e98a182a0481a29dd3d818b0bc5"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_stage.m",
+      "sha256": "d682da4c8d47686819488453c60a0dfce29ea0001924ce295e6c7665399dd49a"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_step.m",
+      "sha256": "c67997b19ec4bd74de6f68302403d0f2dcd33d0031572b6173e2a621120e31b4"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_unpack.m",
+      "sha256": "f345c0520de23fdb12ab4466403cd5519865782b2c26eaac654e6c854e108f25"
+    },
+    {
+      "path": "current/src/frontend/behavior_jitter_parameters.m",
+      "sha256": "12895b36914aa2af35c1ff12a84a44c58f0c49f4a355192cde9fabcab5499dae"
+    },
+    {
+      "path": "current/src/frontend/behavior_jitter_prepare_front.m",
+      "sha256": "ca0b02f1b0666413e40b90028e9a338b1126c715a23bcc4ad61dcdb0010c84b2"
+    },
+    {
+      "path": "current/src/model/behavior_aperture_debug_configuration.m",
+      "sha256": "bfd14f9f14c6ead63148a02a5cdcc0a53b1a0a03f6a1d051b19d988f04f947b8"
+    },
+    {
+      "path": "current/src/model/behavior_applied_note.m",
+      "sha256": "a511fe00f336d2ff3130cb5c445e0913973a5834d4c0c6f69b4b274d7aaed960"
+    },
+    {
+      "path": "current/src/model/behavior_comparator_configuration.m",
+      "sha256": "910c0c908b546ef7aa4590c59e287d2f449dd3b098b1f29b3b6e816be95a70df"
+    },
+    {
+      "path": "current/src/model/behavior_dac_backend_parameters.m",
+      "sha256": "8a53ed39c5dde8af0dfbf617c68ba05377d5c1da83f0c2cdc82a99283dbc640a"
+    },
+    {
+      "path": "current/src/model/behavior_dac_coupling_configuration.m",
+      "sha256": "25e0b141d946de35e8db9e6f72056238e65271e08f4c79697183d6f963309059"
+    },
+    {
+      "path": "current/src/model/behavior_prepare_configuration.m",
+      "sha256": "d39c2a18bffcf9e9da64f15b5cfec21ecf2d62dcf69fea09417d88999b9ffa33"
+    },
+    {
+      "path": "current/src/model/behavior_ra_noise_guard.m",
+      "sha256": "bb2d744407a3f2bacabf624b3afcb7b155014b4077fd28c1116e9fae68208f73"
+    },
+    {
+      "path": "current/src/model/behavior_reference_configuration.m",
+      "sha256": "00e6024259481031e05b3f7d7b1a4cf99180c99f261694f301c832c22c29036b"
+    },
+    {
+      "path": "current/src/model/behavior_single_guard.m",
+      "sha256": "0d27e1a15e7824f9614132be365c116f1a8ca89f8a179847a7c6d3a429005faf"
+    },
+    {
+      "path": "current/src/model/behavior_training_configuration.m",
+      "sha256": "0dd1cb5f3bc564254fe24ceec7acee1842fc5b23d56978a2d5dbe7d1f5d23022"
+    },
+    {
+      "path": "current/src/model/behavior_transport_configuration.m",
+      "sha256": "de7dae4c9f6caa04528d805324d58040d7d0b794d6588be6434f97b6e2071006"
+    },
+    {
+      "path": "current/src/model/behavior_wiring_sfun.m",
+      "sha256": "a2f89bc61d28d66fb16017ab031cf1c1a5d29f573d90f9f1f8a69b440a59d0bf"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_pack.m",
+      "sha256": "0a9437c332d089002b4eee8ced44cf91e22daf3541655034bd3873de2227ad73"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_parameters.m",
+      "sha256": "e69617933908ac9e9b69b4cc66014c45df5b4d8042a4217117569a84a4390256"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_sfun.m",
+      "sha256": "c1bd84e0f603079d8a94df80365e45409fc3525903e9efab68e453b2b2eadde0"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_stage.m",
+      "sha256": "6f8ab9377578758b7e94cf044d13b000b0eeb39fa65139b901e707292f8b5fa4"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_step.m",
+      "sha256": "c0f31de27796061cc1b724a4821571cb41871ead9a7a3c23cd47c7dfbec2e5ae"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_unpack.m",
+      "sha256": "7526fa6426b55d54eef53bf295558457329cd1a44c106f37fee6b6c5799e0c56"
+    },
+    {
+      "path": "current/src/physics/behavior_dac_forcing_from_frontend.m",
+      "sha256": "744429184147aa6ea4fb9d0643832c0e7434cde2636a38fdb213a752a9fe8e2f"
+    },
+    {
+      "path": "current/src/physics/behavior_ra_noise_validate_backend.m",
+      "sha256": "afad7dd5e9f7993a6d106557a4a92b233bcb12bdab174a7e0f2031b62ac781bb"
+    },
+    {
+      "path": "current/src/physics/sar20_cdac2_network.m",
+      "sha256": "5e09dc030392512d01e800414a8b56e1db80b6e054fc3d7faa0671a49ce0f794"
+    },
+    {
+      "path": "current/src/physics/sar20_ra_keyed_normal.m",
+      "sha256": "a6c3117481258767394cd0d330c4c88a8d3222bf4f4ed86510cd92d5e39b796f"
+    },
+    {
+      "path": "current/src/physics/sar20_ra_ou_increment.m",
+      "sha256": "3787a6f1d0b163ceb50f2a85ba705c564e4a50bfa01c5da005709913b7aecc1d"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_init.m",
+      "sha256": "a46b7d6e1ebd084c92530d79c2b84123cec87a299d0c068e9f3004db2b75ec92"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_pack.m",
+      "sha256": "84cd88adbf6e2153b85b6bd220708ebd03672a6b093780b6daabb9be511e7ac9"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_parameters.m",
+      "sha256": "d4c8acaa0aec136e161806a155e60be200f9b79c2183b907e31ed099d7b1aa2d"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_sfun.m",
+      "sha256": "621cacca4428de4dc35ee1ce23917aa5c39e2fcac4362f1433d2d9be84e79643"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_stage.m",
+      "sha256": "7bc96db0974c5e911e1a6e208cdbfd4ecbf56415535bb2c9eda004f3b2d3f9d7"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_step.m",
+      "sha256": "4cbea84be28d62b06d73464699c860ed3680f027de5b1720ba1b0ff03a5c2767"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_unpack.m",
+      "sha256": "1f5fa7b889c9fd0a90fb8597c7c68e696d593721b596beb31c04af0c6e327cc0"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_config.m",
+      "sha256": "742e4b5d1c57962d832b1fa1f1983e186b72ce39ca0ee2375f7999b014427193"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_init.m",
+      "sha256": "b866b208bd10735fe3cc640adc2c117b3a3a5d35605d00c28ddc01c835e421f8"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_pack.m",
+      "sha256": "1d101f4f3a8e24066cc1d9220529c9dacaefcf1718543f74b63337466c3e2b6c"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_pp_sfun.m",
+      "sha256": "e3cf23969d58dd62023cb2e0e6907a3e39f59ff6f0e0a9625643c540039153fe"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_sfun.m",
+      "sha256": "a77780ceee04391d3b862845fd51977ad93d136205988380b8f3c4748977bfda"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_step.m",
+      "sha256": "b915097216d32f9d59dc449828ba36c7131705809cb2441156ff46742a74c99b"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_step_pp.m",
+      "sha256": "f4e2bf29c18fdd4303b6ce4b592a2d97308a434c545b6f67e5460b8ae327acba"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_unpack.m",
+      "sha256": "636337e7eff9a9606fe99c09e9cf79e9c30138b0eab73630d152faed4d966d77"
+    },
+    {
+      "path": "current/src/transport/sar20_lvds_rx_step.m",
+      "sha256": "110d17e309c3f6ab00fdf94bfac5bc7f1342842683451de291347b738e2ab2ca"
+    },
+    {
+      "path": "current/src/transport/sar20_lvds_tx_step.m",
+      "sha256": "8083610baa2de610b8f54589feb8b7023d812992abc916cd74261f70918279bc"
+    }
+  ],
+  "v2": [
+    {
+      "path": "SAR20.m",
+      "sha256": "9d0e91591f53ed5f955470b32f1117b888f860d1b1e0f4daaff699a877cfac7c"
+    },
+    {
+      "path": "config/adc_parameters.m",
+      "sha256": "a1a41c369422aafcbeaad79ad50d394c65c95a00393bba1f96dc4628f53beefa"
+    },
+    {
+      "path": "config/make_adi_cases.m",
+      "sha256": "70d2a1612652a167ff1b5f9691683fccdc86ffea248589b90f3a791f836ada6a"
+    },
+    {
+      "path": "config/make_jitter_cases.m",
+      "sha256": "49023af34eda7de0d49d6dcd720c515f9bfa4c4210b48be4ad6faab76477f979"
+    },
+    {
+      "path": "config/make_training_case.m",
+      "sha256": "b8391f8808bbe6befb1ca75cd7bf9c7f04010aa5cf9e4249e4b7f68b99ea21c5"
+    },
+    {
+      "path": "config/make_training_protocol.m",
+      "sha256": "900596128752d73eba09f508cc6ec86186eca3e7c04de0ceb25d069cf419612d"
+    },
+    {
+      "path": "config/nominal.mat",
+      "sha256": "d8b38e49bbb5ecc244c652bb736121bd34271d3fabb5649577344279f2716299"
+    },
+    {
+      "path": "current/src/analysis/behavior_adi_tap_sfun.m",
+      "sha256": "b2445f9d049d70985c382f47fdbdbca3cbb4cee276b8e473c2b87e88398b3164"
+    },
+    {
+      "path": "current/src/analysis/behavior_aperture_tap_sfun.m",
+      "sha256": "5e04f6e6d9a6f0c79177ed6d283e1998a611af990c7d39de45a445b0a8b00725"
+    },
+    {
+      "path": "current/src/analysis/behavior_bank_record_gate.m",
+      "sha256": "fac415a2f7d85e93448398bc9ca735d0a71ae686e6ac3d22278b43ddf7900674"
+    },
+    {
+      "path": "current/src/analysis/behavior_bank_validate_rows.m",
+      "sha256": "1d210ae8407f87712a04bcebe4de7fcb67ab97aebbc8140b9bb9ce5795237143"
+    },
+    {
+      "path": "current/src/analysis/behavior_holdout_result.m",
+      "sha256": "5661394e08b4661a7d293e1fcd50059fa1d40f0cfbc6cf60a126142da220f2a5"
+    },
+    {
+      "path": "current/src/analysis/behavior_record_ready_summary.m",
+      "sha256": "de1e41f7463eeabcd7412cd1480110fdfabee946298080f27af9b8c6ec493a41"
+    },
+    {
+      "path": "current/src/analysis/behavior_record_view.m",
+      "sha256": "9a9f1168294706972e32c5b02f5a98c377c6a2dd89ed33db6faf028a4c5983dd"
+    },
+    {
+      "path": "current/src/analysis/behavior_sample_debug.m",
+      "sha256": "a633b8be901ad14e797458f71f728652d2d288c0a2e9efad7d7577caada73fd2"
+    },
+    {
+      "path": "current/src/analysis/behavior_sample_explain.m",
+      "sha256": "a720c63150bae9b44cf2b4d425930143bca55f5439a4f33a5a85c56dfa549173"
+    },
+    {
+      "path": "current/src/analysis/behavior_sample_plot.m",
+      "sha256": "454644b5c598a371654782f149a51b17005d3ae3fb47c0d058df1ca0df1fe89d"
+    },
+    {
+      "path": "current/src/analysis/behavior_spectrum.m",
+      "sha256": "f567aab44fc37579c00812b673264afa464ec99d074f07ad0fa6d6955fcd4f3e"
+    },
+    {
+      "path": "current/src/analysis/behavior_training_result.m",
+      "sha256": "66e82ae3b4f607d0736a305423084a1e2fbc4c7e4ddd1300f3ac8261c1e797f3"
+    },
+    {
+      "path": "current/src/analysis/summarize_adi_cases.m",
+      "sha256": "05cad2f3372ef444aac58de079695ac7a023aa31018706ddd1c0e4e9f55163c3"
+    },
+    {
+      "path": "current/src/analysis/validate_behavior_adi_case.m",
+      "sha256": "beba6888b39065a74ea1bcff0804fe2be7134677fe45fcf02dc7dd6856346499"
+    },
+    {
+      "path": "current/src/calibration/behavior_cal_collector_snapshot.m",
+      "sha256": "97167d7fcd405f21be98a0f81108013628105362f86abdd737d0e7d0dc727047"
+    },
+    {
+      "path": "current/src/calibration/behavior_cal_collector_step.m",
+      "sha256": "d98a0005fe43fb15a8881ba3b85faff3b350d1f79bfb8726f361d9ba4629a6cd"
+    },
+    {
+      "path": "current/src/calibration/behavior_cal_train_sfun.m",
+      "sha256": "54c2d216d9d3054fc30044b2e54cc01b350d6726a2003e270724ff6ec788ba4b"
+    },
+    {
+      "path": "current/src/calibration/behavior_calibration_workflow.m",
+      "sha256": "096d97393f70b8f349a266e175d606d33c605ff165a4ffbb054dce5f6f63fc26"
+    },
+    {
+      "path": "current/src/calibration/behavior_frozen_setup.m",
+      "sha256": "36a0c4947362f19825d5091ac7785cf95a9cc79b200e752304d09c243108301d"
+    },
+    {
+      "path": "current/src/calibration/behavior_frozen_sfun.m",
+      "sha256": "69d1b3b5660362c6991d95d47898cbd5a5c3cd2ee8883995998214d79439a560"
+    },
+    {
+      "path": "current/src/calibration/behavior_frozen_step.m",
+      "sha256": "89e52af94979c5f542b6c6bfcf88a2bda912b7e37a22e72ffc12ecb95b5984d6"
+    },
+    {
+      "path": "current/src/calibration/behavior_public_cal_features.m",
+      "sha256": "2e3d25e9a67ae2f7c567e2070f222b8d9c97eb4b8f793345a6f4ec53242152f9"
+    },
+    {
+      "path": "current/src/calibration/behavior_public_cal_fit.m",
+      "sha256": "c5b9508bb16dbb3a373b046d84e8f005bb659d758deda5790f07add7703fd7c6"
+    },
+    {
+      "path": "current/src/calibration/behavior_train_reference_sfun.m",
+      "sha256": "caf98a34368aa1e93db5ca55407a86c41da0885e28927cbb5ab12fb32e545840"
+    },
+    {
+      "path": "current/src/calibration/public_calibration_config.m",
+      "sha256": "4e5b8617860b61f2d595d67bba5cd5f489d6e8bd639e9416fd808773a0cc60c9"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_certificate_sha256.m",
+      "sha256": "951f1f7f3ede5947be31b73cc7f599e6f658df69853c49646768c252db3c16a5"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_owner_init.m",
+      "sha256": "0d45e683ed7c3d04ea91181a590a83dd15e934d6f6411ac32d9d210da4eac0ca"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_owner_step.m",
+      "sha256": "6e3987cbd67f62bac1b176bff4298660e2464284f4104c7aa53d794d0b827b2d"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_require_actual_binding.m",
+      "sha256": "75b008e4ab45a1377f058a3d12aeadf0984adf58da959d21db99bd8d83be93c1"
+    },
+    {
+      "path": "current/src/calibration/sar20_bank_sha256.m",
+      "sha256": "d050e9f48c6762578f8297bb9b8c32761fa31157d96ce52ed31c575c32a5caea"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_command_sfun.m",
+      "sha256": "7980cf33a18ce78db816e3bb9890fb2c01635a5e4ba529790edf85b691f166d7"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_initial_state.m",
+      "sha256": "2b3df53f1eb2b4c8de15ba0b8ce7847e16524ed02232362402100a2e1a843452"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_parameters.m",
+      "sha256": "94ee01b5ba879eb0a92e1c77373c2a5d185874913437f3ce82cda7e83defbf96"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_qualification_from_bytes.m",
+      "sha256": "3911941301d67913b63361b796f80f89536b681bead56a3c8117549e0dcddf03"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_sfun.m",
+      "sha256": "96ef6cc0bce62e28b88eb21723886da8740c0f7462721a480c3b5ae0467f3eea"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_step.m",
+      "sha256": "3d3d881fa8a00d7cb39301446f19a2537baf2e4d5ecf3fb145a9351faf031f15"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_verified_parameters.m",
+      "sha256": "69edc7908383e71428e164bd083a4cf1433c16705abe39d408cbe5a633fa4ef7"
+    },
+    {
+      "path": "current/src/calibration/sar20_pp_verify_v3_qualification.m",
+      "sha256": "0b60694a0beb3759d78c3d6ece6d1fc0c0230451a8e9a405b934264591be64b9"
+    },
+    {
+      "path": "current/src/control/behavior_az_schedule.m",
+      "sha256": "60b245e301363ddd7c662b2f7d2999f5a4d5f6031bc3fd2e5c4cb473c8cbe3e9"
+    },
+    {
+      "path": "current/src/control/behavior_calendar.m",
+      "sha256": "aaea8db96301e176930f06e1e5570968e79e2a21cad446f876f0475bb802879a"
+    },
+    {
+      "path": "current/src/control/behavior_control_parameters.m",
+      "sha256": "7721e5a00e62b237036dee449e833c7fc2f40a4d590c46a16ef3b9db06dc7da5"
+    },
+    {
+      "path": "current/src/control/behavior_control_stage.m",
+      "sha256": "6ca6bedc8e0f0c57c297eb1b474c0dd53116411be2e6c7f89f4f2174fbe6e00a"
+    },
+    {
+      "path": "current/src/control/behavior_control_stage_sfun.m",
+      "sha256": "a8d70ff7a56a0d6bb4b9c4aa677a15759245f056a5670c4ba69c15d67504b4e4"
+    },
+    {
+      "path": "current/src/control/behavior_event_groups.m",
+      "sha256": "dce8b115afdd4ad012eb3e468427ca73af9e9a8fd5a592672ab96c8803549239"
+    },
+    {
+      "path": "current/src/control/behavior_event_source.m",
+      "sha256": "59e1c180ec3f1d71633717640ec445604405f71f8f69b49f679219d31b93629f"
+    },
+    {
+      "path": "current/src/control/behavior_sar_pack.m",
+      "sha256": "20d581af6c937f27d936d62c8d99a08feda3dae6a0cf5db31356cfdc4715e504"
+    },
+    {
+      "path": "current/src/control/behavior_sar_step.m",
+      "sha256": "61e74af8e5b7f07eff48fd53084c50d3ae6e420b133fd82297f14d328ac74a68"
+    },
+    {
+      "path": "current/src/control/behavior_sar_unpack.m",
+      "sha256": "5472b38eeb8a427431fe1507709dce01fd14772fb3c3fd1da116deb1ba0ca4b1"
+    },
+    {
+      "path": "current/src/digital/behavior_decode.m",
+      "sha256": "b7b6e4f5899237e07149cc2d9c780d0d87340c35674b30e2631b4875ea6a7438"
+    },
+    {
+      "path": "current/src/digital/behavior_decode_parameters.m",
+      "sha256": "b694279c7520f64c2277a0b530b7378880a770156b75c2fa7f2b2b0fbee5117d"
+    },
+    {
+      "path": "current/src/digital/behavior_dither_sfun.m",
+      "sha256": "341db604cd38b3d17a6c6d21573e182e838d063746a04c52c6ac8f6b6635bc52"
+    },
+    {
+      "path": "current/src/digital/behavior_pol_sfun.m",
+      "sha256": "76bea3f5a7b8b69c79ce6ad3aaf0854c0f72ba2014bf9457438e3ae0e27a833d"
+    },
+    {
+      "path": "current/src/digital/behavior_public_dither.m",
+      "sha256": "4ccf1eb818eefd7eae38e2579176b09068a41739a397beda21abd50146662c8a"
+    },
+    {
+      "path": "current/src/digital/behavior_public_pol.m",
+      "sha256": "69b6a1a671db0957e3badf7be79d15f92ee400d502454c2a36ce52f88671baf5"
+    },
+    {
+      "path": "current/src/frontend/behavior_aperture_diagnostic.m",
+      "sha256": "5d86e60385f40c01dafa16387d55a875d0f9fc95a26f52af1e1665acf2392f25"
+    },
+    {
+      "path": "current/src/frontend/behavior_aperture_times.m",
+      "sha256": "efc2c1236078cbe5400c8d6b222446d1e81733f7c8cfb28271ed9cb3f9546db0"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_init.m",
+      "sha256": "a85eb3e4cf2c0a1254a53021a51382c64b90c182768598b570e86df94d13ec83"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_pack.m",
+      "sha256": "cf2cde7f5eed9819387d6bcf7778abf6c76f7d1bff907ca2a7f9657fe32c073e"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_sfun.m",
+      "sha256": "90b87bc7154b4cc29449a609b57992997dc06e98a182a0481a29dd3d818b0bc5"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_stage.m",
+      "sha256": "d682da4c8d47686819488453c60a0dfce29ea0001924ce295e6c7665399dd49a"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_step.m",
+      "sha256": "76019658055d1ecce45ad7e692e331062cf013c45765a002150d641fb0c708e8"
+    },
+    {
+      "path": "current/src/frontend/behavior_frontend_unpack.m",
+      "sha256": "f345c0520de23fdb12ab4466403cd5519865782b2c26eaac654e6c854e108f25"
+    },
+    {
+      "path": "current/src/frontend/behavior_jitter_parameters.m",
+      "sha256": "12895b36914aa2af35c1ff12a84a44c58f0c49f4a355192cde9fabcab5499dae"
+    },
+    {
+      "path": "current/src/frontend/behavior_jitter_prepare_front.m",
+      "sha256": "701ce1e8ccc54305b7f39f0730b039397ef497d252ff0b3f1c9ba8710dcd7828"
+    },
+    {
+      "path": "current/src/model/behavior_aperture_debug_configuration.m",
+      "sha256": "bfd14f9f14c6ead63148a02a5cdcc0a53b1a0a03f6a1d051b19d988f04f947b8"
+    },
+    {
+      "path": "current/src/model/behavior_applied_note.m",
+      "sha256": "2968ea85c9b8ea6d19f42a69e5d886d115650884f938c57c8b731978bb4d67c3"
+    },
+    {
+      "path": "current/src/model/behavior_dac_backend_parameters.m",
+      "sha256": "8a53ed39c5dde8af0dfbf617c68ba05377d5c1da83f0c2cdc82a99283dbc640a"
+    },
+    {
+      "path": "current/src/model/behavior_dac_coupling_configuration.m",
+      "sha256": "987f62fcdbb90372399b1870606cbea685c5bdd3c54f58870f2328047070e48d"
+    },
+    {
+      "path": "current/src/model/behavior_prepare_configuration.m",
+      "sha256": "42a2e8b90c5dadafae4ca29a099a7f34696f8abb337deed6236e46e9b1d24df4"
+    },
+    {
+      "path": "current/src/model/behavior_ra_noise_guard.m",
+      "sha256": "2f3ac4a06011a29b66dac7c771867120fc1e538d20c7760ff6b982ea50c9ee33"
+    },
+    {
+      "path": "current/src/model/behavior_reference_configuration.m",
+      "sha256": "00e6024259481031e05b3f7d7b1a4cf99180c99f261694f301c832c22c29036b"
+    },
+    {
+      "path": "current/src/model/behavior_single_guard.m",
+      "sha256": "0d27e1a15e7824f9614132be365c116f1a8ca89f8a179847a7c6d3a429005faf"
+    },
+    {
+      "path": "current/src/model/behavior_training_configuration.m",
+      "sha256": "0dd1cb5f3bc564254fe24ceec7acee1842fc5b23d56978a2d5dbe7d1f5d23022"
+    },
+    {
+      "path": "current/src/model/behavior_transport_configuration.m",
+      "sha256": "de7dae4c9f6caa04528d805324d58040d7d0b794d6588be6434f97b6e2071006"
+    },
+    {
+      "path": "current/src/model/behavior_wiring_sfun.m",
+      "sha256": "a2f89bc61d28d66fb16017ab031cf1c1a5d29f573d90f9f1f8a69b440a59d0bf"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_pack.m",
+      "sha256": "0a9437c332d089002b4eee8ced44cf91e22daf3541655034bd3873de2227ad73"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_parameters.m",
+      "sha256": "e69617933908ac9e9b69b4cc66014c45df5b4d8042a4217117569a84a4390256"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_sfun.m",
+      "sha256": "c1bd84e0f603079d8a94df80365e45409fc3525903e9efab68e453b2b2eadde0"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_stage.m",
+      "sha256": "4d80a4e3e4bbbc0acb5522c6bbe5e26ca8f7ce81f0008088feb122de3c72be72"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_step.m",
+      "sha256": "b6fd6bcd73b8673542a93537a34f5a65d81a49d1a58ef6914230638fb26f4d75"
+    },
+    {
+      "path": "current/src/physics/behavior_backend_unpack.m",
+      "sha256": "7526fa6426b55d54eef53bf295558457329cd1a44c106f37fee6b6c5799e0c56"
+    },
+    {
+      "path": "current/src/physics/behavior_dac_forcing_from_frontend.m",
+      "sha256": "744429184147aa6ea4fb9d0643832c0e7434cde2636a38fdb213a752a9fe8e2f"
+    },
+    {
+      "path": "current/src/physics/behavior_ra_noise_validate_backend.m",
+      "sha256": "54ed5c6bca945e211f8c115cdfd101ff824765b8eaa6d3636107532e8b690f36"
+    },
+    {
+      "path": "current/src/physics/sar20_cdac2_network.m",
+      "sha256": "5e09dc030392512d01e800414a8b56e1db80b6e054fc3d7faa0671a49ce0f794"
+    },
+    {
+      "path": "current/src/physics/sar20_ra_keyed_normal.m",
+      "sha256": "a6c3117481258767394cd0d330c4c88a8d3222bf4f4ed86510cd92d5e39b796f"
+    },
+    {
+      "path": "current/src/physics/sar20_ra_ou_increment.m",
+      "sha256": "3787a6f1d0b163ceb50f2a85ba705c564e4a50bfa01c5da005709913b7aecc1d"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_init.m",
+      "sha256": "a46b7d6e1ebd084c92530d79c2b84123cec87a299d0c068e9f3004db2b75ec92"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_pack.m",
+      "sha256": "84cd88adbf6e2153b85b6bd220708ebd03672a6b093780b6daabb9be511e7ac9"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_parameters.m",
+      "sha256": "d4c8acaa0aec136e161806a155e60be200f9b79c2183b907e31ed099d7b1aa2d"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_sfun.m",
+      "sha256": "621cacca4428de4dc35ee1ce23917aa5c39e2fcac4362f1433d2d9be84e79643"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_stage.m",
+      "sha256": "7bc96db0974c5e911e1a6e208cdbfd4ecbf56415535bb2c9eda004f3b2d3f9d7"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_step.m",
+      "sha256": "4cbea84be28d62b06d73464699c860ed3680f027de5b1720ba1b0ff03a5c2767"
+    },
+    {
+      "path": "current/src/reference/behavior_reference_queue_unpack.m",
+      "sha256": "1f5fa7b889c9fd0a90fb8597c7c68e696d593721b596beb31c04af0c6e327cc0"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_config.m",
+      "sha256": "742e4b5d1c57962d832b1fa1f1983e186b72ce39ca0ee2375f7999b014427193"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_init.m",
+      "sha256": "b866b208bd10735fe3cc640adc2c117b3a3a5d35605d00c28ddc01c835e421f8"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_pack.m",
+      "sha256": "1d101f4f3a8e24066cc1d9220529c9dacaefcf1718543f74b63337466c3e2b6c"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_pp_sfun.m",
+      "sha256": "e3cf23969d58dd62023cb2e0e6907a3e39f59ff6f0e0a9625643c540039153fe"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_sfun.m",
+      "sha256": "a77780ceee04391d3b862845fd51977ad93d136205988380b8f3c4748977bfda"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_step.m",
+      "sha256": "b915097216d32f9d59dc449828ba36c7131705809cb2441156ff46742a74c99b"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_step_pp.m",
+      "sha256": "f4e2bf29c18fdd4303b6ce4b592a2d97308a434c545b6f67e5460b8ae327acba"
+    },
+    {
+      "path": "current/src/transport/behavior_transport_unpack.m",
+      "sha256": "636337e7eff9a9606fe99c09e9cf79e9c30138b0eab73630d152faed4d966d77"
+    },
+    {
+      "path": "current/src/transport/sar20_lvds_rx_step.m",
+      "sha256": "110d17e309c3f6ab00fdf94bfac5bc7f1342842683451de291347b738e2ab2ca"
+    },
+    {
+      "path": "current/src/transport/sar20_lvds_tx_step.m",
+      "sha256": "8083610baa2de610b8f54589feb8b7023d812992abc916cd74261f70918279bc"
+    }
+  ]
+}

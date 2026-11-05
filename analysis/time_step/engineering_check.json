@@ -1,0 +1,328 @@
+{
+  "schema": "sar20-p0-step-engineering-check/v1",
+  "date": "2026-10-26",
+  "status": "current_source_anchor_bitwise_pass_be62p5_run_complete_identity_and_config_verified",
+  "project_root": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020",
+  "scope": {
+    "read_only_inputs": true,
+    "source_or_model_modified": false,
+    "native_or_matlab_run_performed": false,
+    "data_sha_verified_before_read": true,
+    "purpose": "Compare closed BE250/BE125 captured configuration and as-run source identity, then compare them with the unique current release tree.",
+    "reviewer_executed_matlab": false,
+    "root_native_runs_inspected_read_only": true,
+    "actual_native_records_inspected": true
+  },
+  "data_readiness": {
+    "receipt": {
+      "path": "analysis/p0_data/LOCAL_SHA.json",
+      "status": "six_files_sha256_match"
+    },
+    "path_index": {
+      "path": "analysis/p0_data/PATHS.json",
+      "sha256_by_file_matches_local_receipt": true
+    },
+    "local_sha256": {
+      "be250": {
+        "raw.mat": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0",
+        "selected.mat": "e4daf1add75586a0a35d39594df205fca8c83249c3424980ec6b20e55ea087e9",
+        "result.json": "850915c886847c36546fa663fa2a95f6f86a01da72d47b5d4e0da44b61b07d69"
+      },
+      "be125": {
+        "raw.mat": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+        "selected.mat": "be0abb53b264bc9ad89ffd10c1abcbd2e0461458f9de141fa61c640abebcf533",
+        "result.json": "ee05bf94c7a58bfcd0a0a1c8df057fb98f30a08f02dc268b3a439b0259e3002b"
+      }
+    },
+    "source_jobs": {
+      "be250": {
+        "native_job": "20261025T193531Z",
+        "archived_model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb"
+      },
+      "be125": {
+        "native_job": "20261026T023817Z",
+        "archived_model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5"
+      }
+    }
+  },
+  "prior_pair": {
+    "actual_archives": [
+      "evidence/records.zip::closed_runs/ugb_sensitivity_n8_r2_actual.zip",
+      "evidence/records.zip::closed_runs/ugb_n8_be125_r1_actual.zip"
+    ],
+    "candidate_tree": {
+      "be250_file_count": 269,
+      "be125_file_count": 269,
+      "relative_path_sets_equal": true,
+      "file_sha_differences": [
+        "runtime_work/pool_pole_precision_trial_r1/models/PoolCt.slx"
+      ],
+      "all_other_268_candidate_files_byte_identical": true
+    },
+    "as_run_source_identity": {
+      "raw_mat_source_manifest_files_per_run": 264,
+      "normalized_candidate_relative_path_sets_equal": true,
+      "source_sha256_mismatches": 0,
+      "recorded_runtime_binding_entries_per_result": 59,
+      "recorded_binding_sha256_mismatches": 0,
+      "path_normalization": "Remove the job-specific absolute prefix through payload\\work_current_candidate\\; compare normalized relative path and SHA."
+    },
+    "model_identity": {
+      "be250_model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb",
+      "be125_model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5",
+      "evidence_model_matches_candidate_model_within_each_run": true,
+      "internal_slx_member_count_each": 74,
+      "different_internal_members": [
+        "metadata/coreProperties.xml",
+        "simulink/modelWorkspace.mxarray",
+        "simulink/windowsInfo.xml"
+      ],
+      "configSet0_and_system_xml_byte_identical": true,
+      "interpretation": "The SLX hashes differ as expected; the serialized model workspace is the functional member that differs. Metadata and UI window state also differ."
+    }
+  },
+  "configuration_comparison": {
+    "result_json_assumptions_differences_between_be250_and_be125": [
+      "max_step_s"
+    ],
+    "be250": {
+      "A0": 10000,
+      "UGB_hz": 1200000000,
+      "tau_a_s": 1.3262911924324613e-06,
+      "max_step_s": 2.5e-10
+    },
+    "be125": {
+      "A0": 10000,
+      "UGB_hz": 1200000000,
+      "tau_a_s": 1.3262911924324613e-06,
+      "max_step_s": 1.25e-10
+    },
+    "shared_p_and_timing": {
+      "raw_mat_variable_leaf_compare": {
+        "current_snapshot_SAR20_P_vs_run_p_non_spec_api_leaves": 687,
+        "value_mismatches": 0,
+        "current_snapshot_PoolAnalogCfg_p_source_vs_each_actual": {
+          "leaves": 689,
+          "mismatches": 0
+        },
+        "current_snapshot_PoolAnalogCfg_p_f0_vs_each_actual": {
+          "leaves": 689,
+          "mismatches": 0
+        }
+      },
+      "A0": 10000,
+      "owner_dt_s": 1.25e-09,
+      "sample_rate_hz": 5000000,
+      "sample_period_s": 2e-07,
+      "n_samples": 20,
+      "record_length": 8,
+      "first_sample_id": 4,
+      "stimulus": {
+        "frequency_hz": 97656.25,
+        "amplitude_v": 3.650563842595822,
+        "phase_rad": 0.731,
+        "offset_v": 0.0
+      },
+      "seed_contract": "Every numeric seed leaf in the compared p/p_source/p_f0 snapshots matched; examples: master 20261020, group DEM 20261222, dither 20261223, reference 20261224."
+    },
+    "current_workspace_baseline": {
+      "snapshot_path": "state/workspace_snapshot.mat",
+      "snapshot_sha256": "31986662f7a6e3dca18d7535aaa5950b7fc5beb12a0a30e6323e1b32dda3f6e5",
+      "model_sha256": "8f12e65a7d6b850fe5ad64a76393df77b850bfcb069c5c2c72109a7f38733679",
+      "A0": 10000,
+      "UGB_hz": 600000000,
+      "tau_a_s": 2.6525823848649226e-06,
+      "max_step_s": 2.5e-10,
+      "owner_dt_s": 1.25e-09,
+      "p_source_and_p_f0_match_both_actuals": true
+    },
+    "target_anchor_and_third_point": {
+      "required_first_anchor": {
+        "AChanges": {
+          "UGB_hz": 1200000000,
+          "max_step_s": 2.5e-10
+        },
+        "tracking_count": 8,
+        "record_length": 8
+      },
+      "anchor_acceptance": "Current-source actual must match archived BE250 on the frozen 54 logger values/times, native tout and selected data bitwise.",
+      "third_point_after_anchor_pass": {
+        "AChanges": {
+          "UGB_hz": 1200000000,
+          "max_step_s": 6.25e-11
+        },
+        "tracking_count": 8,
+        "record_length": 8
+      },
+      "step_gate_valid": true,
+      "reason": "max_step_s <= 250 ps configure guard and <= owner dt 1.25 ns; 62.5 ps is within both existing bounds."
+    }
+  },
+  "current_tree_vs_prior_source": {
+    "current_file_count": 270,
+    "prior_candidate_file_count": 269,
+    "current_only_file": {
+      "path": "runtime_work/pool_pole_precision_trial_r1/verify_pool_tail_dither_compact_capture_m1.m",
+      "sha256": "f01d19814e0537f75069332d528b16273b3514d28a8f54c94149d8ba17dfc888",
+      "M8_called": false
+    },
+    "shared_path_content_differences": [
+      {
+        "path": "F2_KTC_DITHER_WORKSPACE_CONTRACT.json",
+        "current_sha256": "58fa41e7d857a617c66af96cfe39adee0bb6f16b1015de04b8b7f08d4e2f6528",
+        "as_run_sha256": "825e4dae19c44bc8e657b5b8e8cb2201b52e8aa21f6dd873f0461b1cce205aa1"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/configure_pool_ct.m",
+        "current_sha256": "5ee2e5be706adee23f54c2cc35240660c8a407414525b0d3feb4e68e8d2c9a1d",
+        "as_run_sha256": "7d82a30c59e176e871a6cfde55bfe345275f6cf553bd38ec4337b6c05f925218"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/f2_ktc_dither_workspace_entry.m",
+        "current_sha256": "3c53699a40a4a27791a9683017e9dc3553b59b8385107320d81c5e3e25357638",
+        "as_run_sha256": "cb4f10bd7b77a86fa30a0b3d350ba1be0b999d80e838e08fe5758dec582b947a"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/pool_decode_config.m",
+        "current_sha256": "85b9105fd5853c4e341fa316753371b0e21dad9234904cd858c712b45a89e10a",
+        "as_run_sha256": "f2ab03ca47b9422929b7a290e3cc7ba3cf378b58c7a4fd89d02f497619e68a9f"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/pool_tail_dither_configure.m",
+        "current_sha256": "7568eaaf44a3d0a5bba09f00d396833db358a43d8325e0ab2c4c07d63ec93fef",
+        "as_run_sha256": "1ac490b9ebaf21334e811fc8d1a591638e6797d97793dd214bbba2fb0f818595"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/pool_tail_dither_graph_gate.m",
+        "current_sha256": "c32ed07c158cb411a6bd98841f8db1acf60a7ccc9f602c5f7a038bb788e1cd67",
+        "as_run_sha256": "fffb4cd8f9b3afbfd0993fec72f339c2025ef92b2b19f9c7d7abb1e60526345c"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/prepare_f2_ktc_dither_candidate.m",
+        "current_sha256": "bdc4e7065b0459677085e024f799e368d8e0d1b15c31eca5d2997f369db7605a",
+        "as_run_sha256": "2e841a7a3ed85d869a8811dfba56ccab03ff260a8d57a5d108328fbaf9b50c17"
+      },
+      {
+        "path": "runtime_work/pool_pole_precision_trial_r1/run_pool_ct.m",
+        "current_sha256": "3f63e6f5ad89257e3d3b8f544ca8d0b3fe7bde2147bd844b06afea9354ed04ab",
+        "as_run_sha256": "53890a25dd54ac8a8c339a1017754c7ffac777c58de3e07f42ba0ffa3b24257f"
+      }
+    ],
+    "source_identity_conclusion": {
+      "exact_full_tree_identity_to_old_runs": false,
+      "numeric_core_files_changed": false,
+      "changed_code_scope": "M1 tracking generalization, strengthened factory/capture guards, M1 receipt metadata, and report-only nonideality coverage; M8 default count=8 maps to legacy 8-decision weights and M8 verifier branch.",
+      "static_M8_numeric_risk": "No required source fix found; static comparison indicates M8 configuration is identity. The current-source 250 ps bitwise anchor is still required before treating the prior pair as the same-source convergence baseline."
+    }
+  },
+  "evidence_boundaries": {
+    "confirmed": "Six local SHA checks; prior pair source trees and runtime hash maps; raw saved inputs/seeds/timing; A/UGB/tau/max-step configuration comparison; current-source diffs and M8 static branch review.; current-source 250 ps anchor passes the 54-logger/tout/selected bitwise gate; current-source 62.5 ps run source bindings, S-functions and 265-entry raw source map equal the anchor; against old BE125 captured numeric configuration differs only at max_step_s and its duplicate assumptions leaf.",
+    "not_claimed": "No new MATLAB/native run, no new spectral/physics acceptance, and no exact full-tree source identity between current R4 and prior run source. Current source tree is not byte-identical to old BE125; no complete analog-state/charge coverage or independent physics acceptance is claimed."
+  },
+  "current_source_anchor_and_be62p5": {
+    "anchor_comparison": {
+      "path": "analysis/time_step/anchor_comparison.json",
+      "sha256": "35d218cd76521ec45e4976b08c64dfa9857911e4e1d97dc23b9070b8a78ce9d2",
+      "status": "bitwise_anchor_pass",
+      "scope": "Current M8 source at same UGB/input/seed/250ps; compact observable capture",
+      "reference_be250": {
+        "raw_sha256": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0",
+        "result_sha256": "850915c886847c36546fa663fa2a95f6f86a01da72d47b5d4e0da44b61b07d69",
+        "selected_sha256": "e4daf1add75586a0a35d39594df205fca8c83249c3424980ec6b20e55ea087e9",
+        "model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb",
+        "elapsed_s": 82.4468398
+      },
+      "current_anchor250": {
+        "raw_sha256": "ff0da1757d9a506390c31828a23b26382e490961ba10b904eef003d9fc3f9c5a",
+        "result_sha256": "d5308a9b94f0b84f4723777cf1cc8ef22d0be0e3369b9ecb0c6992c89a9fa8ed",
+        "selected_sha256": "ba26b9a76427479ebc78ec84f4fefb0f42b4edcd4fed0f5b6e0c9f1cab683d3f",
+        "model_sha256": "52979dc1939a9720c28f32c527ecb5cd2792dd6bc2e6a7620bc857222ef22fd4",
+        "elapsed_s": 103.3587453
+      },
+      "native_tout_bits_equal": true,
+      "entire_selected_tree_bits_equal": true,
+      "logger_count": 54,
+      "all_logger_shape_data_bits_and_time_bits_equal": true,
+      "tolerance_used": null,
+      "full_analog_state_or_charge_coverage": false
+    },
+    "current_be62p5": {
+      "origin_path": "analysis/p0_data/be62p5/ORIGIN.json",
+      "origin_sha256": "611335d107162d4d532f60ba7b59b346a09623928d54cbb7235edb090a0e7fac",
+      "native_run_root": "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\run_tp394bdae9_7cbe_4949_9cd7_da5d4830e619",
+      "raw_sha256": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+      "selected_sha256": "6053ef798750561c012fcb1f6b51fb747aa5afe18574ac5e1a733a8c9856ed87",
+      "result_sha256": "8c00c76c4100e0a2e380d048cbdb9081cf29a119a11bc9d9bda418cf358d463d",
+      "model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+      "stage": "complete",
+      "simulation_run": true,
+      "status": "pool_analog_actual_capture_pending_independent_physics_verification",
+      "elapsed_s": 208.1844647,
+      "data_integrity": "raw.mat, selected.mat, result.json each locally rehashed and matched ORIGIN.json SHA-256 and byte count."
+    },
+    "same_current_source_identity": {
+      "anchor_bindings_count": 64,
+      "be62p5_bindings_count": 64,
+      "binding_key_sets_equal": true,
+      "binding_file_sha256_equal": true,
+      "binding_file_paths_equal_after_current_root_normalization": true,
+      "binding_which_all_equal_after_current_root_normalization": true,
+      "sfunction_instances_anchor": 12,
+      "sfunction_instances_be62p5": 12,
+      "sfunction_block_sets_equal": true,
+      "sfunction_functions_parameters_file_sha_and_which_equal_after_path_normalization": true,
+      "raw_source_manifest_entries_each": 265,
+      "raw_source_relative_path_sets_equal": true,
+      "raw_source_sha256_mismatches": 0,
+      "normalization": "Normalize current-root Windows paths relative to SAR20\\current; compare job source files relative to payload\\work_current_candidate."
+    },
+    "be62p5_vs_old_be125_numeric_configuration": {
+      "old_be125_result_sha256": "ee05bf94c7a58bfcd0a0a1c8df057fb98f30a08f02dc268b3a439b0259e3002b",
+      "old_be125_raw_sha256": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+      "old_be125_model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5",
+      "result_assumptions_only_difference": "max_step_s",
+      "A0_equal": 10000,
+      "UGB_hz_equal": 1200000000,
+      "be62p5_max_step_s": 6.25e-11,
+      "be125_max_step_s": 1.25e-10,
+      "PoolAnalogCfg_numeric_leaf_differences": [
+        "/max_step_s",
+        "/assumptions/max_step_s"
+      ],
+      "PoolAnalogCfg_numeric_leaf_difference_count": 2,
+      "p_source_leaf_count_each": 689,
+      "p_source_mismatches": 0,
+      "p_f0_leaf_count_each": 689,
+      "p_f0_mismatches": 0,
+      "source_identity_to_old_be125_claimed": false,
+      "source_identity_note": "Old BE125 uses the pre-R4 source tree; the bitwise current-source anchor is against archived BE250. Current anchor and BE62.5ps have identical recorded source identity."
+    }
+  },
+  "target_anchor_and_third_point": {
+    "required_first_anchor": {
+      "AChanges": {
+        "UGB_hz": 1200000000,
+        "max_step_s": 2.5e-10
+      },
+      "tracking_count": 8,
+      "record_length": 8
+    },
+    "anchor_status": "bitwise_anchor_pass",
+    "anchor_elapsed_s": 103.3587453,
+    "anchor_gate": "54 logger shapes/data/times, native tout and entire selected tree bitwise equal to archived BE250; no tolerance.",
+    "third_point": {
+      "AChanges": {
+        "UGB_hz": 1200000000,
+        "max_step_s": 6.25e-11
+      },
+      "tracking_count": 8,
+      "record_length": 8
+    },
+    "third_point_status": "complete_native_run_pending_independent_physics_verification",
+    "third_point_elapsed_s": 208.1844647,
+    "third_point_raw_sha256": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+    "third_point_selected_sha256": "6053ef798750561c012fcb1f6b51fb747aa5afe18574ac5e1a733a8c9856ed87",
+    "third_point_result_sha256": "8c00c76c4100e0a2e380d048cbdb9081cf29a119a11bc9d9bda418cf358d463d",
+    "full_analog_state_or_charge_coverage": false
+  }
+}

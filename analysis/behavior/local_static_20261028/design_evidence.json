@@ -1,0 +1,177 @@
+{
+  "schema": "sar20-zero-local-physical-design-review/v1",
+  "scope": "Only archived 115303 actual points plus independently read 113441/112407/110315; no new MATLAB run; no missing-code or full-range DNL/INL claim.",
+  "new_receipt_sha256": "c73678972aaed93628e4a522880a837867cd54e49b8a38dc8b3cce77b7ef17af",
+  "same_model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "source_manifest_sha256": "517e380a78bac0c341ce9299b0e22dfbd280180b54b7b897a370c3a6f1f07ff3",
+  "archived_sources_checked": 87,
+  "recovered_midpoint_actual_input_V": -1.52587890625e-08,
+  "recovered_midpoint_original_failure": "MATLAB:cellfun:NotAScalarOutput",
+  "gain_audit_sha256": "afa79d6c4baae7712f19a54b4809142a2701ad100f263c3e5929fc1dfae18a88",
+  "zero_prior_P_boundary": "110315 original zero preflight P not independently saved; reconstruction only.",
+  "new_samples": [
+    {
+      "index": 1,
+      "input_V": -7.62939453125e-09,
+      "held_V": -7.62939453125e-09,
+      "raw6": [
+        1039.0,
+        3417.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524285,
+      "P_sha256": "c95a674a5974ddcd8889bc6524aacb3ec46aaefd80716c3f493c8c479f2162ab",
+      "signals_sha256": "624e36982817d062d998c2b6edb9ac74058131995a2b52e34313d861966afc86",
+      "P_changed_vs_prior_actual_negative": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ],
+      "first_fine_Vres_V": -7.629394524666475e-09,
+      "Qres_RAstart_C": 2.1721191406250009e-13,
+      "target_RA_V": 0.2559997558593751,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "A0": 10000.0,
+      "F": 0.9966115208291808,
+      "VX75_V": 0.2551167015050234,
+      "VY75_V": -0.00029848033353139874
+    },
+    {
+      "index": 2,
+      "input_V": -3.814697265625e-09,
+      "held_V": -3.814697265625e-09,
+      "raw6": [
+        1039.0,
+        3417.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524285,
+      "P_sha256": "f2e0031b1e5817b81abc0afaad2a64ea984d9ff2e3773c3193313a8b3c60cd2f",
+      "signals_sha256": "66de4580d9eacf7be02ecfa42d1b3bfd958d325d551b88800cd00cf70b56c4c9",
+      "P_changed_vs_prior_actual_negative": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ],
+      "first_fine_Vres_V": -3.814697262333237e-09,
+      "Qres_RAstart_C": 2.172120176373106e-13,
+      "target_RA_V": 0.2559998779296875,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "A0": 10000.0,
+      "F": 0.9966115208291808,
+      "VX75_V": 0.2551168231542622,
+      "VY75_V": -0.00029838560342983775
+    },
+    {
+      "index": 3,
+      "input_V": -1.9073486328125e-09,
+      "held_V": -1.9073486328125e-09,
+      "raw6": [
+        1039.0,
+        3417.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524285,
+      "P_sha256": "537c92d37bd03d65919bb9c8e9fe6829f51333635d3c784af8f6fbca36f5a53c",
+      "signals_sha256": "5a8ee2b5acbb242a56be5613d58db40e25084994980fcb95aecb2abdd90589b5",
+      "P_changed_vs_prior_actual_negative": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ],
+      "first_fine_Vres_V": -1.9073486311666187e-09,
+      "Qres_RAstart_C": 2.1721206942471586e-13,
+      "target_RA_V": 0.2559999389648437,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "A0": 10000.0,
+      "F": 0.9966115208291808,
+      "VX75_V": 0.25511688397888166,
+      "VY75_V": -0.0002983382383789919
+    }
+  ],
+  "zero_actual_raw6": [
+    1040,
+    2374,
+    42,
+    4,
+    1,
+    1
+  ],
+  "zero_actual_code": 524289,
+  "narrowest_interval_V": [
+    -1.9073486328125e-09,
+    0
+  ],
+  "span_V": 1.9073486328125e-09,
+  "span_nominal_LSB": 0.000244140625,
+  "observed_endpoint_code_difference": 4,
+  "fixed_target_idealization": {
+    "target_abs_V": 0.2559999389648437,
+    "nominal_gain": 32.0,
+    "target_input_V": 0.007999998092651365,
+    "nominal_lsb_V": 7.8125e-06,
+    "NG": 34.00000000000001,
+    "tau_RA_s": 4.509390054270369e-09,
+    "closed_loop_gain_1e4": 0.9966115208291808,
+    "gain_examples": [
+      {
+        "gain_allocation_LSB": 1,
+        "A0_min": 34781.99169921875,
+        "A0_min_dB": 90.82708894218628
+      },
+      {
+        "gain_allocation_LSB": 0.5,
+        "A0_min": 69597.9833984375,
+        "A0_min_dB": 96.85193312220584
+      },
+      {
+        "gain_allocation_LSB": 0.25,
+        "A0_min": 139229.966796875,
+        "A0_min_dB": 102.87465439139042
+      }
+    ],
+    "A0_example": 100000.0,
+    "A0_example_dB": 100.0,
+    "gain_error_1e5_V": 2.7190748660470087e-06,
+    "gain_error_1e5_lsb": 0.3480415828540171,
+    "gain_allocation_0p5_margin_lsb": 0.1519584171459829,
+    "first_TA_delta_s": 4.375e-08,
+    "first_TA_infA0_settling_error_V": 4.892993885582393e-07,
+    "first_TA_infA0_settling_lsb": 0.06263032173545463,
+    "ugb_for_0p1_lsb_first_TA_Hz": 1142124706.6686642,
+    "at_1p2GHz_fraction_above_min": 0.05067335729050626,
+    "first_D2_infA0_settling_error_V": 0.0003791772267667912,
+    "first_D2_infA0_settling_lsb": 48.53468502614927
+  },
+  "public_raw_correction_oracle_only": {
+    "scale_1_over_F": 1.0034,
+    "negative": {
+      "D1_V": -0.008000000000000007,
+      "raw_CT_V": 0.007972656250000001,
+      "output_V": -2.367187500046386e-07,
+      "unrounded_code": 524287.9697,
+      "illustrative_code": 524288
+    },
+    "zero": {
+      "D1_V": 0.0,
+      "raw_CT_V": 3.906250000001748e-06,
+      "output_V": 3.919531250001754e-06,
+      "unrounded_code": 524288.5017,
+      "illustrative_code": 524289
+    },
+    "warning": "Uses actual internal model F as an oracle; is an offline arithmetic counterfactual, not a calibrated or simulated code or a public training method."
+  },
+  "recommended_next": "Two new A0=1e5 points at -1.9073486328125 nV and zero, plus one A0=Inf negative at same new negative input; reuse actual A0=1e4 endpoints and Inf zero. Fix P/seed/ID4/UGB and retain RAW/time/FE/BK/TA traces."
+}

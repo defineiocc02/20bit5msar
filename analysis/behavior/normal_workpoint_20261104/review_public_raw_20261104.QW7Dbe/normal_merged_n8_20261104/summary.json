@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "scope": "public selected RAW6 and nominal DecodeP only; no ADC simulation, analog truth or calibration",
+  "independent_raw_code_time_join_proven": false,
+  "ready_selection_scope": "CSV is preselected/joined by exporter; original raw_capture requires separate review",
+  "digital_parameter_scope": "public injected DecodeP JSON; runtime block binding requires separate evidence",
+  "arithmetic_scope": "strict Python graph-like binary64 gate; exact rational column is diagnostic, not tolerance",
+  "records_sha256": "8c5f6222d031e33f70a0401473637bb64fe2ce12d9fa22f5ac4c0dc4bd24037d",
+  "digital_sha256": "572d25b338ea3a574646ad5c0a50d66124abf04927c27e5f6a2a3dee2a093fcd",
+  "checker_sha256": "abe7b044e84cf5ca198e2cba3df1fc8278932e1199910cfb09dfa885310abbb0",
+  "record_count": 8,
+  "first_id": 4,
+  "last_id": 11,
+  "epoch": 1,
+  "time_range_s": {
+    "min": 8.8625e-07,
+    "max": 2.28625e-06
+  },
+  "strict_mismatch_count": 0,
+  "strict_mismatch_ids": [],
+  "exact_rational_mismatch_count": 0,
+  "exact_rational_mismatch_ids": [],
+  "saturated_count": 0,
+  "d1_input_v_range": {
+    "min": 3.8818359375,
+    "max": 4.4580078125
+  },
+  "d2_ra_v_range": {
+    "min": -0.07949999999999996,
+    "max": 0.25150000000000006
+  },
+  "dt_ra_v_range": {
+    "min": -0.000625,
+    "max": 0.00075
+  },
+  "nominal_residual_ra_v_range": {
+    "min": -0.07874999999999996,
+    "max": 0.25218750000000006
+  },
+  "nominal_residual_input_v_range": {
+    "min": -0.0024609374999999987,
+    "max": 0.007880859375000002
+  },
+  "residual_scope": "D2+DT nominal digital reconstruction; not an observed analog residual or reference error",
+  "configuration_delta": {
+    "max_abs_d2_weight_difference_from_nominal_v": 1.3877787807814457e-17,
+    "abs_d2_offset_difference_from_nominal_v": 0.0,
+    "abs_tracking_step_difference_from_nominal_v": 0.0,
+    "nominal_coefficient_abs_tolerance_v": 1e-12
+  }
+}

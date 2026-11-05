@@ -1,0 +1,202 @@
+{
+  "schema": "sar20-single-bank-n8-independent-readback/v1",
+  "status": "saved_plain_and_tap_artifacts_checked",
+  "reviewed_utc": "2026-11-04T12:12:42.494536+00:00",
+  "scope": "Single numerical bank, 5MS/s, 1039Cu candidate under stated model assumptions; N8 functional behavior, not FFT, DNL/INL, complete paper reproduction or PDK/silicon signoff.",
+  "identity": {
+    "single_bank_candidate_zip_sha256": "09e6c7c82635d8f6bf1cf4cc8e86f0ec42036524bfe6518dfcb37ea05fb06eb7",
+    "single_bank_source_manifest_sha256": "2cbdffe537b694cef6107ce893ea8bca7f8ef5d95f6ff7d993f020150c6dd514",
+    "prepared_P_sha256": "dfa91dda5a686563b9b0fe17c5e8d906d94e6ff9168251bc27a0830099947e4f",
+    "private_model_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "graph_audit_sha256": "27be1fa393e4bf2df1910bdbf6d759ec8cf7296adcb5e8a0f5706161a54bc8ed",
+    "plain_P_used_sha256": "236ddfb427dfc07e7f7e27dd58746deb30946891717d255b53789aa8127a1e9f",
+    "tap_P_used_sha256": "9ea34cfd83187fff350ea266dabd79d377e48d99c292bba3fbbb4a84445b07e6",
+    "plain_simout_sha256": "d472f01a80a832cd483783e4ceca0640a692e0094d1a64f5400411e5201a934c",
+    "tap_simout_sha256": "df04c47373902db44a2082e5c5e6ade994cd9d4313735ff9a602c5b518cd4f28",
+    "plain_complete_sha256": "eb77410ab643ce7484f025a3e19d4927338d317322b40623e3374ddeaa53e51b",
+    "tap_complete_sha256": "a32b9dba96fd69032947b7b5c12d1a7ec4066d9f3bd191b901d9e30f4b7562e9"
+  },
+  "actual_configuration": {
+    "N": 8,
+    "first_selected_id": 4,
+    "epoch": 1,
+    "sample_rate_hz": 5000000,
+    "sample_period_s": 2e-07,
+    "front_single_bank": true,
+    "numeric_segments": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "guard_s": 0.0,
+    "sample_tau_s": 0.0,
+    "precharge_tau_s": 0.0,
+    "dac_tau_s": 0.0,
+    "nominal_signal_cap_pf_per_assumed_half": 27.648,
+    "nominal_tail_cap_pf_per_assumed_half": 0.405,
+    "disconnected_bias_cap_pf": 0.0,
+    "nominal_total_cap_pf_per_assumed_half": 28.053,
+    "nominal_unit_cap_f": 2.7e-14,
+    "ra_feedback_cap_f": 8.64e-13,
+    "ra_open_loop_gain": 10000,
+    "ra_ugb_hz": 1200000000.0,
+    "dem": false,
+    "dither": false,
+    "jitter": false,
+    "ktc": false,
+    "mismatch": false,
+    "az_mode": "off",
+    "ra_ou_noise": false,
+    "ra_offset_v": 0.0,
+    "ra_slew_limit": "Inf",
+    "reference_recovery": false,
+    "comparator_noise": false,
+    "transport": false,
+    "training": false,
+    "frozen": false,
+    "digital_bank": false,
+    "digital_d1_bias_v": 0.0,
+    "tap_note": "adi_enabled enables existing read-only wire logger only, not an ADI conversion architecture or DEM/dither."
+  },
+  "independent_function_P": {
+    "result_file_sha256": "9d3f6ef30a33a13c6f4c26ee8a65e6643b81da140a9a404cc7d8d26c2bd93aca",
+    "single_plan_shape": [
+      32,
+      8
+    ],
+    "all_plan_rows": "1..8",
+    "frontend_initial_state_words": 353,
+    "backend_initial_state_words": 48,
+    "sar_initial_state_words": 51,
+    "initial_start_time_s": -1.0999999999999998e-07,
+    "independent_2048_word_nominal_target_charge_vs_assumed_codebook_max_abs_c": 2.5849394142282115e-26,
+    "numeric_limit": "Python check of the saved P and declared codebook; not an independently replayed MATLAB waveform.",
+    "function_report_guard_note": "5 ns and 105 ns window belong to a separate function-test stimulus. Exported P has guard 0 and a nominal 110 ns window.",
+    "backend_ctop_vs_python_sum_f": 9.693522803355793e-27,
+    "backend_ctop_note": "Summation order can change the last bits; numerical agreement is stated, not cross-language bit equality."
+  },
+  "actual_saved_data": {
+    "plain_P_matches_function_P_full_nested_fields_order_types_shapes_and_bits": true,
+    "tap_P_difference_paths": [
+      "P.debug.adi_enabled",
+      "P.debug.adi_max_points",
+      "P.debug.aperture_enabled",
+      "P.debug.aperture_max_points"
+    ],
+    "actual_event_rows": 576,
+    "cycles": 12,
+    "actual_raw_valid_count": 12,
+    "raw_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "selected_ids": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "selected_codes": [
+      963402,
+      979656,
+      989060,
+      991475,
+      986860,
+      975290,
+      956935,
+      932071
+    ],
+    "independent_raw_to_D1_max_abs_v": 0.0,
+    "independent_raw_to_D2_max_abs_v": 3.469446951953614e-18,
+    "independent_raw_to_DT_max_abs_v": 0.0,
+    "actual_component_to_final_code_all_12_match": true,
+    "d2_DT_note": "The D2 last-bit difference is cross-language floating summation order, not an inferred physical error.",
+    "plain_tap_equal": {
+      "nonobserver_timeseries": 30,
+      "nonobserver_timeseries_time_data_bits_equal": true,
+      "tout_samples": 598,
+      "tout_bits_equal": true,
+      "yout_signal_count": 3,
+      "yout_time_data_bits_equal": true,
+      "excluded_observer_logs": [
+        "adi_wire_log",
+        "aperture_log"
+      ]
+    },
+    "observed_stage_next_wires": {
+      "event_rows_checked": 576,
+      "d2_decisions": 144,
+      "tracking_compares": 96,
+      "tracking_feedback_commands": 84,
+      "per_frame": [
+        12,
+        8,
+        7
+      ],
+      "zero_vy_d2_count": 0,
+      "zero_vy_ta_count": 0,
+      "scope": "actual stage-next/control and RA command wires; not separate analog impulse or all committed state"
+    },
+    "actual_capture_numeric_segments": "1..8 every frame",
+    "open_time": "stored acquire_open_s metadata, not an independently sampled switch waveform",
+    "stored_nominal_sample_window_s": 1.1e-07,
+    "return_vtop_route_at_actual_release_matches_backend_bits": true,
+    "returned_charge_commit": "UNOBSERVED_NO_DIRECT_FE_STATE_PROBE",
+    "fft": "NOT_RUN_N8"
+  },
+  "provenance": {
+    "plain_transfer_items_verified": 15,
+    "tap_transfer_items_verified": 16,
+    "plain_transfer_manifest_sha256": "9db2897f61fb5425dbfa77ba5bfdf986596de4bf3d8947da062f68d0611af5e2",
+    "tap_transfer_manifest_sha256": "506c5518e48b56eb8f4fc4bbede13893440a65cedbd30354770da178e7304797",
+    "plain_archive_sha256": "85687a6fd30506e7a9d7cf9a289af31a06c200ddfe3923d9fdb21eb57f7f0469",
+    "tap_archive_sha256": "481a21884fc83f52d78fce1356b94c6eba19a01a743f8dca7237da6b265d5468",
+    "all_listed_transfer_and_archive_member_bytes_match": true,
+    "runtime_source_bindings_count_each": 109,
+    "before_after_paths_equal_and_match_frozen_runtime": true,
+    "initial_rng_fields_and_bits_equal": true,
+    "in_memory_instruction_bytes_independently_verified": false
+  },
+  "timing": {
+    "plain_sim_s": 10.3433234,
+    "tap_sim_s": 16.5459617,
+    "scope": "one run each; not a speed benchmark"
+  },
+  "verifiers": {
+    "main_readback_script_path": "/tmp/sar20_single_verify.euTkiH/verify_single_n8.py",
+    "main_readback_script_sha256": "cff4a2447c32b6b65327b991a239e3cb7c7a98ccc538108876fdfa88401ceb07",
+    "plain_readback_sha256": "b313b549c0efb69b082978a800e91ed2cfe9b81e5ca5fc24e3f94eb764b3251d",
+    "stage_wire_reproduction_script_path": "/tmp/sar20_single_verify.euTkiH/verify_stage_wires.py",
+    "stage_wire_reproduction_script_sha256": "f3f6243d789ee9d468c9e1e9bca47451848ee5b06f1307f7d7f5f8e298d80b33",
+    "stage_wire_reproduction_note": "The same stage-wire algorithm was executed inline; this stored reproduction adds a <=300 MB file guard and was not separately executed.",
+    "mat_reader_sha256": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467",
+    "root_sigstream_reader_sha256": "a73344211cdba2ad14825e4fe1612f7f2e864fa4e77ffacdc1392c04374c96a5"
+  },
+  "limitations": [
+    "No MATLAB or Windows access during this independent review.",
+    "No FFT, ENOB, DNL, INL, missing-code or full-range performance is measured by N8.",
+    "Analog front-end B before/after release is not directly logged; return charge cannot be declared verified in the full graph.",
+    "Single-bank physical capacitor codebook, half/differential interpretation and guard are assumptions not fully disclosed by the paper.",
+    "The 5 ns guard and 20 ns RC are unit-test stimuli, not the N8 run or proven circuit margins.",
+    "No claim of full paper reproduction, 180 nm transistor behavior, PDK, PEX, foundry or silicon signoff."
+  ]
+}

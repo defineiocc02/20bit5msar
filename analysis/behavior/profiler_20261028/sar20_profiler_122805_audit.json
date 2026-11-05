@@ -1,0 +1,252 @@
+{
+  "verifier_sha256": "d75e88abaa80addd40f462e94df2437ffce6933f48e9feac85999230dbaa6d4a",
+  "receipt_sha256": "64879767de47f1271fa42317387760ef7fc1b64dca03e2935fb1951aa62efa03",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "scratch_sha256": "1c903ad632930cf169726fbca1e4231bd3444ce78588da22c1323129ac5bed79",
+  "P_sha256": "844365f7cb953682dc35385068bd21a153c7bbd7e8f2f21459fe1b7454c957a2",
+  "old_simout_sha256": "3bb0d0c44c9859f58ff1cbced2badc7adfe0fba932b9b21bda5e092364931a91",
+  "new_simout_sha256": "43328d203e2cd85b5e4f709b8d45d27fa51e948f8c6486df7dba9b871d474f8c",
+  "source_files_verified": 87,
+  "all_30_Time_Data_class_shape_bits_equal": true,
+  "all_ready_records": 260,
+  "selected_records": 256,
+  "selected_code_sha256_u32le": "3fd70372aadabc480fcbac80b7c74e00807efc4b07dbb4c4bb5e3c79b69320a8",
+  "selected_time_first_last_s": [
+    1.338e-06,
+    5.233799999999999e-05
+  ],
+  "actual_event_count": 12838,
+  "profile_before_function_rows": 0,
+  "profile_after_function_rows": 572,
+  "profile_delta_rows": 572,
+  "after_function_history_shape": [
+    5000000,
+    4
+  ],
+  "after_function_history_last_row_nonzero": true,
+  "sum_all_function_invocations": 7796574,
+  "all_delta_rows_match_after_minus_before": true,
+  "required_function_rows": {
+    "behavior_event_source": [
+      {
+        "name": "behavior_event_source>outputs",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\control\\behavior_event_source.m>behavior_event_source/outputs",
+        "calls": 12838.0,
+        "inclusive_s": 2.3228723050013715
+      },
+      {
+        "name": "behavior_event_source",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\control\\behavior_event_source.m>behavior_event_source",
+        "calls": 1.0,
+        "inclusive_s": 0.009620800020714524
+      },
+      {
+        "name": "behavior_event_source>validate_parameters",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\control\\behavior_event_source.m>validate_parameters",
+        "calls": 1.0,
+        "inclusive_s": 0.0016778000036124677
+      },
+      {
+        "name": "behavior_event_source>start",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\control\\behavior_event_source.m>behavior_event_source/start",
+        "calls": 1.0,
+        "inclusive_s": 0.00031890000068662296
+      }
+    ],
+    "behavior_backend_sfun": [
+      {
+        "name": "behavior_backend_sfun>@(b)outputs(b,kind,p)",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_sfun.m>@(b)outputs(b,kind,p)",
+        "calls": 50304.0,
+        "inclusive_s": 80.97500147434712
+      },
+      {
+        "name": "behavior_backend_sfun>outputs",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_sfun.m>outputs",
+        "calls": 50304.0,
+        "inclusive_s": 80.62204007358714
+      },
+      {
+        "name": "behavior_backend_sfun",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_sfun.m>behavior_backend_sfun",
+        "calls": 4.0,
+        "inclusive_s": 0.01052300002265705
+      },
+      {
+        "name": "behavior_backend_sfun>setup",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_sfun.m>setup",
+        "calls": 4.0,
+        "inclusive_s": 0.010057100021653921
+      }
+    ],
+    "sar20_cdac2_network": [
+      {
+        "name": "sar20_cdac2_network",
+        "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\sar20_cdac2_network.m>sar20_cdac2_network",
+        "calls": 301824.0,
+        "inclusive_s": 20.14618554337671
+      }
+    ]
+  },
+  "top_20": [
+    {
+      "name": "run",
+      "complete_name": "D:\\Academic\\Matlab\\toolbox\\matlab\\lang\\run.m>run",
+      "calls": 1.0,
+      "inclusive_s": 182.1215348921255
+    },
+    {
+      "name": "az_job",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\az_probe_20261028T122805Z\\az_job.m>az_job",
+      "calls": 1.0,
+      "inclusive_s": 182.11933009212075
+    },
+    {
+      "name": "profile_n256_entry_job",
+      "complete_name": "D:\\Temp\\SAR20Az\\jobs\\profile_n256_entry_job.m>profile_n256_entry_job",
+      "calls": 1.0,
+      "inclusive_s": 182.1191654921204
+    },
+    {
+      "name": "profile_n256_scratch",
+      "complete_name": "D:\\Temp\\SAR20Az\\profile_n256_v2\\sar20_profile_n256_scratch_v2\\profile_n256_scratch.m>profile_n256_scratch",
+      "calls": 1.0,
+      "inclusive_s": 182.11870879211943
+    },
+    {
+      "name": "behavior_backend_sfun>@(b)outputs(b,kind,p)",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_sfun.m>@(b)outputs(b,kind,p)",
+      "calls": 50304.0,
+      "inclusive_s": 80.97500147434712
+    },
+    {
+      "name": "behavior_backend_sfun>outputs",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_sfun.m>outputs",
+      "calls": 50304.0,
+      "inclusive_s": 80.62204007358714
+    },
+    {
+      "name": "behavior_backend_stage",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_stage.m>behavior_backend_stage",
+      "calls": 50304.0,
+      "inclusive_s": 73.73555175875987
+    },
+    {
+      "name": "behavior_backend_step",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_step.m>behavior_backend_step",
+      "calls": 50304.0,
+      "inclusive_s": 62.50626663458211
+    },
+    {
+      "name": "behavior_frontend_sfun>@(b)outputs(b,kind,p)",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\frontend\\behavior_frontend_sfun.m>@(b)outputs(b,kind,p)",
+      "calls": 50304.0,
+      "inclusive_s": 30.796198766307235
+    },
+    {
+      "name": "behavior_frontend_sfun>outputs",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\frontend\\behavior_frontend_sfun.m>outputs",
+      "calls": 50304.0,
+      "inclusive_s": 30.432680065524544
+    },
+    {
+      "name": "behavior_backend_step>validate_inputs",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_step.m>validate_inputs",
+      "calls": 50304.0,
+      "inclusive_s": 26.340896756714535
+    },
+    {
+      "name": "behavior_frontend_stage",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\frontend\\behavior_frontend_stage.m>behavior_frontend_stage",
+      "calls": 50304.0,
+      "inclusive_s": 24.68385615314676
+    },
+    {
+      "name": "behavior_backend_step>observe",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\behavior_backend_step.m>observe",
+      "calls": 100608.0,
+      "inclusive_s": 22.070009147518892
+    },
+    {
+      "name": "sar20_cdac2_network",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\physics\\sar20_cdac2_network.m>sar20_cdac2_network",
+      "calls": 301824.0,
+      "inclusive_s": 20.14618554337671
+    },
+    {
+      "name": "behavior_frontend_step",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\frontend\\behavior_frontend_step.m>behavior_frontend_step",
+      "calls": 54234.0,
+      "inclusive_s": 17.81499413835743
+    },
+    {
+      "name": "behavior_control_stage_sfun>outputs",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\control\\behavior_control_stage_sfun.m>behavior_control_stage_sfun/outputs",
+      "calls": 37728.0,
+      "inclusive_s": 16.369610135245374
+    },
+    {
+      "name": "behavior_wiring_sfun>output",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\model\\behavior_wiring_sfun.m>behavior_wiring_sfun/output",
+      "calls": 113184.0,
+      "inclusive_s": 15.114012732541951
+    },
+    {
+      "name": "behavior_frontend_step>readout",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\frontend\\behavior_frontend_step.m>readout",
+      "calls": 54496.0,
+      "inclusive_s": 12.18521872623597
+    },
+    {
+      "name": "behavior_control_stage",
+      "complete_name": "D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\src\\control\\behavior_control_stage.m>behavior_control_stage",
+      "calls": 37728.0,
+      "inclusive_s": 11.30151512433327
+    },
+    {
+      "name": "ismember",
+      "complete_name": "D:\\Academic\\Matlab\\toolbox\\matlab\\ops\\ismember.m>ismember",
+      "calls": 863679.0,
+      "inclusive_s": 11.006183623697392
+    }
+  ],
+  "update_unprofiled_wall_s": 1.4689107,
+  "sim_profiled_wall_s": 182.0560521,
+  "prior_unprofiled_sim_wall_s": 136.1479,
+  "native_profiler_status_before": {
+    "ProfilerStatus": "off",
+    "DetailLevel": "mmex",
+    "Timer": "performance",
+    "HistoryTracking": "timestamp",
+    "HistorySize": 5000000.0
+  },
+  "native_profiler_status_after": {
+    "ProfilerStatus": "off",
+    "DetailLevel": "mmex",
+    "Timer": "performance",
+    "HistoryTracking": "timestamp",
+    "HistorySize": 5000000.0
+  },
+  "native_restoration": {
+    "main_file_unchanged": true,
+    "main_workspace_unchanged": true,
+    "global_rng_unchanged": true,
+    "environment_cleanup": "complete",
+    "wrapper_path_restored": true,
+    "wrapper_cwd_restored": true,
+    "wrapper_candidate_loaded_files": []
+  },
+  "computed_file_hashes_not_pinned_by_native_receipt": {
+    "profile_before.mat": "3759b06419384439f5c75d5be15fdae9fab5cec278b051cfd40b4d5102ed118d",
+    "profile_after.mat": "1b04ece02a31ce7d45bcfdc8d03b940a2e3a5de2ff8b7e74ab8b3c18c7f214a2",
+    "profile_delta.mat": "988563421c074d42231037b9f282093058e49aae2b3fb33d47734da61912fd80",
+    "records.mat": "7feaaf0fd747a4af77892e39df42297e708e559265b8d7c02115e1e297166eb0",
+    "log_compare.mat": "06b77276e26376c07f0d2b81698bc93ba4d8377e4e04747484e70998737b3c88"
+  },
+  "limits": [
+    "Profile inclusive times overlap; do not sum, attribute hardware cycles or claim stable speedup.",
+    "The profiler appends global history/counters; final off does not restore historical profiler data. FunctionHistory is full at the 5,000,000-event cap, so complete call chronology is not established.",
+    "inmem/which and source SHA do not prove same-path compiled cache freshness.",
+    "No MATLAB rerun or live Windows/current state access."
+  ]
+}

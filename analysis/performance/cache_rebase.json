@@ -1,0 +1,15 @@
+{
+  "status": "mac_source_closure_rebased_pending_windows_full_state_acceptance",
+  "utc": "2026-10-26T12:42:39.872125+00:00",
+  "old_contract_sha256": "58fa41e7d857a617c66af96cfe39adee0bb6f16b1015de04b8b7f08d4e2f6528",
+  "contract_sha256": "71da7eb9190fe57788a58d1665bc2eb0ea658dfac4b809ffe2e465fee94002b5",
+  "files": {
+    "pool_cached_predict": "bfcd7285b54ebc556af819f48a6688ba5c0e636065a0356512933e103ba400e0",
+    "pool_cached_matrix": "a57df83d05d99f42dfe53a7dc7c30b15d24ea379728e6aab9f23514d6c1177b9"
+  },
+  "runner_sha256": "9ebcc22ea6210ffcd5763fe623a467f0db438258cff6d2513291821c1fbedfd2",
+  "expected_current_file_count": 270,
+  "preimage_sha256": "5795e74891d7866279f368bf0aff41b6cb17f8959639e2717c7804b3fa395f43",
+  "windows_deployed": true,
+  "simulation_run": "full_state_trial_in_progress_or_completed_see_actual_receipt"
+}

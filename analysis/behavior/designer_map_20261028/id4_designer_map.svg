@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1500" viewBox="0 0 1900 1500">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#47677c"/></marker></defs>
+<rect width="1900" height="1500" fill="#f4f7fa"/>
+<g font-family="PingFang SC,Microsoft YaHei,Arial,sans-serif" fill="#173044">
+<text x="45" y="56" font-size="32" font-weight="700" fill="#173044">一个真实样本为何得到 524285？</text>
+<text x="45" y="91" font-size="19" font-weight="normal" fill="#506e81">112407 负端 ID4 / epoch1 · DC 输入 −30.517578125 nV · 4次实际预热 · N=1 · transport off</text>
+<text x="45" y="120" font-size="17" font-weight="normal" fill="#506e81">模型 / 14张导图 SHA：63190994…54ec2b6；导图保存的是默认 N8 正弦 P，以下数值来自该次独立保存的 N1/DC P 与日志。</text>
+<rect x="48" y="195" width="225" height="110" rx="10" fill="#edf3f8" stroke="#a5bbca" stroke-width="1.5"/>
+<text x="70" y="229" font-size="20" font-weight="700" fill="#173044">Driver · 片外</text>
+<text x="70" y="260" font-size="17" font-weight="normal" fill="#173044">实际 DC / 电压 V</text>
+<text x="70" y="289" font-size="17" font-weight="normal" fill="#376383">−30.517578125 nV</text>
+<rect x="48" y="355" width="225" height="110" rx="10" fill="#edf3f8" stroke="#a5bbca" stroke-width="1.5"/>
+<text x="70" y="389" font-size="20" font-weight="700" fill="#173044">Calendar · 日历</text>
+<text x="70" y="420" font-size="17" font-weight="normal" fill="#173044">行为事件 / 5 MS/s</text>
+<text x="70" y="449" font-size="16" font-weight="normal" fill="#506e81">不是芯片物理边界</text>
+<rect x="300" y="155" width="1550" height="625" rx="16" fill="#fff" stroke="#8da9bb" stroke-width="1.5"/>
+<text x="325" y="190" font-size="20" font-weight="700" fill="#173044">EventStep · 事件调度容器（非芯片边界）</text>
+<path d="M273 250H300" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M273 410H300" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="330" y="210" width="850" height="530" rx="12" fill="#f1f7fc" stroke="#9bb9ce" stroke-width="1.5"/>
+<text x="352" y="243" font-size="21" font-weight="700" fill="#173044">Adc · 片内行为模型</text>
+<text x="352" y="269" font-size="15" font-weight="normal" fill="#526e81">以下是当前六个同层子系统的阅读顺序，省略非本路径连线。</text>
+<rect x="355" y="290" width="240" height="92" rx="8" fill="#fff" stroke="#bad0df" stroke-width="1.5"/>
+<text x="368" y="323" font-size="17" font-weight="700" fill="#173044">1  SampleRaAdvance</text>
+<text x="368" y="351" font-size="15" font-weight="normal" fill="#526e81">Sample / RaAdvance</text>
+<rect x="620" y="290" width="240" height="92" rx="8" fill="#fff" stroke="#bad0df" stroke-width="1.5"/>
+<text x="633" y="323" font-size="17" font-weight="700" fill="#173044">2  DacCtFeedback</text>
+<text x="633" y="351" font-size="15" font-weight="normal" fill="#526e81">Due / Dac / CtFeedback</text>
+<rect x="885" y="290" width="240" height="92" rx="8" fill="#fff" stroke="#bad0df" stroke-width="1.5"/>
+<text x="898" y="323" font-size="17" font-weight="700" fill="#173044">3  Sar1TrialRaCt</text>
+<text x="898" y="351" font-size="15" font-weight="normal" fill="#526e81">Preconvert / Trial / RA</text>
+<rect x="355" y="414" width="240" height="92" rx="8" fill="#fff" stroke="#bad0df" stroke-width="1.5"/>
+<text x="368" y="447" font-size="17" font-weight="700" fill="#173044">4  ResidueCtCompare</text>
+<text x="368" y="475" font-size="15" font-weight="normal" fill="#526e81">Compare1 / Compare2</text>
+<rect x="620" y="414" width="240" height="92" rx="8" fill="#fff" stroke="#bad0df" stroke-width="1.5"/>
+<text x="633" y="447" font-size="17" font-weight="700" fill="#173044">5  SarDecisionTracking</text>
+<text x="633" y="475" font-size="15" font-weight="normal" fill="#526e81">SAR2 / Tracking / Raw</text>
+<rect x="885" y="414" width="240" height="92" rx="8" fill="#fff" stroke="#bad0df" stroke-width="1.5"/>
+<text x="898" y="447" font-size="17" font-weight="700" fill="#173044">6  ChargeReturnRaReset</text>
+<text x="898" y="475" font-size="15" font-weight="normal" fill="#526e81">Return / Reset</text>
+<rect x="355" y="535" width="770" height="69" rx="8" fill="#fff7df" stroke="#d7bd7a" stroke-width="1.5"/>
+<text x="374" y="563" font-size="17" font-weight="700" fill="#6c551f">已锁存责任：SampleCharge[353] · RaCtState[48] · SarState[51]</text>
+<text x="374" y="588" font-size="15" font-weight="normal" fill="#6c551f">UnitDelay 输出是此前旧态；本次完整提交后状态没有单独保存。</text>
+<text x="355" y="642" font-size="16" font-weight="normal" fill="#516b7b">FE_old → RaAdvance.u4 是已有线；本例 τDAC=0、coupling off，u4 不读取。</text>
+<text x="355" y="670" font-size="16" font-weight="normal" fill="#6e5891">阶段的 advance / next 是当前计算候选，不把预测端点或 BackLog 当成已提交状态。</text>
+<text x="355" y="698" font-size="16" font-weight="normal" fill="#956230">RaPreLog 未完整保存；43.75 ns 的 VX/VY 来自 BackLog。</text>
+<rect x="1195" y="300" width="155" height="52" rx="8" fill="#f9fbfd" stroke="#a6b9c5" stroke-width="1.5"/>
+<text x="1215" y="332" font-size="17" font-weight="700" fill="#173044">Record</text>
+<rect x="1195" y="392" width="155" height="52" rx="8" fill="#f9fbfd" stroke="#a6b9c5" stroke-width="1.5"/>
+<text x="1209" y="424" font-size="16" font-weight="700" fill="#173044">RecordReady</text>
+<text x="1209" y="468" font-size="14" font-weight="normal" fill="#526e81">transport off</text>
+<path d="M1180 326H1195" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1180 418H1195" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="1370" y="210" width="445" height="530" rx="12" fill="#f0f7f3" stroke="#a5c4b0" stroke-width="1.5"/>
+<text x="1392" y="243" font-size="21" font-weight="700" fill="#173044">Fpga · 片外数字</text>
+<text x="1392" y="270" font-size="15" font-weight="normal" fill="#4c745a">输入为同 ID / epoch 的 Raw6</text>
+<rect x="1393" y="292" width="398" height="112" rx="8" fill="#fff" stroke="#bdd2c2" stroke-width="1.5"/>
+<text x="1410" y="320" font-size="17" font-weight="700" fill="#173044">已有算术块（分组说明）</text>
+<text x="1410" y="347" font-size="15" font-weight="normal" fill="#4d6d58">D1CaptureBias / D2InputReference</text>
+<text x="1410" y="370" font-size="15" font-weight="normal" fill="#4d6d58">DTInputReference / RoundCode / SaturateCode</text>
+<text x="1410" y="392" font-size="14" font-weight="normal" fill="#4d6d58">本次分项仅按 RAW / P 核验</text>
+<rect x="1393" y="437" width="398" height="93" rx="8" fill="#fff" stroke="#bdd2c2" stroke-width="1.5"/>
+<text x="1410" y="470" font-size="17" font-weight="700" fill="#173044">Calibration（真实已有层级）</text>
+<text x="1410" y="500" font-size="15" font-weight="normal" fill="#4d6d58">Train / FrozenDecode 本例均 off</text>
+<text x="1395" y="582" font-size="21" font-weight="700" fill="#226045">[实] code_log = 524285</text>
+<text x="1395" y="610" font-size="15" font-weight="normal" fill="#4d6d58">该码与 valid RAW 同一 ready 行</text>
+<path d="M1350 326H1370" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1350 418H1370" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1588 404V437" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="327" y="764" font-size="15" font-weight="normal" fill="#607b8d">结构图只表示真实块的层级和读图方向；未画全部信号，事件节点不等于晶体管波形。</text>
+<text x="48" y="833" font-size="22" font-weight="700" fill="#173044">实际 ID4 事件链</text>
+<text x="267" y="833" font-size="16" font-weight="normal" fill="#506e81">t=0 为 CNV=0.8 µs；只使用该次保存日志</text>
+<rect x="48" y="856" width="340" height="190" rx="9" fill="#fff" stroke="#bacdda" stroke-width="1.5"/>
+<text x="63" y="885" font-size="20" font-weight="700" fill="#173044">0 ns</text>
+<text x="63" y="914" font-size="16" font-weight="normal" fill="#526e81">CNV / Sample</text>
+<text x="63" y="950" font-size="17" font-weight="700" fill="#245b7c">held = −30.517578125 nV</text>
+<text x="63" y="980" font-size="16" font-weight="normal" fill="#245b7c">[实] front_log</text>
+<rect x="410" y="856" width="340" height="190" rx="9" fill="#fff" stroke="#bacdda" stroke-width="1.5"/>
+<text x="425" y="885" font-size="20" font-weight="700" fill="#173044">15 ns</text>
+<text x="425" y="914" font-size="16" font-weight="normal" fill="#526e81">SAR1 首次细判</text>
+<text x="425" y="950" font-size="17" font-weight="700" fill="#245b7c">Vres = −30.517578128 nV</text>
+<text x="425" y="980" font-size="16" font-weight="normal" fill="#245b7c">D1raw = 1024 [实]</text>
+<rect x="772" y="856" width="340" height="190" rx="9" fill="#fff" stroke="#bacdda" stroke-width="1.5"/>
+<text x="787" y="885" font-size="20" font-weight="700" fill="#173044">31.25 ns</text>
+<text x="787" y="914" font-size="16" font-weight="normal" fill="#526e81">RA start</text>
+<text x="787" y="950" font-size="17" font-weight="700" fill="#245b7c">Qres = +0.217211293 pC</text>
+<text x="787" y="980" font-size="16" font-weight="normal" fill="#245b7c">target = +0.255999023 V [实]</text>
+<rect x="1134" y="856" width="340" height="190" rx="9" fill="#fff" stroke="#bacdda" stroke-width="1.5"/>
+<text x="1149" y="885" font-size="20" font-weight="700" fill="#173044">43.75 ns</text>
+<text x="1149" y="914" font-size="16" font-weight="normal" fill="#526e81">D2 prepare</text>
+<text x="1149" y="950" font-size="17" font-weight="700" fill="#245b7c">VX = +0.239176359 V</text>
+<text x="1149" y="980" font-size="16" font-weight="normal" fill="#245b7c">VY = +0.186250247 V [实]</text>
+<rect x="1496" y="856" width="340" height="190" rx="9" fill="#fff" stroke="#bacdda" stroke-width="1.5"/>
+<text x="1511" y="885" font-size="20" font-weight="700" fill="#173044">86.25 ns</text>
+<text x="1511" y="914" font-size="16" font-weight="normal" fill="#526e81">RAW ready</text>
+<text x="1511" y="950" font-size="17" font-weight="700" fill="#245b7c">RAW = [1039,3417,42]</text>
+<text x="1511" y="980" font-size="16" font-weight="normal" fill="#245b7c">code20 = 524285 [实]</text>
+<path d="M388 950h20" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M750 950h20" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1112 950h20" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1474 950h20" stroke="#47677c" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="63" y="1020" font-size="14" font-weight="normal" fill="#60798a">front_log.held</text>
+<text x="425" y="1020" font-size="14" font-weight="normal" fill="#91672a">bit4=0 由写位推断；CMP未单独存</text>
+<text x="787" y="1020" font-size="14" font-weight="normal" fill="#60798a">FrontLog Qres / BackLog target</text>
+<text x="1149" y="1020" font-size="14" font-weight="normal" fill="#91672a">BackLog；非 RaPre 完整日志</text>
+<text x="1511" y="1020" font-size="14" font-weight="normal" fill="#60798a">ID4 / epoch1 / valid1</text>
+<rect x="48" y="1070" width="1804" height="155" rx="10" fill="#eff7f1" stroke="#b5d2bd" stroke-width="1.5"/>
+<text x="68" y="1105" font-size="19" font-weight="700" fill="#2b6740">仅核验：由最终 RAW 与保存的 P.digital 重建名义贡献（本次分项日志未完整保存）</text>
+<text x="68" y="1144" font-size="21" font-weight="normal" fill="#2b6740">D1：−8000 µV　 +　D2：+7984.375 µV　 +　DT：−11.71875 µV　 =　−27.34375 µV</text>
+<text x="68" y="1182" font-size="18" font-weight="normal" fill="#2b6740">FSR=8.192 V → 名义 LSB=7.8125 µV → clip(round(2¹⁹ − 3.5)) = 524285；实际码直接取 code_log。</text>
+<rect x="48" y="1248" width="1804" height="202" rx="10" fill="#fff5e7" stroke="#e1c39b" stroke-width="1.5"/>
+<text x="70" y="1284" font-size="20" font-weight="700" fill="#8b521f">读数与状态边界</text>
+<text x="70" y="1317" font-size="17" font-weight="normal" fill="#674b35">[实] 已保存的行为仿真日志　 [推] D1 bit / 名义分项由公开 RAW 推算　 [待提交] 本事件阶段 next 不等于已回读提交态。</text>
+<text x="70" y="1348" font-size="17" font-weight="normal" fill="#674b35">ADC RawReady 与 record-ready 同为 0.88625 µs；本次无 RX 传输。RaPreLog、逐比较器独立位和完整提交状态未完整保存。</text>
+<text x="70" y="1379" font-size="17" font-weight="normal" fill="#674b35">源：112407 保存 P / 9 路 timeseries 与独立逐事件报告；四次预热不证明一般稳态，行为模型不等于硅片/PDK 测量。</text>
+<text x="70" y="1410" font-size="17" font-weight="normal" fill="#674b35">图示只使用当前真实层级；Bank / M1 未作为本路径组件，RA 后没有新增采样保持。</text>
+</g></svg>

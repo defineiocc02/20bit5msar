@@ -1,0 +1,21 @@
+{
+  "status": "static_inputs_pass",
+  "source_P_sha256": "dfa91dda5a686563b9b0fe17c5e8d906d94e6ff9168251bc27a0830099947e4f",
+  "model_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "n8_receipt_sha256": "eb77410ab643ce7484f025a3e19d4927338d317322b40623e3374ddeaa53e51b",
+  "N_requested": 256,
+  "plan_rows_requested": 264,
+  "fs_hz": 5000000.0,
+  "fin_hz": 97656.25,
+  "bin": 5,
+  "amplitude_vpeak_diff": 3.650563842595822,
+  "input_dbfs": -0.9999999999999997,
+  "A0": 10000.0,
+  "UGB_hz": 1200000000.0,
+  "Cf_f": 8.64e-13,
+  "unit_cap_combined_f": 2.7e-14,
+  "tau_sample_s": 0,
+  "tau_dac_s": 0,
+  "noise_az_calibration_adi_off": true,
+  "scope": "read-only identity/config checks only; N256 MATLAB NOT_RUN"
+}

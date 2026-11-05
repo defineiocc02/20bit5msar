@@ -1,0 +1,15 @@
+{
+    "exit_code":  0,
+    "config_replaced":  true,
+    "worker":  "STARTED",
+    "run_path":  "D:\\Academic\\Projects\\sar20m1\\SAR20\\runs\\behavior_12d08121-d679-40cd-9ee2-bc334ff42955",
+    "error":  "",
+    "tasks_unchanged":  true,
+    "status":  "passed",
+    "latest_before":  "3bd2403aa07af03d53a22f88312aa1acb80b4a4a8dc27ec25395f5461d89c97a",
+    "gui_preserved":  true,
+    "phase":  "complete",
+    "latest_after":  "43415d9e6e38f70e2209791aa81a902620063af8a9e31b74e6215f382d47e6aa",
+    "new_model_sha256":  "91973cf76507d37acc12515b55ebfe731ad197fe8ca1ecc9014fa07cbd35c27e",
+    "receipt_sha256":  "2841485f5bfeff0c064e30d7d66c79ea033e08d3e4a6261a2710ac2ea157cd44"
+}

@@ -1,0 +1,24 @@
+2026-11-04T07:44:54.0527744Z attached: SAR20_FFT_PID:27628
+
+2026-11-04T07:50:07.7270079Z returned_check_matlab_receipt: 警告: The file containing block diagram 'SarAdc' is shadowed by a file of the same name higher on the MATLAB path. This can cause unexpected behavior. For more information see <a href="matlab:helpview([docroot '/toolbox/simulink/helptargets.map'], 'shadowing')">"Avoiding Problems with Shadowed Files"</a> in the Simulink documentation.
+
+The file containing the block diagram is: D:\Academic\Projects\sar20m1\SAR20\current\models\SarAdc.slx.
+The file higher on the MATLAB path is: D:\Temp\SAR20N256_20261104_qfhxXr\SarAdc.slx
+> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: sar20_n256_driver_20261104 (第 91 行)
+位置: sar20_n256_entry_20261104 (第 1 行)
+位置: run (第 112 行)
+警告: The file containing block diagram 'SarAdc' is shadowed by a file of the same name higher on the MATLAB path. This can cause unexpected behavior. For more information see <a href="matlab:helpview([docroot '/toolbox/simulink/helptargets.map'], 'shadowing')">"Avoiding Problems with Shadowed Files"</a> in the Simulink documentation.
+
+The file containing the block diagram is: D:\Academic\Projects\sar20m1\SAR20\current\models\SarAdc.slx.
+The file higher on the MATLAB path is: D:\Temp\SAR20N256_20261104_qfhxXr\SarAdc.slx
+> 位置：Simulink.Simulation.internal.DesktopSimHelper
+位置: Simulink.Simulation.internal.DesktopSimHelper.sim
+位置: Simulink/SimulationInput/sim
+位置: sar20_n256_driver_20261104 (第 91 行)
+位置: sar20_n256_entry_20261104 (第 1 行)
+位置: run (第 112 行)
+
+2026-11-04T07:50:10.5900332Z COM reference released; MATLAB remains open.

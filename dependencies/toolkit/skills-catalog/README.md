@@ -1,0 +1,132 @@
+<!-- Copyright 2026 The MathWorks, Inc. -->
+# Skills Catalog
+
+The skills catalog organizes agent skills into groups. Each group is a directory containing one or more skills (each with a `SKILL.md` and `manifest.yaml`).
+
+## Skill Groups
+
+### [Model-Based Design Core](model-based-design-core/)
+
+Core Model-Based Design (MBD) skills for building, testing, and specifying Simulink models
+
+
+| Skill | Description |
+|-------|---------------------------|
+| `building-simulink-models` | Best practices for structural model changes, for example, adding blocks, wiring, layout |
+| `configuring-block-policy` | Create and manage `.satk/block-policy.json` to control which blocks the agent can use and which parameters it can modify |
+| `simulink-curating-library-kg` | Curate the library knowledge index — mark common blocks, define categories, and improve descriptions for better agent block selection |
+| `filing-bug-reports` | Generate standalone bug reports for reproducing, investigating, and fixing issues |
+| `generate-requirement-drafts` | Generate requirements. This needs Requirements Toolbox (.slreqx) with traceability links when available, falls back to structured YAML |
+| `managing-simulink-projects` | Manage MATLAB projects for Simulink workflows — path management, file registration, labels, and source control configuration |
+| `setup-custom-libraries` | Register and configure custom Simulink block libraries so the agent prefers them over built-in blocks during model building |
+| `simulink-sanitize-model` | Sanitize and anonymize a Simulink model for external sharing — strips proprietary content, anonymizes names, and produces a self-contained bundle |
+| `simulating-simulink-models` | Run simulations for data exploration, parameter sweeps, and custom analysis |
+| `specifying-mbd-algorithms` | Specify algorithms for Model-Based Design (MBD) including system specs, architecture specs, implementation and test plans |
+| `specifying-plant-models` | Specify plant models for closed-loop simulation |
+
+### [Model-Based System Engineering](model-based-system-engineering/)
+
+Model-Based System Engineering skills for System Composer architecture models
+
+| Skill | Description |
+|-------|---------------------------|
+| `building-architecture-models` | Build multi-layer system architecture models — components, interfaces, allocations, stereotypes, and requirements traceability (requires System Composer) |
+
+### [Verification, Validation, and Test](verification-validation-and-test/)
+
+Skills for authoring custom Model Advisor checks and running compliance reviews against industry standards
+
+| Skill | Description |
+|-------|---------------------------|
+| `author-modeladvisor-checks` | Author custom Model Advisor checks for Simulink and System Composer — DetailStyle callbacks, ResultDetail reporting, edit-time checks, and auto-fix support |
+| `checking-model-compliance` | Run Model Advisor against compliance standards (MISRA, MAB, JMAAB, ISO 26262, DO-178C, AUTOSAR, etc.) and summarize findings with fix suggestions |
+| `inject-faults` | Add, configure, and simulate faults on Simulink model signals for robustness analysis and safety validation (requires Simulink Fault Analyzer) |
+| `manage-safety-analysis` | Create and manage FMEA spreadsheets, fault trees, and safety analysis documents using Safety Analysis Manager (requires Simulink Fault Analyzer) |
+| `resolve-design-errors` | Detect Simulink Design Verifier design errors (division-by-zero, overflow, dead logic, out-of-bounds), perform root cause analysis with cascade detection and locality scoring, and propose ranked fixes (requires Simulink Design Verifier and Simulink Check) |
+| `simulink-collect-metrics` | Collect and interpret Simulink quality metrics using the metric.Engine API, including metric discovery, execution, report generation, and diagnostics (requires Simulink Check) |
+| `simulink-explain-missing-coverage` | Explain why Simulink Coverage objectives went uncovered — separate provably-dead outcomes (SLDV) from reachable-but-untested ones, trace each to its controllable inputs (Model Slicer), and recommend a test, filter, or design review (requires Simulink Coverage, Design Verifier, Simulink Check) |
+| `fix-sldv-incompatibility` | Make a Simulink model compatible with Simulink Design Verifier — diagnose incompatibilities, apply fixes to a copy, and optionally verify consistency (requires Simulink Design Verifier) |
+| `testing-simulink-models` | Test Simulink models via two paths — ephemeral Gherkin-based tests (`model_test`) for quick validation, or persistent Simulink Test cases authored from requirements or behavioral specs |
+
+### [Simulink Simulation](simulink-simulation/)
+
+Skills for constructing simulation input datasets, configuring simulation workflows and running multiple simulations
+
+| Skill | Description |
+|-------|---------------------------|
+| `authoring-simulink-inputs` | Create populated input signal datasets for Simulink models using createInputDataset scaffolds with correct metadata |
+| `create-sdi-run` | Import data into the Simulation Data Inspector from files, workspace variables, or a simulation |
+| `simulink-check-rapid-accelerator-compatibility` | Check a Simulink model for Rapid Accelerator mode incompatibilities — static analysis of blocks, configurations, and data types with BLOCKER/WARNING severity classification |
+| `simulink-run-parallel-simulations` | Run multiple Simulink simulations in parallel — parameter sweeps, Monte Carlo studies, and batch campaigns |
+
+### [Physical Modeling](physical-modeling/)
+
+Model, simulate, and analyze multidomain physical systems with the Simscape product family
+
+| Skill | Description |
+|-------|---------------------------|
+| `simscape-write-ssc` | Write and validate Simscape Language source files (.ssc) — components, domains, or functions |
+
+### [Code Generation](code-generation/)
+
+Skills for code generation
+
+| Skill | Description |
+|-------|---------------------------|
+| `simulink-author-classic-autosar-swc` | Author, configure, and validate Classic AUTOSAR software components in Simulink (requires AUTOSAR Blockset and Embedded Coder) |
+| `simulink-configure-code-interfaces` | Configure how Simulink model elements map to generated C/C++ code — storage classes and data objects (Data Interface) or service functions with Component deployment (Service Interface); code mappings, dictionary linking, deployment types, and function prototypes |
+| `simulink-customize-a2l` | Customize A2L calibration files generated from Simulink models (requires Embedded Coder) |
+| `simulink-configure-model-for-code-generation` | Configure Simulink models for Embedded Coder (ERT), Simulink Coder (GRT rapid-prototyping), or AUTOSAR code generation — target selection, hardware config, MISRA compliance across model reference hierarchies (requires Embedded Coder or Simulink Coder) |
+| `simulink-optimizing-embedded-code` | Optimize Simulink Embedded Coder generated code for runtime, RAM, ROM, stack usage, and MISRA compliance (requires Embedded Coder) |
+| `simulink-single-precision-conversion` | Convert a double-precision Simulink system or subsystem to single precision (requires Fixed-Point Designer) |
+
+### [Simulink Modeling](simulink-modeling/)
+
+Configure and integrate C/C++ code into Simulink models via C Function blocks
+
+| Skill | Description |
+|-------|---------------------------|
+| `simulink-use-c-function-block` | Configure Simulink C Function blocks programmatically using the SymbolSpec API |
+
+### [Control Systems](control-systems/)
+
+Control system design and analysis skills for Simulink models
+
+| Skill | Description |
+|-------|---------------------------|
+| `simulink-linearize` | Linearize Simulink models to obtain LTI or LPV representations (requires Simulink Control Design) |
+| `simulink-frequency-response` | Obtain frequency response from Simulink models using simulation-based estimation (requires Simulink Control Design) |
+| `simulink-control-motors` | Implement motor control with FOC, sensorless, six-step, and field weakening for PMSM, BLDC, induction, and SynRM motors (requires Motor Control Blockset) |
+
+### [Simulink Environment Fundamentals](simulink-environment-fundamentals/)
+
+Core Simulink environment capabilities, including discovering shipped example models
+
+| Skill | Description |
+|-------|---------------------------|
+| `finding-simulink-examples` | Search the full catalog of shipped MathWorks example models with the `invokeModelFinder` helper — find, show, or open an example that demonstrates a concept |
+
+### [Signal Processing](signal-processing/)
+
+Signal processing skills for Simulink models using DSP System Toolbox
+
+| Skill | Description |
+|-------|---------------------------|
+| `simulink-streaming-dsp` | Build frame-based streaming DSP models in Simulink — correct block selection, frame configuration, tunable filters (R2023b+), buffering/multirate, variable-rate decimation (requires DSP System Toolbox) |
+
+### [Real-Time Simulation and Testing](real-time-simulation-and-testing/)
+
+Configure, deploy, and run Simulink models on real-time target computers with Simulink Real-Time
+
+| Skill | Description |
+|-------|---------------------------|
+| `simulink-instrument-real-time-application` | Set up signal capture for a Simulink Real-Time application with `slrealtime.Instrument` — canvas test-pointing and streaming badges, signal adds, destination routing to file log, SDI, or MATLAB callbacks, and `generateScript` persistence (requires Simulink Real-Time) |
+| `simulink-run-real-time-application` | Build, deploy, run, monitor, tune, and stop Simulink Real-Time applications — `slbuild`, `load`/`start`/`stop`, stop time and start options, root-inport and Playback stimulation, parameter tuning, signal reads, recording, and file-log import (requires Simulink Real-Time) |
+| `simulink-configure-real-time-target` | Manage Simulink Real-Time target computer definitions — credentials, network configuration, TLS material, startup applications, and lifecycle operations such as reboot, status, and connection checks (requires Simulink Real-Time) |
+| `simulink-configure-real-time-model` | Configure a Simulink model for Simulink Real-Time code generation — system target file selection, fixed-step solver settings, and SLRT build options (requires Simulink Real-Time) |
+
+---
+
+## Adding Skills
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines on adding skills to the catalog.

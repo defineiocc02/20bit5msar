@@ -1,0 +1,12 @@
+{
+  "exit": 0,
+  "stdout": "{\"model_changed\":false,\"utc\":\"2026-10-26T12:51:49.1182382Z\",\"pid\":25440,\"contract_sha256\":\"71da7eb9190fe57788a58d1665bc2eb0ea658dfac4b809ffe2e465fee94002b5\",\"parameters_applied\":false,\"status\":\"cache_candidate_deployed_physics_trial_submitted\"}\r\n",
+  "stderr": "",
+  "staged_sha256": {
+    "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_predict.m": "bfcd7285b54ebc556af819f48a6688ba5c0e636065a0356512933e103ba400e0",
+    "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_matrix.m": "a57df83d05d99f42dfe53a7dc7c30b15d24ea379728e6aab9f23514d6c1177b9",
+    "current/runtime_work/pool_pole_precision_trial_r1/run_pool_ct.m": "9ebcc22ea6210ffcd5763fe623a467f0db438258cff6d2513291821c1fbedfd2",
+    "current/F2_KTC_DITHER_WORKSPACE_CONTRACT.json": "71da7eb9190fe57788a58d1665bc2eb0ea658dfac4b809ffe2e465fee94002b5",
+    "release.json": "667fc0c692028816bd558dd264486b3e13a2d1cb144347c749b5ac60808b6a96"
+  }
+}

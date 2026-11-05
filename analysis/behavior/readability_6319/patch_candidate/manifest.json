@@ -1,0 +1,50 @@
+{
+  "scope": "Temporary proposal only; no current/source/model write; no MATLAB/Windows operation.",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "files": {
+    "README.md": {
+      "base_sha256": "8d64bdc07d657cb7f97254a0ba883ebee5ab47af4d328e59ba3da275dd341df3",
+      "candidate_sha256": "d4eec267d4c9b6f5d5c9d42bfaaf24fd763810f99903ee873a46120eea4523c0"
+    },
+    "docs/PARAMETERS.md": {
+      "base_sha256": "5926f3a69f8b7312f1c575b71133b025ffe9e1a8a30253374b1885a58cea3a2a",
+      "candidate_sha256": "ba9f0350134c1005692f9ddc666bcbbaa097bdc93c63a00bd27a9d5aa11b34f2"
+    },
+    "current/src/model/behavior_dac_coupling_configuration.m": {
+      "base_sha256": "eba9ab946d6a607f4ed88c22a5388a8a0c23125aa99b0d5e19a9c8cf0db01b9d",
+      "candidate_sha256": "f1345e2d70044b30d5aebd94d14c5264e96e636023e10a50dbe588119b90d3be"
+    },
+    "current/src/physics/behavior_backend_stage.m": {
+      "base_sha256": "8178bb79505b90308e1c84a48e73e3d42bd4e104304f2dfd08a59a48d65d99a4",
+      "candidate_sha256": "4d03b5552dadc9047b4a356f9e3c8deed03f3a4fd3f9404d12171412a7b71928"
+    },
+    "current/src/physics/behavior_backend_step.m": {
+      "base_sha256": "140f08d0f3084f27d21d46b72584cfbf94c984b992fd6d115412278265ce6e14",
+      "candidate_sha256": "6ebed2c163fec854b854ee22ed5e99daeb780f7aa40db34932c256de34691b89"
+    },
+    "current/src/control/behavior_sar_step.m": {
+      "base_sha256": "2d43e05c496409b78c3b547c52ee1331f99ae55b626c118f33e86aac318a17a4",
+      "candidate_sha256": "894ab27f0b3e46a245ae7eb71cd997beffc0776fbd194e0904b8596f88ee5a98"
+    },
+    "current/src/transport/sar20_lvds_rx_step.m": {
+      "base_sha256": "110d17e309c3f6ab00fdf94bfac5bc7f1342842683451de291347b738e2ab2ca",
+      "candidate_sha256": "cea4ca70041a2937f2619fcf6e70655f7ddcada80362b8f10d675dcd7e84b730"
+    },
+    "config/make_adi_cases.m": {
+      "base_sha256": "70d2a1612652a167ff1b5f9691683fccdc86ffea248589b90f3a791f836ada6a",
+      "candidate_sha256": "3cc656507f94277cf8c32f4124dad5ccf59979134a1ab19a20d3a027211cabe1"
+    },
+    "config/adc_parameters.m": {
+      "base_sha256": "010a416c40f3c358e2fd0a7d207e1f773a87adfbd8db4e5c871d829f0ef41308",
+      "candidate_sha256": "e0333be228c9124641a8be4241e2b9a06e2e254fc7d32df3267c0a66fe6cdea1"
+    }
+  },
+  "diffs": {
+    "docs_candidate.diff": "d1d8698ac002f1425a16df07578bc21ff1c8e4cba9c8426501dcbeca1cf07d43",
+    "source_comments_candidate.diff": "e094d0137b9890b3a27230288e593765a68579d4c71f5af2e48753fbd74c637b",
+    "factory_assumptions_candidate.diff": "b34c5e8efe14ca19f1dd1ba000cec4b3dc73e1c11ad724673622a4cd8b4489c0"
+  },
+  "warning": "factory_assumptions_candidate.diff changes the P.assumptions string values returned by the factory, not just source comments. Apply only after identity gates and explicit review.",
+  "profiler": "Native receipt pending independent readback; no speedup claim.",
+  "M1_and_ping_pong": "M1 N8 is isolated scratch; coefficient ping-pong is not integrated."
+}

@@ -1,0 +1,1 @@
+{"status":"exported_current_model","gui_pid":27628,"simulation_run":false,"model_file":"D:\\Academic\\Projects\\sar20m1\\SAR20\\current\\models\\SarAdc.slx","N":256,"epoch":1,"fs_hz":5.0E+6,"fsr_diff_v":10,"images":["Top","Adc","Fpga"],"physical_ADI_enabled":false,"utc":"2026-11-04T19:26:15.567Z"}

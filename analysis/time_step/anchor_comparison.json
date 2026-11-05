@@ -1,0 +1,350 @@
+{
+  "status": "bitwise_anchor_pass",
+  "scope": "Current M8 source at same UGB/input/seed/250ps; compact observable capture",
+  "inputs": {
+    "reference": {
+      "raw_sha256": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0",
+      "result_sha256": "850915c886847c36546fa663fa2a95f6f86a01da72d47b5d4e0da44b61b07d69",
+      "selected_sha256": "e4daf1add75586a0a35d39594df205fca8c83249c3424980ec6b20e55ea087e9",
+      "model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb",
+      "elapsed_s": 82.4468398
+    },
+    "anchor": {
+      "raw_sha256": "ff0da1757d9a506390c31828a23b26382e490961ba10b904eef003d9fc3f9c5a",
+      "result_sha256": "d5308a9b94f0b84f4723777cf1cc8ef22d0be0e3369b9ecb0c6992c89a9fa8ed",
+      "selected_sha256": "ba26b9a76427479ebc78ec84f4fefb0f42b4edcd4fed0f5b6e0c9f1cab683d3f",
+      "model_sha256": "52979dc1939a9720c28f32c527ecb5cd2792dd6bc2e6a7620bc857222ef22fd4",
+      "elapsed_s": 103.3587453
+    }
+  },
+  "native_tout_bits_equal": true,
+  "entire_selected_tree_bits_equal": true,
+  "loggers": [
+    {
+      "logger": "adc_cmd1",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_cmd2",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_cmp2",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_control",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_ct",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_driver",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_fpga",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_frontend",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_held",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_record",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "adc_record_epoch",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "coarse_valid_log",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_clock_control",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_fpga_input",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_fpga_output",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_host_clk_en",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_reference_fpga_oracle",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_rx_record",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_rx_status",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_tx_pins_oe",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_tx_source_record",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "link_visible_pins",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_capture",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_cmd2_feedback",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_ct",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_held",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_key_nodes",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_open_time",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_ra",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_ra_output_observed",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_ra_via_sar1",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_residual",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_tracking_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_vin",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_analog_vx_via_sar1",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_cmp1_next_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_cmp1_old_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_cmp2_next_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_cmp2_old_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_command",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_core_tail_dither",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_decode_next",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_decode_ref_next",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_decode_ref_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_decode_state",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_front_readout",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "pool_reference_tail_dither",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_analog",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_cmd1",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_cnv",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_comparator",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_digital",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_held",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    },
+    {
+      "logger": "sar1_ready",
+      "shape_equal": true,
+      "data_bits_equal": true,
+      "time_bits_equal": true
+    }
+  ],
+  "full_analog_state_or_charge_coverage": false,
+  "tolerance_used": null
+}

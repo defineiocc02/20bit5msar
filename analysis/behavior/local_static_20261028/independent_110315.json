@@ -1,0 +1,2104 @@
+{
+  "schema": "sar20-110315-independent-local-dc/v1",
+  "verifier_sha256": "9a42183025a981a1108113deda083f67a7afd5c6f5836d950a90db36bd2c820f",
+  "receipt_sha256": "45c46b7da35fe7867ec9d9520cf6530e886296ca5693796fcd448ff08333495c",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "source_zip_sha256": "ff791709b22b06be206fec5b48a9eecab70f6f35721a50098d8a293838a45caa",
+  "source_files_verified": 87,
+  "preflight_nine_Time_Data_class_shape_bits_equal": true,
+  "preflight_scope": "Only zero-input N1, full vs capped logging",
+  "point_count": 31,
+  "each_point": "Saved P, nine actual timeseries, observed MAT and receipt read back; no new simulation",
+  "four_actual_warmups_then_ID4": true,
+  "per_ID_event_groups": 48,
+  "all_warmup_and_selected_valid": true,
+  "measured_point_codes_nondecreasing": true,
+  "max_abs_held_minus_requested_v": 6.776263578034403e-21,
+  "original_input_axis_tolerance_v": 1.9073486328125e-09,
+  "points": [
+    {
+      "index": 1,
+      "voltage_v": 7.8125e-06,
+      "code20": 524289,
+      "raw6": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 7.8125e-06,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "dc416cbd080fa5afd29ce88543313567171fd11fac7a5f50c13e8c220129a276",
+      "signals_sha256": "2f419c98be19c5eceada8266eebea0537adae57757fdc6fccb0a26639deba4a7",
+      "observed_sha256": "c606c2cb5c06d3c30d992f372d45ed3533564affc16ed2bad2c1f36aaa7de9e7",
+      "P_difference_vs_point1": []
+    },
+    {
+      "index": 2,
+      "voltage_v": 1.5625e-05,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.5625e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "094d8f32d8e0a7da63ecd7b7de3ff9c74e1da2bd685baa44ac15ceaa6037c5ac",
+      "signals_sha256": "95d1788f5a921f442aa5317fc39d700cb84ac067ec150a24ee7ad823eb7a1f4b",
+      "observed_sha256": "dc00e715ae65d2653dcfdb7c902b7806ca144280cd4794928124700091e99476",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 3,
+      "voltage_v": 2.34375e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.34375e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "04d3f64a560f704b4896e24df7f9b7c10a0e17f6867ba7dc5005f78aa2e50fe5",
+      "signals_sha256": "0f88a645afbe8032c03699c5d96273c594a6b07a6cb297165c0dbf3877e61b41",
+      "observed_sha256": "6a3bd58b8b4405c07edc1a5be2d0e05ef4ed9c329f71345d3ac1055a8b879fcc",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 4,
+      "voltage_v": 3.125e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 3.125e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "169a557090db6ded6792c101c70b19f740e3f72c9bb70130dc9597e812679210",
+      "signals_sha256": "25b70f2cb48c06df0b0c9ac2fccf8e226cd25533f702b2493dc43c9f4540ceb5",
+      "observed_sha256": "ec06030a03bc031520ed607b2745f9eb7dcbd972f5366ac059dd4e2d6dece5a8",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 5,
+      "voltage_v": 1.171875e-05,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.171875e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "d07f2a5e78d7ccb4cbadd6e08e6e0c9704a83dba293351da21e4971ded9e4049",
+      "signals_sha256": "483e04252261f7922bb38d033b21406e84059668a6ec9c544fa6daab85639f55",
+      "observed_sha256": "cdfd844248f854b257b3c4c7b870ee55ea06a5d828e0e53ca303c8aacc9c3a7f",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 6,
+      "voltage_v": 9.765625e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 9.765624999999999e-06,
+      "held_minus_requested_v": -1.6940658945086007e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "ca2b18d6fe74467ad5774ad22699a24623e7825fa22e6b8ac7d4d12ff49784d3",
+      "signals_sha256": "b2815a13b903d1a401398ee6a0305d2c9107a5f6ba6e87a963d873ec559bf35d",
+      "observed_sha256": "53e54be6b5ba53d0142df66758d6daeb807fad4a0e9e3a7dea193366b1d9fda9",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 7,
+      "voltage_v": 8.789062500000001e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 8.789062500000001e-06,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "a9d14a5533a3f5d0571a1902c8c7137dcfdf76f472fc3d122db3dab9bf5d507a",
+      "signals_sha256": "213662c4536a76fd4384107b0d2bb213e1cd1696f085b26962b146e3b044e86c",
+      "observed_sha256": "a5f5a3f9bc6da801d927ae4c3d1757320936e99b774e13cfa592e89c71a8a1f3",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 8,
+      "voltage_v": 8.30078125e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 8.30078125e-06,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "9b42df95cf5884730c7668166b8a2989faa787311454068e630b91bb282631e4",
+      "signals_sha256": "ac0a697fbaec36a022b7045555182ef6eb7caa30302178ddd9bd0104cdcdad16",
+      "observed_sha256": "9072fcfb71615974b0f36022e9ecd9a1e5ddf29af6861bf139ab116356733251",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 9,
+      "voltage_v": 8.056640625e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 8.056640624999999e-06,
+      "held_minus_requested_v": -1.6940658945086007e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "fc5a3f7a7038fbe83938887f9bcb7448c2bcba370521b2c13290f26b7fa07104",
+      "signals_sha256": "c73759bf98095f78fc70ceb4f05d7bc96b59dcea96da8084bb8a6bd0f591c153",
+      "observed_sha256": "4db51c09601571f783f8a3c9eae9cacaf6fd364632b45be5a003e45b1ae91152",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 10,
+      "voltage_v": 7.9345703125e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 7.934570312499999e-06,
+      "held_minus_requested_v": -1.6940658945086007e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "7df538649c776ddcfb0081592e6c070d78a4ee1c516d75e1f07d28ae97ddaccd",
+      "signals_sha256": "73547608d4588a338db0330e15c85acf2d5ede1124e8a8f013f0bbf3b386d0ff",
+      "observed_sha256": "0fcc8dc5b56019905738372d44868a6dc44c6baf543367c8f1ad17b046ca0dc9",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 11,
+      "voltage_v": 7.87353515625e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 7.873535156249999e-06,
+      "held_minus_requested_v": -1.6940658945086007e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "52c2e4ff6cb2c81d0d3539d9e38cd5855ce054385c201d15fc7a641eb44af90c",
+      "signals_sha256": "9903010b54b60899645b89971daa4143c6e30b5cd73722d92729300137e385a8",
+      "observed_sha256": "a0587c0341c18da5d7a8f33454f9c402ae5b49f2282a7b598683e819b400d07f",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 12,
+      "voltage_v": 7.843017578125e-06,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 7.843017578124997e-06,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "6241a119317cd07ee1a2f83012372856e839a739d05377a052c8f8dbee2283e0",
+      "signals_sha256": "8ccf9e598d41ebf2a0140f3c0a8780276c6f8c1dae2799271c057040b63695a7",
+      "observed_sha256": "ae270a5da1e0de4d71a8d1dd5bd207c4e397afadcd966cafd8690b273456008f",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 13,
+      "voltage_v": 7.8277587890625e-06,
+      "code20": 524289,
+      "raw6": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 7.8277587890625e-06,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          42.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "0bb358b780097306c65e34983bee84ac714ed446c261d0997619ea47fe8fe9ac",
+      "signals_sha256": "d106219ade0a1d16f99fb8b39f1b42c277a44a3caf3f2217331c22f2d7300b0b",
+      "observed_sha256": "f4440f73a44b19a2b86ee9050dc4190b42dbffd690c1be8d8c9f3bed426ef382",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 14,
+      "voltage_v": 1.953125e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.9531249999999997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "a2c8296c99481d020314ad5f449da9e8462741f4083a661cddc8457dadbf5d16",
+      "signals_sha256": "0742363f7a13559148b92af4d14f0ee2ec4454b9e5a3242274414469cf558448",
+      "observed_sha256": "d97b7cbc7b4dd7579611216ec7187f88a4af8664134dd8a29accaed6e5792bd3",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 15,
+      "voltage_v": 1.7578125000000002e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.7578125000000002e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "6c4996445de5e8a52fb99b5751b916359724f7fcdb1041fa5be555667fedc1d7",
+      "signals_sha256": "66d8799690b310dfaac6a24d3d788233caa78623855578c7cafe2f85a8ee3a13",
+      "observed_sha256": "75e835bff3b18d12e9ee63c2ef831af1cab43a8e8f562f69f8a387dcafc0fd6c",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 16,
+      "voltage_v": 1.66015625e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.66015625e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "b4b93bfac47e1a2b1b4e256eec76beee4ed2ced0f3bb3c0fb1bdac115c66a294",
+      "signals_sha256": "08791c15eb226d108e7e86f6ae99827b68857cf4d0f1b7340002cbe2f65a7954",
+      "observed_sha256": "388bb7bccc5fa0f6706e65c7f9ff94a6b67c34ae921868702ff015a70319a151",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 17,
+      "voltage_v": 1.611328125e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.6113281249999997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "53ec19983354f645bf548b398e2416f3aad03d7e7b4c8bcba9d9c5d04238666b",
+      "signals_sha256": "57fd196b2fc49ce48019b7f02f63ecd0bd85766b6e79f9f2ae34af93f89f1288",
+      "observed_sha256": "17e7f5944bddede5b20ef44a27d6b831a14085c45a035c74b96e79e2f4d3e927",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 18,
+      "voltage_v": 1.5869140625e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.5869140624999997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "c2633ea38d2ee93c4acaab7daaa0184d7e8d0b2562d8a2add115ad481b8cb2f6",
+      "signals_sha256": "2460351930a8244d3550bf119882813fabd13a7bbc99776e6d6d36588fa426ba",
+      "observed_sha256": "15056dc7e2a86f6b2d27dee8cc528c30dc38acc9145c2bef519d4df675741373",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 19,
+      "voltage_v": 1.57470703125e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.5747070312499997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "30f5dc1b28b0357a8ca3727766d01b1f01c18bbf3a928810d9aa7ef5554ace45",
+      "signals_sha256": "7c406efd8ace31d0754945eee9c127b7fd522cf0f7c0349a247ae7a49f78fb69",
+      "observed_sha256": "b4fa099d41d5ec0336cc66b0b252a0e0ad4c351fb2a20e8b3caac108593ab5d2",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 20,
+      "voltage_v": 1.568603515625e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.5686035156249994e-05,
+      "held_minus_requested_v": -6.776263578034403e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "35171d3202a6769ff0ca01b3de03dab69a38ce42c7d9e2b308de2b6f618d305e",
+      "signals_sha256": "279f8832bf40daa70f954f4c77d9c309ac3454078071153ec86530c4aecc7aed",
+      "observed_sha256": "42d5f37ae98566782c1ed89fb8c8ab70220007b99de31067fb8be8de23cb6d0f",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 21,
+      "voltage_v": 1.5655517578125e-05,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.5655517578125e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "1b157f86eaff84ad1b1ec01b21bf198c31ddd7fad059730331356468168801a2",
+      "signals_sha256": "19b61b604d0de298d8f3e52d75b8679f44e8005e35c36d3221b50f0cb7596bbc",
+      "observed_sha256": "d9fe6c1831d08dda80591191ee75632483f8290200d6fb306438401ffdb19314",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 22,
+      "voltage_v": 1.5670776367187502e-05,
+      "code20": 524290,
+      "raw6": [
+        1040.0,
+        2374.0,
+        85.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 1.56707763671875e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          85.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "39c7202ff8088a1f3ad3b9d14bcffbfb97880e3907e70b52bc80e04d5a3286df",
+      "signals_sha256": "394c0f8f40b7cd401ac0ee598b49a745bbbb390d6445084ea0607ec1fad3b556",
+      "observed_sha256": "b7330791bf4adeebe6f033d42c76375ca231cc09139adf57674988c6b54f1329",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 23,
+      "voltage_v": 2.734375e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.7343749999999997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "22143c8af6143a5a18eea0d7245dacbf11351d08ede1a53d8a7256e21477ad2f",
+      "signals_sha256": "816ea6803baab8483fccccf5d6fd02b5e06706e90bba0e823b53ea42d287010a",
+      "observed_sha256": "bf4ca3ca4f807ed160a3c9476caf02a817b3d250d03b6520919c8a1ed947f05a",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 24,
+      "voltage_v": 2.5390625000000002e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.5390624999999995e-05,
+      "held_minus_requested_v": -6.776263578034403e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "62349b6d448be313e012eedb73c5c02120fb6cc86c345cc8316f78880a4aea32",
+      "signals_sha256": "d7a436d1635b19b8b85f7eaa8a417a66963f7653b48bbc2244a1c01b116e9257",
+      "observed_sha256": "862fda12f874aff9d9bfa52865bb313f8e6222782105dbe3be2a156acd6859d2",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 25,
+      "voltage_v": 2.44140625e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.4414062499999998e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "fb595acb489f775cdeddd5b07794caafd58d3e3b97b66264458b6f8935bef4d1",
+      "signals_sha256": "2eb6d3f8c425998827026f4ca7e8f5989c169a8a1c8318fad8a52356f859aafc",
+      "observed_sha256": "eb698fcd7ef37394c1abe05e69ece3a3ec3d2d09e2a7ee6870128d9b2ad8a41c",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 26,
+      "voltage_v": 2.392578125e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.3925781249999998e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "0ed50544c602ebfa1f6bedaed87d7b02f32d3899c2e8de0f0765ec5cf0bd48a9",
+      "signals_sha256": "789e5916edeb57bb8c8d18858254d2e4c54c3aa304cbd154eef3ce1a690ba928",
+      "observed_sha256": "73c6a7eec6b6cc8f6e51dcd93aedd8aeedfa55bb68ef1cecc3d86bc702e6faba",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 27,
+      "voltage_v": 2.3681640625e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.3681640625e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "c49434c2636f12bb1fcd255d984f7327a66fecdd5cbdb17b8de4a9403ae6d487",
+      "signals_sha256": "4f2692432cf354bd6ecb52e92504908acedc6d0a13052b1de96a58c1d77d10da",
+      "observed_sha256": "f4e58e6b4960489583f2e8c013100a6cfc79468a0981fa814c57d4e6596220f9",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 28,
+      "voltage_v": 2.35595703125e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.3559570312499994e-05,
+      "held_minus_requested_v": -6.776263578034403e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "3982a21d07e3170da1fabe2174984d40d695bd7b5d0e3651f971c597035b8459",
+      "signals_sha256": "c4baaf2c8a27098148d5e29fbf38c7eaf486808cee728fbec999c32f470f96de",
+      "observed_sha256": "0a7cc5a2d18878cf31f5d64f351a798a0b59c4919c141cd8155d889aaed3fe40",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 29,
+      "voltage_v": 2.349853515625e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.3498535156249997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "bbd4e28f8d1d54d3d4d536d07c5c49e94c2c6860fbf6ca38d0e5edc35222b356",
+      "signals_sha256": "60618338d5f9dce5b1650aac7c714612bc253cbffa11e224a891ec5a710a0ebf",
+      "observed_sha256": "5df48c90f654d4910916c9bf30af9f39d60b6c9d4d5bd3aef4cabfb189c21ea2",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 30,
+      "voltage_v": 2.3529052734375e-05,
+      "code20": 524292,
+      "raw6": [
+        1040.0,
+        2374.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.3529052734374997e-05,
+      "held_minus_requested_v": -3.3881317890172014e-21,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          213.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "e86d9b03c29051a1c26132d8dd39ed9d339ffa7f1c7af7e69d4c6be4913a92eb",
+      "signals_sha256": "5346b4febeec86ec11b5ba4dc6e5dc6cdd6d802b50a4b2c14a5b188964389489",
+      "observed_sha256": "6f3dbf6e203475493a055e21d1e9f8088eb61f87f43bf2d0c57aa45c03e43338",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    },
+    {
+      "index": 31,
+      "voltage_v": 2.35137939453125e-05,
+      "code20": 524291,
+      "raw6": [
+        1040.0,
+        2374.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "selected_ready_s": 8.8625e-07,
+      "held_input_v": 2.35137939453125e-05,
+      "held_minus_requested_v": 0.0,
+      "all_ready_raw6": [
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          2.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          3.0,
+          1.0,
+          1.0
+        ],
+        [
+          1040.0,
+          2374.0,
+          170.0,
+          4.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "P_sha256": "c1dbc21457b92ed5fe092548143f586ce10ecb11e3a6f1052a253d643534a96e",
+      "signals_sha256": "f2741bc33640b2443195e852869f7e50ce319c18da4ba1fa36046bfade64b742",
+      "observed_sha256": "859fd9652b17285629828ab0c2c3e5adaff656d39c73891e76afc38c4eac5671",
+      "P_difference_vs_point1": [
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ]
+    }
+  ],
+  "transition_brackets": [
+    {
+      "to_code": 524290,
+      "lo_v": 7.8277587890625e-06,
+      "hi_v": 7.843017578125e-06,
+      "width_v": 1.5258789062500014e-08,
+      "iterations": 9
+    },
+    {
+      "to_code": 524291,
+      "lo_v": 1.5670776367187502e-05,
+      "hi_v": 1.568603515625e-05,
+      "width_v": 1.525878906249832e-08,
+      "iterations": 9
+    },
+    {
+      "to_code": 524292,
+      "lo_v": 2.35137939453125e-05,
+      "hi_v": 2.3529052734375e-05,
+      "width_v": 1.5258789062501708e-08,
+      "iterations": 9
+    }
+  ],
+  "nominal_lsb_v": 7.8125e-06,
+  "conditional_local_DNL_bounds": [
+    {
+      "code": 524290,
+      "width_lower_v": 7.827758789062502e-06,
+      "width_upper_v": 7.8582763671875e-06,
+      "dnl_lower_lsb": 0.001953125000000222,
+      "dnl_upper_lsb": 0.005859375
+    },
+    {
+      "code": 524291,
+      "width_lower_v": 7.827758789062498e-06,
+      "width_upper_v": 7.858276367187499e-06,
+      "dnl_lower_lsb": 0.001953124999999778,
+      "dnl_upper_lsb": 0.005859374999999778
+    }
+  ],
+  "scope": "The two DNL intervals are conditional on monotonic and single adjacent transitions between unsampled inputs; bracket endpoint inclusion is not established. Four warmups do not prove general steady state. No global monotonicity, full-range DNL/INL, silicon or PDK claim.",
+  "per_point_retention": "Nine saved native timeseries; full SimulationOutput and ErrorMessage are not retained per point; native no-error assertion and override details are from receipt/job source."
+}

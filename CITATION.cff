@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this behavioral model, please cite it as below."
+title: "SAR20-5: Behavioral Simulink Model of a 20-bit 5 MS/s Two-Step SAR ADC"
+abstract: >-
+  A MATLAB/Simulink behavioral model of a 5 MS/s two-step SAR ADC with a
+  10-bit discrete-time first stage, 32x residue amplification / auto-zero,
+  an 11-bit continuous-time second stage, 12 D2 decisions and 8 tracking
+  comparisons with 7 physical feedback updates. The current released normal
+  operating point is a single N=256 coherent FFT with SNDR 99.133 dB and
+  ENOB 16.17 bit. This is a behavioral modeling project, not a reproduction
+  of the UESTC CICC 2026 silicon results and not a signoff artifact.
+type: software
+authors:
+  - name: "zhaoyi"
+    alias: "defineiocc02"
+date-released: 2026-11-05
+url: "https://github.com/defineiocc02/20bit5msar"
+repository-code: "https://github.com/defineiocc02/20bit5msar"
+keywords:
+  - SAR-ADC
+  - mixed-signal
+  - behavioral-model
+  - Simulink
+  - MATLAB
+  - two-step-SAR
+  - continuous-time-second-stage
+  - tracking-averaging
+  - auto-zero
+  - residue-amplifier
+notes: >-
+  Reproduction status: NOT REPRODUCED. The UESTC CICC 2026 paper has not been
+  reproduced; no acceptance criteria for reproduction have been defined in the
+  project, and the current normal baseline is not single-source attributable.
+  Metrics must not be cited as validation of the paper, as DNL/INL, as a 20k-point
+  spectrum, or as power/area/PDK results. See docs/ENGINEERING_ANALYSIS.md.
+preferred-citation:
+  type: article
+  title: "A 3.6mW 5MS/s 100dB-SNDR 2-Step SAR ADC with Continuous-Time Second-Stage and Tracking Averaging"
+  year: 2026
+  journal: "IEEE Custom Integrated Circuits Conference (CICC)"
+  doi: "10.1109/CICC65509.2026.11509489"
+  notes: "Architecture reference only. Included here for attribution, not as a claim of reproduction."

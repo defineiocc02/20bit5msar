@@ -1,0 +1,77 @@
+[
+    {
+        "path":  "plain/binding_after.mat",
+        "sha256":  "748680ceb6441b5f4a80ad6c8c55d803f72062a92c2e68ca35daed9cbe918534",
+        "bytes":  119264
+    },
+    {
+        "path":  "plain/binding_before.mat",
+        "sha256":  "c36feaca353e28a87465a75d854737edca05073cd82163014dd45718bc8a3974",
+        "bytes":  119264
+    },
+    {
+        "path":  "plain/complete.json",
+        "sha256":  "eb77410ab643ce7484f025a3e19d4927338d317322b40623e3374ddeaa53e51b",
+        "bytes":  2201
+    },
+    {
+        "path":  "plain/P_used.mat",
+        "sha256":  "236ddfb427dfc07e7f7e27dd58746deb30946891717d255b53789aa8127a1e9f",
+        "bytes":  2937024
+    },
+    {
+        "path":  "plain/rng_before.mat",
+        "sha256":  "b6b9adc44c3e90d3514e8df5612bb3c44b8a127fd183f0d9256fbf0c23b635e5",
+        "bytes":  11712
+    },
+    {
+        "path":  "plain/simout.mat",
+        "sha256":  "d472f01a80a832cd483783e4ceca0640a692e0094d1a64f5400411e5201a934c",
+        "bytes":  870309
+    },
+    {
+        "path":  "plain/sim_complete.json",
+        "sha256":  "41b2f751c21efd15d01e5b6b2144ce4592424b5220c2f1387e123cb083ea315b",
+        "bytes":  1995
+    },
+    {
+        "path":  "plain/started.json",
+        "sha256":  "c5d646c6aeb6c2955684a337d946c492a596d330bfef6b9039b29217d34cc51a",
+        "bytes":  777
+    },
+    {
+        "path":  "plain/validation.json",
+        "sha256":  "b3d698fb7fefc8b97d52523d2faba5ed82c5143c051c659a9dcb994000f58ab1",
+        "bytes":  832
+    },
+    {
+        "path":  "plain/validation.mat",
+        "sha256":  "8f90e61646e1c1676ea9fd3a32457ca1eaf3789691d68d0b81a0657cd4eb60b7",
+        "bytes":  13272
+    },
+    {
+        "path":  "controller_status.json",
+        "sha256":  "40891242f2c03bee3b2ddbc0fcdd3f7d33c792c4e180442a356a492e6310296d",
+        "bytes":  146
+    },
+    {
+        "path":  "matlab_stdout.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "matlab_stderr.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "existing_task_before.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    },
+    {
+        "path":  "existing_task_after.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    }
+]

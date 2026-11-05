@@ -1,0 +1,30 @@
+function p=behavior_jitter_parameters(p)
+%BEHAVIOR_JITTER_PARAMETERS Endpoint aperture-error design assumptions, SI seconds.
+% enabled=false ignores all offsets and preserves legacy capture arithmetic.
+% common/local sigma >=0 s; skew[18] finite signed s; independent uint32 seed.
+% This is NOT clock-event jitter: the scheduler and compare times stay nominal.
+% first_coarse_offset_s must come from actual calendar, never an aperture field.
+    q=struct('enabled',false,'common_sigma_s',0,'local_sigma_s',0, ...
+        'fixed_slice_skew_s',zeros(18,1),'seed',20261029,'first_coarse_offset_s',NaN);
+    if nargin==0,p=q;return;end
+    assert(isstruct(p)&&isscalar(p)&&all(ismember(fieldnames(p),fieldnames(q))), ...
+        'behaviorFE:jitterConfig','Unknown aperture configuration field.');
+    k=fieldnames(p);for n=1:numel(k),q.(k{n})=p.(k{n});end;p=q;
+    assert(isscalar(p.enabled)&&isreal(p.enabled)&&any(double(p.enabled)==[0 1]), ...
+        'behaviorFE:jitterFlag','enabled must be logical.');p.enabled=logical(p.enabled);
+    for k={'common_sigma_s','local_sigma_s'}
+        v=p.(k{1});assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v)&&v>=0, ...
+            'behaviorFE:jitterSigma','Aperture RMS must be finite nonnegative seconds.');
+        p.(k{1})=double(v);
+    end
+    v=p.fixed_slice_skew_s;
+    assert(isnumeric(v)&&isreal(v)&&numel(v)==18&&all(isfinite(v(:))), ...
+        'behaviorFE:jitterSkew','fixed_slice_skew_s must be 18 finite seconds.');
+    p.fixed_slice_skew_s=double(v(:));v=p.seed;
+    assert(isnumeric(v)&&isreal(v)&&isscalar(v)&&isfinite(v)&&v>=0&&v<=2^32-1&&v==floor(v), ...
+        'behaviorFE:jitterSeed','seed must be uint32-valued.');p.seed=double(v);
+    v=p.first_coarse_offset_s;
+    assert(isnumeric(v)&&isreal(v)&&isscalar(v)&& ...
+        ((~p.enabled&&isnan(v))||(isfinite(v)&&v>0)), ...
+        'behaviorFE:jitterCalendar','Enabled aperture mode needs actual calendar coarse-latch offset.');
+end

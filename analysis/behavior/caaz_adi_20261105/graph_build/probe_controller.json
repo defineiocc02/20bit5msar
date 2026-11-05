@@ -1,0 +1,8 @@
+{
+    "phase":  "probe",
+    "error":  "System.Management.Automation.RuntimeException: Build failed: 1\n在 \u003cScriptBlock\u003e、D:\\Temp\\SAR20PKU_SINGLE_20261105\\controller.ps1 中: 第 27 行",
+    "simulation_run":  false,
+    "status":  "failed",
+    "exit_code":  1,
+    "launch_pid":  43552
+}

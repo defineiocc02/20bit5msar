@@ -1,0 +1,29 @@
+function report=sar20_bank_require_actual_binding(P)
+%SAR20_BANK_REQUIRE_ACTUAL_BINDING Pure future compile/enable gate, NOT wired.
+% A future integration must evaluate this helper with the ACTUAL prepared model
+% workspace P at apply, native compile and every bank-enable boundary. Calling
+% it on a fabricated struct or merely checking the owner's declared profile is
+% not evidence that the real model has tauDAC=0. Reads only configuration flags,
+% never analog state, actual C, held, RAW or reference values; does not mutate P.
+    assert(isstruct(P)&&isscalar(P)&&all(isfield(P,{'bank','front','digital','frozen'}))&& ...
+        isstruct(P.bank)&&isscalar(P.bank)&&isfield(P.bank,'enabled')&& ...
+        isstruct(P.front)&&isscalar(P.front)&&isfield(P.front,'tau_dac_s')&& ...
+        isstruct(P.digital)&&isscalar(P.digital)&&isfield(P.digital,'calibration_mode')&& ...
+        isstruct(P.frozen)&&isscalar(P.frozen)&&isfield(P.frozen,'enabled'), ...
+        'bankOwner:actualBindingFields','Complete actual applied bank/front/digital/frozen flags are required.');
+    assert(binary(P.bank.enabled)&&binary(P.frozen.enabled), ...
+        'bankOwner:actualBindingFlags','Actual bank/frozen flags must be binary scalars.');
+    t=P.front.tau_dac_s;
+    assert(isa(t,'double')&&isreal(t)&&isequal(size(t),[18 1])&& ...
+        all(~isnan(t))&&all(t>=0),'bankOwner:actualTauShape','Actual tauDAC must be normalized nonnegative double[18x1].');
+    assert(ischar(P.digital.calibration_mode)&&isrow(P.digital.calibration_mode), ...
+        'bankOwner:actualDigital','Actual digital calibration mode must be explicit text.');
+    if P.bank.enabled
+        assert(all(t==0),'bankOwner:actualTau','Actual enabled bank requires tauDAC18=0, including no Inf.');
+        assert(~P.frozen.enabled,'bankOwner:duplicateDecode','Old FrozenDecode and new bank cannot both be enabled.');
+        assert(strcmp(P.digital.calibration_mode,'off'),'bankOwner:actualDigital','Nominal digital codebook mode must be off.');
+    end
+    report=struct('scope','UNWIRED_PURE_BINDING_CHECK_ONLY','bank_enabled',logical(P.bank.enabled), ...
+        'actual_tau0',all(t==0),'old_frozen_enabled',logical(P.frozen.enabled));
+end
+function yes=binary(x),yes=(isnumeric(x)||islogical(x))&&isreal(x)&&isscalar(x)&&isfinite(double(x))&&any(double(x)==[0 1]);end

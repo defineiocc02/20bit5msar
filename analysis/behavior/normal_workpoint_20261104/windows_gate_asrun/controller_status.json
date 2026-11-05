@@ -1,0 +1,14 @@
+{
+    "exit_code":  -1073740940,
+    "completed":  [
+                      "test_single_rc_ktc",
+                      "test_joint_ou_az_dac",
+                      "test_joint_ou_rc_return",
+                      "test_comparator_single"
+                  ],
+    "error":  "System.Management.Automation.RuntimeException: test_normal_10v exited with code -1073740940; inspect logs and partial outputs.\n在 \u003cScriptBlock\u003e、D:\\Temp\\SAR20NORMAL_20261104_NX\\controller.ps1 中: 第 49 行",
+    "gui_preserved":  true,
+    "status":  "failed",
+    "original_task_unchanged":  true,
+    "phase":  "test_normal_10v_postverify"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "LOCAL_TEMP_CLEANUP_COMPLETE",
+  "archive_sha256": "3504a9a93a4f04c2a009be691641dc82836677697d4daf25e9c16e0d02cfe5bf",
+  "archived_files": 210,
+  "temp_logical_bytes_removed": 9201181,
+  "archive_bytes": 789219,
+  "additional_evidence_backup_bytes": 1211042,
+  "net_logical_bytes_reduced": 7200920,
+  "raw_as_run_preserved": true,
+  "production_code_model_modified": false
+}

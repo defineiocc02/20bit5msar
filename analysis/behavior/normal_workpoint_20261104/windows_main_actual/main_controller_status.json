@@ -1,0 +1,17 @@
+{
+    "exit_code":  0,
+    "completed":  [
+                      "ideal_v2_n8",
+                      "ideal_merged_n8",
+                      "normal_merged_n8",
+                      "normal_merged_n8_tap",
+                      "normal_merged_n256",
+                      "ideal_merged_n256"
+                  ],
+    "original_task_unchanged":  true,
+    "error":  "",
+    "status":  "passed",
+    "gui_preserved":  true,
+    "phase":  "complete",
+    "startup_option":  "-softwareopengl"
+}

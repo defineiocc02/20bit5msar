@@ -1,0 +1,43 @@
+{
+  "receipt_sha256": "78c2e66522a22b9f486efffdd36b1509b1765d11ff6b0ed687f9d9426f523444",
+  "entry_final_sha256": "321e098b1544b828cd4e4158d7feee3831dbe5c2538871134f343b905a9a1ba3",
+  "cleanup_sha256": "79534fa542c10c5261caf681dbf3019ed32a400de24bc329838c4ce845ba5967",
+  "manifest_sha256": "70b8fa104e440b8e635b019f7c6c113afd1163d7fbda1dc9d4055d6269e61a49",
+  "entry_source_sha256": "292e56acabc378d0938246118f2beced553694369e4a07fe44071389fe3afb81",
+  "runner_source_sha256": "1b87b6688ed2660afbd6c0a07f45c4b67ef2778cdd8b41b00d9c8bc481bef3b5",
+  "installer_source_sha256": "066865e183ee786294ffd99c42f4ae9ef3428ad384e83e60fd1dc583c4c4c988",
+  "candidate_zip_omitted_documents": [
+    "README.md",
+    "README_RESUME.md",
+    "create_real_qualification.py",
+    "extract_prior_audit_summary.py"
+  ],
+  "prior_artifact_hashes_reverified": 9,
+  "owner_ports": [
+    10,
+    4
+  ],
+  "command_ports": [
+    1,
+    1
+  ],
+  "old_function_names": {
+    "owner": "matlabfile",
+    "command": "matlabfile"
+  },
+  "graph_blocks_before_after": [
+    287,
+    290
+  ],
+  "graph_edges_before_after": [
+    341,
+    361
+  ],
+  "all_declared_parent_cutover_root_wires_in_saved_XML": true,
+  "complete_final_gate_not_run": true,
+  "final_check_first_only": "healthy saved; assertion aborted",
+  "partial_sha256": "a23e6c59356b3ecc7a9a3dfc2499b0af9416fe2281533b059e1c72a443c2deca",
+  "main_public_and_session_restoration_native_claim": true,
+  "main_private_P_compared": false,
+  "scope": "No MATLAB rerun; nested c=onCleanup overwrite matches observed invalidConversion; no OFF/ON simulation has occurred."
+}

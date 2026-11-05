@@ -1,0 +1,94 @@
+{
+  "status": "XML_SCOPE_PASS_PENDING_N8",
+  "baseline_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "model_sha256": "e13bd2529024346f510446de5c9046689c62c4d61b6e9869dea0d5da1cb86bfb",
+  "input_manifest_sha256": "3cb51df5a172dc1f2f81e787389ace0c79c230035127ab67bc468a0820034e8d",
+  "added_blocks": [
+    {
+      "sid": "467",
+      "name": "PhysicalStateTap",
+      "type": "ToWorkspace"
+    },
+    {
+      "sid": "466",
+      "name": "PhysicalStateMux",
+      "type": "Mux"
+    }
+  ],
+  "added_edges": [
+    [
+      "466#out:1",
+      "467#in:1"
+    ],
+    [
+      "116#out:1",
+      "466#in:1"
+    ],
+    [
+      "297#out:1",
+      "466#in:11"
+    ],
+    [
+      "261#out:3",
+      "466#in:5"
+    ],
+    [
+      "232#out:3",
+      "466#in:3"
+    ],
+    [
+      "297#out:3",
+      "466#in:6"
+    ],
+    [
+      "148#out:1",
+      "466#in:2"
+    ],
+    [
+      "261#out:4",
+      "466#in:10"
+    ],
+    [
+      "244#out:4",
+      "466#in:9"
+    ],
+    [
+      "149#out:1",
+      "466#in:7"
+    ],
+    [
+      "232#out:4",
+      "466#in:12"
+    ],
+    [
+      "244#out:1",
+      "466#in:4"
+    ],
+    [
+      "232#out:1",
+      "466#in:8"
+    ]
+  ],
+  "observer_width": 2015,
+  "old_block_parameters_and_edges": "unchanged",
+  "configset": "unchanged",
+  "workspace_bytes": "unchanged",
+  "ignored_UI_metadata": [
+    "metadata/coreProperties.xml"
+  ],
+  "observed_save_regenerated_dictionary_uuids": [
+    {
+      "element": "System",
+      "before": "605e3798-f950-47c2-9384-6c3bd29dd94c",
+      "after": "fe0cf205-34fd-4298-aaa5-e8d6ad69cb3e"
+    },
+    {
+      "element": "Interface",
+      "before": "a53eb4a6-fe2e-4a70-9d85-8b311ce49ffb",
+      "after": "5a5c54ff-fe56-4ce9-a00d-b95158c9c0b0"
+    }
+  ],
+  "decimation_xml_explicit": false,
+  "decimation_runtime_readback": "1",
+  "scope": "static saved graph XML only; N8 nondisturbance still required"
+}

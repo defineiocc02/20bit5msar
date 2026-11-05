@@ -1,0 +1,15 @@
+
+--------------------------------------------------------------------------------
+             Access violation detected at 2026-11-04 23:20:55 +0800
+--------------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding           : Disabled - No sandbox or build area path
+  Crash Mode               : continue (default)
+  Default Encoding         : UTF-8
+  MATLAB Architecture      : win64
+  MATLAB Root              : D:\Academic\Matlab
+  MATLAB Version           : 24.1.0.2689473 (R2024a) Update 6
+  Operating System         : Microsoft Windows 8
+  Process ID               : 29892
+  Processor ID             : x86 Family 25 Model 117 Stepping 2, AuthenticAMD

@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-26T12:48:41.568867+00:00",
+  "action": "terminated_own_local_read_only_status_ssh_after_9_minutes",
+  "local_ssh_pid": 77728,
+  "matlab_command_sent": false,
+  "simulation_stop_sent": false,
+  "reason": "Abandoned oversized JSON/status query; no longer useful."
+}

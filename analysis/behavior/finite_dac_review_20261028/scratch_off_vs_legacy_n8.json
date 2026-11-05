@@ -1,0 +1,361 @@
+{
+  "schema": "sar20-finite-dac-as-run-readonly/v1",
+  "run": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/az_probe_20261027T022517Z/dac_off_tau0",
+  "baseline": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/runs/behavior_e385aab5-b7f4-48bc-8111-eb231b8e4d50",
+  "expect": "off",
+  "scratch": true,
+  "sha256": {
+    "parameters.mat": "4e2a281875fdf81cbeab54ca75a22cdaa24f4a2e7a5b03599cd57189026900d0",
+    "simout.mat": "064750a0b3a241e005e7af1f1cc6448041c38d9a3c69afc9e084b6aac57d5c68",
+    "summary.json": "9f6ff33caece343fc827edc5368c9e5f6c0a674e456bb850523f3a6b05ce380d",
+    "SarDac.slx": "a1515e2a0f0439c6f9a5541151224bd8f37b0d799c9025e38f2e02abc939da47"
+  },
+  "baseline_sha256": {
+    "parameters.mat": "782cdded97a199c1b198d3fd0f1b828975bdbe938d294d77ccd523c7a72994bd",
+    "simout.mat": "e5200651eeb5bb0ab85dac202369b4a285702c443a8f3cd7f10b38b2c7bc4d65",
+    "summary.json": "0d4ee605ced7ffbe081510f829addc05f2ee8cee9046c5ca2a012378f9715224",
+    "SarAdc.slx": "f57e353618c7132ce8545a3efb7330ebfd176ad9d04985f30a929211a2ccecd7",
+    "source.zip": "15579ef4093c1c4becb46021d2b7832d6baa1d7e5b919a24854ccd02de7d1002",
+    "source_manifest.json": "f91e3dd2703aae754ba91ecf9fb3f35edbc5c042dd39daad59675c0293a44947"
+  },
+  "verifier_sha256": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467",
+  "source_execution_boundary": "Scratch archive: no production source.zip/manifest claim.",
+  "baseline_source_boundary": "Saved source ZIP and manifest match; no independent MATLAB per-function which/call trace is implied.",
+  "analytic_tolerance_used": [],
+  "analytic_pass_declared": false,
+  "scope": "Actual saved behavioral run only; no simulation, ADC physics, silicon or signoff claim.",
+  "as_run_graph": {
+    "old_FE_to_advance_input4": true,
+    "RaAdvance_dialog": "'advance',P.backend",
+    "checked_binding": false,
+    "actual_RaAdvance_pre_CINC_probe_edge": true,
+    "added_native_edges_vs_baseline": [
+      [
+        "237#out:1",
+        "321#in:4"
+      ],
+      [
+        "321#out:2",
+        "452#in:1"
+      ]
+    ],
+    "removed_native_edges_vs_baseline": [],
+    "unit_delay_trigger_inventory_unchanged": true,
+    "solver_config_P_inventory_equal": true
+  },
+  "saved_P_differences_vs_baseline": [
+    "P/backend/dac_coupling",
+    "P/debug/dac_enabled",
+    "P/debug/dac_max_points"
+  ],
+  "configuration": {
+    "N": 8,
+    "first_id": 4,
+    "epoch": 1,
+    "transport": "on",
+    "dac_coupling": false,
+    "tau_s": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "finite_dac_NI": false,
+    "probe_enabled": true,
+    "saved_calendar_token_budget": {
+      "d2_decide": 12,
+      "ta_compare": 8,
+      "ta_feedback": 7
+    }
+  },
+  "baseline_original_logs": {
+    "count": 29,
+    "mismatched": []
+  },
+  "actual_records": [
+    {
+      "time_s": 1.338e-06,
+      "raw6": [
+        1900.0,
+        3283.0,
+        234.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code20": 963400.0
+    },
+    {
+      "time_s": 1.538e-06,
+      "raw6": [
+        1932.0,
+        2907.0,
+        85.0,
+        5.0,
+        1.0,
+        1.0
+      ],
+      "code20": 979654.0
+    },
+    {
+      "time_s": 1.738e-06,
+      "raw6": [
+        1941.0,
+        3366.0,
+        85.0,
+        6.0,
+        1.0,
+        1.0
+      ],
+      "code20": 989058.0
+    },
+    {
+      "time_s": 1.938e-06,
+      "raw6": [
+        1960.0,
+        2486.0,
+        42.0,
+        7.0,
+        1.0,
+        1.0
+      ],
+      "code20": 991473.0
+    },
+    {
+      "time_s": 2.1379999999999997e-06,
+      "raw6": [
+        1939.0,
+        3240.0,
+        85.0,
+        8.0,
+        1.0,
+        1.0
+      ],
+      "code20": 986858.0
+    },
+    {
+      "time_s": 2.3380000000000003e-06,
+      "raw6": [
+        1928.0,
+        2731.0,
+        213.0,
+        9.0,
+        1.0,
+        1.0
+      ],
+      "code20": 975288.0
+    },
+    {
+      "time_s": 2.538e-06,
+      "raw6": [
+        1878.0,
+        2771.0,
+        43.0,
+        10.0,
+        1.0,
+        1.0
+      ],
+      "code20": 956933.0
+    },
+    {
+      "time_s": 2.738e-06,
+      "raw6": [
+        1838.0,
+        2484.0,
+        42.0,
+        11.0,
+        1.0,
+        1.0
+      ],
+      "code20": 932073.0
+    }
+  ],
+  "unclassified_or_outside_ready_records": [
+    {
+      "time_s": 5.38e-07,
+      "raw6": [
+        1648.0,
+        2890.0,
+        213.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "code20": 836244.0
+    },
+    {
+      "time_s": 7.38e-07,
+      "raw6": [
+        1719.0,
+        3386.0,
+        85.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "code20": 876482.0
+    },
+    {
+      "time_s": 9.38e-07,
+      "raw6": [
+        1802.0,
+        2394.0,
+        170.0,
+        2.0,
+        1.0,
+        1.0
+      ],
+      "code20": 911427.0
+    },
+    {
+      "time_s": 1.138e-06,
+      "raw6": [
+        1846.0,
+        2765.0,
+        213.0,
+        3.0,
+        1.0,
+        1.0
+      ],
+      "code20": 940544.0
+    }
+  ],
+  "validity": {
+    "ready_rows_in_window": 8,
+    "valid_1": 8,
+    "valid_0": 0,
+    "valid_other_or_nonfinite": 0,
+    "timeout": "not separately observed",
+    "overrange": "not independently observed; controller invalid latch is not hardware overrange"
+  },
+  "actual_event_and_io": {
+    "48_groups_per_selected_id": true,
+    "actual_calendar_bits_match_saved_P": true,
+    "baseline_event_Time_Data_bits_match": true,
+    "ADC_and_RX_RAW6_same_id_epoch": true,
+    "ADC_ready_actual_raw_latch": true,
+    "RX_ready_actual_group49_id_plus_2": true,
+    "RX_actual_time_matches_saved_parent_slot": true,
+    "actual_valid_RX_frame_same_RAW6": true,
+    "nominal_RAW_decode_exact": true,
+    "comparator_counts": "saved 12/8/7 token budget; individual comparator counter history not independently logged",
+    "reset_state": "BackLog is pre-final-reset; committed reset state not asserted"
+  },
+  "interval": {
+    "status": "actual endpoint deltas reported; no numerical pass/tolerance declared",
+    "group_start": 12,
+    "group_end": 13,
+    "rows": [
+      {
+        "id": 4,
+        "t0_s": 8.3125e-07,
+        "t1_s": 8.4375e-07,
+        "Q0_C": 1.788438657139334e-13,
+        "Q1_C": 1.788438657139334e-13,
+        "inferred_Qinf_C": 1.788438657139334e-13,
+        "actual_pre_VX_V": 0.1969291010504645,
+        "independent_expm_VX_V": 0.196929101050464,
+        "raw_delta_V": 4.996003610813204e-16
+      },
+      {
+        "id": 5,
+        "t0_s": 1.0312499999999999e-06,
+        "t1_s": 1.04375e-06,
+        "Q0_C": 1.5109595553625695e-13,
+        "Q1_C": 1.5109595553625695e-13,
+        "inferred_Qinf_C": 1.5109595553625695e-13,
+        "actual_pre_VX_V": 0.1663752378497034,
+        "independent_expm_VX_V": 0.166375237849703,
+        "raw_delta_V": 3.885780586188048e-16
+      },
+      {
+        "id": 6,
+        "t0_s": 1.2312499999999999e-06,
+        "t1_s": 1.24375e-06,
+        "Q0_C": 1.9098008685459607e-13,
+        "Q1_C": 1.9098008685459607e-13,
+        "inferred_Qinf_C": 1.9098008685459607e-13,
+        "actual_pre_VX_V": 0.21029257376360325,
+        "independent_expm_VX_V": 0.21029257376360277,
+        "raw_delta_V": 4.718447854656915e-16
+      },
+      {
+        "id": 7,
+        "t0_s": 1.4312499999999998e-06,
+        "t1_s": 1.44375e-06,
+        "Q0_C": 5.1280591635767854e-14,
+        "Q1_C": 5.1280591635767854e-14,
+        "inferred_Qinf_C": 5.1280591635767854e-14,
+        "actual_pre_VX_V": 0.0564662409406921,
+        "independent_expm_VX_V": 0.056466240940692,
+        "raw_delta_V": 1.0408340855860843e-16
+      },
+      {
+        "id": 8,
+        "t0_s": 1.6312499999999998e-06,
+        "t1_s": 1.64375e-06,
+        "Q0_C": 1.587217052909038e-13,
+        "Q1_C": 1.587217052909038e-13,
+        "inferred_Qinf_C": 1.587217052909038e-13,
+        "actual_pre_VX_V": 0.1747721265996954,
+        "independent_expm_VX_V": 0.17477212659969504,
+        "raw_delta_V": 3.608224830031759e-16
+      },
+      {
+        "id": 9,
+        "t0_s": 1.8312499999999998e-06,
+        "t1_s": 1.84375e-06,
+        "Q0_C": 9.359853346307739e-14,
+        "Q1_C": 9.359853346307739e-14,
+        "inferred_Qinf_C": 9.359853346307739e-14,
+        "actual_pre_VX_V": 0.10306350168033553,
+        "independent_expm_VX_V": 0.10306350168033529,
+        "raw_delta_V": 2.3592239273284576e-16
+      },
+      {
+        "id": 10,
+        "t0_s": 2.03125e-06,
+        "t1_s": 2.0437499999999997e-06,
+        "Q0_C": 1.1004050781647641e-13,
+        "Q1_C": 1.1004050781647641e-13,
+        "inferred_Qinf_C": 1.1004050781647641e-13,
+        "actual_pre_VX_V": 0.12116813845937237,
+        "independent_expm_VX_V": 0.12116813845937212,
+        "raw_delta_V": 2.498001805406602e-16
+      },
+      {
+        "id": 11,
+        "t0_s": 2.23125e-06,
+        "t1_s": 2.2437500000000003e-06,
+        "Q0_C": 4.939550926385983e-14,
+        "Q1_C": 4.939550926385983e-14,
+        "inferred_Qinf_C": 4.939550926385983e-14,
+        "actual_pre_VX_V": 0.05439053330921156,
+        "independent_expm_VX_V": 0.054390533309211446,
+        "raw_delta_V": 1.1102230246251565e-16
+      }
+    ],
+    "max_abs_delta_V": 4.996003610813204e-16,
+    "boundary": "Qinf inferred from actual FE endpoints; coupling posterior, not an independent FE physics oracle"
+  },
+  "actual_code_fft": {
+    "status": "not run for N8 or Inf hold negative case"
+  },
+  "checks_passed": true,
+  "promotion_accepted": false,
+  "checks_boundary": "IO/timing and applicable bit gates only; analytic interval has no tolerance or pass verdict; this script does not grant promotion acceptance."
+}

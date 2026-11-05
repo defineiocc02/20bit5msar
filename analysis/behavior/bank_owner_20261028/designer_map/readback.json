@@ -1,0 +1,387 @@
+{
+  "schema": "sarpp-133342-layout-readback/v1",
+  "scope": "saved SLX/P/logs and installation receipt only; no simulation, no runtime tracing",
+  "model_sha256": "82ede85bdc7c6a6ac5b1837e6f21c29711de9ee8ab2c26f151672dae76f9a99a",
+  "receipt_sha256": "e477b90af1dbfb87aaadf09274c2d8881558f546a200afbea25f45dc9c439e42",
+  "status": "SCRATCH_N8_FINALIZED_PREQUALIFIED_ROUTER_PASS_NOT_INTEGRATED",
+  "main_integrated": false,
+  "cases": [
+    {
+      "name": "factory_base",
+      "P_sha256": "d7e54720e4129f5b186f328644609f6a266f59eeed35fb453d343e5948f1823f",
+      "model_sha256": "e45b5efcb585888d95f029c28d0b6edf77c7455f14432211be114abb3ec4f6a0",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "transport_on": false,
+      "bank_on": false,
+      "training_on": false,
+      "cal_collector_on": false,
+      "frozen_on": false,
+      "tau_dac_all_zero": true,
+      "dac_coupling": false,
+      "az_mode": "off",
+      "mismatch": false,
+      "dem": false,
+      "dither": false,
+      "ktc": false,
+      "jitter": false,
+      "frequency_hz": 97656.25
+    },
+    {
+      "name": "factory_off",
+      "P_sha256": "acae36f2c6cbb3e9baa9546f851b8a1890342c34b8715f95fffa5e4055242c27",
+      "model_sha256": "65c346a4a302b9e9fcb6b55ec757add6a79cb04516d6ef9788540fb1ed91e58c",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "transport_on": false,
+      "bank_on": false,
+      "training_on": false,
+      "cal_collector_on": false,
+      "frozen_on": false,
+      "tau_dac_all_zero": true,
+      "dac_coupling": false,
+      "az_mode": "off",
+      "mismatch": false,
+      "dem": false,
+      "dither": false,
+      "ktc": false,
+      "jitter": false,
+      "frequency_hz": 97656.25
+    },
+    {
+      "name": "rx_nominal",
+      "P_sha256": "f312380c03355889760a6fe355a3aff5752864204405e84ff2eae9172135cf13",
+      "model_sha256": "a28e19949cecd4196504a715ee63c7e40235c29621519f7b372149b0565f7f80",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "transport_on": true,
+      "bank_on": false,
+      "training_on": false,
+      "cal_collector_on": false,
+      "frozen_on": false,
+      "tau_dac_all_zero": true,
+      "dac_coupling": false,
+      "az_mode": "off",
+      "mismatch": true,
+      "dem": true,
+      "dither": true,
+      "ktc": false,
+      "jitter": false,
+      "frequency_hz": 90332.03125
+    },
+    {
+      "name": "rx_old_frozen",
+      "P_sha256": "222cfbe5c55ada8eaeede5b3d81c6176330d79e15c36d1be1fb8ecb9bc1ac0f7",
+      "model_sha256": "2e61f3f21a346de41219e55d5de264afc4cf0d2f47328303264540324d6983f0",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "transport_on": true,
+      "bank_on": false,
+      "training_on": false,
+      "cal_collector_on": false,
+      "frozen_on": true,
+      "tau_dac_all_zero": true,
+      "dac_coupling": false,
+      "az_mode": "off",
+      "mismatch": true,
+      "dem": true,
+      "dither": true,
+      "ktc": false,
+      "jitter": false,
+      "frequency_hz": 90332.03125
+    },
+    {
+      "name": "rx_bank_on",
+      "P_sha256": "68b68d2e2d9aac0b52f1f5710930690b65e9c041692adafc5f4476e7b3b0c26c",
+      "model_sha256": "82ede85bdc7c6a6ac5b1837e6f21c29711de9ee8ab2c26f151672dae76f9a99a",
+      "N": 8,
+      "first_id": 4,
+      "epoch": 1,
+      "transport_on": true,
+      "bank_on": true,
+      "training_on": false,
+      "cal_collector_on": false,
+      "frozen_on": false,
+      "tau_dac_all_zero": true,
+      "dac_coupling": false,
+      "az_mode": "off",
+      "mismatch": true,
+      "dem": true,
+      "dither": true,
+      "ktc": false,
+      "jitter": false,
+      "frequency_hz": 90332.03125,
+      "same_slot_cache": true,
+      "versions": [
+        1,
+        2
+      ],
+      "initial_slot": 1,
+      "lead_samples": 2,
+      "command_schedule": [
+        [
+          147.0,
+          1.0,
+          1.0,
+          2.0,
+          2.0,
+          4.0
+        ]
+      ]
+    }
+  ],
+  "saved_SLX_existing_config_note": "factory transport=false/DEM off/dither off; stale for rx_bank_on saved P",
+  "verified_scope_edges": {
+    "root": [
+      [
+        "105#out:1",
+        "463#in:1"
+      ],
+      [
+        "105#out:2",
+        "464#in:1"
+      ],
+      [
+        "105#out:3",
+        "465#in:1"
+      ]
+    ],
+    "105": [
+      [
+        "112#out:1",
+        "393#in:2"
+      ],
+      [
+        "112#out:2",
+        "393#in:3"
+      ],
+      [
+        "393#out:1",
+        "433#in:1"
+      ],
+      [
+        "112#out:1",
+        "433#in:3"
+      ],
+      [
+        "393#out:2",
+        "431#in:1"
+      ],
+      [
+        "431#out:1",
+        "434#in:1"
+      ],
+      [
+        "112#out:2",
+        "434#in:3"
+      ],
+      [
+        "433#out:1",
+        "123#in:1"
+      ],
+      [
+        "434#out:1",
+        "123#in:2"
+      ],
+      [
+        "433#out:1",
+        "455#in:4"
+      ],
+      [
+        "434#out:1",
+        "455#in:5"
+      ],
+      [
+        "123#out:1",
+        "455#in:6"
+      ],
+      [
+        "393#out:6",
+        "455#in:7"
+      ],
+      [
+        "422#out:1",
+        "455#in:8"
+      ],
+      [
+        "456#out:1",
+        "455#in:9"
+      ],
+      [
+        "457#out:1",
+        "455#in:10"
+      ],
+      [
+        "454#out:1",
+        "455#in:1"
+      ],
+      [
+        "455#out:1",
+        "454#in:1"
+      ],
+      [
+        "109#out:1",
+        "455#in:2"
+      ],
+      [
+        "109#out:1",
+        "456#in:1"
+      ],
+      [
+        "423#out:1",
+        "455#in:3"
+      ],
+      [
+        "455#out:2",
+        "458#in:1"
+      ],
+      [
+        "455#out:3",
+        "459#in:1"
+      ],
+      [
+        "455#out:4",
+        "460#in:1"
+      ]
+    ],
+    "393": [
+      [
+        "416#out:1",
+        "415#in:1"
+      ],
+      [
+        "415#out:1",
+        "416#in:1"
+      ],
+      [
+        "416#out:2",
+        "400#in:1"
+      ],
+      [
+        "416#out:3",
+        "401#in:1"
+      ],
+      [
+        "416#out:7",
+        "453#in:1"
+      ]
+    ],
+    "375": [
+      [
+        "383#out:1",
+        "386#in:3"
+      ],
+      [
+        "386#out:1",
+        "382#in:1"
+      ]
+    ]
+  },
+  "meta9": [
+    "hit",
+    "time_s",
+    "id",
+    "epoch",
+    "input_valid",
+    "slot",
+    "version",
+    "fault",
+    "command_status"
+  ],
+  "n_ready_total": 12,
+  "ids_ready": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "id4": {
+    "time_s": 1.338e-06,
+    "record_log": [
+      1878.0,
+      3291.0,
+      213.0,
+      4.0,
+      1.0,
+      1.0
+    ],
+    "bank_code_valid_log": [
+      1.0
+    ],
+    "bank_meta_log": [
+      342.0,
+      1.338e-06,
+      4.0,
+      1.0,
+      1.0,
+      2.0,
+      2.0,
+      0.0,
+      0.0
+    ],
+    "code_log": [
+      957226.0
+    ],
+    "event_log": [
+      6.0,
+      49.0
+    ]
+  },
+  "publish_hit147": {
+    "time_s": 6e-07,
+    "event": [
+      3.0,
+      1.0
+    ],
+    "meta": [
+      147.0,
+      6e-07,
+      "NaN",
+      "NaN",
+      "NaN",
+      1.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "record_ready": 0.0,
+    "code_valid": 0.0
+  },
+  "native_numeric": {
+    "status": "SCRATCH_PREQUALIFIED_ROUTER_N8_GATE",
+    "old_30_logs_off_bit_equal": true,
+    "on_29_other_logs_bit_equal": true,
+    "first_RX_ready_id": 0,
+    "valid_selected": 8,
+    "bank_code_matches_existing_real_frozen_decoder": true,
+    "at_least_one_real_h_vs_nominal_change": true,
+    "version_switch_first_id": 4,
+    "root_code_valid_meta_match_RX": true,
+    "slots_have_same_qualified_h": true,
+    "distinct_h_effect_proven": false,
+    "drain_proven": false,
+    "background_training_implemented": false,
+    "root_on_nonready_hold_or_independent_clock_pulse_verified": false,
+    "rx_fault_injection_verified": false,
+    "old_no_bank_factory_entry_proven": false,
+    "behavior_simulation_only": true,
+    "product_accepted": false,
+    "current_promoted": false
+  },
+  "fault_injection_proven": false,
+  "drain_proven": false,
+  "background_training_implemented": false,
+  "event_observed_utc": "2026-10-28T13:35:37.1346181Z"
+}

@@ -1,0 +1,29 @@
+function [x0,info]=behavior_transport_init(cfg,en_prehistory)
+%BEHAVIOR_TRANSPORT_INIT Public stopped-pin prehistory creates finite owner97.
+% en_prehistory Nx2 [t_s,EN4] entirely <=-Ts, before existing FE acquire-open.
+% First EN0000; final1010/0100. Epoch comes ONLY from those public reset entries.
+% Caller may VERIFY agreement with FE's configured epoch; never seed RX with it.
+% No model/P/actualC/h/RAW/ref input; returns numeric IC and public boot pin trace.
+    assert(isequaln(cfg,behavior_transport_config()),'transport97:cfg','Fixed public cfg required.');
+    e=en_prehistory;
+    assert(isnumeric(e)&&isreal(e)&&size(e,2)==2&&size(e,1)>=2&&all(isfinite(e(:)))&& ...
+        all(diff(e(:,1))>0)&&all(e(:,1)<=-200e-9)&&e(1,2)==0&& ...
+        all(ismember(e(:,2),[0 10 4]))&&any(e(end,2)==[10 4]), ...
+        'transport97:prehistory','Explicit EN reset prehistory must finish before -Ts; no hidden epoch initialization.');
+    tx=[];
+    rx=[];
+    boot=zeros(size(e,1),8);
+    for k=1:size(e,1)
+        [p,tx]=sar20_lvds_tx_step(e(k,1),struct('cnv',0,'clk',0,'en',e(k,2),'record',[]),tx,cfg.tx);
+        pins=struct('cnv',0,'clk',0,'en',e(k,2),'d_p',p.d_p,'d_n',p.d_n,'dco_p',p.dco_p,'dco_n',p.dco_n);
+        [~,rx]=sar20_lvds_rx_step(e(k,1),pins,rx,cfg.rx);
+        boot(k,:)=[e(k,1),0,0,e(k,2),p.d_p,p.d_n,p.dco_p,p.dco_n];
+    end
+    assert(tx.epoch==rx.epoch,'transport97:epoch','TX/RX public reset epochs disagree.');
+    s=struct('tx',tx,'rx',rx,'pending_valid',false,'pending_record',zeros(7,1), ...
+        'held_raw6',[0;0;0;-1;rx.epoch;0]);
+    x0=behavior_transport_pack(s,cfg);
+    info=struct('schema','sar20-incremental-pin-trace/v1','boot_pin_trace',boot, ...
+        'epoch_from_public_EN',rx.epoch,'state_width',97,'core_sources_unchanged',true, ...
+        'scope','Startup reset only; run-time EN mode changes rejected, no whole-ADC integration');
+end

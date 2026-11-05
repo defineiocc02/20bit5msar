@@ -1,0 +1,7 @@
+{
+  "model_sha256": "91973cf76507d37acc12515b55ebfe731ad197fe8ca1ecc9014fa07cbd35c27e",
+  "active_manifest_sha256": "7b8fdf307e933a212f2f5eeee35a1f41df9b8a00d495e3cdaa4928c2b97c687f",
+  "physical_configuration": "normal_5MS_single_ordinary_N256",
+  "source_model_backup_sha256": "309113638f7b519918b7e6c63d708a407f9056da8a73c760591874a412f6f45c",
+  "scope": "debuggability only; no CAAZ/ADI feature integration"
+}

@@ -1,0 +1,13 @@
+function y=behavior_aperture_diagnostic(s,id,epoch)
+%BEHAVIOR_APERTURE_DIAGNOSTIC Pure 28-word observation; ADI58 ABI is untouched.
+% [id;epoch;valid;nominalCNV;physicalID8;actualAperture8;acquireOpen8].
+% Time units seconds. IDs sorted ascending and taken from ACTUAL captured state,
+% not reconstructed from the plan. Tags/validity decide stale/reset metadata use.
+    ids=find(s.capture_valid & s.capture_id==id & s.capture_epoch==epoch & ...
+        ismember(s.phase,[2 3]));
+    valid=numel(ids)==8;y=[double(id);double(epoch);double(valid);nan(25,1)];
+    if ~valid,return;end
+    t=s.aperture_s(ids);
+    assert(all(t==t(1)),'behaviorFE:diagnosticCNV','Eight slices have different nominal capture times.');
+    y(4)=t(1);y(5:12)=ids;y(13:20)=s.actual_aperture_s(ids);y(21:28)=s.acquire_open_s(ids);
+end

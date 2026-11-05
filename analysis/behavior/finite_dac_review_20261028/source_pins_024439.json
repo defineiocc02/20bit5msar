@@ -1,0 +1,17 @@
+{
+  "schema": "sar20-finite-dac-candidate-source-pins/v1",
+  "origin": "runs/az_probe_20261027T024439Z/candidate/runtime",
+  "boundary": "Saved candidate source identity; native which/call trace was not independently archived. Does not pin unrelated configuration or ADC entry code.",
+  "files": {
+    "config/make_training_case.m": "b8391f8808bbe6befb1ca75cd7bf9c7f04010aa5cf9e4249e4b7f68b99ea21c5",
+    "current/src/model/behavior_applied_note.m": "ecc88fa255e48982b5a1985fcbc1f7ab9ec759fc841b5cc7190f5e575e4745c8",
+    "current/src/model/behavior_dac_backend_parameters.m": "0647b6d33e3b536fb98d07b727936dce43ed2fb685d2a2a5ffa7f978534ca997",
+    "current/src/model/behavior_dac_coupling_configuration.m": "eba9ab946d6a607f4ed88c22a5388a8a0c23125aa99b0d5e19a9c8cf0db01b9d",
+    "current/src/model/behavior_prepare_configuration.m": "df76f8b1e43104c060c4b27b444937d7896a3b500c1ac2e6b045edaebbce1861",
+    "current/src/model/behavior_training_configuration.m": "84cb1c947a4f958155a797e4dbd245abb264b53a61eeecd784667a83ee10e5b2",
+    "current/src/physics/behavior_backend_sfun.m": "4fbc0e7b356aea1b90d0c54348982c2a44fef05117650d4c0e05793aa8ecf807",
+    "current/src/physics/behavior_backend_stage.m": "8178bb79505b90308e1c84a48e73e3d42bd4e104304f2dfd08a59a48d65d99a4",
+    "current/src/physics/behavior_backend_step.m": "cd35673a0b3fcee4c695a55e0058794988ca83b04c4578c415857a6f4416283a",
+    "current/src/physics/behavior_dac_forcing_from_frontend.m": "744429184147aa6ea4fb9d0643832c0e7434cde2636a38fdb213a752a9fe8e2f"
+  }
+}

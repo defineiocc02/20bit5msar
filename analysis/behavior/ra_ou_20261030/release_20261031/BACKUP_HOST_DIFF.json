@@ -1,0 +1,10 @@
+{
+  "note": "Windows backup captured one transient installer temp file created by the same job; Mac backup captured .DS_Store. Both are non-source noise; the 114 real files are byte-identical across hosts.",
+  "windows_only": [
+    "current/src/analysis/.sar20_396aeb03f7dd4307a90b590bf6882649.tmp"
+  ],
+  "mac_only": [
+    "current/.DS_Store"
+  ],
+  "real_files_compared": 114
+}

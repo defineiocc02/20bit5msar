@@ -1,0 +1,871 @@
+{
+  "schema": "sar20-p0-step-random-calibration-check/v1",
+  "status": "three_step_public_fields_checked_no_convergence_verdict",
+  "scope": "BE max_step pair; public ID/epoch/plan/DEM/dither, visible weighted sample-kTC, and calibration-off boundary only. No fit, MATLAB, SSH, model/source changes, or raw-copy writes.",
+  "analysis_runtime": {
+    "python": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020/dependencies/analysis_env/bin/python",
+    "reader": "analysis/mat_reader.py",
+    "reader_sha256": "4294d5b18c044f146c24afefa7f0eb1b0e2be72733177c1351cd27086f858e8f",
+    "reader_origin": "analysis/mat_reader_origin.json"
+  },
+  "input_readiness": {
+    "path": "analysis/p0_data/LOCAL_SHA.json",
+    "sha256": "8e2a38810c39b845d9820d4757d4674645e8c48f5e225333e775108cd37986d7",
+    "status": "six_files_sha256_match",
+    "files": {
+      "be250": {
+        "native_job": "20261025T193531Z",
+        "raw_sha256": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0",
+        "selected_sha256": "e4daf1add75586a0a35d39594df205fca8c83249c3424980ec6b20e55ea087e9",
+        "result_sha256": "850915c886847c36546fa663fa2a95f6f86a01da72d47b5d4e0da44b61b07d69",
+        "model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb",
+        "simulation_run": true,
+        "stage": "complete",
+        "status": "pool_analog_actual_capture_pending_independent_physics_verification",
+        "max_step_s": 2.5e-10
+      },
+      "be125": {
+        "native_job": "20261026T023817Z",
+        "raw_sha256": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+        "selected_sha256": "be0abb53b264bc9ad89ffd10c1abcbd2e0461458f9de141fa61c640abebcf533",
+        "result_sha256": "ee05bf94c7a58bfcd0a0a1c8df057fb98f30a08f02dc268b3a439b0259e3002b",
+        "model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5",
+        "simulation_run": true,
+        "stage": "complete",
+        "status": "pool_analog_actual_capture_pending_independent_physics_verification",
+        "max_step_s": 1.25e-10
+      }
+    },
+    "be62p5_ORIGIN": {
+      "path": "analysis/p0_data/be62p5/ORIGIN.json",
+      "sha256": "611335d107162d4d532f60ba7b59b346a09623928d54cbb7235edb090a0e7fac",
+      "raw_sha256": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+      "selected_sha256": "6053ef798750561c012fcb1f6b51fb747aa5afe18574ac5e1a733a8c9856ed87",
+      "result_sha256": "8c00c76c4100e0a2e380d048cbdb9081cf29a119a11bc9d9bda418cf358d463d",
+      "all_three_files_match_ORIGIN": true
+    }
+  },
+  "step_comparison_reference": {
+    "path": "analysis/time_step/step_comparison.json",
+    "sha256": "d32b00cccd1016c43757661afd09936ca3b6c0795b3c30317643d0faa7fa5c91",
+    "status": "actual_step_sensitivity_observed_no_convergence_verdict",
+    "native_tout_bits_equal": true,
+    "all_logger_time_descriptors_equal": true,
+    "missing_evidence": [
+      "no frozen time-discretization error budget",
+      "compact capture omits full retained state and PRNG state",
+      "three step points are available, but no frozen convergence metric/budget was applied"
+    ],
+    "pair_snapshot_scope": "original be250/be125 comparison only; be62p5 is recorded under third_point_comparison",
+    "third_point_added": {
+      "label": "be62p5",
+      "origin_sha256": "611335d107162d4d532f60ba7b59b346a09623928d54cbb7235edb090a0e7fac",
+      "comparison_recorded_in": "third_point_comparison"
+    }
+  },
+  "shared_public_configuration": {
+    "profile": "pool18_8_8_2_F2_unary_group_dem_tail_dither_nominal",
+    "fs_hz": 5000000.0,
+    "p_dt_s": 1.25e-09,
+    "sample_period_s": 2e-07,
+    "UGB_hz": 1200000000.0,
+    "master_seed": 20261020,
+    "slice_shuffle_seed": 20269121,
+    "dem": {
+      "enabled": true,
+      "schedule": "pool_cyclic_shift31_v1",
+      "seed": 20261222,
+      "physical_groups": 31,
+      "capacitors_per_group": 32,
+      "public_key": "sample_id/epoch/physical_slice_id"
+    },
+    "dither": {
+      "enabled": true,
+      "seed": 20261223,
+      "amplitude_v": 0.001,
+      "tail_source_scale": 68.26666666666667,
+      "selected_ids": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "input_values_v": [
+        -0.0005,
+        -0.0015,
+        0.0005,
+        -0.0015,
+        0.0005,
+        -0.0015,
+        -0.0005,
+        -0.0005
+      ]
+    },
+    "sample_kTC": {
+      "enabled": true,
+      "temperature_K": 298.15,
+      "state_schema": "pool-analog-state/v4",
+      "state_width": 5181
+    },
+    "calibration": {
+      "mode": "off",
+      "cal_enable": false,
+      "cal_training": false
+    },
+    "different_field": "PoolAnalogCfg.max_step_s: 250 ps -> 125 ps; saved Simulink tout remains the same 250 ps grid"
+  },
+  "public_stream_checks": {
+    "plan": {
+      "shape": [
+        276,
+        8
+      ],
+      "sha256": "8a31d695a83453c0a91f291445f9cb0e77ac45a25890784240e5a6ee05c57a7a",
+      "PoolAnalogCfg_plan_equals_p_front_conv_plan": true,
+      "be250_equals_be125_bitwise": true,
+      "pool_front_readout_valid_rows_each": 1008,
+      "logged_IDs_each": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "all_logged_slices_match_saved_plan": true,
+      "selected_plan_sids_by_ID": {
+        "4": [
+          2,
+          18,
+          15,
+          8,
+          13,
+          17,
+          5,
+          7
+        ],
+        "5": [
+          1,
+          14,
+          6,
+          16,
+          3,
+          11,
+          9,
+          10
+        ],
+        "6": [
+          5,
+          7,
+          18,
+          8,
+          15,
+          13,
+          12,
+          2
+        ],
+        "7": [
+          17,
+          3,
+          6,
+          4,
+          10,
+          1,
+          9,
+          14
+        ],
+        "8": [
+          2,
+          15,
+          13,
+          11,
+          12,
+          7,
+          16,
+          8
+        ],
+        "9": [
+          18,
+          4,
+          9,
+          3,
+          1,
+          5,
+          6,
+          17
+        ],
+        "10": [
+          14,
+          13,
+          12,
+          16,
+          8,
+          11,
+          2,
+          10
+        ],
+        "11": [
+          15,
+          4,
+          1,
+          7,
+          18,
+          5,
+          9,
+          3
+        ]
+      },
+      "be62p5_equals_be250_be125_bitwise": true
+    },
+    "public_RX": {
+      "ready_events_each": 14,
+      "startup_invalid_IDs": [
+        -2,
+        -1
+      ],
+      "valid_IDs_each": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "epochs_for_valid_IDs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ID_epoch_valid_bank_sequence_equal": true,
+      "resync_nonzero_rows_each": 0,
+      "common_reset_high_rows_each": 5,
+      "RX_Control33_reset_n_low_rows_each": 1,
+      "record_source": "Record11 carries sample_id/epoch; RX Control33 is used only for its reset_n field in this check",
+      "be62p5_ID_epoch_status_matches_prior_pair": true
+    },
+    "capture_tags": {
+      "logger": "pool_analog_capture",
+      "read_fields": "per-slice sample_id, epoch, valid, capture_time_s only",
+      "HDF5_columns_read_1based": "19:90",
+      "captured_voltage_columns_1based_read": false,
+      "tag_block_shape": [
+        2361,
+        72
+      ],
+      "tag_block_sha256": "ef985b870b78916cff1224239aaa50c2bde38c79d74c5ee6906bf1376d09ea36",
+      "be250_equals_be125_bitwise": true,
+      "selected_ids": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "selected_capture_times_s": [
+        8.000000000000002e-07,
+        1.0000000000000002e-06,
+        1.2000000000000002e-06,
+        1.4000000000000001e-06,
+        1.6000000000000001e-06,
+        1.8000000000000003e-06,
+        2e-06,
+        2.2e-06
+      ],
+      "all_8_planned_slices_per_ID_share_ID_epoch_valid_and_capture_time": true,
+      "tag_first_appears_post_Update_row_capture_time_matches_previous_owner_tout_tick": true,
+      "full_capture_voltage_fields_compared": false,
+      "be62p5_equals_be250_be125_bitwise": true
+    },
+    "DEM_public_reconstruction": {
+      "formula": "shift=mod(17*sample_id+7*epoch+11*(physical_slice_id-1)+dem_seed,31); physical_index=mod((0:30)+shift,31)+1",
+      "selected_IDs": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "epoch": 1,
+      "slice_rows": 64,
+      "derived_map_sha256": "212a009588d1e8e43c168fae9d2a62a0785199ddd66a25c7bad31612f79088c2",
+      "be250_equals_be125_bitwise": true,
+      "measured_physical_source_mask": false,
+      "be62p5_equals_be250_be125_bitwise": true
+    },
+    "tail_dither_trace": {
+      "core_valid_fresh_rows_each": 12,
+      "reference_valid_fresh_rows_each": 14,
+      "core_trace_sha256": "c29c9f5064193111a1a45331e6458c046cd791b8c59e59cbaf4335df7c75fd53",
+      "reference_trace_sha256": "bec1ea17def282b822faa750d4dcfb260d0471690d5273614ed5540fa5630e47",
+      "be250_equals_be125_bitwise": true,
+      "selected_ID_values_match_result_and_each_other": true,
+      "be62p5_equals_be250_be125_bitwise": true
+    },
+    "visible_sample_kTC": {
+      "field": "adc_frontend: p.idx.held.sampling_noise (only sample_id, valid, sampling_noise columns read)",
+      "epoch_key": "unique valid public RX Record11 epoch by sample_id",
+      "selected_weighted_noise_v": {
+        "4": -2.028376085791367e-05,
+        "5": 2.637594964053185e-06,
+        "6": 2.1950018092390255e-05,
+        "7": -3.026092481434545e-06,
+        "8": -4.3984569000996105e-05,
+        "9": -3.721084956022686e-08,
+        "10": 2.4439164249197387e-06,
+        "11": 2.792749137673067e-05
+      },
+      "be250_equals_be125_bitwise_per_selected_ID": true,
+      "full_per_branch_sampleNoiseV_vector_logged": false,
+      "hidden_PRNG_state_read": false,
+      "hidden_PRNG_equivalence_claimed": false,
+      "be62p5_equals_be250_be125_bitwise_per_selected_ID": true
+    }
+  },
+  "public_conversion_response": {
+    "selected_IDs": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "D1": {
+      "be250": [
+        1900,
+        1932,
+        1941,
+        1960,
+        1939,
+        1928,
+        1878,
+        1838
+      ],
+      "be125": [
+        1900,
+        1932,
+        1941,
+        1960,
+        1939,
+        1928,
+        1878,
+        1838
+      ],
+      "same_count": 8
+    },
+    "D2": {
+      "be250": [
+        3291,
+        801,
+        818,
+        2730,
+        2901,
+        1206,
+        1228,
+        2668
+      ],
+      "be125": [
+        3293,
+        796,
+        818,
+        2730,
+        2901,
+        1207,
+        1234,
+        2666
+      ],
+      "different_count": 5
+    },
+    "DT": {
+      "be250": [
+        234,
+        210,
+        170,
+        85,
+        234,
+        42,
+        85,
+        45
+      ],
+      "be125": [
+        170,
+        210,
+        84,
+        85,
+        85,
+        85,
+        21,
+        42
+      ],
+      "different_count": 6
+    },
+    "code20": {
+      "be250": [
+        963368,
+        979633,
+        989053,
+        991473,
+        986864,
+        975311,
+        956966,
+        932121
+      ],
+      "be125": [
+        963374,
+        979637,
+        989054,
+        991473,
+        986861,
+        975306,
+        956960,
+        932112
+      ],
+      "be125_minus_be250": [
+        6,
+        4,
+        1,
+        0,
+        -3,
+        -5,
+        -6,
+        -9
+      ],
+      "equal_count": 1
+    },
+    "interpretation": "Observed public conversion outputs under the changed BE max_step; these are simulation responses, not random-configuration differences."
+  },
+  "limits": [
+    "Compact capture is not full-state charge, KCL, or convergence acceptance.",
+    "Visible weighted sample-kTC equality does not prove hidden PRNG state/draw-vector equality.",
+    "No positive calibration fit or coefficient training was run; both calibration flags are off.",
+    "CMP1/CMP2 comparator RNG lanes are directly logged and matched; sample-kTC internal PRNG state/draw vector remains unrecorded and unproven.",
+    "Comparator RNG lanes are directly logged; the current be125/be62p5 column-2 arrays match byte-for-byte in all four lanes. A legacy saved-digest mismatch is not evidence of a raw trajectory change; be250 was not re-read in this turn. The sample-kTC internal PRNG state/draw vector remains unrecorded and unproven."
+  ],
+  "comparator_rng_lane": {
+    "source_state_definition": {
+      "sar20_compare_as_run_sha256": "a1eceab836e2ca7f6ad03ee12adfd19311d92ac37165f3319bae8cbde8d55e66",
+      "be250_and_be125_binding_match_local_source": true,
+      "state_indices_one_based": {
+        "initialized": 1,
+        "rng": 2,
+        "decision": 3,
+        "valid": 4,
+        "late": 5,
+        "effective_input_v": 6
+      },
+      "state_width_each": 16,
+      "cmp1_call_chain": {
+        "sfun": "pool_cmp1_sfun",
+        "sfun_sha256": "a8b021a5868bf2f3f075fac69e359d04039d6019852eb18527355bd52e65bdb1",
+        "step": "pool_cmp1_step",
+        "step_sha256": "467bc6a95d19dfeb6c06f02f7a58dbf2757a9c194b77a87cb2c4cbdb7128a30f",
+        "calls": "sar20_compare(residual_input_v, decide, x, p.cmp1)"
+      },
+      "cmp2_call_chain": {
+        "sfun": "pool_cmp2_sfun",
+        "sfun_sha256": "db3f1ff13962195dc30814f22ffe6e475d106dde4dd81bbe89d69edfc4d756ac",
+        "step": "sar20_cmp2_step",
+        "step_sha256": "0f2ccc30a70ff87d51b8d467281658d9d1b568f1250ff9fcbace0ffed7010bde",
+        "calls": "sar20_compare(ct.vy, sar2_decide || track_decide, x, p.cmp2)"
+      },
+      "old_next_logger_contract": "wrapper y2=old_state16; y3=predicted_next_state16; column 2 maps directly to sar20_compare x(rng)"
+    },
+    "raw_read_scope": {
+      "files": [
+        "analysis/p0_data/be250/raw.mat",
+        "analysis/p0_data/be125/raw.mat"
+      ],
+      "loggers": [
+        "pool_cmp1_old_state",
+        "pool_cmp1_next_state",
+        "pool_cmp2_old_state",
+        "pool_cmp2_next_state"
+      ],
+      "columns_read_1based": [
+        2
+      ],
+      "width_each": 16,
+      "rows_each": 2361,
+      "time_axis_each": {
+        "t0_s": -2.0000000000000002e-07,
+        "dt_s": 1.25e-09
+      },
+      "other_state_columns_read": false
+    },
+    "lane_comparisons": {
+      "pool_cmp1_old_state": {
+        "sha256_be250": "8ea0a5f95e50324609b386bc65f65fdeabd9277e9949db84726acc6c8241d680",
+        "bitwise_equal": null,
+        "different_rows": null,
+        "first_rng_state": 0.0,
+        "last_rng_state": 909998413.0,
+        "sha256_be62p5": "47bad50874b57aeb45bfc31093aa382826e8a99eb345656b695b32f865dea9bd",
+        "bitwise_equal_be62p5_to_be250_be125": null,
+        "different_rows_vs_be62p5": null,
+        "sha256_be125_previous_receipt": "8ea0a5f95e50324609b386bc65f65fdeabd9277e9949db84726acc6c8241d680",
+        "sha256_be125_recomputed_current_raw": "47bad50874b57aeb45bfc31093aa382826e8a99eb345656b695b32f865dea9bd",
+        "be125_recomputed_matches_previous_receipt": false,
+        "sha256_be62p5_recomputed_current_raw": "47bad50874b57aeb45bfc31093aa382826e8a99eb345656b695b32f865dea9bd",
+        "be125_vs_be62p5_direct_bitwise_equal": true,
+        "different_rows_be125_vs_be62p5": 0,
+        "be250_raw_reopened_this_turn": false,
+        "historical_be250_be125_equality_revalidated": false,
+        "bitwise_equal_be250_be125_historical_receipt_claim": true,
+        "hash_note": "The historical saved digest does not reproduce under the current serialization; its generating expression is unknown. Direct be125/be62p5 logger arrays are byte-identical, so the digest discrepancy is not evidence of a changed RNG trajectory. be250 was not reopened this turn."
+      },
+      "pool_cmp1_next_state": {
+        "sha256_be250": "8a93307997fe8a97f6e61a2cde7d46a03e5e242fde1241830aec4995bdec86b2",
+        "bitwise_equal": null,
+        "different_rows": null,
+        "first_rng_state": 20261421.0,
+        "last_rng_state": 909998413.0,
+        "sha256_be62p5": "af97238b449732126186537c7f0082b8e6e4458f386c7e49832c06b4f123ecd1",
+        "bitwise_equal_be62p5_to_be250_be125": null,
+        "different_rows_vs_be62p5": null,
+        "sha256_be125_previous_receipt": "8a93307997fe8a97f6e61a2cde7d46a03e5e242fde1241830aec4995bdec86b2",
+        "sha256_be125_recomputed_current_raw": "af97238b449732126186537c7f0082b8e6e4458f386c7e49832c06b4f123ecd1",
+        "be125_recomputed_matches_previous_receipt": false,
+        "sha256_be62p5_recomputed_current_raw": "af97238b449732126186537c7f0082b8e6e4458f386c7e49832c06b4f123ecd1",
+        "be125_vs_be62p5_direct_bitwise_equal": true,
+        "different_rows_be125_vs_be62p5": 0,
+        "be250_raw_reopened_this_turn": false,
+        "historical_be250_be125_equality_revalidated": false,
+        "bitwise_equal_be250_be125_historical_receipt_claim": true,
+        "hash_note": "The historical saved digest does not reproduce under the current serialization; its generating expression is unknown. Direct be125/be62p5 logger arrays are byte-identical, so the digest discrepancy is not evidence of a changed RNG trajectory. be250 was not reopened this turn."
+      },
+      "pool_cmp2_old_state": {
+        "sha256_be250": "078662e051f0c4f88dedc1381caf335558daa404b3d6fa9f93e82f8b561ebff4",
+        "bitwise_equal": null,
+        "different_rows": null,
+        "first_rng_state": 0.0,
+        "last_rng_state": 2054808947.0,
+        "sha256_be62p5": "840684de027ca9461a9c5a9065122bd11127dbcdc69f3b6d3d9fd9a4e3ac1fd6",
+        "bitwise_equal_be62p5_to_be250_be125": null,
+        "different_rows_vs_be62p5": null,
+        "sha256_be125_previous_receipt": "078662e051f0c4f88dedc1381caf335558daa404b3d6fa9f93e82f8b561ebff4",
+        "sha256_be125_recomputed_current_raw": "840684de027ca9461a9c5a9065122bd11127dbcdc69f3b6d3d9fd9a4e3ac1fd6",
+        "be125_recomputed_matches_previous_receipt": false,
+        "sha256_be62p5_recomputed_current_raw": "840684de027ca9461a9c5a9065122bd11127dbcdc69f3b6d3d9fd9a4e3ac1fd6",
+        "be125_vs_be62p5_direct_bitwise_equal": true,
+        "different_rows_be125_vs_be62p5": 0,
+        "be250_raw_reopened_this_turn": false,
+        "historical_be250_be125_equality_revalidated": false,
+        "bitwise_equal_be250_be125_historical_receipt_claim": true,
+        "hash_note": "The historical saved digest does not reproduce under the current serialization; its generating expression is unknown. Direct be125/be62p5 logger arrays are byte-identical, so the digest discrepancy is not evidence of a changed RNG trajectory. be250 was not reopened this turn."
+      },
+      "pool_cmp2_next_state": {
+        "sha256_be250": "89d2f0aa001640400b6103a0f1b19c3dd304e3fbab9806a554d4b6753b308f1b",
+        "bitwise_equal": null,
+        "different_rows": null,
+        "first_rng_state": 20261422.0,
+        "last_rng_state": 2054808947.0,
+        "sha256_be62p5": "b5fbf2988034c5f5de85e66847e5f9349e680211ea6ae5117069969192f4c0b6",
+        "bitwise_equal_be62p5_to_be250_be125": null,
+        "different_rows_vs_be62p5": null,
+        "sha256_be125_previous_receipt": "89d2f0aa001640400b6103a0f1b19c3dd304e3fbab9806a554d4b6753b308f1b",
+        "sha256_be125_recomputed_current_raw": "b5fbf2988034c5f5de85e66847e5f9349e680211ea6ae5117069969192f4c0b6",
+        "be125_recomputed_matches_previous_receipt": false,
+        "sha256_be62p5_recomputed_current_raw": "b5fbf2988034c5f5de85e66847e5f9349e680211ea6ae5117069969192f4c0b6",
+        "be125_vs_be62p5_direct_bitwise_equal": true,
+        "different_rows_be125_vs_be62p5": 0,
+        "be250_raw_reopened_this_turn": false,
+        "historical_be250_be125_equality_revalidated": false,
+        "bitwise_equal_be250_be125_historical_receipt_claim": true,
+        "hash_note": "The historical saved digest does not reproduce under the current serialization; its generating expression is unknown. Direct be125/be62p5 logger arrays are byte-identical, so the digest discrepancy is not evidence of a changed RNG trajectory. be250 was not reopened this turn."
+      }
+    },
+    "claim": "CMP1/CMP2 rng state index 2 is directly logged. Direct be125/be62p5 column-2 arrays match byte-for-byte in all four lanes. The older be250/be125 equality remains a historical receipt claim and was not revalidated because be250 was not reopened. The saved legacy digest discrepancy has unknown serialization/representation provenance and does not establish a lane difference. Sample-kTC hidden state remains unrecorded."
+  },
+  "third_point_comparison": {
+    "label": "be62p5",
+    "native_run_root": "run_tp394bdae9_7cbe_4949_9cd7_da5d4830e619",
+    "model_sha256": "fadd1138f9703b8a9a998be61687aebac1527f9441542a9becee59276b454741",
+    "status": "pool_analog_actual_capture_pending_independent_physics_verification",
+    "stage": "complete",
+    "simulation_run": true,
+    "max_step_s": 6.25e-11,
+    "native_tout_step_ps": [
+      250.0
+    ],
+    "public_config": {
+      "profile": "pool18_8_8_2_F2_unary_group_dem_tail_dither_nominal",
+      "master_seed": 20261020,
+      "slice_shuffle_seed": 20269121,
+      "dem_seed": 20261222,
+      "dem_schedule": "pool_cyclic_shift31_v1",
+      "dither_seed": 20261223,
+      "dither_amplitude_v": 0.001,
+      "sample_kTC_enabled": true,
+      "sample_kTC_temperature_K": 298.15,
+      "calibration_mode": "off",
+      "cal_enable": false,
+      "cal_training": false
+    },
+    "as_run_binding_hashes_match_existing_pins": {
+      "sar20_compare": "a1eceab836e2ca7f6ad03ee12adfd19311d92ac37165f3319bae8cbde8d55e66",
+      "pool_cmp1_step": "467bc6a95d19dfeb6c06f02f7a58dbf2757a9c194b77a87cb2c4cbdb7128a30f",
+      "sar20_cmp2_step": "0f2ccc30a70ff87d51b8d467281658d9d1b568f1250ff9fcbace0ffed7010bde",
+      "pool_cmp1_sfun": "a8b021a5868bf2f3f075fac69e359d04039d6019852eb18527355bd52e65bdb1",
+      "pool_cmp2_sfun": "db3f1ff13962195dc30814f22ffe6e475d106dde4dd81bbe89d69edfc4d756ac"
+    },
+    "public_stream_comparison": {
+      "plan_sha256": "8a31d695a83453c0a91f291445f9cb0e77ac45a25890784240e5a6ee05c57a7a",
+      "plan_shape": [
+        276,
+        8
+      ],
+      "matches_prior_pair": true,
+      "front_logged_slices_match_plan": true,
+      "front_valid_rows": 1008,
+      "valid_public_RX_IDs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "valid_RX_epoch_by_ID": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "ready_events": 14,
+      "resync_nonzero_rows": 0,
+      "DEM_public_reconstruction_sha256": "212a009588d1e8e43c168fae9d2a62a0785199ddd66a25c7bad31612f79088c2",
+      "DEM_reconstruction_matches_prior_pair": true,
+      "physical_source_mask_observed": false,
+      "capture_tag_block_sha256": "ef985b870b78916cff1224239aaa50c2bde38c79d74c5ee6906bf1376d09ea36",
+      "capture_tag_block_matches_prior_pair": true,
+      "capture_tag_scope": "pool_analog_capture ID/epoch/valid/capture_time blocks only (MATLAB columns 19:90); captured voltage columns 1:18 were not read",
+      "selected_ID_capture_times_s": [
+        8.000000000000002e-07,
+        1.0000000000000002e-06,
+        1.2000000000000002e-06,
+        1.4000000000000001e-06,
+        1.6000000000000001e-06,
+        1.8000000000000003e-06,
+        2e-06,
+        2.2e-06
+      ],
+      "eight_planned_slices_per_selected_ID_share_valid_epoch_and_capture_time": true,
+      "capture_time_matches_previous_owner_tout_tick": true,
+      "tail_dither_core_sha256": "c29c9f5064193111a1a45331e6458c046cd791b8c59e59cbaf4335df7c75fd53",
+      "tail_dither_reference_sha256": "bec1ea17def282b822faa750d4dcfb260d0471690d5273614ed5540fa5630e47",
+      "dither_trace_matches_prior_pair": true,
+      "visible_weighted_sample_kTC_matches_prior_pair_bitwise": true,
+      "sample_kTC_internal_PRNG_state_read": false,
+      "sample_kTC_hidden_stream_equivalence_claimed": false
+    },
+    "comparator_rng_lane_comparison": {
+      "source_state_rng_index_one_based": 2,
+      "state_width": 16,
+      "rows_per_lane": 2361,
+      "old_pair_be250_be125_lanes_were_bitwise_equal": true,
+      "be62p5_lane_hashes": {
+        "pool_cmp1_old_state": "47bad50874b57aeb45bfc31093aa382826e8a99eb345656b695b32f865dea9bd",
+        "pool_cmp1_next_state": "af97238b449732126186537c7f0082b8e6e4458f386c7e49832c06b4f123ecd1",
+        "pool_cmp2_old_state": "840684de027ca9461a9c5a9065122bd11127dbcdc69f3b6d3d9fd9a4e3ac1fd6",
+        "pool_cmp2_next_state": "b5fbf2988034c5f5de85e66847e5f9349e680211ea6ae5117069969192f4c0b6"
+      },
+      "be62p5_bitwise_equal_to_prior_pair": null,
+      "old_raw_reopened": false,
+      "different_row_counts_vs_old_pair": "be125 direct comparison: 0 for each lane; be250 not compared this turn",
+      "initial_and_final_state_values_match_prior_pair": {
+        "cmp1_old_first": 0.0,
+        "cmp1_next_first": 20261421.0,
+        "cmp1_final": 909998413.0,
+        "cmp2_old_first": 0.0,
+        "cmp2_next_first": 20261422.0,
+        "cmp2_final": 2054808947.0
+      },
+      "interpretation": "Direct be62p5/be125 column-2 arrays are byte-identical across all four lanes. The older receipt contains a be250/be125 equality claim, but be250 was not reopened here. Legacy saved-digest disagreement has unknown prior serialization/representation provenance and is not evidence of an RNG trajectory change.",
+      "be62p5_vs_be125_direct_bitwise_equal": true,
+      "be62p5_vs_be250_direct_bitwise_equal": null,
+      "be250_raw_reopened": false,
+      "prior_be125_hash_reproduced": false,
+      "direct_recheck_path": "comparator_rng_direct_recheck",
+      "old_pair_equality_basis": "historical receipt claim; be250 was not reread in this turn"
+    },
+    "public_code20": {
+      "be62p5": [
+        963377,
+        979639,
+        989055,
+        991472,
+        986860,
+        975304,
+        956956,
+        932107
+      ],
+      "minus_be250": [
+        9,
+        6,
+        2,
+        -1,
+        -4,
+        -7,
+        -10,
+        -14
+      ],
+      "minus_be125": [
+        3,
+        2,
+        1,
+        -1,
+        -1,
+        -2,
+        -4,
+        -5
+      ]
+    },
+    "limits": [
+      "Compact capture is not a full-state, KCL, or convergence acceptance.",
+      "No convergence metric or frozen discretization error budget was applied to the three points.",
+      "Visible weighted sample-kTC equality does not prove hidden PRNG state/draw-vector equality.",
+      "No positive calibration fit or coefficient training was run; calibration flags remain off."
+    ]
+  },
+  "comparator_rng_direct_recheck": {
+    "scope": "Only be125 and be62p5 raw comparator logger column 2 for the four named 16-state lanes; no old be125 parameters or other old logger values were read.",
+    "old_raw_sha_from_existing_manifest": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+    "new_raw_sha_from_ORIGIN": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+    "source_state_rng_index_one_based": 2,
+    "rows_each": 2361,
+    "same_dtype_shape_endian_and_time_axis": true,
+    "hash_serialization_same_for_both_new_calculations": true,
+    "lanes": {
+      "pool_cmp1_old_state": {
+        "dtype": "<f8",
+        "shape": [
+          2361
+        ],
+        "t0_s": -2.0000000000000002e-07,
+        "dt_s": 1.25e-09,
+        "hash_serialization": "SHA256(str(shape)+dtype.str+contiguous float64 bytes)",
+        "sha256_be125_recomputed": "47bad50874b57aeb45bfc31093aa382826e8a99eb345656b695b32f865dea9bd",
+        "sha256_be62p5_recomputed": "47bad50874b57aeb45bfc31093aa382826e8a99eb345656b695b32f865dea9bd",
+        "be125_sha256_from_previous_receipt": "8ea0a5f95e50324609b386bc65f65fdeabd9277e9949db84726acc6c8241d680",
+        "be62p5_stored_sha_matches_recomputed": true,
+        "be125_recomputed_sha_matches_previous_receipt": false,
+        "be125_vs_be62p5_bitwise_equal": true,
+        "different_rows": 0,
+        "first_difference": null
+      },
+      "pool_cmp1_next_state": {
+        "dtype": "<f8",
+        "shape": [
+          2361
+        ],
+        "t0_s": -2.0000000000000002e-07,
+        "dt_s": 1.25e-09,
+        "hash_serialization": "SHA256(str(shape)+dtype.str+contiguous float64 bytes)",
+        "sha256_be125_recomputed": "af97238b449732126186537c7f0082b8e6e4458f386c7e49832c06b4f123ecd1",
+        "sha256_be62p5_recomputed": "af97238b449732126186537c7f0082b8e6e4458f386c7e49832c06b4f123ecd1",
+        "be125_sha256_from_previous_receipt": "8a93307997fe8a97f6e61a2cde7d46a03e5e242fde1241830aec4995bdec86b2",
+        "be62p5_stored_sha_matches_recomputed": true,
+        "be125_recomputed_sha_matches_previous_receipt": false,
+        "be125_vs_be62p5_bitwise_equal": true,
+        "different_rows": 0,
+        "first_difference": null
+      },
+      "pool_cmp2_old_state": {
+        "dtype": "<f8",
+        "shape": [
+          2361
+        ],
+        "t0_s": -2.0000000000000002e-07,
+        "dt_s": 1.25e-09,
+        "hash_serialization": "SHA256(str(shape)+dtype.str+contiguous float64 bytes)",
+        "sha256_be125_recomputed": "840684de027ca9461a9c5a9065122bd11127dbcdc69f3b6d3d9fd9a4e3ac1fd6",
+        "sha256_be62p5_recomputed": "840684de027ca9461a9c5a9065122bd11127dbcdc69f3b6d3d9fd9a4e3ac1fd6",
+        "be125_sha256_from_previous_receipt": "078662e051f0c4f88dedc1381caf335558daa404b3d6fa9f93e82f8b561ebff4",
+        "be62p5_stored_sha_matches_recomputed": true,
+        "be125_recomputed_sha_matches_previous_receipt": false,
+        "be125_vs_be62p5_bitwise_equal": true,
+        "different_rows": 0,
+        "first_difference": null
+      },
+      "pool_cmp2_next_state": {
+        "dtype": "<f8",
+        "shape": [
+          2361
+        ],
+        "t0_s": -2.0000000000000002e-07,
+        "dt_s": 1.25e-09,
+        "hash_serialization": "SHA256(str(shape)+dtype.str+contiguous float64 bytes)",
+        "sha256_be125_recomputed": "b5fbf2988034c5f5de85e66847e5f9349e680211ea6ae5117069969192f4c0b6",
+        "sha256_be62p5_recomputed": "b5fbf2988034c5f5de85e66847e5f9349e680211ea6ae5117069969192f4c0b6",
+        "be125_sha256_from_previous_receipt": "89d2f0aa001640400b6103a0f1b19c3dd304e3fbab9806a554d4b6753b308f1b",
+        "be62p5_stored_sha_matches_recomputed": true,
+        "be125_recomputed_sha_matches_previous_receipt": false,
+        "be125_vs_be62p5_bitwise_equal": true,
+        "different_rows": 0,
+        "first_difference": null
+      }
+    },
+    "conclusion": "Direct be125/be62p5 column-2 arrays are bitwise identical in all four lanes: matching dtype <f8, shape (2361,), and contiguous bytes; zero differing rows. The previous saved digest values do not reproduce under the explicitly listed current serialization. The exact legacy serialization is unknown; this mismatch is not evidence of a raw RNG trajectory change. Existing raw SHA locks are retained.",
+    "be250_raw_reopened": false,
+    "be250_vs_be125_or_be62p5_revalidated": false,
+    "event_neighborhood_read": false,
+    "event_neighborhood_reason": "No be125/be62p5 lane difference was found, so the conditional draw-timing investigation was not triggered.",
+    "raw_artifact_sha256_binding": {
+      "be125": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6",
+      "be62p5": "a230ab3bbdd56d5446e5d9323ab5ce53bd22376b7c42b1633636331f7caa4765",
+      "status": "locked values from existing readiness/origin receipts; raw bytes were not rehashed in this lane-only reread"
+    },
+    "hash_serialization_current_recomputation": "For each extracted 1-D RNG lane a: SHA256(str(a.shape).encode(\"ascii\") + a.dtype.str.encode(\"ascii\") + np.ascontiguousarray(a).tobytes(order=\"C\")). The lane arrays are little-endian float64 (<f8), shape (2361,).",
+    "legacy_saved_digest_serialization": "unknown: the earlier generator expression is not available in the current workspace, so it cannot be determined whether it used str(dtype), dtype.str, different byte ordering/array shape, or another representation. Current direct dtype/shape/bytes comparison is deterministic.",
+    "historical_digest_discrepancy_interpretation": "A mismatch between a saved legacy digest and the current lane serialization is a digest provenance/representation discrepancy only; it does not imply that raw RNG lanes changed. No raw SHA binding was changed."
+  }
+}

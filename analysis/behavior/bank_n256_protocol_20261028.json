@@ -1,0 +1,51 @@
+{
+  "schema": "sar20-bank-n256-preregistered-test/v1",
+  "status": "preregistered_not_run",
+  "purpose": "First dynamic test of the same-model prequalified A/B router after current integration; report actual results without tuning to a target",
+  "prior_evidence": {
+    "training_run": "behavior_a27903ef-c1c6-4e5e-b487-d2c1d468efef",
+    "consumed_holdout_run": "behavior_dc38bf72-b9b2-42e6-a9d5-6b76a32a671f",
+    "scratch_n8_router_run": "az_probe_20261028T133342Z",
+    "frozen_h_sha256": "a634c9a0c63c636a4c8966bc7d0e04d6d9ad4cf550156e6ed7ffe7806d6483ed",
+    "consumed_holdout_must_not_be_reused": true
+  },
+  "input": {
+    "sample_rate_hz": 5000000,
+    "record_count": 256,
+    "first_sample_id": 4,
+    "last_sample_id": 259,
+    "epoch": 4,
+    "coherent_bin": 51,
+    "frequency_hz": 996093.75,
+    "phase_rad": 1.413,
+    "differential_peak_v": 3.650563842595822,
+    "offset_v": 0
+  },
+  "configuration": {
+    "chip": "Use the byte-pinned training-chip P as the source; no new mismatch draw or coefficient fit",
+    "transport": "actual public RX on",
+    "mismatch_dem_physical_dither": "inherit the frozen training-chip profile, enabled",
+    "dac_tau_s": 0,
+    "az_ktc_aperture_jitter_random_ra_noise": "off, as in the registered RX qualification profile",
+    "bank": "two versions with the same frozen h; publish at sample ID 4; no retire or drain claim"
+  },
+  "comparisons": [
+    "Nominal OFF, legacy Frozen, and Bank ON use the same input, chip, public plan, IDs and epoch",
+    "Require 256 consecutive valid RX records and exact ID/epoch/code-valid joins",
+    "Compare old non-code logs and public RAW on the same event axis",
+    "Compute SNR, SNDR, SFDR, THD and ENOB from each actual saved integer code record",
+    "Preserve spectrum, P, SLX, source manifest, simout and raw codes"
+  ],
+  "gates": {
+    "record_and_identity_only": true,
+    "snr_sndr_sfdr_thd_enob_numeric_thresholds": "none; report actual values and limitations",
+    "no_refit_or_posthoc_input_change": true,
+    "qualification_or_profile_rejection": "stop and report; do not change this protocol silently"
+  },
+  "not_claimed": [
+    "Independent silicon or PVT qualification",
+    "Distinct-h bank numerical switching",
+    "Background training, consumer drain or slot reuse",
+    "Full nonideality scan or DNL/INL"
+  ]
+}

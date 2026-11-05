@@ -1,0 +1,61 @@
+{
+  "failure": "ppInstall:SATK / parent_add partial",
+  "receipt_sha256": "d3080e24d295d611d4a93daadd8eee7c1fb1ff363597aec81d1ed13a7eb6142e",
+  "entry_sha256": "4111b0cf1970d42c980ec389c666675a03bb59eb4a5b98f2e6f28e75a40230a6",
+  "inner_source_sha256": "33b767fb78a818d3624cdf349bc6430c066301dc5952fd9568838380277a12df",
+  "manifest_sha256": "2da961f6b82fc70e3e2ae1879613083579fb34154659bc34c578c755d2049789",
+  "source_locks": {
+    "source_lock_sha256": "c6e0e82baded531e872c35122af9539c7d30dc9a94fc70cb7bc54a4ddb27b252",
+    "production_source_lock_sha256": "12b430e50d44901fdce1597db1116e32c37822c208f02fb06afb4ecdc86b4319",
+    "satk_source_lock_sha256": "7991ec6f1c9fcbf708f0b6c780d3168d36b0b504b9148dcc8f29b40e49f2a85b"
+  },
+  "candidate_sources": 22,
+  "candidate_zip_not_mirrored": [
+    "README.md",
+    "create_real_qualification.py",
+    "extract_prior_audit_summary.py"
+  ],
+  "production_sources": 87,
+  "satk_disk_files": 223,
+  "satk_entry_bindings": 4,
+  "same_path_cached_bytes_proven": false,
+  "partial_sha256": {
+    "SarPPBase": "c46d8612b5c0fe8b831b038347543b8485921f60415927aa6c5429d871cdadf7",
+    "SarPP": "5413a38f33d813b3f5ac390828c030a53d7b862926554f905a5f6d86da62e325"
+  },
+  "blocks_before_after": [
+    277,
+    287
+  ],
+  "edges_before_after": [
+    340,
+    341
+  ],
+  "new_block_names": [
+    "BankCodeValidLog",
+    "BankCommand",
+    "BankMetaLog",
+    "BankOwner",
+    "BankOwnerState",
+    "NoDrainAck",
+    "PublicCode",
+    "PublicMeta",
+    "PublicValid",
+    "RxFault"
+  ],
+  "new_edges": [
+    [
+      "416#out:7",
+      "453#in:1"
+    ]
+  ],
+  "xml_functionname_absent": [
+    "BankOwner",
+    "BankCommand"
+  ],
+  "old_code_log_connection_present": true,
+  "native_main_public_and_session_restoration_reported": true,
+  "main_private_P_compared": false,
+  "later_simulation_directories_present": false,
+  "scope": "Source/init failure and persisted XML are observed; parameter setting order is a hypothesis, not a recorded cause. XML absence is not an explicit get_param FunctionName result."
+}

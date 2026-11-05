@@ -1,0 +1,113 @@
+function [R,data]=behavior_training_result(out,opt,refCfg,committed,P)
+%BEHAVIOR_TRAINING_RESULT Read actual committed collector/Ref4 after simulation.
+% Only public configuration and explicitly declared reference are accepted.
+% No fit is run here; candidate h/singular values come from the Simulink DWork
+% snapshot. Call (out,opt,refCfg,committed,savedP); committed may be [].
+% Four-arg form (out,opt,refCfg,savedP) is legacy-only without final extraction.
+% Public records/paired Ref4 join actual record-ready time; original CNV stays physical.
+    if nargin==4,P=committed;committed=[];end
+    assert(opt.enabled&&isa(out,'Simulink.SimulationOutput')&&isempty(out.ErrorMessage));
+    assert((nargin==4||nargin==5)&&isequaln(opt,P.cal_cfg)&&isequaln(refCfg,P.training.reference), ...
+        'calResult:savedP','Pass the actual saved P and its matching cal_cfg/reference.');
+    V=behavior_record_view(out,P);x=V.raw;v=V.ref4;rt=V.time_s;
+    assert(V.reference_enabled,'calResult:reference','Declared reference must be enabled.');
+    assert(size(x,1)==opt.N_train&&isequal(x(:,4),(opt.first_id:opt.first_id+opt.N_train-1).')&& ...
+        all(x(:,5)==opt.epoch)&&all(x(:,6)==1)&&isequal(v(:,2:3),x(:,4:5))&& ...
+        all(v(:,4)==1)&&all(isfinite(v(:,1))), ...
+        'calResult:join','Public training rows/valid/tags differ.');
+    [cnv,adcReady]=check_adc_reference(out,x,v,refCfg);
+    extracted=isstruct(committed)&&isscalar(committed)&&isfield(committed,'extracted')&&committed.extracted;
+    if extracted
+        assert(all(isfield(committed,{'status7','snapshot2624'})), ...
+            'calResult:committedShape','Extracted final state lacks expected Train DWork.');
+        state=double(committed.status7(:)).';fit=double(committed.snapshot2624(:)).';
+        snapshotSource='Actual extracted final Train DWork';
+        if isfield(committed,'source'),snapshotSource=char(committed.source);end
+    else
+        assert(V.legacy,'calResult:committedMissing', ...
+            'Final Train state unavailable for record graph; stale Outputs cannot decide completion.');
+        [~,state]=series(out.get('cal_status_log'),7);[~,fit]=series(out.get('cal_fit_log'),2624);
+        assert(size(state,1)==1&&size(fit,1)==1,'calResult:legacySnapshot','Legacy snapshot must be one actual row.');
+        snapshotSource='Legacy transport-off Outputs snapshot; no final-state extraction available';
+    end
+    assert(numel(state)==7&&numel(fit)==2624&&state(1)==1&& ...
+        state(2)==opt.N_train&&state(3)==1&&state(7)==0, ...
+        'calResult:incomplete','training_incomplete: require all rows and exactly one committed fit call.');
+    f=fit(:);assert(isequaln(f(1:5),state(1:5).')&&f(8)==state(6)&&f(9)==0);
+    names={'rank_deficient_row_bound','rank_deficient','ill_conditioned','nonpositive_effective_h', ...
+        'nonpositive_sample_denominator','training_budget_exceeded','training_coverage_incomplete', ...
+        'training_candidate_requires_independent_holdout'};
+    index=state(4);assert(index>=1&&index<=8&&index==floor(index));
+    h=[];if f(10)==1,h=f(15:698);assert(index==8&&all(isfinite(h))&&all(h>0));end
+    sv=[];scale=[];if f(12)>0
+        assert(f(12)<=684&&f(12)==floor(f(12)));sv=f(699:698+f(12));scale=f(1383:2066);
+    end
+    R=struct('schema','sar20-main-training-result/v1','status',names{index}, ...
+        'rows',size(x,1),'fit_calls',state(3),'rank',state(5),'condition_scaled',f(6), ...
+        'training_rms_v',f(7),'ready_for_independent_holdout',logical(f(8)), ...
+        'accepted',false,'frozen',[],'reference_values_read',logical(f(11)), ...
+        'rank_upper_bound',f(13),'nullity_lower_bound',f(14), ...
+        'h_candidate',h,'singular_values_scaled',sv,'column_scale_v',scale, ...
+        'dem_phase_counts',reshape(f(2067:2624),18,31), ...
+        'thresholds',opt.thresholds,'public_config',opt.public_cfg,'reference_declaration',refCfg, ...
+        'reference_join_exact',true,'reference_CNV_hold_exact',true, ...
+        'code_output','Original nominal code; no coefficient activation', ...
+        'scope','Actual Simulink Update fit snapshot; no post-run refit or holdout input');
+    R.readiness_boundary=V.readiness_boundary;
+    R.committed_snapshot_source=snapshotSource;R.final_state_extracted=extracted;
+    if ~isempty(sv)
+        R.numeric_cutoff_floor=max(opt.N_train,684)*eps(sv(1));
+        R.rank_cutoff=max(opt.thresholds.relative_singular_cutoff*sv(1),R.numeric_cutoff_floor);
+    end
+    data=struct('raw',struct('raw_D1',x(:,1),'raw_D2',x(:,2),'raw_DT',x(:,3), ...
+        'sample_id',x(:,4),'epoch',x(:,5),'valid',x(:,6)), ...
+        'trainRef',struct('source','declared_external_reference','provenance',opt.reference_provenance, ...
+        'sample_id',v(:,2),'epoch',v(:,3),'value_v',v(:,1)), ...
+        'actual_raw_ready_time_s',adcReady,'actual_record_ready_time_s',rt, ...
+        'actual_reference_CNV_time_s',cnv, ...
+        'public_config',opt.public_cfg,'thresholds',opt.thresholds,'fit_snapshot',f);
+end
+function [t,x]=series(s,w)
+    assert(isa(s,'timeseries'));t=s.Time(:);d=s.Data;
+    if s.IsTimeFirst,x=reshape(d,numel(t),[]);
+    else,x=reshape(permute(d,[ndims(d) 1:ndims(d)-1]),numel(t),[]);end
+    assert(isequal(size(x),[numel(t) w]));
+end
+function yes=words(a,b),yes=isequal(size(a),size(b))&&isequal(typecast(a(:),'uint64'),typecast(b(:),'uint64'));end
+
+function x=at_times(t,data,wanted,label)
+    [found,index]=ismember(wanted,t);
+    assert(all(found),'recordResult:time','Missing exact actual timestamp in %s.',label);
+    for j=1:numel(wanted)
+        assert(nnz(t==wanted(j))==1,'recordResult:time','Ambiguous actual timestamp in %s.',label);
+    end
+    x=data(index,:);
+end
+function [cnv,adcReady]=check_adc_reference(out,rr,rf,refCfg)
+% Original declared reference is checked at actual ADC CNV, not receive time.
+    [te,event]=series(out.get('event_log'),2);
+    [tf,ref]=series(out.get('train_ref_log'),4);
+    [ta,raw]=series(out.get('raw_log'),6);[tq,ready]=series(out.get('ready_log'),1);
+    assert(all(ismember(ready,[0 1])),'recordResult:adcReady','ADC Ready must be binary.');
+    art=tq(ready==1);ar=at_times(ta,raw,art,'raw_log');
+    cnv=zeros(size(rr,1),1);adcReady=cnv;
+    for k=1:size(rr,1)
+        row=find(event(:,1)==rr(k,4)&event(:,2)==1);
+        assert(isscalar(row),'recordResult:CNV','Require one actual ADC CNV for each public record.');
+        cnv(k)=te(row);
+        assert(cnv(k)==rr(k,4)*refCfg.sample_period_s,'recordResult:CNV','Actual CNV differs from registered aperture.');
+        original=at_times(tf,ref,cnv(k),'train_ref_log');
+        expected=refCfg.offset_v+refCfg.amplitude_v*sin(2*pi*refCfg.frequency_hz*cnv(k)+refCfg.phase_rad);
+        assert(original(2)==rr(k,4)&&original(3)==rr(k,5)&&original(4)==1&& ...
+            words(expected,original(1))&&words(original,rf(k,:)), ...
+            'recordResult:reference','CNV reference, paired reference or declared source differs.');
+        rows=event(:,1)==rr(k,4);held=at_times(tf,ref,te(rows),'train_ref_log');
+        assert(all(held(:,2)==rr(k,4))&&all(held(:,3)==rr(k,5))&&all(held(:,4)==1)&& ...
+            words(held(:,1),repmat(original(1),sum(rows),1)), ...
+            'recordResult:hold','Original public reference changed after actual CNV.');
+        r=find(ar(:,4)==rr(k,4)&ar(:,5)==rr(k,5));
+        assert(isscalar(r)&&words(ar(r,:),rr(k,:)), ...
+            'recordResult:ADCjoin','RX/public RAW differs from unique early ADC RawReady word.');
+        adcReady(k)=art(r);
+    end
+end

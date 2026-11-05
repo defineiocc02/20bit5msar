@@ -1,0 +1,34 @@
+{
+  "status": "visual_and_explanation_candidate_only",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "sample_id": 4,
+  "epoch": 1,
+  "raw6": [
+    1039,
+    3417,
+    42,
+    4,
+    1,
+    1
+  ],
+  "code20": 524285,
+  "scope": "actual saved nine timeseries, real SLX hierarchy and RAW/P arithmetic crosscheck; no new simulator, no physical layout edit",
+  "source_sha256": {
+    "point_receipt": "6329d10755872f51f97268cc80bdfb8c9652fe703fbdcd45f1afee034ea048be",
+    "point_P": "be1d4d1c447a474d23639d470e6031901035a0fde8da5bc93b7c95d274bf9640",
+    "point_signals": "735364a0e1d7fd9a6166bf6915d8ee446cef0bfa567621f3e66fc57057bf6983",
+    "actual_model_snapshot": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+    "independent_report": "735eb402c282301158fbb70ad81d5ef9e273d1fee42c6d33bde8af0aac8e79ee",
+    "figure_metadata": "dc4b4a042198de675f3191dade498e0052b049ef87c104c4681d706490339a54"
+  },
+  "candidate_sha256": {
+    "id4_designer_map.svg": "76fa8829820bb023ca9901f21e5c6580009b436245dffd623dc85dff9751b1e8",
+    "id4_designer_map.png": "4a8895a7ed7ddc662bdc55e09987656cba91e1bdfecfa9fdb18e1baad49a9358",
+    "README.md": "b398bfdb3dc2b8df48153dfda6f53399e672f2b84f1f114eb5721c3125465a7f",
+    "read_id4_actual.py": "827c06cdcf8e545f92ad7ea3253cc70a704ee59be77e6d38693eaf022d04bbda",
+    "id4_actual.json": "341e832aa785f18640869e3888e70e263511652e6984c9332d4ab55b52a8fd82",
+    "check_graph_provenance.py": "873a6d3b6243b34adf20c3ea89325de4a042e4bd34125e67af283fde56d1e139",
+    "graph_provenance.json": "5e071f3b9eafd84ba38fc1d6191308fce1633dcd3621cb5e0d1475cf80993026",
+    "build_map.py": "e3c0a59ad64204c1a43859e7ef3c39e5944b73464b02d6f4f3b16289881a7a6a"
+  }
+}

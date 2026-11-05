@@ -1,0 +1,82 @@
+function R=behavior_public_cal_fit(raw,cfg,trainRef,thresholds)
+%BEHAVIOR_PUBLIC_CAL_FIT Full-684, unregularized TRAINING-ONLY offline candidate.
+% Adapted from archive fit v1.1 SHA 0ff829d3...a20e5d9. NO holdout answers accepted.
+% trainRef EXACT fields source/provenance/sample_id/epoch/value_v, externally
+% declared source='declared_external_reference'. Thresholds are all explicit.
+% N<684 returns an impossible-rank rejection before reading reference values;
+% trainRef=[] is allowed ONLY for that no-fit row-boundary check on actual RAW.
+% Even a successful fit is NOT frozen/accepted: independent holdout/native
+% commit/integer reload remain required and are deliberately outside this call.
+    keys={'relative_singular_cutoff';'maximum_condition_number';'training_rms_limit_v'};
+    assert(isstruct(thresholds)&&isscalar(thresholds)&&isequal(sort(fieldnames(thresholds)),sort(keys)), ...
+        'publicCal:thresholdBoundary','Exactly cutoff, condition maximum and training RMS V are required.');
+    for k=1:3
+        x=thresholds.(keys{k});assert(isnumeric(x)&&isreal(x)&&isscalar(x)&&isfinite(x), ...
+            'publicCal:threshold','Explicit thresholds must be finite real scalars.');
+    end
+    assert(thresholds.relative_singular_cutoff>0&&thresholds.relative_singular_cutoff<1&& ...
+        thresholds.maximum_condition_number>=1&&thresholds.training_rms_limit_v>0, ...
+        'publicCal:threshold','Invalid cutoff/condition/training RMS threshold.');
+    refKeys={'source';'provenance';'sample_id';'epoch';'value_v'};
+    if ~isempty(trainRef)
+        assert(isstruct(trainRef)&&isscalar(trainRef)&&isequal(sort(fieldnames(trainRef)),sort(refKeys)), ...
+            'publicCal:referenceBoundary','Only explicit TRAIN reference is allowed; no holdout/answers/analog fields.');
+    end
+    F=behavior_public_cal_features(raw,cfg);n=numel(F.sample_id);
+    assert(all(F.valid)&&all(F.epoch==F.epoch(1))&& ...
+        isequal(F.sample_id,F.sample_id(1)+(0:n-1).'), ...
+        'publicCal:trainingSequence','Training requires valid, consecutive, same-epoch RAW; no row removal/reordering.');
+    membership=F.sample_coefficients(:,1:38:end);
+    R=struct('schema','sar20-behavior-public-training/v1','status','rank_deficient_row_bound', ...
+        'parameter_count',684,'training_count',n,'rank',NaN,'rank_upper_bound',min(n,684), ...
+        'nullity_lower_bound',max(0,684-n),'membership_rank',rank(membership), ...
+        'h_fit',[],'frozen',[],'accepted',false,'ready_for_independent_holdout',false, ...
+        'regularization_lambda',0,'nominal_fill_used',false,'reference_values_read',false, ...
+        'state','none; no file, random state, bank swap or coefficient commit', ...
+        'thresholds',thresholds,'public_config',cfg,'independent_holdout','NOT_RUN', ...
+        'native_commit','NOT_RUN','integer_reload','NOT_RUN');
+    if n<684,return;end
+    assert(~isempty(trainRef),'publicCal:externalReferenceRequired', ...
+        'A full-size fit requires a separately supplied external training reference.');
+    assert(strcmp(trainRef.source,'declared_external_reference')&& ...
+        (ischar(trainRef.provenance)||isstring(trainRef.provenance))&& ...
+        isscalar(string(trainRef.provenance))&&strlength(string(trainRef.provenance))>0, ...
+        'publicCal:referenceProvenance','Declare the external source and evidence provenance.');
+    for k=3:5
+        x=trainRef.(refKeys{k});assert(isnumeric(x)&&isreal(x)&&isvector(x)&&numel(x)==n&&all(isfinite(x(:))), ...
+            'publicCal:referenceShape','Training reference must be finite and individually tagged.');
+    end
+    assert(isequal(double(trainRef.sample_id(:)),F.sample_id)&&isequal(double(trainRef.epoch(:)),F.epoch), ...
+        'publicCal:referenceJoin','Exact external trainRef ID/epoch join failed.');
+    x=double(trainRef.value_v(:));assert(all(abs(x)<=cfg.vref_v), ...
+        'publicCal:referenceRange','External training values exceed declared Vref; no clipping/filtering.');
+    Z=bsxfun(@times,x,F.sample_coefficients)-F.code_coefficients_v;u=F.backend_residual_ra_v;
+    assert(all(isfinite(Z(:)))&&all(isfinite(u)),'publicCal:finiteDesign','Nonfinite training design.');
+    scale=sqrt(mean(Z.^2,1));assert(all(isfinite(scale)),'publicCal:finiteScale','Column scale overflow.');
+    zero=scale==0;scale(zero)=1;W=bsxfun(@rdivide,Z,scale);
+    [L,S,V]=svd(W,'econ');sv=diag(S);numericFloor=max(size(W))*eps(sv(1));
+    cutoff=max(thresholds.relative_singular_cutoff*sv(1),numericFloor);rk=nnz(sv>cutoff);
+    R.reference_values_read=true;R.status='rank_deficient';R.rank=rk;R.rank_upper_bound=rk;
+    R.nullity_lower_bound=684-rk;R.column_scale_v=scale;R.zero_columns=find(zero);
+    R.singular_values_scaled=sv;R.rank_cutoff=cutoff;R.numeric_cutoff_floor=numericFloor;
+    R.condition_number_scaled=Inf;R.reference_provenance=char(trainRef.provenance);
+    if rk~=684,return;end
+    condition=sv(1)/sv(684);R.condition_number_scaled=condition;
+    if condition>thresholds.maximum_condition_number,R.status='ill_conditioned';return;end
+    % Only AFTER all684 directions pass rank/condition; no anchor/pinv/ridge.
+    h=(V*((L.'*u)./sv))./scale.';
+    denominator=F.sample_coefficients*h;
+    if ~all(isfinite(h))||~all(h>0),R.status='nonpositive_effective_h';return;end
+    if ~all(isfinite(denominator))||~all(denominator>0),R.status='nonpositive_sample_denominator';return;end
+    xhat=(u+F.code_coefficients_v*h)./denominator;err=xhat-x;
+    R.training_rms_v=sqrt(mean(err.^2));R.training_equation_rms_ra_v=sqrt(mean((Z*h-u).^2));
+    if R.training_rms_v>thresholds.training_rms_limit_v,R.status='training_budget_exceeded';return;end
+    counts=zeros(18,31);
+    for row=1:n
+        for slot=1:8,j=F.slice_ids(row,slot);phase=F.dem_shift(row,slot)+1;counts(j,phase)=counts(j,phase)+1;end
+    end
+    R.dem_phase_counts=counts;
+    if any(sum(counts,2)==0)||(cfg.dem_enabled&&any(counts(:)==0)),R.status='training_coverage_incomplete';return;end
+    R.status='training_candidate_requires_independent_holdout';R.h_fit=h;
+    R.ready_for_independent_holdout=true;
+end

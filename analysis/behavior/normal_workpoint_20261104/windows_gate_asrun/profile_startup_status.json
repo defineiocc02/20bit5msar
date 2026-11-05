@@ -1,0 +1,12 @@
+{
+    "exit_code":  0,
+    "completed":  [
+                      "profile"
+                  ],
+    "original_task_unchanged":  true,
+    "error":  "",
+    "status":  "passed",
+    "gui_preserved":  true,
+    "phase":  "complete",
+    "startup_option":  "-softwareopengl"
+}

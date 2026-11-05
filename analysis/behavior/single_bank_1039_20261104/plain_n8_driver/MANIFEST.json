@@ -1,0 +1,58 @@
+{
+  "schema": "sar20-single-plain-n8-driver/v1",
+  "item_count": 10,
+  "items": [
+    {
+      "path": "README_PLAIN.md",
+      "bytes": 1418,
+      "sha256": "53ef5e46d89d2e3d83fa080a2b267b8b03facea434e614bd51f5ac3a06bcf7bb"
+    },
+    {
+      "path": "scripts/sb_bind_runtime.m",
+      "bytes": 1492,
+      "sha256": "7bc5886c412ad2725a1f328a1925c872f02563be8c40e9dbc6b31d9e24676417"
+    },
+    {
+      "path": "scripts/sb_check_runtime.m",
+      "bytes": 1935,
+      "sha256": "19af8e95c4bfa014df8946ee16ac15b12887af8e28d9f9a7240f2ec8c4be5536"
+    },
+    {
+      "path": "scripts/sb_jobroot.m",
+      "bytes": 790,
+      "sha256": "d976ce2e8ea1242d366ab97ef680733af5f79d6c043889d474d5e7e969b29699"
+    },
+    {
+      "path": "scripts/sb_n8_case.m",
+      "bytes": 12631,
+      "sha256": "ec4a238eaf09da77f5ae13a15b578b232a2962ac62a7c3a5bc613ce1967d4b47"
+    },
+    {
+      "path": "scripts/sb_same_bits.m",
+      "bytes": 1078,
+      "sha256": "9d578b62ed698e2944043e707bdcd5d55f0ed13202ec294fdb8518aa72f161f4"
+    },
+    {
+      "path": "scripts/sb_series.m",
+      "bytes": 762,
+      "sha256": "b7aa23fcd0d9b9b2dd5b96879ebaab10bedae973aa5a92b640470af854e9f1aa"
+    },
+    {
+      "path": "scripts/sb_sha256.m",
+      "bytes": 628,
+      "sha256": "b6800b6fd472e6847b03bf6e790a18a7812b712344724593a88cdb23a0e0b90d"
+    },
+    {
+      "path": "scripts/sb_validate_plain.m",
+      "bytes": 2890,
+      "sha256": "3146c1411b49f10893bfc2cf296caf8fa6faa0fe1223be525858797358cd41c4"
+    },
+    {
+      "path": "scripts/sb_write_json.m",
+      "bytes": 439,
+      "sha256": "3212629937315149167d5cdb7b1a8ec4497a07f45bcbb65680c3421874ea4e6a"
+    }
+  ],
+  "manifest_excludes_itself": true,
+  "scope": "driver only; MATLAB and model simulation NOT_RUN"
+}

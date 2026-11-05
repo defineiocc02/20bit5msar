@@ -1,0 +1,25 @@
+{
+  "schema": "sar20-azvx-unit/v1",
+  "files": [
+    {
+      "path": "SOURCE_PINS.json",
+      "bytes": 2960,
+      "sha256": "1cdcbe9e999824f2f89444c1f27112c2b80e1e07c30e380ba8cc9548085bf8a1"
+    },
+    {
+      "path": "controller.ps1",
+      "bytes": 2624,
+      "sha256": "03571953b72399e0dfdae086092f64cdbb13c719b8948325b78171088a49af1c"
+    },
+    {
+      "path": "test_caaz_az_vx_delta.m",
+      "bytes": 10578,
+      "sha256": "b3f865d3fd277680d78a899fb1ad9ef4d584da78e78b586701af7710e54ce289"
+    },
+    {
+      "path": "unit_entry.m",
+      "bytes": 2149,
+      "sha256": "aa57fff4374a7b26a41b3bef8cdc1bc15c08f6527c3ec1911545934545c0ebfe"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+function groups = behavior_event_groups(events,includeFrameReady)
+%BEHAVIOR_EVENT_GROUPS Group exact calendar ticks into one scheduler hit.
+%Version: v1 (2026-10-27). Caller: initializer preparing event_source parameters.
+%Inputs events from calendar and optional logical includeFrameReady (default false).
+%Output groups: relative time_s/offset_s [s], tick [250 ps count], priority events.
+%includeFrameReady adds +138 ns frame_ready; router must not send it to sar_step.
+%Stateless sort/group conversion; no reset/RNG or epsilon time adjustment.
+%Model timing is inherited from the calendar, not inferred by this helper.
+    if nargin<2,includeFrameReady=false;end
+    assert(islogical(includeFrameReady)&&isscalar(includeFrameReady), ...
+        'behavior:groups:frameFlag','includeFrameReady must be scalar logical.');
+    assert(isstruct(events)&&all(isfield(events,{'tick','priority','time_s'})), ...
+        'behavior:groups:events','Require behavior_calendar events.');
+    if includeFrameReady
+        assert(~isempty(events),'behavior:groups:empty','A CNV calendar is required for frame grouping.');
+        e=events(1);e.time_s=138e-9;e.offset_s=e.time_s;e.tick=552;
+        e.type='frame_ready';e.index=-1;e.bit=-1;e.priority=70;events(end+1,1)=e;
+    end
+    proto=struct('time_s',0,'offset_s',0,'tick',0,'events',events([]));
+    groups=repmat(proto,0,1);
+    if isempty(events),return;end
+    [~,ix]=sortrows([[events.tick].' [events.priority].'],[1 2]);events=events(ix);
+    first=1;
+    while first<=numel(events)
+        last=first;
+        while last<numel(events)&&events(last+1).tick==events(first).tick,last=last+1;end
+        g=proto;g.time_s=events(first).time_s;g.offset_s=g.time_s;g.tick=events(first).tick;
+        g.events=events(first:last);groups(end+1,1)=g;first=last+1;
+    end
+end

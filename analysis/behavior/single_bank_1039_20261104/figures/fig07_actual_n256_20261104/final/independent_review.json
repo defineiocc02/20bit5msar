@@ -1,0 +1,186 @@
+{
+  "schema": "sar20-independent-n256-review/v1",
+  "source_sha256": {
+    "N256_P_used.mat": "e01e7f45344091eb704755585a4c27bf7a5d13057223b06e7f330a62e53b310d",
+    "N256_P_diff.mat": "c58f0c7fbcfaf3768324f6b16d651ebcc465799f4dd11fb97742bd21627306bd",
+    "N256_P_difference.json": "b92f9e3dd880b6a2c19224347bb052c310c5461f74e5137f87126dd06fe386c1",
+    "N256_simout.mat": "17017f1a50caea4a54aa485adf18c5be27863976e63667f4f9e61633b64abf59",
+    "N256_selected.mat": "a091850bd779a5c2aa61999a29e02b8fc7c9085abdf87695af24fce3bc7b2c66",
+    "N256_spectrum.mat": "5f60479a83caa12f962ad80845141707c8c6c4174418d715a650abfbb7cee51f",
+    "N256_complete.json": "ef02e0478ef8d24b2e834bbd4eaa15b3a445e6316c9e0f8ee5bd058025f3d910",
+    "N8_P_used.mat": "236ddfb427dfc07e7f7e27dd58746deb30946891717d255b53789aa8127a1e9f",
+    "N8_simout.mat": "d472f01a80a832cd483783e4ceca0640a692e0094d1a64f5400411e5201a934c",
+    "model.slx": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "source.zip": "09e6c7c82635d8f6bf1cf4cc8e86f0ec42036524bfe6518dfcb37ea05fb06eb7",
+    "reader.py": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+  },
+  "P0_matches_N8_P_values_and_field_order": true,
+  "full_P_changed_paths_and_saved_values": {
+    "P.N": {
+      "before": 8.0,
+      "after": 256.0
+    },
+    "P.backend.dac_coupling.public_plan": {
+      "before_shape": [
+        32,
+        8
+      ],
+      "after_shape": [
+        264,
+        8
+      ]
+    },
+    "P.cal_cfg.N_train": {
+      "before": 8.0,
+      "after": 256.0
+    },
+    "P.cal_cfg.public_cfg.plan_rows": {
+      "before": 32.0,
+      "after": 264.0
+    },
+    "P.front.plan": {
+      "before_shape": [
+        32,
+        8
+      ],
+      "after_shape": [
+        264,
+        8
+      ]
+    },
+    "P.front.plan_rows": {
+      "before": 32.0,
+      "after": 264.0
+    },
+    "P.n_cycles": {
+      "before": 12.0,
+      "after": 260.0
+    },
+    "P.schedule.n_cycles": {
+      "before": 12.0,
+      "after": 260.0
+    },
+    "P.schedule.stop_time_s": {
+      "before": 2.29e-06,
+      "after": 5.189e-05
+    },
+    "P.stop_time_s": {
+      "before": 2.29e-06,
+      "after": 5.189e-05
+    },
+    "P.training.reference.records": {
+      "before": 8.0,
+      "after": 256.0
+    }
+  },
+  "all_P_diff_mat_values_checked": true,
+  "single_bank_plan": "264 rows of 1..8; first 32 match prior P",
+  "configuration": {
+    "fs_hz": 5000000.0,
+    "fsr_diff_v": 8.192,
+    "fin_hz": 97656.25,
+    "input_peak_v": 3.650563842595822,
+    "input_phase_rad": 0.731,
+    "A0": 10000.0,
+    "UGB_hz": 1200000000.0,
+    "Cf_f": 8.64e-13,
+    "single_bank": true,
+    "guard_s": 0.0
+  },
+  "actual_event_rows": 12480,
+  "actual_cycles": 260,
+  "event_groups_per_cycle": 48,
+  "actual_event_time_and_id_bits_match_calendar": true,
+  "scheduled_events_per_cycle": {
+    "d2_decide": 12,
+    "ta_compare": 8,
+    "ta_feedback": 7
+  },
+  "physical_feedback_counter": "UNOBSERVED_DEBUG_OFF",
+  "actual_RAW_count": 260,
+  "actual_RAW_ID_range": [
+    0,
+    259
+  ],
+  "selected_count": 256,
+  "selected_ID_range": [
+    4,
+    259
+  ],
+  "selected_and_observed_record_wires_bit_equal": true,
+  "first_eight_N8_raw_code_time_bit_equal": true,
+  "first_eight_actual_codes": [
+    963402,
+    979656,
+    989060,
+    991475,
+    986860,
+    975290,
+    956935,
+    932071
+  ],
+  "endpoint_code_count": 0,
+  "saved_metrics": {
+    "snr_db": 109.78320199247955,
+    "sndr_db": 109.34559554905445,
+    "sfdr_db": 122.2674410009771,
+    "thd_db": -119.52956769362332,
+    "enob": 17.87136138688612
+  },
+  "independent_fft_metrics": {
+    "snr_db": 109.7832019924677,
+    "sndr_db": 109.34559554904948,
+    "sfdr_db": 122.26744100114732,
+    "thd_db": -119.5295676936832,
+    "enob": 17.871361386885297
+  },
+  "max_nonDC_relative_power_delta": 1.2094319633568307e-09,
+  "spectrum_scope": {
+    "total_bins": 129,
+    "plotted_nonDC_bins": 128,
+    "zero_power_nonDC_bins": 0,
+    "frequency_hz_range": [
+      19531.25,
+      2500000.0
+    ],
+    "bin_dbfs_range": [
+      -165.80234018362785,
+      -0.9999974699092364
+    ],
+    "y_limits_dbfs": [
+      -175,
+      5
+    ],
+    "full_scale_sine_power_v2": 8.388608,
+    "DC_power_v2_excluded": 5.229645062429767e-33,
+    "normalization": "DC-removed code-centre voltage, rectangular FFT; single-sided bin power divided by (FSRdiff/2)^2/2",
+    "harmonic_bins_H2_to_H10": [
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50
+    ],
+    "enob": "(SNDR-1.76)/6.02; no amplitude correction"
+  },
+  "limitations": [
+    "256-point actual behavioral run, not the paper 20k-point silicon spectrum.",
+    "Noise/AZ off; no yield, nonideality sweep, linearity or PDK signoff.",
+    "12/8/7 counts are calendar tokens; physical feedback counter is not observed.",
+    "Return charge not directly observed in these N256 logs."
+  ],
+  "plot_script_sha256": "5014f5a880a3c0e0a34b0e37bd475b370c026af29ec52216abc5de6ef8806aa0",
+  "style_helper_sha256": "48191dd8e35c255d0b605acffa429b4a2a2b29160fa222d0c11142edb8bfda33",
+  "outputs_sha256": {
+    "fig07_behavior_n256.pdf": "86cb9e1e965f53642352bf903cb7d0b60b32fe5a7cd6e2e32dc49e1256b218f4",
+    "fig07_behavior_n256.png": "9ce4fd72464df193ce49baf6d8b54f86086591321c2f5cce814f734f02442155",
+    "fig07_behavior_n256.svg": "30a10939f0d950cd357ed71b765d274ed3770c44ea91454db7cd262f947c9d6b",
+    "spectrum_non_dc.csv": "648c9e6d17666d343cbbf0efedcf4d1bf50a728868c000a8a2a0315b89b76dda"
+  },
+  "delivery_directory": ".",
+  "README_sha256": "b4242848a9bf4816d0cfb11fbb15e7be782751b118418c14acc2c57e094f453f"
+}

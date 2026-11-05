@@ -1,0 +1,29 @@
+{
+  "status": "windows_applied_n256_mirrored_not_mac_simulated",
+  "utc": "2026-10-26T14:00:05.454674+00:00",
+  "model_sha256": "473438e7affa9f467ce00e19585bb63ca95d543446cbe7da602f3c2bff391e67",
+  "workspace_snapshot_sha256": "cb7edc989b9bc386b7e863ba32cdf4d734b0629fdc4cd421bb2c11b753c720c5",
+  "source_windows_binding_sha256": "4b7c1b7572e31f4b97cac7904323ee3610b81e8d4fdacb4d0c5185f7abf7b6d8",
+  "mac_binding_sha256": "16239dd87b659740ef9bb4206e2c5237b8369c82ad5e2f9c20b33cf1b8422b2e",
+  "current_file_count": 270,
+  "binding_path_changes_only": [
+    "current_model_file",
+    "saved_identity.model_file",
+    "workspace_snapshot_file"
+  ],
+  "parameters": {
+    "record_length": 256,
+    "tracking_count": 8,
+    "AChanges": {
+      "UGB_hz": 1200000000.0,
+      "max_step_s": 6.25e-11
+    },
+    "source_override": [],
+    "capture_mode": "compact",
+    "debug_sample_ids": []
+  },
+  "windows_run_root": "D:/Academic/Projects/sar20m1/SAR20/runs/run_tp4fb8520b_6c12_4e37_8581_7883ebe2064e",
+  "windows_native_stage_last_verified": "actual_simulation",
+  "windows_numeric_result_complete": false,
+  "mac_native_compile_or_run": false
+}

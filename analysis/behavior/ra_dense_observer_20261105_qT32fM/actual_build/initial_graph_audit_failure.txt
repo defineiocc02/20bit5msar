@@ -1,0 +1,2 @@
+GRAPH_AUDIT_FAIL: non-system XML changed: simulink/modelDictionary.xml
+Only the System and Interface UUID attributes changed; exact original and new values are recorded in graph_audit.json.

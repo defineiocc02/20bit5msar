@@ -1,0 +1,1411 @@
+{
+  "status": "new_unique_entry_installed_mac_mirror_native_windows_verified",
+  "archive": "/Users/zhaoyi/Obsidan/\u9879\u76ee\u5e93/outputs/sar20_5_simulink_20261020/evidence/before_behavior_mac_20261027.zip",
+  "sha256": "0e320c1d04c9198c0f8de384eedca2706bb53c58dd9f04fc25582d86417c3256",
+  "files": [
+    {
+      "path": "current/F2_KTC_DITHER_WORKSPACE_CONTRACT.json",
+      "bytes": 55963,
+      "sha256": "71da7eb9190fe57788a58d1665bc2eb0ea658dfac4b809ffe2e465fee94002b5"
+    },
+    {
+      "path": "current/design/ports.json",
+      "bytes": 11995,
+      "sha256": "e83871446daeed06732a960a6bdf933f856b6aa0fe45d45e536515dd06a23c4e"
+    },
+    {
+      "path": "current/matlab/build_sar20_lvds_smoke_model.m",
+      "bytes": 23302,
+      "sha256": "0a8043a329ee125970271b724f52e9ee35c2fb7c3bbb0c86f0f6d94ede086518"
+    },
+    {
+      "path": "current/matlab/build_sar20_m3_layout_copy.m",
+      "bytes": 33817,
+      "sha256": "0affae6c4b4e8f0c07999410676672f770572761f53bb851c456578e8d351cc7"
+    },
+    {
+      "path": "current/matlab/build_sar20_model.m",
+      "bytes": 42947,
+      "sha256": "9fe0b67fcd596eb402c024bde5d3f4f2e850c1b9f9dad0c26286809f1b3062de"
+    },
+    {
+      "path": "current/matlab/build_sar20_vendor_baseline.m",
+      "bytes": 29555,
+      "sha256": "e8a31cd3869b615ce219013dc52fae2028f06bee7bbdfaf629bc57a91d158a3e"
+    },
+    {
+      "path": "current/matlab/build_sar20_vendor_paper_chain.m",
+      "bytes": 68283,
+      "sha256": "c87e726f8c48aa0f311a495d85b8018d8258e889576323e1e88d46ce4214d683"
+    },
+    {
+      "path": "current/matlab/build_sar20_vendor_stage1.m",
+      "bytes": 61704,
+      "sha256": "fb95742768331d3dfc65155f7d411445a9ca9e437556d7651fdccac53abd5fbc"
+    },
+    {
+      "path": "current/matlab/export_sar20_paper_smoke_evidence.m",
+      "bytes": 9797,
+      "sha256": "919cd24e9fc877b23c1242059a6f4b7dd8492f56071efb00725abd33ee528f8e"
+    },
+    {
+      "path": "current/matlab/export_sar20_vendor_evidence.m",
+      "bytes": 11883,
+      "sha256": "875bd9ee6eeaabd24e1ed7629f566e12d84cf4eba33a82a2c252a07a5785cba6"
+    },
+    {
+      "path": "current/matlab/run_sar20_checks.m",
+      "bytes": 11185,
+      "sha256": "82f43fe80f75311cd806e6a05aaf135b8de830a04638831fb173c944a4362bf0"
+    },
+    {
+      "path": "current/matlab/run_sar20_lvds_smoke.m",
+      "bytes": 14137,
+      "sha256": "f6c87bd8fe99dcc598de8094d61837a0327890eed659fef3ae759135b3736cfd"
+    },
+    {
+      "path": "current/matlab/run_sar20_m3_layout_copy.m",
+      "bytes": 1014,
+      "sha256": "c7b4a4a2d0c53c9d29cb2a25f000643e30277f3b2828a74a97a35c2d615a9c62"
+    },
+    {
+      "path": "current/matlab/run_sar20_paper_performance.m",
+      "bytes": 31290,
+      "sha256": "b59a0cb2155ca7ae90b49e60d20c3303ee783dd9680947e052019e654bcafe39"
+    },
+    {
+      "path": "current/matlab/run_sar20_vendor_baseline.m",
+      "bytes": 4762,
+      "sha256": "45a00fe20004f4c1ace72005c61ea9c907354aa0891acb2fc35e55cbc2b94fe5"
+    },
+    {
+      "path": "current/matlab/run_sar20_vendor_paper_smoke.m",
+      "bytes": 1744,
+      "sha256": "862dd01e8ef7c1f00d49ba7eeffc368c782b8cb6e5f4895352f85d7b0cda4648"
+    },
+    {
+      "path": "current/matlab/sar20_az_calendar.m",
+      "bytes": 2303,
+      "sha256": "12f35154a90f681571d754c89e0c682bf2a0b1e33bc202ed71e4ae6299a3d2d0"
+    },
+    {
+      "path": "current/matlab/sar20_cdac2_design.m",
+      "bytes": 2079,
+      "sha256": "9bece6d2579e7953f40810852a3d1d489151812b220e4e3ba6a0f2451d0a1bde"
+    },
+    {
+      "path": "current/matlab/sar20_cdac2_network.m",
+      "bytes": 4142,
+      "sha256": "a598a9878a37ead13d80be905b67d0679302fd7d3bbda7a75437ea66b8037c27"
+    },
+    {
+      "path": "current/matlab/sar20_cdac2_paper_design.m",
+      "bytes": 6803,
+      "sha256": "e4a9eeeeccba21811c1cce867cf4b308a8e62fca0359890c008619b6963b3f48"
+    },
+    {
+      "path": "current/matlab/sar20_cmp1_measure_sfun.m",
+      "bytes": 4128,
+      "sha256": "5d0f84c29fa89bd1d6b059b9a06b9dda500c9dfd5d4d78e6511b1aa53cc73df9"
+    },
+    {
+      "path": "current/matlab/sar20_cmp1_step.m",
+      "bytes": 1099,
+      "sha256": "5b2d6700bec0b9b8f931a2baca03d5d2ab292d8d9b416b5b36ce1fbbf05b2215"
+    },
+    {
+      "path": "current/matlab/sar20_cmp2_step.m",
+      "bytes": 1246,
+      "sha256": "0f2ccc30a70ff87d51b8d467281658d9d1b568f1250ff9fcbace0ffed7010bde"
+    },
+    {
+      "path": "current/matlab/sar20_code20_to_voltage.m",
+      "bytes": 1717,
+      "sha256": "ec85fed221467a4ece11ecad7602d42670e5fc524b537ab923eb46f03ad08958"
+    },
+    {
+      "path": "current/matlab/sar20_committed_signs.m",
+      "bytes": 1306,
+      "sha256": "8dc01b1668cf4ff54254c60c8985d91b759ed72475ad70fba2c80fd65305c693"
+    },
+    {
+      "path": "current/matlab/sar20_compare.m",
+      "bytes": 1659,
+      "sha256": "a1eceab836e2ca7f6ad03ee12adfd19311d92ac37165f3319bae8cbde8d55e66"
+    },
+    {
+      "path": "current/matlab/sar20_component_meta.m",
+      "bytes": 5251,
+      "sha256": "de7e8d558996bb72ac994d9bfd4fcae756d30e13220e84ad0d9475554bc3fae6"
+    },
+    {
+      "path": "current/matlab/sar20_counter_word.m",
+      "bytes": 1075,
+      "sha256": "2d79d74493692b87499bbea70c363a8b95fcb16d2609d331778d0684cecbbdfc"
+    },
+    {
+      "path": "current/matlab/sar20_ct_dac2_step.m",
+      "bytes": 4403,
+      "sha256": "742aa59086eae2187d664e0be9dab06fa1ceeae1a3abaa6b3b2e825388f7586e"
+    },
+    {
+      "path": "current/matlab/sar20_ct_switches_step.m",
+      "bytes": 8543,
+      "sha256": "291913a3a0dbee5c23f635ea8b0b08525cf77b01ce65ef538274783c61043543"
+    },
+    {
+      "path": "current/matlab/sar20_dac1_step.m",
+      "bytes": 7337,
+      "sha256": "2689437270e831936cc5f1b9b0fa6b5c88689b0cf1d77e07748679c641084a39"
+    },
+    {
+      "path": "current/matlab/sar20_decode_bits.m",
+      "bytes": 901,
+      "sha256": "d9314e7c7d6b841f60d12827168107e5f023a57468e43b682040adb1c2c3953e"
+    },
+    {
+      "path": "current/matlab/sar20_dither_value.m",
+      "bytes": 1008,
+      "sha256": "81d4bef25a1562e18f6876683d1d5cdd7e8aab5fc38afd604eae1fe7e0ac1dcd"
+    },
+    {
+      "path": "current/matlab/sar20_driver_step.m",
+      "bytes": 1175,
+      "sha256": "36bcee4e679c94b5f73df1e894a991e8a32e82542ae18c9b27cb58d58eab90c4"
+    },
+    {
+      "path": "current/matlab/sar20_driver_waveform.m",
+      "bytes": 1510,
+      "sha256": "a1bc54bc2cc043aa40ffca2bbd8b0fc4781dbbc6b354838170aa20811d2b176b"
+    },
+    {
+      "path": "current/matlab/sar20_fpga_step.m",
+      "bytes": 19052,
+      "sha256": "c38f95adf158a2819ddf4110a65861f182bae1b3fe6ceb9018bda470aaf28da3"
+    },
+    {
+      "path": "current/matlab/sar20_frontend_step.m",
+      "bytes": 9782,
+      "sha256": "c10c8d760a0f428ca636fb17f6b0dd06a8c2372fc69901c7c81b98a3f0474b4d"
+    },
+    {
+      "path": "current/matlab/sar20_io_step.m",
+      "bytes": 22119,
+      "sha256": "ebccba2e16d3df7b3f5a9fbac0e6736400db554963bb3c0aa40cfe7dda5b0ebf"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_rx_numeric_step.m",
+      "bytes": 6051,
+      "sha256": "4f0e37e381d67f16a78b9816a9abe73272d3ab441c4d04646ac1b547c366d527"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_rx_sfun.m",
+      "bytes": 4063,
+      "sha256": "2ecef87e72a5805ceb91bec9f438785f4f1cc46f05bb969d00b851c844ef9929"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_rx_state_width.m",
+      "bytes": 779,
+      "sha256": "597b9447f3c0cfde2822a187e0bde0ad708d4d71b13240b32946f1109d243257"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_rx_step.m",
+      "bytes": 15564,
+      "sha256": "110d17e309c3f6ab00fdf94bfac5bc7f1342842683451de291347b738e2ab2ca"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_smoke_config.m",
+      "bytes": 1927,
+      "sha256": "1a8940c2c2bb385cccdf8f5e4e19a81853bb7575c6f6644830d71d2750467c44"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_smoke_vectors.m",
+      "bytes": 6233,
+      "sha256": "8ac39603070d8f8789044c7fa302ae634b579ad48dcf8b7e34c5e34ff39c5de5"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_tx_numeric_step.m",
+      "bytes": 7394,
+      "sha256": "85ad0fb697c771927f4c1f7fe88bdb7c26e25246a1c277d1c5a182398ff6af4e"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_tx_sfun.m",
+      "bytes": 3710,
+      "sha256": "2c60dfe2fb56fe90e4117a0329ce15d2d47a24b04c1eb37fd82a83a6e34f493b"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_tx_state_width.m",
+      "bytes": 1519,
+      "sha256": "832b94819cb7b6e1b28831d2d1001e24921261d9ec5fbe2ac5aad0f183e4bb65"
+    },
+    {
+      "path": "current/matlab/sar20_lvds_tx_step.m",
+      "bytes": 21626,
+      "sha256": "8083610baa2de610b8f54589feb8b7023d812992abc916cd74261f70918279bc"
+    },
+    {
+      "path": "current/matlab/sar20_make_slice_plan.m",
+      "bytes": 2904,
+      "sha256": "8793f6b50ad975de3095b0048b51ed2a4f310086e60889f44ca0f20ab1f6d94d"
+    },
+    {
+      "path": "current/matlab/sar20_normal.m",
+      "bytes": 974,
+      "sha256": "60204860cd0c341f558c91d16152bf01627fcc6ecac3adc195bb8cc55e21504f"
+    },
+    {
+      "path": "current/matlab/sar20_pairer_step.m",
+      "bytes": 11917,
+      "sha256": "93c66c3b51047bf8192846a98e66e25f23d2a06f9c846165cd9308d77229b20b"
+    },
+    {
+      "path": "current/matlab/sar20_paper_calibration_config.m",
+      "bytes": 6462,
+      "sha256": "b8093962214bbe3b94267a1c5a710f067b1d1e9cc917b6d92c44fe04a7066415"
+    },
+    {
+      "path": "current/matlab/sar20_paper_calibration_enable.m",
+      "bytes": 4184,
+      "sha256": "d6c069f9c51ae375699e3bd8f0c540b52c09a2687170cbbbb2b15931e16fde9c"
+    },
+    {
+      "path": "current/matlab/sar20_paper_calibration_holdout_records.m",
+      "bytes": 5083,
+      "sha256": "ce8832d33cf59b705f2b8d9a3d4bec1c983ab0e1e5fd5fe37c368dd966ae5116"
+    },
+    {
+      "path": "current/matlab/sar20_paper_coherent_plan.m",
+      "bytes": 2895,
+      "sha256": "c06e6c5ce5831d395ff28ebcf7d31708bcb2bb5d41e840b75d99ef6cd179231f"
+    },
+    {
+      "path": "current/matlab/sar20_paper_fft_metrics.m",
+      "bytes": 10059,
+      "sha256": "2ba006ef8caff3404b1fb2e266ebaba63c63e7b402b43fb4349421e1d6bcfb85"
+    },
+    {
+      "path": "current/matlab/sar20_paper_foreground_fpga_sfun.m",
+      "bytes": 4303,
+      "sha256": "38037458a8ff267d2a36c57117008ca43a4064674c8d503fae7ad82f10da8b63"
+    },
+    {
+      "path": "current/matlab/sar20_paper_foreground_fpga_step.m",
+      "bytes": 11998,
+      "sha256": "2e96dbe5498287a352243973bb54f9bbb04de269b633876f4733240331eda49e"
+    },
+    {
+      "path": "current/matlab/sar20_paper_hold_latch_sfun.m",
+      "bytes": 5134,
+      "sha256": "961721184621b1cc15df2a50b7dd1f7e94b40b80f43e41a39f4a243aa78b5a2f"
+    },
+    {
+      "path": "current/matlab/sar20_paper_hold_overlay_step.m",
+      "bytes": 4722,
+      "sha256": "9c683cdfdaa8059427d10c1025308c708152a665eec7fd26f8959a094aa1d4ad"
+    },
+    {
+      "path": "current/matlab/sar20_paper_known_sine_reference.m",
+      "bytes": 2970,
+      "sha256": "4180a9b9d500a4fd82b99b8a08ca4c1c74b8286e4f65e7238e7d5de7fc9ce187"
+    },
+    {
+      "path": "current/matlab/sar20_paper_parameters.m",
+      "bytes": 28176,
+      "sha256": "a66b4f09dc38eb636ff3d26555a81468e6298ef2308e7f205ff871b541a222f7"
+    },
+    {
+      "path": "current/matlab/sar20_paper_set_stimulus.m",
+      "bytes": 1673,
+      "sha256": "c894e4d7766cc07b4168f838c5661dcde596b00413f18892ba2897628d0de0b6"
+    },
+    {
+      "path": "current/matlab/sar20_paper_timing_profile.m",
+      "bytes": 6581,
+      "sha256": "da3c622e4bcc9598decef30ed38a22fc390d72eb328019ede56b680b380ce582"
+    },
+    {
+      "path": "current/matlab/sar20_parameters.m",
+      "bytes": 16454,
+      "sha256": "7b9ad9f5904f10ec92ddf8b21017d10754eb301b6207e21d8b3773b4ea794221"
+    },
+    {
+      "path": "current/matlab/sar20_pin_fpga_step.m",
+      "bytes": 8761,
+      "sha256": "299282ebf6ac051883f53cdfcacf5c51d838e05d4d2715e6a98cc223e0fdfbc7"
+    },
+    {
+      "path": "current/matlab/sar20_ra_step.m",
+      "bytes": 17625,
+      "sha256": "0a8a439f79659d3ae4d6eeb7fd247d65d8d6a32b77ef01f3e2eea6aa5758130d"
+    },
+    {
+      "path": "current/matlab/sar20_sar1_step.m",
+      "bytes": 13455,
+      "sha256": "4e0b07a81464d59fa2692df13b74a31b14ca86fd467e47746182ecf3aa576a78"
+    },
+    {
+      "path": "current/matlab/sar20_sar2_step.m",
+      "bytes": 11742,
+      "sha256": "63134fec2ac73753769ca46ae1a124099e21c2abbec7925bf68cbded186cc8f5"
+    },
+    {
+      "path": "current/matlab/sar20_satk_named_block_id.m",
+      "bytes": 12975,
+      "sha256": "c11f2f9dc79de45cfbe136849cc202f279b1c7bebdb6aa82c544b1d198be1eae"
+    },
+    {
+      "path": "current/matlab/sar20_scheduler_step.m",
+      "bytes": 21292,
+      "sha256": "a9129c3afcbb5361954cee9c589a46d5cb235aec3c9758befecaff3b36a8b180"
+    },
+    {
+      "path": "current/matlab/sar20_sfun.m",
+      "bytes": 5365,
+      "sha256": "e81475fc0a91c493d6c481a3c786e828100242d6475c13173f6264b4ee71f437"
+    },
+    {
+      "path": "current/matlab/sar20_stimulus.m",
+      "bytes": 1241,
+      "sha256": "07d4279d894d03e2790eb3789bcfdf3f04a025c650c0f0a48053bd4cde9cb51a"
+    },
+    {
+      "path": "current/matlab/sar20_timing_from_spec.m",
+      "bytes": 4049,
+      "sha256": "28ccc11eb69c8bf34772966bf5b51696c9936a52b07bdb525f38b3a8e64efcbf"
+    },
+    {
+      "path": "current/matlab/sar20_track_interval.m",
+      "bytes": 1991,
+      "sha256": "420a0dc09474979783a5088b97854b22b4ee497f1e5839828ed8d9e8304c122f"
+    },
+    {
+      "path": "current/matlab/sar20_vendor_held_sfun.m",
+      "bytes": 3404,
+      "sha256": "5da83eeccb9a0e9bd4b673e1e477c43847ed8bdf9c8840d2e5204e8d15227dec"
+    },
+    {
+      "path": "current/matlab/sar20_vendor_stage1_out_sfun.m",
+      "bytes": 2351,
+      "sha256": "1013ac6cbba66f977956115e95f5f26b3eaa1856e424b919382d29dd3907de8e"
+    },
+    {
+      "path": "current/model/cicc/cicc_setup.m",
+      "bytes": 1250,
+      "sha256": "99a8182b80712cdb5766d950fe1044f7c74099a87e2af48c7abbc573effa2a3f"
+    },
+    {
+      "path": "current/model/cicc/matlab/adc_tracking_count.m",
+      "bytes": 1246,
+      "sha256": "b303480e5e49368649a4338c458a821e35b8c723a2e2ebd64bc397d1430cc643"
+    },
+    {
+      "path": "current/model/cicc/matlab/cicc_hash.m",
+      "bytes": 1181,
+      "sha256": "a25612be1404c68d1af22172a256c2c92c05591757c4b7f571d7566f6078f413"
+    },
+    {
+      "path": "current/model/cicc/matlab/cicc_records.m",
+      "bytes": 3788,
+      "sha256": "d3d96ae59b4a7e9bac597083c36c2c4844ea3203692d9d573617c47b75d9a09e"
+    },
+    {
+      "path": "current/model/cicc/matlab/cicc_spectrum.m",
+      "bytes": 3277,
+      "sha256": "8d5ecf3f85294c29e28d04853fc84254af31bba7184748837ab4fa339d1a275c"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_cached_sfun.m",
+      "bytes": 8828,
+      "sha256": "933e45507f795bbd7295f0481289fa4329a01fef4f6434c150fc1e3169606b58"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_committed_signs.m",
+      "bytes": 1509,
+      "sha256": "578f820987125ad81b920be5246e2e9e94b00ce0408813bd0abf5c582efa86a6"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_fpga_step.m",
+      "bytes": 19585,
+      "sha256": "403687db39bb03d7464e601276ba2ef74103f7a0837fba85f3952fdd8e1edbbb"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_paper_parameters.m",
+      "bytes": 30008,
+      "sha256": "b43d8da729c10c2128938ebdfd8a14042cfea4970594dcfe1d81a2d5e0863575"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_paper_ta_off_fpga_step.m",
+      "bytes": 1891,
+      "sha256": "9a3ef702c51e1f38fa46609b6df6f7aa765b137065002be20caac762ba359c94"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_paper_ta_off_profile.m",
+      "bytes": 2219,
+      "sha256": "ab678faa4b372633ec96589bdf047c812eb0734dcdf6404194c58bbc0e26b3fb"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_paper_ta_off_sar2_step.m",
+      "bytes": 2356,
+      "sha256": "73614e8b18c70d7c4d407e11820e594f93636ca71b21b72eb59275e63b0c1fe7"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_paper_ta_off_scheduler_step.m",
+      "bytes": 3057,
+      "sha256": "c5ecb33de3e3e64af4b3c9ddc914a51f397f6d420e10661107c8f77cadba9aa9"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_sar2_step.m",
+      "bytes": 11864,
+      "sha256": "dbd911fc8e76df808f229a1c73cb2ff926eb1dd4bdcf39e308ae7e4ad1e8f4d8"
+    },
+    {
+      "path": "current/model/cicc/matlab/sar20_scheduler_step.m",
+      "bytes": 21371,
+      "sha256": "7d9f19954340c75b2e1a3163c0e8143e4ccadabe504f08556581a8c239cd126b"
+    },
+    {
+      "path": "current/model/cicc/matlab/ta_mode_sfun.m",
+      "bytes": 9274,
+      "sha256": "0737809f403d137a497fd2bd5458349d0b81259ce86d43e71685fc84918cd082"
+    },
+    {
+      "path": "current/model/cicc/matlab/ta_profile.m",
+      "bytes": 1826,
+      "sha256": "0904acb462710f03f901dea08103c379bf7fedea3c63ebeb46a329d81bbe592e"
+    },
+    {
+      "path": "current/model/cicc/matlab/tracking_profile.m",
+      "bytes": 1337,
+      "sha256": "1c81ad3d40b014302c8c1b317be8bcfbd33aa7ba97b231191e297333d68f1b11"
+    },
+    {
+      "path": "current/model/cicc/matlab/tracking_signs_sfun.m",
+      "bytes": 2930,
+      "sha256": "32a4c269af33e2d2b99c10e983e94f593812754b4abb2bce80236f39b12e186e"
+    },
+    {
+      "path": "current/model/product/matlab/product_base_parameters.m",
+      "bytes": 21554,
+      "sha256": "ba43e889ab800d6969664a744be57e082ab9d5b4137b64f283a93a070ad5e8df"
+    },
+    {
+      "path": "current/model/product/matlab/product_capture.m",
+      "bytes": 2248,
+      "sha256": "5d9526f7f37125c97eb52399eb78e24b62f82340fb02daddb5b4daed64c04e4c"
+    },
+    {
+      "path": "current/model/product/matlab/product_fixed_reconstruct.m",
+      "bytes": 5117,
+      "sha256": "f2fccd31f09c90a35705303ec97168993c26fbdacac3e66971d3004a345ba5ee"
+    },
+    {
+      "path": "current/model/product/matlab/product_records.m",
+      "bytes": 6135,
+      "sha256": "3bc109a43375d0ec9b7af7e31aa55c11b55b31913c854d68b669ab947814da34"
+    },
+    {
+      "path": "current/model/product/matlab/sar20_product_fpga_step.m",
+      "bytes": 20078,
+      "sha256": "0144650ffb78a507daafe9b2d7559c64f1cf09d7d0a33470e7614fe80da5fa56"
+    },
+    {
+      "path": "current/model/product/matlab/sar20_product_host_sfun.m",
+      "bytes": 3396,
+      "sha256": "5efae89a3ff4e90f53a4f6e760f24cc0bce947e828b070808ca33734d5479a1b"
+    },
+    {
+      "path": "current/model/product/matlab/sar20_product_host_step.m",
+      "bytes": 3385,
+      "sha256": "3ec123df19bb784d6884f13e1794fbc87435c13dacfc92c64b96e0999607b37c"
+    },
+    {
+      "path": "current/model/product/matlab/sar20_product_rx_sfun.m",
+      "bytes": 3928,
+      "sha256": "ef22bd66c84163f6ed873b6e99633ccd6d5505fcd369cf6b666c9045bb984ad4"
+    },
+    {
+      "path": "current/model/product/product_parameters.m",
+      "bytes": 2506,
+      "sha256": "46f221a2896a6b235f3707665e7f34c7ab7b6d622489d974c48057e3df2f4331"
+    },
+    {
+      "path": "current/model/product/product_setup.m",
+      "bytes": 1842,
+      "sha256": "8f079e6ebb5cf4f06c6e459484ae11bd135e2e8d3f327805789c51b9e37703d6"
+    },
+    {
+      "path": "current/model/product/run_product.m",
+      "bytes": 5809,
+      "sha256": "89d93840412d98c1573fd0246d7207a6688ef0228b55c51d40ce34161bcec1f5"
+    },
+    {
+      "path": "current/model/thermal/matlab/sar20_ct_joint_thermal_precompute.m",
+      "bytes": 16325,
+      "sha256": "73981fe14e186e520c84e9ab6c0f55877f3c67b58a17905a8a2d2f86f6d2b702"
+    },
+    {
+      "path": "current/model/thermal/matlab/sar20_ct_thermal_step.m",
+      "bytes": 6281,
+      "sha256": "e72bf91d1586b2d6a6ec78e309a69524198c542a2bb01c5b1fd4ae68a71ebdc4"
+    },
+    {
+      "path": "current/model/thermal/thermal_setup.m",
+      "bytes": 1190,
+      "sha256": "8cff18c359655000aa17dec2710cb1df7077f49625dba4803249c5b3815ae490"
+    },
+    {
+      "path": "current/runtime_work/coarse_native_r1/build_coarse6b_native.m",
+      "bytes": 22604,
+      "sha256": "eab2a79a7566708081c46606f748fc9ddeb1b86bb6c45990e2b9c25660d9ead5"
+    },
+    {
+      "path": "current/runtime_work/coarse_native_r1/coarse6b_parameters.m",
+      "bytes": 3745,
+      "sha256": "295c9e7c40b9e1ffb53f966748e2d4037056c889d451e4da69a7a0bc2934088b"
+    },
+    {
+      "path": "current/runtime_work/coarse_native_r1/coarse6b_specs.m",
+      "bytes": 6780,
+      "sha256": "9a6b90001f962c8d20fe2144768b4cd6f505270409cc4e2bafeaee3ff061b2e0"
+    },
+    {
+      "path": "current/runtime_work/coarse_native_r1/job_entry.m",
+      "bytes": 19458,
+      "sha256": "0bb94e1e3dfda201577e81fd73ef3decab0a1406a87005d0d21b4444b013f3f4"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/forcing_setup.m",
+      "bytes": 3049,
+      "sha256": "17ac07d8ffff1e7a52e6f1bc1271fa0c9256ea75434e1a11ccf5db310569ca84"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/numeric_job_entry.m",
+      "bytes": 2185,
+      "sha256": "a1f465b3732c9cec65b67893777a34a001ab9b06e5736bbe3c042cc1b4dde449"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/rc_initialize.m",
+      "bytes": 1390,
+      "sha256": "0fe0d22c3f032d9bf4368af460d0053656eb43c09297f803b8207657239b4d73"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/rc_precompute.m",
+      "bytes": 2505,
+      "sha256": "8d3fb4f28ddaa8b199bdc6432599fca1e2a797a1f01dd6f7e4107829bf4dd8d0"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/rc_step.m",
+      "bytes": 2669,
+      "sha256": "a0dbe41ee9f8f31fa840ef038759128d9023353df36c13b18d4d588ed763bbfc"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/rc_targets.m",
+      "bytes": 1774,
+      "sha256": "b7aaa4723b36f614a9c9a36f1408999916251ba234831f923310d5d835762036"
+    },
+    {
+      "path": "current/runtime_work/ct_forced_r1/run_forcing_numeric.m",
+      "bytes": 5519,
+      "sha256": "4901edac0b4ec7a119d764611fb13a280dc645589032b18bfba48dcd795eea18"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/ct_network_sfun.m",
+      "bytes": 4639,
+      "sha256": "4850ea4590101f623a38f25d6749f0cb6660c2879c9f4071d99338f521781abc"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_advance.m",
+      "bytes": 3374,
+      "sha256": "cfbfee4b7bb80f99bce652921e870d764e583956dd930ba1cc70cd906a297bf1"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_initial_state.m",
+      "bytes": 1518,
+      "sha256": "82246eb0bb42b59a425644fa31b547394456f8b9ce1824d1231b7738f139f94a"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_latch.m",
+      "bytes": 4178,
+      "sha256": "305e81553317405bad264e8401f99e8cca50d0dec6ccf4c98ef9495784caa7b6"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_layout.m",
+      "bytes": 1056,
+      "sha256": "aaa5dae02e74731a35ee8b87c66599840fd6cc6133cf1c1400dc5c83fcb4d08f"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_output.m",
+      "bytes": 1866,
+      "sha256": "a5eca3878989022057737c631ad811fe1c11ee67febe973a42fc4c24cf54a61b"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_parameters.m",
+      "bytes": 3417,
+      "sha256": "6a47eec78ff8c90f6ca20fca6dacff4371de16e1f861f0350a3215d517f132ae"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/network_setup.m",
+      "bytes": 1146,
+      "sha256": "e6f1d2ae94bce5384029c22ef95092ee5add2dbea733fa6c97b13ead29ce033a"
+    },
+    {
+      "path": "current/runtime_work/ct_network_r1/models/sar20_ra_source_step.m",
+      "bytes": 1046,
+      "sha256": "54ad7c3c672561c2ba89816b851c59436e8ca5eb700eda13a0597456fc918f12"
+    },
+    {
+      "path": "current/runtime_work/group_dac_native_r1/build_group_dac_native.m",
+      "bytes": 22763,
+      "sha256": "f189914dbf2043be433ef1c2804053d8d146ec7ead7b3f4afe25431a0aab978f"
+    },
+    {
+      "path": "current/runtime_work/group_dac_native_r1/execute_entry.m",
+      "bytes": 11231,
+      "sha256": "6d0536d79fb38761af9db75b94f9f187b5927b30298afce96057314fe77e5eaa"
+    },
+    {
+      "path": "current/runtime_work/group_dac_native_r1/group_dac_parameters.m",
+      "bytes": 6081,
+      "sha256": "32fbdef42359ee992ffbcce9f84d110d151c961b4a5c7d0b335dfce8415ff119"
+    },
+    {
+      "path": "current/runtime_work/group_dac_native_r1/group_dac_specs.m",
+      "bytes": 18657,
+      "sha256": "e8f7575657513976f631ef15526b361ed5e5ef467ec7e3c1f804a41f80f3c72f"
+    },
+    {
+      "path": "current/runtime_work/group_dac_native_r1/run_group_dac.m",
+      "bytes": 23357,
+      "sha256": "4295df700fceb8c844eaf7364f5d8c3c2fbf471d2bb9c0645231860a6abaf977"
+    },
+    {
+      "path": "current/runtime_work/group_dac_native_r1/thinrun_entry.m",
+      "bytes": 878,
+      "sha256": "49122ee6948170b50a10b3e78b7a778c6cbe4b34de64545abe4bda5e8f6ca4e8"
+    },
+    {
+      "path": "current/runtime_work/native_coarse_joint_r1/build_native_coarse_joint.m",
+      "bytes": 23722,
+      "sha256": "6a0b76c847c5e80239b97f4c2eed6101edf0cc580505c25e1c0c2f21d097a417"
+    },
+    {
+      "path": "current/runtime_work/native_coarse_joint_r1/job_entry.m",
+      "bytes": 14329,
+      "sha256": "28e5b322ab220c30f67eff6a12682e653cc0768fbd23e7349774d1c3f1579b27"
+    },
+    {
+      "path": "current/runtime_work/native_coarse_joint_r1/native_coarse_parameters.m",
+      "bytes": 6037,
+      "sha256": "978f3e231c1fd7c7905dd6acf12494ca04c5cdc90a5924a9e0c850d855f649b5"
+    },
+    {
+      "path": "current/runtime_work/native_coarse_joint_r1/native_coarse_setup.m",
+      "bytes": 4270,
+      "sha256": "0e86b10fb215fa1b22e12925b5b0529899fa82d47c724cf9f4ea87ba50ab618a"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/build_decode_math.m",
+      "bytes": 31325,
+      "sha256": "9893034ed745adcb1835a57fc1f0f75a4d12cdd65d1541bf80acc5d5a847b812"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/build_native_decode.m",
+      "bytes": 12179,
+      "sha256": "48da5564f3cdbc2a81e9fc9bf50d2cb40215ba9d07328bd39e422b0ab9fc2648"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/decode_frame_specs.m",
+      "bytes": 8745,
+      "sha256": "872e4a60ac40cea8e0bed6ac4b5e3d3fd9e05b15b44974fa0b20eb2c66f64ec2"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/decode_history_specs.m",
+      "bytes": 11655,
+      "sha256": "c8f667f2a45c93c4efea9efa086d99376268ff098b8cd79ff034d972569846a0"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/decode_output_specs.m",
+      "bytes": 8907,
+      "sha256": "d5d1e27e031eecd4e5ae80bda67c7121401aa19c2fcbf6f5a80fc227a094e773"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/decode_scope.m",
+      "bytes": 6178,
+      "sha256": "97d0c1765ca983a1938d00e81058d903b592274be4010118a1c92c43574515ee"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/job_entry.m",
+      "bytes": 9329,
+      "sha256": "151b0ba8af091cb9b7cc6e25b32f7ce5b60a1d22e90ea688eda03abbb7308673"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/make_decode_cfg.m",
+      "bytes": 12867,
+      "sha256": "1a3aef1d06654a1ea80fc826ce25a60f2dd7b08559c729395ec4fd119cfb4387"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/native_decode_setup.m",
+      "bytes": 810,
+      "sha256": "98c9e7098c54edd0e9d05d7552f709f5837a0766766db6e3e4c899ee0aa2eecc"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/publish_entry.m",
+      "bytes": 10404,
+      "sha256": "ba3047f871449b3cb589a1351b10951ba7a236cc22d19e509565862655571892"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/recover_entry.m",
+      "bytes": 4014,
+      "sha256": "a67bf0fcaa89da7f1d50f4730573e103ecd2e561baf24512e2e0c42f5cb1ff77"
+    },
+    {
+      "path": "current/runtime_work/native_decode_r1/test_decode_cfg.m",
+      "bytes": 5833,
+      "sha256": "ab2df69144c0f9ba60d9469bd7121934efde5b1d7087d209858b10c74996b532"
+    },
+    {
+      "path": "current/runtime_work/pool_group_product_r1/pool_group_from_product.m",
+      "bytes": 10715,
+      "sha256": "37da5b31d4fbb06ede716c400925cf2aeb1a7dfd5ebe6f9582894e63813c872b"
+    },
+    {
+      "path": "current/runtime_work/pool_group_product_r1/run_pool_group_product_checks.m",
+      "bytes": 15164,
+      "sha256": "69a70a0231df2c8ef66f104e9a318fd1ef104ab2b07dc401c42cdbceb024a766"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/apply_pool_capture_profile.m",
+      "bytes": 57907,
+      "sha256": "bedeb98c330f1c1a4bc4a6ecf797577da6514f6207dc398d7c9d6e386604fd57"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/build_pool_ct.m",
+      "bytes": 23843,
+      "sha256": "4cd0cb53afcf3a8cfa8c80fc6cea0806043820dbbd70ad7c29f73eea881e552d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_coarse_fresh_logic.m",
+      "bytes": 12992,
+      "sha256": "031198b01e43ae03b1a9c71c02f8225660b48cfdf6c4abab2e64c63bc214b3ca"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_acquisition_handoff.m",
+      "bytes": 7921,
+      "sha256": "7419b71b8b88413c191e5c95db2450e44e877734aa2000ae3bc2523c6ae179c6"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_capture_events.m",
+      "bytes": 21513,
+      "sha256": "d112e2fd54f815845ee87c83ae6c94ad9bed07b649141107cb18828a0206c0c1"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_charge_dynamics.m",
+      "bytes": 25667,
+      "sha256": "4aaaf902d1f01ff3aff989c0681368ab696c24653cf2022029a66861be7d5bd6"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_cmp1.m",
+      "bytes": 10879,
+      "sha256": "ab18d5fae78438ed7bbb2ee94d6a4dc16acc7825a62073ebe92c4277f8279fd5"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_command.m",
+      "bytes": 9096,
+      "sha256": "7f00f680a86118cbedcd7e345c71bdc39ffd0b82844a378f6cd015b730acc59a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_ct_parameters.m",
+      "bytes": 8250,
+      "sha256": "ab574d3c1a51ce72c1540ee6373cdebc2a3d5790173e914d7ade88cb4a51d211"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_decode.m",
+      "bytes": 10701,
+      "sha256": "ec83a6e5622266d3b8ffce513e4ae3ca417568ff4235a64c970293f1ee063006"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_decode_state.m",
+      "bytes": 25147,
+      "sha256": "602d6cb7d49a59a1dedbccb94cb7b716f7dc31c81bb0abcb294d42de28a3177a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_front.m",
+      "bytes": 10994,
+      "sha256": "2ca3bc93553eea929e5e52dc34943e2f6dd9121d3cc623c57f47d0417e923634"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_ra.m",
+      "bytes": 9573,
+      "sha256": "360ae86dafdbea4bd927f418a03daefb3347a9e672ee152f873b07a6ab8f6afe"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_ra_charge_limit.m",
+      "bytes": 26643,
+      "sha256": "c8f8e26696451f2f9ddf55186bd6e5cb7437be922bb6beac346bac2112fc76ab"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_ra_ct_advance.m",
+      "bytes": 17743,
+      "sha256": "8993dbcfe64f3aebd5309f12c293c4f9eb3607c5a412a71633d61410e9225781"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_ra_ct_matrix.m",
+      "bytes": 14421,
+      "sha256": "980c22d3a32986d9c1b2072f8108546372e9f78c0dc73af5bc6f46adc40ee24f"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/check_pool_static_scope.m",
+      "bytes": 9348,
+      "sha256": "a20b7684b3c9bce87b434ed44f8ec7a88847f2e9b9e9ebcb83b0703530cd5184"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/compare_compact_physics_runs.m",
+      "bytes": 9834,
+      "sha256": "cbc7f4484f544af42153a248442deed47d482b92ab26df2750f2840dbcf76dd3"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/compare_pool_analog_numeric.m",
+      "bytes": 13816,
+      "sha256": "76759225c24fba88833927c6e05c1c968af38f831b0cc4f3f24a1eae518e45d3"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/compare_pool_captures.m",
+      "bytes": 18323,
+      "sha256": "6db54311bd53cbd03bc9c9953b694124d28983b7e443788f2e04b1ac575e488a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/configure_pool_ct.m",
+      "bytes": 23997,
+      "sha256": "5ee2e5be706adee23f54c2cc35240660c8a407414525b0d3feb4e68e8d2c9a1d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/configure_pool_design.m",
+      "bytes": 16922,
+      "sha256": "85c9ec36f2e063649b409874b16410ece38300b9015598a893ac7dff8c167ab2"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/execute_entry.m",
+      "bytes": 9620,
+      "sha256": "e264b4fa468b88e254f92c4b17d9ccc9b9cbd26d432ed8c2fee490ff7d95eb99"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/f2_ktc_dither_workspace_entry.m",
+      "bytes": 31410,
+      "sha256": "3c53699a40a4a27791a9683017e9dc3553b59b8385107320d81c5e3e25357638"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/install_pool_tail_dither_graph.m",
+      "bytes": 3858,
+      "sha256": "ab7f5728107bfcfe88fa89c4218d80831b66b03494ccda97bc3de06772ca5706"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/install_roundoff_log.m",
+      "bytes": 28105,
+      "sha256": "f0438e96b9d1ec355bcd1e9c697d815b4830e1ec517d1e57e5aaf4ffb436b933"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/instrument_pool_comparators.m",
+      "bytes": 26684,
+      "sha256": "818121dced72ab1ed3929053207772f7af522ba06bb19de9e89dee5093df019d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/migrate_pole_workspace.m",
+      "bytes": 25794,
+      "sha256": "1e123db85646f56bdc59d014de59492ff33528c6231bcb7d83a00357e6d061bf"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/models/PoolCt.slx",
+      "bytes": 6911095,
+      "sha256": "473438e7affa9f467ce00e19585bb63ca95d543446cbe7da602f3c2bff391e67"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/native_state_mex_build.json",
+      "bytes": 582,
+      "sha256": "7bb79d6194dd6b1d68a040a578a41b7172d573895b528f8c5b715eea0d5a1e85"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/native_state_mex_build.log",
+      "bytes": 63,
+      "sha256": "46d4226f7ec212ec971ce1ba8fba52b9b6f358bf689d2a931b9e730f06ec9f8d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/plot_pool_nodes.m",
+      "bytes": 11916,
+      "sha256": "2542e37169ef3cb6867d8feb2c2ad4139e3000b5042df8d593a66892599df41f"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_acquisition_handoff.m",
+      "bytes": 6096,
+      "sha256": "b6359748c426460383daa543c6654812fb77e7fea5282ae7748e8e7c30e9c130"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_config.m",
+      "bytes": 21791,
+      "sha256": "c9883392d8faf2af2f6e2c5953cd92b269b42504a5cd7c85f57471e57d787105"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_ct_sources.m",
+      "bytes": 6109,
+      "sha256": "34ae9cb45086a5385fb2b811d53336f733826f251a385322bb03197577eb97be"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_front_specs.m",
+      "bytes": 11904,
+      "sha256": "0e6fa17f34761c155bac97c175304a52c69b4e6054c30f0e9ea9a329dc1ad654"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_latch.m",
+      "bytes": 14184,
+      "sha256": "73af8e1b50a12216d18b1d46ae1331580654ab05141c155d2ce2fa717f42a583"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_matrix.m",
+      "bytes": 16549,
+      "sha256": "5c8ae9b627f128c35d3decf1df30920485e6011df98dfff48595eea2fb2243d0"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_predict.m",
+      "bytes": 30651,
+      "sha256": "aecd43119abb842dd510f90bb9c705f70e770edb9e671c6e3ca38ded0360649d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_sfun.m",
+      "bytes": 8669,
+      "sha256": "c92f3061fcfbc7b37789fb75e25a6515b148a7d442d050558f1192e8944c6cdd"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_analog_state_layout.m",
+      "bytes": 6714,
+      "sha256": "fce62f6116a3a359d126cea89afdb50cf9aee0b42abe3c6f70ece39309075cfc"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_be_step.m",
+      "bytes": 10395,
+      "sha256": "e54c27777ffff1b8f22c4df944c6abce4cf035114df9c5985ba166e008316c26"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_latch.m",
+      "bytes": 20867,
+      "sha256": "1547fe3bbf9fe1bbd1a4fc5c562ccca334d2ebe4fa7fc6eeafe867c88a492823"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_matrix.m",
+      "bytes": 11804,
+      "sha256": "a57df83d05d99f42dfe53a7dc7c30b15d24ea379728e6aab9f23514d6c1177b9"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_predict.m",
+      "bytes": 35360,
+      "sha256": "bfcd7285b54ebc556af819f48a6688ba5c0e636065a0356512933e103ba400e0"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cached_sfun.m",
+      "bytes": 10465,
+      "sha256": "bf94e8aed715cca9895bfc789d6980002f73876327133f3924a7410f90c06cb1"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_capture_events_step.m",
+      "bytes": 14214,
+      "sha256": "9eb6be0ba7a595ef3347a343b0d13fd0447c1644982825d839b03154c0006b28"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_charge_dynamics.m",
+      "bytes": 23682,
+      "sha256": "9a26b10bbd31e5cddd4cb9b4080cc790bd02518c75afe7e001927d98c19556b3"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cmp1_sfun.m",
+      "bytes": 4880,
+      "sha256": "a8b021a5868bf2f3f075fac69e359d04039d6019852eb18527355bd52e65bdb1"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cmp1_step.m",
+      "bytes": 954,
+      "sha256": "467bc6a95d19dfeb6c06f02f7a58dbf2757a9c194b77a87cb2c4cbdb7128a30f"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_cmp2_sfun.m",
+      "bytes": 8640,
+      "sha256": "db3f1ff13962195dc30814f22ffe6e475d106dde4dd81bbe89d69edfc4d756ac"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_command_specs.m",
+      "bytes": 4539,
+      "sha256": "0a9620fa3180ddb72c2c2583f32ecc683c3fcf6f946910ba252effde123ba5dd"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ct_capture_config.m",
+      "bytes": 12015,
+      "sha256": "515a9d9ff96e97e677b06d86144c3bde8f39024625087403c469f3121486d4b6"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ct_config.m",
+      "bytes": 2680,
+      "sha256": "24ca9abf5ed006b9eea3e1f9af28ea509119fc9a3af5d0494ca6241ad4812c09"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ct_parameters.m",
+      "bytes": 17636,
+      "sha256": "f74629bb886c088aea0211c8b70a9dedfa4ddab1daea67a2bf5073ba0d2f0f33"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ct_setup.m",
+      "bytes": 9758,
+      "sha256": "06a3a483ae91065fc1a9ef87333c6a016538f166b4fdbd7ae35bd3ae969a1955"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ct_style.m",
+      "bytes": 35922,
+      "sha256": "155343c16700a350a0fb3061fc4d4dfaca3de96282ba9c137eeb46b2b29827ae"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_dac_output_specs.m",
+      "bytes": 5431,
+      "sha256": "0ff233a96c4b321697bfce9d962401375e1b09b4838ee749a638dd77f529af8d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_decode_config.m",
+      "bytes": 7429,
+      "sha256": "85b9105fd5853c4e341fa316753371b0e21dad9234904cd858c712b45a89e10a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_decode_specs.m",
+      "bytes": 21509,
+      "sha256": "89326d9ce6cdedb0babc5cea4a3f38e226947bde14c788f2946b95bbf0dcb4a3"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_front_specs.m",
+      "bytes": 7751,
+      "sha256": "611f60015037f2c999969b614b53f8adce16768523db40579cd2f789376cde77"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_host_sfun.m",
+      "bytes": 2974,
+      "sha256": "7c3b76231f79ec5b8913e12c36589d128f3281f32b4d3d2cffbf53bffef41f15"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_mex_be.m",
+      "bytes": 11162,
+      "sha256": "f9de903debb070796681bfb729b3e7ade8fd35ec2b9e4ad4c5b3d93356cdb083"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_mex_matrix.m",
+      "bytes": 17458,
+      "sha256": "20d5b9e0ef7022ad7835e8476c2dff61ffa89937a3ea04eaf1e1ac6ca6267b5f"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ra_charge_limit.m",
+      "bytes": 13681,
+      "sha256": "cd5758da8b797c12afe94fd2895c718e7aaee2c6907d4365091bcd3b19ee4039"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ra_ct_advance.m",
+      "bytes": 7110,
+      "sha256": "ad9935206017a63517e14e5312bd21565bcf386f384627066e2219033f8e4295"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ra_ct_matrix.m",
+      "bytes": 10247,
+      "sha256": "be2451bb719ed6e63d7932f082b781eb54548aa4b64fa0c769a0702a974e0dca"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ra_sfun.m",
+      "bytes": 5110,
+      "sha256": "7702dd199f2668aee18d6f3fafb2dcdf1e03743d94b9cfd126b17deacbab8303"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_ra_target_specs.m",
+      "bytes": 2269,
+      "sha256": "771db6c2b799be9b7cd09cb3b2e79793a47fbabffe95f11d0f22eb76873708f8"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_rx_sfun.m",
+      "bytes": 3347,
+      "sha256": "060bc917813ea8e617ccd6117bb1226268084ac8a2bf51d857573f744f5d2e0a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sample_kTC_add_dd.m",
+      "bytes": 1686,
+      "sha256": "ee1bd306a5e2b84de0dab5d5b653a1a33253647fdbc7ec26261bdf3d2e87097e"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sample_kTC_configure.m",
+      "bytes": 1939,
+      "sha256": "832f50f1b67790598801a27070ddb37883454ce98a967f6e05cd41c15947ceca"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sample_kTC_impulse.m",
+      "bytes": 7562,
+      "sha256": "25c59c7d2f77b9569adab2dbb496b6f32b74b333bce6d0411cdff565a1febc5a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sparse_mex.c",
+      "bytes": 4706,
+      "sha256": "27b435608fb3e6ded969f970b2bd86ab5b23d668f85285ee319c55f1df40610b"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sparse_mex.mexw64",
+      "bytes": 18944,
+      "sha256": "d4a0311cc48bff03db88fe2694f4922810a8cf71da8b9593657f158064e1add9"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sparse_mex_build.json",
+      "bytes": 1284,
+      "sha256": "ab4ef89f84017f0cc96d0736c544edd5c494e4ea41ff120bdda590fdc321376a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sparse_mex_build.log",
+      "bytes": 63,
+      "sha256": "46d4226f7ec212ec971ce1ba8fba52b9b6f358bf689d2a931b9e730f06ec9f8d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_sparse_mex_mingw64.xml",
+      "bytes": 4187,
+      "sha256": "bc6b2e0e257690f2ca31bee3ccf3ec37d84d0bfca8a5c1e2ffecec202eea5de9"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_state_mex.c",
+      "bytes": 24480,
+      "sha256": "2495bb64fabc5ab396b7ac6c237dc4818c5f179576395450911a571fdddc612d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_state_mex.mexw64",
+      "bytes": 31232,
+      "sha256": "01e40f85be0c135f9d5c1ba650c813bbe98d912eda7b90e3f049e3c00d54285a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_state_mex_build.log",
+      "bytes": 63,
+      "sha256": "46d4226f7ec212ec971ce1ba8fba52b9b6f358bf689d2a931b9e730f06ec9f8d"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_stateless_build_result.json",
+      "bytes": 1893,
+      "sha256": "e1e3959ba3f61c28f1ca32b8d634870ad4b0c00252d44fe48592113bed43fca5"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_tail_dither_configure.m",
+      "bytes": 3222,
+      "sha256": "7568eaaf44a3d0a5bba09f00d396833db358a43d8325e0ab2c4c07d63ec93fef"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_tail_dither_graph_gate.m",
+      "bytes": 6414,
+      "sha256": "c32ed07c158cb411a6bd98841f8db1acf60a7ccc9f602c5f7a038bb788e1cd67"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_tail_dither_source_guard.m",
+      "bytes": 541,
+      "sha256": "b852e489d8a517a0b5c0decc920cb3abdee57d89e1bd95a49615e3aa96ba7416"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_tail_dither_value.m",
+      "bytes": 1290,
+      "sha256": "57b388d49ec19a47ff7a5a7a1ad67866032aad93a2e74c5bb523f75594e72976"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_tx_sfun.m",
+      "bytes": 5181,
+      "sha256": "d2f3338fa2e5eeebd9d7ebc9c357cf3952bbee8427206a4aa0f714a57ea74ead"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/pool_unary_group_dem_map.m",
+      "bytes": 1390,
+      "sha256": "b0a83044e2c079d4ca60af68e95f809af95d333b62bc59edaab9414a52090cc7"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/prepare_f2_ktc_dither_candidate.m",
+      "bytes": 23628,
+      "sha256": "bdc4e7065b0459677085e024f799e368d8e0d1b15c31eca5d2997f369db7605a"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/run_pool_ct.m",
+      "bytes": 109443,
+      "sha256": "9ebcc22ea6210ffcd5763fe623a467f0db438258cff6d2513291821c1fbedfd2"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/verify_pool_tail_dither_capture.m",
+      "bytes": 9817,
+      "sha256": "79a48e3d1c478ac18ed893598b50a516b50bb35dd280b5d87d6b5184f47b3869"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/verify_pool_tail_dither_compact_capture.m",
+      "bytes": 9899,
+      "sha256": "09b7788e9412a2ddde7756558ae6d404f59611d0612b5ba0e83258f588152914"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/verify_pool_tail_dither_compact_capture_m1.m",
+      "bytes": 8993,
+      "sha256": "f01d19814e0537f75069332d528b16273b3514d28a8f54c94149d8ba17dfc888"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/verify_pool_working_source_closure.m",
+      "bytes": 7706,
+      "sha256": "332e2c4fc5567983d9dc46459f5bbf607d26d4c2071021b531f7e684d67acf13"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/view_pool_run.m",
+      "bytes": 41365,
+      "sha256": "9a4f38e881c19bf4b5c1a9688b699c826811d7304697591be5db23242a7c1d79"
+    },
+    {
+      "path": "current/runtime_work/pool_pole_precision_trial_r1/view_pool_sample.m",
+      "bytes": 19584,
+      "sha256": "1fdf26f81e10a77a3fc248f32f44858c02a7f062ba81b1c800eca5122cf9ca5d"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/build_product_ct.m",
+      "bytes": 19038,
+      "sha256": "022b913aa529ac46bed7707da1b4a5506a6ae81417f54ad0ab94e2c4cea02a66"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/extend_ct_network.m",
+      "bytes": 9115,
+      "sha256": "384958b22a3f39f401618bcb5b94ad84a617870a22517ac032ecc17fa560b705"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/input_array_layout.m",
+      "bytes": 582,
+      "sha256": "8987184f4748d696dbaeb2af310bfdd259583c4ef4c2016e41be6afe209178ee"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/input_array_sfun.m",
+      "bytes": 9808,
+      "sha256": "58052398d1deee64466c773502869f2626281ab0c024af8ad5f83056bf8662b6"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/input_rc_advance.m",
+      "bytes": 10590,
+      "sha256": "cfc9f4b901dfd054ab0420b8afed453c3ffc108c4e7c1f11610bf52c42fcaa6d"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/job_entry.m",
+      "bytes": 5756,
+      "sha256": "36b1826688427a849df1c4866854f7f9c8c5f8fd69f17f05a468213d700c15a8"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/joint_parameters.m",
+      "bytes": 2442,
+      "sha256": "c2854505aaa446f4730486750ed0266fc04755910728f54736f57946c3e61194"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/joint_run.m",
+      "bytes": 6838,
+      "sha256": "68b15ed3681e86dcf307ef6c5b5b1df371e2fc5a60f37325b9c3239de681feed"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/joint_setup.m",
+      "bytes": 938,
+      "sha256": "6db005a93a53cc4dac162c5370961e52af5c6de3d43b2fed319145a45b13b850"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/sar20_input_array_step.m",
+      "bytes": 10566,
+      "sha256": "1c4218771f6ced2a650df22845b3a923d996eea3a2e7ebace3d3216402820b0e"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/test_input_rc.m",
+      "bytes": 10364,
+      "sha256": "b30ac8c48491c090da9cb55b0e894c6d6648064b7cf673eca6e3e87600c0334a"
+    },
+    {
+      "path": "current/runtime_work/product_ct_r1/test_shared_frontend.m",
+      "bytes": 4693,
+      "sha256": "5ca37c78c9ff811c8fd26037cf6a2f8b70297d8cafe4e0d1a1c860b86421af94"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/execute_entry.m",
+      "bytes": 16079,
+      "sha256": "2363dd596df2ac3f552b630724516f8bd90c317b1375eaa14dfab723d14375e1"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/run_ra_target_parity.m",
+      "bytes": 15045,
+      "sha256": "0716eda584f10c1b65f0d74a4c0924cfdb969bc7bae7d65a4be31df392e44f6f"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/sar20_az_calendar.m",
+      "bytes": 1695,
+      "sha256": "10278c1ad05bdcbdb41042104b247660ac29d7c547bcf70c2ea2aad3eb351edb"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/sar20_normal.m",
+      "bytes": 824,
+      "sha256": "3eefb5ef0c857378eb7fbf3810cfdd94a22a6ca2723df8bc4bccbf502e1d03d9"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/sar20_ra_baseline_step.m",
+      "bytes": 14590,
+      "sha256": "8a628ea4869afd8059e7ed16a4710133fff1b2912488f8e6496c0e6bcd116fec"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/sar20_ra_drive_step.m",
+      "bytes": 15432,
+      "sha256": "6bda571f3c6505132f9aec24f906119d20e81947522a1683c64b61d260004d4d"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/sar20_ra_legacy_step.m",
+      "bytes": 729,
+      "sha256": "a7e130ba10f750ac052b867e6041b267d2bd6069f280861ecfe60dbad6845fc4"
+    },
+    {
+      "path": "current/runtime_work/ra_target_r1/sar20_ra_target_values.m",
+      "bytes": 952,
+      "sha256": "841f91b95fa593fa1743e3d30f49378298ad6526b4f284e2b0a5502c9c3c1135"
+    },
+    {
+      "path": "config/parameters.json",
+      "bytes": 341,
+      "sha256": "e432f76553e718767b5c500afe389c54c8e699dcd7dd33366838c8f56a0519ce"
+    },
+    {
+      "path": "state/MIGRATION.json",
+      "bytes": 1158,
+      "sha256": "49f77154105af418189962cfea7d29a792814d37528006a2217a467e0960e8d2"
+    },
+    {
+      "path": "state/applied_parameters.json",
+      "bytes": 160,
+      "sha256": "856e7e2dda5de1145f79df2572cf406670371369beadf1f7591cd0e035447f02"
+    },
+    {
+      "path": "state/binding_original.json",
+      "bytes": 2923,
+      "sha256": "900452ff13a54375d63e71ab1adf85d4eea3c1c084ee5ef9066fbb03ac4aa273"
+    },
+    {
+      "path": "state/current_binding.json",
+      "bytes": 3299,
+      "sha256": "16239dd87b659740ef9bb4206e2c5237b8369c82ad5e2f9c20b33cf1b8422b2e"
+    },
+    {
+      "path": "state/current_workspace.mat",
+      "bytes": 8323666,
+      "sha256": "cb7edc989b9bc386b7e863ba32cdf4d734b0629fdc4cd421bb2c11b753c720c5"
+    },
+    {
+      "path": "state/workspace_snapshot.mat",
+      "bytes": 8170706,
+      "sha256": "31986662f7a6e3dca18d7535aaa5950b7fc5beb12a0a30e6323e1b32dda3f6e5"
+    },
+    {
+      "path": "SAR20.m",
+      "bytes": 23352,
+      "sha256": "f0988b454def3d6a7c07a7e9696605d927751f5789c7c85fbd3ea090e6a7b20f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6370,
+      "sha256": "cc722ae45def51356290c15318830a828178a5e0727894927499258b2bb147e2"
+    },
+    {
+      "path": "CHECKPOINT.md",
+      "bytes": 5466,
+      "sha256": "e1c571535d4579e2bfed4f5a4e22f5340a35bdbf600545d21f7b9a2bdf0ccdee"
+    }
+  ],
+  "total_original_bytes": 26360223,
+  "removed_loose_bytes": 26325035,
+  "new_model_sha256": "5c35f8e21209357256fe6bde17ae29183cb0c01bf876b5aa72d8d6447b917c7b",
+  "mac_native_simulation": "not_run"
+}

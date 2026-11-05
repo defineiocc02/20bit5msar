@@ -1,0 +1,4 @@
+PASS I2 baseline/candidate 15 actual frontend events
+PASS I1 fixed banks, guarded RC, charge return, reuse and frontend reset
+PASS I1 pending opening and ideal-source transition
+PASS preparation guards and original calendar

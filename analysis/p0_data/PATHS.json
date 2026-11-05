@@ -1,0 +1,38 @@
+{
+  "be250": {
+    "native_job": "20261025T193531Z",
+    "files": {
+      "raw.mat": {
+        "path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\analysis\\p0_data\\be250\\raw.mat",
+        "sha256": "1f5a86ecf2ee0a04571ec5c66ac7c2ce3491ca97310e7d83327e08b2d18188a0"
+      },
+      "selected.mat": {
+        "path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\analysis\\p0_data\\be250\\selected.mat",
+        "sha256": "e4daf1add75586a0a35d39594df205fca8c83249c3424980ec6b20e55ea087e9"
+      },
+      "result.json": {
+        "path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\analysis\\p0_data\\be250\\result.json",
+        "sha256": "850915c886847c36546fa663fa2a95f6f86a01da72d47b5d4e0da44b61b07d69"
+      }
+    },
+    "archived_model_sha256": "177a4df4a5c28666a3344ea8a4274a22a7bbba0c202e07760c55e25ab36fd6eb"
+  },
+  "be125": {
+    "native_job": "20261026T023817Z",
+    "files": {
+      "raw.mat": {
+        "path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\analysis\\p0_data\\be125\\raw.mat",
+        "sha256": "22dd05dffb4f8a492e8f0a030a6a90bac03db186ca5d724205d17662386c7ea6"
+      },
+      "selected.mat": {
+        "path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\analysis\\p0_data\\be125\\selected.mat",
+        "sha256": "be0abb53b264bc9ad89ffd10c1abcbd2e0461458f9de141fa61c640abebcf533"
+      },
+      "result.json": {
+        "path": "D:\\Academic\\Projects\\sar20m1\\SAR20\\analysis\\p0_data\\be125\\result.json",
+        "sha256": "ee05bf94c7a58bfcd0a0a1c8df057fb98f30a08f02dc268b3a439b0259e3002b"
+      }
+    },
+    "archived_model_sha256": "f36d0ea7ed5f8dc4c800c71afb9e795ad55ffeae5f3da6504aad161d84d9dfd5"
+  }
+}

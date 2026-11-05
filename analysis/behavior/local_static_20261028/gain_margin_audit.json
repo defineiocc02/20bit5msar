@@ -1,0 +1,1246 @@
+{
+  "schema": "sar20-zero-cross-a0-independent-physics/v1",
+  "status": "archived_six_endpoints_independently_read_no_new_simulation",
+  "receipt_sha256": "480657df63d32b39a63b832cdf388a4d0d6950f287bdeeb7efc5d40d1901dc54",
+  "asrun_job_sha256": "8efc3bf0ad386c30adae08012c36ae756f7a250c395bdf878e8a024d80eb4351",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "source_manifest_sha256": "517e380a78bac0c341ce9299b0e22dfbd280180b54b7b897a370c3a6f1f07ff3",
+  "source_files_verified": 87,
+  "source_cache_boundary": "Native run receipt and source hashes; cannot independently inspect MATLAB same-path cached bytecode after the run.",
+  "zero_P_boundary": "Original zero preflight P was reconstructed from pinned factory/source, not independently saved.",
+  "cases": [
+    {
+      "name": "A1e4_negative",
+      "A0": 10000,
+      "input_V": -3.0517578125e-08,
+      "raw6": [
+        1039.0,
+        3417.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524285,
+      "P_sha256": "be1d4d1c447a474d23639d470e6031901035a0fde8da5bc93b7c95d274bf9640",
+      "log_sha256": "735364a0e1d7fd9a6166bf6915d8ee446cef0bfa567621f3e66fc57057bf6983",
+      "P_differences_vs_actual_negative_A1e4": [],
+      "Qres_C": 2.1721129261363618e-13,
+      "target_RA_V": 0.2559990234374998,
+      "RA_start_VX_V": 1.1552279528175703e-62,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "F": 0.9966115208291808,
+      "RA_first_prepare_VX_V": 0.2391763587845565,
+      "RA_first_prepare_minus_analytic_V": 0.0,
+      "RA_d2_end_VX_V": 0.25511098708372526,
+      "RA_d2_end_VY_V": -0.000302930239798655,
+      "RA_tracking_end_VX_V": 0.25512987721014896,
+      "RA_tracking_end_VY_V": -9.354143271983497e-05,
+      "TA": [
+        {
+          "m": 0,
+          "offset_ns": 75.00000000000003,
+          "VX_V": 0.2551159716095892,
+          "VY_V": -0.00029904871414207485,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.0002990487141420748,
+          "vy_minus_mna_V": -5.421010862427522e-20,
+          "VX_minus_analytic_V": -5.551115123125783e-17
+        },
+        {
+          "m": 1,
+          "offset_ns": 76.25000000000001,
+          "VX_V": 0.2551197493986523,
+          "VY_V": -0.0001014281126653406,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.0001014281126653406,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 2,
+          "offset_ns": 77.5,
+          "VX_V": 0.2551226125977999,
+          "VY_V": 9.548028381560379e-05,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 9.548028381560395e-05,
+          "vy_minus_mna_V": -1.6263032587282567e-19,
+          "VX_minus_analytic_V": -5.551115123125783e-17
+        },
+        {
+          "m": 3,
+          "offset_ns": 78.74999999999999,
+          "VX_V": 0.25512478262614774,
+          "VY_V": -9.750866231195837e-05,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -9.750866231195837e-05,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 4,
+          "offset_ns": 79.99999999999997,
+          "VX_V": 0.25512642729799473,
+          "VY_V": 9.845084853581297e-05,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 9.845084853581297e-05,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 5,
+          "offset_ns": 81.24999999999996,
+          "VX_V": 0.2551276738003673,
+          "VY_V": -9.525726123243816e-05,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -9.525726123243816e-05,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": -5.551115123125783e-17
+        },
+        {
+          "m": 6,
+          "offset_ns": 82.50000000000006,
+          "VX_V": 0.2551286185287445,
+          "VY_V": 0.00010015719305220193,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0
+          ],
+          "vy_mna_V": 0.00010015719305220193,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 7,
+          "offset_ns": 83.75000000000004,
+          "VX_V": 0.2551293345415867,
+          "VY_V": -9.39640169344229e-05,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0
+          ],
+          "vy_mna_V": -9.396401693442281e-05,
+          "vy_minus_mna_V": -8.131516293641283e-20,
+          "VX_minus_analytic_V": 0.0
+        }
+      ],
+      "CT_alpha": 0.7787151200519142,
+      "max_abs_TA_vy_minus_MNA_V": 1.6263032587282567e-19,
+      "max_abs_TA_vx_minus_analytic_V": 5.551115123125783e-17,
+      "min_abs_TA_VY_V": 9.39640169344229e-05,
+      "decode": {
+        "d1_input_V": -0.008000000000000007,
+        "d2_RA_V": 0.25550000000000006,
+        "d2_input_V": 0.007984375000000002,
+        "dt_statistic": -12,
+        "dt_input_V": -1.171875e-05,
+        "voltage_V": -2.7343750000005218e-05,
+        "unrounded_code": 524284.5,
+        "pre_round_error_to_input_V": -2.7313232421880218e-05
+      }
+    },
+    {
+      "name": "A1e4_zero",
+      "A0": 10000,
+      "input_V": 0.0,
+      "raw6": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524289,
+      "P_sha256": "1085032fa1ff72dc0422e1a28695d3801651a9ea41724b4f4bf912e6b59263bd",
+      "log_sha256": "f2fbddd8b8f6571277e164a21665c5a32808bf78039686fc587cbb3e06c9678a",
+      "P_differences_vs_actual_negative_A1e4": [
+        "reconstructed zero P; original zero P not independently saved"
+      ],
+      "Qres_C": 0.0,
+      "target_RA_V": 0.0,
+      "RA_start_VX_V": 0.0,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "F": 0.9966115208291808,
+      "RA_first_prepare_VX_V": 0.0,
+      "RA_first_prepare_minus_analytic_V": 0.0,
+      "RA_d2_end_VX_V": 0.0,
+      "RA_d2_end_VY_V": -0.0003893575600259479,
+      "RA_tracking_end_VX_V": 0.0,
+      "RA_tracking_end_VY_V": -0.00019467878001296933,
+      "TA": [
+        {
+          "m": 0,
+          "offset_ns": 75.00000000000003,
+          "VX_V": 0.0,
+          "VY_V": -0.0003893575600259479,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.0003893575600259571,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 1,
+          "offset_ns": 76.25000000000001,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 2,
+          "offset_ns": 77.5,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 3,
+          "offset_ns": 78.74999999999999,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 4,
+          "offset_ns": 79.99999999999997,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 5,
+          "offset_ns": 81.24999999999996,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 6,
+          "offset_ns": 82.50000000000006,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 7,
+          "offset_ns": 83.75000000000004,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        }
+      ],
+      "CT_alpha": 0.7787151200519142,
+      "max_abs_TA_vy_minus_MNA_V": 9.215718466126788e-18,
+      "max_abs_TA_vx_minus_analytic_V": 0.0,
+      "min_abs_TA_VY_V": 9.214468717701629e-18,
+      "decode": {
+        "d1_input_V": 0.0,
+        "d2_RA_V": 0.000500000000000056,
+        "d2_input_V": 1.562500000000175e-05,
+        "dt_statistic": -12,
+        "dt_input_V": -1.171875e-05,
+        "voltage_V": 3.906250000001748e-06,
+        "unrounded_code": 524288.5,
+        "pre_round_error_to_input_V": 3.906250000001748e-06
+      }
+    },
+    {
+      "name": "A2e4_negative",
+      "A0": 20000,
+      "input_V": -3.0517578125e-08,
+      "raw6": [
+        1039.0,
+        3417.0,
+        170.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524287,
+      "P_sha256": "bb9c72794d95bb259a6e6f68cc3af20aaa93c4a521c37adcbd60f8b716df669c",
+      "log_sha256": "e36490a0221036f1ec81eafc5244fb0aaf5d87e6665edd9e3f085e13dcd95af1",
+      "P_differences_vs_actual_negative_A1e4": [
+        "P/backend/ra/A0"
+      ],
+      "Qres_C": 2.1721129261363618e-13,
+      "target_RA_V": 0.2559990234374998,
+      "RA_start_VX_V": 1.1571885073945794e-62,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "F": 0.9983028850953379,
+      "RA_first_prepare_VX_V": 0.23958226854789255,
+      "RA_first_prepare_minus_analytic_V": 0.0,
+      "RA_d2_end_VX_V": 0.2555439397422481,
+      "RA_d2_end_VY_V": 3.421654165976114e-05,
+      "RA_tracking_end_VX_V": 0.2555628619273869,
+      "RA_tracking_end_VY_V": -0.00014572724668116484,
+      "TA": [
+        {
+          "m": 0,
+          "offset_ns": 75.00000000000003,
+          "VX_V": 0.2555489327274252,
+          "VY_V": 3.810465471138226e-05,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 3.810465471138226e-05,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 1,
+          "offset_ns": 76.25000000000001,
+          "VX_V": 0.2555527169278304,
+          "VY_V": -0.00015362731122876882,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00015362731122876876,
+          "vy_minus_mna_V": -5.421010862427522e-20,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 2,
+          "offset_ns": 77.5,
+          "VX_V": 0.25555558498615594,
+          "VY_V": 4.328486916749153e-05,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 4.328486916749153e-05,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 3,
+          "offset_ns": 78.74999999999999,
+          "VX_V": 0.25555775869729125,
+          "VY_V": -0.0001497012091177814,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00014970120911778135,
+          "vy_minus_mna_V": -5.421010862427522e-20,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 4,
+          "offset_ns": 79.99999999999997,
+          "VX_V": 0.25555940616033535,
+          "VY_V": 4.626047527733424e-05,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 4.626047527733433e-05,
+          "vy_minus_mna_V": -8.809142651444724e-20,
+          "VX_minus_analytic_V": 5.551115123125783e-17
+        },
+        {
+          "m": 5,
+          "offset_ns": 81.24999999999996,
+          "VX_V": 0.2555606547781657,
+          "VY_V": -0.00014744598715197408,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00014744598715197408,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 6,
+          "offset_ns": 82.50000000000006,
+          "VX_V": 0.2555616011098555,
+          "VY_V": 4.796971565642852e-05,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0
+          ],
+          "vy_mna_V": 4.796971565642852e-05,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 7,
+          "offset_ns": 83.75000000000004,
+          "VX_V": 0.25556231833785376,
+          "VY_V": -0.00014615054806975123,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0
+          ],
+          "vy_mna_V": -0.00014615054806975123,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 5.551115123125783e-17
+        }
+      ],
+      "CT_alpha": 0.7787151200519142,
+      "max_abs_TA_vy_minus_MNA_V": 8.809142651444724e-20,
+      "max_abs_TA_vx_minus_analytic_V": 5.551115123125783e-17,
+      "min_abs_TA_VY_V": 3.810465471138226e-05,
+      "decode": {
+        "d1_input_V": -0.008000000000000007,
+        "d2_RA_V": 0.25550000000000006,
+        "d2_input_V": 0.007984375000000002,
+        "dt_statistic": 4,
+        "dt_input_V": 3.90625e-06,
+        "voltage_V": -1.1718750000005218e-05,
+        "unrounded_code": 524286.5,
+        "pre_round_error_to_input_V": -1.1688232421880218e-05
+      }
+    },
+    {
+      "name": "A2e4_zero",
+      "A0": 20000,
+      "input_V": 0.0,
+      "raw6": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524289,
+      "P_sha256": "a28896ab76efc741bb29e4810f599f5d4314d015a50951b8e8661659d72c0323",
+      "log_sha256": "072fcf008638b70e04666b3261b2d117bd0d2316fdbe96bd640b3490715187af",
+      "P_differences_vs_actual_negative_A1e4": [
+        "P/backend/ra/A0",
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ],
+      "Qres_C": 0.0,
+      "target_RA_V": 0.0,
+      "RA_start_VX_V": 0.0,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "F": 0.9983028850953379,
+      "RA_first_prepare_VX_V": 0.0,
+      "RA_first_prepare_minus_analytic_V": 0.0,
+      "RA_d2_end_VX_V": 0.0,
+      "RA_d2_end_VY_V": -0.0003893575600259479,
+      "RA_tracking_end_VX_V": 0.0,
+      "RA_tracking_end_VY_V": -0.00019467878001296933,
+      "TA": [
+        {
+          "m": 0,
+          "offset_ns": 75.00000000000003,
+          "VX_V": 0.0,
+          "VY_V": -0.0003893575600259479,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.0003893575600259571,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 1,
+          "offset_ns": 76.25000000000001,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 2,
+          "offset_ns": 77.5,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 3,
+          "offset_ns": 78.74999999999999,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 4,
+          "offset_ns": 79.99999999999997,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 5,
+          "offset_ns": 81.24999999999996,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 6,
+          "offset_ns": 82.50000000000006,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 7,
+          "offset_ns": 83.75000000000004,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        }
+      ],
+      "CT_alpha": 0.7787151200519142,
+      "max_abs_TA_vy_minus_MNA_V": 9.215718466126788e-18,
+      "max_abs_TA_vx_minus_analytic_V": 0.0,
+      "min_abs_TA_VY_V": 9.214468717701629e-18,
+      "decode": {
+        "d1_input_V": 0.0,
+        "d2_RA_V": 0.000500000000000056,
+        "d2_input_V": 1.562500000000175e-05,
+        "dt_statistic": -12,
+        "dt_input_V": -1.171875e-05,
+        "voltage_V": 3.906250000001748e-06,
+        "unrounded_code": 524288.5,
+        "pre_round_error_to_input_V": 3.906250000001748e-06
+      }
+    },
+    {
+      "name": "Ainf_negative",
+      "A0": "Inf",
+      "input_V": -3.0517578125e-08,
+      "raw6": [
+        1039.0,
+        3417.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524288,
+      "P_sha256": "23c7592a3967a88e6f0653424a7616adbbcee814c1e417e836d2b2f57d3dee66",
+      "log_sha256": "47da7c9e287159cc3aef11870be63328c8a66a676a256c37ea1bc9a743b49c51",
+      "P_differences_vs_actual_negative_A1e4": [
+        "P/backend/ra/A0",
+        "P/ni/ra_finite_gain"
+      ],
+      "Qres_C": 2.1721129261363618e-13,
+      "target_RA_V": 0.2559990234374998,
+      "RA_start_VX_V": 1.1591557278571505e-62,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "F": 1.0,
+      "RA_first_prepare_VX_V": 0.23998955840442399,
+      "RA_first_prepare_minus_analytic_V": 0.0,
+      "RA_d2_end_VX_V": 0.2559783644398099,
+      "RA_d2_end_VY_V": 0.00037250962217515003,
+      "RA_tracking_end_VX_V": 0.25599731879266346,
+      "RA_tracking_end_VY_V": 0.00019259088332000375,
+      "TA": [
+        {
+          "m": 0,
+          "offset_ns": 75.00000000000003,
+          "VX_V": 0.2559833659130618,
+          "VY_V": 0.00037640434501890634,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.00037640434501890634,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 1,
+          "offset_ns": 76.25000000000001,
+          "VX_V": 0.2559871565466077,
+          "VY_V": 0.00018467738866271874,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.00018467738866271874,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 2,
+          "offset_ns": 77.5,
+          "VX_V": 0.25599002948063243,
+          "VY_V": -7.764194186287266e-06,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -7.764194186287266e-06,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 3,
+          "offset_ns": 78.74999999999999,
+          "VX_V": 0.25599220688707663,
+          "VY_V": 0.00018861016514725974,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.00018861016514725974,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 4,
+          "offset_ns": 79.99999999999997,
+          "VX_V": 0.2559938571508079,
+          "VY_V": -4.783529546096953e-06,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -4.783529546096953e-06,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 5,
+          "offset_ns": 81.24999999999996,
+          "VX_V": 0.2559951078912886,
+          "VY_V": 0.00019086922099044996,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.00019086922099044996,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 6,
+          "offset_ns": 82.50000000000006,
+          "VX_V": 0.25599605583174223,
+          "VY_V": -3.0713834583632266e-06,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0
+          ],
+          "vy_mna_V": -3.0713834583632266e-06,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 7,
+          "offset_ns": 83.75000000000004,
+          "VX_V": 0.25599677427902806,
+          "VY_V": 0.00019216686231905467,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0
+          ],
+          "vy_mna_V": 0.00019216686231905467,
+          "vy_minus_mna_V": 0.0,
+          "VX_minus_analytic_V": 0.0
+        }
+      ],
+      "CT_alpha": 0.7787151200519142,
+      "max_abs_TA_vy_minus_MNA_V": 0.0,
+      "max_abs_TA_vx_minus_analytic_V": 0.0,
+      "min_abs_TA_VY_V": 3.0713834583632266e-06,
+      "decode": {
+        "d1_input_V": -0.008000000000000007,
+        "d2_RA_V": 0.25550000000000006,
+        "d2_input_V": 0.007984375000000002,
+        "dt_statistic": 12,
+        "dt_input_V": 1.171875e-05,
+        "voltage_V": -3.906250000005218e-06,
+        "unrounded_code": 524287.5,
+        "pre_round_error_to_input_V": -3.875732421880218e-06
+      }
+    },
+    {
+      "name": "Ainf_zero",
+      "A0": "Inf",
+      "input_V": 0.0,
+      "raw6": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524289,
+      "P_sha256": "07fbf0570ee432ab6e34c241f3cf2ddf6efc50fbb19a01ce178babe6b8897740",
+      "log_sha256": "dc8233ee3707e28793551da68666d2d8ed226778ef714333facacad8a70bf969",
+      "P_differences_vs_actual_negative_A1e4": [
+        "P/backend/ra/A0",
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/ni/ra_finite_gain",
+        "P/xFE0"
+      ],
+      "Qres_C": 0.0,
+      "target_RA_V": 0.0,
+      "RA_start_VX_V": 0.0,
+      "NG": 34.00000000000001,
+      "tau_RA_s": 4.509390054270369e-09,
+      "F": 1.0,
+      "RA_first_prepare_VX_V": 0.0,
+      "RA_first_prepare_minus_analytic_V": 0.0,
+      "RA_d2_end_VX_V": 0.0,
+      "RA_d2_end_VY_V": -0.0003893575600259479,
+      "RA_tracking_end_VX_V": 0.0,
+      "RA_tracking_end_VY_V": -0.00019467878001296933,
+      "TA": [
+        {
+          "m": 0,
+          "offset_ns": 75.00000000000003,
+          "VX_V": 0.0,
+          "VY_V": -0.0003893575600259479,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.0003893575600259571,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 1,
+          "offset_ns": 76.25000000000001,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 2,
+          "offset_ns": 77.5,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 3,
+          "offset_ns": 78.74999999999999,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 4,
+          "offset_ns": 79.99999999999997,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 5,
+          "offset_ns": 81.24999999999996,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 6,
+          "offset_ns": 82.50000000000006,
+          "VX_V": 0.0,
+          "VY_V": 9.214468717701629e-18,
+          "decision": 1,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            0.0
+          ],
+          "vy_mna_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18,
+          "VX_minus_analytic_V": 0.0
+        },
+        {
+          "m": 7,
+          "offset_ns": 83.75000000000004,
+          "VX_V": 0.0,
+          "VY_V": -0.00019467878001296933,
+          "decision": 0,
+          "prior_TA_signs_model_inferred": [
+            -1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0,
+            -1.0,
+            1.0
+          ],
+          "vy_mna_V": -0.00019467878001297855,
+          "vy_minus_mna_V": 9.215718466126788e-18,
+          "VX_minus_analytic_V": 0.0
+        }
+      ],
+      "CT_alpha": 0.7787151200519142,
+      "max_abs_TA_vy_minus_MNA_V": 9.215718466126788e-18,
+      "max_abs_TA_vx_minus_analytic_V": 0.0,
+      "min_abs_TA_VY_V": 9.214468717701629e-18,
+      "decode": {
+        "d1_input_V": 0.0,
+        "d2_RA_V": 0.000500000000000056,
+        "d2_input_V": 1.562500000000175e-05,
+        "dt_statistic": -12,
+        "dt_input_V": -1.171875e-05,
+        "voltage_V": 3.906250000001748e-06,
+        "unrounded_code": 524288.5,
+        "pre_round_error_to_input_V": 3.906250000001748e-06
+      }
+    }
+  ],
+  "all_negative_Qres_same_binary64": true,
+  "all_zero_nine_log_Time_Data_same_bits": {
+    "raw_log": true,
+    "ready_log": true,
+    "record_log": true,
+    "record_ready_log": true,
+    "code_log": true,
+    "front_log": true,
+    "control_log": true,
+    "back_log": true,
+    "event_log": true
+  },
+  "examples_fixed_target_gain_budget": [
+    {
+      "gain_error_allocation_lsb": 1.0,
+      "linear_A0_min": 34781.86718749998,
+      "open_loop_gain_dB": 90.82705784859643,
+      "relative_to_1e4": 3.4781867187499977
+    },
+    {
+      "gain_error_allocation_lsb": 0.5,
+      "linear_A0_min": 69597.73437499996,
+      "open_loop_gain_dB": 96.85190204380586,
+      "relative_to_1e4": 6.9597734374999956
+    },
+    {
+      "gain_error_allocation_lsb": 0.25,
+      "linear_A0_min": 139229.4687499999,
+      "open_loop_gain_dB": 102.87462332057983,
+      "relative_to_1e4": 13.922946874999992
+    }
+  ],
+  "scope": "Physical-state trajectory and digital arithmetic within the exact two-point behavioral experiments; no unobserved intermediate-code, noise probability, full-range DNL/INL or PDK claim."
+}

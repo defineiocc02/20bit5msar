@@ -1,0 +1,328 @@
+{
+  "schema": "sar20-120823-node-independent/v1",
+  "status": "saved_scratch_outputs_read_no_simulation",
+  "receipt_sha256": "83cc05af4508c20668d123029c4539a9ee93505170240095221cedc9d611c294",
+  "model_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "source_manifest_sha256": "517e380a78bac0c341ce9299b0e22dfbd280180b54b7b897a370c3a6f1f07ff3",
+  "sources_checked": 87,
+  "inputs": [
+    {
+      "name": "A1e5_negative",
+      "A0": 100000.0,
+      "input_V": -1.9073486328125e-09,
+      "P_differences_vs_closest_1e4": [
+        "P/backend/ra/A0"
+      ],
+      "raw6": [
+        1039.0,
+        3417.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524288,
+      "Qres_C": 2.1721206942471586e-13,
+      "target_V": 0.2559999389648437,
+      "NG": 34.00000000000001,
+      "tau_s": 4.509390054270369e-09,
+      "F": 0.9996601155607093,
+      "trace": [
+        {
+          "m": 0,
+          "time_s": 8.75e-07,
+          "vx_V": 0.2558972763104642,
+          "vy_V": 0.0003093650697969381,
+          "bit": 1,
+          "vx_minus_analytic_V": -5.551115123125783e-17,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 1,
+          "time_s": 8.7625e-07,
+          "vx_V": 0.2559010656691846,
+          "vy_V": 0.00011763712071478947,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 2,
+          "time_s": 8.775e-07,
+          "vx_V": 0.2559039376370147,
+          "vy_V": -7.48052145245986e-05,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 3,
+          "time_s": 8.7875e-07,
+          "vx_V": 0.2559061143111767,
+          "vy_V": 0.000121568574569769,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 4,
+          "time_s": 8.799999999999999e-07,
+          "vx_V": 0.25590776401990883,
+          "vy_V": -7.182555230978941e-05,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 5,
+          "time_s": 8.812499999999999e-07,
+          "vx_V": 0.25590901433975377,
+          "vy_V": 0.00012382687067131492,
+          "bit": 1,
+          "vx_minus_analytic_V": -5.551115123125783e-17,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 6,
+          "time_s": 8.825e-07,
+          "vx_V": 0.2559099619614062,
+          "vy_V": -7.011398203283528e-05,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 7,
+          "time_s": 8.8375e-07,
+          "vx_V": 0.2559106801670715,
+          "vy_V": 0.0001251240755910614,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        }
+      ],
+      "alpha": 0.7787151200519142,
+      "min_abs_vy_V": 7.011398203283528e-05,
+      "max_abs_vx_minus_analytic_V": 5.551115123125783e-17,
+      "max_abs_vy_minus_mna_V": 0.0,
+      "P_sha256": "8bd82aae8da10d3ce3707d4fb8c0843a90bceb61090d307dc8898442edc440c7",
+      "simout_sha256": "a6d3c2ab17533d63826bbf15e26efa8f16abfb05abe0899812e6080e3fea061f"
+    },
+    {
+      "name": "A1e5_zero",
+      "A0": 100000.0,
+      "input_V": 0.0,
+      "P_differences_vs_closest_1e4": [
+        "P/backend/ra/A0",
+        "P/front/input/offset_v",
+        "P/input/offset_v",
+        "P/xFE0"
+      ],
+      "raw6": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524289,
+      "Qres_C": 0.0,
+      "target_V": 0.0,
+      "NG": 34.00000000000001,
+      "tau_s": 4.509390054270369e-09,
+      "F": 0.9996601155607093,
+      "trace": [
+        {
+          "m": 0,
+          "time_s": 8.75e-07,
+          "vx_V": 0.0,
+          "vy_V": -0.0003893575600259479,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.215718466126788e-18
+        },
+        {
+          "m": 1,
+          "time_s": 8.7625e-07,
+          "vx_V": 0.0,
+          "vy_V": -0.00019467878001296933,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.215718466126788e-18
+        },
+        {
+          "m": 2,
+          "time_s": 8.775e-07,
+          "vx_V": 0.0,
+          "vy_V": 9.214468717701629e-18,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18
+        },
+        {
+          "m": 3,
+          "time_s": 8.7875e-07,
+          "vx_V": 0.0,
+          "vy_V": -0.00019467878001296933,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.215718466126788e-18
+        },
+        {
+          "m": 4,
+          "time_s": 8.799999999999999e-07,
+          "vx_V": 0.0,
+          "vy_V": 9.214468717701629e-18,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18
+        },
+        {
+          "m": 5,
+          "time_s": 8.812499999999999e-07,
+          "vx_V": 0.0,
+          "vy_V": -0.00019467878001296933,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.215718466126788e-18
+        },
+        {
+          "m": 6,
+          "time_s": 8.825e-07,
+          "vx_V": 0.0,
+          "vy_V": 9.214468717701629e-18,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.214468717701629e-18
+        },
+        {
+          "m": 7,
+          "time_s": 8.8375e-07,
+          "vx_V": 0.0,
+          "vy_V": -0.00019467878001296933,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 9.215718466126788e-18
+        }
+      ],
+      "alpha": 0.7787151200519142,
+      "min_abs_vy_V": 9.214468717701629e-18,
+      "max_abs_vx_minus_analytic_V": 0.0,
+      "max_abs_vy_minus_mna_V": 9.215718466126788e-18,
+      "P_sha256": "645d09475f8fc8712d6ffef6981991e516ed3b7a331a0eccd5e2a475cd58fbcc",
+      "simout_sha256": "98e06c2b33859e814cd0eefdbd68eebee2a09d03f3bf04948f24434de09d5101"
+    },
+    {
+      "name": "Ainf_negative",
+      "A0": "Inf",
+      "input_V": -1.9073486328125e-09,
+      "P_differences_vs_closest_1e4": [
+        "P/backend/ra/A0",
+        "P/ni/ra_finite_gain"
+      ],
+      "raw6": [
+        1039.0,
+        3417.0,
+        213.0,
+        4.0,
+        1.0,
+        1.0
+      ],
+      "code": 524288,
+      "Qres_C": 2.1721206942471586e-13,
+      "target_V": 0.2559999389648437,
+      "NG": 34.00000000000001,
+      "tau_s": 4.509390054270369e-09,
+      "F": 1.0,
+      "trace": [
+        {
+          "m": 0,
+          "time_s": 8.75e-07,
+          "vx_V": 0.2559842813844098,
+          "vy_V": 0.0003771172363995808,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": -1.0842021724855044e-19
+        },
+        {
+          "m": 1,
+          "time_s": 8.7625e-07,
+          "vx_V": 0.25598807203151214,
+          "vy_V": 0.00018539029059996912,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 2,
+          "time_s": 8.775e-07,
+          "vx_V": 0.2559909449758113,
+          "vy_V": -7.051284248158746e-06,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 3,
+          "time_s": 8.7875e-07,
+          "vx_V": 0.25599312239004257,
+          "vy_V": 0.00018932308114930044,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": -2.710505431213761e-20
+        },
+        {
+          "m": 4,
+          "time_s": 8.799999999999999e-07,
+          "vx_V": 0.25599477265967563,
+          "vy_V": -4.070608948256029e-06,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 5,
+          "time_s": 8.812499999999999e-07,
+          "vx_V": 0.25599602340462935,
+          "vy_V": 0.0001915821450715184,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 6,
+          "time_s": 8.825e-07,
+          "vx_V": 0.2559969713484731,
+          "vy_V": -2.3584567373754245e-06,
+          "bit": 0,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        },
+        {
+          "m": 7,
+          "time_s": 8.8375e-07,
+          "vx_V": 0.2559976897983283,
+          "vy_V": 0.0001928797910408736,
+          "bit": 1,
+          "vx_minus_analytic_V": 0.0,
+          "vy_minus_mna_V": 0.0
+        }
+      ],
+      "alpha": 0.7787151200519142,
+      "min_abs_vy_V": 2.3584567373754245e-06,
+      "max_abs_vx_minus_analytic_V": 0.0,
+      "max_abs_vy_minus_mna_V": 1.0842021724855044e-19,
+      "P_sha256": "2bd7a68b56ab232e239cf491a4b1d78faf00780dd1ab26d63b99a3b1a393b589",
+      "simout_sha256": "ce5a5c81cef62175d39d95b173b737329aa742d359c33192f3fd2f93f0987fe0"
+    }
+  ],
+  "negative_high_gain_firstTA": {
+    "vx_difference_V": 8.700507394560075e-05,
+    "vy_difference_V": 6.775216660264268e-05,
+    "alpha_times_vx_difference_V": 6.775216660267416e-05,
+    "node_difference_equivalent_input_V": 2.7189085608000235e-06
+  },
+  "limited_noise_support": "sampling kTC and endpoint jitter supported; RA/AZ/reference noise and comparator noise/TA offset not implemented in current kernel.",
+  "scope": "Three new scratch runs and current model equations, no silicon, PVT, hidden unmeasured codes or general analog equivalence."
+}

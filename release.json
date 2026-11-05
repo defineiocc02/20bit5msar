@@ -1,0 +1,13 @@
+{
+  "schema": "sar20-clean-release/v1",
+  "version": "2026-10-26",
+  "source_profile": "R4/M8/F2/600MHz/N8",
+  "model_sha256": "8f12e65a7d6b850fe5ad64a76393df77b850bfcb069c5c2c72109a7f38733679",
+  "contract_sha256": "71da7eb9190fe57788a58d1665bc2eb0ea658dfac4b809ffe2e465fee94002b5",
+  "binding_template_sha256": "900452ff13a54375d63e71ab1adf85d4eea3c1c084ee5ef9066fbb03ac4aa273",
+  "workspace_snapshot_sha256": "31986662f7a6e3dca18d7535aaa5950b7fc5beb12a0a30e6323e1b32dda3f6e5",
+  "source_count": 270,
+  "canonical_windows_root": "D:/Academic/Projects/sar20m1/SAR20",
+  "canonical_mac_root": "/Users/zhaoyi/Obsidan/项目库/outputs/sar20_5_simulink_20261020",
+  "historical_performance_is_not_current": true
+}

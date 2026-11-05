@@ -1,0 +1,15 @@
+2026-11-04T08:47:21.8309161Z attached: SAR20_FFT_PID:27628
+
+2026-11-04T08:47:22.9745818Z returned_check_matlab_receipt: ??? 函数或变量 'same_path' 无法识别。
+
+出错 sar20_nilive_wrapper_20261104 (第 14 行)
+        assert(same_path(which('sar20_ni_live_smoke_20261104'),file), ...
+
+出错 sar20_nilive_entry_20261104 (第 1 行)
+sar20_nilive_wrapper_20261104;
+
+出错 run (第 112 行)
+evalin('caller', strcat(scriptStem, ';'));
+
+
+2026-11-04T08:47:23.0429324Z COM reference released; MATLAB remains open.

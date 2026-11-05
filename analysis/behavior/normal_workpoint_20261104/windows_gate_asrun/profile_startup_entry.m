@@ -1,0 +1,10 @@
+entryJob='D:/Temp/SAR20NORMAL_20261104_NX';
+entryPhase=getenv('SAR20_NORMAL_PHASE');
+entryFile=fullfile(entryJob,['r2_' entryPhase '_entry.txt']);
+assert(~isfile(entryFile),'normalRecovery:exists','Entry marker exists.');
+entryFid=fopen(entryFile,'w','n','UTF-8');
+assert(entryFid>=0,'normalRecovery:write','Cannot create entry marker.');
+fprintf(entryFid,'Entered MATLAB user script. phase=%s pid=%d\n',entryPhase,feature('getpid'));
+fclose(entryFid);
+fprintf(1,'[NORMAL-RECOVERY] user-script phase=%s pid=%d\n',entryPhase,feature('getpid'));
+run(fullfile(entryJob,'normal_entry.m'));

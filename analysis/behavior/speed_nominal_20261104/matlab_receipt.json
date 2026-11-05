@@ -1,0 +1,1 @@
+{"status":"passed","stage":"complete","pid":33048,"elapsed_s":5.6641405,"report":{"status":"passed","valid_cases":807,"negative_cases":5,"synthetic_mismatch_vy_deltas":[[-0.002123266647581664,0.001421031094871808],[0.0021332103966792276,-0.0014166116642281741]],"scope":"direct kernel only; exact MATLAB execution required; no timing claim"},"rng_unchanged":true}

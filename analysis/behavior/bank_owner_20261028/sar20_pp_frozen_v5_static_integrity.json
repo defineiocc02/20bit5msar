@@ -1,0 +1,24 @@
+{
+  "zip_sha256": "939880c6411d4207e42e282eaf2497850e9c12eb2074b9ddcfbce12d2c6097ad",
+  "entry_sha256": "4111b0cf1970d42c980ec389c666675a03bb59eb4a5b98f2e6f28e75a40230a6",
+  "manifest_sha256": "2da961f6b82fc70e3e2ae1879613083579fb34154659bc34c578c755d2049789",
+  "runner_sha256": "33b767fb78a818d3624cdf349bc6430c066301dc5952fd9568838380277a12df",
+  "manifest_count": 32,
+  "candidate_sources": 22,
+  "production_sources": 87,
+  "satk_local_disk_files": 223,
+  "qualification_sha256": "a9cfaaefed217e5f6d6e7e1a2faa5586e78dbf8f6808523a9c5185c19ab9778f",
+  "v4_to_v5_changed": [
+    "README.md",
+    "manifest.json",
+    "run_pp_native_n8.m",
+    "static_receipt.json"
+  ],
+  "v4_to_v5_noncleanup_runner_prefix_equal": true,
+  "setup_guard_before_setup_and_receipt_preserved": true,
+  "postload_gate_before_install": true,
+  "OFF_gate_before_ON": true,
+  "dirty_partial_close_conditional": true,
+  "outer_cleanup_sha_and_status_required": true,
+  "scope": "Static bounded scratch readiness only; SATK=223 local disk SHA and four core runtime bindings when executed; no full p-code/class cache or byte freshness claim."
+}

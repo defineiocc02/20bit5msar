@@ -1,0 +1,125 @@
+{
+  "schema": "sar20-i2-n8-independent-readback/v1",
+  "status": "saved_i2_artifacts_comparison_pass",
+  "reviewed_utc": "2026-11-04T11:19:37.596245+00:00",
+  "scope": "I2 pool, same historical d4 SLX and P; observational equivalence of saved outputs, not I1, not paper reproduction, not full internal state or PDK signoff.",
+  "verifier": {
+    "path": "/tmp/sar20_i2_verify.IlYr1f/verify_i2_actual.py",
+    "sha256": "90efd60fbc5bdd7a206df7c3dfa80d4946b0790159dc423684ff26472019e590",
+    "temporary_readback_sha256": "15be5b698e41eb8bf5211132faa53e31d6e6784b517e57cd4f76d617bb4f7ab4",
+    "dependencies": {
+      "verify_as_run.py": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467",
+      "audit_all_events_independent.py": "a73344211cdba2ad14825e4fe1612f7f2e864fa4e77ffacdc1392c04374c96a5"
+    },
+    "execution": "Local read-only Python; no Windows access or MATLAB execution during this review."
+  },
+  "input_identity": {
+    "model_sha256": "d4e7fc99ab040857e535df07d73447e71c65e7d51dcadf7b17f4bad88594a6a0",
+    "fixture_sha256": "7ba67f7f579b159be309565547dc5efdc2b9376857eb7b10e251a008c2b944e0",
+    "frozen_zip_sha256": "4cf3f7527c18f35372168074c64a3d32839f1fa79f7f939cd528dd9ff2ed0fd7",
+    "frozen_manifest_sha256": "3220d24c60ded74755f53699e6fcf4913de6d634c1f492037815a21e4e132618",
+    "frozen_manifest_entries_independently_verified": 234,
+    "baseline_versus_candidate_sources": "five modified I1 source files plus one new I1 guard; both runs use I2 P"
+  },
+  "independent_readback": {
+    "status": "saved_i2_artifacts_comparison_pass",
+    "logs": 32,
+    "root_ports": [
+      "Code20",
+      "CodeMeta",
+      "CodeValid"
+    ],
+    "tout_bit_equal": true,
+    "source_binding": {
+      "baseline_i2": {
+        "before_sha256": "6446ef08478269e25421bfe8fe9b8b71f0294c295dc9933bb593468ab402e20c",
+        "after_sha256": "ef8849e86a442658cd5b5a9ca3596cd2da04b3efa2b2e40154234d1ba23d7689",
+        "count": 108,
+        "runtime_root": "d:/temp/sar20i1n8_yjqakm/bundle",
+        "scope": "computed on local copies; independent receipt pin absent"
+      },
+      "candidate_i2": {
+        "before_sha256": "713a2efe88f1df66febfd98392e902fced71b5baeaedcf1c51d4f5d599555ddc",
+        "after_sha256": "342527289ff26e5de3d2b3aed66f0f4732e503f672d9594ea077acb228ef321d",
+        "count": 109,
+        "runtime_root": "d:/temp/sar20i1n8_yjqakm/bundle",
+        "scope": "computed on local copies; independent receipt pin absent"
+      }
+    },
+    "P_structure_fields_values_bit_equal": true,
+    "rng_before_equal": true,
+    "events_actual": 576,
+    "cycles": 12,
+    "valid_records": 12,
+    "selected_id": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "selected_codes": [
+      963400,
+      979654,
+      989058,
+      991473,
+      986858,
+      975288,
+      956933,
+      932073
+    ],
+    "actual_ready_s": [
+      8.625000000000001e-08,
+      2.8625e-07,
+      4.8625e-07,
+      6.8625e-07,
+      8.8625e-07,
+      1.08625e-06,
+      1.28625e-06,
+      1.48625e-06,
+      1.68625e-06,
+      1.88625e-06,
+      2.0862499999999997e-06,
+      2.28625e-06
+    ],
+    "saved_calendar_tokens": {
+      "d2_decide": 12,
+      "ta_compare": 8,
+      "ta_feedback": 7
+    },
+    "tracking_physical_counts_observed": false,
+    "baseline_vs_historical": {
+      "timeseries_differences": [],
+      "root_differences": [],
+      "tout_equal": true
+    },
+    "case_simout_sha256": {
+      "baseline_i2": "59ec9170881da0a471b4af7af1533c1f4fb74fff5caa27185e16c1b54227ae91",
+      "candidate_i2": "d72025a3053186018284977e76e2266509d5fa6ab8b8eec933549b5851f4ec23"
+    },
+    "comparison_sha256": "f27e3a78e197d9aa5297c12d7e9106e7379f18ab0780dce7ca0e3bbcd1097752",
+    "scope": "Readback of saved P and 32 timeseries, native tout and three yout streams. Execution and transfer provenance depend on controller evidence; not full internal state, I1, all PVT or hardware signoff."
+  },
+  "transfer": {
+    "listed_files": 24,
+    "all_local_hashes_match_recorded_remote_hashes": true,
+    "all_listed_files_match_archive_entries": true,
+    "archive_extra_entry": "transfer_hashes.json",
+    "transfer_list_sha256": "be239dd9e03f7b68420ce34f7289e5efd423a71d74cd88c1620de05cd909f83b",
+    "evidence_archive_sha256": "eb53ba2ac720bb29c19da98e3b27d30778515e16c53928c856af9d28d7f510f9"
+  },
+  "timing": {
+    "baseline_sim_s": 18.6016554,
+    "candidate_sim_s": 18.3670037,
+    "scope": "Single baseline-then-candidate ordered comparison; these are not speed-optimization results and do not establish a stable speedup."
+  },
+  "limits": [
+    "The 12 D2, 8 tracking and 7 feedback counts are verified as saved calendar tokens; ADI debug was off, so the corresponding actual feedback counters were not observed.",
+    "All 32 logged timeseries, native tout and three yout signals agree; complete hidden FE/BK/SAR state was not recorded or compared.",
+    "I1 A/B front-end and other extensions were not run; user requested paper reproduction first and separate approval for ADI/10M.",
+    "Same-path in-memory MATLAB instruction bytes cannot be independently reconstructed from saved files; source path and saved on-disk identity are checked."
+  ]
+}

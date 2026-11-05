@@ -1,0 +1,22 @@
+{
+  "schema": "sar20-ou-install/v1",
+  "status": "installed_pending_matlab_smoke",
+  "root": "D:\\Academic\\Projects\\sar20m1\\SAR20",
+  "release_manifest_sha256": "d714bff5f09e3edd796c6a177f8ae122486d3bc048c84373b411d1a263179ac1",
+  "installed": [
+    "config/adc_parameters.m",
+    "current/src/model/behavior_applied_note.m",
+    "current/src/model/behavior_dac_backend_parameters.m",
+    "current/src/model/behavior_prepare_configuration.m",
+    "current/src/model/behavior_ra_noise_guard.m",
+    "current/src/physics/behavior_backend_parameters.m",
+    "current/src/physics/behavior_backend_sfun.m",
+    "current/src/physics/behavior_backend_stage.m",
+    "current/src/physics/behavior_backend_step.m",
+    "current/src/physics/behavior_ra_noise_validate_backend.m",
+    "current/src/physics/sar20_ra_keyed_normal.m",
+    "current/src/physics/sar20_ra_ou_increment.m"
+  ],
+  "count": 12,
+  "backup_manifest_sha256": "23d98f9a15a8d52f2b9a1685d72bd95902a795d4db08d3b0fdf7edde9b6a1334"
+}

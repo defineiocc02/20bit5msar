@@ -1,0 +1,38 @@
+function x=behavior_cal_collector_snapshot(status7,R)
+%BEHAVIOR_CAL_COLLECTOR_SNAPSHOT Pure training-report -> fixed numeric snapshot.
+% Call from InitializeConditions/one completing Update, never fit in Outputs.
+% Off x=0 scalar; enabled x2624, invalid array slots zero with explicit flags.
+% Header14: enabled,n,fitCalls,status,rank,condition,trainRMS,readyHoldout,
+% accepted(always0),hValid,referenceValuesRead,svCount,rankUpper,nullityLower.
+% 15:698 h684;699:1382 scaled singular values684;1383:2066 columnScale684;
+% 2067:2624 DEM counts18x31, column-major. hValid is TRAIN candidate only.
+    assert(isa(status7,'double')&&numel(status7)==7&&ismember(status7(1),[0 1]), ...
+        'calCollect:snapshotStatus','Require actual numeric status7.');
+    assert(status7(7)==0,'calCollect:snapshotAccepted','Training snapshot cannot claim accepted coefficients.');
+    if status7(1)==0,x=0;return;end
+    x=zeros(2624,1);x(1:5)=status7(1:5);x(6:7)=NaN;
+    x(8)=status7(6);x(9)=0;x(13:14)=NaN;
+    if isempty(R),return;end
+    assert(isstruct(R)&&isscalar(R)&&~R.accepted&&isempty(R.frozen)&& ...
+        R.training_count==status7(2)&&status7(3)==1, ...
+        'calCollect:snapshotBoundary','Snapshot requires one completed unaccepted training fit.');
+    x(5)=R.rank;x(8)=double(R.ready_for_independent_holdout);
+    x(11)=double(R.reference_values_read);x(13)=R.rank_upper_bound;x(14)=R.nullity_lower_bound;
+    if isfield(R,'condition_number_scaled'),x(6)=R.condition_number_scaled;end
+    if isfield(R,'training_rms_v'),x(7)=R.training_rms_v;end
+    if ~isempty(R.h_fit)
+        assert(R.ready_for_independent_holdout&&numel(R.h_fit)==684,'calCollect:snapshotH','Invalid training candidate h.');
+        x(10)=1;x(15:698)=R.h_fit(:);
+    end
+    if isfield(R,'singular_values_scaled')
+        sv=R.singular_values_scaled(:);assert(numel(sv)<=684,'calCollect:snapshotSV','More than684 singular values.');
+        x(12)=numel(sv);x(698+(1:numel(sv)))=sv;
+        assert(isfield(R,'column_scale_v')&&numel(R.column_scale_v)==684, ...
+            'calCollect:snapshotScale','Computed singular values require full684 column scales.');
+        x(1383:2066)=R.column_scale_v(:);
+    end
+    if isfield(R,'dem_phase_counts')
+        assert(isequal(size(R.dem_phase_counts),[18 31]),'calCollect:snapshotCoverage','Require18x31 DEM counts.');
+        x(2067:2624)=R.dem_phase_counts(:);
+    end
+end

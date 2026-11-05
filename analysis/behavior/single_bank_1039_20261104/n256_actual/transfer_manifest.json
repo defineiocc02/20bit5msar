@@ -1,0 +1,107 @@
+[
+    {
+        "path":  "n256/actual_spectrum_256.fig",
+        "sha256":  "f2bfa073f58720ad5382c70af6f3f7948e647537002ca2e517c0766e9db82013",
+        "bytes":  22343
+    },
+    {
+        "path":  "n256/actual_spectrum_256.png",
+        "sha256":  "9459fb99cef43db78116e73f6000dd43dcfffda31ed3e75f7e3f3463d352bc1c",
+        "bytes":  135616
+    },
+    {
+        "path":  "n256/binding_after.mat",
+        "sha256":  "6a6b5c0644b3ce11d7bc9335b0974fd5fd323adf4f23fa96d5ee9e2d166064be",
+        "bytes":  119728
+    },
+    {
+        "path":  "n256/binding_before.mat",
+        "sha256":  "0685bddf02501f36fac5312279af69f1f1714360ba18b9c0d954039ce2f2aa1f",
+        "bytes":  119728
+    },
+    {
+        "path":  "n256/complete.json",
+        "sha256":  "ef02e0478ef8d24b2e834bbd4eaa15b3a445e6316c9e0f8ee5bd058025f3d910",
+        "bytes":  3418
+    },
+    {
+        "path":  "n256/P_diff.mat",
+        "sha256":  "c58f0c7fbcfaf3768324f6b16d651ebcc465799f4dd11fb97742bd21627306bd",
+        "bytes":  27944
+    },
+    {
+        "path":  "n256/P_difference.json",
+        "sha256":  "b92f9e3dd880b6a2c19224347bb052c310c5461f74e5137f87126dd06fe386c1",
+        "bytes":  590
+    },
+    {
+        "path":  "n256/P_used.mat",
+        "sha256":  "e01e7f45344091eb704755585a4c27bf7a5d13057223b06e7f330a62e53b310d",
+        "bytes":  2940288
+    },
+    {
+        "path":  "n256/raw_capture.mat",
+        "sha256":  "1d8c9774b25adc4c2013d16bcb152abe40bbddd12d3955a8ae7f507223bef59a",
+        "bytes":  569224
+    },
+    {
+        "path":  "n256/rng_before.mat",
+        "sha256":  "3b9242332767a918ecd40b340a67d656b24a61fef71e177794ef220d35d7f9e7",
+        "bytes":  11712
+    },
+    {
+        "path":  "n256/selected.mat",
+        "sha256":  "a091850bd779a5c2aa61999a29e02b8fc7c9085abdf87695af24fce3bc7b2c66",
+        "bytes":  31808
+    },
+    {
+        "path":  "n256/simout.mat",
+        "sha256":  "17017f1a50caea4a54aa485adf18c5be27863976e63667f4f9e61633b64abf59",
+        "bytes":  4263822
+    },
+    {
+        "path":  "n256/spectrum.json",
+        "sha256":  "3e4addfae229a6a89f300520313f6f67409dae39c491420716f1d971f9f01c57",
+        "bytes":  5289
+    },
+    {
+        "path":  "n256/spectrum.mat",
+        "sha256":  "5f60479a83caa12f962ad80845141707c8c6c4174418d715a650abfbb7cee51f",
+        "bytes":  28320
+    },
+    {
+        "path":  "n256/started.json",
+        "sha256":  "c0c1e6fc75b46016426bef5b8e3c34fa83c5f3a09ab161c06897d761956a5a80",
+        "bytes":  2003
+    },
+    {
+        "path":  "n256/validation.json",
+        "sha256":  "697aec0af280ec407e924fe0a307faa1457463a05b290a54f281d92af3855375",
+        "bytes":  1299
+    },
+    {
+        "path":  "controller_status.json",
+        "sha256":  "40891242f2c03bee3b2ddbc0fcdd3f7d33c792c4e180442a356a492e6310296d",
+        "bytes":  146
+    },
+    {
+        "path":  "matlab_stdout.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "matlab_stderr.log",
+        "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes":  0
+    },
+    {
+        "path":  "existing_task_before.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    },
+    {
+        "path":  "existing_task_after.xml",
+        "sha256":  "92611b338ddccb0e7f039c636f30394cb57ac3fa436eabfab83eddab4f81f09f",
+        "bytes":  1310
+    }
+]

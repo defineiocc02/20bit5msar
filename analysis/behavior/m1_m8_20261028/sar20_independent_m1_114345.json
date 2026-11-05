@@ -1,0 +1,484 @@
+{
+  "verifier_sha256": "7bcad6d87fbbe1656f4c446c0295aea54eed6cc6c347d265729dd09ca532f18d",
+  "receipt_sha256": "3deb20a76b6ff491b027a8362773a3bd6c0efe0aa31d2db0c7aed0eaebaa311e",
+  "outer_receipt_sha256": "3c57b128c0cc4dc1188b844e089e277412a54eea0e87a04f9b16b84ed586a77d",
+  "frozen_candidate_sha256": "d6528489665fda047d27c5781d90ae14ae05c6d51d312846e5b13bba120b9103",
+  "asrun_candidate_sha256": "0458328b851e25e13193624a221d80fca82ba2064e78b15797ba8cb7f993de5f",
+  "source_pins_sha256": "6ce84b8db819eae20afd62222444907c5efa258302c8da35dda159b72f70ed28",
+  "candidate_verified_files": 22,
+  "base_runtime_verified_files": 87,
+  "factory_main_sha256": "63190994cf15d2038f11bf5555fe12e6dde34f6e54fb1934d21ef366954ec2b6",
+  "scratch_graph_delta_SIDs": [
+    "191",
+    "192",
+    "189"
+  ],
+  "scratch_graph_blocks": 277,
+  "scratch_graph_edges": 340,
+  "case_graph_diff_vs_installed_only_annotation_SIDs": [
+    "105",
+    "123"
+  ],
+  "P_differences": {
+    "m8_off": [
+      "P/debug/adi_enabled",
+      "P/debug/adi_max_points"
+    ],
+    "m8_1ns": [
+      "P/debug/adi_enabled",
+      "P/debug/adi_max_points"
+    ],
+    "m1_off": [
+      "P/adc_groups/events",
+      "P/cal_cfg/public_cfg/tracking_mode",
+      "P/calendar/type",
+      "P/control/tracking_count",
+      "P/digital/tracking_count",
+      "P/groups/events",
+      "P/schedule/groups/events"
+    ],
+    "m1_1ns": [
+      "P/adc_groups/events",
+      "P/cal_cfg/public_cfg/tracking_mode",
+      "P/calendar/type",
+      "P/control/tracking_count",
+      "P/digital/tracking_count",
+      "P/groups/events",
+      "P/schedule/groups/events"
+    ]
+  },
+  "M8_legacy_29_time_and_data_bits_equal": true,
+  "M1_M8_cold_precompare_equal_and_following_feedback_differs": true,
+  "cases": {
+    "m8_off": {
+      "M": 8,
+      "tau_dac_s": 0.0,
+      "calendar_budget": {
+        "d2_decide": 12,
+        "ta_compare": 8,
+        "ta_feedback": 7,
+        "ta_idle": 0
+      },
+      "codes": [
+        963400,
+        979654,
+        989058,
+        991473,
+        986858,
+        975288,
+        956933,
+        932073
+      ],
+      "raw6": [
+        [
+          1900,
+          3283,
+          234,
+          4,
+          1,
+          1
+        ],
+        [
+          1932,
+          2907,
+          85,
+          5,
+          1,
+          1
+        ],
+        [
+          1941,
+          3366,
+          85,
+          6,
+          1,
+          1
+        ],
+        [
+          1960,
+          2486,
+          42,
+          7,
+          1,
+          1
+        ],
+        [
+          1939,
+          3240,
+          85,
+          8,
+          1,
+          1
+        ],
+        [
+          1928,
+          2731,
+          213,
+          9,
+          1,
+          1
+        ],
+        [
+          1878,
+          2771,
+          43,
+          10,
+          1,
+          1
+        ],
+        [
+          1838,
+          2484,
+          42,
+          11,
+          1,
+          1
+        ]
+      ],
+      "record_times_s": [
+        1.338e-06,
+        1.538e-06,
+        1.738e-06,
+        1.938e-06,
+        2.1379999999999997e-06,
+        2.3380000000000003e-06,
+        2.538e-06,
+        2.738e-06
+      ],
+      "ADC_ready_count": 14,
+      "RX_ready_count": 12,
+      "actual_counter_checked_cycles": 14,
+      "actual_ADI_points": 672,
+      "model_workspace_core_P_and_DecodeP_checked": true,
+      "model_sha256": "593af9d722a9038709691437866f580a2759a0fef42f57a2185f71a5bc220eea",
+      "P_sha256": "a802a0d65bdec3b7fdcab1608bd528fc5038a47071dcafb7b94bf994b1d57c89",
+      "simout_sha256": "7781c68bb9ddc5758a55583c35e4c67ab16203ce8604cf01eeba6e9f2be32bc8",
+      "observation_sha256": "e34cdd29d46d4174b61b712715951d800ef49dd1ee60efc5eb84357a0916beb2"
+    },
+    "m8_1ns": {
+      "M": 8,
+      "tau_dac_s": 1e-09,
+      "calendar_budget": {
+        "d2_decide": 12,
+        "ta_compare": 8,
+        "ta_feedback": 7,
+        "ta_idle": 0
+      },
+      "codes": [
+        963400,
+        979654,
+        989061,
+        991470,
+        986858,
+        975285,
+        956933,
+        932072
+      ],
+      "raw6": [
+        [
+          1900,
+          3283,
+          234,
+          4,
+          1,
+          1
+        ],
+        [
+          1932,
+          2907,
+          85,
+          5,
+          1,
+          1
+        ],
+        [
+          1942,
+          1683,
+          42,
+          6,
+          1,
+          1
+        ],
+        [
+          1959,
+          3677,
+          85,
+          7,
+          1,
+          1
+        ],
+        [
+          1939,
+          3240,
+          85,
+          8,
+          1,
+          1
+        ],
+        [
+          1927,
+          3787,
+          42,
+          9,
+          1,
+          1
+        ],
+        [
+          1878,
+          2771,
+          42,
+          10,
+          1,
+          1
+        ],
+        [
+          1838,
+          2483,
+          234,
+          11,
+          1,
+          1
+        ]
+      ],
+      "record_times_s": [
+        1.338e-06,
+        1.538e-06,
+        1.738e-06,
+        1.938e-06,
+        2.1379999999999997e-06,
+        2.3380000000000003e-06,
+        2.538e-06,
+        2.738e-06
+      ],
+      "ADC_ready_count": 14,
+      "RX_ready_count": 12,
+      "actual_counter_checked_cycles": 14,
+      "actual_ADI_points": 672,
+      "model_workspace_core_P_and_DecodeP_checked": true,
+      "model_sha256": "3d22d86a600c182129113d1f88d775e4d3d32204c3ea8b0dc7257c800823e5fb",
+      "P_sha256": "e34cd26c423dff19d7f924ff8c911c31f93911bca172cb3b43e02bfd46039b5a",
+      "simout_sha256": "080957b4fb1bad19cc6f870366694dc0d88cc2d61607418689a6f1bf7fa6969f",
+      "observation_sha256": "715ad4f420064305c7a1f43dae95057c30071ed3299f244470c0a5132d39c7c9"
+    },
+    "m1_off": {
+      "M": 1,
+      "tau_dac_s": 0.0,
+      "calendar_budget": {
+        "d2_decide": 12,
+        "ta_compare": 1,
+        "ta_feedback": 0,
+        "ta_idle": 14
+      },
+      "codes": [
+        963399,
+        979653,
+        989057,
+        991473,
+        986857,
+        975287,
+        956933,
+        932073
+      ],
+      "raw6": [
+        [
+          1900,
+          3283,
+          128,
+          4,
+          1,
+          1
+        ],
+        [
+          1932,
+          2907,
+          0,
+          5,
+          1,
+          1
+        ],
+        [
+          1941,
+          3366,
+          0,
+          6,
+          1,
+          1
+        ],
+        [
+          1960,
+          2486,
+          0,
+          7,
+          1,
+          1
+        ],
+        [
+          1939,
+          3240,
+          0,
+          8,
+          1,
+          1
+        ],
+        [
+          1928,
+          2731,
+          128,
+          9,
+          1,
+          1
+        ],
+        [
+          1878,
+          2771,
+          0,
+          10,
+          1,
+          1
+        ],
+        [
+          1838,
+          2484,
+          0,
+          11,
+          1,
+          1
+        ]
+      ],
+      "record_times_s": [
+        1.338e-06,
+        1.538e-06,
+        1.738e-06,
+        1.938e-06,
+        2.1379999999999997e-06,
+        2.3380000000000003e-06,
+        2.538e-06,
+        2.738e-06
+      ],
+      "ADC_ready_count": 14,
+      "RX_ready_count": 12,
+      "actual_counter_checked_cycles": 14,
+      "actual_ADI_points": 672,
+      "model_workspace_core_P_and_DecodeP_checked": true,
+      "model_sha256": "ae451ac34fd8146269ad724e76baf37827ca20c0844fdca3e1b199e5402b1506",
+      "P_sha256": "494826beac791f76bdb2d15a386abd379e5b9485f17147262a7b1b6e4d0816e5",
+      "simout_sha256": "494d4f026f2c34dba071b197f012b88b69181d004d09dbc48b05557f70ca3af1",
+      "observation_sha256": "a99d043782f86120d509cc91ec1574dd3d9ba2eb6a3d877cd85fae1d2b5b6976"
+    },
+    "m1_1ns": {
+      "M": 1,
+      "tau_dac_s": 1e-09,
+      "calendar_budget": {
+        "d2_decide": 12,
+        "ta_compare": 1,
+        "ta_feedback": 0,
+        "ta_idle": 14
+      },
+      "codes": [
+        963399,
+        979653,
+        989061,
+        991469,
+        986857,
+        975285,
+        956933,
+        932071
+      ],
+      "raw6": [
+        [
+          1900,
+          3283,
+          128,
+          4,
+          1,
+          1
+        ],
+        [
+          1932,
+          2907,
+          0,
+          5,
+          1,
+          1
+        ],
+        [
+          1942,
+          1683,
+          0,
+          6,
+          1,
+          1
+        ],
+        [
+          1959,
+          3677,
+          0,
+          7,
+          1,
+          1
+        ],
+        [
+          1939,
+          3240,
+          0,
+          8,
+          1,
+          1
+        ],
+        [
+          1927,
+          3787,
+          0,
+          9,
+          1,
+          1
+        ],
+        [
+          1878,
+          2771,
+          0,
+          10,
+          1,
+          1
+        ],
+        [
+          1838,
+          2483,
+          128,
+          11,
+          1,
+          1
+        ]
+      ],
+      "record_times_s": [
+        1.338e-06,
+        1.538e-06,
+        1.738e-06,
+        1.938e-06,
+        2.1379999999999997e-06,
+        2.3380000000000003e-06,
+        2.538e-06,
+        2.738e-06
+      ],
+      "ADC_ready_count": 14,
+      "RX_ready_count": 12,
+      "actual_counter_checked_cycles": 14,
+      "actual_ADI_points": 672,
+      "model_workspace_core_P_and_DecodeP_checked": true,
+      "model_sha256": "898efeb00d769e85b3ea5f81ebe9c5982803a862afe10219f4d0fc81512ae815",
+      "P_sha256": "5242c3c04c9977b2659ae7a5d48aedae51dc0cf06683b00850696e8d3b9e8b22",
+      "simout_sha256": "d21c16d106711b849c2f14f0f5542329593dd0f1fecf9dac0574f59b335cd99c",
+      "observation_sha256": "42aafb8cb464918047872d297d7f548b48ec1a87be570e1096e20b66cd48ad40"
+    }
+  },
+  "native_final_checks": {
+    "main_file_unchanged": true,
+    "global_rng_unchanged": true,
+    "main_workspace_unchanged": true,
+    "status": "stopped",
+    "dirty": "off",
+    "environment_cleanup": "complete"
+  },
+  "warnings": "Native command log includes two onCleanup destructor warnings for destroyed cleanupDone and restoreDone. Offline cannot independently establish live state.",
+  "scope": "Actual N8 scratch only, 29 legacy logs excluding enabled ADI observer; no current M1 integration, N256 performance or PDK claim."
+}

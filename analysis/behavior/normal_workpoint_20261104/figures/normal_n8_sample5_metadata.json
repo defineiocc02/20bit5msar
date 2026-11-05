@@ -1,0 +1,104 @@
+{
+  "schema": "normal-n8-sample5-event-figure/v1",
+  "source_sha256": {
+    "P": "f64746e06a0c76a64290cd8eb0fda73ba904c03b91d97da619fa0be52faee0fb",
+    "simout": "be907306df49f21798dac118fc65f6b77aa38cd2bef3aa37a5d07d0d9110759f",
+    "complete": "108430f70f5517df02953b8f8c4bbb487bb8c7c3d5627fe4f1af9d980f0cb6f8",
+    "model": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+    "source_manifest": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+    "assumptions": "a93a899e9c914cdfcfc01bb3b334c4d86875f7eb20d84552328993c996e2ea47",
+    "cmp_audit": "e028373b03109f55dd73d1c14dd918f3c18c190e418a66e522b59e0d9c8b96f2",
+    "reader": "3ca8dc8a6f553e75466438a0d74b9bf6a0a6ab5f65b8c151429981af330f7467"
+  },
+  "configuration_in_saved_P": {
+    "fs_hz": 5000000.0,
+    "fsr_diff_v": 10.0,
+    "vref_v": 5.0,
+    "input_frequency_hz": 97656.25,
+    "input_amplitude_v": 4.456254690668728,
+    "input_phase_rad": 0.731,
+    "temperature_K": 298.15,
+    "A0": 10000.0,
+    "UGB_hz": 1200000000.0,
+    "ra_ou_sigma_vx_v": 0.0005127853895213942,
+    "comparator_sigma_vy_v": 0.00028692873657059866,
+    "sample_tau_s": 5.63041298431866e-10,
+    "dac_tau_s": 5e-10,
+    "az_write_tau_s": 1e-09,
+    "az_hold_tau_s": 0.01,
+    "guard_s": 2e-09,
+    "sample_ktc_on": true,
+    "cap_mismatch_on": true,
+    "az_mode": "ordinary",
+    "comparator_on": true,
+    "ra_ou_on": true,
+    "jitter_on": false,
+    "calibration_mode": "off",
+    "observer_adi_wire_on": true,
+    "cap_unit_relative_sigma_assumed": 0.0006804138174397717
+  },
+  "sample_id": 5,
+  "epoch": 1,
+  "cnv_s": 1e-06,
+  "raw_ready_s": 1.08625e-06,
+  "release_s": 1.09e-06,
+  "next_open_s": 1.0919999999999999e-06,
+  "next_open_scope": "release + saved guard; also matches stored next-sample open metadata, not switch waveform",
+  "raw": {
+    "D1": 1924,
+    "D2": 2473,
+    "DT": 19,
+    "code20": 979623
+  },
+  "d2_bits_next": [
+    1,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1
+  ],
+  "ta_bits_next": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1
+  ],
+  "d2_bit_vs_vy_sign_disagreement_count": 1,
+  "ta_bit_vs_vy_sign_disagreement_count": 2,
+  "scheduled_and_next_wire_counts": [
+    12,
+    8,
+    7
+  ],
+  "source_scope": {
+    "front_log": "FE_retobs event-stage Vres",
+    "back_log": "RA backend pre-decision event endpoints",
+    "control_and_adi_wire": "observed next command/counter wires, not a direct committed-state history",
+    "comparator_noise": "ON; decision bits taken from actual next words, not inferred from sign(VY)",
+    "adi_wire": "observer ON only; no physical ADI architecture",
+    "config": "P injected for run; runtime dialog not independently probed"
+  },
+  "limitations": [
+    "One N8 model sample; no FFT, statistics, PDK or silicon claim.",
+    "Normal component values are engineering assumptions, not foundry-typical measurements.",
+    "No continuous CT waveform inferred; connecting lines are guides.",
+    "Next sample open is derived from release+guard and cross-checked against saved state metadata."
+  ],
+  "plot_script_sha256": "3a43b8622f7f65c376a55031654cdb51ab856884b431e04575ce4e02176c8774",
+  "style_helper_sha256": "48191dd8e35c255d0b605acffa429b4a2a2b29160fa222d0c11142edb8bfda33",
+  "outputs_sha256": {
+    "normal_n8_sample5.png": "c0dd29318b867184a2779c1aac41988f18299cf0cc5449a1034eb3d128c39c56",
+    "normal_n8_sample5_events.csv": "0f87e4e1686a91b5772ae376b47caa900e77e64e674faefce121afe7e8a579e4"
+  }
+}

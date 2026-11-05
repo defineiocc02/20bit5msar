@@ -1,0 +1,105 @@
+{
+  "candidate_manifest_sha256": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+  "items": [
+    {
+      "name": "behavior_backend_stage",
+      "path": "current/src/physics/behavior_backend_stage.m",
+      "sha256": "6f8ab9377578758b7e94cf044d13b000b0eeb39fa65139b901e707292f8b5fa4"
+    },
+    {
+      "name": "behavior_backend_step",
+      "path": "current/src/physics/behavior_backend_step.m",
+      "sha256": "c0f31de27796061cc1b724a4821571cb41871ead9a7a3c23cd47c7dfbec2e5ae"
+    },
+    {
+      "name": "behavior_backend_pack",
+      "path": "current/src/physics/behavior_backend_pack.m",
+      "sha256": "0a9437c332d089002b4eee8ced44cf91e22daf3541655034bd3873de2227ad73"
+    },
+    {
+      "name": "behavior_backend_unpack",
+      "path": "current/src/physics/behavior_backend_unpack.m",
+      "sha256": "7526fa6426b55d54eef53bf295558457329cd1a44c106f37fee6b6c5799e0c56"
+    },
+    {
+      "name": "behavior_dac_forcing_from_frontend",
+      "path": "current/src/physics/behavior_dac_forcing_from_frontend.m",
+      "sha256": "744429184147aa6ea4fb9d0643832c0e7434cde2636a38fdb213a752a9fe8e2f"
+    },
+    {
+      "name": "behavior_ra_noise_validate_backend",
+      "path": "current/src/physics/behavior_ra_noise_validate_backend.m",
+      "sha256": "afad7dd5e9f7993a6d106557a4a92b233bcb12bdab174a7e0f2031b62ac781bb"
+    },
+    {
+      "name": "sar20_ra_ou_increment",
+      "path": "current/src/physics/sar20_ra_ou_increment.m",
+      "sha256": "3787a6f1d0b163ceb50f2a85ba705c564e4a50bfa01c5da005709913b7aecc1d"
+    },
+    {
+      "name": "sar20_ra_keyed_normal",
+      "path": "current/src/physics/sar20_ra_keyed_normal.m",
+      "sha256": "a6c3117481258767394cd0d330c4c88a8d3222bf4f4ed86510cd92d5e39b796f"
+    },
+    {
+      "name": "sar20_cdac2_network",
+      "path": "current/src/physics/sar20_cdac2_network.m",
+      "sha256": "5e09dc030392512d01e800414a8b56e1db80b6e054fc3d7faa0671a49ce0f794"
+    },
+    {
+      "name": "behavior_dac_backend_parameters",
+      "path": "current/src/model/behavior_dac_backend_parameters.m",
+      "sha256": "8a53ed39c5dde8af0dfbf617c68ba05377d5c1da83f0c2cdc82a99283dbc640a"
+    },
+    {
+      "name": "behavior_ra_noise_guard",
+      "path": "current/src/model/behavior_ra_noise_guard.m",
+      "sha256": "bb2d744407a3f2bacabf624b3afcb7b155014b4077fd28c1116e9fae68208f73"
+    },
+    {
+      "name": "behavior_single_guard",
+      "path": "current/src/model/behavior_single_guard.m",
+      "sha256": "0d27e1a15e7824f9614132be365c116f1a8ca89f8a179847a7c6d3a429005faf"
+    },
+    {
+      "name": "behavior_comparator_configuration",
+      "path": "current/src/model/behavior_comparator_configuration.m",
+      "sha256": "910c0c908b546ef7aa4590c59e287d2f449dd3b098b1f29b3b6e816be95a70df"
+    },
+    {
+      "name": "behavior_transport_configuration",
+      "path": "current/src/model/behavior_transport_configuration.m",
+      "sha256": "de7dae4c9f6caa04528d805324d58040d7d0b794d6588be6434f97b6e2071006"
+    },
+    {
+      "name": "behavior_frontend_unpack",
+      "path": "current/src/frontend/behavior_frontend_unpack.m",
+      "sha256": "f345c0520de23fdb12ab4466403cd5519865782b2c26eaac654e6c854e108f25"
+    },
+    {
+      "name": "behavior_jitter_parameters",
+      "path": "current/src/frontend/behavior_jitter_parameters.m",
+      "sha256": "12895b36914aa2af35c1ff12a84a44c58f0c49f4a355192cde9fabcab5499dae"
+    },
+    {
+      "name": "behavior_calendar",
+      "path": "current/src/control/behavior_calendar.m",
+      "sha256": "aaea8db96301e176930f06e1e5570968e79e2a21cad446f876f0475bb802879a"
+    },
+    {
+      "name": "behavior_event_groups",
+      "path": "current/src/control/behavior_event_groups.m",
+      "sha256": "dce8b115afdd4ad012eb3e468427ca73af9e9a8fd5a592672ab96c8803549239"
+    },
+    {
+      "name": "behavior_public_pol",
+      "path": "current/src/digital/behavior_public_pol.m",
+      "sha256": "69b6a1a671db0957e3badf7be79d15f92ee400d502454c2a36ce52f88671baf5"
+    },
+    {
+      "name": "behavior_transport_config",
+      "path": "current/src/transport/behavior_transport_config.m",
+      "sha256": "742e4b5d1c57962d832b1fa1f1983e186b72ce39ca0ee2375f7999b014427193"
+    }
+  ]
+}

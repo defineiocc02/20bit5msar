@@ -1,0 +1,78 @@
+{
+  "schema": "sar20-dense-private-build/v1",
+  "source_zip_sha256": "03545ad4ea5e228511f379c690fe83c43123deed5612f6a664ef8b98275560b4",
+  "model_sha256": "48537818b3212e1e4c8231dec433d1fde36d95814cdcce8c529bb2898eb097d3",
+  "P_used_sha256": "e42b739ed7c465845ed0e415a9f2fdfdd1afa0caaf0c18055c3f77fbfe683b61",
+  "normal_simout_sha256": "2267e645ebc3000e1ad8e2ff56eec2f7c58d9205922cb9746c98b855792db705",
+  "normal_receipt_sha256": "6611f904fecfd13c26c72e88aae001d89ddb25624fa2885405a59d9d3093f94c",
+  "rng_sha256": "0f6431a186bbe5b9ee42dc466fd22564eda228455e084f0f21d9f7717449e327",
+  "source_manifest_sha256": "73867eabe50b70920cd3373190832e2d78426c59b0116d6062ff94c4c903f14c",
+  "runtime_index_sha256": "9aa4c6cd0473200d8e3c846cb60da372aebad399ae30b3acb33fae45e4ccc311",
+  "ops_sha256": "8d378d5c04f76319e851041fd9e779cf0b14bc30f3e8220c59a1c339f09fdf2d",
+  "layout_sha256": "fab1aa95520b2e9af897cfe93e539083c8b3afbb8524bae5eedb574559393b31",
+  "toolkit": [
+    {
+      "name": "model_read",
+      "relative_to_tools": "model_read/model_read.p",
+      "sha256": "e81b7f5122a2c518933b3b6e07aae98307427ba64c150ba683c419cb1968d9fc"
+    },
+    {
+      "name": "model_edit",
+      "relative_to_tools": "model_edit/model_edit.p",
+      "sha256": "f520bf0247d5cd16bda394694574fcebbadc643497b54575fb1768f7158816be"
+    },
+    {
+      "name": "model_check",
+      "relative_to_tools": "model_check/model_check.p",
+      "sha256": "3b1b4f90c051c6f2bda1d75507134de8f33711d222788c5d99768cb394e13abe"
+    },
+    {
+      "name": "library.settingsLookup",
+      "relative_to_tools": "model_edit/+library/settingsLookup.p",
+      "sha256": "f64894d189b41df989c5d249d0b2040c2626b34d0733a036d8c5492a6f9500c1"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "scripts/dense_build.m",
+      "bytes": 10487,
+      "sha256": "c6a750482cb9e25476fa3a3e97ccc892d512adbab274a1e2cec4f229c2ff1327"
+    },
+    {
+      "path": "scripts/normal_bind_runtime.m",
+      "bytes": 1510,
+      "sha256": "dcba4fdf4e5f3f42a674297dcb3a62721345e9d41b80e423b9b627fc396b3498"
+    },
+    {
+      "path": "dense_build_entry.m",
+      "bytes": 1044,
+      "sha256": "b057ca3c91cb493fd1eeec29ee73cb66a019c771e970cf3d398066707b21a6a3"
+    },
+    {
+      "path": "controller.ps1",
+      "bytes": 4265,
+      "sha256": "faf4163e9ad98cedb948944740bf3314d85473c514e6dc91ea7900a1263810b1"
+    },
+    {
+      "path": "submit.ps1",
+      "bytes": 1989,
+      "sha256": "f37492a2b4c033d42668b2db9e2d295e88deec9a17e7c588f1b909aaf40f4cf5"
+    },
+    {
+      "path": "audit_graph.py",
+      "bytes": 7278,
+      "sha256": "a81fe7a559d8fd11cc4b3d8ab188796364f5ee3a947af8ef21e2683c4a2fd36c"
+    },
+    {
+      "path": "ops.json",
+      "bytes": 1322,
+      "sha256": "8d378d5c04f76319e851041fd9e779cf0b14bc30f3e8220c59a1c339f09fdf2d"
+    },
+    {
+      "path": "layout.json",
+      "bytes": 2087,
+      "sha256": "fab1aa95520b2e9af897cfe93e539083c8b3afbb8524bae5eedb574559393b31"
+    }
+  ],
+  "runtime_file_count": 113
+}

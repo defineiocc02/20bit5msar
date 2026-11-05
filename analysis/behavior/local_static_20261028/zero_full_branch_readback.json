@@ -1,0 +1,65 @@
+{
+  "source": "0 V full preflight actual timeseries",
+  "source_sha256": "4329cfa1d0af6cb091da72e7396d7a8e173eb2423565c972b687058f91292334",
+  "sample_id": 4,
+  "epoch": 1,
+  "ready_s": 8.8625e-07,
+  "zero_full_branches_bit_equal_RAW_reconstruction": true,
+  "observations": {
+    "d1_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        0.0
+      ]
+    },
+    "d2_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        1.562500000000175e-05
+      ]
+    },
+    "dt_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        -1.171875e-05
+      ]
+    },
+    "ready_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        1.0
+      ]
+    },
+    "raw_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        1040.0,
+        2374.0,
+        42.0,
+        4.0,
+        1.0,
+        1.0
+      ]
+    },
+    "record_ready_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        1.0
+      ]
+    },
+    "code_log": {
+      "samples": 240,
+      "time_s": 8.8625e-07,
+      "data": [
+        524289.0
+      ]
+    }
+  },
+  "zero_P_scope": "0 V preflight P was reconstructed later; direct logger readings here do not require treating it as a separately saved as-run P"
+}

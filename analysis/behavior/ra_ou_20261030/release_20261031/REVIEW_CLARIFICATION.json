@@ -1,0 +1,29 @@
+{
+  "schema": "sar20-ou-review-clarification/v1",
+  "utc": "2026-10-31T18:00:00Z",
+  "manifest_sha256": "d714bff5f09e3edd796c6a177f8ae122486d3bc048c84373b411d1a263179ac1",
+  "manifest_identity_note": "MANIFEST.json is the frozen identity; it is intentionally NOT edited to backfill notes.",
+  "difference_from_v3": {
+    "explanation": "difference_from_v3 strings are advisory prose, not hash inputs. Empty strings mean \"no curated prose delta was written\", not \"no difference\". Compare validated_v3_sha256 vs target_sha256 for the actual byte relationship.",
+    "identical_kernel_files": [
+      "current/src/model/behavior_dac_backend_parameters.m",
+      "current/src/physics/behavior_backend_parameters.m",
+      "current/src/physics/behavior_backend_sfun.m",
+      "current/src/physics/behavior_backend_stage.m",
+      "current/src/physics/behavior_backend_step.m",
+      "current/src/physics/sar20_ra_keyed_normal.m",
+      "current/src/physics/sar20_ra_ou_increment.m"
+    ],
+    "changed_vs_v3_files": [
+      "config/adc_parameters.m",
+      "current/src/model/behavior_applied_note.m",
+      "current/src/model/behavior_prepare_configuration.m",
+      "current/src/model/behavior_ra_noise_guard.m",
+      "current/src/physics/behavior_ra_noise_validate_backend.m"
+    ],
+    "changed_vs_v3_expectation": "config comments; conditional applied-P label; ON-only guards. Numeric OU kernels (behavior_backend_step.m, sar20_ra_ou_increment.m, sar20_ra_keyed_normal.m) are byte-identical to v3."
+  },
+  "backup_host_diff": {
+    "explanation": "115 entries each; 114 real source/model files are byte-identical across hosts. Windows captured one transient installer .tmp; Mac captured one .DS_Store. Both are non-source artifacts of the backup instant and are excluded from the 105+12 identity sets."
+  }
+}

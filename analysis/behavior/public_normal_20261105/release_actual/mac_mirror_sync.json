@@ -1,0 +1,11 @@
+{
+  "status": "MAC_MIRROR_SYNCED_VERIFIED",
+  "model_sha256": "91973cf76507d37acc12515b55ebfe731ad197fe8ca1ecc9014fa07cbd35c27e",
+  "source_host": "Windows R2024a U6",
+  "validated_release_receipt_sha256": "2841485f5bfeff0c064e30d7d66c79ea033e08d3e4a6261a2710ac2ea157cd44",
+  "files": 119,
+  "N": 256,
+  "zip_sha256": "44509710e8a65cb1b5d4a6a114d5fd364c1f8e3cd422ba354f3a4344b0d59665",
+  "old_backup": "/Users/zhaoyi/Obsidan/项目库产物文件夹/sar20_5_simulink_20261020/_preserved/before_normal_20261105_mac/original_working_source.zip",
+  "matlab_on_mac_run": false
+}
