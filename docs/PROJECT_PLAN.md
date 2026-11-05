@@ -4,7 +4,9 @@
 >
 > 本文件取代散落在 `CHECKPOINT.md`、`docs/MODEL_PLAN.md`、`docs/ENGINEERING_ANALYSIS.md §8` 中的路线表述，是**当前唯一有效的计划口径**。
 > 本文只定义「接下来做什么、按什么判据算完成」；**不构成对任何模型/源码改动的授权**。
-> 配套阅读：[README.md](../README.md)（工程说明书）· [ENGINEERING_ANALYSIS.md](ENGINEERING_ANALYSIS.md)（诊断证据）· [CITATION.cff](../CITATION.cff)（引用边界）。
+> 配套阅读：[README.md](../README.md)（工程说明书）· [ENGINEERING_ANALYSIS.md](ENGINEERING_ANALYSIS.md)（诊断证据）· [**ENGINEERING_GUIDANCE.md**](ENGINEERING_GUIDANCE.md)（2026-11-06 基于真实 SLX 结构的优先级判断、8 项效应重分类与改动落点）· [CITATION.cff](../CITATION.cff)（引用边界）。
+>
+> ⚠️ **2026-11-06 口径修正**：`ENGINEERING_GUIDANCE.md §3.4` 把此前笼统的「8 项未实现效应」按源码实况重分为 A/B/C/D 四类——其中 B 类有 flag 与守卫但内核禁止开启（不需新建 SLX 块），D 类生产源码零命中（需从零设计）。本文 N 系列的实施顺序以该分类为准；「均需改 SLX」的旧表述作废。
 
 ---
 

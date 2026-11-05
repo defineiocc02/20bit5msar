@@ -15,6 +15,7 @@
 [![Plan](https://img.shields.io/badge/plan-PROJECT_PLAN-important)](docs/PROJECT_PLAN.md)
 [![Design](https://img.shields.io/badge/design-Error%20Budget-critical)](design/budget/ERROR_BUDGET_REV03.md)
 [![Model Map](https://img.shields.io/badge/model%20unclear-Interactive%20Map-blueviolet)](analysis/model_map/sar20_model_map.html)
+[![Guidance](https://img.shields.io/badge/analysis%20%2B%20guidance-critical)](docs/ENGINEERING_GUIDANCE.md)
 
 </div>
 
@@ -59,6 +60,7 @@
 |---|---|
 | **🔍 I opened Simulink and cannot follow the model (start here)** | [🗺️ Interactive model map](analysis/model_map/sar20_model_map.html) (single offline HTML: drill into subsystems, click a block to see its Chinese annotation and bound `.m`) · [how to read it](analysis/model_map/README.md) · [machine-readable structure](analysis/model_map/model_map.json) |
 | **Guide a circuit design: numeric limits per block** | [🎯 Rev0.3 design constraint chain](design/budget/ERROR_BUDGET_REV03.md) · [budget JSON](design/budget/error_budget_rev03.json) · [binding CSV](design/budget/parameter_binding.csv) · [verifier](design/budget/verify_budget.py) |
+| **Get a thorough analysis + what to actually do next** | [📌 Analysis and guidance](docs/ENGINEERING_GUIDANCE.md) (evidence from the real SLX structure, re-classification of the 8 missing effects, P0–P3 priorities with gates, where to change what) |
 | **Judge the state of this project** | [§0 verdict](#0-the-30-second-verdict) · [Full engineering analysis](docs/ENGINEERING_ANALYSIS.md) |
 | **Know what comes next and in what order** | [📋 PROJECT_PLAN.md](docs/PROJECT_PLAN.md) (M0–M4 gates, commands, rollback) |
 | **Understand architecture, state, timing, why divide by 8** | [§4 Architecture](#4-architecture-and-how-it-works) · [READ_GRAPH.md](docs/READ_GRAPH.md) · [PARAMETERS.md](docs/PARAMETERS.md) |
@@ -542,6 +544,7 @@ The complete executable plan is **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**
 
 | Document | Purpose |
 |---|---|
+| [**ENGINEERING_GUIDANCE.md**](docs/ENGINEERING_GUIDANCE.md) | **Decision basis**: structural imbalances, state/timing, observability break, A/B/C/D re-classification of the 8 effects, frozen-file boundary, P0–P3 actions and gates |
 | [**Interactive model map sar20_model_map.html**](analysis/model_map/sar20_model_map.html) · [notes](analysis/model_map/README.md) | **Understand the Simulink project**: real SLX hierarchy / blocks / lines / S-Function bindings + source map + event timeline + reading guide; single offline file |
 | [**ERROR_BUDGET_REV03.md**](design/budget/ERROR_BUDGET_REV03.md) | **Guide a circuit design**: Rev0.3 targets → input-referred error budget → block specs → device parameters → gates; with JSON, binding CSV and verifier |
 | [**PROJECT_PLAN.md**](docs/PROJECT_PLAN.md) | **Only active roadmap**: M0–M4 gates, commands, rollback, evidence levels |

@@ -15,6 +15,7 @@
 [![Plan](https://img.shields.io/badge/计划-PROJECT_PLAN-important)](docs/PROJECT_PLAN.md)
 [![Design](https://img.shields.io/badge/设计约束-Error%20Budget-critical)](design/budget/ERROR_BUDGET_REV03.md)
 [![Model Map](https://img.shields.io/badge/看不懂模型-交互结构图-blueviolet)](analysis/model_map/sar20_model_map.html)
+[![Guidance](https://img.shields.io/badge/详细分析与指导意见-critical)](docs/ENGINEERING_GUIDANCE.md)
 
 </div>
 
@@ -58,6 +59,7 @@
 |---|---|
 | **🔍 打开 Simulink 看不懂模型结构（先看这个）** | [🗺️ 交互模型结构图](analysis/model_map/sar20_model_map.html)（单文件离线、双击子系统进入、点块看绑定源码）· [怎么读这张图](analysis/model_map/README.md) · [机器可读结构](analysis/model_map/model_map.json) |
 | **拿它指导电路设计：每个模块该做到多少噪声/电容/带宽** | [🎯 设计约束闭环（Rev0.3 误差预算）](design/budget/ERROR_BUDGET_REV03.md) · [预算 JSON](design/budget/error_budget_rev03.json) · [参数绑定表](design/budget/parameter_binding.csv) · [校验脚本](design/budget/verify_budget.py) |
+| **要一份彻底的分析 +「接下来到底该怎么做」** | [📌 详细分析与指导意见](docs/ENGINEERING_GUIDANCE.md)（真实 SLX 结构取证、8 项效应重分类、P0–P3 优先级与验收门、改动落点） |
 | **判断这个工程到底怎么样了** | [§0 30 秒判断](#0-30-秒判断) · [全面分析报告](docs/ENGINEERING_ANALYSIS.md) |
 | **知道接下来该做什么、按什么顺序** | [📋 项目计划 PROJECT_PLAN.md](docs/PROJECT_PLAN.md)（M0–M4 的验收门、命令、回滚） |
 | **看懂架构、状态、时序、解码为什么除以 8** | [§4 架构与工作原理](#4-架构与工作原理) · [读图](docs/READ_GRAPH.md) · [参数语义](docs/PARAMETERS.md) |
@@ -547,6 +549,7 @@ $PY sar20_probe.py html                 # 重新生成离线调试面板
 
 | 文档 | 用途 |
 |---|---|
+| [**详细分析与指导意见 ENGINEERING_GUIDANCE.md**](docs/ENGINEERING_GUIDANCE.md) | **决策依据**：结构比例失衡、状态/时序、可观测性断点、8 项效应 A/B/C/D 重分类、冻结边界、P0–P3 动作与验收门 |
 | [**交互模型结构图 sar20_model_map.html**](analysis/model_map/sar20_model_map.html) · [说明](analysis/model_map/README.md) | **看懂 Simulink 工程**：真实 SLX 的层次/块/连线/S-Function 绑定 + 源码地图 + 事件时间轴 + 导读；单文件离线打开 |
 | [**设计约束闭环 ERROR_BUDGET_REV03.md**](design/budget/ERROR_BUDGET_REV03.md) | **指导电路设计**：Rev0.3 指标 → 输入参考误差预算 → 模块规格 → 器件参数 → 验证门；含机器可读 JSON、参数绑定 CSV 与校验脚本 |
 | [**项目计划 PROJECT_PLAN.md**](docs/PROJECT_PLAN.md) | **当前唯一路线**：M0–M4 的验收门、命令、回滚、证据层级 |
