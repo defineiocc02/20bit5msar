@@ -202,7 +202,7 @@
 | `release.json` | 2026-10-26，`R4/M8/F2/600MHz/N8`，SHA `8f12e65a…` | 当前 `91973cf7…`；`canonical_mac_root` 指向已废弃的 `项目库/outputs/` |
 | `state/SESSION_READY.json` | 10-27，`display_compile_N8_bits…visual_review_required` | 早已 N256 正式发布 |
 | `state/applied_config.json` | 11-04，SHA `9197…` | **唯一对得上的** |
-| `README.md` | normal N256 已发布 | 未提暂停、封存、未晋升 |
+| `README.md` | normal N256 已发布 | **2026-11-05 重写后已补齐**暂停、封存、未晋升、五套口径与证据边界；但它仍不是机器可读真相源，M0 的 `CURRENT.json` 仍待建 |
 | `CHECKPOINT.md` | 219 KB / 665 行倒序，含多个「最新 / 当前权威续点 / 用户最新授权」 | 头部写「用户已明确暂停」，下文几百行仍是旧目标与旧 `/tmp` 恢复路径 |
 
 其余 5 个 `state/*.json` 全部停在 10-27。此前**不是 git 仓库**（有 `.gitignore` 无 `.git`），所以版本真相全靠自然语言手抄 SHA——`CHECKPOINT.md` 里已出现过「runtime-index SHA 误抄 62 位导致 preflight 失败」。
@@ -255,17 +255,20 @@
 
 ---
 
-## 8. 建议路线（里程碑与完成判据）
+## 8. 建议路线（摘要；完整计划另见独立文档）
+
+> 📋 **本节已升级为 [docs/PROJECT_PLAN.md](PROJECT_PLAN.md)**。该文档是**当前唯一有效的计划口径**，包含每个里程碑的前置条件、具体命令、消融矩阵设计、验收门、备份与回滚方案、checkpoint 规则、风险登记册与待确认清单。本节只保留摘要，避免两处路线表述分叉。
 
 | 里程碑 | 动作 | 是否需要改模型 / 授权 | 完成判据 |
 |---|---|---|---|
-| **M0** | 建机器可读 `CURRENT.json`：生产 SLX SHA、源码 manifest、生效配置、权威 run、当前目标与完成判据、封存候选索引；`CHECKPOINT.md` 冻结为历史；修正 `release.json` 失效路径与过期 state | 否 | 任一新会话能在 1 分钟内确定「当前是什么、什么算完成」 |
-| **M1** | 固定 N256 / seed / FSR，做**单源消融矩阵**（每次只开一项非理想 + M1/M8 tracking 对照），产出每项 ΔSNDR 表；建**输入参考噪声预算**并与论文图 12 对齐 | 否（用现有 SimulationInput 参数注入）；需 Windows 调度授权 | 每个已实现非理想项有独立 ΔSNDR，且预算表可与论文分项比较 |
+| **M0** | 建机器可读 `CURRENT.json` 单一真相源；旧状态源标 archive；根 CHECKPOINT 冻结 | 否 | 任一新会话能在 1 分钟内确定「当前是什么、什么算完成」 |
+| **M1** | 固定 N256 / seed / FSR，做**单源消融矩阵**（leave-one-out + only-one-on + M1/M8 对照），产出每项 ΔSNDR 表；建**输入参考噪声预算** | 否（参数注入）；需 Windows 调度授权 | 每个已实现非理想项有独立 ΔSNDR，且预算表可与论文分项比较 |
 | **M2** | 同口径 20k 点谱 + M1/M8 的 7 dB 收益对照 + 前景校准/独立 holdout 复核 | 否（参数级）；需授权 | 能明确回答「论文复现到什么程度、差在哪几项、各差多少 dB」 |
-| **M3** | 从 CAAZ 与 debug UI 中**选一个**晋升生产，走完 apply → 冷开 → N8 位门 → N256 回归 → README 更新 | **是**，需显式授权；改动前须列范围、备份、回滚方案 | 生产 SLX SHA 改变且 README 与 CURRENT.json 同步 |
+| **M3** | 从 CAAZ 与 debug UI 中**选一个**晋升生产，走完 apply → 冷开 → N8 位门 → N256 回归 → README / CURRENT 同步 | **是**，需显式授权；改动前须提交范围、备份、回滚方案 | 生产 SLX SHA 改变且文档同步；ΔdB 无法解释则回滚 |
 | **M4** | ADI v2 完整 18-pool / 双 QDAC、10 MS/s | 是，架构级 + 用户另行同意 | 按新里程碑单独定义 |
+| **N 系列** | 补齐明确标注 `not implemented` 的非理想效应（均需改 SLX） | 是，逐项显式授权 | 每项独立函数门 + 整图门 + 单源 ΔdB |
 
-**优先级**：M0 → M1 → M2，**M3 之前不要开新特性线**。理由：M1/M2 产出的是「能不能判定收益」这一晋升决策的前提；缺了它，M3 无论选哪个都只能再次封存。
+**优先级**：M0 → M1 → M2，**M3 之前不要开新特性线**。理由：M1/M2 产出的是「能不能判定收益」这一晋升决策的前提；缺了它，M3 无论选哪个都只能再次封存。完整根因链、证据层级约束、DoD 总表与授权边界见 [PROJECT_PLAN.md](PROJECT_PLAN.md)。
 
 ---
 
@@ -273,8 +276,9 @@
 
 | 文件 | 作用 |
 |---|---|
-| `README.md` / `README_EN.md` | 中文首页（默认）与英文版，含徽章、快速开始、目录地图、证据边界 |
-| `docs/ENGINEERING_ANALYSIS.md` | 本报告 |
+| `README.md` / `README_EN.md` | 中文工程说明书（默认首页）与结构对齐的英文版：目标口径、架构时序、参数假设、非理想覆盖、运行/调试、证据链、风险与计划入口 |
+| `docs/ENGINEERING_ANALYSIS.md` | 本报告（诊断证据） |
+| `docs/PROJECT_PLAN.md` | **当前唯一有效计划**：M0–M4 与 N 系列的前置、命令、验收门、回滚、checkpoint、风险登记册与待确认清单 |
 | `docs/PAPERS/INDEX.md` | 27 份第三方文献清单（标题/路径/SHA-256/来源） |
 | `analysis/local_debug/sar20_probe.py` | 零 MATLAB 本地只读探针：`info` / `decode` / `diff` / `html` |
 | `analysis/local_debug/sar20_debug_report.html` | 离线调试面板（256 条真实记录、任意 sample 解码链） |
@@ -290,7 +294,7 @@
 
 1. 论文 `99.4 dB` 与 `7 dB` 的确切图表/测量条件——工程内只有引用，未见定义。
 2. `CHECKPOINT.md` 若干历史段落未给出当时完整 SLX SHA，仅在相邻绑定行有前缀。
-3. `README.md` 表格中 `99.133 dB` 等为展示精度，`release_receipt.json` 为全精度，未声明舍入规则。
+3. 2026-11-05 重写后的 `README.md` 已在 §2.2 同时给出全精度指标与展示值，但两者之间的舍入规则仍未显式声明（待确认）。
 4. 两份 CICC2026 PDF 正文内除标题外的目标数字（20k 点、实测 SNDR 等）本次未逐页核对。
 5. `CHECKPOINT.md:305` 称哈希锁定边界实际涉及 9 个文件，而 `:333` 称 4 个文件硬编码冻结；两者口径差异未消解。
 
