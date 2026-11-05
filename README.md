@@ -13,6 +13,7 @@
 [![Docs](https://img.shields.io/badge/docs-中文-success)](README.md)
 [![English](https://img.shields.io/badge/docs-English-lightgrey)](README_EN.md)
 [![Plan](https://img.shields.io/badge/计划-PROJECT_PLAN-important)](docs/PROJECT_PLAN.md)
+[![Design](https://img.shields.io/badge/设计约束-Error%20Budget-critical)](design/budget/ERROR_BUDGET_REV03.md)
 
 </div>
 
@@ -54,6 +55,7 @@
 
 | 我想…… | 去哪里 |
 |---|---|
+| **拿它指导电路设计：每个模块该做到多少噪声/电容/带宽** | [🎯 设计约束闭环（Rev0.3 误差预算）](design/budget/ERROR_BUDGET_REV03.md) · [预算 JSON](design/budget/error_budget_rev03.json) · [参数绑定表](design/budget/parameter_binding.csv) · [校验脚本](design/budget/verify_budget.py) |
 | **判断这个工程到底怎么样了** | [§0 30 秒判断](#0-30-秒判断) · [全面分析报告](docs/ENGINEERING_ANALYSIS.md) |
 | **知道接下来该做什么、按什么顺序** | [📋 项目计划 PROJECT_PLAN.md](docs/PROJECT_PLAN.md)（M0–M4 的验收门、命令、回滚） |
 | **看懂架构、状态、时序、解码为什么除以 8** | [§4 架构与工作原理](#4-架构与工作原理) · [读图](docs/READ_GRAPH.md) · [参数语义](docs/PARAMETERS.md) |
@@ -164,6 +166,23 @@ M0 计划用机器可读的 `CURRENT.json` 收敛这一局面，并把上述旧�
 | 逐沿时刻、A0/极点/寄生/噪声/工艺 | 论文未披露 → 工程假设 | 否 |
 
 全库无任何成电论文对照或差距报告；已有的 `comparison.*` 都是 run 与 run 之间的比较。`99.4 dB` 在工程内只以「预算/等条件复现」字样出现，**未绑定论文具体图表或测量条件（待确认）**。判定依据与完整证据见 [全面分析 §5.4](docs/ENGINEERING_ANALYSIS.md)。
+
+### 3.3 设计约束闭环：怎么用它指导电路设计
+
+前面几节回答「工程现在是什么」；若目的是**画电路**，需要另一条链：**系统指标 → 输入参考误差预算 → 模块规格 → 器件参数 → 验证门**。这条链此前在 `design/behavioral_acceptance.md:63` 被明确记为缺失，现已按 **Rev0.3 产品规格**补齐，见 [🎯 设计约束闭环](design/budget/ERROR_BUDGET_REV03.md)。
+
+| 设计者要的数 | Rev0.3 口径下的值 | 当前模型 |
+|---|---|---|
+| 输入参考噪声上限（SNR 100 dB，−1 dBFS，FSR 8.192 V） | **25.8134 µV rms** | — |
+| 谐波上限（THD −105 dBc，是控制项） | **14.5159 µV rms** | — |
+| 采样电容下限（kT/C 占 50% 功率） | **24.7109 pF** | 28.0521 pF → 占 44.04% 功率 |
+| 采样开关 Ron 上限（12.5 ns 保守窗口） | **35.38 Ω** | 20 Ω，τ 0.563 ns |
+| 孔径 jitter（100 kHz / 1 MHz 扩展，独占预算） | **15.92 ps / 2.52 ps** | jitter OFF |
+| RA 输出噪声 / 二级比较器输入噪声 | ≤**319.92 / 218.55 µV rms**（须 tracking 后实测折回 ≤10.00 / ≤6.83 µV） | 512.8 / 286.9 µV rms，一阶折算超预算 |
+| 参考 / AZ 噪声预算 | 8.1629 / 7.3011 µV rms | **未实现** |
+| INL / DNL | ±32.768 / <7.734 µV | 无测量 |
+
+⚠️ 三点必须同时记住：① 这些数都是 **Rev0.3 8.192 V 口径**，当前 normal 是 10 V，噪声上限相差 1.49 倍功率，99.133 dB 与达标无关；② `spec.yml:57` 的 28 pF「每半边 / 差分总和」仍是 TBD，若为总和则每半边约 14 pF、采样预算跳到约 88%，整表要重做；③ 预算状态是 **`NOT_CLOSED`**：18% 功率无模型、22% 依赖未实测的 tracking 收益。[`verify_budget.py`](design/budget/verify_budget.py) 的 79 项校验只证明**解析链自洽**，不证明任何模块达标。
 
 ---
 
@@ -482,7 +501,7 @@ $PY sar20_probe.py html                 # 重新生成离线调试面板
 
 ## 11. 路线与计划
 
-完整可执行计划见 **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**（含每个里程碑的前置、命令、验收门、备份与回滚、checkpoint、授权边界）。摘要：
+完整可执行计划见 **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**（含每个里程碑的前置、命令、验收门、备份与回滚、checkpoint、授权边界）。其中 **M0.5「设计约束闭环」已于 2026-11-05 落地**（[§3.3](#33-设计约束闭环怎么用它指导电路设计)），它是 M1 消融的验收依据；下表 M0–M4 仍为提案。摘要：
 
 | 里程碑 | 动作 | 改模型？ | 完成判据 |
 |---|---|---|---|
@@ -523,6 +542,7 @@ $PY sar20_probe.py html                 # 重新生成离线调试面板
 
 | 文档 | 用途 |
 |---|---|
+| [**设计约束闭环 ERROR_BUDGET_REV03.md**](design/budget/ERROR_BUDGET_REV03.md) | **指导电路设计**：Rev0.3 指标 → 输入参考误差预算 → 模块规格 → 器件参数 → 验证门；含机器可读 JSON、参数绑定 CSV 与校验脚本 |
 | [**项目计划 PROJECT_PLAN.md**](docs/PROJECT_PLAN.md) | **当前唯一路线**：M0–M4 的验收门、命令、回滚、证据层级 |
 | [全面分析 ENGINEERING_ANALYSIS.md](docs/ENGINEERING_ANALYSIS.md) | 系统诊断：目标/时间线/架构/证据总账/治理/风险分级 |
 | [CAAZ 与 ADI](docs/CAAZ_ADI.md) | 三篇原文各提供什么、已跑通的 CAAZ N8、ADI 候选边界 |

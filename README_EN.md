@@ -13,6 +13,7 @@
 [![Docs](https://img.shields.io/badge/docs-English-success)](README_EN.md)
 [![中文](https://img.shields.io/badge/docs-中文-lightgrey)](README.md)
 [![Plan](https://img.shields.io/badge/plan-PROJECT_PLAN-important)](docs/PROJECT_PLAN.md)
+[![Design](https://img.shields.io/badge/design-Error%20Budget-critical)](design/budget/ERROR_BUDGET_REV03.md)
 
 </div>
 
@@ -55,6 +56,7 @@
 
 | I want to… | Go to |
 |---|---|
+| **Guide a circuit design: numeric limits per block** | [🎯 Rev0.3 design constraint chain](design/budget/ERROR_BUDGET_REV03.md) · [budget JSON](design/budget/error_budget_rev03.json) · [binding CSV](design/budget/parameter_binding.csv) · [verifier](design/budget/verify_budget.py) |
 | **Judge the state of this project** | [§0 verdict](#0-the-30-second-verdict) · [Full engineering analysis](docs/ENGINEERING_ANALYSIS.md) |
 | **Know what comes next and in what order** | [📋 PROJECT_PLAN.md](docs/PROJECT_PLAN.md) (M0–M4 gates, commands, rollback) |
 | **Understand architecture, state, timing, why divide by 8** | [§4 Architecture](#4-architecture-and-how-it-works) · [READ_GRAPH.md](docs/READ_GRAPH.md) · [PARAMETERS.md](docs/PARAMETERS.md) |
@@ -162,6 +164,23 @@ See [CAAZ_ADI.md](docs/CAAZ_ADI.md). `docs/CHOP_AZ_SPEC.md` is a **residual-side
 | Edge timings, A0/poles, parasitics, noise, process | Undisclosed → engineering assumptions | No |
 
 No paper-comparison or gap report exists anywhere in the repository; all existing `comparison.*` files compare runs with runs. `99.4 dB` appears only as a budget / "reproduce under equal conditions" phrase, **not bound to a specific figure or measurement condition (to be confirmed)**. Full evidence: [ENGINEERING_ANALYSIS.md §5.4](docs/ENGINEERING_ANALYSIS.md).
+
+### 3.3 Design constraint chain: using this project to guide a circuit design
+
+The sections above describe *what the project is*. If the goal is to *design silicon*, a different chain is needed: **system targets → input-referred error budget → block specs → device parameters → verification gates**. That chain was explicitly missing (`design/behavioral_acceptance.md:63`) and has now been built for the **Rev0.3 product spec**: see [🎯 ERROR_BUDGET_REV03.md](design/budget/ERROR_BUDGET_REV03.md).
+
+| What a designer needs | Rev0.3 value | Current model |
+|---|---|---|
+| Input-referred noise ceiling (SNR 100 dB, −1 dBFS, FSR 8.192 V) | **25.8134 µV rms** | — |
+| Harmonic ceiling (THD −105 dBc, controlling) | **14.5159 µV rms** | — |
+| Sampling capacitor minimum (kT/C at 50% power) | **24.7109 pF** | 28.0521 pF → 44.04% of noise power |
+| Sampling switch Ron ceiling (12.5 ns conservative window) | **35.38 Ω** | 20 Ω, τ 0.563 ns |
+| Aperture jitter (100 kHz / 1 MHz extension, entire budget) | **15.92 ps / 2.52 ps** | jitter OFF |
+| RA output noise / stage-2 comparator input noise | ≤**319.92 / 218.55 µV rms** (must fold back to ≤10.00 / ≤6.83 µV *after* tracking) | 512.8 / 286.9 µV rms; first-order folding exceeds the limits |
+| Reference / AZ noise budget | 8.1629 / 7.3011 µV rms | **Not implemented** |
+| INL / DNL | ±32.768 / <7.734 µV | No measurement |
+
+⚠️ Three caveats: ① all figures use the **Rev0.3 8.192 V** baseline — the current normal workpoint is 10 V with a noise ceiling 1.49× larger in power, so 99.133 dB says nothing about compliance; ② `spec.yml:57` still has the 28 pF per-half / differential-total definition as TBD — if it is the total, each half is ~14 pF and the sampling allocation jumps to ~88%, invalidating the table; ③ the budget is **`NOT_CLOSED`**: 18% of noise power has no model and 22% depends on an unmeasured tracking benefit. The 79 checks in [`verify_budget.py`](design/budget/verify_budget.py) prove the *analytic chain is self-consistent*, not that any block passes.
 
 ---
 
@@ -477,7 +496,7 @@ Historical full-graph results (**different configurations, never compare them**)
 
 ## 11. Roadmap and plan
 
-The complete executable plan is **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)** (prerequisites, commands, acceptance gates, backups, rollback, checkpoints, authorization boundaries). Summary:
+The complete executable plan is **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)** (prerequisites, commands, acceptance gates, backups, rollback, checkpoints, authorization boundaries). **M0.5 "design constraint chain" was delivered on 2026-11-05** ([§3.3](#33-design-constraint-chain-using-this-project-to-guide-a-circuit-design)) and is the acceptance yardstick for M1; M0–M4 below remain proposals. Summary:
 
 | Milestone | Action | Change model? | Done when |
 |---|---|---|---|
@@ -518,6 +537,7 @@ The complete executable plan is **[docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md)**
 
 | Document | Purpose |
 |---|---|
+| [**ERROR_BUDGET_REV03.md**](design/budget/ERROR_BUDGET_REV03.md) | **Guide a circuit design**: Rev0.3 targets → input-referred error budget → block specs → device parameters → gates; with JSON, binding CSV and verifier |
 | [**PROJECT_PLAN.md**](docs/PROJECT_PLAN.md) | **Only active roadmap**: M0–M4 gates, commands, rollback, evidence levels |
 | [ENGINEERING_ANALYSIS.md](docs/ENGINEERING_ANALYSIS.md) | Systematic diagnosis: objectives / timeline / architecture / evidence ledger / governance / risk tiers |
 | [CAAZ_ADI.md](docs/CAAZ_ADI.md) | What each of the three papers contributes; CAAZ N8 evidence; ADI candidate boundary |

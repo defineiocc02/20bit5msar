@@ -1,0 +1,35 @@
+﻿parameter_path,current_value,unit,source_file,budget_item,input_referred_uv_rms,formula_or_rule,verdict,note
+P.fsr_diff_v,10,V,parameters.json,baseline,NA,Rev0.3 target is 8.192 V,BASELINE_MISMATCH,10 V is the paper-normal interpretation not the product range; noise limits differ by 1.49x in power
+P.input.amplitude_v,4.456254690668728,V,parameters.json,baseline,NA,Rev0.3 -1 dBFS amplitude is 3.650563842595822 V,BASELINE_MISMATCH,Do not use N256 metrics to judge Rev0.3 compliance
+P.N,256,records,parameters.json,measurement,NA,SPEC requires 20k-point spectrum and static DNL/INL code density,BASELINE_MISMATCH,256-point FFT cannot support the product dynamic claim
+P.digital.ra_gain,32,V/V,parameters.json,all,NA,All stage-2 and RA noise folds to input by 1/G_RA,BOUND,Verified against behavior_decode.m ra_gain==32 assertion
+P.front.C_f first 8 rows,28.0521,pF,parameters.json,sampling,17.1314,sigma=sqrt(2*k_B*T/C_signal),CONDITIONAL_PASS,Meets 24.7109 pF minimum only if 28 pF is per-half; spec.yml capacitance_definition is TBD
+P.front.Cp_f per half,100,fF,config/normal_parameters.m,sampling,NA,8 slices x 12.5 fF added to C_top,ASSUMED,frontCpHalf_f is an engineering estimate not PDK extraction
+P.front.tau_sample_s,0.5630,ns,parameters.json,sampling,NA,tau=Ron_eq*C_top=20*28.1521 pF,PASS_ANALYTIC,Below 0.9960 ns limit from THD-driven settling
+Ron_eq,20,ohm,config/normal_parameters.m,sampling,NA,Ron<=tau_max/C_top<=35.38 ohm,PASS_ANALYTIC,44 percent margin under the 0..12.5 ns conservative window
+P.front.ktc_enabled,true,bool,config/normal_parameters.m,sampling,17.1314,sqrt(2*k_B*T/C_signal),ASSUMED,Equilibrium formula; frontier step uses Box-Muller with keyed hash
+P.front.temperature_K,298.15,K,config/normal_parameters.m,sampling,NA,T in 2*k_B*T/C,ASSUMED,25 C matches SPEC test temperature
+P.front.tau_dac_s,0.5,ns,parameters.json,distortion,NA,tau<=2.5 ns/ln(2^13)=0.2774 ns,NEEDS_CLOSED_LOOP,Naive exponential model FAILS; CT integrator model not assessed; do not declare pass or fail
+P.backend.ra.A0,10000,V/V,config/normal_parameters.m,distortion,NA,Closed-loop gain error ~ NG/A0 = 0.00336,NEEDS_CLOSED_LOOP,0.34 percent error needs 2-bit redundancy plus foreground gain calibration; calibration is OFF
+P.backend.ra.UGB_hz,1.2e9,Hz,config/normal_parameters.m,distortion,NA,tau_RA=NG/(2*pi*UGB)=4.4541 ns,NEEDS_CLOSED_LOOP,Exponential 12-bit settling criterion not applicable to a CT integrator
+P.backend.ra.Cf_f,0.864,pF,parameters.json,distortion,NA,NG=1+C_top/Cf=33.5834,ASSUMED,Derived from nominal.mat geometry not PDK
+P.backend.ra.vos_input_v,1,mV,config/normal_parameters.m,static,31.25,1 mV/G_RA,NEEDS_CLOSED_LOOP,Offset is absorbed by ordinary AZ but AZ noise itself is unimplemented
+P.backend.ra_noise.sigma_vx_rms,0.512785,mV,parameters.json,ra_after_tracking,16.0245,sigma_vx/G_RA; limit 9.9975 uV,NEEDS_CLOSED_LOOP,Only closes if tracking supplies ~7-9 dB; MODEL_PLAN.md:77 forbids the /8 shortcut
+P.control.comparator.sar2_noise_rms_v,0.286929,mV,parameters.json,comparator_after_tracking,8.9665,sigma_cmp/G_RA; limit 6.8296 uV,NEEDS_CLOSED_LOOP,Same tracking dependence as RA noise
+P.control.comparator.sar1_noise_rms_v,0,V,parameters.json,comparator_after_tracking,0,Not modeled,NOT_IMPLEMENTED,SAR1-fine noise source explicitly absent per behavior_ra_noise_guard.m:119
+flash_preconvert,false,bool,parameters.json,comparator_after_tracking,0,Not modeled,NOT_IMPLEMENTED,Flash comparator noise absent per behavior_applied_note.m:46
+P.backend.az.mode,ordinary,enum,parameters.json,ra_az,NA,Write window 0..31.25 ns; POL +1 -1 -1 +1,IMPLEMENTED_BUT_NO_NOISE,Ordinary AZ only; random AZ storage/write noise is not implemented
+P.backend.az.write_tau_s,1,ns,parameters.json,ra_az,NA,Exact RC advance,ASSUMED,azWriteTau_s is an estimate
+P.backend.az.leak_tau_s,10,ms,parameters.json,ra_az,NA,AZ hold leakage,ASSUMED,10 ms is an unverified hold-time constant
+az_noise,not_implemented,-,behavior_backend_step.m:434-437,ra_az,NA,8 percent of noise power has no model,NOT_IMPLEMENTED,Budget 7.3011 uV rms is entirely unallocated in the model
+reference_noise,not_implemented,-,behavior_backend_step.m:434-437,reference_driver,NA,10 percent of noise power has no model,NOT_IMPLEMENTED,Budget 8.1629 uV rms is entirely unallocated
+P.ni.reference_recovery,false,bool,parameters.json,reference_driver,NA,behavior_ra_noise_guard.m:90 throws,NOT_IMPLEMENTED,SPEC.md:35 requires a dynamic VREF/REFCAP load network
+P.front.jitter.common_sigma_s,0,s,parameters.json,sampling,NA,sigma_t<=1/(2*pi*fin*10^(SNR/20)),NOT_MODELED_IN_BASELINE,15.9155 ps at 100 kHz if jitter consumed all noise; 1.5915 ps at 1 percent sub-budget
+P.front.jitter.local_sigma_s,0,s,parameters.json,sampling,NA,2.5224 ps at 1 MHz for SNR 96 dB,NOT_MODELED_IN_BASELINE,Code exists; enable through M1 parameter injection not P.ni
+P.front.mismatch_enabled,true,bool,parameters.json,static,NA,sigmaUnit derived from Ac_pair=0.005 um,ASSUMED,Matching assumption explicitly marked not PDK data in normal_parameters.m:20
+sigmaUnit,0.0006804138,fraction,config/normal_parameters.m,static,NA,Ac_pair/sqrt(2*unitArea),ASSUMED,No DNL/INL or code-density evidence exists
+P.digital.dither_enabled,false,bool,parameters.json,quantization_digital,NA,Headroom and same-sample cancellation required,OFF_BY_DESIGN,SPEC.md:84-89 requires metadata contract before enabling
+P.transport.enabled,false,bool,parameters.json,interface,NA,W[31:0] N-2 slot at 250 MHz LVDS,NOT_INTEGRATED,SPEC.md:109 states no SLX generated or compiled for the interface
+P.digital.calibration_mode,off,enum,parameters.json,static,NA,Foreground weight and RA-gain estimation then freeze,OFF_BY_DESIGN,SPEC.md:11 makes calibration required for 20-bit; currently unavailable via SAR20('calibration')
+P.digital.fsr_diff_v,10,V,parameters.json,quantization_digital,NA,LSB20 = FSR/2^20 = 7.8125 uV at Rev0.3,BASELINE_MISMATCH,Quantization noise 2.2553 uV uses 0.76 percent of the 5 percent allocation
+DNL/INL measurement,none,-,engineering gap,static,NA,Requires code density plus confidence interval,EVIDENCE_INSUFFICIENT,INL limit is +/-32.768 uV and DNL limit is 7.8125 uV at Rev0.3

@@ -262,6 +262,7 @@
 | 里程碑 | 动作 | 是否需要改模型 / 授权 | 完成判据 |
 |---|---|---|---|
 | **M0** | 建机器可读 `CURRENT.json` 单一真相源；旧状态源标 archive；根 CHECKPOINT 冻结 | 否 | 任一新会话能在 1 分钟内确定「当前是什么、什么算完成」 |
+| **M0.5** ✅ 已落地 11-05 | 按 Rev0.3 建设计约束闭环：系统指标 → 输入参考误差预算 → 模块规格 → 器件参数 → 验证门；产出 `design/budget/` 四件套 | 否 | `verify_budget.py` 79 项全绿；closure 诚实标 `NOT_CLOSED`；详见 [设计约束闭环](../design/budget/ERROR_BUDGET_REV03.md) |
 | **M1** | 固定 N256 / seed / FSR，做**单源消融矩阵**（leave-one-out + only-one-on + M1/M8 对照），产出每项 ΔSNDR 表；建**输入参考噪声预算** | 否（参数注入）；需 Windows 调度授权 | 每个已实现非理想项有独立 ΔSNDR，且预算表可与论文分项比较 |
 | **M2** | 同口径 20k 点谱 + M1/M8 的 7 dB 收益对照 + 前景校准/独立 holdout 复核 | 否（参数级）；需授权 | 能明确回答「论文复现到什么程度、差在哪几项、各差多少 dB」 |
 | **M3** | 从 CAAZ 与 debug UI 中**选一个**晋升生产，走完 apply → 冷开 → N8 位门 → N256 回归 → README / CURRENT 同步 | **是**，需显式授权；改动前须提交范围、备份、回滚方案 | 生产 SLX SHA 改变且文档同步；ΔdB 无法解释则回滚 |
@@ -279,6 +280,7 @@
 | `README.md` / `README_EN.md` | 中文工程说明书（默认首页）与结构对齐的英文版：目标口径、架构时序、参数假设、非理想覆盖、运行/调试、证据链、风险与计划入口 |
 | `docs/ENGINEERING_ANALYSIS.md` | 本报告（诊断证据） |
 | `docs/PROJECT_PLAN.md` | **当前唯一有效计划**：M0–M4 与 N 系列的前置、命令、验收门、回滚、checkpoint、风险登记册与待确认清单 |
+| `design/budget/` | **设计约束闭环（M0.5）**：Rev0.3 误差预算主文档、机器可读 JSON、模型参数绑定 CSV、可复算校验脚本（79 项全绿） |
 | `docs/PAPERS/INDEX.md` | 27 份第三方文献清单（标题/路径/SHA-256/来源） |
 | `analysis/local_debug/sar20_probe.py` | 零 MATLAB 本地只读探针：`info` / `decode` / `diff` / `html` |
 | `analysis/local_debug/sar20_debug_report.html` | 离线调试面板（256 条真实记录、任意 sample 解码链） |
